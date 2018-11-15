@@ -1251,3 +1251,12 @@ function analisaItem(itens) {
     
 }
 
+function desejaPassagem(){
+	document.getElementById("div_tipoVoo").style.display = "block";	
+}
+
+
+function desejaHotel(){
+	document.getElementById("div_tipoHotel").style.display = "block";
+}
+

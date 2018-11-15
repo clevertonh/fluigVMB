@@ -55,7 +55,7 @@ function displayFields(form,customHTML){
          form.setVisibleById("trecho2", false);
          form.setVisibleById("trecho3", false);
          form.setVisibleById("observacaoVoo", false);
-         
+         form.setVisibleById("div_tipoVoo", false);
     	 
        	//campos hospedagem
      	form.setVisibleById("divDatasHotel1", false);
@@ -65,6 +65,7 @@ function displayFields(form,customHTML){
         form.setVisibleById("div_tipohotel1", false);
         form.setVisibleById("div_tipohotel2", false);
         form.setVisibleById("div_tipohotel3", false);
+        form.setVisibleById("div_tipoHotel", false);
     	
         //campos aba final      
         form.setVisibleById("divJustificativa", false);

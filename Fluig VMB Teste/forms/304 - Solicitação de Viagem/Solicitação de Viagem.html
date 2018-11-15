@@ -230,7 +230,7 @@
                                                             ]
                                                             }" >	
                                                       </div>
-                                                      <div class="from-group col-md-1">
+                                                      <div class="form-group col-md-1">
                                                          <input type ="text" id ="codigorateio" name="codigorateio">
                                                       </div>
                                                    </div>
@@ -415,14 +415,14 @@
                                                    <!-- linha 1 -->						                        
                                                    <div class="row">
                                                       <div class="form-group col-md-6">
-                                                         <label>O solicitante é o passageiro? </label><br>
+                                                         <label>O solicitante é o passageiro/hóspede? </label><br>
                                                          <label for="solicitanteNpassageiro">Não</label>		
                                                          <input type="radio" id ="solicitanteNpassageiro" name ="solicitantepassageiro" value="nao" onclick="solicitantePassageiro()">		
                                                          <label for="solicitantepassageiro">Sim</label>	                                                                                 	
                                                          <input type="radio" id ="solicitantepassageiro" name ="solicitantepassageiro" value="sim" onclick="solicitantePassageiro()">                                                     				                                                         							                        						                      
                                                       </div>
                                                       <div class="form-group col-md-6">
-                                                         <label for="passageirofuncionario">O passageiro é funcionário? </label><br>
+                                                         <label for="passageirofuncionario">O passageiro/hóspede é funcionário? </label><br>
                                                          <label for="passageirofuncionarionao">Não</label>
                                                          <input type="radio" id ="passageirofuncionarionao" name="passageirofuncionario"  value="nao" onclick="passageiroFuncionario()"/>
                                                          <label for="passageirofuncionario">Sim</label>
@@ -432,7 +432,7 @@
                                                    <div class="row" id="divdadospassageiro">
                                                       <div class="row">
                                                          <div class="form-group col-md-6">
-                                                            <label for="nomepassageiro" >Nome completo do passageiro: </label>
+                                                            <label for="nomepassageiro" >Nome completo do passageiro/hóspede: </label>
                                                             <input type="text" class="form-control" id="nomepassageiro" name="nomepassageiro" placeholder="Informe o nome do passageiro" >
                                                          </div>
                                                          <div class="form-group col-md-6">
@@ -471,14 +471,14 @@
                                                 </div>
 												<div class="tab-pane" role="tabpanel" id="step3">
 													<div class="row">
-														<div class="from-group col-md-3">
+														<div class="form-group col-md-3">
 															<label>A viagem está planejada na agenda</label><br>
 															<label for="viagemplanejadaS">Sim</label>
 															<input type="radio" id="viagemplanejadaS" name="viagemplanejada" value ="sim" onclick="viagemPlanejadaS();">
 															<label for="viagemplanejadaN">Não</label>
 															<input type="radio" id="viagemplanejadaN" name="viagemplanejada" value ="nao" onclick="viagemPlanejadaN();">
 														</div>
-														<div class="from-group col-md-9" id="divDataSetAgenda">
+														<div class="form-group col-md-9" id="divDataSetAgenda">
 															<label>Selecione a agenda</label>
                                                          <input 
                                                             name ="agenda" 
@@ -534,12 +534,17 @@
 												</div>
                                                 <div class="tab-pane" role="tabpanel" id="step4">
                                                    <div class="row">
-                                                      <div class="form-gorup col-md-7">
+                                                      <div class="form-group col-md-7">
                                                          <h3>Preencha os dados para solicitar uma passagem áerea</h3>
                                                       </div>
                                                    </div>
                                                    <div class="row" >
-                                                      <div class="fomr-group col-md-6">
+                                                   	<div class="form-group col-md-3">
+                                                   		<label>Deseja solicitar passagem aérea?</label><br>
+                                                   		<label for="pedirPassagemS">Sim</label>
+                                                   		<input type="radio" id="pedirPassagemS" name="pedirPassagem" value="sim" onclick="desejaPassagem()">                                                   		
+                                                   	</div>                                                                                                            
+                                                      <div class="form-group col-md-6" id="div_tipoVoo">
                                                          <label>Tipo de voo</label><br>
                                                          <label for="tipovoo0">Ida e Volta</label>
                                                          <input type="radio" id ="tipovoo0" name="tipovoo" value="idavolta" onclick="clickTipoVoo0();">
@@ -836,9 +841,15 @@
                                                       <div class="form-gorup col-md-7">
                                                          <h3>Preencha os dados para solicitar uma acomodação</h3>
                                                       </div>
-                                                   </div>
+                                                   </div>                                              
                                                    <div class="row">
-                                                      <div class="form-group col-md-7">
+      												<div class="form-group col-md-3">
+                                                   		<label>Deseja solicitar hospedagem?</label><br>
+                                                   		<label for="pedirHotelS">Sim</label>
+                                                   		<input type="radio" id="pedirHotelS" name="pedirHotel" value="sim" onclick="desejaHotel()">
+                                                   
+                                                   	</div>                                                   
+                                                      <div class="form-group col-md-7" id="div_tipoHotel">
                                                          <label>Tipo de quarto</label><br>
                                                          <label for="solteiro">Solteiro</label>                                                         
                                                          <input type="radio" id ="solteiro" name="tipoquarto" value="solteiro" onclick="clickCamposHospedagem();">														
@@ -1088,7 +1099,7 @@
                                        </div>
                                     </div>
                                     <div class="row">
-                                       <div class="from-group col-md-3"></div>
+                                       <div class="form-group col-md-3"></div>
                                     </div>
                                     <div class="row">
                                        <br><br><br><br><br><br>

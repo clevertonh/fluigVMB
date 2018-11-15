@@ -673,102 +673,56 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <version>1</version>
-        <sequence>134</sequence>
+        <sequence>138</sequence>
       </processStatePK>
-      <stateName>Lançar nota fiscal</stateName>
-      <stateDescription>Lançar nota fiscal</stateDescription>
-      <instruction>Incluir nota fiscal na rotina de Documento de Entrada</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
+      <stateName>Registrar pedido de Compra no Protheus</stateName>
+      <stateDescription>Registrar pedido de Compra no Protheus</stateDescription>
       <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
       <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>860</positionX>
+      <automatic>true</automatic>
+      <positionX>650</positionX>
       <positionY>550</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
       <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
+      <bpmnType>85</bpmnType>
       <signalId>0</signalId>
-      <counterSign>false</counterSign>
       <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <version>1</version>
-        <sequence>135</sequence>
+        <sequence>139</sequence>
       </processStatePK>
-      <stateName>Registrar pedido de Compra</stateName>
-      <stateDescription>Registrar pedido de Compra</stateDescription>
-      <instruction>Incluir pedido de compra</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
+      <stateName>Lançar nota fiscal</stateName>
+      <stateDescription>Lançar nota fiscal</stateDescription>
       <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
       <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>700</positionX>
-      <positionY>540</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
+      <automatic>true</automatic>
+      <positionX>860</positionX>
+      <positionY>550</positionY>
       <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
       <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
+      <bpmnType>85</bpmnType>
       <signalId>0</signalId>
-      <counterSign>false</counterSign>
       <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -1304,6 +1258,32 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>138</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>139</destinationSequenceId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <engineAllocationId></engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Viagem</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>139</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>133</destinationSequenceId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <engineAllocationId></engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Viagem</processId>
+        <expressionOrder>1</expressionOrder>
         <version>297</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
@@ -1384,7 +1364,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <version>297</version>
         <sequence>87</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
       <destinationSequenceId>33</destinationSequenceId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -1392,17 +1372,6 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>297</version>
-        <sequence>87</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
-      <destinationSequenceId>33</destinationSequenceId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Viagem</processId>
-        <expressionOrder>3</expressionOrder>
         <version>297</version>
         <sequence>87</sequence>
       </conditionProcessStatePK>
@@ -1749,7 +1718,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>87</initialStateSequence>
-      <finalStateSequence>135</finalStateSequence>
+      <finalStateSequence>138</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1901,8 +1870,8 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>135</initialStateSequence>
-      <finalStateSequence>134</finalStateSequence>
+      <initialStateSequence>138</initialStateSequence>
+      <finalStateSequence>139</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1918,7 +1887,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>134</initialStateSequence>
+      <initialStateSequence>139</initialStateSequence>
       <finalStateSequence>133</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -1931,7 +1900,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <version>1</version>
-        <linkSequence>136</linkSequence>
+        <linkSequence>140</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -1944,7 +1913,28 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>scripttask137</eventId>
+        <processId>Solicitacao de Viagem</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function scripttask137() {
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask136</eventId>
+        <processId>Solicitacao de Viagem</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask136(attempt, message) {
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
