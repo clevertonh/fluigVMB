@@ -1,0 +1,1113 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>     
+      <link type="text/css" rel="stylesheet" href="style.css"/>
+   </head>
+   <body>
+      <div class="container">
+         <div class="fluig-style-guide">
+            <!--  Imagem  -->
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <div class="col-xs-6 col-md-3">
+                     <img src="https://visaomundial.org/images/logo_VMB.svg">
+                  </div>
+               </div>
+            </div>
+            <!--  Formulário  -->
+            <form role="form">
+               <div class='panel panel-primary'>
+                  <div class="panel-heading">
+                     <div class="container text-center">
+                        <h4>Solicitação de Viagem</h4>
+                        <!--                         <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * sÃ£o de preenchimento obrigatÃ³rio.</div>
+                           -->
+                     </div>
+                  </div>
+                  <div class="panel-body">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div id="exTab3" class="container-fluid">
+                              <ul class="nav nav-pills nav-justified">
+                                 <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
+                                 <li><a href="#2b" data-toggle="tab">Aprovador</a></li>
+                                 <li><a href="#3b" data-toggle="tab">Assistente de hospitalidade</a></li>
+                              </ul>
+                              <div class="tab-content clearfix">
+                                 <!-- Aba Solicitante -->
+                                 <div class="tab-pane active" id="1b">
+                                    <div class="row">
+                                       <section>
+                                          <div class="wizard">
+                                             <div class="wizard-inner">
+                                                <div class="connecting-line"></div>
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                   <li role="presentation" class="active">
+                                                      <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Dados">
+                                                      <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-folder-open"></i>
+                                                      </span>
+                                                      </a>
+                                                   </li>
+                                                   <li role="presentation" class="disabled">
+                                                      <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Dados do Passageiro">
+                                                      <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-user"></i>
+                                                      </span>
+                                                      </a>
+                                                   </li>
+                                                   <li role="presentation" class="disabled">
+                                                      <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Agenda de viagem">
+                                                      <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-calendar"></i>
+                                                      </span>
+                                                      </a>
+                                                   </li>                                                   
+                                                   <li role="presentation" class="disabled">
+                                                      <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Voo">
+                                                      <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-picture"></i>
+                                                      </span>
+                                                      </a>
+                                                   </li>
+                                                   <li role="presentation" class="disabled">
+                                                      <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Hospedagem">
+                                                      <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-picture"></i>
+                                                      </span>
+                                                      </a>
+                                                   </li>
+                                                   <li role="presentation" class="disabled">
+                                                      <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Concluido">
+                                                      <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-verified"></i>
+                                                      </span>
+                                                      </a>
+                                                   </li>
+                                                </ul>
+                                             </div>
+                                             <!-- 			
+                                                <form role="form">											
+                                                
+                                                -->
+                                             <div class="tab-content">
+                                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                                   <div class="row" id="divJustificativaCancelamento">
+                                                      <div class="container text-center" >
+                                                         <h2>Solicitação atendida. Por favor, para solicitar o cancelamento da viagem marque o campo abaixo</h2>
+                                                         <input type="radio" id ="cancelarpassagem" name="cancelarpassagem" value ="sim" onclick="clickCancelarPassagem()" />
+                                                         <label for ="cancelarpassagem">Desejo cancelar a viagem</label>
+                                                         <input type="radio" id ="ncancelarpassagem" name="cancelarpassagem" value ="" onclick="clickNaoCancelarPassagem()" />
+                                                         <label for ="ncancelarpassagem">Não desejo cancelar a viagem</label>
+                                                         <h4>Estou ciente que o processo de pagamento poderá gerar multa.</h4>
+                                                      </div>
+                                                      <div class="form-group col-md-12" id ="justificativacanc">
+                                                         <label for="justificativacancelamento">Justificativa</label>
+                                                         <textarea class="form-control" rows="3" id="justificativacancelamento" name="justificativacancelamento" placeholder="Por favor, informar o motivo do cancelamento de sua viagem."></textarea>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row">
+                                                      <div class="form-group col-md-2">
+                                                         <label for="id" class="required">Cód. solicitação</label>
+                                                         <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row">
+                                                      <div class="form-group col-md-4">
+                                                         <label>Tipo de solicitação</label><br>
+                                                         <label for ="novasolicitacao">Nova Viagem</label>
+                                                         <input type="radio" id ="novasolicitacao" name ="remarcacao" value="nao" onclick="clickNovaSolicitacao();" checked >
+                                                         <label for="remarcacao">Remarcação</label>
+                                                         <input type="radio" id ="remarcacao"	   name ="remarcacao" value="sim" onclick="clickRemarcacao();" >
+                                                      </div>
+                                                      <div class="form-group col-md-8" id ="selecaodeviagens">
+                                                         <label>Solicitação original</label>
+                                                         <input 
+                                                            name ="dataset_solicitacaoviagem" 
+                                                            class="form-control" 
+                                                            type="zoom" 
+                                                            id="dataset_solicitacaoviagem" 
+                                                            data-zoom="{
+                                                            'displayKey':'solicitacao',
+                                                            'datasetId':'VM_SolicitacaoViagem',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione uma viagem anterior',
+                                                            'fields':[
+                                                            {'field':'solicitacao','label':'solicitacao'},                                                            
+                                                            {'field':'solicitante','label':'solicitante','standard':'true'},
+                                                            {'field':'nomepassageiro','label':'nomepassageiro'},
+                                                            {'field':'dataSolicitacao','label':'dataSolicitacao'}                                                           						  					
+                                                            ]
+                                                            }" >	
+                                                      </div>
+                                                   </div>
+                                                   <!-- Primeira Linha -->
+                                                   <div class="row">
+                                                      <div class="form-group col-md-5">
+                                                         <label for="solicitante" class="required">Solicitante</label>
+                                                         <input type="text" class="form-control" id="solicitante" name="solicitante" readonly >
+                                                      </div>
+                                                      <div class="form-group col-md-4">
+                                                         <label for="exampleInputEmail1">Email</label>
+                                                         <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
+                                                      </div>
+                                                      <div class="form-group col-md-3">
+                                                         <label for="only-date">Data da solicitação</label>
+                                                         <div class="input-group date" id="calendariodataSolicitacao">
+                                                            <input type="text" class="form-control" id="dataSolicitacao" name="dataSolicitacao"  readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="from-group col-md-1">
+                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante"  readonly>
+                                                      </div>
+                                                   </div>												
+                                                   <div class="row">
+                                                      <div class="form-group col-md-5">
+                                                         <label>Tipo de Viagem</label><br>
+                                                         <label for="nacional">Nacional</label>
+                                                         <input type="radio" id ="nacional" name ="tipoviagem" value="nacional" onclick="clickTipoViagem()" >  
+                                                         <label for="internacional">Internacional</label>
+                                                         <input type="radio" id ="internacional"  name ="tipoviagem" value="internacional"   onclick="clickTipoViagem()" >  
+                                                      </div>
+                                                      <div class="form-group col-md-3" >                                              		
+                                                         <input type="text" class="form-control" id="matricula" name="matricula" readonly>                                                      
+                                                      </div>
+                                                   </div>
+                                                   <!-- Segunda Linha -->
+                                                   <div class="row">
+                                                      <div class="form-group col-md-6">
+                                                         <div class="form-group">
+                                                            <label for="finalidade">Finalidade</label>
+                                                            <textarea class="form-control" rows="3" id="finalidade" name="finalidade" placeholder="Porque estou indo viajar? Qual o objetivo dessa viagem? Quais os benefícios essa viagem trará para VMB?"></textarea>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-6" id="div_justificativaremarcacao">
+                                                         <div class="form-group">
+                                                            <label for="justificativaremarcacao">Justificativa da remarcação</label>
+                                                            <textarea class="form-control" rows="3" id="justificativaremarcacao" name="justificativaremarcacao" placeholder="Por favor, informar o motivo da remarcação de sua viagem."></textarea>                                                      	
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <!-- Linha 4 -->
+                                                   <div class="row">
+                                                      <div class="form-group col-md-3">
+                                                         <label>Tipo de Pagamento</label><br>
+                                                         <label for="normal">Normal</label>
+                                                         <input type="radio" id ="normal" name ="tipoPagamento" value="normal" onclick="clickPagamentoNormal();" >
+                                                         <label for="rateio">Rateio</label>
+                                                         <input type="radio" id ="rateio"  name ="tipoPagamento" value="rateio" onclick="clickPagamentoRateio();">
+                                                      </div>
+                                                      <div class="form-group col-md-6" id ="selecaorateio">
+                                                         <label>Rateio pré-configurado</label>
+                                                         <input 
+                                                            name ="rateioconfigurado" 
+                                                            class="form-control" 
+                                                            type="zoom" 
+                                                            id="rateioconfigurado" 
+                                                            data-zoom="{'displayKey':'Descricao',
+                                                            'datasetId':'VM_RateioConfigurado',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um rateio',
+                                                            'fields':[
+                                                            {
+                                                            'field':'Codigo',
+                                                            'label':'Codigo'
+                                                            },                                                              
+                                                            {
+                                                            'field':'Descricao',
+                                                            'label':'Descricao',
+                                                            'standard':'true'
+                                                            }						  					
+                                                            ]
+                                                            }" >	
+                                                      </div>
+                                                      <div class="from-group col-md-1">
+                                                         <input type ="text" id ="codigorateio" name="codigorateio">
+                                                      </div>
+                                                   </div>
+                                                   <!-- Linha 5  ( Tabela )-->
+                                                   <div class="panel panel-default" id="panelItens">
+                                                      <div class="panel-heading ">
+                                                         <h3 class="panel-title">
+                                                            <b>Informa&ccedil;&otilde;es do Pagamento</b>
+                                                         </h3>
+                                                      </div>
+                                                      <div class="panel-body">
+                                                         <div class="form-group row">
+                                                            <div class="col-md-12 fs-txt-right">
+                                                               <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
+                                                               <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
+                                                               </button>
+                                                            </div>
+                                                         </div>
+                                                         <div class="form-group row">
+                                                            <div class="col-md-12">
+                                                               <div class="form-field table-responsive">
+                                                                  <table tablename="tableItens" id="tableItens" border="0" class="table table-striped table-bordered" noaddbutton="true" nodeletebutton="true">
+                                                                     <thead>
+                                                                        <tr class="tableHeadRow">
+                                                                           <th></th>
+                                                                           <th>Percentual</th>
+                                                                           <th class="tableColumn">Centro de Custo</th>
+                                                                           <th class="tableColumn">Projeto</th>
+                                                                           <th class="tableColumn">Atividade</th>
+                                                                           <th class="tableColumn">Categoria</th>
+                                                                           <th class="tableColumn">Fonte de Financiamento</th>
+                                                                           <th class="tableColumn">Area Estratégica</th>
+                                                                           <th>Alocação</th>
+                                                                           <th>Localização</th>
+                                                                           <th>Conta Contábil </th>
+                                                                        </tr>
+                                                                     </thead>
+                                                                     <tbody id="tbodyItens">
+                                                                        <tr>
+                                                                           <td>
+                                                                              <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id ="removeitem" onclick="fnWdkRemoveChild(this)"></span>
+                                                                           </td>
+                                                                           <td >
+                                                                              <input class="form-control money" name="percentual" id="percentual" type="text" style="width:100px;" />
+                                                                           </td>
+                                                                           <td>
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="centrocusto" id="centrocusto" style="width:200px;"/> 																						
+                                                                                 <input style="width:200px !important;"
+                                                                                    type="zoom" 
+                                                                                    name="txtcentrocusto" 
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Codigo',
+                                                                                    'datasetId':'VM_CentroCusto',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione um centro de custo',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo', 'standard':'true'},
+                                                                                    {'field':'Descricao', 'label':'Descricao'},
+                                                                                    {'field':'Tipo', 'label':'Tipo' , 'visible' : 'false'}]
+                                                                                    }" />
+                                                                              </div>
+                                                                           </td>
+                                                                           <td>
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="projeto" id="projeto" /> 																						
+                                                                                 <input
+                                                                                    type="zoom" 
+                                                                                    name="txtprojeto" 
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Codigo',
+                                                                                    'datasetId':'VM_projeto',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione um projeto',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo'},
+                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
+                                                                                    {'field':'Conta', 'label':'Conta' , 'visible' : 'false'}]
+                                                                                    }" />
+                                                                              </div>
+                                                                           </td>
+                                                                           <td >
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="atividade" id="atividade" /> 																						
+                                                                                 <input
+                                                                                    type="zoom" 
+                                                                                    name="txtatividade" 
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Codigo',
+                                                                                    'datasetId':'VM_Atividades',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Escolha uma atividade',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo'},
+                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
+                                                                                    {'field':'Centro_Custo', 'label':'Centro_Custo', 'visible' : 'false'}]
+                                                                                    }" />
+                                                                              </div>
+                                                                           </td>
+                                                                           <td >
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="categoria" id="categoria" /> 																						
+                                                                                 <input
+                                                                                    type="zoom" 
+                                                                                    name="txtcategoria" 
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Codigo',
+                                                                                    'datasetId':'VM_Categoria',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione uma despesa',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo', 'standard':'true'},
+                                                                                    {'field':'Descricao', 'label':'Descricao'}]
+                                                                                    }" />
+                                                                              </div>
+                                                                           </td>
+                                                                           <td >
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="fontefinanciamento" id="fontefinanciamento" /> 																						
+                                                                                 <input
+                                                                                    type="zoom" 
+                                                                                    name="txtfontefinanciamento" 
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Codigo',
+                                                                                    'datasetId':'VM_FonteFinanciamento',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione uma fonte de financ.',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo'},
+                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
+                                                                                    {'field':'Projeto', 'label':'Projeto', 'visible':'false'}]
+                                                                                    }" />
+                                                                              </div>
+                                                                           </td>
+                                                                           <td >
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="areaestrategica" id="areaestrategica" /> 																						
+                                                                                 <input
+                                                                                    type="zoom" 
+                                                                                    name="txtareaestrategica" 
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Codigo',
+                                                                                    'datasetId':'VM_AreaEstrategica',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione uma Area Estrategica',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo'},
+                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
+                                                                                    {'field':'Projeto', 'label':'Projeto', 'visible':'false'}]
+                                                                                    }" />
+                                                                              </div>
+                                                                           </td>
+                                                                           <td >
+                                                                              <input class="form-control" name="alocacao" id ="alocacao" type="text"  maxlength="5" style="width:100px;" readOnly/>
+                                                                           </td>
+                                                                           <td >
+                                                                              <input class="form-control" name="localizacao" id="localizacao" type="text" maxlength="3" style="width:70px;" readonly/>
+                                                                           </td>
+                                                                           <td >
+                                                                              <input class="form-control" name="contacontabil" id="contacontabil" type="text" maxlength="10" style="width:100px;" readonly/>
+                                                                           </td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <!-- Linha 6 -->
+                                                   <!-- Linha 7 -->
+                                                   <ul class="list-inline pull-right">
+                                                      <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+                                                   </ul>
+                                                </div>
+                                                <div class="tab-pane" role="tabpanel" id="step2">
+                                                   <div class="row">
+                                                      <div class="form-gorup col-md-7">
+                                                         <h3>Preencha os dados do passageiro/hóspede</h3>
+                                                      </div>
+                                                   </div>
+                                                   <!-- linha 1 -->						                        
+                                                   <div class="row">
+                                                      <div class="form-group col-md-6">
+                                                         <label>O solicitante é o passageiro? </label><br>
+                                                         <label for="solicitanteNpassageiro">Não</label>		
+                                                         <input type="radio" id ="solicitanteNpassageiro" name ="solicitantepassageiro" value="nao" onclick="solicitantePassageiro()">		
+                                                         <label for="solicitantepassageiro">Sim</label>	                                                                                 	
+                                                         <input type="radio" id ="solicitantepassageiro" name ="solicitantepassageiro" value="sim" onclick="solicitantePassageiro()">                                                     				                                                         							                        						                      
+                                                      </div>
+                                                      <div class="form-group col-md-6">
+                                                         <label for="passageirofuncionario">O passageiro é funcionário? </label><br>
+                                                         <label for="passageirofuncionarionao">Não</label>
+                                                         <input type="radio" id ="passageirofuncionarionao" name="passageirofuncionario"  value="nao" onclick="passageiroFuncionario()"/>
+                                                         <label for="passageirofuncionario">Sim</label>
+                                                         <input type="radio" id ="passageirofuncionario" name="passageirofuncionario"  value="sim" onclick="passageiroFuncionario()"/>									                    						                        
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" id="divdadospassageiro">
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label for="nomepassageiro" >Nome completo do passageiro: </label>
+                                                            <input type="text" class="form-control" id="nomepassageiro" name="nomepassageiro" placeholder="Informe o nome do passageiro" >
+                                                         </div>
+                                                         <div class="form-group col-md-6">
+                                                            <label for="nomemae" >Mãe passageiro: </label>
+                                                            <input type="text" class="form-control" id="nomemae" name="nomemae" placeholder="Informe o nome da mâe" >
+                                                         </div>
+                                                      </div>
+                                                      <div class="row">
+                                                         <div class="form-group col-md-3">
+                                                            <label for="dataNasc">Data de nascimento:</label>
+                                                            <div class="input-group date" id="calendariodatanasc" >
+                                                               <input type="text" class="form-control" id="datanasc" placeholder="Selecione uma data " name="datanasc"  readonly>
+                                                               <span class="input-group-addon">
+                                                               <span class="fluigicon fluigicon-calendar"></span>
+                                                               </span>
+                                                            </div>
+                                                         </div>
+                                                         <div class="form-group col-md-3">
+                                                            <label for="cpfpassageiro" >CPF </label>
+                                                            <input type="text" class="form-control" id="cpfpassageiro" name="cpfpassageiro" placeholder="Informe o cpf" maxlength="11">
+                                                         </div>
+                                                         <div class="form-group col-md-3">
+                                                            <label for="rgpassageiro" >RG </label>
+                                                            <input type="text" class="form-control" id="rgpassageiro" name="rgpassageiro" placeholder="Informe o RG" >
+                                                         </div>
+                                                         <div class="form-group col-md-3">
+                                                            <label for="passaporte" >Passaporte </label>
+                                                            <input type="text" class="form-control" id="passaporte" name="passaporte" placeholder="Informe o passaporte" >
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <ul class="list-inline pull-right">
+                                                      <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                                      <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+                                                   </ul>
+                                                </div>
+												<div class="tab-pane" role="tabpanel" id="step3">
+													<div class="row">
+														<div class="from-group col-md-3">
+															<label>A viagem está planejada na agenda</label><br>
+															<label for="viagemplanejadaS">Sim</label>
+															<input type="radio" id="viagemplanejadaS" name="viagemplanejada" value ="sim" onclick="viagemPlanejadaS();">
+															<label for="viagemplanejadaN">Não</label>
+															<input type="radio" id="viagemplanejadaN" name="viagemplanejada" value ="nao" onclick="viagemPlanejadaN();">
+														</div>
+														<div class="from-group col-md-9" id="divDataSetAgenda">
+															<label>Selecione a agenda</label>
+                                                         <input 
+                                                            name ="agenda" 
+                                                            class="form-control" 
+                                                            type="zoom" 
+                                                            id="agenda" 
+                                                            data-zoom="{'displayKey':'Codigo',
+                                                            'datasetId':'VM_MinhasAgendasAprovadas',
+                                                             'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione a agenda de viagem',
+                                                            'fields':[
+                                                            {'field':'Codigo','label':'Codigo Agenda','standard':'true'},
+                                                            {'field':'Funcionario','label':'Nome'},
+                                                            {'field':'Mes','label':'Mes'}					  					
+                                                            ]
+                                                            }" >															
+														</div>														
+													</div>	
+								<div class="panel-body">
+                                 <div class="form-group row">
+                                    <div class="col-md-12">
+                                       <div class="form-field table-responsive">
+                                          <table tablename="SolicAgendaViagem" id="SolicAgendaViagem" border="0" class="table table-striped table-bordered" noaddbutton="true" >
+                                             <thead>
+                                                <tr class="tableHeadRow">                                                                                                                                                                                                                   
+                                                   <th>Período de:</th>
+                                                   <th>Período até:</th>
+                                                   <th>Atividade</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody id="tbodyItensAgenda">
+                                                <tr>       													                                              
+                                                   <td>
+                                           			 <input type="text" class="form-control" id="dtPeriodoDe" name="calendarPeriodoDe" readonly>                                             
+                                                   </td>
+                                                   <td>
+                                        	          <input type="text" class="form-control" id="dtPeriodoAte" name="calendarPeriodoAte" readonly>
+                                                   </td>
+                                                   <td>
+                                                      <textArea class="form-control" name="agendaAtividade" id="agendaAtividade" maxlength="250" style="width:300px;" readonly></textArea>
+                                                   </td>                                                
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>												
+                                                   <ul class="list-inline pull-right">
+                                                      <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                                      <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+                                                   </ul>												
+												</div>
+                                                <div class="tab-pane" role="tabpanel" id="step4">
+                                                   <div class="row">
+                                                      <div class="form-gorup col-md-7">
+                                                         <h3>Preencha os dados para solicitar uma passagem áerea</h3>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" >
+                                                      <div class="fomr-group col-md-6">
+                                                         <label>Tipo de voo</label><br>
+                                                         <label for="tipovoo0">Ida e Volta</label>
+                                                         <input type="radio" id ="tipovoo0" name="tipovoo" value="idavolta" onclick="clickTipoVoo0();">
+                                                         <label for="tipovoo1">Somente Ida</label>
+                                                         <input type="radio" id ="tipovoo1" name="tipovoo" value="ida" onclick="clickTipoVoo1();">
+                                                         <label for="tipovoo2">Vários trechos</label>
+                                                         <input type="radio" id ="tipovoo2" name="tipovoo" value="varios" onclick="clickTipoVoo2();">                                                         
+                                                      </div>
+                                                   </div>
+                                                   <!-- linha do trecho 1 -->
+                                                   <div class="row" id="trecho1" >
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label>Trecho 1</label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="row" id ="div_Nacional1">
+                                                         <div class="form-group col-md-6" >							
+                                                            <label>Origem</label>
+                                                            <input 
+                                                               name ="origem1" 
+                                                               class="form-control" 
+                                                               type="zoom" 
+                                                               id="origem1" 
+                                                               data-zoom="{'displayKey':'CIDADE',
+                                                               'datasetId':'VM_Aeroporto',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Pesquise por Cidade',
+                                                               'fields':[
+                                                               {
+                                                               'field':'AEROPORTO',
+                                                               'Label':'AEROPORTO',
+                                                               'standard':'true'
+                                                               },
+                                                               {
+                                                               'field':'CIDADE',
+                                                               'Label':'CIDADE'
+                                                               },
+                                                               {
+                                                               'field':'ESTADO',
+                                                               'Label':'ESTADO'
+                                                               }						  					
+                                                               ]
+                                                               }" >	
+                                                         </div>
+                                                         <div class="form-group col-md-6" id="div_destino1">							
+                                                            <label>Destino</label>
+                                                            <input 
+                                                               name ="destino1" 
+                                                               class="form-control" 
+                                                               type="zoom" 
+                                                               id="destino1" 
+                                                               data-zoom="{'displayKey':'CIDADE',
+                                                               'datasetId':'VM_Aeroporto',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Pesquise por Cidade',
+                                                               'fields':[						  
+                                                               {
+                                                               'field':'AEROPORTO',
+                                                               'Label':'AEROPORTO',
+                                                               'standard':'true'
+                                                               },
+                                                               {
+                                                               'field':'CIDADE',
+                                                               'Label':'CIDADE'
+                                                               },
+                                                               {
+                                                               'field':'ESTADO',
+                                                               'Label':'ESTADO'
+                                                               }						  					
+                                                               ]
+                                                               }" >							
+                                                         </div>
+                                                      </div>
+                                                      <div class="row" id ="div_internacional1">
+                                                         <div class="form-group col-md-6" >							
+                                                            <label>Origem</label>
+                                                            <input type="text" class="form-control" name="internacionalOrigem1" id="internacionalOrigem1">                                                               			
+                                                         </div>
+                                                         <div class="form-group col-md-6" >							
+                                                            <label>Destino</label>
+                                                            <input type="text" class="form-control" name="internacionalDestino1" id="internacionalDestino1">                                                               			
+                                                         </div>
+                                                      </div>
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label for="datapartida1">Data de Partida</label>
+                                                            <div class="input-group date" id="calendariodatapartida1" >
+                                                               <input type="text" class="form-control" placeholder="Selecione a data" id="datapartida1"  name="datapartida1" readonly>
+                                                               <span class="input-group-addon">
+                                                               <span class="fluigicon fluigicon-calendar"></span>
+                                                               </span>
+                                                            </div>
+                                                         </div>
+                                                         <div class="form-group col-md-6"  id="div_datadestino1">
+                                                            <label for="dataretorno1">Data de Retorno</label>
+                                                            <div class="input-group date" id="calendariodataretorno1" >
+                                                               <input type="text" class="form-control" placeholder="Selecione a data"  id="dataretorno1" name="dataretorno1"  readonly>
+                                                               <span class="input-group-addon">
+                                                               <span class="fluigicon fluigicon-calendar"></span>
+                                                               </span>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" id="trecho2">
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label>Trecho 2</label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="row" id ="div_Nacional2">
+                                                         <div class="form-group col-md-6">							
+                                                            <label>Origem</label>
+                                                            <input 
+                                                               name ="origem2" 
+                                                               class="form-control" 
+                                                               type="zoom" 
+                                                               id="origem2" 
+                                                               data-zoom="{'displayKey':'CIDADE',
+                                                               'datasetId':'VM_Aeroporto',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Pesquise por Cidade',
+                                                               'fields':[
+                                                               {
+                                                               'field':'AEROPORTO',
+                                                               'Label':'AEROPORTO',
+                                                               'standard':'true'
+                                                               },
+                                                               {
+                                                               'field':'CIDADE',
+                                                               'Label':'CIDADE'
+                                                               },
+                                                               {
+                                                               'field':'ESTADO',
+                                                               'Label':'ESTADO'
+                                                               }						  					
+                                                               ]
+                                                               }" >				
+                                                         </div>
+                                                         <div class="form-group col-md-6">							
+                                                            <label>Destino</label>
+                                                            <input 
+                                                               name ="destino2" 
+                                                               class="form-control" 
+                                                               type="zoom" 
+                                                               id="destino2" 
+                                                               data-zoom="{'displayKey':'CIDADE',
+                                                               'datasetId':'VM_Aeroporto',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Pesquise por Cidade',
+                                                               'fields':[
+                                                               {
+                                                               'field':'AEROPORTO',
+                                                               'Label':'AEROPORTO',
+                                                               'standard':'true'
+                                                               },
+                                                               {
+                                                               'field':'CIDADE',
+                                                               'Label':'CIDADE'
+                                                               },
+                                                               {
+                                                               'field':'ESTADO',
+                                                               'Label':'ESTADO'
+                                                               }						  					
+                                                               ]
+                                                               }" >				
+                                                         </div>
+                                                      </div>
+                                                      <div class="row" id ="div_internacional2">
+                                                         <div class="form-group col-md-6" >							
+                                                            <label>Origem</label>
+                                                            <input type="text" class="form-control" name="internacionalOrigem2" id="internacionalOrigem2">                                                               			
+                                                         </div>
+                                                         <div class="form-group col-md-6">							
+                                                            <label>Destino</label>
+                                                            <input type="text" class="form-control" name="internacionalDestino2" id="internacionalDestino2">                                                               			
+                                                         </div>
+                                                      </div>
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label for="datapartida2">Data de Partida</label>
+                                                            <div class="input-group date" id="calendariodatapartida2" >
+                                                               <input type="text" class="form-control" placeholder="Selecione a data" id="datapartida2" name="datapartida2"  readonly>
+                                                               <span class="input-group-addon">
+                                                               <span class="fluigicon fluigicon-calendar"></span>
+                                                               </span>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" id="trecho3">
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label>Trecho 3</label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="row" id ="div_Nacional3">
+                                                         <div class="form-group col-md-6">							
+                                                            <label>Origem</label>
+                                                            <input 
+                                                               name ="origem3" 
+                                                               class="form-control" 
+                                                               type="zoom" 
+                                                               id="origem3" 
+                                                               data-zoom="{'displayKey':'CIDADE',
+                                                               'datasetId':'VM_Aeroporto',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Pesquise por Cidade',
+                                                               'fields':[
+                                                               {
+                                                               'field':'AEROPORTO',
+                                                               'Label':'AEROPORTO',
+                                                               'standard':'true'
+                                                               },
+                                                               {
+                                                               'field':'CIDADE',
+                                                               'Label':'CIDADE'
+                                                               },
+                                                               {
+                                                               'field':'ESTADO',
+                                                               'Label':'ESTADO'
+                                                               }						  					
+                                                               ]
+                                                               }" >				
+                                                         </div>
+                                                         <div class="form-group col-md-6">							
+                                                            <label>Destino</label>
+                                                            <input 
+                                                               name ="destino3" 
+                                                               class="form-control" 
+                                                               type="zoom" 
+                                                               id="destino3" 
+                                                               data-zoom="{'displayKey':'CIDADE',
+                                                               'datasetId':'VM_Aeroporto',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Pesquise por Cidade',
+                                                               'fields':[
+                                                               {
+                                                               'field':'AEROPORTO',
+                                                               'Label':'AEROPORTO',
+                                                               'standard':'true'
+                                                               },
+                                                               {
+                                                               'field':'CIDADE',
+                                                               'Label':'CIDADE'
+                                                               },
+                                                               {
+                                                               'field':'ESTADO',
+                                                               'Label':'ESTADO'
+                                                               }						  					
+                                                               ]
+                                                               }" >				
+                                                         </div>
+                                                      </div>
+                                                      <div class="row" id ="div_internacional3">
+                                                         <div class="form-group col-md-6" >							
+                                                            <label>Origem</label>
+                                                            <input type="text" class="form-control" name="internacionalOrigem3" id="internacionalOrigem3">                                                               			
+                                                         </div>
+                                                         <div class="form-group col-md-6">							
+                                                            <label>Destino</label>
+                                                            <input type="text" class="form-control" name="internacionalDestino3" id="internacionalDestino3">                                                               			
+                                                         </div>
+                                                      </div>
+                                                      <div class="row">
+                                                         <div class="form-group col-md-6">
+                                                            <label for="datapartida3">Data de Partida</label>
+                                                            <div class="input-group date" id="calendariodatapartida3" >
+                                                               <input type="text" class="form-control" placeholder="Selecione a data" id="datapartida3" name="datapartida3" readonly>
+                                                               <span class="input-group-addon">
+                                                               <span class="fluigicon fluigicon-calendar"></span>
+                                                               </span>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" >
+                                                      <div class="form-group col-md-12">
+                                                         <div class="form-group">
+                                                            <label for="observacaoVoo">Observação</label>
+                                                            <textarea class="form-control" rows="3" id="observacaoVoo" name="observacaoVoo" placeholder="Por favor, informar sugestões de horário  e/ou aeroporto para viagem."></textarea>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <ul class="list-inline pull-right">
+                                                      <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                                      <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+                                                   </ul>
+                                                </div>
+                                                <!-- Hospedagem --> 
+                                                <div class="tab-pane" role="tabpanel" id="step5">
+                                                   <div class="row">
+                                                      <div class="form-gorup col-md-7">
+                                                         <h3>Preencha os dados para solicitar uma acomodação</h3>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row">
+                                                      <div class="form-group col-md-7">
+                                                         <label>Tipo de quarto</label><br>
+                                                         <label for="solteiro">Solteiro</label>                                                         
+                                                         <input type="radio" id ="solteiro" name="tipoquarto" value="solteiro" onclick="clickCamposHospedagem();">														
+                                                         <label for="duplo">Duplo</label>                                                         
+                                                         <input type="radio" id ="duplo" name="tipoquarto" value="duplo" onclick="clickCamposHospedagem();">														
+                                                         <label for="triplo">Triplo</label>
+                                                         <input type="radio" id ="triplo" name="tipoquarto" value="triplo" onclick="clickCamposHospedagem();">
+                                                         <label for="outroquarto">Outro</label>
+                                                         <input type="radio" id ="outroquarto" name="tipoquarto" value="outros" onclick="clickCamposHospedagem();">
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" id="divDatasHotel1">
+                                                      <div class="form-group col-md-3">
+                                                         <label for="datacheckin">Check-In</label>
+                                                         <div class="input-group date" id="calendariodatacheckin" >
+                                                            <input type="text" class="form-control" placeholder="Selecione a data" id="datacheckin"  name="datacheckin" readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-3">
+                                                         <label for="datacheckout">Check-Out</label>
+                                                         <div class="input-group date" id="calendariodatacheckout" >
+                                                            <input type="text" class="form-control" placeholder="Selecione a data" id="datacheckout"  name="datacheckout" readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-4" >
+                                                         <div class="form-group">
+                                                            <label for="localhospedagem1">Local</label>
+                                                            <textarea class="form-control" rows="2" id="localhospedagem" name="localhospedagem" placeholder="Sugira um local"></textarea>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-2" id ="div_tipohotel1">
+                                                         <Label for="tipo_hosp1">Tipo Hospedagem</Label>
+                                                         <div class="form-group">
+                                                            <select name="tipo_hosp1" id="tipo_hosp1" dataset="VM_TipoHospedagem" datasetkey="TIPO" datasetvalue="TIPO" addBlankLine=”false”></select>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" id="divDatasHotel2">
+                                                      <div class="form-group col-md-3">
+                                                         <label for="datacheckin2">Check-In</label>
+                                                         <div class="input-group date" id="calendariodtcheckin2" >
+                                                            <input type="text" class="form-control" placeholder="Selecione a data" id="datacheckin2"  name="datacheckin2" readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-3">
+                                                         <label for="datacheckout2">Check-Out</label>
+                                                         <div class="input-group date" id="calendariodtcheckout2" >
+                                                            <input type="text" class="form-control" placeholder="Selecione a data" id="datacheckout2"  name="datacheckout2" readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-4" >
+                                                         <div class="form-group">
+                                                            <label for="localhotel2">Local</label>
+                                                            <textarea class="form-control" rows="2" id="localhotel2" name="localhotel2" placeholder="Sugira um local"></textarea>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-2" id ="div_tipohotel2">
+                                                         <Label for="tipo_hosp2">Tipo Hospedagem</Label>
+                                                         <div class="form-group">
+                                                            <select name="tipo_hosp2" id="tipo_hosp2" dataset="VM_TipoHospedagem" datasetkey="TIPO" datasetvalue="TIPO" addBlankLine=”false”></select>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" id="divDatasHotel3">
+                                                      <div class="form-group col-md-3">
+                                                         <label for="datacheckin3">Check-In</label>
+                                                         <div class="input-group date" id="calendariodtcheckin3" >
+                                                            <input type="text" class="form-control" placeholder="Selecione a data" id="datacheckin3"  name="datacheckin3" readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-3">
+                                                         <label for="datacheckout3">Check-Out</label>
+                                                         <div class="input-group date" id="calendariodtcheckout3" >
+                                                            <input type="text" class="form-control" placeholder="Selecione a data" id="datacheckout3"  name="datacheckout3" readonly>
+                                                            <span class="input-group-addon">
+                                                            <span class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-4" >
+                                                         <div class="form-group">
+                                                            <label for="localhotel3">Local</label>
+                                                            <textarea class="form-control" rows="2" id="localhotel3" name="localhotel3" placeholder="Sugira um local"></textarea>
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group col-md-2" id ="div_tipohotel3">
+                                                         <Label for="tipo_hosp3">Tipo Hospedagem</Label>
+                                                         <div class="form-group">
+                                                            <select name="tipo_hosp3" id="tipo_hosp3" dataset="VM_TipoHospedagem" datasetkey="TIPO" datasetvalue="TIPO" addBlankLine=”false”></select>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" >
+                                                      <div class="form-group col-md-12">
+                                                         <div class="form-group">
+                                                            <label for="observacaoHotel">Observação</label>
+                                                            <textarea class="form-control" rows="3" id="observacaoHotel" name="observacaoHotel" placeholder="Por favor, informar os horários de entrada e saída do seu período de hospedagem."></textarea>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <ul class="list-inline pull-right">
+                                                      <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                                      <li><button type="button" class="btn btn-primary btn-info-full next-step" >Finalizar</button></li>
+                                                   </ul>
+                                                </div>
+                                                <div class="tab-pane" role="tabpanel" id="complete">
+                                                   <div class="container text-center">
+                                                      <h2>Solicitação preenchida</h2>
+                                                      <label for ="aceitenorma">Li e estou ciente das orientações de viagem que constam na norma da Visão Mundial Brasil</label>
+                                                      <input type="radio" id ="aceitenorma" name="aceitenorma" value ="sim" onclick="prazoMinino()"/>
+                                                   </div>
+                                                   <div class="row" id ="divJustificativa">
+                                                      <div class="form-group col-md-12">
+                                                         <label for ="justificativa">Justificativa</label>
+                                                         <textarea class="form-control" rows="3" id="justificativa" name="justificativa" placeholder="A sua solicitação de viagem não atende o prazo minímo estabelecido na norma. Por favor, justifique sua solicitação. "></textarea>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row" >
+                                                      <div class="form-group col-md-3">
+                                                         <div class="input-group date" >
+                                                            <input type="text" class="form-control" id="prazoCancelamento" name="prazoCancelamento"  readonly>                                             					
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <h4>Para finalizar clique em Enviar.</h4>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                             </div>
+                                          </div>
+                                       </section>
+                                    </div>
+                                 </div>
+                                 <!-- Aba Aprovador -->
+                                 <div class="tab-pane" id="2b">
+                                    <!--  
+                                       <div class="row">
+                                          <div class="form-group col-md-5">
+                                             <label for="aprovador" class="required">Nome do gestor</label>
+                                             <input type="text" class="form-control" id="aprovador" name="aprovador" readonly >
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                              <label for="emailGestor">Email do gestor</label>
+                                             <input type="email" class="form-control" id="emailGestor" name="emailGestor" readonly>
+                                          </div>
+                                          <div class="form-group col-md-3">
+                                             <label for="dataAprovacao">Data Aprovação/Reprovação</label>
+                                             <div class="input-group date" id="calendariodataAprovacao">
+                                                <input type="text" class="form-control" placeholder="Data do dia" id="dataAprovacao" name="dataAprovacao"  readonly>
+                                                <span class="input-group-addon">
+                                                <span class="fluigicon fluigicon-calendar"></span>
+                                                </span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       -->
+                                    <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">	
+                                          <Label for="aprovacao">Aprovado</Label>
+                                          <input type="radio" id ="aprovacao" name="aprovacao" value ="aprovado" onclick="clickAprovado();"/>											
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for ="aprovacaon">Reprovado</Label>					
+                                          <input type="radio" id ="aprovacaon" name="aprovacao" value ="reprovado" onclick="clickReprovado();"/>
+                                       </div>
+                                       <!--                                      
+                                          <div class="form-group col-md-1">                                          
+                                             <input type="text" id ="cpfaprovador" name="cpfaprovador"/>
+                                          </div>
+                                           -->
+                                       <div class="form-group col-md-4">
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" id="prazoaprovacao" name="prazoaprovacao"  readonly>                                             					
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row" >
+                                       <div class="form-group col-md-12">
+                                          <div class="form-group" id ='divJustificativaReprovacaoViagem'>
+                                             <label for="justificativaReprovacao">Justificativa</label>
+                                             <textarea class="form-control" rows="3" id="justificativaReprovacao" name="justificativaReprovacao" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!-- Aba Gestor -->
+                                 <div class="tab-pane" id="3b">
+                                    <div class="row" id ="atendimento">
+                                       <div class="form-group col-md-3" id="divAtendimento">
+                                          <label>Situação</label><br>	                                          
+                                          <Label for="vooComprado">Voo Comprado</Label>
+                                          <input type="checkbox" id ="vooComprado" name="vooComprado" value ="sim"  onclick="vooatendido()"/>	
+                                          <Label for="hotelComprado">Hotel reservado</Label>
+                                          <input type="checkbox" id ="hotelComprado" name="hotelComprado" value ="sim" onclick="hotelatendido()"/>                                          										
+                                       </div>
+                                       <div class="form-group col-md-3" id="divRessarcimento">
+                                          <label>Indique a forma de ressarcimento</label><br>
+                                          <label for="reembolso">Reembolso</label>
+                                          <input type="radio" id ="reembolso" name="ressarcimento" value ="reembolso" onclick="prazoReembolso()"/>
+                                          <label for="credito">Crédito</label>
+                                          <input type="radio" id ="credito" name="ressarcimento" value ="credito" onclick="prazoReembolso()"/>                                       		
+                                       </div>
+                                       <div class="form-group col-md-3" id="divCobranca">
+                                          <label>Indique se houve cobrança de taxa</label><br>
+                                          <label for="cobranca">Sim</label>
+                                          <input type="radio" id ="cobranca" name="cobranca" value ="sim" onclick="clickCobrancaTx()"/> 
+                                          <label for="cobrancan">Não</label>
+                                          <input type="radio" id ="cobrancan" name="cobranca" value ="nao" onclick="clickCobrancaTx()"/>                                          		
+                                       </div>
+                                       <div class="form-group col-md-3" id="divReembolso">
+                                          <label>Data do reembolso</label><br>
+                                          <div class="input-group date" id="calendariodataReembolso" >
+                                             <input type="text" class="form-control" placeholder="Selecione a data" id="datareembolso" name="datareembolso" readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row" id="div_valores">
+                                       <div class="form-group col-md-3" id="div_valorp">
+                                          <Label for="valorVoo"> Valor total do voo</Label>
+                                          <input type="number" name="valorVoo" >
+                                       </div>
+                                       <div class="form-group col-md-3" id="div_valorh" >
+                                          <Label for="valorHotel">Valor total hospedagem</Label>
+                                          <input type="number" name="valorHotel">
+                                       </div>
+                                       <div class="form-group col-md-3" id="div_valortx" >
+                                          <Label for="valorTx">Taxa cancelamento</Label>
+                                          <input type="number" name="valorTx">
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="from-group col-md-3"></div>
+                                    </div>
+                                    <div class="row">
+                                       <br><br><br><br><br><br>
+                                       <div class="form-group col-md-2">
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" id="prazoreembolso" name="prazoreembolso"  readonly>                                             					
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <script src="script.js"></script>
+   </body>
+</html>
