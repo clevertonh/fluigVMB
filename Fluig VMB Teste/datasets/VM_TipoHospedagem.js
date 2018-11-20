@@ -5,8 +5,8 @@ function createDataset(fields, constraints, sortFields) {
 	
 	  var dados = [
 	              {TIPO:  'OUTROS'},
-              	  {TIPO:  'GUEST HOUSE'},
-              	  {TIPO:  'BALCÃO'}
+              	  {TIPO:  'GUESTHOUSE'},
+              	  {TIPO:  'BALCAO'}
               	  ];
 	  
 	  

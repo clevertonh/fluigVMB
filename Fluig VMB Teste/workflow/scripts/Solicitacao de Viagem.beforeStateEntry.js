@@ -121,7 +121,7 @@ function beforeStateEntry(sequenceId){
 					if (hotelComprado != null && hotelComprado != ""  ){					
 						valor = hAPI.getCardValue("valorHotel");
 							//local 1 sempre é preenchido na situação de ter 1 periodo de hotel
-							if (tipoHospedagem1 != "GUEST HOUSE" && tipoHospedagem1 != "BALCÃO"){
+							if (tipoHospedagem1 != "GUESTHOUSE" && tipoHospedagem1 != "BALCAO"){
 								addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);
 								
 								integraProtheus = true;
@@ -130,13 +130,13 @@ function beforeStateEntry(sequenceId){
 							//verificar se a solicitação tem varios trechos
 							if (voo =="varios"){
 								//verifica se local 2 foi preenchido											
-								if (tipoHospedagem2 != "GUEST HOUSE" && tipoHospedagem2 != "BALCÃO" ){
+								if (tipoHospedagem2 != "GUESTHOUSE" && tipoHospedagem2 != "BALCAO" ){
 									addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);
 									
 									integraProtheus = true;
 								}									
 								//verifica se local 3 foi preenchido
-								if (tipoHospedagem3 != "GUEST HOUSE" && tipoHospedagem3 != "BALCÃO"){
+								if (tipoHospedagem3 != "GUESTHOUSE" && tipoHospedagem3 != "BALCAO"){
 									addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);
 									
 									integraProtheus = true;
