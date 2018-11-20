@@ -4,12 +4,13 @@ function beforeStateEntry(sequenceId){
 	
 	//recupera atividade
 	var ativAtual = getValue("WKNumState");	
-	var process = getValue("WKNumProces");
+	var codSolicitacao = getValue("WKNumProces");
 	var nextAtv  = getValue("WKNextState");
 	var idFormulario;
 	
 	var vooComprado = hAPI.getCardValue("vooComprado");
 	var hotelComprado = hAPI.getCardValue("hotelComprado");
+
 	
 	/*
 	 * verifica se foi adicionado anexo. 
@@ -36,7 +37,7 @@ function beforeStateEntry(sequenceId){
 		   
 				var tipoPagamento = hAPI.getCardValue("tipoPagamento");				
 				var codRateio = hAPI.getCardValue("codigorateio");
-				var codSolicitacao = hAPI.getCardValue("solicitacao");				
+				//var codSolicitacao = hAPI.getCardValue("solicitacao");				
 				var tipoViagem = hAPI.getCardValue("tipoviagem");				
 				var solicitacao;
 				var integraProtheus = false;

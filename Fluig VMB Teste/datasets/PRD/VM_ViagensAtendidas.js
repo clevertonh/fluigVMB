@@ -48,12 +48,13 @@ function createDataset(fields, constraints, sortFields) {
 	
 	constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
-	constraints.push(DatasetFactory.createConstraint("solicitacao", "" , "", ConstraintType.MUST_NOT));
+	//constraints.push(DatasetFactory.createConstraint("solicitacao", "" , "", ConstraintType.MUST_NOT));
 		
 	 var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
 	 
 	    for(var x = 0 ; x < retornoDataset.rowsCount; x++){   
-	    	 var solicitacaoId = retornoDataset.getValue(x, "solicitacao");	    	 
+	    	 //var solicitacaoId = retornoDataset.getValue(x, "solicitacao");	    
+	    	 var documentId =  retornoDataset.getValue(x, "documentid");
 	    	 var empresa = retornoDataset.getValue(x, "companyid");
 	    	 var tipoViagem = retornoDataset.getValue(x, "tipoviagem");	   
 	    	 var atendida = retornoDataset.getValue(x, "atendida");	
@@ -66,52 +67,73 @@ function createDataset(fields, constraints, sortFields) {
 	    	 
 	    	 var tipoVoo = retornoDataset.getValue(x, "tipovoo");	
 	    	 
+	    	 var statusViagem = false;
 	    	 
-	    	 if (vooComprado =='sim' || hotelComprado =='sim'){
+	    	 if (atendida == "atendida"){
+	    		 statusViagem = true;
+	    	 }	    	
+	    	 else if (vooComprado =='sim' || hotelComprado =='sim'){
+	    		 statusViagem = true;
 	    		 atendida ="atendida";
 	    	 }
 	    
-	    
-	    	 if (atendida == "atendida"){	    	 
-	    		 //BUSCAR DADOS DA COMPRA
+	    	 
+	    	 if (atendida == "atendida"){	   
+	    		 //BUSCA CODIGO DA SOLICITACAO
+	    		 var constraintsCodigoSolicitacao  = new Array();	    	 
+	    		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardIndexDocumentId", 2897 , 2897, ConstraintType.MUST));
+	    		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardDocumentId", documentId , documentId, ConstraintType.MUST));	    	
+		    	     	 
+		         var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsCodigoSolicitacao, null);	
+	       		 
+		         var solicitacaoId = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+	    		 
+	    		 
+	    		 //BUSCAR DATA DA COMPRA
 		    	 var constraintsCompra  = new Array();	    	 
 		    	 constraintsCompra.push(DatasetFactory.createConstraint("processHistoryPK.companyId", empresa , empresa, ConstraintType.MUST));
 		    	 constraintsCompra.push(DatasetFactory.createConstraint("processHistoryPK.processInstanceId", solicitacaoId , solicitacaoId, ConstraintType.MUST));	    	
-		    	 constraintsCompra.push(DatasetFactory.createConstraint("stateSequence", 13 , 13, ConstraintType.MUST));
-		    	     	 
+		    	 constraintsCompra.push(DatasetFactory.createConstraint("stateSequence", 13 , 13, ConstraintType.SHOULD));
+
+		    	
 		         var historicoprocesso = DatasetFactory.getDataset("processHistory", null, constraintsCompra, null);	    	 
 		         var data_compra =  historicoprocesso.getValue(0,"realDateTime"); 
 		         
 		         
-		         //BUSCAR DADOS DA APROVAÇÃO
+		         //BUSCAR DATA DA APROVAÇÃO
 		         var constraintsAprovacao  = new Array();	    	 
 		         constraintsAprovacao.push(DatasetFactory.createConstraint("processHistoryPK.companyId", empresa , empresa, ConstraintType.MUST));
 		         constraintsAprovacao.push(DatasetFactory.createConstraint("processHistoryPK.processInstanceId", solicitacaoId , solicitacaoId, ConstraintType.MUST));	    	
-		         constraintsAprovacao.push(DatasetFactory.createConstraint("stateSequence", 5 , 5, ConstraintType.MUST));
-		    	     	 
+		         //constraintsAprovacao.push(DatasetFactory.createConstraint("previousMovementSequence", 1 , 1, ConstraintType.MUST));
+		         constraintsAprovacao.push(DatasetFactory.createConstraint("stateSequence", 5 , 5, ConstraintType.SHOULD));         
+		         constraintsAprovacao.push(DatasetFactory.createConstraint("stateSequence", 97 , 97, ConstraintType.SHOULD));
+		         
 		         var historicoAprovacao = DatasetFactory.getDataset("processHistory", null, constraintsAprovacao, null);	    	 
 		         var data_aprovacao =  historicoAprovacao.getValue(0,"realDateTime"); 
-
-
+		 	         
+	
 		         //BUSCAR APROVADOR
 		         var constraintsHistoricoAprovador  = new Array();	    	 
 		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("processTaskPK.companyId", empresa , empresa, ConstraintType.MUST));
 		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("processTaskPK.processInstanceId", solicitacaoId , solicitacaoId, ConstraintType.MUST));	    	
-		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("choosedSequence", 5 , 5, ConstraintType.MUST));
-		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("status", 3 , 3, ConstraintType.MUST));    	   
+		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("choosedSequence", 5 , 5, ConstraintType.SHOULD));
+		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("choosedSequence", 97 , 97, ConstraintType.SHOULD));
+//		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("status", 3 , 3, ConstraintType.MUST));    	   
+//		         constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("status", 2 , 2, ConstraintType.MUST));
 		         
 		         var historicoAprovador = DatasetFactory.getDataset("processTask", null, constraintsHistoricoAprovador, null);	    	 
 		         var Idaprovador =  historicoAprovador.getValue(0,"choosedColleagueId"); 
-		         
-		         
-		         //BUSCAR NOME DO USUARIO APROVADOR
+		            
+		         //BUSCAR NOME DO APROVADOR
 		         var constraintsAprovador  = new Array();	    	 
 		         constraintsAprovador.push(DatasetFactory.createConstraint("colleaguePK.companyId", empresa , empresa, ConstraintType.MUST));
 		         constraintsAprovador.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", Idaprovador , Idaprovador, ConstraintType.MUST)); 	         
 		         
+		       //ESTÁ COM PROBLEMA PARA RETORNAR O NOME DO APROVADOR   
 		         var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsAprovador, null);	    	 
-		         var aprovador =  datasetAprovador.getValue(0,"colleagueName"); 
-
+//		         var aprovador =  datasetAprovador.getValue(0,"colleagueName"); 
+		         var aprovador = null;
+		            
 		         		if (tipoViagem.localeCompare("nacional") == 0){
 			         		dataset.addRow([solicitacaoId,
 				    		                retornoDataset.getValue(x,"dataSolicitacao"),
@@ -145,7 +167,6 @@ function createDataset(fields, constraints, sortFields) {
 				    		                retornoDataset.getValue(x,"datacheckout3"),				    		                
 				    		                retornoDataset.getValue(x,"tipovoo"),
 				    		                retornoDataset.getValue(x,"cancelarpassagem"),
-//				    		                retornoDataset.getValue(x,"atendida"),
 				    		                atendida,				    		                
 				    		                retornoDataset.getValue(x,"vooComprado"),
 				    		                retornoDataset.getValue(x,"hotelComprado"),
@@ -189,7 +210,6 @@ function createDataset(fields, constraints, sortFields) {
 				    		                retornoDataset.getValue(x,"datacheckout3"),					    		                
 				    		                retornoDataset.getValue(x,"tipovoo"),
 				    		                retornoDataset.getValue(x,"cancelarpassagem"),
-//				    		                retornoDataset.getValue(x,"atendida"),
 				    		                atendida,	
 				    		                retornoDataset.getValue(x,"vooComprado"),
 				    		                retornoDataset.getValue(x,"hotelComprado"),
@@ -201,11 +221,11 @@ function createDataset(fields, constraints, sortFields) {
 				    		                ]); 
 			         	}
 	    		 
-	    	 }
+	    	 } //fim do filtro de atendido
 	    	 
 	    	
 
-	    }
+	    } //fim do FOR
 	    	
 		return dataset;
 
