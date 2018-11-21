@@ -43,22 +43,22 @@ function createDataset(fields, constraints, sortFields) {
     	 var vooComprado = retornoDataset.getValue(x, "vooComprado");	
     	 var hotelComprado = retornoDataset.getValue(x, "hotelComprado");	
     	 var documentId =  retornoDataset.getValue(x, "documentid");
-    	 
+    	 var empresa = retornoDataset.getValue(x, "companyid");
+    	 var formulario = retornoDataset.getValue(x, "metadata#parent_id")	         
+	    	
     	     		
     	 if (vooComprado =='sim' || hotelComprado =='sim' || atendida =="atendida"){
     		 
     		 var constraintsHistorico  = new Array();	    	 
-    		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", 2897 , 2897, ConstraintType.MUST));
+    		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", formulario , formulario, ConstraintType.MUST));
     		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", documentId , documentId, ConstraintType.MUST));	    	
-//	         constraintsAprovacao.push(DatasetFactory.createConstraint("stateSequence", 5 , 5, ConstraintType.MUST));
-	    	     	 
-	         var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	
-       		 
+    		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+	    	   	   	 
+	         var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
 	         var numFormulario = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
 	         
 	         
      		dataset.addRow([numFormulario,
-     		                //retornoDataset.getValue(x,"solicitacao"),
      		                retornoDataset.getValue(x,"solicitante"),
      		                retornoDataset.getValue(x,"nomepassageiro"),
      		                retornoDataset.getValue(x,"dataSolicitacao"),

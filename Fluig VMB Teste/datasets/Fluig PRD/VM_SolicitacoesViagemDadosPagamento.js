@@ -25,43 +25,76 @@ function createDataset(fields, constraints, sortFields) {
        
     //Cria a constraint para buscar os formulários ativos
     var constraints = new Array();
+	//constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));	
     constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
 	//constraints.push(DatasetFactory.createConstraint("solicitacao", "55" , "55", ConstraintType.MUST));
     var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
     
     for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
     	var documentId = datasetPrincipal.getValue(i, "metadata#id");
+    	var formulario = datasetPrincipal.getValue(i, "metadata#parent_id")
         var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
         var atendida = datasetPrincipal.getValue(i, "atendida");	
         var vooComprado = datasetPrincipal.getValue(i, "vooComprado");	
         var hotelComprado = datasetPrincipal.getValue(i, "hotelComprado");	
         var empresa = datasetPrincipal.getValue(i, "companyid");
-    	
+   	 	var tipoViagem = datasetPrincipal.getValue(i, "tipoviagem");	 
+        
+     
+        //BUSCA CODIGO DA SOLICITACAO E DATA DA SOLICITAÇÃO
+		 var constraintsCodigoSolicitacao  = new Array();	    	 
+		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardIndexDocumentId", formulario , formulario, ConstraintType.MUST));
+		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardDocumentId", documentId , documentId, ConstraintType.MUST));	    	
+		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+	   	        	 
+        var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsCodigoSolicitacao, null);		       		 
+        var solicitacaoId = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+        var dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
+		 
+    
+        //BUSCA ID APROVADOR E DATA DA APROVAÇÃO
+        var constraintsHistoricoAprovador  = new Array();	    	 
+        constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("processTaskPK.companyId", empresa , empresa, ConstraintType.MUST));
+        constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("processTaskPK.processInstanceId", solicitacaoId , solicitacaoId, ConstraintType.MUST));	    	
+        constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("choosedSequence", 5 , 5, ConstraintType.SHOULD));
+        constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("choosedSequence", 97 , 97, ConstraintType.SHOULD));
+        constraintsHistoricoAprovador.push(DatasetFactory.createConstraint("status", 3 , 3, ConstraintType.MUST));    	   
+        
+        var historicoAprovador = DatasetFactory.getDataset("processTask", null, constraintsHistoricoAprovador, null);	    	 
+        var Idaprovador =  historicoAprovador.getValue(0,"choosedColleagueId"); 
+        var data_aprovacao =  historicoAprovador.getValue(0,"endDate"); 
+           	
+        
+        //BUSCA NOME DO APROVADOR
+        var constraintsAprovador  = new Array();	    	 
+        constraintsAprovador.push(DatasetFactory.createConstraint("colleaguePK.companyId", empresa , empresa, ConstraintType.MUST));
+        constraintsAprovador.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", Idaprovador , Idaprovador, ConstraintType.MUST)); 	         
+        
+        var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsAprovador, null);	    	 
+        var aprovador =  datasetAprovador.getValue(0,"colleagueName"); 
+ 
+        var data_compra;
         
         if (vooComprado =='sim' || hotelComprado =='sim'){
         	atendida = "atendida";	
         }
         
-    	//BUSCA CODIGO DA SOLICITACAO
-		 var constraintsCodigoSolicitacao  = new Array();	    	 
-		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardIndexDocumentId", 2897 , 2897, ConstraintType.MUST));
-		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardDocumentId", documentId , documentId, ConstraintType.MUST));	    	
-   	     	 
-        var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsCodigoSolicitacao, null);		       		 
-        var solicitacaoId = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-    	
-        
-      //BUSCAR DATA DA COMPRA
-   	 var constraintsCompra  = new Array();	    	 
-   	 constraintsCompra.push(DatasetFactory.createConstraint("processHistoryPK.companyId", empresa , empresa, ConstraintType.MUST));
-   	 constraintsCompra.push(DatasetFactory.createConstraint("processHistoryPK.processInstanceId", solicitacaoId , solicitacaoId, ConstraintType.MUST));	    	
-   	 constraintsCompra.push(DatasetFactory.createConstraint("stateSequence", 13 , 13, ConstraintType.SHOULD));
-     constraintsCompra.push(DatasetFactory.createConstraint("status", 3 , 3, ConstraintType.SHOULD));	
-   	
-        var historicoprocesso = DatasetFactory.getDataset("processHistory", null, constraintsCompra, null);	    	 
-        var data_compra =  historicoprocesso.getValue(0,"realDateTime"); 
-        
-        
+        //PASSAGEM COMPRADA POSSUI DATA DE COMPRA
+        if (atendida == "atendida"){
+        	 //BUSCA DATA DA COMPRA
+	    	 var constraintsCompra  = new Array();	    	 
+	    	 constraintsCompra.push(DatasetFactory.createConstraint("processTaskPK.companyId", empresa , empresa, ConstraintType.MUST));
+	    	 constraintsCompra.push(DatasetFactory.createConstraint("processTaskPK.processInstanceId", solicitacaoId , solicitacaoId, ConstraintType.MUST));	    	
+	    	 constraintsCompra.push(DatasetFactory.createConstraint("choosedSequence", 13 , 13, ConstraintType.MUST));
+	    	 constraintsCompra.push(DatasetFactory.createConstraint("status", 2 , 2, ConstraintType.MUST));
+	   
+	         var historicoprocesso = DatasetFactory.getDataset("processTask", null, constraintsCompra, null);	    	 
+	         
+	         log.info("ID ERRO DATA_COMPRA");
+	         log.info(solicitacaoId);
+	         data_compra =  historicoprocesso.getValue(0,"endDate"); 
+	   
+        }
         
         
         
@@ -80,9 +113,9 @@ function createDataset(fields, constraints, sortFields) {
                     documentId,
                     solicitacaoId,
                     datasetPrincipal.getValue(i, "solicitante"),
-                    datasetPrincipal.getValue(i, "dataSolicitacao"),
+                    dataSolicitacao.toString(),
                     atendida,
-                    datasetPrincipal.getValue(i, "tipoviagem"),
+                    tipoViagem,
                     datasetFilhos.getValue(j, "txtcentrocusto"),
                     datasetFilhos.getValue(j, "txtprojeto"),
                     datasetFilhos.getValue(j, "txtcategoria"),
