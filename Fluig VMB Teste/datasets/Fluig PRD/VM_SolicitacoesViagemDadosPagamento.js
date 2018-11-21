@@ -18,16 +18,19 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("Localizacao");
     dataset.addColumn("ContaContabil");
     dataset.addColumn("Percentual");
+    dataset.addColumn("ValorPassagem");
     dataset.addColumn("nomepassageiro");
 	dataset.addColumn("datacompra");
-
+	dataset.addColumn("vooComprado");
+	dataset.addColumn("hotelComprado");
+	dataset.addColumn("cancelado");
      
        
     //Cria a constraint para buscar os formulários ativos
     var constraints = new Array();
 	//constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));	
     constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
-	//constraints.push(DatasetFactory.createConstraint("solicitacao", "55" , "55", ConstraintType.MUST));
+	//constraints.push(DatasetFactory.createConstraint("solicitacao", "639" , "639", ConstraintType.MUST));
     var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
     
     for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
@@ -39,7 +42,9 @@ function createDataset(fields, constraints, sortFields) {
         var hotelComprado = datasetPrincipal.getValue(i, "hotelComprado");	
         var empresa = datasetPrincipal.getValue(i, "companyid");
    	 	var tipoViagem = datasetPrincipal.getValue(i, "tipoviagem");	 
-        
+   	 	var valorPassagem = datasetPrincipal.getValue(i, "valorVoo");	
+   	
+   	 	
      
         //BUSCA CODIGO DA SOLICITACAO E DATA DA SOLICITAÇÃO
 		 var constraintsCodigoSolicitacao  = new Array();	    	 
@@ -108,7 +113,19 @@ function createDataset(fields, constraints, sortFields) {
         var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
   
         for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-            //Adiciona os valores nas colunas respectivamente.
+  
+        	if (valorPassagem != null & valorPassagem != '' & valorPassagem > 0){
+           	 	valorPassagem = parseFloat(valorPassagem) * parseFloat(datasetFilhos.getValue(j, "percentual")) /100;
+           	 	}
+        	
+        	else {
+        		valorPassagem = 0;
+        	}
+           	 	
+        
+        	
+        	
+        	//Adiciona os valores nas colunas respectivamente.
             dataset.addRow(new Array(
                     documentId,
                     solicitacaoId,
@@ -126,8 +143,12 @@ function createDataset(fields, constraints, sortFields) {
                     datasetFilhos.getValue(j, "localizacao"),
                     datasetFilhos.getValue(j, "contacontabil"),
                     datasetFilhos.getValue(j, "percentual"),
+                    parseFloat(valorPassagem.toFixed(2)),
                     datasetPrincipal.getValue(i, "nomepassageiro"),
-                    data_compra.toString()
+                    data_compra.toString(),
+                    vooComprado,
+                    hotelComprado,
+                    datasetPrincipal.getValue(i,"cancelarpassagem")
             ));
         }
         

@@ -20,7 +20,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("tipoPagamento");
 	dataset.addColumn("rateioconfigurado");
 	dataset.addColumn("codigorateio");
-	dataset.addColumn("NumeroProcesso");
+	dataset.addColumn("NumeroDocumento");
 	
 	var user = getValue("WKUser");	
 
@@ -52,16 +52,16 @@ function createDataset(fields, constraints, sortFields) {
     		 var constraintsHistorico  = new Array();	    	 
     		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", formulario , formulario, ConstraintType.MUST));
     		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", documentId , documentId, ConstraintType.MUST));	    	
-    		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+    		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
 	    	   	   	 
 	         var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
 	         var numFormulario = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-	         
+	         var dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
 	         
      		dataset.addRow([numFormulario,
      		                retornoDataset.getValue(x,"solicitante"),
      		                retornoDataset.getValue(x,"nomepassageiro"),
-     		                retornoDataset.getValue(x,"dataSolicitacao"),
+     		                dataSolicitacao.toString(),
      		                retornoDataset.getValue(x,"tipoviagem"),
      		                retornoDataset.getValue(x,"finalidade"),    		                
      		                retornoDataset.getValue(x,"solicitantepassageiro"),
@@ -74,7 +74,8 @@ function createDataset(fields, constraints, sortFields) {
      		                retornoDataset.getValue(x,"passaporte"),
      		                retornoDataset.getValue(x,"tipoPagamento"),
      		                retornoDataset.getValue(x,"rateioconfigurado"),
-     		                retornoDataset.getValue(x,"codigorateio")
+     		                retornoDataset.getValue(x,"codigorateio"),
+     		                documentId
      		                ]);
     	 }
     

@@ -1,10 +1,10 @@
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("solicitacao");
-	dataset.addColumn("dataSolicitacao");
+	dataset.addColumn("datasolicitacao");
 	dataset.addColumn("solicitante");
 	dataset.addColumn("aprovador");
-	dataset.addColumn("dataAprovacao");
+	dataset.addColumn("dataaprovacao");
 	dataset.addColumn("datacompra");
 	dataset.addColumn("origem1");
 	dataset.addColumn("datapartida1");
@@ -40,12 +40,13 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("hospedagem2");
 	dataset.addColumn("hospedagem3");
 	dataset.addColumn("tipoVoo");
+    dataset.addColumn("ValorPassagem");
 	
 	
 	var constraints = new Array();	
 	constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
 	//constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
-	//constraints.push(DatasetFactory.createConstraint("solicitacao", "55" , "55", ConstraintType.MUST));
+	//constraints.push(DatasetFactory.createConstraint("solicitacao", "639" , "639", ConstraintType.MUST));
 	 var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
 	 
 	    for(var x = 0 ; x < retornoDataset.rowsCount; x++){   
@@ -63,9 +64,15 @@ function createDataset(fields, constraints, sortFields) {
 	    	 var tipo_hosp3 = retornoDataset.getValue(x, "tipo_hosp3");	
 	    	 
 	    	 var tipoVoo = retornoDataset.getValue(x, "tipovoo");	
-
 	    	 
-	   	 if (vooComprado =='sim' || hotelComprado =='sim' || atendida == "atendida"){	   
+	 	 	var valorPassagem = retornoDataset.getValue(x, "valorVoo");	
+
+	    	 //se passagem ou hospedagem estiver como comprada preenche campo de que foi atendida
+	    	 if (vooComprado =='sim' || hotelComprado =='sim' ) {
+	    		 atendida = "atendida";
+	    	 }
+	   	
+	    	 if (atendida == "atendida"){	   
 	    		 //BUSCA CODIGO DA SOLICITACAO E DATA DA SOLICITAÇÃO
 	    		 var constraintsCodigoSolicitacao  = new Array();	    	 
 	    		 constraintsCodigoSolicitacao.push(DatasetFactory.createConstraint("cardIndexDocumentId", formulario , formulario, ConstraintType.MUST));
@@ -164,8 +171,8 @@ function createDataset(fields, constraints, sortFields) {
 				    		                tipo_hosp1,
 				    		                tipo_hosp2,
 				    		                tipo_hosp3,
-				    		                tipoVoo		
-				    		               
+				    		                tipoVoo	,	
+				    		                valorPassagem
 				    		                ]); 
 			         	}
 			         	else {
@@ -208,8 +215,8 @@ function createDataset(fields, constraints, sortFields) {
 				    		                tipo_hosp1,
 				    		                tipo_hosp2,
 				    		                tipo_hosp3,
-				    		                tipoVoo				
-				    		              
+				    		                tipoVoo	,			
+				    		                valorPassagem
 				    		                ]); 
 			         	}
 	    		 
