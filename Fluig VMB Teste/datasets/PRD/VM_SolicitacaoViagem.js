@@ -11,7 +11,6 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("finalidade");
 	dataset.addColumn("solicitantepassageiro");
 	dataset.addColumn("passageirofuncionarionao");
-	dataset.addColumn("nomepassageiro");
 	dataset.addColumn("nomemae");
 	dataset.addColumn("datanasc");
 	dataset.addColumn("cpfpassageiro");
@@ -66,7 +65,6 @@ function createDataset(fields, constraints, sortFields) {
      		                retornoDataset.getValue(x,"finalidade"),    		                
      		                retornoDataset.getValue(x,"solicitantepassageiro"),
      		                retornoDataset.getValue(x,"passageirofuncionarionao"),
-     		                retornoDataset.getValue(x,"nomepassageiro"),
      		                retornoDataset.getValue(x,"nomemae"),
      		                retornoDataset.getValue(x,"datanasc"),
      		                retornoDataset.getValue(x,"cpfpassageiro"),
