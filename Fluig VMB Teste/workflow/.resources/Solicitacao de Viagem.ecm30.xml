@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Viagem</processId>
-      <version>297</version>
+      <version>300</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>304</formId>
@@ -804,7 +804,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -815,7 +815,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -826,10 +826,10 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
       <destinationSequenceId>98</destinationSequenceId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -837,7 +837,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
@@ -848,7 +848,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
@@ -859,7 +859,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>80</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;ressarcimento&quot;) == &quot;reembolso&quot;</condition>
@@ -870,7 +870,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>80</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;ressarcimento&quot;) == &quot;credito&quot;</condition>
@@ -881,7 +881,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>87</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot;</condition>
@@ -892,7 +892,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>87</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -903,7 +903,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>297</version>
+        <version>300</version>
         <sequence>87</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;&quot;</condition>
@@ -1262,12 +1262,13 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 	&#xd;
 	//recupera atividade&#xd;
 	var ativAtual = getValue(&quot;WKNumState&quot;);	&#xd;
-	var process = getValue(&quot;WKNumProces&quot;);&#xd;
+	var codSolicitacao = getValue(&quot;WKNumProces&quot;);&#xd;
 	var nextAtv  = getValue(&quot;WKNextState&quot;);&#xd;
 	var idFormulario;&#xd;
 	&#xd;
 	var vooComprado = hAPI.getCardValue(&quot;vooComprado&quot;);&#xd;
 	var hotelComprado = hAPI.getCardValue(&quot;hotelComprado&quot;);&#xd;
+&#xd;
 	&#xd;
 	/*&#xd;
 	 * verifica se foi adicionado anexo. &#xd;
@@ -1294,7 +1295,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 		   &#xd;
 				var tipoPagamento = hAPI.getCardValue(&quot;tipoPagamento&quot;);				&#xd;
 				var codRateio = hAPI.getCardValue(&quot;codigorateio&quot;);&#xd;
-				var codSolicitacao = hAPI.getCardValue(&quot;solicitacao&quot;);				&#xd;
+				//var codSolicitacao = hAPI.getCardValue(&quot;solicitacao&quot;);				&#xd;
 				var tipoViagem = hAPI.getCardValue(&quot;tipoviagem&quot;);				&#xd;
 				var solicitacao;&#xd;
 				var integraProtheus = false;&#xd;
@@ -1378,7 +1379,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 					if (hotelComprado != null &amp;&amp; hotelComprado != &quot;&quot;  ){					&#xd;
 						valor = hAPI.getCardValue(&quot;valorHotel&quot;);&#xd;
 							//local 1 sempre é preenchido na situação de ter 1 periodo de hotel&#xd;
-							if (tipoHospedagem1 != &quot;GUEST HOUSE&quot; &amp;&amp; tipoHospedagem1 != &quot;BALCÃO&quot;){&#xd;
+							if (tipoHospedagem1 != &quot;GUESTHOUSE&quot; &amp;&amp; tipoHospedagem1 != &quot;BALCAO&quot;){&#xd;
 								addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);&#xd;
 								&#xd;
 								integraProtheus = true;&#xd;
@@ -1387,13 +1388,13 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 							//verificar se a solicitação tem varios trechos&#xd;
 							if (voo ==&quot;varios&quot;){&#xd;
 								//verifica se local 2 foi preenchido											&#xd;
-								if (tipoHospedagem2 != &quot;GUEST HOUSE&quot; &amp;&amp; tipoHospedagem2 != &quot;BALCÃO&quot; ){&#xd;
+								if (tipoHospedagem2 != &quot;GUESTHOUSE&quot; &amp;&amp; tipoHospedagem2 != &quot;BALCAO&quot; ){&#xd;
 									addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);&#xd;
 									&#xd;
 									integraProtheus = true;&#xd;
 								}									&#xd;
 								//verifica se local 3 foi preenchido&#xd;
-								if (tipoHospedagem3 != &quot;GUEST HOUSE&quot; &amp;&amp; tipoHospedagem3 != &quot;BALCÃO&quot;){&#xd;
+								if (tipoHospedagem3 != &quot;GUESTHOUSE&quot; &amp;&amp; tipoHospedagem3 != &quot;BALCAO&quot;){&#xd;
 									addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);&#xd;
 									&#xd;
 									integraProtheus = true;&#xd;
@@ -1641,7 +1642,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
-        <version>297</version>
+        <version>300</version>
         <linkSequence>73</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1659,7 +1660,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1669,7 +1670,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1679,7 +1680,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1689,7 +1690,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1699,7 +1700,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1709,7 +1710,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1719,7 +1720,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1729,7 +1730,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1739,7 +1740,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1749,7 +1750,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>297</processVersion>
+      <processVersion>300</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

@@ -33,6 +33,8 @@ function enableFields(form) {
 		 form.setEnabled('ressarcimento', false);
 		 
 		 form.setValue("aceitenorma","");
+		 form.setValue("aprovacao","");
+		 
 		 
 		 if (activityEnable == ABERTURA){
 			 form.setValue("matriculasolicitante",solicitante); 	 

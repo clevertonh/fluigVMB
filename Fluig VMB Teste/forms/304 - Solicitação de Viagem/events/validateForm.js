@@ -131,53 +131,25 @@ function validateForm(form) {
              	 throw "Você precisa escolher um tipo de voo.";
            }
          
-    } else if (activity == APROVACAO && nextAtv == VERIFICARAPROVACAO) {
+    } else if (activity == APROVACAO && nextAtv == VERIFICARAPROVACAO && form.getValue("devolver") == "") {
         	
-    		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+        		//valida se o aprovador marcou o campo de aprovacao ou reprovação
             if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
                 throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
             }
 
-            /*
-            if (form.getValue("aprovador") == "" || form.getValue("aprovador") == null) {
-                throw "Seus dados de aprovador não foram carregados, por favor, atualize a página e tente novamente!";
-            }
-            */
             if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
                 throw "Você precisa informar o motivo para reprovação da solicitação.";
             }
-            
-            /*          
-            if (form.getValue("cpfpassageiro") == form.getValue("cpfaprovador") && form.getValue("aprovacao")  == "aprovado" ){
-           	 throw "Você não pode aprovar uma solicitação onde você é o passageiro.";
-           }
-           */       	        
+      	        
             if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
            }     
 
     }
-   /*
-    else if (activity == APROVACAO && nextAtv == ABERTURA){
-    	//valida se o aprovador marcou o campo de aprovacao ou reprovação
-        if (form.getValue("aprovacao") != false && form.getValue("aprovacao") != "") {
-            throw "Para retornar a solicitação o campo de aprovar ou reprovar não pode ser marcado. Atualize a página e tente novamente!";
-        }
-    }
-   */
+
     else if (activity == COMPRARPASSAGEM && nextAtv == OBTERPASSAGEM ) {  	
-     /* com a possibilidade  de enviar para o solicitante cancelar, nao faz mais sentido validar obrigação dos campos
-    	//valida se o campo de cancelamento foi marcado
-        if ((form.getValue("vooComprado") == "" || form.getValue("vooComprado") == null) && (form.getValue("hotelComprado") == "" || form.getValue("hotelComprado") == null)) {        	
-        	if (form.getValue("solicitoucancelamento") == "" || form.getValue("solicitoucancelamento") == null){
-        		throw "Você precisa informar que o viajante solicitou o cancelamento.";
-        	}
-        	else {
-        		throw "Você precisa informar se um ou mais serviços de hospitalidade foram realizados.";	
-        	}            
-        }
-       
-   */
+  
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
         	if (form.getValue("valorVoo") == '' || form.getValue("valorVoo") == null || form.getValue("valorVoo") <= 0 ){
