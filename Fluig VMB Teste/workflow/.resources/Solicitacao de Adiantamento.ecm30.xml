@@ -76,7 +76,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>150</positionX>
-      <positionY>68</positionY>
+      <positionY>101</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -124,8 +124,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>210</positionX>
-      <positionY>146</positionY>
+      <positionX>120</positionX>
+      <positionY>227</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -151,190 +151,22 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeAdiantamento</processId>
         <version>1</version>
-        <sequence>33</sequence>
-      </processStatePK>
-      <stateName>Transmitir para o banco</stateName>
-      <stateDescription>Transmitir para o banco</stateDescription>
-      <joint>false</joint>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <automatic>true</automatic>
-      <positionX>630</positionX>
-      <positionY>260</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>0</stateType>
-      <bpmnType>85</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>34</sequence>
-      </processStatePK>
-      <stateName>Autorizar pagamentos</stateName>
-      <stateDescription>Autorizar pagamentos</stateDescription>
-      <joint>false</joint>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <automatic>true</automatic>
-      <positionX>630</positionX>
-      <positionY>510</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>0</stateType>
-      <bpmnType>85</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>43</sequence>
+        <sequence>46</sequence>
       </processStatePK>
       <stateName>Gerar adiantamento</stateName>
       <stateDescription>Gerar adiantamento</stateDescription>
-      <joint>false</joint>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <automatic>true</automatic>
-      <positionX>340</positionX>
-      <positionY>260</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>0</stateType>
-      <bpmnType>85</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>44</sequence>
-      </processStatePK>
-      <stateName>Liberar pagamento</stateName>
-      <stateDescription>Liberar pagamento</stateDescription>
-      <joint>false</joint>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <automatic>true</automatic>
-      <positionX>340</positionX>
-      <positionY>383</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>0</stateType>
-      <bpmnType>85</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>45</sequence>
-      </processStatePK>
-      <stateName>Preparar remessa bancária</stateName>
-      <stateDescription>Preparar remessa bancária</stateDescription>
-      <joint>false</joint>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <automatic>true</automatic>
-      <positionX>490</positionX>
-      <positionY>253</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>0</stateType>
-      <bpmnType>85</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>46</sequence>
-      </processStatePK>
-      <stateName>Confirmar pagamento</stateName>
-      <stateDescription>Confirmar pagamento</stateDescription>
-      <joint>false</joint>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <automatic>true</automatic>
-      <positionX>770</positionX>
-      <positionY>260</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>0</stateType>
-      <bpmnType>85</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>35</sequence>
-      </processStatePK>
-      <stateName>Gerar pagamento novamente</stateName>
-      <stateDescription>Gerar pagamento novamente</stateDescription>
-      <instruction>Evento intermediário do processo</instruction>
+      <instruction></instruction>
       <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
+      <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
       <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>1</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
       <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
       <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>false</transferAttachments>
@@ -343,70 +175,27 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1030</positionX>
-      <positionY>281</positionY>
+      <positionX>330</positionX>
+      <positionY>410</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
       <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
-      <bpmnType>36</bpmnType>
+      <bpmnType>80</bpmnType>
       <signalId>0</signalId>
       <counterSign>false</counterSign>
       <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <parentSequence>0</parentSequence>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>37</sequence>
-      </processStatePK>
-      <stateName>Gerar pagamento novamente</stateName>
-      <stateDescription>Gerar pagamento novamente</stateDescription>
-      <instruction>Evento intermediário do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>1</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>250</positionX>
-      <positionY>281</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>42</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <parentSequence>0</parentSequence>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -423,33 +212,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>360</positionX>
-      <positionY>130</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>27</sequence>
-      </processStatePK>
-      <stateName>Pgto confirmado?</stateName>
-      <stateDescription>Pgto confirmado?</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>930</positionX>
-      <positionY>247</positionY>
+      <positionX>350</positionX>
+      <positionY>220</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -487,8 +251,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>480</positionX>
-      <positionY>163</positionY>
+      <positionX>490</positionX>
+      <positionY>250</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -510,10 +274,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeAdiantamento</processId>
         <version>1</version>
-        <sequence>30</sequence>
+        <sequence>44</sequence>
       </processStatePK>
-      <stateName>Pagamento confirmado</stateName>
-      <stateDescription>Pagamento confirmado</stateDescription>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -534,8 +298,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>940</positionX>
-      <positionY>33</positionY>
+      <positionX>500</positionX>
+      <positionY>420</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -560,84 +324,6 @@
         <processId>SolicitacaodeAdiantamento</processId>
         <expressionOrder>1</expressionOrder>
         <version>1</version>
-        <sequence>33</sequence>
-      </conditionProcessStatePK>
-      <condition>true</condition>
-      <destinationSequenceId>34</destinationSequenceId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <engineAllocationId></engineAllocationId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>34</sequence>
-      </conditionProcessStatePK>
-      <condition>true</condition>
-      <destinationSequenceId>46</destinationSequenceId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <engineAllocationId></engineAllocationId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>43</sequence>
-      </conditionProcessStatePK>
-      <condition>true</condition>
-      <destinationSequenceId>44</destinationSequenceId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <engineAllocationId></engineAllocationId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>44</sequence>
-      </conditionProcessStatePK>
-      <condition>true</condition>
-      <destinationSequenceId>45</destinationSequenceId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <engineAllocationId></engineAllocationId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>45</sequence>
-      </conditionProcessStatePK>
-      <condition>true</condition>
-      <destinationSequenceId>33</destinationSequenceId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <engineAllocationId></engineAllocationId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>46</sequence>
-      </conditionProcessStatePK>
-      <condition>true</condition>
-      <destinationSequenceId>27</destinationSequenceId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <engineAllocationId></engineAllocationId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
         <sequence>10</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -653,28 +339,6 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
       <destinationSequenceId>0</destinationSequenceId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>27</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
-      <destinationSequenceId>30</destinationSequenceId>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>1</version>
-        <sequence>27</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
-      <destinationSequenceId>35</destinationSequenceId>
     </ConditionProcessState>
   </list>
   <list>
@@ -722,7 +386,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>10</initialStateSequence>
-      <finalStateSequence>43</finalStateSequence>
+      <finalStateSequence>46</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -751,166 +415,14 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeAdiantamento</processId>
         <version>1</version>
-        <linkSequence>22</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>45</initialStateSequence>
-      <finalStateSequence>33</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>24</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>34</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>26</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>34</initialStateSequence>
-      <finalStateSequence>46</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>28</linkSequence>
+        <linkSequence>45</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>46</initialStateSequence>
-      <finalStateSequence>27</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>31</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>27</initialStateSequence>
-      <finalStateSequence>30</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>36</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>27</initialStateSequence>
-      <finalStateSequence>35</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>38</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>37</initialStateSequence>
-      <finalStateSequence>43</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>41</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>43</initialStateSequence>
       <finalStateSequence>44</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>42</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>44</initialStateSequence>
-      <finalStateSequence>45</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>47</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>35</initialStateSequence>
-      <finalStateSequence>37</finalStateSequence>
-      <returnLabel></returnLabel>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -922,10 +434,10 @@
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>581</height>
-      <width>1121</width>
+      <height>481</height>
+      <width>701</width>
       <positionX>10</positionX>
-      <positionY>10</positionY>
+      <positionY>20</positionY>
       <stateName>Solicitação de adiantamento</stateName>
       <type>1</type>
       <parentSequence>0</parentSequence>
@@ -938,10 +450,10 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>116</height>
-      <width>1091</width>
+      <height>160</height>
+      <width>671</width>
       <positionX>40</positionX>
-      <positionY>10</positionY>
+      <positionY>20</positionY>
       <stateName>Solicitante</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -954,10 +466,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>116</height>
-      <width>1091</width>
+      <height>160</height>
+      <width>671</width>
       <positionX>40</positionX>
-      <positionY>126</positionY>
+      <positionY>180</positionY>
       <stateName>Gerente</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -970,10 +482,10 @@
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>116</height>
-      <width>1091</width>
+      <height>161</height>
+      <width>671</width>
       <positionX>40</positionX>
-      <positionY>242</positionY>
+      <positionY>340</positionY>
       <stateName>Assist. Financeiro</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -984,44 +496,12 @@
         <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
-    <SwimLane>
-      <color>adc9ac</color>
-      <height>117</height>
-      <width>1091</width>
-      <positionX>40</positionX>
-      <positionY>474</positionY>
-      <stateName>Procuradores</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>5</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>d0daae</color>
-      <height>116</height>
-      <width>1091</width>
-      <positionX>40</positionX>
-      <positionY>358</positionY>
-      <stateName>Controller</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>6</sequence>
-      </swimLanePK>
-    </SwimLane>
   </list>
   <list>
     <ProcessComponGraf>
       <componType>1</componType>
-      <positionX>210</positionX>
-      <positionY>20</positionY>
+      <positionX>230</positionX>
+      <positionY>50</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeAdiantamento</processId>
@@ -1063,30 +543,8 @@
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>167</positionX>
-      <positionY>48</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>26</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>823</positionX>
-      <positionY>544</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <linkSequence>42</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>547</positionX>
-      <positionY>418</positionY>
+      <positionX>165</positionX>
+      <positionY>73</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
