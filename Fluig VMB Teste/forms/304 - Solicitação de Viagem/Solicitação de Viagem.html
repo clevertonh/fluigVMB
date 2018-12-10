@@ -429,6 +429,26 @@
                                                          <input type="radio" id ="passageirofuncionario" name="passageirofuncionario"  value="sim" onclick="passageiroFuncionario()"/>									                    						                        
                                                       </div>
                                                    </div>
+                                                   <div class="row" id="divOutroFun">
+                                                   	<div class="form-group col-md-6">
+                                                   		<label for="outroFuncionario">Nome do funcionário</label>
+                                                            <input 
+                                                            name ="outroFuncionario" 
+                                                            class="form-control" 
+                                                            type="zoom" 
+                                                            id="outroFuncionario" 
+                                                            data-zoom="{'displayKey':'NOME',
+                                                            'datasetId':'VM_Funcionario',
+                                                             'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o funcionário',
+                                                            'fields':[
+                                                            {'field':'NOME','label':'NOME','standard':'true'},
+                                                            {'field':'CPF','label':'CPF'},
+                                                            {'field':'RG','label':'RG'}					  					
+                                                            ]
+                                                            }" >                                                        
+                                                   	</div>
+                                                   </div>
                                                    <div class="row" id="divdadospassageiro">
                                                       <div class="row">
                                                          <div class="form-group col-md-6">

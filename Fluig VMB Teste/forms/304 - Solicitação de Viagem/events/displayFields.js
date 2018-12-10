@@ -46,6 +46,8 @@ function displayFields(form,customHTML){
       	
     	//campos aba passageiro
     	form.setVisibleById("divdadospassageiro", false);
+    	form.setVisibleById("divOutroFun", false);
+    	
     	
     	//campos aba agenda
     	form.setVisibleById("divDataSetAgenda", false);

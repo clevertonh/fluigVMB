@@ -106,7 +106,8 @@ function beforeStateEntry(sequenceId){
 	
 					if (vooComprado != null && vooComprado != "" ){		
 						 valor = hAPI.getCardValue("valorVoo");						 	
-							//chama função para adicionar item ao array
+							
+						 //chama função para adicionar item ao array
 							addItemViagem(codProdutoP,codSolicitacao,tipoViagem,idFormulario,valor);							
 							
 							//voos internacional possuem seguro viagem
@@ -278,8 +279,6 @@ function beforeStateEntry(sequenceId){
 				 	   
 			   
 		   }
-	   
-
 	   
 	   
 	   //FUNÇÃO QUE ADD ITEM NA SOLICITAÇÃO DE COMPRA

@@ -60,6 +60,7 @@ $(document).ready(function() {
     
     if (ATIVIDADE == ABERTURA){
     	document.getElementById("viagemplanejadaN").checked = true;
+       onlyDate.setDate(new Date().toLocaleString());	
     
     }
     
@@ -148,50 +149,7 @@ $(document).ready(function() {
     }
 
     
-    if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
-        var email = parent.WCMAPI.userEmail.toUpperCase();
-        var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/'+ email;
-        //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
-    	
-        function carregaDados() {
-            var loading = FLUIGC.loading("body", {
-                textMessage: "Carregando Dados, aguarde..."
-            });
-            loading.show();
-            $.ajax({
-                type: 'GET',
-                dataType: 'json',
-                contentType: 'applpication/json',
-                url: site,
-                success: function(data, status, xhr) {
-                    if (data != null) {
-                        console.log("Usuario Obtido");
-                        console.log(data);
-                        infoUser = data;
-                        infoUser = infoUser[0];
-                       
-                        $('#solicitante').val(infoUser.CNOME);
-                        $('#emailSolicitante').val(email);
-
-                        onlyDate.setDate(new Date().toLocaleString());	
-                        
-                        loading.hide();
-                    }
-                },
-                error: function(xhr, status, error) {
-                    FLUIGC.toast({
-                        message: "Erro ao carregar os dados, caso não esteja de férias, atualize a página ou tente novamente mais tarde",
-                        type: "danger"
-                    });
-                    loading.hide();
-                }
-            });
-        }
-
-        carregaDados();
-
-
-    }
+    
 });
 
 
@@ -245,7 +203,8 @@ function passageiroFuncionario(){
            $('#rgpassageiro').val("");
            $('#cpfpassageiro').val("");
            $('#passaporte').val("");
-           dataNasc.setDate(null);          
+           dataNasc.setDate(null);       
+           document.getElementById("divOutroFun").style.display = "none";
            
     }
     
@@ -253,15 +212,22 @@ function passageiroFuncionario(){
     			if (document.getElementById("solicitanteNpassageiro").checked == true){
     				//não está aparecendo o Alerta
     				alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");	
+    			
+    				   window["outroFuncionario"].clear();
+    				   $('#nomepassageiro').val("");
+    		           $('#nomemae').val("");
+    		           $('#rgpassageiro').val("");
+    		           $('#cpfpassageiro').val("");
+    		           $('#passaporte').val("");
+    		           dataNasc.setDate(null);      
+    				 document.getElementById("divOutroFun").style.display = "block";
+    				 
     			}
     			
-    			if (document.getElementById("solicitantepassageiro").checked == true ){
-    					$('#nomepassageiro').val(infoUser.CNOME);
-    			        $('#nomemae').val(infoUser.CMAE);
-    			        $('#rgpassageiro').val(infoUser.CRG);
-    			        $('#cpfpassageiro').val(infoUser.CCPF);
-    			        $('#passaporte').val(infoUser.CPASSAP);
-    			        dataNasc.setDate(infoUser.CDATANASC);
+    			if (document.getElementById("solicitantepassageiro").checked == true ){    				
+    				document.getElementById("divOutroFun").style.display = "none";
+    				dadosFuncionario();
+    					    				
     			}
     			
     			
@@ -271,23 +237,12 @@ function passageiroFuncionario(){
 
 function solicitantePassageiro() {
     document.getElementById("divdadospassageiro").style.display = "block";
-
-    //verifica se o campo solicitante é passageiro foi marcado como verdadeiro e preenche os dados do funcionário
-    if (document.getElementById("solicitantepassageiro").checked == true ) {
-//        $('#passageirofuncionarionao').attr("checked", false);
-    	$('#passageirofuncionario').attr("checked", true);
-        $('#nomepassageiro').val(infoUser.CNOME);
-        $('#nomemae').val(infoUser.CMAE);
-        $('#rgpassageiro').val(infoUser.CRG);
-        $('#cpfpassageiro').val(infoUser.CCPF);
-        $('#passaporte').val(infoUser.CPASSAP);
-        dataNasc.setDate(infoUser.CDATANASC);
-    }
     
-    //solicitante não é passageiro, então limpa os campos preenchidos
-    else if (document.getElementById("solicitanteNpassageiro").checked == true) {
+    if (document.getElementById("solicitanteNpassageiro").checked == true) {
         $('#passageirofuncionarionao').attr("checked", false);
-        $('#passageirofuncionario').attr("checked", false);    	        
+        $('#passageirofuncionario').attr("checked", false);    	    
+        
+        
         $('#nomepassageiro').val("");
         $('#nomemae').val("");
         $('#rgpassageiro').val("");
@@ -298,7 +253,12 @@ function solicitantePassageiro() {
 
     }
     
-
+    else if (document.getElementById("solicitantepassageiro").checked == true){
+    	passageiroFuncionario();
+    }
+    
+    
+    
    
 }
 
@@ -680,7 +640,7 @@ function prazoCancelamento(dataViagem){
 	    }
 }
 
-//passa centro de custo para filtrar atividades
+//preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
     var LOCALIZACAO = "localizacao";
     var CONTA = "contacontabil";
@@ -694,6 +654,7 @@ function setSelectedZoomItem(selectedItem) {
     var REMARCACAO = "dataset_solicitacaoviagem";
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
+    var FUNCIONARIO ="outroFuncionario";
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
@@ -827,6 +788,18 @@ function setSelectedZoomItem(selectedItem) {
         $("#codigorateio").val(selectedItem["Codigo"]);
 
     }
+    
+    //preenche dados do funcionario
+    if (campoZOOM == FUNCIONARIO) {
+    	  $('#nomepassageiro').val(selectedItem["NOME"]);
+          $('#nomemae').val(selectedItem["MAE"]);
+          $('#cpfpassageiro').val(selectedItem["CPF"]);
+          $('#rgpassageiro').val(selectedItem["RG"]);
+          $('#passaporte').val(selectedItem["PASSAPORTE"]);
+          $('#datanasc').val(selectedItem["DTNASC"]);
+
+    }
+    
     
     
     if (linhaPagamento[0] == AGENDA){
@@ -1260,3 +1233,55 @@ function desejaHotel(){
 	document.getElementById("div_tipoHotel").style.display = "block";
 }
 
+function dadosFuncionario(){
+	if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
+		var email = email = parent.WCMAPI.userEmail.toUpperCase();			
+		var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/'+ email;
+        //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
+    	
+        function carregaDados() {
+            var loading = FLUIGC.loading("body", {
+                textMessage: "Carregando Dados, aguarde..."
+            });
+            loading.show();
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'applpication/json',
+                url: site,
+                success: function(data, status, xhr) {
+                    if (data != null) {
+                        console.log("Usuario Obtido");
+                        console.log(data);
+                        infoUser = data;
+                        infoUser = infoUser[0];
+                       
+     				    window["outroFuncionario"].clear();
+                        $('#nomepassageiro').val(infoUser.CNOME);
+    			        $('#nomemae').val(infoUser.CMAE);
+    			        $('#rgpassageiro').val(infoUser.CRG);
+    			        $('#cpfpassageiro').val(infoUser.CCPF);
+    			        $('#passaporte').val(infoUser.CPASSAP);
+    			        dataNasc.setDate(infoUser.CDATANASC);
+                        
+                        
+                      
+                        
+                        loading.hide();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    FLUIGC.toast({
+                        message: "Erro ao carregar os dados, caso não esteja de férias, atualize a página ou tente novamente mais tarde",
+                        type: "danger"
+                    });
+                    loading.hide();
+                }
+            });
+        }
+
+        carregaDados();
+
+
+    }
+}

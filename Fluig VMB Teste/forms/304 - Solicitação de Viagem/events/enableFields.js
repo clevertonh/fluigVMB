@@ -20,8 +20,7 @@ function enableFields(form) {
 	log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
 	var solicitante = getValue("WKUser");  
-	 
-
+	
 	 log.info("numero da atividade "+activityEnable);
 	
 	if (activityEnable == ABERTURA || activityEnable == CORRIGIRSOLICITACAO){
@@ -37,7 +36,14 @@ function enableFields(form) {
 		 
 		 
 		 if (activityEnable == ABERTURA){
-			 form.setValue("matriculasolicitante",solicitante); 	 
+			 form.setValue("matriculasolicitante",solicitante); 	
+			 
+			 var constraints   = new Array();
+			 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
+			 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+			 			 			 			 
+			 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
+			 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
 		 }
 		 
 	}

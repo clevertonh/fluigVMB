@@ -9,6 +9,7 @@ function validateForm(form) {
     var CONFIRMARREEMBOLSO = 79;
     var FINALIZARCOMPRA = 77;
 	var CORRIGIRSOLICITACAO = 98;
+	var VERIFICARCOMPRA = 87;
 
     //recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -148,12 +149,22 @@ function validateForm(form) {
 
     }
 
-    else if (activity == COMPRARPASSAGEM && nextAtv == OBTERPASSAGEM ) {  	
-  
+//    else if (activity == COMPRARPASSAGEM && nextAtv == OBTERPASSAGEM ) {  	
+    else if (activity == COMPRARPASSAGEM) {    	
+    	
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
         	if (form.getValue("valorVoo") == '' || form.getValue("valorVoo") == null || form.getValue("valorVoo") <= 0 ){
         		throw "Você precisa informar o valor total da passagem aerea.";	
+        	}
+        	
+        }
+        
+        
+        //valida se existe pedido de voo o campo valor da compra deve ser informado
+        if ((form.getValue("hotelComprado") != "" &&  form.getValue("hotelComprado") != null ) || form.getValue("hotelComprado") =='sim'){
+        	if (form.getValue("valorHotel") == '' || form.getValue("valorHotel") == null || form.getValue("valorHotel") <= 0 ){
+        		throw "Você precisa informar o valor total da base das diárias.";	
         	}
         	
         }
