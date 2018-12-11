@@ -158,6 +158,15 @@ function validateForm(form) {
         		throw "Você precisa informar o valor total da passagem aerea.";	
         	}
         	
+        	if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
+        		throw "Você não pode informar que comprou uma passagem aerea se o solicitante não pediu.";	
+	    		}
+
+		   		
+						
+        	
+        	
+        	
         }
         
         
@@ -167,9 +176,17 @@ function validateForm(form) {
         		throw "Você precisa informar o valor total da base das diárias.";	
         	}
         	
+        	if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null){
+        		throw "Você não pode informar que comprou uma hospedagem se o solicitante não pediu.";	
+	    		}
+        	
+        	
         }
         
        
+        
+        
+        
         
     }
     else if (activity == OBTERPASSAGEM) {

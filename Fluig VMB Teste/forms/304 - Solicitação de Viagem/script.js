@@ -61,6 +61,8 @@ $(document).ready(function() {
     if (ATIVIDADE == ABERTURA){
     	document.getElementById("viagemplanejadaN").checked = true;
        onlyDate.setDate(new Date().toLocaleString());	
+       
+       
     
     }
     
@@ -208,8 +210,8 @@ function passageiroFuncionario(){
            
     }
     
-    else  if (document.getElementById("passageirofuncionario").checked == true ) {   	
-    			if (document.getElementById("solicitanteNpassageiro").checked == true){
+    else  if (document.getElementById("passageirofuncionario").checked == true ) {   	    	    	
+    	if (document.getElementById("solicitanteNpassageiro").checked == true){
     				//não está aparecendo o Alerta
     				alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");	
     			
@@ -227,15 +229,17 @@ function passageiroFuncionario(){
     			if (document.getElementById("solicitantepassageiro").checked == true ){    				
     				document.getElementById("divOutroFun").style.display = "none";
     				dadosFuncionario();
-    					    				
-    			}
     			
-    			
+    			}  	
     }
 	
 }
 
-function solicitantePassageiro() {
+function solicitantePassageiro() {	
+	
+	//retorna aprovador
+	AprovadorViagem();	
+	
     document.getElementById("divdadospassageiro").style.display = "block";
     
     if (document.getElementById("solicitanteNpassageiro").checked == true) {
@@ -886,7 +890,7 @@ function removedZoomItem(removedItem) {
     var REMARCACAO = "dataset_solicitacaoviagem";
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
-
+    var FUNCIONARIO ="outroFuncionario";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -971,6 +975,17 @@ function removedZoomItem(removedItem) {
     
     if (campoZOOM == AGENDA){
     	removeItensAgenda();
+    	
+    }
+    
+    
+    if (campoZOOM == FUNCIONARIO){
+    	$('#nomepassageiro').val('');
+        $('#nomemae').val('');
+        $('#cpfpassageiro').val('');
+        $('#rgpassageiro').val('');
+        $('#passaporte').val('');
+        $('#datanasc').val('');
     	
     }
         
@@ -1228,14 +1243,51 @@ function desejaPassagem(){
 	document.getElementById("div_tipoVoo").style.display = "block";	
 }
 
-
 function desejaHotel(){
 	document.getElementById("div_tipoHotel").style.display = "block";
 }
 
+function AprovadorViagem(){
+	var email = parent.WCMAPI.userEmail.toUpperCase();	
+    var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
+    
+    if (dataset != null && dataset.values.length > 0) {
+           
+         var matriculaAprovador =  dataset.values[0]["MATRICULA_APR"]; 
+         var emailAprovador =  dataset.values[0]["EMAIL_APR"];
+    	
+         $('#emailGestor').val(emailAprovador);
+         $('#matriculaApr').val(matriculaAprovador);
+        
+    }
+	
+}
+
+////falta implementar dataset para receber email funcionario porque dataset customizado não aceita constraint
+function dadosFuncionarioDataSet(){
+	var email = parent.WCMAPI.userEmail.toUpperCase();	
+	
+	var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
+    var dataset = DatasetFactory.getDataset("VM_Funcionario", null, constraints, null);
+  
+    if (dataset != null && dataset.values.length > 0) {
+    
+    	$('#nomepassageiro').val(dataset.values[0]["NOME"]);
+        $('#nomemae').val(dataset.values[0]["MAE"]);
+        $('#rgpassageiro').val(dataset.values[0]["RG"]);
+        $('#cpfpassageiro').val(dataset.values[0]["CPF"]);
+        $('#passaporte').val(dataset.values[0]["PASSAPORTE"]);
+        dataNasc.setDate(dataset.values[0]["DTNASC"]);    
+        
+    }
+	
+}
+
+//depois que o metodo dadosFuncionarioDataSet for implementado esse metado pode ser descartado
 function dadosFuncionario(){
 	if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
-		var email = email = parent.WCMAPI.userEmail.toUpperCase();			
+		var email = parent.WCMAPI.userEmail.toUpperCase();			
 		var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/'+ email;
         //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
     	
@@ -1263,10 +1315,7 @@ function dadosFuncionario(){
     			        $('#cpfpassageiro').val(infoUser.CCPF);
     			        $('#passaporte').val(infoUser.CPASSAP);
     			        dataNasc.setDate(infoUser.CDATANASC);
-                        
-                        
-                      
-                        
+                                                
                         loading.hide();
                     }
                 },

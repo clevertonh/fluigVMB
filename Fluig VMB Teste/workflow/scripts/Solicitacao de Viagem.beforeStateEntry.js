@@ -53,8 +53,7 @@ function beforeStateEntry(sequenceId){
 		            throw "É preciso anexar o documento para continuar o processo!";
 		        }
 		        
-		        
-					
+		  			
 				    //Cria a constraint para buscar os formulários ativos
 				    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
 					var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
@@ -80,6 +79,7 @@ function beforeStateEntry(sequenceId){
 				        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
 					
 				        solicitacao = datasetFilhos;
+				        
 				    }
 					//objeto serviço
 					var aItemServico = new Array();

@@ -30,9 +30,11 @@ function enableFields(form) {
 		 form.setEnabled('vooComprado', false);
 		 form.setEnabled('hotelComprado', false);
 		 form.setEnabled('ressarcimento', false);
+		 form.setEnabled('justificativaReprovacao', false);
 		 
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
+		 
 		 
 		 
 		 if (activityEnable == ABERTURA){
@@ -44,6 +46,15 @@ function enableFields(form) {
 			 			 			 			 
 			 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
 			 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
+			 
+			/* 
+			 var retornaGestor = new Array();
+			 	retornaGestor.push(DatasetFactory.createConstraint("EMAIL", dataset.getValue(0, "mail"), dataset.getValue(0, "mail"), ConstraintType.MUST));
+			 var dataset = DatasetFactory.getDataset("VM_Funcionario", null, retornaGestor, null);
+			 
+			 */
+			 
+			 
 		 }
 		 
 	}
