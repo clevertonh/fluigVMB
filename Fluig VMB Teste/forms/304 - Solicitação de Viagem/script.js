@@ -62,7 +62,8 @@ $(document).ready(function() {
         document.getElementById("viagemplanejadaN").checked = true;
         onlyDate.setDate(new Date().toLocaleString());
 
-
+        //busca aprovador do usuário logado
+        AprovadorViagem();
 
     }
 
@@ -207,7 +208,7 @@ function solicitanteFunc() {
     document.getElementById("divdadospassageiro").style.display = "none";
 
     //retorna aprovador para funcionário
-    AprovadorViagem();
+    //AprovadorViagem();
 
 
 }
@@ -1000,7 +1001,7 @@ function setSelectedZoomItem(selectedItem) {
     		   	document.getElementById("divOutroFun").style.display = "block";
     	   }
     	
-    	   AprovadorViagem();
+    	   //AprovadorViagem();
     }
     
 }
@@ -1437,7 +1438,10 @@ function desejaHotel() {
 }
 
 function AprovadorViagem() {
-    //busca email usuario logado
+
+	
+	//console.log("BUSCANDO APROVADOR");
+	//busca email usuario logado
     var email = parent.WCMAPI.userEmail.toUpperCase();
     var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
     if (dataset != null && dataset.values.length > 0) {
@@ -1470,6 +1474,7 @@ function dadosFuncionarioDataSet() {
         dataNasc.setDate(dataset.values[0]["DTNASC"]);
 
     }
+    
 
 }
 
