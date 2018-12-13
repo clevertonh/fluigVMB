@@ -49,15 +49,27 @@ function enableFields(form) {
 			 			 			 			 
 			 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
 			 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
+			
+			 /*
+	
+			 var emailUsuarioLogado = dataset.getValue(0, "mail");
 			 
-			/* 
-			 var retornaGestor = new Array();
-			 	retornaGestor.push(DatasetFactory.createConstraint("EMAIL", dataset.getValue(0, "mail"), dataset.getValue(0, "mail"), ConstraintType.MUST));
-			 var dataset = DatasetFactory.getDataset("VM_Funcionario", null, retornaGestor, null);
+			 //consulta de usuario logado é funcionario e retorna aprovador
+			 var constraintsUsuarioLogado  = new Array();			 			 
+			 constraintsUsuarioLogado.push(DatasetFactory.createConstraint("EMAIL_FUN", emailUsuarioLogado, emailUsuarioLogado, ConstraintType.MUST));
 			 
-			 */
-			 
-			 
+			 var datasetUsuarioLogado = DatasetFactory.getDataset("APR_VIAGEM", null, constraintsUsuarioLogado, null);
+			    if (datasetUsuarioLogado != null && datasetUsuarioLogado.values.length > 0) {
+
+			        var matriculaAprovador = datasetUsuarioLogado.values[0]["MATRICULA_APR"];
+			        var emailAprovador = datasetUsuarioLogado.values[0]["EMAIL_APR"];
+
+			        form.setValue("emailGestor",emailAprovador);
+			        form.setValue("matriculaApr",matriculaAprovador);
+
+			    }	
+			    
+			    */
 		 }
 		 
 	}

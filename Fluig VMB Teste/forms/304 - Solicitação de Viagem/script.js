@@ -302,12 +302,24 @@ function passageiroFuncionario() {
     }
 
 
+    if (document.getElementById("solicitanteNfuncionario").checked == true &&
+    		 document.getElementById("solicitanteNpassageiro").checked == true &&
+    		 document.getElementById("passageirofuncionario").checked == true
+    ){
+    	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
+        document.getElementById("divOutroApr").style.display = "block";
+        document.getElementById("divOutroFun").style.display = "none";
+        document.getElementById("divdadospassageiro").style.display = "none";
+    	
+    }
 
 
 }
 
 function passageiroNfuncionario() {
 
+
+	 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true &&
         document.getElementById("passageirofuncionario").checked == true) {
@@ -813,6 +825,7 @@ function setSelectedZoomItem(selectedItem) {
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
+    var APROVADOR = "AprovadorNfunc";
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
@@ -968,8 +981,6 @@ function setSelectedZoomItem(selectedItem) {
             if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
                 //  AprovadorViagem(emailFuncionarioPassageiro);
             }
-
-
         }
 
     }
@@ -979,6 +990,19 @@ function setSelectedZoomItem(selectedItem) {
     if (linhaPagamento[0] == AGENDA) {
         buscaAtividades(selectedItem);
     }
+    
+    
+    if (campoZOOM == APROVADOR ){
+    	   if (document.getElementById("solicitanteNfuncionario").checked == true &&
+    	            document.getElementById("solicitanteNpassageiro").checked == true &&
+    	            document.getElementById("passageirofuncionario").checked == true) {
+    		   
+    		   	document.getElementById("divOutroFun").style.display = "block";
+    	   }
+    	
+    	   AprovadorViagem();
+    }
+    
 }
 
 function buscaRemarcacao(item) {
