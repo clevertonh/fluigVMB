@@ -27,10 +27,11 @@ function validateForm(form) {
     			|| form.getValue("dataSolicitacao") == "" || form.getValue("dataSolicitacao") == null
     			
     	) {
-            throw "Seus dados de solicitante não foram carregados, caso não esteja de férias, atualize a página e inicie novamente a solicitação.";
+            throw "Seus dados de solicitante não foram preenchidos, caso não esteja de férias, atualize a página e inicie novamente a solicitação.";
         }
     	
-        if (form.getValue("tipoviagem") == "" || form.getValue("tipoviagem") == null) {
+      	
+      	if (form.getValue("tipoviagem") == "" || form.getValue("tipoviagem") == null) {
             throw "Você precisa indicar se a solicitação é uma viagem nacional ou internacional.";
         }
         if (form.getValue("finalidade") == "" || form.getValue("finalidade") == null) {
@@ -57,16 +58,23 @@ function validateForm(form) {
         if (form.getValue("datanasc") == "" || form.getValue("datanasc") == null) {
             throw "É necessário indicar a data de nascimento do passageiro.";
         }
-        if (!form.getValue("cpfpassageiro").match(/^[0-9]{11}/)) {
+        if (form.getValue("cpfpassageiro") != "" && !form.getValue("cpfpassageiro").match(/^[0-9]{11}/)) {
             throw "O campo CPF está invalido, verifique se foi informado apenas números";
         }
-        if (!form.getValue("rgpassageiro").match(/^[0-9]/)) {
+        if (form.getValue("rgpassageiro") != "" && !form.getValue("rgpassageiro").match(/^[0-9]/)) {
             throw "O campo RG está invalido, verifique se foi informado apenas números.";
         }
         if (form.getValue("passageirofuncionario") == "" || form.getValue("passageirofuncionario") == null) {
             throw "É necessário indicar se o passageiro é um funcionário ou não.";
         }
 
+        if (form.getValue("emailGestor") == "" || form.getValue("emailGestor") == null) {
+            throw "Houve algum problema e não possível identificar seu aprovador. Tente novamente mais tarde!";
+        }
+        
+     
+        
+        
         //valida se foi informado pelo menos um item de serviço
         if ((form.getValue("tipovoo") == false || form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null) && (form.getValue("tipoquarto") == false || form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null)) {
             throw "Você precisa informar pelo menos um item de viagem (voo e/ou hospedagem).";

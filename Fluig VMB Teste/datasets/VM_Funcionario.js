@@ -9,7 +9,6 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("DTNASC");
     dataset.addColumn("EMAIL_G");
     dataset.addColumn("EMAIL_F");
-    dataset.addColumn("EMAIL_APRVIAGEM");
            
     var dados;
     
@@ -56,7 +55,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, objdata[i].CAPRVIAGEM]);
+			dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN]);
 		}
 	}
 		

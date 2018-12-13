@@ -16,6 +16,9 @@ function enableFields(form) {
      * Evento usado para desabilitar campos
     */
 
+	 form.setEnabled('viagemplanejada', false);
+	
+	
 	var activityEnable = getValue('WKNumState');
 	log.info("----ATIVIDADE enableFields: " + activityEnable);
 	

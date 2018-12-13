@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
    <head>
       <meta charset="utf-8">
@@ -20,7 +21,7 @@
                   </div>
                </div>
             </div>
-            <!--  Formulário  -->
+            <!--  Formulario  -->
             <form role="form">
                <div class='panel panel-primary'>
                   <div class="panel-heading">
@@ -414,23 +415,48 @@
                                                    </div>
                                                    <!-- linha 1 -->						                        
                                                    <div class="row">
-                                                      <div class="form-group col-md-6">
+                                                      <div class="form-group col-md-4">
+                                                         <label>O solicitante é funcionário VM Brasil? </label><br>
+                                                         <label for="solicitanteNfuncionario">Não</label>		
+                                                         <input type="radio" id ="solicitanteNfuncionario" name ="solicitanteFuncionario" value="nao" onclick="solicitanteNFunc()">		
+                                                         <label for="solicitanteFuncionario">Sim</label>	                                                                                 	
+                                                         <input type="radio" id ="solicitanteFuncionario" name ="solicitanteFuncionario" value="sim" onclick="solicitanteFunc()"/>                                                     				                                                         							                        						                      
+                                                      </div>
+                                                      <div class="form-group col-md-4">
                                                          <label>O solicitante é o passageiro/hóspede? </label><br>
                                                          <label for="solicitanteNpassageiro">Não</label>		
-                                                         <input type="radio" id ="solicitanteNpassageiro" name ="solicitantepassageiro" value="nao" onclick="solicitantePassageiro()">		
+                                                         <input type="radio" id ="solicitanteNpassageiro" name ="solicitantepassageiro" value="nao" onclick="solicitanteNaoPass()">		
                                                          <label for="solicitantepassageiro">Sim</label>	                                                                                 	
-                                                         <input type="radio" id ="solicitantepassageiro" name ="solicitantepassageiro" value="sim" onclick="solicitantePassageiro()">                                                     				                                                         							                        						                      
+                                                         <input type="radio" id ="solicitantepassageiro" name ="solicitantepassageiro" value="sim" onclick="solicitantePassageiro()"/>                                                     				                                                         							                        						                      
                                                       </div>
-                                                      <div class="form-group col-md-6">
-                                                         <label for="passageirofuncionario">O passageiro/hóspede é funcionário? </label><br>
+                                                      <div class="form-group col-md-4">
+                                                         <label for="passageirofuncionario">O passageiro/hóspede é funcionário da VM Brasil? </label><br>
                                                          <label for="passageirofuncionarionao">Não</label>
-                                                         <input type="radio" id ="passageirofuncionarionao" name="passageirofuncionario"  value="nao" onclick="passageiroFuncionario()"/>
+                                                         <input type="radio" id ="passageirofuncionarionao" name="passageirofuncionario"  value="nao" onclick="passageiroNfuncionario()"/>
                                                          <label for="passageirofuncionario">Sim</label>
                                                          <input type="radio" id ="passageirofuncionario" name="passageirofuncionario"  value="sim" onclick="passageiroFuncionario()"/>									                    						                        
                                                       </div>
                                                    </div>
-                                                   <div class="row" id="divOutroFun">
-                                                   	<div class="form-group col-md-6">
+                                                   <div class="row" >
+                                                   	<div class="form-group col-md-6" id="divOutroApr">
+                                                   		<label for="AprovadorNfunc">Aprovador</label>
+                                                            <input 
+                                                            name ="AprovadorNfunc" 
+                                                            class="form-control" 
+                                                            type="zoom" 
+                                                            id="AprovadorNfunc" 
+                                                            data-zoom="{'displayKey':'NOME',
+                                                            'datasetId':'VM_AprovadorViagem',
+                                                             'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione seu aprovador',
+                                                            'fields':[
+                                                            {'field':'NOME','label':'NOME','standard':'true'},
+                                                            {'field':'EMAIL','label':'EMAIL'},
+                                                            {'field':'MATRICULA','label':'MATRICULA'}					  					
+                                                            ]
+                                                            }" >                                                        
+                                                   	</div>                                                    
+                                                   	<div class="form-group col-md-6" id="divOutroFun">
                                                    		<label for="outroFuncionario">Nome do funcionário</label>
                                                             <input 
                                                             name ="outroFuncionario" 
@@ -447,7 +473,7 @@
                                                             {'field':'RG','label':'RG'}					  					
                                                             ]
                                                             }" >                                                        
-                                                   	</div>
+                                                   	</div>                                                  	
                                                    </div>
                                                    <div class="row" id="divdadospassageiro">
                                                       <div class="row">

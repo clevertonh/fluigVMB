@@ -52,21 +52,21 @@ var datacheckin3;
 
 
 $(document).ready(function() {
-	
-    if (ATIVIDADE == SOLICITACANCELAMENTO){
-    	document.getElementById("cancelarpassagem").checked = false;
-    
+
+    if (ATIVIDADE == SOLICITACANCELAMENTO) {
+        document.getElementById("cancelarpassagem").checked = false;
+
     }
-    
-    if (ATIVIDADE == ABERTURA){
-    	document.getElementById("viagemplanejadaN").checked = true;
-       onlyDate.setDate(new Date().toLocaleString());	
-       
-       
-    
+
+    if (ATIVIDADE == ABERTURA) {
+        document.getElementById("viagemplanejadaN").checked = true;
+        onlyDate.setDate(new Date().toLocaleString());
+
+
+
     }
-    
-    
+
+
     if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO) {
         dataNasc = FLUIGC.calendar('#calendariodatanasc', {
             pickDate: true,
@@ -86,14 +86,14 @@ $(document).ready(function() {
         dataretorno1 = FLUIGC.calendar('#calendariodataretorno1', {
             pickDate: true,
             pickTime: false,
-            minDate:  new Date().toLocaleString()
+            minDate: new Date().toLocaleString()
             //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
         datapartida2 = FLUIGC.calendar('#calendariodatapartida2', {
             pickDate: true,
             pickTime: false,
-            minDate:  new Date().toLocaleString()
+            minDate: new Date().toLocaleString()
             //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
             minDate: new Date().toLocaleString()
             //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
-        
+
         datacheckout3 = FLUIGC.calendar('#calendariodtcheckout3', {
             pickDate: true,
             pickTime: false,
@@ -150,8 +150,8 @@ $(document).ready(function() {
 
     }
 
-    
-    
+
+
 });
 
 
@@ -197,78 +197,241 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
-function passageiroFuncionario(){
-	
-    if (document.getElementById("passageirofuncionarionao").checked == true ) {    		
-    	   $('#nomepassageiro').val("");
-           $('#nomemae').val("");
-           $('#rgpassageiro').val("");
-           $('#cpfpassageiro').val("");
-           $('#passaporte').val("");
-           dataNasc.setDate(null);       
-           document.getElementById("divOutroFun").style.display = "none";
-           
-    }
-    
-    else  if (document.getElementById("passageirofuncionario").checked == true ) {   	    	    	
-    	if (document.getElementById("solicitanteNpassageiro").checked == true){
-    				//não está aparecendo o Alerta
-    				alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");	
-    			
-    				   window["outroFuncionario"].clear();
-    				   $('#nomepassageiro').val("");
-    		           $('#nomemae').val("");
-    		           $('#rgpassageiro').val("");
-    		           $('#cpfpassageiro').val("");
-    		           $('#passaporte').val("");
-    		           dataNasc.setDate(null);      
-    				 document.getElementById("divOutroFun").style.display = "block";
-    				 
-    			}
-    			
-    			if (document.getElementById("solicitantepassageiro").checked == true ){    				
-    				document.getElementById("divOutroFun").style.display = "none";
-    				dadosFuncionario();
-    			
-    			}  	
-    }
-	
+function solicitanteFunc() {
+    $('#solicitantepassageiro').attr("checked", false);
+    $('#solicitanteNpassageiro').attr("checked", false);
+    $('#passageirofuncionarionao').attr("checked", false);
+    $('#passageirofuncionario').attr("checked", false);
+    document.getElementById("divOutroFun").style.display = "none";
+    document.getElementById("divOutroApr").style.display = "none";
+    document.getElementById("divdadospassageiro").style.display = "none";
+
+    //retorna aprovador para funcionário
+    AprovadorViagem();
+
+
 }
 
-function solicitantePassageiro() {	
-	
-	//retorna aprovador
-	AprovadorViagem();	
-	
-    document.getElementById("divdadospassageiro").style.display = "block";
-    
-    if (document.getElementById("solicitanteNpassageiro").checked == true) {
+function solicitantePassageiro() {
+
+    if (document.getElementById("solicitanteFuncionario").checked == true) {
+
         $('#passageirofuncionarionao').attr("checked", false);
-        $('#passageirofuncionario').attr("checked", false);    	    
-        
-        
+        document.getElementById("passageirofuncionario").click();
+        document.getElementById("divOutroFun").style.display = "none";
+        document.getElementById("divOutroApr").style.display = "none";
+        document.getElementById("divdadospassageiro").style.display = "block";
+
+
+    }
+
+
+}
+
+function solicitanteNaoPass() {
+    $('#passageirofuncionarionao').attr("checked", false);
+    $('#passageirofuncionario').attr("checked", false);
+    $('#nomepassageiro').val("");
+    $('#nomemae').val("");
+    $('#rgpassageiro').val("");
+    $('#cpfpassageiro').val("");
+    $('#passaporte').val("");
+    dataNasc.setDate(null);
+    $('#emailGestor').val("");
+    $('#matriculaApr').val("");
+    window["outroFuncionario"].clear();
+    window["AprovadorNfunc"].clear();
+
+    document.getElementById("divdadospassageiro").style.display = "none";
+    document.getElementById("divOutroFun").style.display = "none";
+    document.getElementById("divOutroApr").style.display = "none";
+}
+
+function passageiroFuncionario() {
+
+    $('#passageirofuncionarionao').attr("checked", false);
+    $('#nomepassageiro').val("");
+    $('#nomemae').val("");
+    $('#rgpassageiro').val("");
+    $('#cpfpassageiro').val("");
+    $('#passaporte').val("");
+    dataNasc.setDate(null);
+    window["outroFuncionario"].clear();
+    window["AprovadorNfunc"].clear();
+
+    if (document.getElementById("solicitanteFuncionario").checked == true &&
+        document.getElementById("solicitantepassageiro").checked == true) {
+        //busca dados do funcionario
+        dadosFuncionario();
+
+
+        document.getElementById("divdadospassageiro").style.display = "block";
+        document.getElementById("divOutroFun").style.display = "none";
+        document.getElementById("divOutroApr").style.display = "none";
+
+
+    }
+
+    if (document.getElementById("solicitanteFuncionario").checked == true &&
+        document.getElementById("solicitanteNpassageiro").checked == true &&
+        document.getElementById("passageirofuncionario").checked == true) {
+        alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
+        document.getElementById("divOutroFun").style.display = "block";
+
+
+    }
+
+
+    if (document.getElementById("solicitanteNfuncionario").checked == true &&
+        document.getElementById("solicitantepassageiro").checked == true &&
+        document.getElementById("passageirofuncionario").checked == true
+    ) {
+        $('#passageirofuncionario').attr("checked", false);
         $('#nomepassageiro').val("");
         $('#nomemae').val("");
         $('#rgpassageiro').val("");
         $('#cpfpassageiro').val("");
         $('#passaporte').val("");
         dataNasc.setDate(null);
+        window["outroFuncionario"].clear();
+        window["AprovadorNfunc"].clear();
+
+        document.getElementById("divOutroFun").style.display = "none";
+        document.getElementById("divOutroApr").style.display = "none";
+        document.getElementById("divdadospassageiro").style.display = "none";
+    }
+
+
+
+
+}
+
+function passageiroNfuncionario() {
+
+    if (document.getElementById("solicitanteFuncionario").checked == true &&
+        document.getElementById("solicitantepassageiro").checked == true &&
+        document.getElementById("passageirofuncionario").checked == true) {
+        $('#passageirofuncionarionao').attr("checked", false);
+
+        document.getElementById("divdadospassageiro").style.display = "none";
+        $('#nomepassageiro').val("");
+        $('#nomemae').val("");
+        $('#rgpassageiro').val("");
+        $('#cpfpassageiro').val("");
+        $('#passaporte').val("");
+        dataNasc.setDate(null);
+        window["outroFuncionario"].clear();
+        window["AprovadorNfunc"].clear();
+
+    }
+
+    if (document.getElementById("solicitanteFuncionario").checked == true &&
+        document.getElementById("solicitanteNpassageiro").checked == true &&
+        document.getElementById("passageirofuncionarionao").checked == true) {
+
+        $('#nomepassageiro').val("");
+        $('#nomemae').val("");
+        $('#rgpassageiro').val("");
+        $('#cpfpassageiro').val("");
+        $('#passaporte').val("");
+        dataNasc.setDate(null);
+        window["outroFuncionario"].clear();
+        window["AprovadorNfunc"].clear();
+        document.getElementById("divdadospassageiro").style.display = "block";
 
 
     }
-    
-    else if (document.getElementById("solicitantepassageiro").checked == true){
-    	passageiroFuncionario();
+
+    if (document.getElementById("solicitanteFuncionario").checked == true &&
+        document.getElementById("solicitantepassageiro").checked == true &&
+        document.getElementById("passageirofuncionarionao").checked == true
+    ) {
+
+        $('#passageirofuncionarionao').attr("checked", false);
+        $('#nomepassageiro').val("");
+        $('#nomemae').val("");
+        $('#rgpassageiro').val("");
+        $('#cpfpassageiro').val("");
+        $('#passaporte').val("");
+        dataNasc.setDate(null);
+        window["outroFuncionario"].clear();
+        window["AprovadorNfunc"].clear();
+        document.getElementById("divdadospassageiro").style.display = "none";
+
     }
-    
-    
-    
-   
+    if (document.getElementById("solicitanteFuncionario").checked == true &&
+        document.getElementById("solicitanteNpassageiro").checked == true) {
+        document.getElementById("divOutroApr").style.display = "none";
+        document.getElementById("divOutroFun").style.display = "none";
+
+
+    }
+
+
+    if (document.getElementById("solicitanteNfuncionario").checked == true &&
+        document.getElementById("solicitantepassageiro").checked == true &&
+        document.getElementById("passageirofuncionarionao").checked == true
+    ) {
+        $('#nomepassageiro').val("");
+        $('#nomemae').val("");
+        $('#rgpassageiro').val("");
+        $('#cpfpassageiro').val("");
+        $('#passaporte').val("");
+        dataNasc.setDate(null);
+        window["outroFuncionario"].clear();
+        window["AprovadorNfunc"].clear();
+        document.getElementById("divdadospassageiro").style.display = "block";
+
+    }
+
+    if (document.getElementById("solicitanteNfuncionario").checked == true &&
+        document.getElementById("solicitanteNpassageiro").checked == true &&
+        document.getElementById("passageirofuncionarionao").checked == true
+    ) {
+        $('#passageirofuncionario').attr("checked", false);
+        $('#nomepassageiro').val("");
+        $('#nomemae').val("");
+        $('#rgpassageiro').val("");
+        $('#cpfpassageiro').val("");
+        $('#passaporte').val("");
+        dataNasc.setDate(null);
+        window["outroFuncionario"].clear();
+        window["AprovadorNfunc"].clear();
+
+        document.getElementById("divOutroFun").style.display = "none";
+        document.getElementById("divOutroApr").style.display = "block";
+        document.getElementById("divdadospassageiro").style.display = "block";
+    }
+
+
+}
+
+function solicitanteNFunc() {
+    $('#solicitantepassageiro').attr("checked", false);
+    $('#solicitanteNpassageiro').attr("checked", false);
+    $('#passageirofuncionarionao').attr("checked", false);
+    $('#passageirofuncionario').attr("checked", false);
+
+    $('#nomepassageiro').val("");
+    $('#nomemae').val("");
+    $('#rgpassageiro').val("");
+    $('#cpfpassageiro').val("");
+    $('#passaporte').val("");
+    $('#emailGestor').val("");
+    $('#matriculaApr').val("");
+    dataNasc.setDate(null);
+    window["outroFuncionario"].clear();
+    window["AprovadorNfunc"].clear();
+
+    document.getElementById("divOutroFun").style.display = "none";
+    document.getElementById("divOutroApr").style.display = "none";
+    document.getElementById("divdadospassageiro").style.display = "none";
+
 }
 
 //usado para resetar e forçar que usuario escolha primeiro o tipo de voo para saber quais campos serao apresentados
 function clickTipoViagem() {
-	
+
     //oculta campos de voo
     $('#tipovoo0').attr("checked", false);
     $('#tipovoo1').attr("checked", false);
@@ -277,50 +440,48 @@ function clickTipoViagem() {
     document.getElementById("trecho1").style.display = "none";
     document.getElementById("trecho2").style.display = "none";
     document.getElementById("trecho3").style.display = "none";
-    
+
 }
 
-function tipoViagem(){
-	if (document.getElementById("internacional").checked == true || document.getElementById("nacional").checked == true){
-		//alert("Você precisa selecionar o tipo de viagem primeiro!");
-		return true;
-	}
-	
-	return false;
+function tipoViagem() {
+    if (document.getElementById("internacional").checked == true || document.getElementById("nacional").checked == true) {
+        //alert("Você precisa selecionar o tipo de viagem primeiro!");
+        return true;
+    }
+
+    return false;
 }
 
-function clickCamposHospedagem(){
-	  document.getElementById("divDatasHotel1").style.display = "none";
-	  document.getElementById("divDatasHotel2").style.display = "none";
-	  document.getElementById("divDatasHotel3").style.display = "none";
-	  
+function clickCamposHospedagem() {
+    document.getElementById("divDatasHotel1").style.display = "none";
+    document.getElementById("divDatasHotel2").style.display = "none";
+    document.getElementById("divDatasHotel3").style.display = "none";
 
-	if (tipoViagem() == true){     	  
-		  document.getElementById("divDatasHotel1").style.display = "block";
-		  document.getElementById("observacaoHotel").style.display = "block";
-		  
-		 //verifica se o tipo de voo é varios trechos então habilita campos para varias hospedagem		  
-		  if (document.getElementById("tipovoo2").checked == true){
-			  document.getElementById("divDatasHotel2").style.display = "block";
-			  document.getElementById("divDatasHotel3").style.display = "block";
-			  
-		  }
-	}
-	
-	else {
-		alertaTipoViagem();
-	}
 
-	 
+    if (tipoViagem() == true) {
+        document.getElementById("divDatasHotel1").style.display = "block";
+        document.getElementById("observacaoHotel").style.display = "block";
+
+        //verifica se o tipo de voo é varios trechos então habilita campos para varias hospedagem		  
+        if (document.getElementById("tipovoo2").checked == true) {
+            document.getElementById("divDatasHotel2").style.display = "block";
+            document.getElementById("divDatasHotel3").style.display = "block";
+
+        }
+    } else {
+        alertaTipoViagem();
+    }
+
+
 }
 
-function clickCancelarPassagem(){
+function clickCancelarPassagem() {
     if (document.getElementById("cancelarpassagem").checked == true) {
         document.getElementById("justificativacanc").style.display = "block";
     }
 }
 
-function clickNaoCancelarPassagem(){
+function clickNaoCancelarPassagem() {
     if (document.getElementById("ncancelarpassagem").checked == true) {
         document.getElementById("justificativacanc").style.display = "none";
         $('#justificativacancelamento').val("");
@@ -328,177 +489,171 @@ function clickNaoCancelarPassagem(){
 
 }
 
-function clickReprovado(){
-	 document.getElementById("divJustificativaReprovacaoViagem").style.display = "block";
+function clickReprovado() {
+    document.getElementById("divJustificativaReprovacaoViagem").style.display = "block";
 }
 
-function clickCobrancaTx(){
-	if (document.getElementById("cobranca").checked == true){
-		document.getElementById("div_valortx").style.display = "block";	
-	}
-	else {
-		document.getElementById("div_valortx").style.display = "none";
-	}
-	 
-}
-
-function clickAprovado(){
-	$('#justificativaReprovacao').val("");
-	document.getElementById("divJustificativaReprovacaoViagem").style.display = "none";
-	    
-}
-
-function ocultaCamposVooNacional(){
-	 document.getElementById("div_Nacional1").style.display = "none";
-     document.getElementById("div_Nacional2").style.display = "none";
-     document.getElementById("div_Nacional3").style.display = "none";
+function clickCobrancaTx() {
+    if (document.getElementById("cobranca").checked == true) {
+        document.getElementById("div_valortx").style.display = "block";
+    } else {
+        document.getElementById("div_valortx").style.display = "none";
+    }
 
 }
 
-function ocultaCamposVooInternacional(){
-	document.getElementById("div_internacional1").style.display = "none";
+function clickAprovado() {
+    $('#justificativaReprovacao').val("");
+    document.getElementById("divJustificativaReprovacaoViagem").style.display = "none";
+
+}
+
+function ocultaCamposVooNacional() {
+    document.getElementById("div_Nacional1").style.display = "none";
+    document.getElementById("div_Nacional2").style.display = "none";
+    document.getElementById("div_Nacional3").style.display = "none";
+
+}
+
+function ocultaCamposVooInternacional() {
+    document.getElementById("div_internacional1").style.display = "none";
     document.getElementById("div_internacional2").style.display = "none";
     document.getElementById("div_internacional3").style.display = "none";
 }
 
-function alertaTipoViagem(){
-	alert("Você deve selecionar o tipo de viagem primeiro!");
+function alertaTipoViagem() {
+    alert("Você deve selecionar o tipo de viagem primeiro!");
 }
 
-function clickTipoVoo0(){
-	if (tipoViagem() == true){
-		apagaDadosVoo();
-	    document.getElementById("trecho1").style.display = "block";
-	    document.getElementById("div_destino1").style.display = "block";
-	    document.getElementById("div_datadestino1").style.display = "block";
-	    document.getElementById("trecho2").style.display = "none";
-	    document.getElementById("trecho3").style.display = "none";
+function clickTipoVoo0() {
+    if (tipoViagem() == true) {
+        apagaDadosVoo();
+        document.getElementById("trecho1").style.display = "block";
+        document.getElementById("div_destino1").style.display = "block";
+        document.getElementById("div_datadestino1").style.display = "block";
+        document.getElementById("trecho2").style.display = "none";
+        document.getElementById("trecho3").style.display = "none";
 
-	    if (document.getElementById("internacional").checked == true) {
-	    	ocultaCamposVooNacional();    	
-	        document.getElementById("div_internacional1").style.display = "block";
+        if (document.getElementById("internacional").checked == true) {
+            ocultaCamposVooNacional();
+            document.getElementById("div_internacional1").style.display = "block";
 
-	    } else {
-	        document.getElementById("div_Nacional1").style.display = "block";
-	        ocultaCamposVooInternacional();
-	    }	
-	    
-		document.getElementById("observacaoVoo").style.display = "block";
-		
-	}
-	else {
-		alertaTipoViagem();
-	}
+        } else {
+            document.getElementById("div_Nacional1").style.display = "block";
+            ocultaCamposVooInternacional();
+        }
 
-}
+        document.getElementById("observacaoVoo").style.display = "block";
 
-function clickTipoVoo1(){
-	if (tipoViagem() == true){
-		apagaDadosVoo();
-	    document.getElementById("trecho1").style.display = "block";
-	    document.getElementById("trecho2").style.display = "none";
-	    document.getElementById("trecho3").style.display = "none";
-	    document.getElementById("div_destino1").style.display = "block";
-	    document.getElementById("div_datadestino1").style.display = "none";
-
-	    if (document.getElementById("internacional").checked == true) {
-	    	ocultaCamposVooNacional();
-
-
-	    } 
-	    else {
-	        document.getElementById("div_Nacional1").style.display = "block";
-	        ocultaCamposVooInternacional();
-
-	    }
-	    document.getElementById("observacaoVoo").style.display = "block";
-	}
-	else {
-		alertaTipoViagem();
-	}
+    } else {
+        alertaTipoViagem();
+    }
 
 }
 
-function clickTipoVoo2(){
-	if (tipoViagem() == true){
-		apagaDadosVoo();
-	    document.getElementById("trecho1").style.display = "block";
-	    document.getElementById("trecho2").style.display = "block";
-	    document.getElementById("trecho3").style.display = "block";
-	    document.getElementById("div_destino1").style.display = "block";
-	    document.getElementById("div_datadestino1").style.display = "none";
+function clickTipoVoo1() {
+    if (tipoViagem() == true) {
+        apagaDadosVoo();
+        document.getElementById("trecho1").style.display = "block";
+        document.getElementById("trecho2").style.display = "none";
+        document.getElementById("trecho3").style.display = "none";
+        document.getElementById("div_destino1").style.display = "block";
+        document.getElementById("div_datadestino1").style.display = "none";
+
+        if (document.getElementById("internacional").checked == true) {
+            ocultaCamposVooNacional();
 
 
-	    if (document.getElementById("internacional").checked == true) {
-	    	ocultaCamposVooNacional();
-	        document.getElementById("div_internacional1").style.display = "block";
-	        document.getElementById("div_internacional2").style.display = "block";
-	        document.getElementById("div_internacional3").style.display = "block";
+        } else {
+            document.getElementById("div_Nacional1").style.display = "block";
+            ocultaCamposVooInternacional();
+
+        }
+        document.getElementById("observacaoVoo").style.display = "block";
+    } else {
+        alertaTipoViagem();
+    }
+
+}
+
+function clickTipoVoo2() {
+    if (tipoViagem() == true) {
+        apagaDadosVoo();
+        document.getElementById("trecho1").style.display = "block";
+        document.getElementById("trecho2").style.display = "block";
+        document.getElementById("trecho3").style.display = "block";
+        document.getElementById("div_destino1").style.display = "block";
+        document.getElementById("div_datadestino1").style.display = "none";
 
 
-	    } 
-	    else {
-	        document.getElementById("div_Nacional1").style.display = "block";
-	        document.getElementById("div_Nacional2").style.display = "block";
-	        document.getElementById("div_Nacional3").style.display = "block";
-	        ocultaCamposVooInternacional();
+        if (document.getElementById("internacional").checked == true) {
+            ocultaCamposVooNacional();
+            document.getElementById("div_internacional1").style.display = "block";
+            document.getElementById("div_internacional2").style.display = "block";
+            document.getElementById("div_internacional3").style.display = "block";
 
-	    }
-	    
-	    document.getElementById("observacaoVoo").style.display = "block";
-	}
-	else {
-		alertaTipoViagem();
-	}
+
+        } else {
+            document.getElementById("div_Nacional1").style.display = "block";
+            document.getElementById("div_Nacional2").style.display = "block";
+            document.getElementById("div_Nacional3").style.display = "block";
+            ocultaCamposVooInternacional();
+
+        }
+
+        document.getElementById("observacaoVoo").style.display = "block";
+    } else {
+        alertaTipoViagem();
+    }
 
 }
 
 //limpa campos dos voos
-function apagaDadosVoo(){	       
-	          
-	            $('#datapartida1').val("");
-	            $('#datapartida2').val("");
-	            $('#datapartida3').val("");
-	            $('#dataretorno1').val("");
+function apagaDadosVoo() {
 
-	            window["origem1"].clear();
-	            window["origem2"].clear();
-	            window["origem3"].clear();
-	            window["destino1"].clear();
-	            window["destino2"].clear();
-	            window["destino3"].clear();
+    $('#datapartida1').val("");
+    $('#datapartida2').val("");
+    $('#datapartida3').val("");
+    $('#dataretorno1').val("");
 
-	            $('#internacionalOrigem1').val("");
-	            $('#internacionalOrigem2').val("");
-	            $('#internacionalOrigem3').val("");
-	            $('#internacionalDestino1').val("");
-	            $('#internacionalDestino2').val("");
-	            $('#internacionalDestino3').val("");
-	        
+    window["origem1"].clear();
+    window["origem2"].clear();
+    window["origem3"].clear();
+    window["destino1"].clear();
+    window["destino2"].clear();
+    window["destino3"].clear();
+
+    $('#internacionalOrigem1').val("");
+    $('#internacionalOrigem2').val("");
+    $('#internacionalOrigem3').val("");
+    $('#internacionalDestino1').val("");
+    $('#internacionalDestino2').val("");
+    $('#internacionalDestino3').val("");
+
 }
 
-function clickRemarcacao(){
-	if (document.getElementById("remarcacao").checked == true) {
+function clickRemarcacao() {
+    if (document.getElementById("remarcacao").checked == true) {
         document.getElementById("selecaodeviagens").style.display = "block";
         document.getElementById("div_justificativaremarcacao").style.display = "block";
-        
+
 
     }
-	 
+
 }
 
-function clickNovaSolicitacao(){
+function clickNovaSolicitacao() {
 
-	 if (document.getElementById("novasolicitacao").checked == true) {
-	        document.getElementById("selecaodeviagens").style.display = "none";
-	        document.getElementById("div_justificativaremarcacao").style.display = "none";
+    if (document.getElementById("novasolicitacao").checked == true) {
+        document.getElementById("selecaodeviagens").style.display = "none";
+        document.getElementById("div_justificativaremarcacao").style.display = "none";
 
 
-	    }
+    }
 }
 
-function clickPagamentoNormal(){
-	if (document.getElementById("normal").checked == true) {
+function clickPagamentoNormal() {
+    if (document.getElementById("normal").checked == true) {
         document.getElementById("selecaorateio").style.display = "none";
         document.getElementById("panelItens").style.display = "block";
 
@@ -508,12 +663,12 @@ function clickPagamentoNormal(){
     }
 }
 
-function clickPagamentoRateio(){
-	 if (document.getElementById("rateio").checked == true) {
-	        document.getElementById("selecaorateio").style.display = "block";
-	        document.getElementById("panelItens").style.display = "none";
+function clickPagamentoRateio() {
+    if (document.getElementById("rateio").checked == true) {
+        document.getElementById("selecaorateio").style.display = "block";
+        document.getElementById("panelItens").style.display = "none";
 
-	    }
+    }
 }
 
 function removeItens() {
@@ -551,7 +706,7 @@ function prazoMinino() {
             if (dataVoo <= dataHotel) {
                 menorDataInformada = dataVoo;
                 console.log("Retorno data Voo 1: " + menorDataInformada);
-                
+
             }
             //retorna a data de hospedagem porque é menor que de voo
             else {
@@ -566,11 +721,11 @@ function prazoMinino() {
             menorDataInformada = dataVoo;
             console.log("Retorno data Voo 2: " + menorDataInformada);
 
-            
+
         } else if (dataHotel.length > 0 && dataVoo.length == 0) {
             menorDataInformada = dataHotel;
             console.log("Retorno data Hotel 2: " + menorDataInformada);
-            
+
 
         }
 
@@ -587,7 +742,7 @@ function prazoMinino() {
 
         //recebe menor data string do Fluig e converte para tipo Data MM/DD/YYYY
         var menorDataConvertida = convertStringToData(menorDataInformada);
-                
+
         if (menorDataInformada.length > 0 && (menorDataConvertida <= prazoMinimo)) {
             //habilita campo para justificar prazo de antecedencia não cumprido
             document.getElementById("divJustificativa").style.display = "block";
@@ -596,52 +751,51 @@ function prazoMinino() {
             document.getElementById("divJustificativa").style.display = "none";
         }
 
-         //chama função para set prazo de aprovação
+        //chama função para set prazo de aprovação
         prazoAprovacao(menorDataConvertida);
-        
-        //chama função que verifica qual maior data informada da viagem
-        maiorDataInformadaViagem() ;
-    }   
-}
 
-function prazoReembolso(){
-	//preenche PRAZO REEMBOLSO
-    if (ATIVIDADE = CANCELAMENTOPASSAGEM ){    	
-    	if (document.getElementById("reembolso").checked == true){    		
-    		var dataAtual = new Date();
-    		var prazoReembolso = addMeses(dataAtual,6);
-    		var prazoConvertido = convertDataToString(prazoReembolso);
-        	$('#prazoreembolso').val(prazoConvertido);
-        		
-    	}
-    	else {
-    		$('#prazoreembolso').val('');
-    	}
-   
+        //chama função que verifica qual maior data informada da viagem
+        maiorDataInformadaViagem();
     }
 }
 
-function prazoAprovacao(dataViagem){
+function prazoReembolso() {
+    //preenche PRAZO REEMBOLSO
+    if (ATIVIDADE = CANCELAMENTOPASSAGEM) {
+        if (document.getElementById("reembolso").checked == true) {
+            var dataAtual = new Date();
+            var prazoReembolso = addMeses(dataAtual, 6);
+            var prazoConvertido = convertDataToString(prazoReembolso);
+            $('#prazoreembolso').val(prazoConvertido);
+
+        } else {
+            $('#prazoreembolso').val('');
+        }
+
+    }
+}
+
+function prazoAprovacao(dataViagem) {
     var dtPrazoApr = convertDataToString(dataViagem);
     var prazoAprovacao;
-    if (dtPrazoApr.length >0) {
-    	prazoAprovacao = addDias(dataViagem, -1);
+    if (dtPrazoApr.length > 0) {
+        prazoAprovacao = addDias(dataViagem, -1);
         //set data prazo de cancelamento em campo
         var dtPrazoApr2 = document.getElementById("prazoaprovacao").value = convertDataToString(prazoAprovacao);
 
     }
-    
+
 }
 
-function prazoCancelamento(dataViagem){
-	   var dtPrazo = convertDataToString(dataViagem);
-	   var prazo;
-	    if (dtPrazo.length >0) {
-	    	prazo = addDias(dataViagem, 2);
-	        //set data prazo de cancelamento em campo
-	        var dtPrazoCancelamento = document.getElementById("prazoCancelamento").value = convertDataToString(prazo);
+function prazoCancelamento(dataViagem) {
+    var dtPrazo = convertDataToString(dataViagem);
+    var prazo;
+    if (dtPrazo.length > 0) {
+        prazo = addDias(dataViagem, 2);
+        //set data prazo de cancelamento em campo
+        var dtPrazoCancelamento = document.getElementById("prazoCancelamento").value = convertDataToString(prazo);
 
-	    }
+    }
 }
 
 //preenche campos ZOOM
@@ -658,7 +812,7 @@ function setSelectedZoomItem(selectedItem) {
     var REMARCACAO = "dataset_solicitacaoviagem";
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
-    var FUNCIONARIO ="outroFuncionario";
+    var FUNCIONARIO = "outroFuncionario";
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
@@ -693,7 +847,7 @@ function setSelectedZoomItem(selectedItem) {
 
         } else {
             //desabilita zoom que não devem ser preenchidos
-        	  console.log(selectedItem["Codigo"]);
+            console.log(selectedItem["Codigo"]);
             window[PROJETO + "___" + linhaPagamento[1]].disable(false);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -781,9 +935,9 @@ function setSelectedZoomItem(selectedItem) {
 
         //preenche informações de pagamento
         buscaRemarcacao(selectedItem);
-        
-        
-        
+
+
+
     }
 
     //GRAVA CODIGO DO RATEIO EM CAMPO OCULTO 
@@ -792,22 +946,38 @@ function setSelectedZoomItem(selectedItem) {
         $("#codigorateio").val(selectedItem["Codigo"]);
 
     }
-    
+
     //preenche dados do funcionario
     if (campoZOOM == FUNCIONARIO) {
-    	  $('#nomepassageiro').val(selectedItem["NOME"]);
-          $('#nomemae').val(selectedItem["MAE"]);
-          $('#cpfpassageiro').val(selectedItem["CPF"]);
-          $('#rgpassageiro').val(selectedItem["RG"]);
-          $('#passaporte').val(selectedItem["PASSAPORTE"]);
-          $('#datanasc').val(selectedItem["DTNASC"]);
+        $('#nomepassageiro').val(selectedItem["NOME"]);
+        $('#nomemae').val(selectedItem["MAE"]);
+        $('#cpfpassageiro').val(selectedItem["CPF"]);
+        $('#rgpassageiro').val(selectedItem["RG"]);
+        $('#passaporte').val(selectedItem["PASSAPORTE"]);
+        $('#datanasc').val(selectedItem["DTNASC"]);
+
+        //mostra campos do passageiro
+        var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
+
+        if (document.getElementById("solicitanteNfuncionario").checked == true &&
+            document.getElementById("solicitanteNpassageiro").checked == true &&
+            document.getElementById("passageirofuncionario").checked == true) {
+
+            var emailFuncionarioPassageiro = selectedItem["EMAIL_F"];
+
+            if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
+                //  AprovadorViagem(emailFuncionarioPassageiro);
+            }
+
+
+        }
 
     }
-    
-    
-    
-    if (linhaPagamento[0] == AGENDA){
-    	buscaAtividades(selectedItem);
+
+
+
+    if (linhaPagamento[0] == AGENDA) {
+        buscaAtividades(selectedItem);
     }
 }
 
@@ -890,7 +1060,8 @@ function removedZoomItem(removedItem) {
     var REMARCACAO = "dataset_solicitacaoviagem";
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
-    var FUNCIONARIO ="outroFuncionario";
+    var FUNCIONARIO = "outroFuncionario";
+    var APROVADOR = "AprovadorNfunc";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -962,7 +1133,7 @@ function removedZoomItem(removedItem) {
         $('#rgpassageiro').val('');
         $('#passaporte').val('');
         $('#datanasc').val('');
-       //remove linhas de pagamento
+        //remove linhas de pagamento
         removeItens();
     }
 
@@ -972,24 +1143,28 @@ function removedZoomItem(removedItem) {
         $("#codigorateio").val('');
 
     }
-    
-    if (campoZOOM == AGENDA){
-    	removeItensAgenda();
-    	
+
+    if (campoZOOM == AGENDA) {
+        removeItensAgenda();
+
     }
-    
-    
-    if (campoZOOM == FUNCIONARIO){
-    	$('#nomepassageiro').val('');
+
+
+    if (campoZOOM == FUNCIONARIO) {
+        $('#nomepassageiro').val('');
         $('#nomemae').val('');
         $('#cpfpassageiro').val('');
         $('#rgpassageiro').val('');
         $('#passaporte').val('');
         $('#datanasc').val('');
-    	
+
+
+
     }
-        
-  
+
+
+
+
 }
 
 function setZoomData(instance, value) {
@@ -1007,12 +1182,12 @@ function convertStringToData(StringToData) {
 //recebe data JS e convert para data FLuig
 function convertDataToString(dataToString) {
     var dia;
-       
+
     //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
     var mes = dataToString.getMonth() + 1;
-    
+
     console.log("MES: " + mes);
-    
+
     if (dataToString.getDate().toString().length == 1) {
         dia = dataToString.getDate();
         dia = "0" + dia.toString();
@@ -1027,7 +1202,7 @@ function convertDataToString(dataToString) {
     if (mes.toString().length == 1) {
         mes = "0" + mes.toString();
 
-    } 
+    }
     //else {mes = dataToString.getMonth() + 1;}
 
 
@@ -1052,161 +1227,151 @@ function addAnos(data, anos) {
 
 }
 
-function vooatendido(){
-	var checkBoxHotel = document.getElementById("hotelComprado");
-	var checkBoxVoo = document.getElementById("vooComprado");
-	
-	if (checkBoxVoo.checked == true && checkBoxHotel.checked == true){
-		
-		document.getElementById("div_valores").style.display = "block";
-		document.getElementById("div_valorp").style.display = "block";
-		document.getElementById("div_valorh").style.display = "block";
-	    document.getElementById("div_valortx").style.display = "none";
-	}
-	else if (checkBoxVoo.checked == true){
-		document.getElementById("div_valores").style.display = "block";
-		document.getElementById("div_valorp").style.display = "block";
-		document.getElementById("div_valorh").style.display = "none";
-	    document.getElementById("div_valortx").style.display = "none";
-	}
-	else if (checkBoxVoo.checked == false ){
-		document.getElementById("div_valorp").style.display = "none";
-	}
-    
+function vooatendido() {
+    var checkBoxHotel = document.getElementById("hotelComprado");
+    var checkBoxVoo = document.getElementById("vooComprado");
+
+    if (checkBoxVoo.checked == true && checkBoxHotel.checked == true) {
+
+        document.getElementById("div_valores").style.display = "block";
+        document.getElementById("div_valorp").style.display = "block";
+        document.getElementById("div_valorh").style.display = "block";
+        document.getElementById("div_valortx").style.display = "none";
+    } else if (checkBoxVoo.checked == true) {
+        document.getElementById("div_valores").style.display = "block";
+        document.getElementById("div_valorp").style.display = "block";
+        document.getElementById("div_valorh").style.display = "none";
+        document.getElementById("div_valortx").style.display = "none";
+    } else if (checkBoxVoo.checked == false) {
+        document.getElementById("div_valorp").style.display = "none";
+    }
+
 
 }
 
-function hotelatendido(){
+function hotelatendido() {
 
-	var checkBoxHotel = document.getElementById("hotelComprado");
-	var checkBoxVoo = document.getElementById("vooComprado");
-	if (checkBoxHotel.checked == true && checkBoxVoo.checked == true){
-	document.getElementById("div_valores").style.display = "block";
-	document.getElementById("div_valorp").style.display = "block";
-	document.getElementById("div_valorh").style.display = "block";
-    document.getElementById("div_valortx").style.display = "none";
+    var checkBoxHotel = document.getElementById("hotelComprado");
+    var checkBoxVoo = document.getElementById("vooComprado");
+    if (checkBoxHotel.checked == true && checkBoxVoo.checked == true) {
+        document.getElementById("div_valores").style.display = "block";
+        document.getElementById("div_valorp").style.display = "block";
+        document.getElementById("div_valorh").style.display = "block";
+        document.getElementById("div_valortx").style.display = "none";
 
-	}
-	else if (checkBoxHotel.checked == true){
-		document.getElementById("div_valores").style.display = "block";
-		document.getElementById("div_valorp").style.display = "none";
-		document.getElementById("div_valorh").style.display = "block";
-	    document.getElementById("div_valortx").style.display = "none";
-	}
-	
-	else if (checkBoxHotel.checked == false ){
-		document.getElementById("div_valorh").style.display = "none";
-	}
-    
+    } else if (checkBoxHotel.checked == true) {
+        document.getElementById("div_valores").style.display = "block";
+        document.getElementById("div_valorp").style.display = "none";
+        document.getElementById("div_valorh").style.display = "block";
+        document.getElementById("div_valortx").style.display = "none";
+    } else if (checkBoxHotel.checked == false) {
+        document.getElementById("div_valorh").style.display = "none";
+    }
+
 }
 
 //buscar campo de maior data para calcular prazo final da viagem
 function maiorDataInformadaViagem() {
-	   var maiorDataInformada;
-       var dataVoo ='';
-       var dataHotel ='';
-    
-       //VERIFICA SE EXISTE VOO
-       if (document.getElementById("tipovoo0").checked == true){
-       	dataVoo = document.getElementById("dataretorno1").value;
-        console.log("DT Final 1: " + dataVoo);        
-        console.log("tamanho data final: " +      dataVoo.length);        
-        
-       }
-       else if (document.getElementById("tipovoo1").checked == true){
-       	dataVoo = document.getElementById("datapartida1").value;        
+    var maiorDataInformada;
+    var dataVoo = '';
+    var dataHotel = '';
+
+    //VERIFICA SE EXISTE VOO
+    if (document.getElementById("tipovoo0").checked == true) {
+        dataVoo = document.getElementById("dataretorno1").value;
+        console.log("DT Final 1: " + dataVoo);
+        console.log("tamanho data final: " + dataVoo.length);
+
+    } else if (document.getElementById("tipovoo1").checked == true) {
+        dataVoo = document.getElementById("datapartida1").value;
         console.log("DT Final 2: " + dataVoo);
-        
-       }
-       else if (document.getElementById("tipovoo2").checked == true){
-    	    var dataVoo2 = document.getElementById("datapartida2").value;
-            var dataVoo3 = document.getElementById("datapartida3").value;
-            
-            if (dataVoo3 == null || dataVoo3 == '' || dataVoo3 > 0 ){
-           	 dataVoo = dataVoo2;
-             console.log("DT Final 3: " + dataVoo);
+
+    } else if (document.getElementById("tipovoo2").checked == true) {
+        var dataVoo2 = document.getElementById("datapartida2").value;
+        var dataVoo3 = document.getElementById("datapartida3").value;
+
+        if (dataVoo3 == null || dataVoo3 == '' || dataVoo3 > 0) {
+            dataVoo = dataVoo2;
+            console.log("DT Final 3: " + dataVoo);
+        } else {
+            dataVoo = dataVoo3;
+            console.log("DT Final 4: " + dataVoo);
+
+        }
+    }
+
+    //VERIFICA SE EXISTE HOSPEDAGEM
+    if (document.getElementById("solteiro").checked == true || document.getElementById("duplo").checked == true ||
+        document.getElementById("triplo").checked == true || document.getElementById("outroquarto").checked == true) {
+
+        if (document.getElementById("tipovoo2").checked == true) {
+            var dataHotel2 = document.getElementById("datacheckout2").value;
+            var dataHotel3 = document.getElementById("datacheckout3").value;
+
+            if (dataHotel3 == null || dataHotel3 == '' || dataHotel3 > 0) {
+                dataHotel = dataHotel2;
+                console.log("DT Final 5: " + dataHotel);
+            } else {
+                dataHotel = dataHotel3;
+                console.log("DT Final 6: " + dataHotel);
             }
-            else {
-           	 dataVoo = dataVoo3 ; 
-             console.log("DT Final 4: " + dataVoo);
-             
-            }             
-       }
-       
-       //VERIFICA SE EXISTE HOSPEDAGEM
-       if (document.getElementById("solteiro").checked == true || document.getElementById("duplo").checked == true ||
-       		document.getElementById("triplo").checked == true || document.getElementById("outroquarto").checked == true){
-       	
-       	if (document.getElementById("tipovoo2").checked == true) {
-       		  var dataHotel2 = document.getElementById("datacheckout2").value;
-       	      var dataHotel3 = document.getElementById("datacheckout3").value;
-       	      
-                 if (dataHotel3 == null || dataHotel3 == '' || dataHotel3 > 0){
-               	  dataHotel = dataHotel2;
-                  console.log("DT Final 5: " + dataHotel);
-                 }
-                 else {               	  
-               	  dataHotel = dataHotel3 ;
-                  console.log("DT Final 6: " + dataHotel);
-                 }   
-       	      
-       	}        	
-       	else {
-       			 dataHotel = document.getElementById("datacheckout").value;
-       	        console.log("DT Final 7: " + dataHotel);
-       	}
-       }
-       
-           
 
-       //verificar se data de voo é diferente de vazio ou null
-       if (dataVoo.length > 0 && dataHotel.length > 0) {    	   
-           //verifica se a data de voo é maior que a data de hospedagem ja que nao sao null/vazio
-           if (dataVoo >= dataHotel) {
-        	   maiorDataInformada = dataVoo;
+        } else {
+            dataHotel = document.getElementById("datacheckout").value;
+            console.log("DT Final 7: " + dataHotel);
+        }
+    }
 
-               
-           }
-           //retorna a data de hospedagem porque é maior que de voo
-           else {
-           	maiorDataInformada = dataHotel;
 
-           }
-       }
 
-       //retorna a data do voo porque hotel é null
-       else if (dataVoo.length > 0 && dataHotel.length == 0) {
-       	maiorDataInformada = dataVoo;
-           
-       } else if (dataHotel.length > 0 && dataVoo.length == 0) {
-       	maiorDataInformada = dataHotel;
+    //verificar se data de voo é diferente de vazio ou null
+    if (dataVoo.length > 0 && dataHotel.length > 0) {
+        //verifica se a data de voo é maior que a data de hospedagem ja que nao sao null/vazio
+        if (dataVoo >= dataHotel) {
+            maiorDataInformada = dataVoo;
 
-       }
 
-       console.log("MAIOR DATA INFORMADA: " + maiorDataInformada);
-       //recebe maior data string do Fluig e converte para tipo Data MM/DD/YYYY
-       var maiorDataConvertida = convertStringToData(maiorDataInformada);
-                              
-       //chama função para set prazo de cancelamento
-       prazoCancelamento(maiorDataConvertida);
-    
+        }
+        //retorna a data de hospedagem porque é maior que de voo
+        else {
+            maiorDataInformada = dataHotel;
+
+        }
+    }
+
+    //retorna a data do voo porque hotel é null
+    else if (dataVoo.length > 0 && dataHotel.length == 0) {
+        maiorDataInformada = dataVoo;
+
+    } else if (dataHotel.length > 0 && dataVoo.length == 0) {
+        maiorDataInformada = dataHotel;
+
+    }
+
+    console.log("MAIOR DATA INFORMADA: " + maiorDataInformada);
+    //recebe maior data string do Fluig e converte para tipo Data MM/DD/YYYY
+    var maiorDataConvertida = convertStringToData(maiorDataInformada);
+
+    //chama função para set prazo de cancelamento
+    prazoCancelamento(maiorDataConvertida);
+
 }
 
-function viagemPlanejadaS(){
-	document.getElementById("divDataSetAgenda").style.display = "block";
-	
-	
+function viagemPlanejadaS() {
+    document.getElementById("divDataSetAgenda").style.display = "block";
+
+
 }
 
-function viagemPlanejadaN(){
-	document.getElementById("divDataSetAgenda").style.display = "none";
-	
+function viagemPlanejadaN() {
+    document.getElementById("divDataSetAgenda").style.display = "none";
+
 }
 
 function buscaAtividades(item) {
-	console.log("AGENDA DE VIAGEM: ");
-	console.log(item.Codigo);
-	
+    console.log("AGENDA DE VIAGEM: ");
+    console.log(item.Codigo);
+
     var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("CodigoAgenda", item.Codigo, item.Codigo, ConstraintType.MUST));
     var dataset = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
@@ -1217,80 +1382,80 @@ function buscaAtividades(item) {
     constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
     constraints.push(DatasetFactory.createConstraint("tablename", "tbAgendaViagem", "tbAgendaViagem", ConstraintType.MUST));
     constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado", "aprovado", ConstraintType.MUST));
-	
-    dataset  = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
 
-   
+    dataset = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
+
+
     if (dataset != null && dataset.values.length > 0) {
         analisaItem(dataset.values);
     }
-   
+
 }
 
 function analisaItem(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("SolicAgendaViagem");
-        
+
         $("#calendarPeriodoDe___" + indice).val(itens[i].calendarPeriodoDe);
         $("#calendarPeriodoAte___" + indice).val(itens[i].calendarPeriodoAte);
         $("#agendaAtividade___" + indice).val(itens[i].atividade);
-       
+
     }
-    
+
 }
 
-function desejaPassagem(){
-	document.getElementById("div_tipoVoo").style.display = "block";	
+function desejaPassagem() {
+    document.getElementById("div_tipoVoo").style.display = "block";
 }
 
-function desejaHotel(){
-	document.getElementById("div_tipoHotel").style.display = "block";
+function desejaHotel() {
+    document.getElementById("div_tipoHotel").style.display = "block";
 }
 
-function AprovadorViagem(){
-	var email = parent.WCMAPI.userEmail.toUpperCase();	
+function AprovadorViagem() {
+    //busca email usuario logado
+    var email = parent.WCMAPI.userEmail.toUpperCase();
     var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
-    
     if (dataset != null && dataset.values.length > 0) {
-           
-         var matriculaAprovador =  dataset.values[0]["MATRICULA_APR"]; 
-         var emailAprovador =  dataset.values[0]["EMAIL_APR"];
-    	
-         $('#emailGestor').val(emailAprovador);
-         $('#matriculaApr').val(matriculaAprovador);
-        
+
+        var matriculaAprovador = dataset.values[0]["MATRICULA_APR"];
+        var emailAprovador = dataset.values[0]["EMAIL_APR"];
+
+        $('#emailGestor').val(emailAprovador);
+        $('#matriculaApr').val(matriculaAprovador);
+
     }
-	
+
 }
 
 ////falta implementar dataset para receber email funcionario porque dataset customizado não aceita constraint
-function dadosFuncionarioDataSet(){
-	var email = parent.WCMAPI.userEmail.toUpperCase();	
-	
-	var constraints = new Array();
+function dadosFuncionarioDataSet() {
+    var email = parent.WCMAPI.userEmail.toUpperCase();
+
+    var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
     var dataset = DatasetFactory.getDataset("VM_Funcionario", null, constraints, null);
-  
+
     if (dataset != null && dataset.values.length > 0) {
-    
-    	$('#nomepassageiro').val(dataset.values[0]["NOME"]);
+
+        $('#nomepassageiro').val(dataset.values[0]["NOME"]);
         $('#nomemae').val(dataset.values[0]["MAE"]);
         $('#rgpassageiro').val(dataset.values[0]["RG"]);
         $('#cpfpassageiro').val(dataset.values[0]["CPF"]);
         $('#passaporte').val(dataset.values[0]["PASSAPORTE"]);
-        dataNasc.setDate(dataset.values[0]["DTNASC"]);    
-        
+        dataNasc.setDate(dataset.values[0]["DTNASC"]);
+
     }
-	
+
 }
 
 //depois que o metodo dadosFuncionarioDataSet for implementado esse metado pode ser descartado
-function dadosFuncionario(){
-	if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
-		var email = parent.WCMAPI.userEmail.toUpperCase();			
-		var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/'+ email;
+function dadosFuncionario() {
+    if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
+        var email = parent.WCMAPI.userEmail.toUpperCase();
+        var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/' + email;
         //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
-    	
+
         function carregaDados() {
             var loading = FLUIGC.loading("body", {
                 textMessage: "Carregando Dados, aguarde..."
@@ -1307,15 +1472,15 @@ function dadosFuncionario(){
                         console.log(data);
                         infoUser = data;
                         infoUser = infoUser[0];
-                       
-     				    window["outroFuncionario"].clear();
+
+                        window["outroFuncionario"].clear();
                         $('#nomepassageiro').val(infoUser.CNOME);
-    			        $('#nomemae').val(infoUser.CMAE);
-    			        $('#rgpassageiro').val(infoUser.CRG);
-    			        $('#cpfpassageiro').val(infoUser.CCPF);
-    			        $('#passaporte').val(infoUser.CPASSAP);
-    			        dataNasc.setDate(infoUser.CDATANASC);
-                                                
+                        $('#nomemae').val(infoUser.CMAE);
+                        $('#rgpassageiro').val(infoUser.CRG);
+                        $('#cpfpassageiro').val(infoUser.CCPF);
+                        $('#passaporte').val(infoUser.CPASSAP);
+                        dataNasc.setDate(infoUser.CDATANASC);
+
                         loading.hide();
                     }
                 },
