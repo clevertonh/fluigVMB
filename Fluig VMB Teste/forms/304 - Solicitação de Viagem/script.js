@@ -58,17 +58,21 @@ $(document).ready(function() {
 
     }
 
-    if (ATIVIDADE == ABERTURA) {
-        document.getElementById("viagemplanejadaN").checked = true;
-        onlyDate.setDate(new Date().toLocaleString());
 
-        //busca aprovador do usuário logado
-        AprovadorViagem();
-
-    }
 
 
     if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO) {
+    	
+        if (ATIVIDADE == ABERTURA) {
+            document.getElementById("viagemplanejadaN").checked = true;
+            onlyDate.setDate(new Date().toLocaleString());
+
+            //busca aprovador do usuário logado
+//            AprovadorViagem();
+
+        }
+    	
+    	
         dataNasc = FLUIGC.calendar('#calendariodatanasc', {
             pickDate: true,
             pickTime: false
@@ -208,8 +212,31 @@ function solicitanteFunc() {
     document.getElementById("divdadospassageiro").style.display = "none";
 
     //retorna aprovador para funcionário
-    //AprovadorViagem();
+    AprovadorViagem();
 
+
+}
+
+function solicitanteNFunc() {
+    $('#solicitantepassageiro').attr("checked", false);
+    $('#solicitanteNpassageiro').attr("checked", false);
+    $('#passageirofuncionarionao').attr("checked", false);
+    $('#passageirofuncionario').attr("checked", false);
+
+    $('#nomepassageiro').val("");
+    $('#nomemae').val("");
+    $('#rgpassageiro').val("");
+    $('#cpfpassageiro').val("");
+    $('#passaporte').val("");
+    $('#emailGestor').val("");
+    $('#matriculaApr').val("");
+    dataNasc.setDate(null);
+    window["outroFuncionario"].clear();
+    window["AprovadorNfunc"].clear();
+
+    document.getElementById("divOutroFun").style.display = "none";
+    document.getElementById("divOutroApr").style.display = "none";
+    document.getElementById("divdadospassageiro").style.display = "none";
 
 }
 
@@ -416,29 +443,6 @@ function passageiroNfuncionario() {
         document.getElementById("divdadospassageiro").style.display = "block";
     }
 
-
-}
-
-function solicitanteNFunc() {
-    $('#solicitantepassageiro').attr("checked", false);
-    $('#solicitanteNpassageiro').attr("checked", false);
-    $('#passageirofuncionarionao').attr("checked", false);
-    $('#passageirofuncionario').attr("checked", false);
-
-    $('#nomepassageiro').val("");
-    $('#nomemae').val("");
-    $('#rgpassageiro').val("");
-    $('#cpfpassageiro').val("");
-    $('#passaporte').val("");
-    $('#emailGestor').val("");
-    $('#matriculaApr').val("");
-    dataNasc.setDate(null);
-    window["outroFuncionario"].clear();
-    window["AprovadorNfunc"].clear();
-
-    document.getElementById("divOutroFun").style.display = "none";
-    document.getElementById("divOutroApr").style.display = "none";
-    document.getElementById("divdadospassageiro").style.display = "none";
 
 }
 
@@ -1001,7 +1005,7 @@ function setSelectedZoomItem(selectedItem) {
     		   	document.getElementById("divOutroFun").style.display = "block";
     	   }
     	
-    	   //AprovadorViagem();
+    	   AprovadorViagem();
     }
     
 }
@@ -1439,8 +1443,6 @@ function desejaHotel() {
 
 function AprovadorViagem() {
 
-	
-	//console.log("BUSCANDO APROVADOR");
 	//busca email usuario logado
     var email = parent.WCMAPI.userEmail.toUpperCase();
     var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
@@ -1474,7 +1476,6 @@ function dadosFuncionarioDataSet() {
         dataNasc.setDate(dataset.values[0]["DTNASC"]);
 
     }
-    
 
 }
 
