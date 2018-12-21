@@ -1,32 +1,31 @@
-var ABERTURA = 0;
-var APROVACAO_GESTOR = 5;
-var VALIDACAO = 48;
-var APROVACAO_RH = 27;
 
-var onlyDate = FLUIGC.calendar('#dataSolicitacao', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
+function clickPagamentoNormal() {
+    if (document.getElementById("normal").checked == true) {
+        document.getElementById("selecaorateio").style.display = "none";
+        document.getElementById("panelItens").style.display = "block";
 
-$(document).ready(function() {
-	if (ATIVIDADE == ABERTURA){
-		onlyDate.setDate(new Date().toLocaleString());
-		
-	}
-	
-});
+        //limpa campos do rateio
+        $('#codigorateio').val("");
+        window["rateioconfigurado"].clear();
+    }
+}
 
-var dataAprovacao = FLUIGC.calendar('#dataAprovacao', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
+function clickPagamentoRateio() {
+    if (document.getElementById("rateio").checked == true) {
+        document.getElementById("selecaorateio").style.display = "block";
+        document.getElementById("panelItens").style.display = "none";
 
+    }
+}
+
+function removeItens() {
+    var linhas = $("#tbodyItens tr");
+    for (var i = 1; i < linhas.length; i++) {
+        var td = $(linhas[i]).children()[0];
+        var span = $(td).children()[0];
+        fnWdkRemoveChild(span);
+    }
+}
 
 
 function adicionaItem(itens) {
@@ -80,6 +79,8 @@ function adicionaLinha() {
     window["txtareaestrategica___" + indice].disable(true);
 }
 
+
+
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
     var CCUSTO = "txtcentrocusto";
@@ -89,9 +90,8 @@ function removedZoomItem(removedItem) {
     var AREAESTRATEGICA = "txtareaestrategica";
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
-     var RATEIO = "rateioconfigurado";
-
-
+    var RATEIO = "rateioconfigurado";
+   
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
@@ -102,7 +102,7 @@ function removedZoomItem(removedItem) {
 
 
     if (linhaPagamento[0] == CCUSTO) {
-        //limpa todos os campos           
+        //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -152,20 +152,15 @@ function removedZoomItem(removedItem) {
         $("#codigorateio").val('');
 
     }
-        
-  
+
+
+
+
 }
 
 function setZoomData(instance, value) {
     window[instance].setValue(value);
 }
-
-/*
-var nome = fluigAPI.getUserService().getCurrent().getFullName();
-
-var mail = fluigAPI.getUserService().getCurrent().getEmail();
-
-*/
 
 
 
@@ -180,12 +175,8 @@ function setSelectedZoomItem(selectedItem) {
   var AREAESTRATEGICA = "txtareaestrategica";
   var PROJETO = "txtprojeto";
   var ALOCACAO = "alocacao";
-  var REMARCACAO = "dataset_solicitacaoviagem";
   var RATEIO = "rateioconfigurado";
-  var AGENDA = "agenda";
-  var FUNCIONARIO = "outroFuncionario";
-  var APROVADOR = "AprovadorNfunc";
-
+ 
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
 
@@ -266,51 +257,6 @@ function setSelectedZoomItem(selectedItem) {
   }
 
 
-  if (campoZOOM == REMARCACAO) {
-
-      console.log("-----REMARCACAO: PREENCHENDO CAMPOS AUTOMATICAMENTE--------");
-
-      if (selectedItem["tipoviagem"] == "nacional") {
-          document.getElementById("nacional").checked = true;
-
-          document.getElementById("nacional").click();
-      } else {
-          $("#internacional").attr('checked', 'checked');
-          //document.getElementById("internacional").checked = true;			 
-          document.getElementById("internacional").click();
-          //falta bloquear o campo tipo de viagem
-      }
-
-
-      if (selectedItem["tipoPagamento"] == "normal") {
-          document.getElementById("normal").checked = true;
-          document.getElementById("normal").click();
-      } else {
-          document.getElementById("rateio").checked = true;
-          document.getElementById("rateio").click();
-          window["rateioconfigurado"].setValue(selectedItem["rateioconfigurado"]);
-          $('#codigorateio').val(selectedItem["codigorateio"]);
-
-
-
-      }
-
-      document.getElementById("solicitanteNpassageiro").click();
-      $('#nomepassageiro').val(selectedItem["nomepassageiro"]);
-      $('#nomemae').val(selectedItem["nomemae"]);
-      $('#cpfpassageiro').val(selectedItem["cpfpassageiro"]);
-      $('#rgpassageiro').val(selectedItem["rgpassageiro"]);
-      $('#passaporte').val(selectedItem["passaporte"]);
-      $('#datanasc').val(selectedItem["datanasc"]);
-      $('#finalidade').val(selectedItem["finalidade"]);
-
-
-      //preenche informações de pagamento
-      buscaRemarcacao(selectedItem);
-
-
-
-  }
 
   //GRAVA CODIGO DO RATEIO EM CAMPO OCULTO 
   if (campoZOOM == RATEIO) {
@@ -319,41 +265,7 @@ function setSelectedZoomItem(selectedItem) {
 
   }
 
-  //preenche dados do funcionario
-  if (campoZOOM == FUNCIONARIO) {
-      $('#nomepassageiro').val(selectedItem["NOME"]);
-      $('#nomemae').val(selectedItem["MAE"]);
-      $('#cpfpassageiro').val(selectedItem["CPF"]);
-      $('#rgpassageiro').val(selectedItem["RG"]);
-      $('#passaporte').val(selectedItem["PASSAPORTE"]);
-      $('#datanasc').val(selectedItem["DTNASC"]);
 
-      //mostra campos do passageiro
-      var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
 
-      if (document.getElementById("solicitanteNfuncionario").checked == true &&
-          document.getElementById("solicitanteNpassageiro").checked == true &&
-          document.getElementById("passageirofuncionario").checked == true) {
 
-          var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
-
-          if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
-              //  AprovadorViagem(emailFuncionarioPassageiro);
-          }
-      }
-
-  }
-
-  
-  if (campoZOOM == APROVADOR ){
-  	   if (document.getElementById("solicitanteNfuncionario").checked == true &&
-  	            document.getElementById("solicitanteNpassageiro").checked == true &&
-  	            document.getElementById("passageirofuncionario").checked == true) {
-  		   
-  		   	document.getElementById("divOutroFun").style.display = "block";
-  	   }
-  	
-  	   AprovadorViagem();
-  }
-  
 }

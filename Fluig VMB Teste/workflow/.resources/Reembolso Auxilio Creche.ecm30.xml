@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <version>8</version>
+      <version>10</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -174,7 +174,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>310</positionX>
+      <positionX>300</positionX>
       <positionY>625</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -224,7 +224,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>130</positionX>
+      <positionX>120</positionX>
       <positionY>440</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -276,7 +276,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <version>1</version>
-        <sequence>35</sequence>
+        <sequence>60</sequence>
       </processStatePK>
       <stateName>Aprovado?</stateName>
       <stateDescription>Aprovado?</stateDescription>
@@ -286,59 +286,12 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>520</positionX>
+      <positionX>480</positionX>
       <positionY>609</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
       <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
-        <version>1</version>
-        <sequence>43</sequence>
-      </processStatePK>
-      <stateName>Reprovado</stateName>
-      <stateDescription>Reprovado</stateDescription>
-      <instruction>Atividade final do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>660</positionX>
-      <positionY>690</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>65</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
       <openInstances>0</openInstances>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
@@ -372,8 +325,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>460</positionX>
-      <positionY>440</positionY>
+      <positionX>500</positionX>
+      <positionY>457</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -395,10 +348,57 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <version>1</version>
-        <sequence>53</sequence>
+        <sequence>62</sequence>
       </processStatePK>
       <stateName>Pagamento gerado</stateName>
       <stateDescription>Pagamento gerado</stateDescription>
+      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>610</positionX>
+      <positionY>590</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>68</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Reembolso Creche</processId>
+        <version>1</version>
+        <sequence>66</sequence>
+      </processStatePK>
+      <stateName>Reprovado</stateName>
+      <stateDescription>Reprovado</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -419,8 +419,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>660</positionX>
-      <positionY>580</positionY>
+      <positionX>610</positionX>
+      <positionY>690</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -430,7 +430,7 @@
       <inhibitTransfer>false</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
-      <bpmnType>60</bpmnType>
+      <bpmnType>65</bpmnType>
       <signalId>0</signalId>
       <counterSign>false</counterSign>
       <openInstances>0</openInstances>
@@ -444,18 +444,18 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>10</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>27</destinationSequenceId>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>10</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -466,22 +466,22 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
-        <sequence>35</sequence>
+        <version>10</version>
+        <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>62</destinationSequenceId>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
-        <sequence>35</sequence>
+        <version>10</version>
+        <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
-      <destinationSequenceId>43</destinationSequenceId>
+      <destinationSequenceId>66</destinationSequenceId>
     </ConditionProcessState>
   </list>
   <list>
@@ -513,40 +513,6 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>21</initialStateSequence>
       <finalStateSequence>44</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
-        <version>1</version>
-        <linkSequence>40</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>35</initialStateSequence>
-      <finalStateSequence>43</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
-        <version>1</version>
-        <linkSequence>42</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>27</initialStateSequence>
-      <finalStateSequence>35</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -609,12 +575,46 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Creche</processId>
         <version>1</version>
-        <linkSequence>58</linkSequence>
+        <linkSequence>61</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>35</initialStateSequence>
-      <finalStateSequence>53</finalStateSequence>
+      <initialStateSequence>27</initialStateSequence>
+      <finalStateSequence>60</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Reembolso Creche</processId>
+        <version>1</version>
+        <linkSequence>63</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>60</initialStateSequence>
+      <finalStateSequence>62</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Reembolso Creche</processId>
+        <version>1</version>
+        <linkSequence>65</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>60</initialStateSequence>
+      <finalStateSequence>66</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -629,7 +629,7 @@
     <SwimLane>
       <color>FFFFFF</color>
       <height>740</height>
-      <width>931</width>
+      <width>871</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Solicitação de reembolso creche</stateName>
@@ -645,7 +645,7 @@
     <SwimLane>
       <color>9F9F9F</color>
       <height>185</height>
-      <width>901</width>
+      <width>841</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -661,7 +661,7 @@
     <SwimLane>
       <color>C0C0C0</color>
       <height>185</height>
-      <width>901</width>
+      <width>841</width>
       <positionX>40</positionX>
       <positionY>195</positionY>
       <stateName>Gestor imediato</stateName>
@@ -677,7 +677,7 @@
     <SwimLane>
       <color>82b0b7</color>
       <height>185</height>
-      <width>901</width>
+      <width>841</width>
       <positionX>40</positionX>
       <positionY>565</positionY>
       <stateName>Gerente de P&amp;C</stateName>
@@ -693,7 +693,7 @@
     <SwimLane>
       <color>adc9ac</color>
       <height>185</height>
-      <width>901</width>
+      <width>841</width>
       <positionX>40</positionX>
       <positionY>380</positionY>
       <stateName>Departamento Pessoal</stateName>
@@ -720,7 +720,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -730,7 +730,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -740,7 +740,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -750,7 +750,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -760,7 +760,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -770,7 +770,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -780,7 +780,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -790,7 +790,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -800,7 +800,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -810,7 +810,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

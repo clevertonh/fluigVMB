@@ -707,72 +707,82 @@ function removeItensAgenda() {
 }
 
 function prazoMinino() {
-
-    if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == CORRIGIRSOLICITACAO) {
-        var maiorDataInformada;
-        var dataAtual = new Date();
-        var prazoMinimo;
-        var menorDataInformada;
-
-        var dataVoo = document.getElementById("datapartida1").value;
-        var dataHotel = document.getElementById("datacheckin").value;
-
-        //verificar se data de voo é diferente de vazio ou null
-        if (dataVoo.length > 0 && dataHotel.length > 0) {
-            //verifica se a data de voo é menor que a data de hospedagem ja que nao sao null/vazio
-            if (dataVoo <= dataHotel) {
-                menorDataInformada = dataVoo;
-                console.log("Retorno data Voo 1: " + menorDataInformada);
-
-            }
-            //retorna a data de hospedagem porque é menor que de voo
-            else {
-                menorDataInformada = dataHotel;
-                console.log("Retorno data Hotel 1: " + menorDataInformada);
-
-            }
-        }
-
-        //retorna a data do voo porque hotel é null
-        else if (dataVoo.length > 0 && dataHotel.length == 0) {
-            menorDataInformada = dataVoo;
-            console.log("Retorno data Voo 2: " + menorDataInformada);
+    var dataVoo = document.getElementById("datapartida1").value;
+    var dataHotel = document.getElementById("datacheckin").value;
 
 
-        } else if (dataHotel.length > 0 && dataVoo.length == 0) {
-            menorDataInformada = dataHotel;
-            console.log("Retorno data Hotel 2: " + menorDataInformada);
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == CORRIGIRSOLICITACAO) {
+
+	    if (dataVoo.legth > 0 || dataHotel.legth > 0){
+	    	var maiorDataInformada;
+	        var dataAtual = new Date();
+	        var prazoMinimo;
+	        var menorDataInformada;
+
+	        //verificar se data de voo é diferente de vazio ou null
+	        if (dataVoo.length > 0 && dataHotel.length > 0) {
+	            //verifica se a data de voo é menor que a data de hospedagem ja que nao sao null/vazio
+	            if (dataVoo <= dataHotel) {
+	                menorDataInformada = dataVoo;
+	                console.log("Retorno data Voo 1: " + menorDataInformada);
+
+	            }
+	            //retorna a data de hospedagem porque é menor que de voo
+	            else {
+	                menorDataInformada = dataHotel;
+	                console.log("Retorno data Hotel 1: " + menorDataInformada);
+
+	            }
+	        }
+
+	        //retorna a data do voo porque hotel é null
+	        else if (dataVoo.length > 0 && dataHotel.length == 0) {
+	            menorDataInformada = dataVoo;
+	            console.log("Retorno data Voo 2: " + menorDataInformada);
 
 
-        }
+	        } else if (dataHotel.length > 0 && dataVoo.length == 0) {
+	            menorDataInformada = dataHotel;
+	            console.log("Retorno data Hotel 2: " + menorDataInformada);
 
-        //adiciona prazo minimo de solicitação de viagem internacional
-        if (document.getElementById("internacional").checked == true) {
-            prazoMinimo = addDias(dataAtual, 15);
 
-        }
-        //adiciona prazo minimo de solicitação de viagem nacional
-        else {
-            prazoMinimo = addDias(dataAtual, 8);
+	        }
 
-        }
+	        //adiciona prazo minimo de solicitação de viagem internacional
+	        if (document.getElementById("internacional").checked == true) {
+	            prazoMinimo = addDias(dataAtual, 15);
 
-        //recebe menor data string do Fluig e converte para tipo Data MM/DD/YYYY
-        var menorDataConvertida = convertStringToData(menorDataInformada);
+	        }
+	        //adiciona prazo minimo de solicitação de viagem nacional
+	        else {
+	            prazoMinimo = addDias(dataAtual, 8);
 
-        if (menorDataInformada.length > 0 && (menorDataConvertida <= prazoMinimo)) {
-            //habilita campo para justificar prazo de antecedencia não cumprido
-            document.getElementById("divJustificativa").style.display = "block";
-        } else {
-            var Jus = document.getElementById("justificativa").value = " ";
-            document.getElementById("divJustificativa").style.display = "none";
-        }
+	        }
 
-        //chama função para set prazo de aprovação
-        prazoAprovacao(menorDataConvertida);
+	        //recebe menor data string do Fluig e converte para tipo Data MM/DD/YYYY
+	        var menorDataConvertida = convertStringToData(menorDataInformada);
 
-        //chama função que verifica qual maior data informada da viagem
-        maiorDataInformadaViagem();
+	        if (menorDataInformada.length > 0 && (menorDataConvertida <= prazoMinimo)) {
+	            //habilita campo para justificar prazo de antecedencia não cumprido
+	            document.getElementById("divJustificativa").style.display = "block";
+	        } else {
+	            var Jus = document.getElementById("justificativa").value = " ";
+	            document.getElementById("divJustificativa").style.display = "none";
+	        }
+
+	        //chama função para set prazo de aprovação
+	        prazoAprovacao(menorDataConvertida);
+
+	        //chama função que verifica qual maior data informada da viagem
+	        maiorDataInformadaViagem();
+	    	
+	    }
+	    
+	    else {
+	    	$('#aceitenorma').attr("checked", false);
+	    	
+	    }
+	
     }
 }
 
@@ -981,7 +991,7 @@ function setSelectedZoomItem(selectedItem) {
             document.getElementById("solicitanteNpassageiro").checked == true &&
             document.getElementById("passageirofuncionario").checked == true) {
 
-            var emailFuncionarioPassageiro = selectedItem["EMAIL_F"];
+            var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
 
             if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
                 //  AprovadorViagem(emailFuncionarioPassageiro);
@@ -1444,15 +1454,13 @@ function desejaHotel() {
 function AprovadorViagem() {
 
 	//busca email usuario logado
-    var email = parent.WCMAPI.userEmail.toUpperCase();
+    //var email = parent.WCMAPI.userEmail.toUpperCase();
     var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
     if (dataset != null && dataset.values.length > 0) {
 
-        var matriculaAprovador = dataset.values[0]["MATRICULA_APR"];
-        var emailAprovador = dataset.values[0]["EMAIL_APR"];
-
-        $('#emailGestor').val(emailAprovador);
-        $('#matriculaApr').val(matriculaAprovador);
+    	//SET CAMPOS DO APROVADOR
+        $('#emailGestor').val(dataset.values[0]["MATRICULA_APROVADOR"]);
+        $('#matriculaApr').val(dataset.values[0]["EMAIL_APROVADOR"]);
 
     }
 
@@ -1529,3 +1537,17 @@ function dadosFuncionario() {
 
     }
 }
+
+FLUIGC.message.alert({
+    message: 'Você deve selecionar o tipo de viagem primeiro!',
+    title: 'Tipo de Viagem',
+    label: 'OK'
+}, function(el, ev) {
+    //Callback action executed by the user...
+     
+    //el: Element (button) clicked...
+    //ev: Event triggered...
+     
+    this.someFunc();
+});
+

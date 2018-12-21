@@ -2,9 +2,10 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
     dataset.addColumn("NOME");
-    dataset.addColumn("EMAIL_FUN");
-    dataset.addColumn("EMAIL_APR");
-    dataset.addColumn("MATRICULA_APR");   
+    dataset.addColumn("EMAIL_USUARIO");
+    dataset.addColumn("EMAIL_APROVADOR");
+    dataset.addColumn("MATRICULA_APROVADOR");
+    dataset.addColumn("FUNCIONARIO");   
     
         
 	 var user = getValue("WKUser");	

@@ -366,14 +366,13 @@
       </processStatePK>
       <stateName>Realizar Aprovação</stateName>
       <stateDescription>Realizar Aprovação</stateDescription>
-      <instruction>Utilize o wizard para visualizar os dados inseridos pelo colaborador. Em seguida, acesse a aba Aprovador e selecione entre as opções Aprovado ou Reprovado. &#xd;
-Caso não concorde com alguma informação digitada pelo solicitante, é necessário reprovar a solicitação e solicitar que o solicitante faça uma nova solicitação.</instruction>
+      <instruction>Utilize o wizard para visualizar os dados inseridos pelo colaborador. Em seguida, acesse a aba Aprovador e selecione entre as opções Aprovado, Reprovado ou Devolver para correção.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName>prazoaprovacao</deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Procuradores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matriculaApr&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -1311,8 +1310,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 		            throw &quot;É preciso anexar o documento para continuar o processo!&quot;;&#xd;
 		        }&#xd;
 		        &#xd;
-		        &#xd;
-					&#xd;
+		  			&#xd;
 				    //Cria a constraint para buscar os formulários ativos&#xd;
 				    var cst = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);	&#xd;
 					var cst3 = DatasetFactory.createConstraint(&quot;aprovacao&quot;, &quot;aprovado&quot; , &quot;aprovado&quot;, ConstraintType.MUST);&#xd;
@@ -1338,6 +1336,7 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 				        var datasetFilhos = DatasetFactory.getDataset(&quot;VM_SolicitacoesViagens&quot;, null, constraintsFilhos, null);&#xd;
 					&#xd;
 				        solicitacao = datasetFilhos;&#xd;
+				        &#xd;
 				    }&#xd;
 					//objeto serviço&#xd;
 					var aItemServico = new Array();&#xd;
@@ -1364,7 +1363,8 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 	&#xd;
 					if (vooComprado != null &amp;&amp; vooComprado != &quot;&quot; ){		&#xd;
 						 valor = hAPI.getCardValue(&quot;valorVoo&quot;);						 	&#xd;
-							//chama função para adicionar item ao array&#xd;
+							&#xd;
+						 //chama função para adicionar item ao array&#xd;
 							addItemViagem(codProdutoP,codSolicitacao,tipoViagem,idFormulario,valor);							&#xd;
 							&#xd;
 							//voos internacional possuem seguro viagem&#xd;
@@ -1536,8 +1536,6 @@ Caso não concorde com alguma informação digitada pelo solicitante, é necess�
 				 	   &#xd;
 			   &#xd;
 		   }&#xd;
-	   &#xd;
-&#xd;
 	   &#xd;
 	   &#xd;
 	   //FUNÇÃO QUE ADD ITEM NA SOLICITAÇÃO DE COMPRA&#xd;

@@ -26,13 +26,13 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("cpfaprovador", false); 
 	 form.setVisibleById("codigorateio", false);
 	 form.setVisibleById("prazoreembolso", false);
-	 
+     form.setVisibleById("divMatrApr", false);
 
 	
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
-//       	form.setVisibleById("2b", false);
+       	form.setVisibleById("2b", false);
     	form.setVisibleById("3b", false);    	
     	
     	//campos aba dados gerais
@@ -71,6 +71,7 @@ function displayFields(form,customHTML){
     	
         //campos aba final      
         form.setVisibleById("divJustificativa", false);
+               
     	
     }
 
@@ -213,7 +214,7 @@ function displayFields(form,customHTML){
         form.setVisibleById("div_tipohotel2", false);
         form.setVisibleById("div_tipohotel3", false);
        
-        
+   
         
 	} 
 	
