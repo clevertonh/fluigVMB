@@ -94,6 +94,7 @@ function enableFields(form) {
 		 
  
 		 //CAMPOS DADOS DO PASSAGEIRO
+		 form.setEnabled('solicitanteFuncionario', false);
 		 form.setEnabled('solicitantepassageiro', false);
 		 form.setEnabled('passageirofuncionario', false);		 
 		 form.setEnabled('nomepassageiro', false);
@@ -111,7 +112,8 @@ function enableFields(form) {
 		 
 		 
 		 
-		 //CAMPOS ABA VOO
+		 //CAMPOS ABA VOO		 
+		 form.setEnabled('pedirPassagem', false);
 		 form.setEnabled('tipovoo', false);
 		 form.setEnabled('origem1', false);
 		 form.setEnabled('destino1', false);

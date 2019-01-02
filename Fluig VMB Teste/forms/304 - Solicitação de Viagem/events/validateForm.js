@@ -122,10 +122,11 @@ function validateForm(form) {
         if (form.getValue("aceitenorma") == "") {
             throw "Você precisa informar que está ciente das normas de viagem.";
         }
+      
         if (form.getValue("justificativa") == "" || form.getValue("justificativa") == null) {
             throw "Você precisa informar uma justificativa pelo não cumprimento do prazo minímo para solicitação.";
         }
-
+       
         //VALIDA SE USUARIO INFORMOU OBSERVACAO MAS NAO MARCOU ALGUM DOS TIPOS DE SERVICO
         if ((form.getValue("tipoquarto") == null || form.getValue("tipoquarto") == '' ) && (form.getValue("observacaoHotel") != null && form.getValue("observacaoHotel") != '') ){
           	 throw "Você não pode inserir uma observação sem escolher um tipo de quarto.";

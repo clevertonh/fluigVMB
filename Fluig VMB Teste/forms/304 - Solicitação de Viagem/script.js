@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 
 
-    if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO) {
+    if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO || ATIVIDADE == SOLICITARVIAGEM) {
     	
         if (ATIVIDADE == ABERTURA) {
             document.getElementById("viagemplanejadaN").checked = true;
@@ -344,10 +344,7 @@ function passageiroFuncionario() {
 
 }
 
-function passageiroNfuncionario() {
-
-
-	 
+function passageiroNfuncionario() {	 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true &&
         document.getElementById("passageirofuncionario").checked == true) {
@@ -707,17 +704,15 @@ function removeItensAgenda() {
 }
 
 function prazoMinino() {
-    var dataVoo = document.getElementById("datapartida1").value;
+	var dataVoo = document.getElementById("datapartida1").value;
     var dataHotel = document.getElementById("datacheckin").value;
 
 
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == CORRIGIRSOLICITACAO) {
-
-	    if (dataVoo.legth > 0 || dataHotel.legth > 0){
-	    	var maiorDataInformada;
-	        var dataAtual = new Date();
-	        var prazoMinimo;
-	        var menorDataInformada;
+		var maiorDataInformada;
+        var dataAtual = new Date();
+        var prazoMinimo;
+        var menorDataInformada;
 
 	        //verificar se data de voo é diferente de vazio ou null
 	        if (dataVoo.length > 0 && dataHotel.length > 0) {
@@ -776,14 +771,11 @@ function prazoMinino() {
 	        //chama função que verifica qual maior data informada da viagem
 	        maiorDataInformadaViagem();
 	    	
-	    }
-	    
-	    else {
-	    	$('#aceitenorma').attr("checked", false);
-	    	
-	    }
+
 	
     }
+	
+
 }
 
 function prazoReembolso() {
@@ -1459,8 +1451,8 @@ function AprovadorViagem() {
     if (dataset != null && dataset.values.length > 0) {
 
     	//SET CAMPOS DO APROVADOR
-        $('#emailGestor').val(dataset.values[0]["MATRICULA_APROVADOR"]);
-        $('#matriculaApr').val(dataset.values[0]["EMAIL_APROVADOR"]);
+        $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
+        $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
 
     }
 
@@ -1538,6 +1530,7 @@ function dadosFuncionario() {
     }
 }
 
+/*
 FLUIGC.message.alert({
     message: 'Você deve selecionar o tipo de viagem primeiro!',
     title: 'Tipo de Viagem',
@@ -1551,3 +1544,4 @@ FLUIGC.message.alert({
     this.someFunc();
 });
 
+*/
