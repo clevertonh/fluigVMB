@@ -1,13 +1,13 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+      <link   type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
       <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
       <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
       <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>     
-      <link type="text/css" rel="stylesheet" href="style.css"/>
+      <link   type="text/css" rel="stylesheet" href="style.css"/>
    </head>
    <body>
       <div class="container">
@@ -409,7 +409,7 @@
                                                       </div>
                                                    </div>
                                                    <!-- linha 1 -->						                        
-                                                   <div class="row">
+                                                   <div class="row" >
                                                       <div class="form-group col-md-4">
                                                          <label>O solicitante é funcionário VM Brasil? </label><br>
                                                          <label for="solicitanteNfuncionario">Não</label>		
@@ -432,24 +432,7 @@
                                                          <input type="radio" id ="passageirofuncionario" name="passageirofuncionario"  value="sim" onclick="passageiroFuncionario()"/>									                    						                        
                                                       </div>
                                                    </div>
-                                                   <div class="row" >
-                                                   	<div class="form-group col-md-6" id="divOutroApr">
-                                                   		<label for="AprovadorNfunc">Aprovador</label>
-                                                            <input 
-                                                            name ="AprovadorNfunc" 
-                                                            class="form-control" 
-                                                            type="zoom" 
-                                                            id="AprovadorNfunc" 
-                                                            data-zoom="{'displayKey':'EMAIL_APR',
-                                                            'datasetId':'VM_Aprovador',
-                                                             'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione seu aprovador',
-                                                            'fields':[
-                                                            {'field':'EMAIL_APR','label':'EMAIL_APR','standard':'true'},
-                                                            {'field':'MATRICULA_APR','label':'MATRICULA_APR'}					  					
-                                                            ]
-                                                            }" >                                                        
-                                                   	</div>                                                    
+                                                   <div class="row" >                                                   
                                                    	<div class="form-group col-md-6" id="divOutroFun">
                                                    		<label for="outroFuncionario">Nome do funcionário</label>
                                                             <input 
@@ -511,12 +494,13 @@
                                                 </div>
 												<div class="tab-pane" role="tabpanel" id="step3">
 													<div class="row">
-														<div class="form-group col-md-3">
-															<label>A viagem está planejada na agenda</label><br>
+														<h2>Opção indisponivel. Avance para proxima etapa</h2>
+														<div class="form-group col-md-3">															
+															<label>A viagem está planejada na agenda?</label><br>
 															<label for="viagemplanejadaS">Sim</label>
 															<input type="radio" id="viagemplanejadaS" name="viagemplanejada" value ="sim" onclick="viagemPlanejadaS();">
 															<label for="viagemplanejadaN">Não</label>
-															<input type="radio" id="viagemplanejadaN" name="viagemplanejada" value ="nao" onclick="viagemPlanejadaN();">
+															<input type="radio" id="viagemplanejadaN" name="viagemplanejada" value ="nao" onclick="viagemPlanejadaN();" checked>
 														</div>
 														<div class="form-group col-md-9" id="divDataSetAgenda">
 															<label>Selecione a agenda</label>

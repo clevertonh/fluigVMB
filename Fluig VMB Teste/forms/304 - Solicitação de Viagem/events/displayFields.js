@@ -26,13 +26,15 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("cpfaprovador", false); 
 	 form.setVisibleById("codigorateio", false);
 	 form.setVisibleById("prazoreembolso", false);
-//     form.setVisibleById("divMatrApr", false);
+     form.setVisibleById("divDataSetAgenda", false);
+	 
+	 
 
 	
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
-       	//form.setVisibleById("2b", false);
+       	form.setVisibleById("2b", false);
     	form.setVisibleById("3b", false);    	
     	
     	//campos aba dados gerais
@@ -47,7 +49,6 @@ function displayFields(form,customHTML){
     	//campos aba passageiro
     	form.setVisibleById("divdadospassageiro", false);
     	form.setVisibleById("divOutroFun", false);
-    	form.setVisibleById("divOutroApr", false);
     	
     	//campos aba agenda
     	form.setVisibleById("divDataSetAgenda", false);
@@ -199,7 +200,6 @@ function displayFields(form,customHTML){
 		
 		
 		if (form.getValue("solicitanteFuncionario") == "sim") {
-			form.setVisibleById("divOutroApr",false);
 			form.setVisibleById("divOutroFun",false);
 		}
  		
@@ -276,6 +276,16 @@ function displayFields(form,customHTML){
         form.setVisibleById("div_tipohotel1", false);
         form.setVisibleById("div_tipohotel2", false);
         form.setVisibleById("div_tipohotel3", false);
+        
+        if (form.getValue("pedirHotel") != "sim" ){
+        	 form.setVisibleById("div_tipoHotel", false);
+        }
+        
+        
+        if (form.getValue("pedirPassagem") != "sim" ){
+       	 form.setVisibleById("div_tipoVoo", false);
+       }
+        
 	}
 	
 	else if (activity ==  JUSTIFICARCANCELAMENTO){

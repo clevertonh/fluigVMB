@@ -5,7 +5,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("EMAIL_USUARIO");
     dataset.addColumn("EMAIL_APROVADOR");
     dataset.addColumn("MATRICULA_APROVADOR");
-    dataset.addColumn("FUNCIONARIO");   
+    dataset.addColumn("DIRETOR");   
     
         
 	 var user = getValue("WKUser");	
@@ -67,7 +67,7 @@ function createDataset(fields, constraints, sortFields) {
 			var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsApr, null);    	    		
 		
 			if (datasetAprovador.rowsCount > 0){
-				dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, datasetAprovador.getValue(0,"colleaguePK.colleagueId")]);	
+				dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName")]);	
 			}						
     	}
 	}

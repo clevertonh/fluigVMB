@@ -112,6 +112,7 @@ function enableFields(form) {
 		 
 		 
 		 
+		 
 		 //CAMPOS ABA VOO		 
 		 form.setEnabled('pedirPassagem', false);
 		 form.setEnabled('tipovoo', false);
@@ -136,6 +137,7 @@ function enableFields(form) {
 		 
 		 
 		 //CAMPOS DA ABA DE HOSPEDAGEM
+		 form.setEnabled('pedirHotel', false);
 		 form.setEnabled('tipoquarto', false);
 		 form.setEnabled('datacheckout', false);
 		 form.setEnabled('datacheckin', false);
@@ -199,6 +201,16 @@ function enableFields(form) {
 			 form.setEnabled('tipo_hosp1', false);		 
 			 form.setEnabled('tipo_hosp2', false);	
 			 form.setEnabled('tipo_hosp3', false);	 
+			 
+			 form.setEnabled('valorVoo', false);	
+			 form.setEnabled('valorHotel', false);	
+			 form.setEnabled('valorTx', false);	
+			 
+			 
+			 
+			 
+			 
+			 
 			 
 		 }
 		 

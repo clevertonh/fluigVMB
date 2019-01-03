@@ -58,17 +58,11 @@ $(document).ready(function() {
 
     }
 
-
-
-
     if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO || ATIVIDADE == SOLICITARVIAGEM) {
     	
         if (ATIVIDADE == ABERTURA) {
             document.getElementById("viagemplanejadaN").checked = true;
             onlyDate.setDate(new Date().toLocaleString());
-
-            //busca aprovador do usuário logado
-//            AprovadorViagem();
 
         }
     	
@@ -208,13 +202,9 @@ function solicitanteFunc() {
     $('#passageirofuncionarionao').attr("checked", false);
     $('#passageirofuncionario').attr("checked", false);
     document.getElementById("divOutroFun").style.display = "none";
-    document.getElementById("divOutroApr").style.display = "none";
     document.getElementById("divdadospassageiro").style.display = "none";
 
-    //retorna aprovador para funcionário
-    AprovadorViagem();
-
-
+   
 }
 
 function solicitanteNFunc() {
@@ -228,16 +218,13 @@ function solicitanteNFunc() {
     $('#rgpassageiro').val("");
     $('#cpfpassageiro').val("");
     $('#passaporte').val("");
-    $('#emailGestor').val("");
-    $('#matriculaApr').val("");
     dataNasc.setDate(null);
     window["outroFuncionario"].clear();
-    window["AprovadorNfunc"].clear();
 
     document.getElementById("divOutroFun").style.display = "none";
-    document.getElementById("divOutroApr").style.display = "none";
     document.getElementById("divdadospassageiro").style.display = "none";
 
+   
 }
 
 function solicitantePassageiro() {
@@ -247,7 +234,6 @@ function solicitantePassageiro() {
         $('#passageirofuncionarionao').attr("checked", false);
         document.getElementById("passageirofuncionario").click();
         document.getElementById("divOutroFun").style.display = "none";
-        document.getElementById("divOutroApr").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "block";
 
 
@@ -264,15 +250,12 @@ function solicitanteNaoPass() {
     $('#rgpassageiro').val("");
     $('#cpfpassageiro').val("");
     $('#passaporte').val("");
-    dataNasc.setDate(null);
-    $('#emailGestor').val("");
-    $('#matriculaApr').val("");
+    dataNasc.setDate(null); 
     window["outroFuncionario"].clear();
-    window["AprovadorNfunc"].clear();
 
     document.getElementById("divdadospassageiro").style.display = "none";
     document.getElementById("divOutroFun").style.display = "none";
-    document.getElementById("divOutroApr").style.display = "none";
+
 }
 
 function passageiroFuncionario() {
@@ -285,7 +268,6 @@ function passageiroFuncionario() {
     $('#passaporte').val("");
     dataNasc.setDate(null);
     window["outroFuncionario"].clear();
-    window["AprovadorNfunc"].clear();
 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true) {
@@ -295,9 +277,7 @@ function passageiroFuncionario() {
 
         document.getElementById("divdadospassageiro").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
-        document.getElementById("divOutroApr").style.display = "none";
-
-
+    
     }
 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
@@ -322,11 +302,9 @@ function passageiroFuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-        window["AprovadorNfunc"].clear();
-
+    
         document.getElementById("divOutroFun").style.display = "none";
-        document.getElementById("divOutroApr").style.display = "none";
-        document.getElementById("divdadospassageiro").style.display = "none";
+         document.getElementById("divdadospassageiro").style.display = "none";
     }
 
 
@@ -335,7 +313,6 @@ function passageiroFuncionario() {
     		 document.getElementById("passageirofuncionario").checked == true
     ){
     	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
-        document.getElementById("divOutroApr").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "none";
     	
@@ -358,8 +335,7 @@ function passageiroNfuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-        window["AprovadorNfunc"].clear();
-
+  
     }
 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
@@ -373,7 +349,6 @@ function passageiroNfuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-        window["AprovadorNfunc"].clear();
         document.getElementById("divdadospassageiro").style.display = "block";
 
 
@@ -392,13 +367,11 @@ function passageiroNfuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-        window["AprovadorNfunc"].clear();
         document.getElementById("divdadospassageiro").style.display = "none";
 
     }
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitanteNpassageiro").checked == true) {
-        document.getElementById("divOutroApr").style.display = "none";
         document.getElementById("divOutroFun").style.display = "none";
 
 
@@ -416,7 +389,6 @@ function passageiroNfuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-        window["AprovadorNfunc"].clear();
         document.getElementById("divdadospassageiro").style.display = "block";
 
     }
@@ -433,10 +405,8 @@ function passageiroNfuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-        window["AprovadorNfunc"].clear();
-
+    
         document.getElementById("divOutroFun").style.display = "none";
-        document.getElementById("divOutroApr").style.display = "block";
         document.getElementById("divdadospassageiro").style.display = "block";
     }
 
@@ -455,6 +425,10 @@ function clickTipoViagem() {
     document.getElementById("trecho2").style.display = "none";
     document.getElementById("trecho3").style.display = "none";
 
+    //carrega aprovador de viagem
+    carregaAprovador();
+   
+    
 }
 
 function tipoViagem() {
@@ -832,7 +806,7 @@ function setSelectedZoomItem(selectedItem) {
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
-    var APROVADOR = "AprovadorNfunc";
+   
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
@@ -996,20 +970,7 @@ function setSelectedZoomItem(selectedItem) {
 
     if (linhaPagamento[0] == AGENDA) {
         buscaAtividades(selectedItem);
-    }
-    
-    
-    if (campoZOOM == APROVADOR ){
-    	   if (document.getElementById("solicitanteNfuncionario").checked == true &&
-    	            document.getElementById("solicitanteNpassageiro").checked == true &&
-    	            document.getElementById("passageirofuncionario").checked == true) {
-    		   
-    		   	document.getElementById("divOutroFun").style.display = "block";
-    	   }
-    	
-    	   AprovadorViagem();
-    }
-    
+    }   
 }
 
 function buscaRemarcacao(item) {
@@ -1092,7 +1053,7 @@ function removedZoomItem(removedItem) {
     var RATEIO = "rateioconfigurado";
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
-    var APROVADOR = "AprovadorNfunc";
+   
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -1188,8 +1149,6 @@ function removedZoomItem(removedItem) {
         $('#rgpassageiro').val('');
         $('#passaporte').val('');
         $('#datanasc').val('');
-
-
 
     }
 
@@ -1443,19 +1402,30 @@ function desejaHotel() {
     document.getElementById("div_tipoHotel").style.display = "block";
 }
 
-function AprovadorViagem() {
-
-	//busca email usuario logado
-    //var email = parent.WCMAPI.userEmail.toUpperCase();
+function carregaAprovador() {
+	// Component construction by setting the window.
+	var myLoading2 = FLUIGC.loading("#body", {
+        textMessage: "Carregando aprovador, aguarde...",
+        timeout: 30,
+    });
+	// We can show the message of loading
+	myLoading2.show();		
+	
+	//analisar para descobrir como enviar parametro para um dataset customizado
     var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
     if (dataset != null && dataset.values.length > 0) {
 
     	//SET CAMPOS DO APROVADOR
         $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
         $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
+        $('#aprovador').val(dataset.values[0]["DIRETOR"]);
+
 
     }
 
+	// We can hide the message of loading
+	myLoading2.hide();
+	
 }
 
 ////falta implementar dataset para receber email funcionario porque dataset customizado não aceita constraint
