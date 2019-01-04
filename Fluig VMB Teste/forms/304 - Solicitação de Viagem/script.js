@@ -1404,7 +1404,7 @@ function desejaHotel() {
 
 function carregaAprovador() {
 	// Component construction by setting the window.
-	var myLoading2 = FLUIGC.loading("#body", {
+	var myLoading2 = FLUIGC.loading("body", {
         textMessage: "Carregando aprovador, aguarde...",
         timeout: 30,
     });
@@ -1455,50 +1455,49 @@ function dadosFuncionario() {
         var email = parent.WCMAPI.userEmail.toUpperCase();
         var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/' + email;
         //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
-
-        function carregaDados() {
-            var loading = FLUIGC.loading("body", {
-                textMessage: "Carregando Dados, aguarde..."
-            });
-            loading.show();
-            $.ajax({
-                type: 'GET',
-                dataType: 'json',
-                contentType: 'applpication/json',
-                url: site,
-                success: function(data, status, xhr) {
-                    if (data != null) {
-                        console.log("Usuario Obtido");
-                        console.log(data);
-                        infoUser = data;
-                        infoUser = infoUser[0];
-
-                        window["outroFuncionario"].clear();
-                        $('#nomepassageiro').val(infoUser.CNOME);
-                        $('#nomemae').val(infoUser.CMAE);
-                        $('#rgpassageiro').val(infoUser.CRG);
-                        $('#cpfpassageiro').val(infoUser.CCPF);
-                        $('#passaporte').val(infoUser.CPASSAP);
-                        dataNasc.setDate(infoUser.CDATANASC);
-
-                        loading.hide();
-                    }
-                },
-                error: function(xhr, status, error) {
-                    FLUIGC.toast({
-                        message: "Erro ao carregar os dados, caso não esteja de férias, atualize a página ou tente novamente mais tarde",
-                        type: "danger"
-                    });
-                    loading.hide();
-                }
-            });
-        }
-
         carregaDados();
-
-
     }
 }
+
+//carrega dados do funcionario quando ele clica em solicitante é passageiro e funcionario solicitante esta marcado como true
+function carregaDados() {
+    var loading = FLUIGC.loading("body", {
+        textMessage: "Carregando Dados, aguarde..."
+    });
+    loading.show();
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'applpication/json',
+        url: site,
+        success: function(data, status, xhr) {
+            if (data != null) {
+                console.log("Usuario Obtido");
+                console.log(data);
+                infoUser = data;
+                infoUser = infoUser[0];
+
+                window["outroFuncionario"].clear();
+                $('#nomepassageiro').val(infoUser.CNOME);
+                $('#nomemae').val(infoUser.CMAE);
+                $('#rgpassageiro').val(infoUser.CRG);
+                $('#cpfpassageiro').val(infoUser.CCPF);
+                $('#passaporte').val(infoUser.CPASSAP);
+                dataNasc.setDate(infoUser.CDATANASC);
+
+                loading.hide();
+            }
+        },
+        error: function(xhr, status, error) {
+            FLUIGC.toast({
+                message: "Erro ao carregar os dados, caso não esteja de férias, atualize a página ou tente novamente mais tarde",
+                type: "danger"
+            });
+            loading.hide();
+        }
+    });
+}
+
 
 /*
 FLUIGC.message.alert({

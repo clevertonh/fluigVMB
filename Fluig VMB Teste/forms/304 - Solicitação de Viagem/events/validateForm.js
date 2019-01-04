@@ -214,7 +214,7 @@ function validateForm(form) {
         	var dataFinalConvertida = convertStringToData(dataFinalViagem);
 
         	if (dataAtual < dataFinalConvertida){
-        		throw "Você não pode finalizar uma viagem que ainda não foi realizada. Baixe apenas o bilhete e/ou voucher.";
+        		throw "Você não pode finalizar uma viagem que ainda não foi realizada por completo.";
         	}
         	
         }
