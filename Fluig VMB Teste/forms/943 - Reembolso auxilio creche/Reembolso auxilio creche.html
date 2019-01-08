@@ -67,14 +67,43 @@
                                        </div>
                                     </div>
                                     <div class="row">
-                                       <div class="form-group col-md-3">
-                                          <label>Valor recibo</label>
-                                          <input type="number" name="vl_nota">
-                                       </div>
                                        <div class="form-group col-md-4">
                                           <label>Valor a ser reembolsado</label>
-                                          <input type="number" name="vl_rmb" readonly>
+                                          <input type="number" name="vl_rmb">
                                        </div>
+                                    </div>
+                                    <div class="row" id ="tipoLancamento">
+									<div class="form-group col-md-3">
+                                                         <label>Tipo de Pagamento</label><br>
+                                                         <label for="normal">Normal</label>
+                                                         <input type="radio" id ="normal" name ="tipoPagamento" value="normal" onclick="clickPagamentoNormal();" >
+                                                         <label for="rateio">Rateio</label>
+                                                         <input type="radio" id ="rateio"  name ="tipoPagamento" value="rateio" onclick="clickPagamentoRateio();">
+                                                      </div>
+                                                      <div class="form-group col-md-6" id ="selecaorateio">
+                                                         <label>Rateio pré-configurado</label>
+                                                         <input 
+                                                            name ="rateioconfigurado" 
+                                                            class="form-control" 
+                                                            type="zoom" 
+                                                            id="rateioconfigurado" 
+                                                            data-zoom="{'displayKey':'Descricao',
+                                                            'datasetId':'VM_RateioConfigurado',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um rateio',
+                                                            'fields':[
+                                                            {
+                                                            'field':'Codigo',
+                                                            'label':'Codigo'
+                                                            },                                                              
+                                                            {
+                                                            'field':'Descricao',
+                                                            'label':'Descricao',
+                                                            'standard':'true'
+                                                            }						  					
+                                                            ]
+                                                            }" >	
+                                                      </div>                                    
                                     </div>
                                     <div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">

@@ -89,7 +89,7 @@ function removedZoomItem(removedItem) {
     var AREAESTRATEGICA = "txtareaestrategica";
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
-     var RATEIO = "rateioconfigurado";
+    var RATEIO = "rateioconfigurado";
 
 
     //Recebe o nome do campo zoom
@@ -160,14 +160,6 @@ function setZoomData(instance, value) {
     window[instance].setValue(value);
 }
 
-/*
-var nome = fluigAPI.getUserService().getCurrent().getFullName();
-
-var mail = fluigAPI.getUserService().getCurrent().getEmail();
-
-*/
-
-
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
@@ -180,11 +172,8 @@ function setSelectedZoomItem(selectedItem) {
   var AREAESTRATEGICA = "txtareaestrategica";
   var PROJETO = "txtprojeto";
   var ALOCACAO = "alocacao";
-  var REMARCACAO = "dataset_solicitacaoviagem";
   var RATEIO = "rateioconfigurado";
-  var AGENDA = "agenda";
-  var FUNCIONARIO = "outroFuncionario";
-  var APROVADOR = "AprovadorNfunc";
+
 
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
@@ -266,52 +255,7 @@ function setSelectedZoomItem(selectedItem) {
   }
 
 
-  if (campoZOOM == REMARCACAO) {
-
-      console.log("-----REMARCACAO: PREENCHENDO CAMPOS AUTOMATICAMENTE--------");
-
-      if (selectedItem["tipoviagem"] == "nacional") {
-          document.getElementById("nacional").checked = true;
-
-          document.getElementById("nacional").click();
-      } else {
-          $("#internacional").attr('checked', 'checked');
-          //document.getElementById("internacional").checked = true;			 
-          document.getElementById("internacional").click();
-          //falta bloquear o campo tipo de viagem
-      }
-
-
-      if (selectedItem["tipoPagamento"] == "normal") {
-          document.getElementById("normal").checked = true;
-          document.getElementById("normal").click();
-      } else {
-          document.getElementById("rateio").checked = true;
-          document.getElementById("rateio").click();
-          window["rateioconfigurado"].setValue(selectedItem["rateioconfigurado"]);
-          $('#codigorateio').val(selectedItem["codigorateio"]);
-
-
-
-      }
-
-      document.getElementById("solicitanteNpassageiro").click();
-      $('#nomepassageiro').val(selectedItem["nomepassageiro"]);
-      $('#nomemae').val(selectedItem["nomemae"]);
-      $('#cpfpassageiro').val(selectedItem["cpfpassageiro"]);
-      $('#rgpassageiro').val(selectedItem["rgpassageiro"]);
-      $('#passaporte').val(selectedItem["passaporte"]);
-      $('#datanasc').val(selectedItem["datanasc"]);
-      $('#finalidade').val(selectedItem["finalidade"]);
-
-
-      //preenche informações de pagamento
-      buscaRemarcacao(selectedItem);
-
-
-
-  }
-
+ 
   //GRAVA CODIGO DO RATEIO EM CAMPO OCULTO 
   if (campoZOOM == RATEIO) {
       removeItens();
@@ -319,41 +263,5 @@ function setSelectedZoomItem(selectedItem) {
 
   }
 
-  //preenche dados do funcionario
-  if (campoZOOM == FUNCIONARIO) {
-      $('#nomepassageiro').val(selectedItem["NOME"]);
-      $('#nomemae').val(selectedItem["MAE"]);
-      $('#cpfpassageiro').val(selectedItem["CPF"]);
-      $('#rgpassageiro').val(selectedItem["RG"]);
-      $('#passaporte').val(selectedItem["PASSAPORTE"]);
-      $('#datanasc').val(selectedItem["DTNASC"]);
-
-      //mostra campos do passageiro
-      var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
-
-      if (document.getElementById("solicitanteNfuncionario").checked == true &&
-          document.getElementById("solicitanteNpassageiro").checked == true &&
-          document.getElementById("passageirofuncionario").checked == true) {
-
-          var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
-
-          if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
-              //  AprovadorViagem(emailFuncionarioPassageiro);
-          }
-      }
-
-  }
-
-  
-  if (campoZOOM == APROVADOR ){
-  	   if (document.getElementById("solicitanteNfuncionario").checked == true &&
-  	            document.getElementById("solicitanteNpassageiro").checked == true &&
-  	            document.getElementById("passageirofuncionario").checked == true) {
-  		   
-  		   	document.getElementById("divOutroFun").style.display = "block";
-  	   }
-  	
-  	   AprovadorViagem();
-  }
   
 }

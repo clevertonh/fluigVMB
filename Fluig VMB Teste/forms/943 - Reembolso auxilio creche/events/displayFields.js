@@ -12,6 +12,10 @@ function displayFields(form,customHTML){
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
+    form.setVisibleById("tipoLancamento", false);
+    
+    
+    
     
     if (activity == ABERTURA){
    	 form.setVisibleById("3b", false);

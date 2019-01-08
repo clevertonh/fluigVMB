@@ -141,11 +141,11 @@ function validateForm(form) {
              	 throw "Você precisa escolher um tipo de voo.";
            }
          
-    } else if (activity == APROVACAO && nextAtv == VERIFICARAPROVACAO && form.getValue("devolver") == "") {
+    } else if (activity == APROVACAO) {
         	
         		//valida se o aprovador marcou o campo de aprovacao ou reprovação
             if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-                throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
+                throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
             }
 
             if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
