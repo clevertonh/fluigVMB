@@ -1412,7 +1412,7 @@ function carregaAprovador() {
 	myLoading2.show();		
 	
 	//analisar para descobrir como enviar parametro para um dataset customizado
-    var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
+    var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
     if (dataset != null && dataset.values.length > 0) {
 
     	//SET CAMPOS DO APROVADOR

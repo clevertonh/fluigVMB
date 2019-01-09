@@ -4,6 +4,7 @@ function displayFields(form,customHTML){
 	var APROVACAO_GESTOR = 5;
 	var VALIDACAO = 48;
 	var APROVACAO_RH = 27;
+	var ALTERACAO_DATA = 67;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -12,29 +13,29 @@ function displayFields(form,customHTML){
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
-    form.setVisibleById("tipoLancamento", false);
     
-    
-    
+    //form.setVisibleById("divApPrazo", false);
     
     if (activity == ABERTURA){
    	 form.setVisibleById("3b", false);
-	 form.setVisibleById("4b", false);    	
+	 form.setVisibleById("4b", false);	 
+	
     
     }
     
     else if (activity == APROVACAO_GESTOR){
     	form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);    
-    	 
+    	
     }
 
 	else if (activity == VALIDACAO){
-		
+		 form.setVisibleById("4b", false);	 
+		 form.setVisibleById("justificativaReprovacaoV", false);	 
 	}
 	
 	else if (activity == APROVACAO_RH){
-		
+		 form.setVisibleById("justificativaR", false);	
 	}
 	
 	

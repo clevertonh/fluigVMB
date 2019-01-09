@@ -57,9 +57,9 @@
                                           <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
                                        </div>
                                        <div class="form-group col-md-3">
-                                          <label for="only-date">Data da solicitação</label>
-                                          <div class="input-group date" id="calendariodataSolicitacao">
-                                             <input type="text" class="form-control" id="dataSolicitacao" name="dataSolicitacao"  readonly>
+                                          <label for="dtSolicitacao">Data da solicitação</label>
+                                          <div class="input-group date" id="calendariodtSolicitacao">
+                                             <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
@@ -67,44 +67,15 @@
                                        </div>
                                     </div>
                                     <div class="row">
-                                       <div class="form-group col-md-4">
-                                          <label>Valor a ser reembolsado</label>
-                                          <input type="number" name="vl_rmb">
+                                       <div class="form-group col-md-2">
+                                          <label for="vl_rmb">Valor a ser reembolsado</label>
+                                          <input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
                                        </div>
-                                    </div>
-                                    <div class="row" id ="tipoLancamento">
-									<div class="form-group col-md-3">
-                                                         <label>Tipo de Pagamento</label><br>
-                                                         <label for="normal">Normal</label>
-                                                         <input type="radio" id ="normal" name ="tipoPagamento" value="normal" onclick="clickPagamentoNormal();" >
-                                                         <label for="rateio">Rateio</label>
-                                                         <input type="radio" id ="rateio"  name ="tipoPagamento" value="rateio" onclick="clickPagamentoRateio();">
-                                                      </div>
-                                                      <div class="form-group col-md-6" id ="selecaorateio">
-                                                         <label>Rateio pré-configurado</label>
-                                                         <input 
-                                                            name ="rateioconfigurado" 
-                                                            class="form-control" 
-                                                            type="zoom" 
-                                                            id="rateioconfigurado" 
-                                                            data-zoom="{'displayKey':'Descricao',
-                                                            'datasetId':'VM_RateioConfigurado',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione um rateio',
-                                                            'fields':[
-                                                            {
-                                                            'field':'Codigo',
-                                                            'label':'Codigo'
-                                                            },                                                              
-                                                            {
-                                                            'field':'Descricao',
-                                                            'label':'Descricao',
-                                                            'standard':'true'
-                                                            }						  					
-                                                            ]
-                                                            }" >	
-                                                      </div>                                    
-                                    </div>
+                                       <div class="form-group col-md-3" id="divApPrazo">
+                                       	<label>Aprovado no prazo</label>
+                                       	<input type="text" id ="aprPrazo" class="form-control" name="aprPrazo">
+                                       </div>
+                                    </div>                            
                                     <div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">
                                           <h3 class="panel-title">
@@ -283,25 +254,6 @@
                                           <input type="email" class="form-control" id="emailLider" name="emailLider" readonly>
                                        </div>									
 									</div>
-                                    <div class="row">
-                                       <h3>Para Aprovar marque a opção desejada:</h3>
-                                       <div class="form-group col-md-2">	
-                                          <Label for="apr_gestor">Aprovado</Label>
-                                          <input type="radio" id ="apr_gestor" name="apr_gestor" value ="aprovado" />											
-                                       </div>
-                                       <div class="form-group col-md-4">
-                                          <Label for ="aprN_gestor">Reprovado</Label>					
-                                          <input type="radio" id ="aprN_gestor" name="aprN_gestor" value ="reprovado" />
-                                       </div>
-                                    </div>
-                                    <div class="row">
-                                       <div class="form-group col-md-12">
-                                          <div class="form-group">
-                                             <label for="justificativaReprGest">Justificativa</label>
-                                             <textarea class="form-control" rows="3" id="justificativaReprGest" name="justificativaReprGest" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
-                                          </div>
-                                       </div>
-                                    </div>
                                  </div>
                                  <!-- Aba Assistente -->
                                  <div class="tab-pane" id="3b">
@@ -315,9 +267,9 @@
                                           <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
                                        </div>
                                        <div class="form-group col-md-3">
-                                          <label for="dataDeposito">Data do deposito</label>
-                                          <div class="input-group date" id="calendariodtDeposito">
-                                             <input type="text" class="form-control" placeholder="Data do deposito" id="dataDeposito" name="dataDeposito"  readonly>
+                                          <label for="dtPagamento">Data de pagamento</label>
+                                          <div class="input-group date" id="calendariodtPgto">
+                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
@@ -328,11 +280,11 @@
                                        <h3>Para validar marque a opção desejada:</h3>
                                        <div class="form-group col-md-2">	
                                           <Label for="validacao">Validado</Label>
-                                          <input type="radio" id ="validacao" name="validacao" value ="validado" />											
+                                          <input type="radio" id ="validacao" name="validacao" value ="validado" onclick="justificativaValidacao()"/>											
                                        </div>
                                        <div class="form-group col-md-4">
                                           <Label for ="negado">Negado</Label>					
-                                          <input type="radio" id ="negado" name="validacao" value ="negado" />
+                                          <input type="radio" id ="negado" name="validacao" value ="negado" onclick="justificativaValidacao()"/>
                                        </div>
                                     </div>
                                     <div class="row">
@@ -348,25 +300,19 @@
                                  <!-- Aba Gestor de P&C -->
                                  <div class="tab-pane" id="4b">
                                     <div class="row">
-                                       <div class="form-group col-md-5">
-                                          <label for="aprovador" class="required">Aprovador</label>
-                                          <input type="text" class="form-control" id="aprovador" name="aprovador" readonly >
-                                       </div>
-                                       <div class="form-group col-md-4">
-                                          <label for="emailGestor">Email do Aprovador</label>
-                                          <input type="email" class="form-control" id="emailGestor" name="emailGestor" readonly>
-                                       </div>
-                                    </div>
-                                    <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
                                        <div class="form-group col-md-2">	
                                           <Label for="aprovacao">Aprovado</Label>
-                                          <input type="radio" id ="aprovacao" name="aprovacao" value ="aprovado" />											
+                                          <input type="radio" id ="aprovacao" name="aprovacao" value ="aprovado" onclick="justificativaReprovacao()"/>											
                                        </div>
                                        <div class="form-group col-md-4">
                                           <Label for ="aprovacaon">Reprovado</Label>					
-                                          <input type="radio" id ="aprovacaon" name="aprovacao" value ="reprovado" />
+                                          <input type="radio" id ="aprovacaon" name="aprovacao" value ="reprovado" onclick="justificativaReprovacao()"/>
                                        </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for ="devolver">Devolver para correção</Label>					
+                                          <input type="radio" id ="devolver" name="aprovacao" value ="corrigir" onclick="justificativaReprovacao()"/>
+                                       </div>                                       
                                     </div>
                                     <div class="row">
                                        <div class="form-group col-md-12">

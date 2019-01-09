@@ -3,7 +3,7 @@ var APROVACAO_GESTOR = 5;
 var VALIDACAO = 48;
 var APROVACAO_RH = 27;
 
-var onlyDate = FLUIGC.calendar('#dataSolicitacao', {
+var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     pickDate: true,
     pickTime: false,
     useCurrent: true,
@@ -13,21 +13,19 @@ var onlyDate = FLUIGC.calendar('#dataSolicitacao', {
 
 $(document).ready(function() {
 	if (ATIVIDADE == ABERTURA){
-		onlyDate.setDate(new Date().toLocaleString());
+		dtSolicitacao.setDate(new Date().toLocaleString());
 		
 	}
 	
 });
 
-var dataAprovacao = FLUIGC.calendar('#dataAprovacao', {
+var dtPagamento = FLUIGC.calendar('#dtPagamento', {
     pickDate: true,
     pickTime: false,
     useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
+    minDate: new Date().toLocaleString()
+    
 });
-
-
 
 function adicionaItem(itens) {
     for (var i in itens) {
@@ -160,7 +158,6 @@ function setZoomData(instance, value) {
     window[instance].setValue(value);
 }
 
-
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
   var LOCALIZACAO = "localizacao";
@@ -264,4 +261,25 @@ function setSelectedZoomItem(selectedItem) {
   }
 
   
+}
+
+function justificativaValidacao(){
+	if (document.getElementById("validacao").checked == true){
+		document.getElementById("justificativaReprovacaoV").style.display = "none";
+	}
+	else {
+		document.getElementById("justificativaReprovacaoV").style.display = "block";	
+	}
+	
+}
+
+
+function justificativaReprovacao(){
+	if (document.getElementById("aprovacao").checked == true || document.getElementById("devolver").checked == true ){
+		document.getElementById("justificativaR").style.display = "none";
+	}
+	else {
+		document.getElementById("justificativaR").style.display = "block";	
+	}
+	
 }
