@@ -63,15 +63,14 @@ function createDataset(fields, constraints, sortFields) {
 		    	 
     	for(var i in objdata){
     		var constraintsApr   = new Array();		    		
-			constraintsApr.push(DatasetFactory.createConstraint("mail", objdata[i].CEMAILG, objdata[i].CEMAILG, ConstraintType.MUST));    		
+			constraintsApr.push(DatasetFactory.createConstraint("mail", objdata[i].CEMAILG.toUpperCase(), objdata[i].CEMAILG.toUpperCase(), ConstraintType.MUST));    		
 			var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsApr, null);    	    		
-		/*
+		
 			if (datasetAprovador.rowsCount > 0){
 				dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName")]);	
 			}						
-    	*/
-			
-			dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, null,null]);	
+    				
+			//dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, null,null]);	
 			
     	}
 	}

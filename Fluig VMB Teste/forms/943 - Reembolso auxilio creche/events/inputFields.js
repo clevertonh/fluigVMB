@@ -1,1 +1,4 @@
-function inputFields(form){}
+function inputFields(form){
+	
+	
+}

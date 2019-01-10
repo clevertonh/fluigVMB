@@ -3,6 +3,8 @@ var APROVACAO_GESTOR = 5;
 var VALIDACAO = 48;
 var APROVACAO_RH = 27;
 
+
+
 var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     pickDate: true,
     pickTime: false,
@@ -11,18 +13,21 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
+//preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
+	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
 	}
+
 	
 });
 
 var dtPagamento = FLUIGC.calendar('#dtPagamento', {
     pickDate: true,
     pickTime: false,
-    useCurrent: true,
+    useCurrent: true, 
     minDate: new Date().toLocaleString()
     
 });
@@ -273,7 +278,6 @@ function justificativaValidacao(){
 	
 }
 
-
 function justificativaReprovacao(){
 	if (document.getElementById("aprovacao").checked == true || document.getElementById("devolver").checked == true ){
 		document.getElementById("justificativaR").style.display = "none";
@@ -283,3 +287,6 @@ function justificativaReprovacao(){
 	}
 	
 }
+
+
+

@@ -14,7 +14,7 @@ function displayFields(form,customHTML){
     customHTML.append("</script>");
 	
     
-    //form.setVisibleById("divApPrazo", false);
+    form.setVisibleById("divApPrazo", false);
     
     if (activity == ABERTURA){
    	 form.setVisibleById("3b", false);
