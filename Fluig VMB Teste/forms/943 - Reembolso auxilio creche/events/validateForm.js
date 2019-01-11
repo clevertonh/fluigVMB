@@ -55,6 +55,25 @@ function validateForm(form){
 			throw "Você precisa informar a data de pagamento.";
 		}
 		
+		
+		if (form.getValue("validacao") == "validado" && (form.getValue("dtPagamento") != "" || form.getValue("dtPagamento") != null) ){
+		
+			var dtHoje = new Date ();	
+			var dtHojeString = convertDataToString(dtHoje);
+			//recupera data de pagamento do Fluig
+			var dtPagamento = form.getValue("dtPagamento");
+			
+			//verifica se data de hoje é maior que data de pagamento
+			if (dtHojeString > dtPagamento ){
+				throw "A data para pagamento deve ser igual ou superior a data de hoje.";
+			}
+			
+			
+		}
+		
+		
+		
+		
 	}
 	
 	

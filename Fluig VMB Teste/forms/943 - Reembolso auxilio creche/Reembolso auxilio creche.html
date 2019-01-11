@@ -253,7 +253,7 @@
                                           <label for="emailLider">Email do Gestor</label>
                                           <input type="email" class="form-control" id="emailLider" name="emailLider" readonly>
                                        </div>	
-                                          <div class="form-group col-md-4">
+                                          <div class="form-group col-md-4" id="divMatricualApr">
                                           	<label for="matriculaApr">Matricula Aprovador</label>
                                           	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
                                           </div>                                        								
@@ -318,7 +318,15 @@
                                           <input type="radio" id ="devolver" name="aprovacao" value ="corrigir" onclick="justificativaReprovacao()"/>
                                        </div>                                       
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id ="divPrazoApr">
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" placeholder="Prazo de aprovacao" id="dtPrazoApr" name="dtPrazoApr" readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>                                      	
+                                    </div>
+                                    <div class="row">                                  
                                        <div class="form-group col-md-12">
                                           <div class="form-group" >
                                              <label for="justificativaR">Justificativa</label>

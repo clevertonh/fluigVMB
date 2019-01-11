@@ -22,6 +22,11 @@ function enableFields(form){
 		 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
 		 
 		 
+
+		 
+		 
+		 
+		 
 	}
 	
 	else if (activity == APROVACAO_GESTOR){
@@ -46,8 +51,18 @@ function enableFields(form){
 		form.setEnabled('validacao', false);
 		form.setEnabled('justificativaReprovacaoV', false);
 		
-		//analisa data de aprovação
-		analisaDtAprovacao();
+		//recupera data de pagamento do Fluig
+		var dtPagamento = form.getValue("dtPagamento");
+					
+		var dtAprovacao = new Date ();	
+		var dtAprovacaoString = convertDataToString(dtAprovacao);
+		
+		//verifica se data de aprovação é maior que data de pagamento
+		if (dtAprovacaoString > dtPagamento){
+				form.setValue("aprPrazo","nao");
+		}
+			
+		
 	}
 	
 	else if (activity == ALTERACAO_DATA){
@@ -57,24 +72,7 @@ function enableFields(form){
 		form.setEnabled('vl_rmb', false);
 		form.setEnabled('justificativaReprovacaoV', false);
 	}
-	
-	function analisaDtAprovacao(){		
-
-		//recupera data de pagamento do Fluig
-		var dtPagamento = form.getValue("dtPagamento");
-		//var dtPagamentoConvertida = convertStringToData(dtPagamento);
-		
-		//data do dia
-		var dtAprovacao = new Date ();		
-		var dtAprovacaoString = convertDataToString(dtAprovacao);
-		
-		if (dtAprovacaoString > dtPagamento){
-				form.setValue("aprPrazo","nao");
-		}
-		
-
-			
-	}		 
+ 
 	 
 }
 
@@ -86,15 +84,11 @@ function UsuarioLogado(solicitante){
 	 return dataset;
 }
 
-
 function usuarioAprovador(){	
 	 var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
 	 
 	 return dataset;
 }
-
-
-
 
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
@@ -134,5 +128,10 @@ function convertDataToString(dataToString) {
     //novo formato de data: para salvar em campos data do Fluig
     return dia + "/" + mes + "/" + dataToString.getFullYear();
 
+
+}
+
+function addDias(data, dias) {
+    return new Date(data.setDate(data.getDate() + dias));;
 
 }
