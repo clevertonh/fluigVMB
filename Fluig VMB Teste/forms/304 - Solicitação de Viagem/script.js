@@ -425,9 +425,7 @@ function clickTipoViagem() {
     document.getElementById("trecho2").style.display = "none";
     document.getElementById("trecho3").style.display = "none";
 
-    //carrega aprovador de viagem
-    carregaAprovador();
-   
+  
     
 }
 

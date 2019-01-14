@@ -50,26 +50,8 @@ function enableFields(form) {
 			 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
 			 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
 			
-			 /*
-	
-			 var emailUsuarioLogado = dataset.getValue(0, "mail");
+			 carregaAprovador();
 			 
-			 //consulta de usuario logado é funcionario e retorna aprovador
-			 var constraintsUsuarioLogado  = new Array();			 			 
-			 constraintsUsuarioLogado.push(DatasetFactory.createConstraint("EMAIL_FUN", emailUsuarioLogado, emailUsuarioLogado, ConstraintType.MUST));
-			 
-			 var datasetUsuarioLogado = DatasetFactory.getDataset("APR_VIAGEM", null, constraintsUsuarioLogado, null);
-			    if (datasetUsuarioLogado != null && datasetUsuarioLogado.values.length > 0) {
-
-			        var matriculaAprovador = datasetUsuarioLogado.values[0]["MATRICULA_APR"];
-			        var emailAprovador = datasetUsuarioLogado.values[0]["EMAIL_APR"];
-
-			        form.setValue("emailGestor",emailAprovador);
-			        form.setValue("matriculaApr",matriculaAprovador);
-
-			    }	
-			    
-			    */
 		 }
 		 
 	}
@@ -275,7 +257,21 @@ function enableFields(form) {
 	 
 	 }	 
 	
-		
+	
+	function carregaAprovador() {		
+	    var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
+	    if (dataset != null && dataset.values.length > 0) {
+
+	      form.setValue("emailGestor",getValue(0, "EMAIL_APROVADOR")); 
+	      form.setValue("matriculaApr",getValue(0, "MATRICULA_APROVADOR")); 
+	      form.setValue("aprovador",getValue(0, "DIRETOR")); 
+
+	    }
+	    
+	
+	}
+	
+	
 					    
 	    
 }

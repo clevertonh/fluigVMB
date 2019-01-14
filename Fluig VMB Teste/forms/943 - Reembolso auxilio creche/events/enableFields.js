@@ -16,16 +16,13 @@ function enableFields(form){
 		 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
 		 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
 		 
-		 var aprovador = usuarioAprovador();		 		 	
-		 form.setValue("gestor",aprovador.getValue(0, "GERENTE"));
-		 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_APROVADOR"));
-		 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
-		 
-		 
-
-		 
-		 
-		 
+		 var aprovador = usuarioAprovador();
+		 if (aprovador!= null && aprovador != ""){
+			 form.setValue("gestor",aprovador.getValue(0, "GERENTE"));
+			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_APROVADOR"));
+			 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
+			 	 
+		 }
 		 
 	}
 	

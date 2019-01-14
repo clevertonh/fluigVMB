@@ -149,7 +149,7 @@ function beforeStateEntry(sequenceId){
 		
 		
 	    if (datasetPrincipal.rowsCount > 0){
-	    	integracao(codSolicitacao,emailSolicitante,dtVencimento,valorTotal,itemContabil,aRateio);
+	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,itemContabil,aRateio);
 	    }
 	    
 	}
@@ -158,24 +158,7 @@ function beforeStateEntry(sequenceId){
 	
 }
 
-//ADD ITENS
-function addItemPagamento(){
-	   var item = {   
-				ccusto :  '' ,
-				projeto :'' ,
-				atividade :'' ,
-				categoria :'' ,
-				fonte :'' ,
-				area :'' ,
-				alocacao :'' ,
-				conta : '' ,
-				localizacao :''
-					};	
-		
-	   	itemContabil.push(item);
-}
-
-function integracao(codSolicitacao,emailSolicitante,dtVencimento,valorTotal,itemContabil,aRateio){	
+function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,itemContabil,aRateio){	
 	 try{
 	        var clientService = fluigAPI.getAuthorizeClientService();
 	        var data = {
@@ -185,8 +168,11 @@ function integracao(codSolicitacao,emailSolicitante,dtVencimento,valorTotal,item
 	            method : 'post',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100', // segundos
 	            params : {
-	                solicitante : '' + emailSolicitante +'',	
-	                dataVencimento :'' + dtVencimento +'',
+	                processoId : '' + processoID +'',
+	                codSolicitacao : '' + codSolicitacao + '' ,	                
+	            	solicitante : '' + emailSolicitante +'',	
+	            	dataEmissao :'' + dtEmissao +'',
+	            	dataVencimento :'' + dtVencimento +'',
 	                valorTotal :'' + valorTotal +'',	
 	                itens: itemContabil ,
 	        		rateioDigitado: aRateio + ''
