@@ -34,7 +34,7 @@ function displayFields(form,customHTML){
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
-       	form.setVisibleById("2b", false);
+       	//form.setVisibleById("2b", false);
     	form.setVisibleById("3b", false);    	
     	
     	//campos aba dados gerais

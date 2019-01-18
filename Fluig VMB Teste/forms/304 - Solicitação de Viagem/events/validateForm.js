@@ -69,7 +69,7 @@ function validateForm(form) {
         }
 
         if (form.getValue("emailGestor") == "" || form.getValue("emailGestor") == null) {
-            throw "Houve algum problema e não possível identificar seu aprovador. Tente novamente mais tarde!";
+        	throw "Houve algum problema e não possível identificar seu aprovador. Tente novamente mais tarde!";	  
         }
         
      
@@ -336,6 +336,8 @@ function validateForm(form) {
         return new Date(data[1] + "/" + data[0] + "/" + data[2]);
     }
 
-    
+	
     
 }
+
+

@@ -9,6 +9,8 @@ var CONFIRMARREEMBOLSO = 79;
 var CORRIGIRSOLICITACAO = 98;
 var dadosGestor;
 
+var site;
+
 var onlyDate = FLUIGC.calendar('#dataSolicitacao', {
     pickDate: true,
     pickTime: false,
@@ -915,7 +917,7 @@ function setSelectedZoomItem(selectedItem) {
 
         }
 
-        document.getElementById("solicitanteNpassageiro").click();
+        //document.getElementById("solicitanteNpassageiro").click();
         $('#nomepassageiro').val(selectedItem["nomepassageiro"]);
         $('#nomemae').val(selectedItem["nomemae"]);
         $('#cpfpassageiro').val(selectedItem["cpfpassageiro"]);
@@ -1451,7 +1453,7 @@ function dadosFuncionarioDataSet() {
 function dadosFuncionario() {
     if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
         var email = parent.WCMAPI.userEmail.toUpperCase();
-        var site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/' + email;
+        site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/' + email;
         //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
         carregaDados();
     }

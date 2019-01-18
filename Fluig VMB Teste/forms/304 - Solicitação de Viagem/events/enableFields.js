@@ -50,7 +50,16 @@ function enableFields(form) {
 			 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
 			 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
 			
-			 carregaAprovador();
+	
+			 var aprovador = usuarioAprovador();
+			 if (aprovador!= null && aprovador != ""){
+				 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
+				 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
+				 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
+				 	 
+			      
+			      
+			 }
 			 
 		 }
 		 
@@ -258,20 +267,12 @@ function enableFields(form) {
 	 }	 
 	
 	
-	function carregaAprovador() {		
-	    var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
-	    if (dataset != null && dataset.values.length > 0) {
 
-	      form.setValue("emailGestor",getValue(0, "EMAIL_APROVADOR")); 
-	      form.setValue("matriculaApr",getValue(0, "MATRICULA_APROVADOR")); 
-	      form.setValue("aprovador",getValue(0, "DIRETOR")); 
-
-	    }
-	    
-	
+	function usuarioAprovador(){	
+		 var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
+		 
+		 return dataset;
 	}
-	
-	
 					    
 	    
 }
