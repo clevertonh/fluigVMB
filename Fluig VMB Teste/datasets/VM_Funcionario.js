@@ -1,5 +1,7 @@
 function createDataset(fields, constraints, sortFields) {
 	
+	//retorna lista de funcionários
+	
 	var dataset = DatasetBuilder.newDataset();
     dataset.addColumn("NOME");
 	dataset.addColumn("MAE");
