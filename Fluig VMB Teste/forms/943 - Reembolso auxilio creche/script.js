@@ -13,6 +13,8 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
+
+
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
