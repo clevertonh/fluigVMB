@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Viagem</processId>
-      <version>311</version>
+      <version>319</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>304</formId>
@@ -466,6 +466,58 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <version>1</version>
+        <sequence>129</sequence>
+      </processStatePK>
+      <stateName>Pagar diárias</stateName>
+      <stateDescription>Pagar diárias</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;VM_AprovadorViagem&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>500</positionX>
+      <positionY>740</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Viagem</processId>
+        <version>1</version>
         <sequence>120</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -554,56 +606,6 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
       <parentSequence>0</parentSequence>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Viagem</processId>
-        <version>1</version>
-        <sequence>105</sequence>
-      </processStatePK>
-      <stateName>Pagamento de diárias</stateName>
-      <stateDescription>Pagamento de diárias</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>false</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>0</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>true</transferAttachments>
-      <subProcessId>S0002</subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>500</positionX>
-      <positionY>748</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>true</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>2</stateType>
-      <bpmnType>100</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <cancelSubProcess>false</cancelSubProcess>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -831,7 +833,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -842,7 +844,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -853,7 +855,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
@@ -864,7 +866,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
@@ -875,7 +877,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
@@ -886,7 +888,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>80</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;ressarcimento&quot;) == &quot;reembolso&quot;</condition>
@@ -897,7 +899,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>80</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;ressarcimento&quot;) == &quot;credito&quot;</condition>
@@ -908,36 +910,36 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;&quot;</condition>
       <destinationSequenceId>93</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
       <destinationSequenceId>33</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>311</version>
+        <version>319</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
-      <destinationSequenceId>105</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <condition>hAPI.getCardValue(&quot;tipoviagem&quot;) == &quot;nacional&quot; &amp;&amp; &#xd;
+hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; &amp;&amp; &#xd;
+hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;nao&quot; &amp;&amp;&#xd;
+(hAPI.getCardValue(&quot;tipovoo&quot;) != &quot;ida&quot; )</condition>
+      <destinationSequenceId>129</destinationSequenceId>
     </ConditionProcessState>
   </list>
   <list>
@@ -1184,40 +1186,6 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <version>1</version>
-        <linkSequence>106</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>115</initialStateSequence>
-      <finalStateSequence>105</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Viagem</processId>
-        <version>1</version>
-        <linkSequence>117</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>105</initialStateSequence>
-      <finalStateSequence>116</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Solicitacao de Viagem</processId>
-        <version>1</version>
         <linkSequence>119</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1320,7 +1288,41 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <version>1</version>
-        <linkSequence>129</linkSequence>
+        <linkSequence>131</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>115</initialStateSequence>
+      <finalStateSequence>129</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Viagem</processId>
+        <version>1</version>
+        <linkSequence>132</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>129</initialStateSequence>
+      <finalStateSequence>116</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Viagem</processId>
+        <version>1</version>
+        <linkSequence>133</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -1825,7 +1827,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
-        <version>311</version>
+        <version>319</version>
         <linkSequence>73</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1836,7 +1838,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
-        <version>311</version>
+        <version>319</version>
         <linkSequence>127</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1848,34 +1850,13 @@ function setChildTable(numProcessoPai){&#xd;
   <list/>
   <list/>
   <list/>
-  <list>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>Solicitacao de Viagem</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>S0002</subProcessCode>
-      <processField>solicitante</processField>
-      <subProcessField>solicitante</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>Solicitacao de Viagem</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>S0002</subProcessCode>
-      <processField>emailSolicitante</processField>
-      <subProcessField>emailSolicitante</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-  </list>
+  <list/>
   <list>
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1885,7 +1866,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1895,7 +1876,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1905,7 +1886,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1915,7 +1896,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1925,7 +1906,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1935,7 +1916,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1945,7 +1926,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1955,7 +1936,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1965,7 +1946,7 @@ function setChildTable(numProcessoPai){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>311</processVersion>
+      <processVersion>319</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
