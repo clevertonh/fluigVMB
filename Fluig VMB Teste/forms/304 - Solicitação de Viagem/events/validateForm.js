@@ -10,6 +10,7 @@ function validateForm(form) {
     var FINALIZARCOMPRA = 77;
 	var CORRIGIRSOLICITACAO = 98;
 	var VERIFICARCOMPRA = 87;
+	var COTARREMARCACAO = 135;
 
     //recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -234,6 +235,24 @@ function validateForm(form) {
     	 if (form.getValue("ressarcimento") == "" || form.getValue("ressarcimento") == null) {
              throw "Você deve informar se a passagem será reembolsada ou ficará como crédito.";
          }
+    }
+    
+    else if (activity == COTARREMARCACAO){
+    	
+   		if (form.getValue("tipovoo") != "" && form.getValue("tipovoo") != null){
+   			if (form.getValue("cotacaoVoo") == '' || form.getValue("cotacaoVoo") == null || form.getValue("cotacaoVoo") <= 0 ){
+   	    		throw "Você precisa informar o valor da cotação da passagem.";	
+   	    	}
+   		}
+
+	   		if (form.getValue("tipoquarto") != "" && form.getValue("tipoquarto") != null){
+	   			
+	   	       	if (form.getValue("cotacaoHotel") == '' || form.getValue("cotacaoHotel") == null || form.getValue("cotacaoHotel") <= 0 ){
+	   	    		throw "Você precisa informar o valor da cotação das diárias.";	
+	   	    	}
+	   	       	
+	    		}
+	   	
     }
 
     if (activity == ABERTURA || activity == APROVACAO || activity == COMPRARPASSAGEM || activity ==  CORRIGIRSOLICITACAO) {

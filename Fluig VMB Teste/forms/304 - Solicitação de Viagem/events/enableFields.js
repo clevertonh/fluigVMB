@@ -11,13 +11,17 @@ function enableFields(form) {
 	var REGISTRARCANCELAMENTO = 64;
 	var CONFIRMARREEMBOLSO = 79;
 	var CORRIGIRSOLICITACAO = 98;
+	var COTARREMARCACAO = 135;
+	var PAGARDIARIAS = 129;
 	
     /*
      * Evento usado para desabilitar campos
     */
 
-	 form.setEnabled('viagemplanejada', false);
-	
+	 form.setEnabled('viagemplanejada', false);		
+	 form.setEnabled('cotacaoVoo', false);
+	 form.setEnabled('cotacaoHotel', false);
+	 form.setEnabled('aprovacao', false);
 	
 	var activityEnable = getValue('WKNumState');
 	log.info("----ATIVIDADE enableFields: " + activityEnable);
@@ -33,8 +37,7 @@ function enableFields(form) {
 		 form.setEnabled('vooComprado', false);
 		 form.setEnabled('hotelComprado', false);
 		 form.setEnabled('ressarcimento', false);
-		 form.setEnabled('justificativaReprovacao', false);
-		 
+		 form.setEnabled('justificativaReprovacao', false);		 
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
 		 
@@ -144,7 +147,7 @@ function enableFields(form) {
 		 
 		 //CAMPOS DA ABA DE APROVAÇAO
 		 form.setEnabled('dataAprovacao', false);
-		 
+	
 		 
 		 
 		 //PROCESSO DE APROVAÇÃO
@@ -152,11 +155,13 @@ function enableFields(form) {
 			 //CAMPOS HOSPILIDADE
 			 form.setEnabled('vooComprado', false);
 			 form.setEnabled('hotelComprado', false);
-			
-			 
+			 form.setEnabled('aprovacao', true);
 			
 			 //set numero da solicitação
 			 form.setValue("solicitacao",getValue('WKNumProces'));
+			 
+			 //para o caso da solicitação ter sido retornada da tarefa de comprar passagem e precisar ser aprovada ou reprovada novamente
+			 form.setValue("aprovacao","");
 		 }
 		 
 		 
@@ -198,6 +203,9 @@ function enableFields(form) {
 			 form.setEnabled('valorTx', false);	
 			 
 			 
+			 form.setEnabled('dtSaida', false);	
+			 form.setEnabled('dtRetorno', false);	
+			 form.setEnabled('vl_diarias', false);	
 			 
 			 
 			 
@@ -206,10 +214,11 @@ function enableFields(form) {
 		 }
 		 
 		 //PROCESSO DE REGISTRAR CANCELAMENTO DA VIAGEM
-		 else if (activityEnable == REGISTRARCANCELAMENTO ||  activityEnable == CONFIRMARREEMBOLSO){
+		 else if (activityEnable == REGISTRARCANCELAMENTO ||  activityEnable == CONFIRMARREEMBOLSO || activityEnable == PAGARDIARIAS){
 			 //CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
+			 form.setEnabled('justificativaReprovacao', false);
 			 
 			 //CAMPOS COMPRAR PASSAGEM
 			 form.setEnabled('vooComprado', false);
@@ -217,11 +226,6 @@ function enableFields(form) {
 			 form.setEnabled('valorVoo', false);
 			 form.setEnabled('valorHotel', false);
 			 
-			 
-			 
-			 
-			 //CAMPOS APROVAÇÃO
-			 form.setEnabled('aprovacao', false);
 
 			 if (activityEnable == CONFIRMARREEMBOLSO){
 				 form.setEnabled('ressarcimento', false);
@@ -236,8 +240,32 @@ function enableFields(form) {
 			 form.setEnabled('tipo_hosp3', false);	
 			 
 			 
-		 }	 
+		 }
 		 
+		 else if (activityEnable == COTARREMARCACAO){
+			 form.setEnabled('aprovacao', false);
+			 form.setEnabled('justificativaReprovacao', false);
+			 form.setEnabled('justificativacancelamento', false);
+			 form.setEnabled('cancelarpassagem', false);
+			
+			
+			 
+		   		if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
+		   		 form.setEnabled('vooComprado', false);
+		   		 form.setEnabled('cotacaoHotel', true);
+	    		}
+
+		   		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null){
+			   		 form.setEnabled('hotelComprado', false);
+			   		 form.setEnabled('cotacaoVoo', true);
+		    		}
+		   		
+		   	 
+						 
+		 }
+		 
+		  
+
 
 		 if (activityEnable != ABERTURA &&  activityEnable != APROVACAO && activityEnable != COMPRARPASSAGEM && activityEnable != CORRIGIRSOLICITACAO){
 				//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS

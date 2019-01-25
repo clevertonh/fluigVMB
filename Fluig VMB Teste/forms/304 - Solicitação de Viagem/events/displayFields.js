@@ -9,6 +9,8 @@ function displayFields(form,customHTML){
 	var CONFIRMARREEMBOLSO = 79;
 	var JUSTIFICARCANCELAMENTO = 93 ;
 	var CORRIGIRSOLICITACAO = 98;
+	var COTARREMARCACAO = 135;
+	var PAGARDIARIAS = 129;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -28,14 +30,15 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoreembolso", false);
      form.setVisibleById("divDataSetAgenda", false);
 	 
-	 
 
 	
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
-       	//form.setVisibleById("2b", false);
-    	form.setVisibleById("3b", false);    	
+       	form.setVisibleById("2b", false);
+    	form.setVisibleById("3b", false);
+    	form.setVisibleById("4b", false);
+    	//form.setVisibleById("divCotacao", false);
     	
     	//campos aba dados gerais
     	form.setVisibleById("selecaodeviagens", false);
@@ -73,7 +76,8 @@ function displayFields(form,customHTML){
         //campos aba final      
         form.setVisibleById("divJustificativa", false);
                
-    	
+       
+        
     }
 
    
@@ -98,7 +102,7 @@ function displayFields(form,customHTML){
 			}
 	        
 	    	
-	        
+	 
 	        
 		 
 		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null ) {
@@ -113,7 +117,7 @@ function displayFields(form,customHTML){
 		if (form.getValue("remarcacao") == "nao" ) {
 			form.setVisibleById("selecaodeviagens",false);
 			form.setVisibleById("div_justificativaremarcacao",false);
-			
+			form.setVisibleById("divCotacao", false);	
 		
 	    }
  		
@@ -211,17 +215,21 @@ function displayFields(form,customHTML){
     
     if (activity == APROVACAO ) {
 		form.setVisibleById("3b", false);
+		form.setVisibleById("4b", false);
 		form.setVisibleById("divJustificativaCancelamento", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
         form.setVisibleById("div_tipohotel1", false);
         form.setVisibleById("div_tipohotel2", false);
         form.setVisibleById("div_tipohotel3", false);
-       
+    	
+
    
         
 	} 
 	
 	else if (activity == COMPRARPASSAGEM ) {
+    	form.setVisibleById("2b", false);  
+		form.setVisibleById("4b", false);
 		form.setVisibleById("div_valores", false);
         form.setVisibleById("divRessarcimento", false);
         form.setVisibleById("divCobranca", false);
@@ -229,10 +237,14 @@ function displayFields(form,customHTML){
         form.setVisibleById("divReembolso", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
 
+		
                
     } 		
 	
 	else if (activity == OBTERPASSAGEM  ) {
+    		form.setVisibleById("2b", false);  
+    		form.setVisibleById("3b", false); 
+			//form.setVisibleById("4b", false);
 	        form.setVisibleById("divJustificativaCancelamento", true);
 	        form.setVisibleById("justificativacanc", false);
 	        form.setVisibleById("divRessarcimento", false);
@@ -252,6 +264,7 @@ function displayFields(form,customHTML){
             
 	}
 	else if (activity == REGISTRARCANCELAMENTO ){
+		form.setVisibleById("2b", false);  
 		form.setVisibleById("divReembolso", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
  		form.setVisibleById("div_valortx", false);
@@ -268,7 +281,7 @@ function displayFields(form,customHTML){
 	}
 	
 	else if (activity ==  CORRIGIRSOLICITACAO){
-	   	form.setVisibleById("2b", false);
+	   	form.setVisibleById("2b", false);		
     	form.setVisibleById("3b", false);    
     	form.setVisibleById("divJustificativaCancelamento", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);  
@@ -289,6 +302,7 @@ function displayFields(form,customHTML){
 	}
 	
 	else if (activity ==  JUSTIFICARCANCELAMENTO){
+		form.setVisibleById("2b", false);  
       	form.setVisibleById("3b", false); 
 	  	form.setVisibleById("divJustificativaCancelamento", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
@@ -297,4 +311,32 @@ function displayFields(form,customHTML){
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
 	    	
 	}
+    
+	else if (activity == COTARREMARCACAO){
+		form.setVisibleById("2b", false);  
+    	form.setVisibleById("3b", false);  
+		form.setVisibleById("4b", false);
+        form.setVisibleById("divJustificativaCancelamento", true);
+        form.setVisibleById("justificativacanc", false);
+        form.setVisibleById("divRessarcimento", false);
+        form.setVisibleById("divCobranca", false);
+	    form.setVisibleById("btn_add_item",false);
+		form.setVisibleById("removeitem",false);
+		form.setVisibleById("divReembolso", false);    
+		form.setVisibleById("divJustificativaReprovacaoViagem", false);
+        form.setVisibleById("div_tipohotel1", true);
+        
+        if (form.getValue("tipovoo") != "varios"){
+            form.setVisibleById("divDatasHotel2", false);
+            form.setVisibleById("divDatasHotel3", false);
+        	
+        }
+
+	}
+	else if (activity == PAGARDIARIAS){
+		form.setVisibleById("2b", false);  
+		form.setVisibleById("3b", false);  
+	}
+    
+    
 }

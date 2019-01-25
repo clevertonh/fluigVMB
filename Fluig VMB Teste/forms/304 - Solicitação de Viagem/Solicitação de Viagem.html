@@ -36,11 +36,11 @@
                            <div id="exTab3" class="container-fluid">
                               <ul class="nav nav-pills nav-justified">
                                  <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
-                                 <li><a href="#2b" data-toggle="tab">Aprovador</a></li>
+                                 <li><a href="#2b" data-toggle="tab">Diretor (a)</a></li>
                                  <li><a href="#3b" data-toggle="tab">Assistente de hospitalidade</a></li>
+                                 <li><a href="#4b" data-toggle="tab">Assistente de Tesouraria</a></li>                                 
                               </ul>
                               <div class="tab-content clearfix">
-                                 <!-- Aba Solicitante -->
                                  <div class="tab-pane active" id="1b">
                                     <div class="row">
                                        <section>
@@ -1020,34 +1020,31 @@
                                        </section>
                                     </div>
                                  </div>
-                                 <!-- Aba Aprovador -->
-                                 <div class="tab-pane" id="2b">
-                                     
+                                 <div class="tab-pane" id="2b">  
+                                 	<div class="row" id ="divCotacao">
+                                 	<h3>Valor previsto para a remarcação dos serviços:</h3>
+                                 		<div class="form-group col-md-4">
+                                 			<label>Cotação da passagem</label>
+                                 			<input type="number" name="cotacaoVoo" id ="cotacaoVoo">
+                                 		</div>
+                                 		<div class="form-group col-md-4">
+                                 			<label>Cotação de hospedagem</label>
+                                 			<input type="number" name="cotacaoHotel" id ="cotacaoHotel">
+                                 		</div>
+                                 	</div>                              
                                        <div class="row">                                         
                                           <div class="form-group col-md-5">
-                                             <label for="aprovador">Nome aprovador</label>
+                                             <label for="aprovador">Nome</label>
                                              <input type="text" class="form-control" id="aprovador" name="aprovador" readonly >
-                                          </div>
-                                        
+                                          </div>                                        
                                           <div class="form-group col-md-3">
-                                              <label for="emailGestor">Email aprovador</label>
+                                              <label for="emailGestor">Email</label>
                                              <input type="email" class="form-control" id="emailGestor" name="emailGestor" readonly>
                                           </div>                                          
                                           <div class="form-group col-md-4" id ="divMatrApr">
-                                          	<label for="matriculaApr">Matricula Aprovador</label>
+                                          	<label for="matriculaApr">Matricula</label>
                                           	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
-                                          </div>                                       
-                                          <!-- 
-                                          <div class="form-group col-md-3">
-                                             <label for="dataAprovacao">Data Aprovação/Reprovação</label>
-                                             <div class="input-group date" id="calendariodataAprovacao">
-                                                <input type="text" class="form-control" placeholder="Data do dia" id="dataAprovacao" name="dataAprovacao"  readonly>
-                                                <span class="input-group-addon">
-                                                <span class="fluigicon fluigicon-calendar"></span>
-                                                </span>
-                                             </div>
-                                          </div>
-                                             -->                              
+                                          </div>                                                                    
                                         </div>
                                     <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
@@ -1083,7 +1080,6 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <!-- Aba Gestor -->
                                  <div class="tab-pane" id="3b">
                                     <div class="row" id ="atendimento">
                                        <div class="form-group col-md-3" id="divAtendimento">
@@ -1143,6 +1139,32 @@
                                        </div>
                                     </div>
                                  </div>
+                              	 <div class="tab-pane" id="4b">
+                                    <div class="row">
+                                    	<div class="form-group col-md-3">
+                                          <label for="dtSaida">Data da saída</label>
+                                          <div class="input-group date" id="calendariodtSaida">
+                                             <input type="text" class="form-control" id="dtSaida" name="dtSaida" >
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                    	</div>
+                                    	<div class="form-group col-md-3">
+                                          <label for="dtRetorno">Data da retorno</label>
+                                          <div class="input-group date" id="calendariodtRetorno">
+                                             <input type="text" class="form-control" id="dtRetorno" name="dtRetorno" >
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                    	</div>                                    	
+                                       <div class="form-group col-md-2">
+                                          <label for="vl_diarias">Valor total das diárias</label>
+                                          <input type="number" class="form-control" name="vl_diarias" id ="vl_diarias">
+                                       </div>
+                                    </div> 
+                              	 </div>
                               </div>
                            </div>
                         </div>

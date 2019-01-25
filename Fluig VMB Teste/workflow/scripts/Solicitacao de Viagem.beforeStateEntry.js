@@ -11,6 +11,15 @@ function beforeStateEntry(sequenceId){
 	var vooComprado = hAPI.getCardValue("vooComprado");
 	var hotelComprado = hAPI.getCardValue("hotelComprado");
 
+	var tipoPagamento = hAPI.getCardValue("tipoPagamento");				
+	var codRateio = hAPI.getCardValue("codigorateio");
+	//var codSolicitacao = hAPI.getCardValue("solicitacao");				
+	var tipoViagem = hAPI.getCardValue("tipoviagem");				
+	var solicitacao;
+	var integraProtheus = false;
+	var tipoHospedagem1 = hAPI.getCardValue("tipo_hosp1");
+	var tipoHospedagem2 = hAPI.getCardValue("tipo_hosp2");
+	var tipoHospedagem3 = hAPI.getCardValue("tipo_hosp3");
 	
 	/*
 	 * verifica se foi adicionado anexo. 
@@ -35,15 +44,7 @@ function beforeStateEntry(sequenceId){
      
 	   if (ativAtual == 13 && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
 		   
-				var tipoPagamento = hAPI.getCardValue("tipoPagamento");				
-				var codRateio = hAPI.getCardValue("codigorateio");
-				//var codSolicitacao = hAPI.getCardValue("solicitacao");				
-				var tipoViagem = hAPI.getCardValue("tipoviagem");				
-				var solicitacao;
-				var integraProtheus = false;
-				var tipoHospedagem1 = hAPI.getCardValue("tipo_hosp1");
-				var tipoHospedagem2 = hAPI.getCardValue("tipo_hosp2");
-				var tipoHospedagem3 = hAPI.getCardValue("tipo_hosp3");
+				
 	
 				if (anexos.size() > 0) {
 		            temAnexo = true;
@@ -269,7 +270,8 @@ function beforeStateEntry(sequenceId){
 						        else {
 						            log.info(vo.getResult());
 						        }
-						    } catch(err) {
+						    } 
+							catch(err) {
 						        throw err;
 						    }					    
 					    
@@ -279,7 +281,121 @@ function beforeStateEntry(sequenceId){
 				 	   
 			   
 		   }
+	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
+		   else if ( ativAtual == 129 ) {
+
+			    //Cria a constraint para buscar os formulários ativos
+			    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
+			    var cst2 = DatasetFactory.createConstraint("remarcacao", "nao" , "nao", ConstraintType.MUST);
+				var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
+			    var cst4 = DatasetFactory.createConstraint("vooComprado", "sim" , "sim", ConstraintType.MUST);				
+				var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+				
+			    var constraints = new Array(cst,cst2,cst4,cst3,cst5);
+			     //dataset interno: formularios preenchidos
+			    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
+			    
+			    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
+			        var documentId = datasetPrincipal.getValue(i, "metadata#id");
+			        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
+			        var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
+			        
+			        idFormulario = documentId;
+			        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
+			        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
+			        var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
+			        var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
+			        var constraintsFilhos = new Array(c1, c2, c3);
+			 
+			        //Busca o dataset
+			        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
+				
+			        solicitacao = datasetFilhos;
+			   
+			   
+			   
+			   
+				if ( solicitacao.rowsCount == 1){
+	    				var obj = aItemServico[i];		    				 
+    					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
+    					
+    					if (solicitacao.getValue(0, "txtprojeto") != null){
+    						obj.projeto = '' + solicitacao.getValue(0, "txtprojeto") +'';	
+    					}
+    					obj.atividade = '' + solicitacao.getValue(0, "txtatividade") +'';
+    					
+    					if (solicitacao.getValue(0, "txtcategoria") != null){
+    						obj.categoria = '' + solicitacao.getValue(0, "txtcategoria") +'';
+    					}
+    					if (solicitacao.getValue(0, "txtfontefinanciamento") != null){
+    						obj.fonte = '' + solicitacao.getValue(0, "txtfontefinanciamento") +'';
+    					}
+    					if (solicitacao.getValue(0, "txtareaestrategica")  != null){
+    						obj.area = '' + solicitacao.getValue(0, "txtareaestrategica") +'';
+    					}	    					
+    					if (solicitacao.getValue(0, "alocacao") != null){
+    						obj.alocacao = '' + solicitacao.getValue(0, "alocacao") +'';	
+    					}
+    					if (solicitacao.getValue(0, "contacontabil") != null){
+    						obj.conta = '' + solicitacao.getValue(0, "contacontabil") +'';	
+    					}	    					
+    					if (solicitacao.getValue(0, "localizacao") != null){
+    						obj.localizacao = '' + solicitacao.getValue(0, "localizacao") +'';	
+    					}
+    					aItemServico[i] = obj;	
+	    			
+	    				
+	    		}
+				
+				
+				
+				
+				//throw "Integrado com o Protheus"			
+				 try{
+				        var clientService = fluigAPI.getAuthorizeClientService();
+				        var data = {
+				            companyId : getValue("WKCompany") + '',
+				            serviceCode : 'REST FLUIG',
+				            endpoint : '/REST/FLUIG2',
+				            method : 'post',// 'delete', 'patch', 'put', 'get'     
+				            timeoutService: '100', // segundos
+				            params : {
+				                solicitante : '' + hAPI.getCardValue("solicitante") +'',
+				                datasolicitacao :'' + hAPI.getCardValue("dataSolicitacao") +'',	
+				                passageiro : '' + hAPI.getCardValue("nomepassageiro") +'',
+				                itens: aItemServico ,
+				        		rateioDigitado: aRateio ,
+				        		rateioConfigurado:'' +  codRateio +''
+				            },
+				          options : {
+				             encoding : 'UTF-8',
+				             mediaType: 'application/json'
+				          }
+				        }
+				              
+				        //log.info(aRateio);
+				        
+				        var vo = clientService.invoke(JSON.stringify(data));
+				        
+				        if(vo.getResult()== null || vo.getResult().isEmpty()){
+				            throw "Retorno está vazio";
+				        }
+				        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+				        	throw JSON.parse(vo.getResult()).errorMessage;
+				        }
+				        else {
+				            log.info(vo.getResult());
+				        }
+				    } 
+					catch(err) {
+				        throw err;
+				    }	
+			   
+			   
+			   
+		   }
 	   
+	}
 	   
 	   //FUNÇÃO QUE ADD ITEM NA SOLICITAÇÃO DE COMPRA
 	   function addItemViagem(produto,codigo,tipoV,id_form,nValor){

@@ -7,6 +7,8 @@ var SOLICITACANCELAMENTO = 33
 var CANCELAMENTOPASSAGEM = 64;
 var CONFIRMARREEMBOLSO = 79;
 var CORRIGIRSOLICITACAO = 98;
+var COTARREMARCACAO = 135;
+var PAGARDIARIAS = 129;
 var dadosGestor;
 
 var site;
@@ -37,6 +39,16 @@ var dataReembolso = FLUIGC.calendar('#calendariodataReembolso', {
     //minDate: new Date().toLocaleString()
 
     //daysOfWeekDisabled: [0,6] desativar dias da semana
+});
+
+var dtSaida = FLUIGC.calendar('#calendariodtSaida', {
+    pickDate: true,
+    pickTime: true
+});
+
+var dtRetorno = FLUIGC.calendar('#calendariodtRetorno', {
+    pickDate: true,
+    pickTime: true
 });
 
 

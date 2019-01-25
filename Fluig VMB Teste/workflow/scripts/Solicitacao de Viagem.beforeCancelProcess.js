@@ -5,7 +5,7 @@ function beforeCancelProcess(colleagueId,processId){
 	
 	log.info("Processo beforeCancel - atividade: " + ativAtual);
 	
-	if (ativAtual == 33 ||  ativAtual == 64 ||  ativAtual == 79 ){
+	if (ativAtual == 33 ||  ativAtual == 64 ||  ativAtual == 79 || ativAtual == 129){
 		
 		 throw "Você não pode excluir essa solicitação pois ela já foi atendida. Para cancelar a viagem, acesse a solicitação e marque a opção de cancelamento.";
 		
