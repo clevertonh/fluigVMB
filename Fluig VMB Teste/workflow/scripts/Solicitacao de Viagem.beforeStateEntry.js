@@ -255,7 +255,7 @@ function beforeStateEntry(sequenceId){
 						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 						            timeoutService: '100', // segundos
 						            params : {
-						            	tarefa : '' + COMPRARPASSAGEM + '' ,
+						            	processo : '' + 1 + '' ,
 						            	solicitacao : '' + codSolicitacao + '' ,
 						            	solicitante : '' + hAPI.getCardValue("solicitante") +'',
 						                datasolicitacao :'' + hAPI.getCardValue("dataSolicitacao") +'',	
@@ -346,7 +346,7 @@ function beforeStateEntry(sequenceId){
 				            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 				            timeoutService: '100', // segundos
 				            params : {
-				            	tarefa : '' + PAGARDIARIAS + '' ,
+				            	processo : '' + 1 + '' ,
 				            	solicitacao : '' + codSolicitacao + '' ,
 				                solicitante : '' + hAPI.getCardValue("solicitante") +'',
 				                valorTotal : '' + valorDiarias + '' ,
