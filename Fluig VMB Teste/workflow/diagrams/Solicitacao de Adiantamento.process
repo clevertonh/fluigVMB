@@ -4272,7 +4272,7 @@
     <fonts name="Arial" size="8"/>
     <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess id="SolicitacaodeAdiantamento" name="Solicita&#xe7;&#xe3;o de Adiantamento" serverId="Fluig teste" version="1" author="" extendedFields="&lt;list/>" formSource="server" category="" volume="Default" expedient="Default" instruction="" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
+  <bpmn2:BpmnProcess id="SolicitacaodeAdiantamento" name="Solicita&#xe7;&#xe3;o de Adiantamento" serverId="Fluig teste" version="2" author="" extendedFields="&lt;list/>" cardIndex="1306" formSource="server" category="Financeiro" volume="Default" expedient="Default" instruction="" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
   <bpmn2:BpmnPool id="pool1" name="Solicita&#xe7;&#xe3;o de adiantamento" cores="FFFFFF"/>
   <bpmn2:BpmnSwimLane id="swimlane2" name="Solicitante" cores="9F9F9F"/>
   <bpmn2:BpmnSwimLane id="swimlane3" name="Gerente" cores="C0C0C0"/>
@@ -4282,7 +4282,7 @@
   <bpmn2:BpmnAnnotation id="annotationtask7" name="Informar valor necess&#xe1;rio" outgoing="flow8" type="0"/>
   <bpmn2:SequenceFlow id="flow8" name="" sourceRef="annotationtask7" targetRef="startevent4" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnSwimLane id="swimlane9" name="Assist. Financeiro" cores="82b0b7"/>
-  <bpmn2:BpmnGateway id="exclusivegateway10" name="Aprovado?" incoming="flow11" outgoing="flow13 flow15" type="120" condition="&lt;list>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>1&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;aprovacao&amp;quot;) == &amp;quot;aprovado&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>task12&lt;/targetTask>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>2&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;aprovacao&amp;quot;) == &amp;quot;reprovado&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>endevent14&lt;/targetTask>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;&lt;/list>"/>
+  <bpmn2:BpmnGateway id="exclusivegateway10" name="Aprovado?" incoming="flow11" outgoing="flow13 flow15" type="120" condition="&lt;list>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>1&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;aprovacao&amp;quot;) == &amp;quot;aprovado&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>task46&lt;/targetTask>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>2&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;aprovacao&amp;quot;) == &amp;quot;reprovado&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>endcancel18&lt;/targetTask>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;&lt;/list>"/>
   <bpmn2:SequenceFlow id="flow11" name="" sourceRef="task5" targetRef="exclusivegateway10" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow13" name="" sourceRef="exclusivegateway10" targetRef="task46" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow15" name="" sourceRef="exclusivegateway10" targetRef="endcancel18" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
