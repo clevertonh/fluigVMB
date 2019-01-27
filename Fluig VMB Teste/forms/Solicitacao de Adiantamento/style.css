@@ -52,9 +52,6 @@
         position: relative;
     }
 
-/*
-ajusta tamanho da linha do wizard
-*/
 .connecting-line {
 	height: 2px;
     background: #e0e0e0;
@@ -110,11 +107,8 @@ span.round-tab:hover {
     border: 2px solid #333;
 }
 
-/*
-ajusta espaçamento entre wizard
-*/
 .wizard .nav-tabs > li {
-    width: 18%;
+    width: 15%;
 }
 
 .wizard li:after {
@@ -129,14 +123,11 @@ ajusta espaçamento entre wizard
     transition: 0.1s ease-in-out;
 }
 
-/*
-ajusta apontador wizard
-*/
 @media screen and (min-width: 1000px) {
 	.wizard li.active:after {
 	    content: " ";
 	    position: absolute;
-	    left: 75%;
+	    left: 76%;
 	    opacity: 1;
 	    margin: 0px auto;
 	    bottom: 0px;
