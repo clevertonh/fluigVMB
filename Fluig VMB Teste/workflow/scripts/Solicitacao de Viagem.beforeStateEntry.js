@@ -2,6 +2,17 @@ function beforeStateEntry(sequenceId){
 	//REST PADRÃO TOTVS USUÁRIO
 	//http://pessoasecultura.intranetvm.org.br:8082/REST/USERS
 	
+	var ABERTURA = 0;
+	var SOLICITARVIAGEM = 4;
+	var APROVACAO = 97;
+	var COMPRARPASSAGEM = 13;
+	var OBTERPASSAGEM = 33
+	var REGISTRARCANCELAMENTO = 64;
+	var CONFIRMARREEMBOLSO = 79;
+	var CORRIGIRSOLICITACAO = 98;
+	var COTARREMARCACAO = 135;
+	var PAGARDIARIAS = 129;
+	
 	//recupera atividade
 	var ativAtual = getValue("WKNumState");	
 	var codSolicitacao = getValue("WKNumProces");
@@ -240,11 +251,13 @@ function beforeStateEntry(sequenceId){
 						        var data = {
 						            companyId : getValue("WKCompany") + '',
 						            serviceCode : 'REST FLUIG',
-						            endpoint : '/REST/FLUIG',
-						            method : 'post',// 'delete', 'patch', 'put', 'get'     
+						            endpoint : '/F_MATA110',
+						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 						            timeoutService: '100', // segundos
 						            params : {
-						                solicitante : '' + hAPI.getCardValue("solicitante") +'',
+						            	tarefa : '' + COMPRARPASSAGEM + '' ,
+						            	solicitacao : '' + codSolicitacao + '' ,
+						            	solicitante : '' + hAPI.getCardValue("solicitante") +'',
 						                datasolicitacao :'' + hAPI.getCardValue("dataSolicitacao") +'',	
 						                passageiro : '' + hAPI.getCardValue("nomepassageiro") +'',
 						                itens: aItemServico ,
@@ -282,41 +295,14 @@ function beforeStateEntry(sequenceId){
 			   
 		   }
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-		   else if ( ativAtual == 129 ) {
-
-			    //Cria a constraint para buscar os formulários ativos
-			    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-			    var cst2 = DatasetFactory.createConstraint("remarcacao", "nao" , "nao", ConstraintType.MUST);
-				var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
-			    var cst4 = DatasetFactory.createConstraint("vooComprado", "sim" , "sim", ConstraintType.MUST);				
-				var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+		   else if ( ativAtual == PAGARDIARIAS && hAPI.getCardValue("recebediarias") == "sim") {
+			   var aRateio = new Array();
+			   var aItem = new Array();
+			   var valorDiarias = hAPI.getCardValue("vl_diarias");
+		   		solicitacao = itensPagamento();
 				
-			    var constraints = new Array(cst,cst2,cst4,cst3,cst5);
-			     //dataset interno: formularios preenchidos
-			    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
-			    
-			    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
-			        var documentId = datasetPrincipal.getValue(i, "metadata#id");
-			        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
-			        var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
-			        
-			        idFormulario = documentId;
-			        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-			        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
-			        var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-			        var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-			        var constraintsFilhos = new Array(c1, c2, c3);
-			 
-			        //Busca o dataset
-			        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
-				
-			        solicitacao = datasetFilhos;
-			   
-			   
-			   
-			   
-				if ( solicitacao.rowsCount == 1){
-	    				var obj = aItemServico[i];		    				 
+		   		if ( solicitacao.rowsCount == 1){
+	    				var obj = new Array();	    				 
     					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
     					
     					if (solicitacao.getValue(0, "txtprojeto") != null){
@@ -342,7 +328,7 @@ function beforeStateEntry(sequenceId){
     					if (solicitacao.getValue(0, "localizacao") != null){
     						obj.localizacao = '' + solicitacao.getValue(0, "localizacao") +'';	
     					}
-    					aItemServico[i] = obj;	
+    					aItem[i] = obj;	
 	    			
 	    				
 	    		}
@@ -356,14 +342,17 @@ function beforeStateEntry(sequenceId){
 				        var data = {
 				            companyId : getValue("WKCompany") + '',
 				            serviceCode : 'REST FLUIG',
-				            endpoint : '/REST/FLUIG2',
-				            method : 'post',// 'delete', 'patch', 'put', 'get'     
+				            endpoint : '/F_FINA050',
+				            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 				            timeoutService: '100', // segundos
 				            params : {
+				            	tarefa : '' + PAGARDIARIAS + '' ,
+				            	solicitacao : '' + codSolicitacao + '' ,
 				                solicitante : '' + hAPI.getCardValue("solicitante") +'',
+				                valorTotal : '' + valorDiarias + '' ,
 				                datasolicitacao :'' + hAPI.getCardValue("dataSolicitacao") +'',	
-				                passageiro : '' + hAPI.getCardValue("nomepassageiro") +'',
-				                itens: aItemServico ,
+				                emailsolicitante : '' + hAPI.getCardValue("emailSolicitante") +'',
+				                itens: aItem ,
 				        		rateioDigitado: aRateio ,
 				        		rateioConfigurado:'' +  codRateio +''
 				            },
@@ -393,7 +382,7 @@ function beforeStateEntry(sequenceId){
 			   
 			   
 			   
-		   }
+		   
 	   
 	}
 	   
@@ -420,5 +409,38 @@ function beforeStateEntry(sequenceId){
 			aItemServico.push(itemServico);
 	   }
 	   
+	   
+	   function itensPagamento(){
+
+		    //Cria a constraint para buscar os formulários ativos
+		    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
+		    var cst2 = DatasetFactory.createConstraint("remarcacao", "nao" , "nao", ConstraintType.MUST);
+			var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
+		    var cst4 = DatasetFactory.createConstraint("vooComprado", "sim" , "sim", ConstraintType.MUST);				
+			var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+			
+		    var constraints = new Array(cst,cst2,cst4,cst3,cst5);
+		    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
+		    
+		    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
+		        var documentId = datasetPrincipal.getValue(i, "metadata#id");
+		        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
+		        var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
+		        
+		        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
+		        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
+		        var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
+		        var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
+		        var constraintsFilhos = new Array(c1, c2, c3);
+		 
+		        //Busca o dataset
+		        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
+			
+		       
+		      
+		    }
+		    return datasetFilhos;
+		    
+	   }
 	   
 	}

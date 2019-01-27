@@ -7,7 +7,7 @@ function displayFields(form,customHTML){
 	var OBTERPASSAGEM = 33
 	var REGISTRARCANCELAMENTO = 64;
 	var CONFIRMARREEMBOLSO = 79;
-	var JUSTIFICARCANCELAMENTO = 93 ;
+	var CANCELARSOLICITACAO = 93 ;
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
@@ -29,8 +29,8 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("codigorateio", false);
 	 form.setVisibleById("prazoreembolso", false);
      form.setVisibleById("divDataSetAgenda", false);
-	 
-
+    // form.setVisibleById("recebediarias", false);
+     
 	
 	   
     if (activity == ABERTURA ) {
@@ -243,7 +243,7 @@ function displayFields(form,customHTML){
 	
 	else if (activity == OBTERPASSAGEM  ) {
     		form.setVisibleById("2b", false);  
-    		form.setVisibleById("3b", false); 
+    		//form.setVisibleById("3b", false); 
 			//form.setVisibleById("4b", false);
 	        form.setVisibleById("divJustificativaCancelamento", true);
 	        form.setVisibleById("justificativacanc", false);
@@ -264,7 +264,8 @@ function displayFields(form,customHTML){
             
 	}
 	else if (activity == REGISTRARCANCELAMENTO ){
-		form.setVisibleById("2b", false);  
+		form.setVisibleById("2b", false);
+    	form.setVisibleById("4b", false);
 		form.setVisibleById("divReembolso", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
  		form.setVisibleById("div_valortx", false);
@@ -282,7 +283,8 @@ function displayFields(form,customHTML){
 	
 	else if (activity ==  CORRIGIRSOLICITACAO){
 	   	form.setVisibleById("2b", false);		
-    	form.setVisibleById("3b", false);    
+    	form.setVisibleById("3b", false);
+    	form.setVisibleById("4b", false);
     	form.setVisibleById("divJustificativaCancelamento", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);  
 	    form.setVisibleById("divJustificativa", false);
@@ -301,7 +303,7 @@ function displayFields(form,customHTML){
         
 	}
 	
-	else if (activity ==  JUSTIFICARCANCELAMENTO){
+	else if (activity ==  CANCELARSOLICITACAO){
 		form.setVisibleById("2b", false);  
       	form.setVisibleById("3b", false); 
 	  	form.setVisibleById("divJustificativaCancelamento", false);
@@ -336,6 +338,10 @@ function displayFields(form,customHTML){
 	else if (activity == PAGARDIARIAS){
 		form.setVisibleById("2b", false);  
 		form.setVisibleById("3b", false);  
+	}
+    
+	else if (activity == CONFIRMARREEMBOLSO){
+		 form.setVisibleById("4b", false); 
 	}
     
     

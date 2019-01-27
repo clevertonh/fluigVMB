@@ -15,16 +15,8 @@ function inputFields(form){
 	log.info("----ATIVIDADE inputFields: " + activity);
 	
 	
-	if (activity == REGISTRARCANCELAMENTO && nextAtv == PEDIUCANCELAR){
-		 form.setValue("cancelarpassagem","");
-		 form.setValue("justificativacancelamento",""); 
-	 }
-	
-	if (activity == CONFIRMARREEMBOLSO && nextAtv == PEDIUREEMBOLSO){
-		form.setValue("ressarcimento") == "";
-	}
-	
 
+	
 	
 	/*
 	var calendarios = new Array("datapartida2","dataretorno2","datapartida3","dataretorno3","datacheckout","datacheckin","dataAprovacao");

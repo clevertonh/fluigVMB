@@ -1,20 +1,33 @@
 function beforeCancelProcess(colleagueId,processId){
+	var ABERTURA = 0;
+	var SOLICITARVIAGEM = 4;
+	var APROVACAO = 97;
+	var COMPRARPASSAGEM = 13;
+	var OBTERPASSAGEM = 33
+	var REGISTRARCANCELAMENTO = 64;
+	var CONFIRMARREEMBOLSO = 79;
+	var CORRIGIRSOLICITACAO = 98;
+	var COTARREMARCACAO = 135;
+	var PAGARDIARIAS = 129;
+	
 	
 	//recupera atividade
 	var ativAtual = getValue("WKNumState");
 	
 	log.info("Processo beforeCancel - atividade: " + ativAtual);
 	
-	if (ativAtual == 33 ||  ativAtual == 64 ||  ativAtual == 79 || ativAtual == 129){
+	if (ativAtual == OBTERPASSAGEM ||  ativAtual == REGISTRARCANCELAMENTO ||  ativAtual == CONFIRMARREEMBOLSO || ativAtual == PAGARDIARIAS){
 		
-		 throw "Você não pode excluir essa solicitação pois ela já foi atendida. Para cancelar a viagem, acesse a solicitação e marque a opção de cancelamento.";
+		 throw "Você não pode cancelar essa solicitação pois ela já foi atendida. Para cancelar a viagem, acesse a solicitação e marque a opção de cancelamento.";
 		
 	}
 	
-	if (ativAtual == 13){
-		 throw "Você não pode excluir essa solicitação pois ela está em processo de compra. Por favor, entre em contato com o departamento de Hospitalidade.";
+	if (ativAtual == COMPRARPASSAGEM){
+		 throw "Você não pode cancelar essa solicitação pois ela está em processo de compra. Por favor, entre em contato com o departamento de Hospitalidade.";
 			
 	}
+	
+
 	
 	
 	

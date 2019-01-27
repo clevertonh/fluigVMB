@@ -10,6 +10,7 @@ function enableFields(form) {
 	var OBTERPASSAGEM = 33
 	var REGISTRARCANCELAMENTO = 64;
 	var CONFIRMARREEMBOLSO = 79;
+	var CANCELARSOLICITACAO = 93 ;
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
@@ -180,6 +181,44 @@ function enableFields(form) {
 		    		}
 						 
 		   // form.setValue("solicitacao",getValue('WKNumProces'));
+		 
+				if (form.getValue("tipoviagem") == "nacional"){			
+					if (form.getValue("remarcacao") == "nao" ){					
+						if (form.getValue("solicitanteFuncionario") == "sim" &&
+								form.getValue("solicitantepassageiro") == "sim" &&
+								form.getValue("tipovoo") != "ida" ){
+					
+							//PROPRIO SOLICITANTE PEDINDO PASSAGEM
+							form.setValue("recebediarias","sim");
+						} 
+						else if (form.getValue("solicitanteFuncionario") == "sim" &&
+								form.getValue("solicitantepassageiro") == "nao" &&
+								form.getValue("passageirofuncionario") == "sim" &&
+								form.getValue("tipovoo") != "ida"){
+							
+							form.setValue("recebediarias","sim");
+							
+						}
+						else if (form.getValue("solicitanteFuncionario") == "nao" &&
+								form.getValue("solicitantepassageiro") == "sim" &&
+								form.getValue("passageirofuncionario") == "nao" &&
+								form.getValue("tipovoo") != "ida"){
+							
+							//solicitante nao é funcionario: verificar com finanças/p&c/adm como saber se tem direito a diarias
+							form.setValue("recebediarias","nao");
+							
+						}			
+					}
+					else {
+						//solicitacao do tipo remarcacao
+						form.setValue("recebediarias","nao");
+					}
+				}	
+				//solicitacao do tipo internacional
+				else {
+					form.setValue("recebediarias","nao");
+				}
+		 
 		 }
 		 
 		 //PROCESSO SOLICITAR CANCELAMENTO
@@ -191,8 +230,10 @@ function enableFields(form) {
 			 form.setEnabled('vooComprado', false);
 			 form.setEnabled('hotelComprado', false);
 			 
-			// form.setValue("cancelarpassagem","");
-			// form.setValue("justificativacancelamento",""); 
+			 form.setValue("cancelarpassagem","");
+			 form.setValue("justificativacancelamento",""); 
+			 form.setValue("ressarcimento","");
+			 form.setValue("cobranca","");
 			 
 			 form.setEnabled('tipo_hosp1', false);		 
 			 form.setEnabled('tipo_hosp2', false);	
@@ -206,7 +247,7 @@ function enableFields(form) {
 			 form.setEnabled('dtSaida', false);	
 			 form.setEnabled('dtRetorno', false);	
 			 form.setEnabled('vl_diarias', false);	
-			 
+			 form.setEnabled('recebediarias', true);
 			 
 			 
 			 
@@ -232,6 +273,10 @@ function enableFields(form) {
 				 form.setEnabled('cobranca', false);
 				 form.setEnabled('valorTx', false);
 				 
+				 form.setEnabled('vl_diarias', false);
+				 form.setEnabled('dtRetorno', false);
+				 form.setEnabled('dtSaida', false);
+				 form.setEnabled('recebediarias', true);
 				 	 
 			 }
 			 
@@ -301,6 +346,8 @@ function enableFields(form) {
 		 
 		 return dataset;
 	}
-					    
-	    
+					
+
+
+
 }

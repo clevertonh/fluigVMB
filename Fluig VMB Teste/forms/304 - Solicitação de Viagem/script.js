@@ -928,6 +928,9 @@ function setSelectedZoomItem(selectedItem) {
 
 
         }
+        
+
+        
 
         //document.getElementById("solicitanteNpassageiro").click();
         $('#nomepassageiro').val(selectedItem["nomepassageiro"]);
@@ -1511,6 +1514,7 @@ function carregaDados() {
 }
 
 
+
 /*
 FLUIGC.message.alert({
     message: 'Você deve selecionar o tipo de viagem primeiro!',
@@ -1526,3 +1530,6 @@ FLUIGC.message.alert({
 });
 
 */
+
+
+
