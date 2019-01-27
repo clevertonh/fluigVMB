@@ -14,7 +14,7 @@ function displayFields(form,customHTML){
     customHTML.append("</script>");
 	
     
-    form.setVisibleById("divApPrazo", false);
+    form.setVisibleById("aprPrazo", false);
     form.setVisibleById("divPrazoApr", false);
     form.setVisibleById("divMatricualApr", false);
     
