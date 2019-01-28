@@ -54,8 +54,8 @@
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
-      <stateName>Solicitar viagem</stateName>
-      <stateDescription>Solicitar viagem</stateDescription>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
       <instruction>Antes de iniciar a solicitação, é recomendado a leitura da norma de viagem. Após a leitura da norma preencha os campos do formulário.</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -915,6 +915,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
       <destinationSequenceId>13</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -926,6 +927,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
       <destinationSequenceId>92</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -937,6 +939,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
       <destinationSequenceId>98</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -948,6 +951,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
       <destinationSequenceId>64</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -959,6 +963,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
       <destinationSequenceId>116</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -970,6 +975,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;ressarcimento&quot;) == &quot;reembolso&quot;</condition>
       <destinationSequenceId>79</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -981,6 +987,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;ressarcimento&quot;) == &quot;credito&quot;</condition>
       <destinationSequenceId>116</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -992,6 +999,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;&quot;</condition>
       <destinationSequenceId>93</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -1003,6 +1011,7 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
       <destinationSequenceId>33</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -1015,6 +1024,7 @@
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; &amp;&amp; &#xd;
 hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <destinationSequenceId>129</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -1026,6 +1036,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;sim&quot;</condition>
       <destinationSequenceId>135</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
@@ -1037,6 +1048,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;nao&quot;</condition>
       <destinationSequenceId>97</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
   <list>
@@ -2232,5 +2244,6 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <description>9</description>
     </ProcessAppConfiguration>
   </list>
+  <list/>
   <list/>
 </list>

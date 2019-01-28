@@ -81,55 +81,14 @@
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>                                                                             
-                                    </div>                            
-                                    <div class="panel panel-default" id="panelItens">
-                                       <div class="panel-heading ">
-                                          <h3 class="panel-title">
-                                             <b>Informações do Pagamento</b>
-                                          </h3>
-                                       </div>
-                                       <div class="panel-body">
-                                          <div class="form-group row">
-                                             <div class="col-md-12 fs-txt-right">
-                                                <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
-                                                <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
-                                                </button>
-                                             </div>
-                                          </div>
-                                          <div class="form-group row">
-                                             <div class="col-md-12">
-                                                <div class="form-field table-responsive">
-                                                   <table tablename="tableItens" id="tableItens" border="0" class="table table-striped table-bordered" noaddbutton="true" nodeletebutton="true">
-                                                      <thead>
-                                                         <tr class="tableHeadRow">
-                                                            <th></th>
-                                                            <th>Percentual</th>
-                                                            <th class="tableColumn">Centro de Custo</th>
-                                                            <th class="tableColumn">Projeto</th>
-                                                            <th class="tableColumn">Atividade</th>
-                                                            <th class="tableColumn">Categoria</th>
-                                                            <th class="tableColumn">Fonte de Financiamento</th>
-                                                            <th class="tableColumn">Area Estratégica</th>
-                                                            <th>Alocação</th>
-                                                            <th>Localização</th>
-                                                            <th>Conta Contábil </th>
-                                                         </tr>
-                                                      </thead>
-                                                      <tbody id="tbodyItens">
-                                                         <tr>
-                                                            <td>
-                                                               <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id ="removeitem" onclick="fnWdkRemoveChild(this)"></span>
-                                                            </td>
-                                                            <td >
-                                                               <input class="form-control money" name="percentual" id="percentual" type="text" style="width:100px;" />
-                                                            </td>
-                                                            <td>
-                                                               <div class="form-group">
-                                                                  <input type="hidden" name="centrocusto" id="centrocusto" style="width:200px;"/> 																						
+                                       </div>                                                                                                                    
+                                    </div>
+                                    <div class="row">                                    		
+                        				  <div class="form-group col-md-3">
+                        				  	<label>Centro de custo</label>                                                                   																					
                                                                   <input style="width:200px !important;"
                                                                      type="zoom" 
-                                                                     name="txtcentrocusto" 
+                                                                     name="centrocusto" 
                                                                      data-zoom="{
                                                                      'displayKey':'Codigo',
                                                                      'datasetId':'VM_CentroCusto',
@@ -141,13 +100,11 @@
                                                                      {'field':'Tipo', 'label':'Tipo' , 'visible' : 'false'}]
                                                                      }" />
                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                               <div class="form-group">
-                                                                  <input type="hidden" name="projeto" id="projeto" /> 																						
+															<div class="form-group col-md-3">
+																<label>Projeto</label>                                                                 																					
                                                                   <input
                                                                      type="zoom" 
-                                                                     name="txtprojeto" 
+                                                                     name="projeto" 
                                                                      data-zoom="{
                                                                      'displayKey':'Codigo',
                                                                      'datasetId':'VM_projeto',
@@ -158,96 +115,9 @@
                                                                      {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
                                                                      {'field':'Conta', 'label':'Conta' , 'visible' : 'false'}]
                                                                      }" />
-                                                               </div>
-                                                            </td>
-                                                            <td >
-                                                               <div class="form-group">
-                                                                  <input type="hidden" name="atividade" id="atividade" /> 																						
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="txtatividade" 
-                                                                     data-zoom="{
-                                                                     'displayKey':'Codigo',
-                                                                     'datasetId':'VM_Atividades',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Escolha uma atividade',
-                                                                     'fields':[
-                                                                     {'field':'Codigo', 'label':'Codigo'},
-                                                                     {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                     {'field':'Centro_Custo', 'label':'Centro_Custo', 'visible' : 'false'}]
-                                                                     }" />
-                                                               </div>
-                                                            </td>
-                                                            <td >
-                                                               <div class="form-group">
-                                                                  <input type="hidden" name="categoria" id="categoria" /> 																						
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="txtcategoria" 
-                                                                     data-zoom="{
-                                                                     'displayKey':'Codigo',
-                                                                     'datasetId':'VM_Categoria',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione uma despesa',
-                                                                     'fields':[
-                                                                     {'field':'Codigo', 'label':'Codigo', 'standard':'true'},
-                                                                     {'field':'Descricao', 'label':'Descricao'}]
-                                                                     }" />
-                                                               </div>
-                                                            </td>
-                                                            <td >
-                                                               <div class="form-group">
-                                                                  <input type="hidden" name="fontefinanciamento" id="fontefinanciamento" /> 																						
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="txtfontefinanciamento" 
-                                                                     data-zoom="{
-                                                                     'displayKey':'Codigo',
-                                                                     'datasetId':'VM_FonteFinanciamento',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione uma fonte de financ.',
-                                                                     'fields':[
-                                                                     {'field':'Codigo', 'label':'Codigo'},
-                                                                     {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                     {'field':'Projeto', 'label':'Projeto', 'visible':'false'}]
-                                                                     }" />
-                                                               </div>
-                                                            </td>
-                                                            <td >
-                                                               <div class="form-group">
-                                                                  <input type="hidden" name="areaestrategica" id="areaestrategica" /> 																						
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="txtareaestrategica" 
-                                                                     data-zoom="{
-                                                                     'displayKey':'Codigo',
-                                                                     'datasetId':'VM_AreaEstrategica',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione uma Area Estrategica',
-                                                                     'fields':[
-                                                                     {'field':'Codigo', 'label':'Codigo'},
-                                                                     {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                     {'field':'Projeto', 'label':'Projeto', 'visible':'false'}]
-                                                                     }" />
-                                                               </div>
-                                                            </td>
-                                                            <td >
-                                                               <input class="form-control" name="alocacao" id ="alocacao" type="text"  maxlength="5" style="width:100px;" readOnly/>
-                                                            </td>
-                                                            <td >
-                                                               <input class="form-control" name="localizacao" id="localizacao" type="text" maxlength="3" style="width:70px;" readonly/>
-                                                            </td>
-                                                            <td >
-                                                               <input class="form-control" name="contacontabil" id="contacontabil" type="text" maxlength="10" style="width:100px;" readonly/>
-                                                            </td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
+                                                               </div>                                      	
+                                    </div>                            
+                                    
                                  </div>
                                  <!-- Aba Gestor -->
                                  <div class="tab-pane" id="2b">

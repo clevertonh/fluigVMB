@@ -2,14 +2,14 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>Solicitacao de Reembolso Creche</processId>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
     </processDefinitionPK>
-    <processDescription>Solicitacao de Reembolso Creche</processDescription>
+    <processDescription>Solicitacao de Reembolso Auxilio Creche</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Solicitações</categoryId>
+    <categoryId>Recursos Humanos</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -27,8 +27,8 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <version>20</version>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <version>21</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>943</formId>
@@ -49,7 +49,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -99,7 +99,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
@@ -151,7 +151,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>27</sequence>
       </processStatePK>
@@ -203,7 +203,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>48</sequence>
       </processStatePK>
@@ -255,7 +255,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>67</sequence>
       </processStatePK>
@@ -307,7 +307,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>21</sequence>
       </processStatePK>
@@ -332,7 +332,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>60</sequence>
       </processStatePK>
@@ -357,7 +357,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>44</sequence>
       </processStatePK>
@@ -404,7 +404,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>66</sequence>
       </processStatePK>
@@ -451,7 +451,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>69</sequence>
       </processStatePK>
@@ -498,7 +498,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>71</sequence>
       </processStatePK>
@@ -547,75 +547,81 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>20</version>
+        <version>21</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
       <destinationSequenceId>27</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>20</version>
+        <version>21</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
       <destinationSequenceId>44</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>20</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;&quot;</condition>
       <destinationSequenceId>71</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>20</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;nao&quot;</condition>
       <destinationSequenceId>67</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>20</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
       <destinationSequenceId>66</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>4</expressionOrder>
-        <version>20</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
       <destinationSequenceId>48</destinationSequenceId>
+      <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
   <list>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
@@ -632,7 +638,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>25</linkSequence>
       </processLinkPK>
@@ -649,7 +655,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>55</linkSequence>
       </processLinkPK>
@@ -666,7 +672,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>56</linkSequence>
       </processLinkPK>
@@ -683,7 +689,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>57</linkSequence>
       </processLinkPK>
@@ -700,7 +706,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>61</linkSequence>
       </processLinkPK>
@@ -717,7 +723,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>63</linkSequence>
       </processLinkPK>
@@ -734,7 +740,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>65</linkSequence>
       </processLinkPK>
@@ -751,7 +757,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>68</linkSequence>
       </processLinkPK>
@@ -768,7 +774,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>70</linkSequence>
       </processLinkPK>
@@ -785,7 +791,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <linkSequence>74</linkSequence>
       </processLinkPK>
@@ -806,7 +812,7 @@
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>beforeCancelProcess</eventId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
@@ -834,7 +840,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>beforeStateEntry</eventId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
@@ -1057,7 +1063,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -1073,7 +1079,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -1089,7 +1095,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -1105,7 +1111,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>4</sequence>
       </swimLanePK>
@@ -1121,7 +1127,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <version>1</version>
         <sequence>5</sequence>
       </swimLanePK>
@@ -1133,8 +1139,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
-        <version>20</version>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+        <version>21</version>
         <linkSequence>74</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1144,8 +1150,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
-        <version>20</version>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+        <version>21</version>
         <linkSequence>74</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1155,8 +1161,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Solicitacao de Reembolso Creche</processId>
-        <version>20</version>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+        <version>21</version>
         <linkSequence>74</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1173,8 +1179,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1183,8 +1189,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1193,8 +1199,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1203,8 +1209,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1213,8 +1219,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1223,8 +1229,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1233,8 +1239,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1243,8 +1249,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1253,8 +1259,8 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1263,13 +1269,14 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>Solicitacao de Reembolso Creche</processId>
-      <processVersion>20</processVersion>
+      <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
       <description>33</description>
     </ProcessAppConfiguration>
   </list>
+  <list/>
   <list/>
 </list>
