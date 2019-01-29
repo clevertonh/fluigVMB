@@ -1,5 +1,5 @@
-
-
+var ABERTURA = 0;
+var APROVACAO_GESTOR = 5;
 
 var dtSolicitacao = FLUIGC.calendar('#calendariodtSolicitacao', {
     pickDate: true,
@@ -12,12 +12,26 @@ var dtSolicitacao = FLUIGC.calendar('#calendariodtSolicitacao', {
 
 var dtSaida = FLUIGC.calendar('#calendariodtSaida', {
     pickDate: true,
-    pickTime: true
+    pickTime: true,
+    minDate: new Date().toLocaleString(),
 });
 
 var dtRetorno = FLUIGC.calendar('#calendariodtRetorno', {
     pickDate: true,
-    pickTime: true
+    pickTime: true,
+    minDate: new Date().toLocaleString(),
+});
+
+
+//preenche data da solicitação no momento que abre a solicitação
+$(document).ready(function() {
+	
+	if (ATIVIDADE == ABERTURA){
+		dtSolicitacao.setDate(new Date().toLocaleString());
+		
+	}
+
+	
 });
 
 
