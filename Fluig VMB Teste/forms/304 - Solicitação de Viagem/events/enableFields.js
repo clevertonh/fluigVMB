@@ -272,7 +272,7 @@ function enableFields(form) {
 			 form.setEnabled('valorVoo', false);
 			 form.setEnabled('valorHotel', false);
 			 
-
+			 	/*
 			 if (activityEnable == CONFIRMARREEMBOLSO){
 				 form.setEnabled('ressarcimento', false);
 				 form.setEnabled('cobranca', false);
@@ -285,6 +285,7 @@ function enableFields(form) {
 				 	 
 			 }
 			 
+			 */
 			 form.setEnabled('tipo_hosp1', false);		 
 			 form.setEnabled('tipo_hosp2', false);	
 			 form.setEnabled('tipo_hosp3', false);	

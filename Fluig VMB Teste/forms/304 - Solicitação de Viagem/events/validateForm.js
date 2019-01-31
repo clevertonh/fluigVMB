@@ -57,6 +57,9 @@ function validateForm(form) {
         if (form.getValue("solicitantepassageiro") == "" || form.getValue("solicitantepassageiro") == null) {
             throw "É necessário indicar se você é o passageiro da viagem.";
         }
+        if (form.getValue("passageiroestrangeiro") == "" || form.getValue("passageiroestrangeiro") == null) {
+            throw "É necessário indicar se você o passageiro da viagem é estrangeiro ou não.";
+        }
         if (form.getValue("nomepassageiro") == "" || form.getValue("nomepassageiro") == null) {
             throw "É necessário indicar o nome do passageiro.";
         }

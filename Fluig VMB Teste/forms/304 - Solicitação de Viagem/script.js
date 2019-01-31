@@ -764,20 +764,22 @@ function prazoMinino() {
 
 }
 
-function prazoReembolso() {
+function prazoReembolso() {	
+	if (document.getElementById("credito").checked == true) {
+		  $("#tipormb").attr('checked', false);
+		  $("#tipormbn").attr('checked', false);
+	
+	}
+	
     //preenche PRAZO REEMBOLSO
     if (ATIVIDADE = CANCELAMENTOPASSAGEM) {
-        if (document.getElementById("reembolso").checked == true) {
-            var dataAtual = new Date();
-            var prazoReembolso = addMeses(dataAtual, 6);
-            var prazoConvertido = convertDataToString(prazoReembolso);
-            $('#prazoreembolso').val(prazoConvertido);
-
-        } else {
-            $('#prazoreembolso').val('');
-        }
+    	   var dataAtual = new Date();
+           var prazoReembolso = addMeses(dataAtual, 6);
+           var prazoConvertido = convertDataToString(prazoReembolso);
+           $('#prazoreembolso').val(prazoConvertido);
 
     }
+    
 }
 
 function prazoAprovacao(dataViagem) {

@@ -236,7 +236,7 @@ function displayFields(form,customHTML){
         form.setVisibleById("divJustificativaCancelamento", false);
         form.setVisibleById("divReembolso", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
-
+		form.setVisibleById("divTipormb", false);
 		
                
     } 		
@@ -254,6 +254,11 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divReembolso", false);    
     		form.setVisibleById("divJustificativaReprovacaoViagem", false);
             form.setVisibleById("div_tipohotel1", true);
+            form.setVisibleById("divTipormb", false);
+            form.setVisibleById("div_aptodiarias", false);
+            form.setVisibleById("div_dtPgto", false);
+            
+            
             
             if (form.getValue("tipovoo") != "varios"){
 	            form.setVisibleById("divDatasHotel2", false);
