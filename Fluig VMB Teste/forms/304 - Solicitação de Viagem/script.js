@@ -924,9 +924,6 @@ function setSelectedZoomItem(selectedItem) {
             document.getElementById("rateio").click();
             window["rateioconfigurado"].setValue(selectedItem["rateioconfigurado"]);
             $('#codigorateio').val(selectedItem["codigorateio"]);
-
-
-
         }
         
 

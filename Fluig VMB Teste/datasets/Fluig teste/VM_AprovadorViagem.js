@@ -68,7 +68,7 @@ function createDataset(fields, constraints, sortFields) {
 			var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsApr, null);    	    		
 		
 			if (datasetAprovador.rowsCount > 0){
-				dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName")]);	
+				dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName"),  objdata[i].CFUNC]);	
 			}						
     	}
 	}

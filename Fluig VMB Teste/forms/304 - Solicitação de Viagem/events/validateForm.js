@@ -60,18 +60,53 @@ function validateForm(form) {
         if (form.getValue("nomepassageiro") == "" || form.getValue("nomepassageiro") == null) {
             throw "É necessário indicar o nome do passageiro.";
         }
+        /*
         if (form.getValue("nomemae") == "" || form.getValue("nomemae") == null) {
             throw "É necessário indicar o nome da mãe do passageiro.";
         }
+        
+        */
         if (form.getValue("datanasc") == "" || form.getValue("datanasc") == null) {
             throw "É necessário indicar a data de nascimento do passageiro.";
         }
-        if (form.getValue("cpfpassageiro") != "" && !form.getValue("cpfpassageiro").match(/^[0-9]{11}/)) {
-            throw "O campo CPF está invalido, verifique se foi informado apenas números";
+        
+        if (form.getValue("passageiroestrangeiro") == "nao" ){
+        	 if (form.getValue("cpfpassageiro") == "" && !form.getValue("cpfpassageiro").match(/^[0-9]{11}/)) {
+                 throw "O campo CPF está invalido, verifique se foi informado apenas números";
+             }
+             if (form.getValue("rgpassageiro") == "" && !form.getValue("rgpassageiro").match(/^[0-9]/)) {
+                 throw "O campo RG está invalido, verifique se foi informado apenas números.";
+             }
+       
+             //throw "O campo RG está invalido, verifique se foi informado apenas números.";
+        
         }
-        if (form.getValue("rgpassageiro") != "" && !form.getValue("rgpassageiro").match(/^[0-9]/)) {
-            throw "O campo RG está invalido, verifique se foi informado apenas números.";
+        
+        if (form.getValue("passageirofuncionario") == "nao" &&  form.getValue("passageiroestrangeiro") == "nao" ){
+       	 if (form.getValue("cpfpassageiro") == "" && !form.getValue("cpfpassageiro").match(/^[0-9]{11}/)) {
+                throw "O campo CPF está invalido, verifique se foi informado apenas números";
+            }
+            if (form.getValue("rgpassageiro") == "" && !form.getValue("rgpassageiro").match(/^[0-9]/)) {
+                throw "O campo RG está invalido, verifique se foi informado apenas números.";
+            }
+      
+            //throw "O campo RG está invalido, verifique se foi informado apenas números.";
+       
+       }
+        
+        
+        
+        if (form.getValue("tipoviagem") == "internacional"){
+        	if(form.getValue("passaporte") == "" && form.getValue("solicitanteFuncionario") == "sim"){
+        		throw "É obrigatório informar o número do passaporte. Solicite ao setor de P&C que atualize seu cadastro.";
+        	}
+        	
+        	if(form.getValue("passaporte") == "" && form.getValue("solicitanteFuncionario") == "nao"){
+        		throw "É obrigatório informar o número do passaporte.";
+        	}
         }
+        
+        
         if (form.getValue("passageirofuncionario") == "" || form.getValue("passageirofuncionario") == null) {
             throw "É necessário indicar se o passageiro é um funcionário ou não.";
         }
@@ -80,6 +115,8 @@ function validateForm(form) {
         	throw "Houve algum problema e não possível identificar seu aprovador. Tente novamente mais tarde!";	  
         }
         
+        
+
      
         
         

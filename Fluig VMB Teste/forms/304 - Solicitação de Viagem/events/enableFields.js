@@ -24,6 +24,9 @@ function enableFields(form) {
 	 form.setEnabled('cotacaoHotel', false);
 	 form.setEnabled('aprovacao', false);
 	
+		
+	 
+	 
 	var activityEnable = getValue('WKNumState');
 	log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
@@ -60,10 +63,11 @@ function enableFields(form) {
 				 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
 				 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
 				 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
-				 	 
-			      
-			      
+				 form.setValue("solicitanteFuncionario",aprovador.getValue(0, "FUNCIONARIO_VMB"));
+				 
+				 //form.setEnabled('solicitanteFuncionario', false);
 			 }
+			 //log.info("Campo funcionario: "+form.getValue("solicitanteFuncionario"));
 			 
 		 }
 		 
@@ -91,7 +95,8 @@ function enableFields(form) {
 		 //CAMPOS DADOS DO PASSAGEIRO
 		 form.setEnabled('solicitanteFuncionario', false);
 		 form.setEnabled('solicitantepassageiro', false);
-		 form.setEnabled('passageirofuncionario', false);		 
+		 form.setEnabled('passageirofuncionario', false);	
+		 form.setEnabled('solicitanteFuncionario', false);		 
 		 form.setEnabled('nomepassageiro', false);
 		 form.setEnabled('nomemae', false);
 		 form.setEnabled('datanasc', false);
