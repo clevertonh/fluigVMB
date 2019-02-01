@@ -1,7 +1,4 @@
 function enableFields(form) {
-
-	
-	
 	   
 	var ABERTURA = 0;
 	var SOLICITARVIAGEM = 4;
@@ -168,6 +165,9 @@ function enableFields(form) {
 			 
 			 //para o caso da solicitação ter sido retornada da tarefa de comprar passagem e precisar ser aprovada ou reprovada novamente
 			 form.setValue("aprovacao","");
+			 
+			 form.setEnabled('cotacaoHotel', true);
+			 form.setEnabled('cotacaoVoo', true);
 		 }
 		 
 		 
