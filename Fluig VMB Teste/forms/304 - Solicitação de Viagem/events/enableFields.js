@@ -302,14 +302,20 @@ function enableFields(form) {
 			
 			 
 		   		if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
-		   		 form.setEnabled('vooComprado', false);
-		   		 form.setEnabled('cotacaoHotel', true);
-	    		}
-
-		   		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null){
-			   		 form.setEnabled('hotelComprado', false);
+			   		 form.setEnabled('vooComprado', false);
+			   		 form.setEnabled('cotacaoHotel', true);
+			   		}
+			   		else {
 			   		 form.setEnabled('cotacaoVoo', true);
-		    		}
+			   		}
+
+			   		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null){
+				   		 form.setEnabled('hotelComprado', false);
+				   		 form.setEnabled('cotacaoVoo', true);
+			    	}
+			   		else {
+			   			form.setEnabled('cotacaoHotel', true);
+			   		}
 		   		
 		   	 
 						 
