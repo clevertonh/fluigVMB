@@ -26,11 +26,12 @@ function beforeStateEntry(sequenceId){
 
 	var aRateio = new Array();
 	var itemContabil = new Array();
+	var itensSolicitacao;
 	
 	
 	if ((ativAtual == APROVACAO_RH && autorizado == "aprovado" && aprovadoNoPrazo == "" ) || ativAtual == ALTERACAO_DATA){
 		
-		var itensSolicitacao;
+	
 		
 		 //Cria a constraint para buscar os formulários ativos
 	    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
@@ -40,7 +41,7 @@ function beforeStateEntry(sequenceId){
 		
 	    var constraints = new Array(cst,cst3,cst5);
 	    var datasetPrincipal = DatasetFactory.getDataset("VM_Reembolso_creche", null, constraints, null);
-	    
+	    	    
 	    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
 	        documentId = datasetPrincipal.getValue(i, "metadata#id");
 	        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");	        

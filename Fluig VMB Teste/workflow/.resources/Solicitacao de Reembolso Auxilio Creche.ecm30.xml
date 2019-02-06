@@ -34,7 +34,7 @@
     <formId>943</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
-    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
     <active>true</active>
     <blockedVersion>false</blockedVersion>
     <counterSign>false</counterSign>
@@ -103,8 +103,8 @@
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
-      <stateName>Aprovar dados financeiros</stateName>
-      <stateDescription>Aprovar dados financeiros</stateDescription>
+      <stateName>Aprovar reembolso auxilio creche</stateName>
+      <stateDescription>Aprovar reembolso auxilio creche</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -162,8 +162,8 @@
       <deadlineFieldName>dtPrazoApr</deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AprovacaoRH&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;danubia_carvalho&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -207,8 +207,8 @@
         <version>1</version>
         <sequence>48</sequence>
       </processStatePK>
-      <stateName>Validar</stateName>
-      <stateDescription>Validar</stateDescription>
+      <stateName>Validar documento</stateName>
+      <stateDescription>Validar documento</stateDescription>
       <instruction>Validar documento e valor do reembolso</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -629,7 +629,7 @@
       <returnPermited>true</returnPermited>
       <initialStateSequence>4</initialStateSequence>
       <finalStateSequence>5</finalStateSequence>
-      <returnLabel>Corrigir informações</returnLabel>
+      <returnLabel>Corrigir solicitação</returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
@@ -795,7 +795,7 @@
         <version>1</version>
         <linkSequence>74</linkSequence>
       </processLinkPK>
-      <actionLabel></actionLabel>
+      <actionLabel>Corrigir valor</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>60</initialStateSequence>
       <finalStateSequence>48</finalStateSequence>
@@ -806,7 +806,32 @@
       <type>0</type>
     </ProcessLink>
   </list>
-  <list/>
+  <list>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;RH&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PRMOED</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>Solicitacao de Reembolso Auxilio Creche</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PRME</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+  </list>
   <list>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -871,11 +896,12 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 &#xd;
 	var aRateio = new Array();&#xd;
 	var itemContabil = new Array();&#xd;
+	var itensSolicitacao;&#xd;
 	&#xd;
 	&#xd;
 	if ((ativAtual == APROVACAO_RH &amp;&amp; autorizado == &quot;aprovado&quot; &amp;&amp; aprovadoNoPrazo == &quot;&quot; ) || ativAtual == ALTERACAO_DATA){&#xd;
 		&#xd;
-		var itensSolicitacao;&#xd;
+	&#xd;
 		&#xd;
 		 //Cria a constraint para buscar os formulários ativos&#xd;
 	    var cst = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);	&#xd;
@@ -885,7 +911,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 		&#xd;
 	    var constraints = new Array(cst,cst3,cst5);&#xd;
 	    var datasetPrincipal = DatasetFactory.getDataset(&quot;VM_Reembolso_creche&quot;, null, constraints, null);&#xd;
-	    &#xd;
+	    	    &#xd;
 	    for (var i = 0; i &lt; datasetPrincipal.rowsCount; i++) {&#xd;
 	        documentId = datasetPrincipal.getValue(i, &quot;metadata#id&quot;);&#xd;
 	        var documentVersion = datasetPrincipal.getValue(i, &quot;metadata#version&quot;);	        &#xd;
