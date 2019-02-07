@@ -201,7 +201,9 @@ function enableFields(form) {
 								form.getValue("passageirofuncionario") == "sim" &&
 								form.getValue("tipovoo") != "ida"){
 							
-							form.setValue("recebediarias","sim");
+							//nesse momento é não ate ver uma forma de fazer o protheus gravar 
+							//o fornecedor pelo passageiro não pelo solicitante
+							form.setValue("recebediarias","nao");
 							
 						}
 						else if (form.getValue("solicitanteFuncionario") == "nao" &&
@@ -214,9 +216,31 @@ function enableFields(form) {
 							
 						}			
 					}
+					//solicitacao do tipo remarcacao					
 					else {
-						//solicitacao do tipo remarcacao
-						form.setValue("recebediarias","nao");
+						if (form.getValue("solicitanteFuncionario") == "sim" &&
+								form.getValue("solicitantepassageiro") == "sim" ){
+					
+							form.setValue("recebediarias","sim");
+						} 
+						else if (form.getValue("solicitanteFuncionario") == "sim" &&
+								form.getValue("solicitantepassageiro") == "nao" &&
+								form.getValue("passageirofuncionario") == "sim" ){
+							
+							//nesse momento é não ate ver uma forma de fazer o protheus gravar 
+							//o fornecedor pelo passageiro não pelo solicitante							
+								form.setValue("recebediarias","nao");
+							
+						}
+						//remarcao sendo feita por terceiros ou para terceiros
+						else {
+							form.setValue("recebediarias","nao");
+							
+						}
+						
+						
+					
+					
 					}
 				}	
 				//solicitacao do tipo internacional
