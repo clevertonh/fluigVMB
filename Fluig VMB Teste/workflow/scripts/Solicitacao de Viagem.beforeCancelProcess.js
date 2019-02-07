@@ -16,9 +16,9 @@ function beforeCancelProcess(colleagueId,processId){
 	
 	log.info("Processo beforeCancel - atividade: " + ativAtual);
 	
-	if (ativAtual == OBTERPASSAGEM ||  ativAtual == REGISTRARCANCELAMENTO ||  ativAtual == CONFIRMARREEMBOLSO || ativAtual == PAGARDIARIAS){
+	if (ativAtual == OBTERPASSAGEM,PAGARDIARIAS){
 		
-		 throw "Você não pode cancelar essa solicitação pois ela já foi atendida. Para cancelar a viagem, acesse a solicitação e marque a opção de cancelamento.";
+		 throw "Você não pode cancelar essa solicitação pois ela já foi atendida. Se você é o solicitante acesse a solicitação e marque a opção de cancelamento.";
 		
 	}
 	
@@ -27,6 +27,12 @@ function beforeCancelProcess(colleagueId,processId){
 			
 	}
 	
+	if (ativAtual == REGISTRARCANCELAMENTO ||  ativAtual == CONFIRMARREEMBOLSO){
+		 throw "Você não pode cancelar essa solicitação pois ela já foi atendida.";
+			
+	}
+	
+
 
 	
 	

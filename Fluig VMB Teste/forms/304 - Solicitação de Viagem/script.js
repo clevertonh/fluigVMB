@@ -13,13 +13,7 @@ var dadosGestor;
 
 var site;
 
-var onlyDate = FLUIGC.calendar('#dataSolicitacao', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
+
 
 //onlyDate.setDate(new Date().toLocaleString());
 
@@ -31,27 +25,7 @@ var dataAprovacao = FLUIGC.calendar('#dataAprovacao', {
     maxDate: new Date().toLocaleString()
 });
 
-
-var dataReembolso = FLUIGC.calendar('#calendariodataReembolso', {
-    pickDate: true,
-    pickTime: false
-    //    sideBySide: true,
-    //minDate: new Date().toLocaleString()
-
-    //daysOfWeekDisabled: [0,6] desativar dias da semana
-});
-
-var dtSaida = FLUIGC.calendar('#calendariodtSaida', {
-    pickDate: true,
-    pickTime: true
-});
-
-var dtRetorno = FLUIGC.calendar('#calendariodtRetorno', {
-    pickDate: true,
-    pickTime: true
-});
-
-
+var onlyDate;
 var dataNasc;
 var datapartida1;
 var dataretorno1;
@@ -63,6 +37,8 @@ var datacheckout2;
 var datacheckin2;
 var datacheckout3;
 var datacheckin3;
+var dataReembolso;
+var dataPagamento;
 
 
 $(document).ready(function() {
@@ -71,11 +47,40 @@ $(document).ready(function() {
         document.getElementById("cancelarpassagem").checked = false;
 
     }
+    
+    if (ATIVIDADE == CONFIRMARREEMBOLSO) {
+    		dataReembolso = FLUIGC.calendar('#calendariodataReembolso', {
+    	    pickDate: true,
+    	    pickTime: false
+    	    //    sideBySide: true,
+    	    //minDate: new Date().toLocaleString()
+
+    	    //daysOfWeekDisabled: [0,6] desativar dias da semana
+    	});
+
+    }
+    
+    
+    if (ATIVIDADE == PAGARDIARIAS) {
+    	dataPagamento = FLUIGC.calendar('#calendariodtPgto', {
+              pickDate: true,
+              pickTime: false
+          });
+
+    }
+    
 
     if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO || ATIVIDADE == SOLICITARVIAGEM) {
     	
         if (ATIVIDADE == ABERTURA) {
             document.getElementById("viagemplanejadaN").checked = true;
+            
+                onlyDate = FLUIGC.calendar('#dataSolicitacao', {
+                pickDate: true,
+                pickTime: false,
+                useCurrent: true
+            });
+            
             onlyDate.setDate(new Date().toLocaleString());
 
         }
@@ -963,6 +968,7 @@ function setSelectedZoomItem(selectedItem) {
         $('#rgpassageiro').val(selectedItem["RG"]);
         $('#passaporte').val(selectedItem["PASSAPORTE"]);
         $('#datanasc').val(selectedItem["DTNASC"]);
+        $('#emailPassageiro').val(selectedItem["EMAIL_F"]);
 
         //mostra campos do passageiro
         var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
@@ -973,9 +979,11 @@ function setSelectedZoomItem(selectedItem) {
 
             var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
 
+            /*
             if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
                 //  AprovadorViagem(emailFuncionarioPassageiro);
             }
+            */
         }
 
     }
@@ -1163,7 +1171,8 @@ function removedZoomItem(removedItem) {
         $('#rgpassageiro').val('');
         $('#passaporte').val('');
         $('#datanasc').val('');
-
+        $('#emailPassageiro').val('');
+    
     }
 
 
@@ -1468,7 +1477,7 @@ function dadosFuncionario() {
     if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
         var email = parent.WCMAPI.userEmail.toUpperCase();
         site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/' + email;
-        //var site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
+        //site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
         carregaDados();
     }
 }

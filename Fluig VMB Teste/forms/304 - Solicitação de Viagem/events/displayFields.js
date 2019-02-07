@@ -29,7 +29,7 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("codigorateio", false);
 	 form.setVisibleById("prazoreembolso", false);
      form.setVisibleById("divDataSetAgenda", false);
-    // form.setVisibleById("recebediarias", false);
+     form.setVisibleById("emailPassageiro", false);
      
 	
 	   
@@ -341,8 +341,8 @@ function displayFields(form,customHTML){
 
 	}
 	else if (activity == PAGARDIARIAS){
-		form.setVisibleById("2b", false);  
-		form.setVisibleById("3b", false);  
+		//form.setVisibleById("2b", false);  
+		//form.setVisibleById("3b", false);  
 	}
     
 	else if (activity == CONFIRMARREEMBOLSO){

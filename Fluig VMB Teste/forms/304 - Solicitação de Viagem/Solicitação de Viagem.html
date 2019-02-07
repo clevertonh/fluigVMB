@@ -567,6 +567,7 @@
                                                                name="passaporte" placeholder="Informe o passaporte">
                                                          </div>
                                                       </div>
+                                          				 <input type="email" class="form-control" id="emailPassageiro" name="emailPassageiro" readonly>
                                                    </div>
                                                    <ul class="list-inline pull-right">
                                                       <li><button type="button"
@@ -1308,27 +1309,6 @@
                                  </div>
                                  <div class="tab-pane" id="4b">
                                     <div class="row">
-                                    	<!-- 
-                                       <div class="form-group col-md-3">
-                                          <label for="dtSaida">Data da saída</label>
-                                          <div class="input-group date" id="calendariodtSaida">
-                                             <input type="text" class="form-control" id="dtSaida"
-                                                name="dtSaida"> <span class="input-group-addon">
-                                             <span class="fluigicon fluigicon-calendar"></span>
-                                             </span>
-                                          </div>
-                                       </div>
-                                       <div class="form-group col-md-3">
-                                          <label for="dtRetorno">Data da retorno</label>
-                                          <div class="input-group date" id="calendariodtRetorno">
-                                             <input type="text" class="form-control" id="dtRetorno"
-                                                name="dtRetorno"> <span
-                                                class="input-group-addon"> <span
-                                                class="fluigicon fluigicon-calendar"></span>
-                                             </span>
-                                          </div>
-                                       </div>
-                                        -->
                                        <div class="form-group col-md-2">
                                           <label for="vl_diarias">Valor total das diárias</label> <input
                                              type="number" class="form-control" name="vl_diarias"
@@ -1344,8 +1324,7 @@
                                        <div class="form-group col-md-3" id="div_dtPgto">
                                           <label for="dtPgto">Data de pagamento</label>
                                           <div class="input-group date" id="calendariodtPgto">
-                                             <input type="text" class="form-control" id="dtPgto"
-                                                name="dtPgto"> <span
+                                             <input type="text" class="form-control" id="dtPgto" name="dtPgto" mask="00/00/0000" readonly> <span
                                                 class="input-group-addon"> <span
                                                 class="fluigicon fluigicon-calendar"></span>
                                              </span>

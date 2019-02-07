@@ -8,5 +8,8 @@ function displayFields(form,customHTML){
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
-	
+    //form.setVisible("alocacao");
+    //form.setVisible("localizacao");
+    //form.setVisible("contacontabil");
+    
 }

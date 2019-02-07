@@ -28,13 +28,21 @@ function createDataset(fields, constraints, sortFields) {
 	constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("cancelarpassagem", "" , "", ConstraintType.MUST));
+	//constraints.push(DatasetFactory.createConstraint("solicitacao", "" , "", ConstraintType.MUST_NOT));
+	
 		
 	//verificar se usuario logado faz parte do grupo de hospitalidade
 	if(!existeGrupo(user)) {
+		//se ele for o solicitante
 		constraints.push(DatasetFactory.createConstraint("matriculasolicitante", user , user, ConstraintType.MUST));
+		//se ele for o passageiro
+		var emailPass = emailPassageiro(user);
+		log.info("EMAIL PASSAGEIRO "+emailPass);
+		//constraints.push(DatasetFactory.createConstraint("emailPassageiro", emailPass, emailPass, ConstraintType.MUST));
 		
 	}		
 		
+	
     var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
     
     for(var x = 0 ; x < retornoDataset.rowsCount; x++){
@@ -43,6 +51,8 @@ function createDataset(fields, constraints, sortFields) {
     	 var hotelComprado = retornoDataset.getValue(x, "hotelComprado");	
     	 var documentId =  retornoDataset.getValue(x, "documentid");
     	 var empresa = retornoDataset.getValue(x, "companyid");
+    	 var emailPassageiro = retornoDataset.getValue(x, "emailPassageiro");
+    	 var matriculaSolicitante = retornoDataset.getValue(x, "matriculasolicitante");
     	 var formulario = retornoDataset.getValue(x, "metadata#parent_id")	         
 	    	
     	     		
@@ -103,4 +113,12 @@ function existeGrupo(usuario){
 	constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "Hospitalidade", "Hospitalidade", ConstraintType.MUST));
 	var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
 	return dataset.rowsCount > 0;
+}
+
+function emailPassageiro(user){
+	  var constraintUser = new Array();
+	 constraintUser.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST));
+	 var datasetFuncionario = DatasetFactory.getDataset("colleague", null, constraintUser, null);
+	 			 			 			 	 
+	 return datasetFuncionario.getValue(0, "mail"); 
 }

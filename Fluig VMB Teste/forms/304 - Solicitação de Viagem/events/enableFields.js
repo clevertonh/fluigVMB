@@ -170,12 +170,25 @@ function enableFields(form) {
 			 form.setEnabled('cotacaoVoo', true);
 		 }
 		 
-		 
+		 		 
 		 //PROCESSO DE COMPRA DE PASSAGEM
 		 else  if (activityEnable == COMPRARPASSAGEM){
 			 //CAMPOS APROVACAO 
 			 form.setEnabled('aprovacao', false);
 			 form.setEnabled('justificativaReprovacao', false);
+			 
+			 if (form.getValue('remarcacao') =='sim'){
+				 if (form.getValue('cotacaoVoo') != ''){
+					 form.setValue("valorVoo",form.getValue('cotacaoVoo'));
+				 }
+				 
+				 if (form.getValue('cotacaoHotel') != ''){
+					 form.setValue("valorHotel",form.getValue('cotacaoHotel'));
+				 }
+				 
+			 }
+			 
+			 
 			 
 		   		if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
 		   		 form.setEnabled('vooComprado', false);
@@ -284,7 +297,7 @@ function enableFields(form) {
 		 }
 		 
 		 //PROCESSO DE REGISTRAR CANCELAMENTO DA VIAGEM
-		 else if (activityEnable == REGISTRARCANCELAMENTO ||  activityEnable == CONFIRMARREEMBOLSO || activityEnable == PAGARDIARIAS){
+		 else if (activityEnable == REGISTRARCANCELAMENTO ||  activityEnable == CONFIRMARREEMBOLSO ){
 			 //CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
@@ -294,30 +307,43 @@ function enableFields(form) {
 			 form.setEnabled('vooComprado', false);
 			 form.setEnabled('hotelComprado', false);
 			 form.setEnabled('valorVoo', false);
-			 form.setEnabled('valorHotel', false);
-			 
-			 	/*
-			 if (activityEnable == CONFIRMARREEMBOLSO){
-				 form.setEnabled('ressarcimento', false);
-				 form.setEnabled('cobranca', false);
-				 form.setEnabled('valorTx', false);
-				 
-				 form.setEnabled('vl_diarias', false);
-				 form.setEnabled('dtRetorno', false);
-				 form.setEnabled('dtSaida', false);
-				 form.setEnabled('recebediarias', true);
-				 	 
-			 }
-			 
-			 */
+			 form.setEnabled('valorHotel', false);			
 			 form.setEnabled('tipo_hosp1', false);		 
 			 form.setEnabled('tipo_hosp2', false);	
 			 form.setEnabled('tipo_hosp3', false);	
 			 
 			 
 		 }
+		 else if (activityEnable == PAGARDIARIAS){
+			//CAMPOS SOLICITAR CANCELAMENTO
+			 form.setEnabled('justificativacancelamento', false);
+			 form.setEnabled('cancelarpassagem', false);
+			 form.setEnabled('justificativaReprovacao', false);
+			 
+			 //CAMPOS COMPRAR PASSAGEM
+			 form.setEnabled('vooComprado', false);
+			 form.setEnabled('hotelComprado', false);
+			 form.setEnabled('valorVoo', false);
+			 form.setEnabled('valorHotel', false);			
+			 form.setEnabled('tipo_hosp1', false);		 
+			 form.setEnabled('tipo_hosp2', false);	
+			 form.setEnabled('tipo_hosp3', false);
+			 form.setEnabled('ressarcimento', false);	
+			 form.setEnabled('cobranca', false);	
+			 form.setEnabled('datareembolso', false);	
+			 form.setEnabled('tipormb', false);
+			 form.setEnabled('valorTx', false);	
+			 
+			 
+			 
+		 }
 		 
 		 else if (activityEnable == COTARREMARCACAO){
+			 
+
+			 form.setValue("cotacaoVoo","");
+			 form.setValue("cotacaoHotel","");
+			 
 			 form.setEnabled('aprovacao', false);
 			 form.setEnabled('justificativaReprovacao', false);
 			 form.setEnabled('justificativacancelamento', false);
