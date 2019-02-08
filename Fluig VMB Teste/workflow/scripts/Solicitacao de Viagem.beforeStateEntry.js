@@ -414,12 +414,13 @@ function beforeStateEntry(sequenceId){
 
 		    //Cria a constraint para buscar os formulários ativos
 		    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-		    var cst2 = DatasetFactory.createConstraint("remarcacao", "nao" , "nao", ConstraintType.MUST);
+		    //var cst2 = DatasetFactory.createConstraint("remarcacao", "nao" , "nao", ConstraintType.MUST);
 			var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
+			//necessario tambem hospedagem
 		    var cst4 = DatasetFactory.createConstraint("vooComprado", "sim" , "sim", ConstraintType.MUST);				
 			var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
 			
-		    var constraints = new Array(cst,cst2,cst4,cst3,cst5);
+		    var constraints = new Array(cst,cst4,cst3,cst5);
 		    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
 		    
 		    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
