@@ -296,6 +296,7 @@ function beforeStateEntry(sequenceId){
 		   }
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
 		   else if ( ativAtual == PAGARDIARIAS && hAPI.getCardValue("recebediarias") == "sim") {
+			    
 			   var aRateio = new Array();
 			   var aItem = new Array();
 			   var valorDiarias = hAPI.getCardValue("vl_diarias");
@@ -411,16 +412,14 @@ function beforeStateEntry(sequenceId){
 	   
 	   
 	   function itensPagamento(){
-
+		   var datasetFilhos;
+		   
 		    //Cria a constraint para buscar os formulários ativos
-		    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-		    //var cst2 = DatasetFactory.createConstraint("remarcacao", "nao" , "nao", ConstraintType.MUST);
-			var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
-			//necessario tambem hospedagem
-		    var cst4 = DatasetFactory.createConstraint("vooComprado", "sim" , "sim", ConstraintType.MUST);				
-			var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+		    var cst1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
+			var cst2 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);				
+			var cst3 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
 			
-		    var constraints = new Array(cst,cst4,cst3,cst5);
+		    var constraints = new Array(cst1,cst2,cst3);
 		    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
 		    
 		    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
@@ -435,9 +434,8 @@ function beforeStateEntry(sequenceId){
 		        var constraintsFilhos = new Array(c1, c2, c3);
 		 
 		        //Busca o dataset
-		        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
-			
-		       
+		        datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
+					       
 		      
 		    }
 		    return datasetFilhos;
