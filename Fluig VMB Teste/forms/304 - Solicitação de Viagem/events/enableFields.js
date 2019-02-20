@@ -86,8 +86,7 @@ function enableFields(form) {
 		 //CAMPOS ABA INICIAL
 		 form.setEnabled('tipoviagem', false);
 		 form.setEnabled('remarcacao', false);
-		 form.setEnabled('dataset_solicitacaoviagem', false);
-		 form.setEnabled('tipoPagamento', false);
+		 form.setEnabled('dataset_solicitacaoviagem', false);		 
 		 form.setEnabled('aceitenorma', false);
 		 form.setEnabled('justificativa', false);
 		 form.setEnabled('dataSolicitacao', false);
@@ -385,7 +384,6 @@ function enableFields(form) {
 
 		 if (activityEnable != ABERTURA &&  activityEnable != APROVACAO && activityEnable != COMPRARPASSAGEM && activityEnable != CORRIGIRSOLICITACAO){
 				//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
-			    if ( form.getValue("tipoPagamento") == "normal" ){
 			    	 var indexes = form.getChildrenIndexes("tableItens");	    	    	    	   
 			    	    for (var i = 0; i < indexes.length; i++) {
 			     	        form.setEnabled("txtcentrocusto___"+ indexes[i], false);	
@@ -395,12 +393,11 @@ function enableFields(form) {
 			     	    	form.setEnabled("txtfontefinanciamento___"+ indexes[i], false);	
 			     	   		form.setEnabled("txtatividade___"+ indexes[i], false);	
 			     	   		form.setEnabled("percentual___"+ indexes[i], false);	
+			     	   		form.setEnabled("rateio___"+ indexes[i], false);
 		     	        
 			    	    }    	        	  
-			    }
-			    else {
-					 form.setEnabled('rateioconfigurado', false);
-			    }
+			    
+			  
 		 }
 	 
 	 

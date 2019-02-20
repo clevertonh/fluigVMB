@@ -22,13 +22,8 @@ function beforeStateEntry(sequenceId){
 	var nextAtv  		 = getValue("WKNextState");
 	
 	var vooComprado		 = hAPI.getCardValue("vooComprado");
-	var hotelComprado	 = hAPI.getCardValue("hotelComprado");
-	var tipoPagamento 	 = hAPI.getCardValue("tipoPagamento");				
-	var codRateio		 = hAPI.getCardValue("codigorateio");				
+	var hotelComprado	 = hAPI.getCardValue("hotelComprado");					
 	var tipoViagem 		 = hAPI.getCardValue("tipoviagem");
-	var tipoHospedagem1  = hAPI.getCardValue("tipo_hosp1");
-	var tipoHospedagem2  = hAPI.getCardValue("tipo_hosp2");
-	var tipoHospedagem3  = hAPI.getCardValue("tipo_hosp3");
 	var valorDiarias 	 = hAPI.getCardValue("vl_diarias");
 	var voo 			 = hAPI.getCardValue("tipovoo");
 	var hospedagem 		 = hAPI.getCardValue("tipoquarto");
@@ -43,6 +38,7 @@ function beforeStateEntry(sequenceId){
 	//VARIAVEIS SIMPLES
 	var solicitacao;
 	var idFormulario;
+	var servicos;
 	var integraProtheus  = false;
 	
 	/*
@@ -78,81 +74,22 @@ function beforeStateEntry(sequenceId){
 		            throw "É preciso anexar o documento para continuar o processo!";
 		        }
 		        
+		      //objeto serviço
+				var aItemServico = new Array();
+				var aRateio = new Array();		
+				
 		        //chama função que retorna informações financeiras de pagamento
 		  		solicitacao = itensPagamento();	
 				
-					//objeto serviço
-					var aItemServico = new Array();
-					//array referente ao Rateio
-					var aRateio = new Array();
-					var codProdutoH;
-					var codProdutoP;
-					var codSeguro = "DVVIG002";
-					var valor;	
-					
-
-					if (tipoViagem == "nacional"){
-						//código de produto hotel e passagem nacional
-						codProdutoH = "DVHOS001";
-						codProdutoP = "DVPSG001";
-					}
-					//código de produto hotel e passagem internacional
-					else {
-						codProdutoH = "DVHOS002";
-						codProdutoP = "DVPSG002";
-					}
-	
-					if (vooComprado != null && vooComprado != "" ){		
-						 valor = hAPI.getCardValue("valorVoo");						 	
-							
-						 	//CHAMA FUNÇÃO PARA ADICIOANR ITEM AO ARRAY
-							addItemViagem(codProdutoP,codSolicitacao,tipoViagem,idFormulario,valor);							
-							
-							//voos internacional possuem seguro viagem
-							if (tipoViagem == "internacional"){
-								addItemViagem(codSeguro,codSolicitacao,tipoViagem,idFormulario,valor);		
-							}	
-							
-							integraProtheus = true;
-					}
-					
-					
-					if (hotelComprado != null && hotelComprado != ""  ){					
-						valor = hAPI.getCardValue("valorHotel");
-							//local 1 sempre é preenchido na situação de ter 1 periodo de hotel
-							if (tipoHospedagem1 != "GUESTHOUSE" && tipoHospedagem1 != "BALCAO"){
-								addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);
-								
-								integraProtheus = true;
-							}
-							
-							//verificar se a solicitação tem varios trechos
-							if (voo =="varios"){
-								//verifica se local 2 foi preenchido											
-								if (tipoHospedagem2 != "GUESTHOUSE" && tipoHospedagem2 != "BALCAO" ){
-									addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);
-									
-									integraProtheus = true;
-								}									
-								//verifica se local 3 foi preenchido
-								if (tipoHospedagem3 != "GUESTHOUSE" && tipoHospedagem3 != "BALCAO"){
-									addItemViagem(codProdutoH,codSolicitacao,tipoViagem,idFormulario,valor);
-									
-									integraProtheus = true;
-								}																										
-							}	
-							
-					
-							
-					}
-					
-					if (integraProtheus == true){
-						//VERIFICA SE INFORMAÇÃO FNIANCEIRO DE PAGAMENTO É NORMA OU RATEIO PRE-CONFIGURADO
-					    if ( tipoPagamento == "normal" ){		    		
+		  		
+		  		
+		  		//EXECUTA FUNÇÃO QUE RETORNA SERVIÇOS A SEREM GERADOS
+		  		itensServico();
+															    		
 					    		//VERIFICA QUANTIDADE DE LINHAS DA INFORMAÇÃO FINANCEIRA PARA SABER SE EXISTE RATEIO DIGITADO
 					    		//EM CASO DE UMA UNICA LINHA SIGNIFICA QUE NÃO É RATEIO
 					    		if ( solicitacao.rowsCount == 1){
-					    			for (var i=0; i < aItemServico.length ; i++){ //porque aItemServico ?
+					    			for (var i=0; i < aItemServico.length ; i++){ 
 					    				var obj = aItemServico[i];		    				 
 				    					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
 				    					
@@ -183,7 +120,7 @@ function beforeStateEntry(sequenceId){
 					    			}
 					    				
 					    		}
-					    		//INFORMAÇOES FINANCEIRAS PARA RATEIO DIGITADO
+					    		//INFORMAÇOES FINANCEIRAS
 					    		else if ( solicitacao.rowsCount > 1){		    					    					    								    					    		
 					    			for (var i=0; i < solicitacao.rowsCount ; i++){
 					    				var obj = {
@@ -226,7 +163,6 @@ function beforeStateEntry(sequenceId){
 				    					aRateio[i] = obj;	
 					    			}		    			
 					    		}
-					  }
 					    
 					    
 						
@@ -246,8 +182,7 @@ function beforeStateEntry(sequenceId){
 						                datasolicitacao :'' + datasolicitacao +'',	
 						                passageiro : '' + passageiro +'',
 						                itens: aItemServico ,
-						        		rateioDigitado: aRateio ,
-						        		rateioConfigurado:'' +  codRateio +''
+						        		rateioDigitado: aRateio 
 						            },
 						          options : {
 						             encoding : 'UTF-8',
@@ -273,7 +208,7 @@ function beforeStateEntry(sequenceId){
 					    
 					    
 					    
-					}
+					
 				 	   
 			   
 		   }
@@ -379,8 +314,7 @@ function beforeStateEntry(sequenceId){
 				                datasolicitacao :'' + datasolicitacao +'',	
 				                emailsolicitante : '' + emailsolicitante +'',
 				                itens: aItem ,
-				        		rateioDigitado: aRateio ,
-				        		rateioConfigurado:'' +  codRateio +''
+				        		rateioDigitado: aRateio 
 				            },
 				          options : {
 				             encoding : 'UTF-8',
@@ -468,5 +402,44 @@ function beforeStateEntry(sequenceId){
 		    return datasetFilhos;
 		    
 	   }
+	   
+		function itensServico(){
+			
+			var processo = getValue("WKNumProces");
+			var campos   = hAPI.getCardData(processo);
+			var contador = campos.keySet().iterator();
+
+			while (contador.hasNext()) {
+			    var id = contador.next();
+
+			    if (id.match(/codigoProduto___/)) { // qualquer campo do Filho
+			        var campo = campos.get(id);
+			        var seq   = id.split("___");
+
+			        var codproduto = campos.get("codigoProduto___" + seq[1]);
+			        var valor = campos.get("valores___" + seq[1]);
+			        log.info("---CODIGO PRODUTO: " + codproduto);
+			        
+			        addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);
+			        
+			    }
+			}
+			
+			
+			/*
+			   var indexes = hAPI.getChildrenIndexes("tableViagem");						   
+			   for (var i = 0; i < indexes.length; i++) {
+				    var codproduto = form.getValue("codigoProduto___" + indexes[i]);
+				    var valor = form.getValue("valores___" + indexes[i]);
+				    var dtviagem = form.getValue("dtViagem___" + indexes[i]);
+				     
+				    addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);
+				     
+			   }
+
+			   */
+		   }
+	   
+   
 	   
 	}

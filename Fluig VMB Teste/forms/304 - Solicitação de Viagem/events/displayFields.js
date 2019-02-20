@@ -26,7 +26,6 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoaprovacao", false); 
 	 form.setVisibleById("matriculasolicitante", false); 
 	 form.setVisibleById("cpfaprovador", false); 
-	 form.setVisibleById("codigorateio", false);
 	 form.setVisibleById("prazoreembolso", false);
      form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
@@ -37,15 +36,13 @@ function displayFields(form,customHTML){
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
-       	form.setVisibleById("2b", false);
+       	//form.setVisibleById("2b", false);
     	//form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);
     	//form.setVisibleById("divCotacao", false);
     	
     	//campos aba dados gerais
     	form.setVisibleById("selecaodeviagens", false);
-        form.setVisibleById("selecaorateio", false);
-     	form.setVisibleById("panelItens",false);
       	form.setVisibleById("div_justificativaremarcacao", false);    
       	form.setVisibleById("divJustificativaCancelamento", false);
       	form.setVisibleById("divDataSetAgenda", false);
@@ -90,24 +87,13 @@ function displayFields(form,customHTML){
     	//remove botão de excluir item da agenda
     	//tomar cuidado porque essa função oculta o botao padrão de deletar do filho. Se um outro form for adicionado
     	//irá ocultar os botões dele tambem.
-		 form.setHideDeleteButton(true);
- 		
-	        if (form.getValue("tipoPagamento") == "normal"){
-				form.setVisibleById("selecaorateio", false);
-			}
-	 		else {
-	 			form.setVisibleById("panelItens",false);
-	 		}
-	        
+		 form.setHideDeleteButton(true);        
 	       
 	        if (form.getValue("viagemplanejada") == "nao"){
 	        	form.setVisibleById("divDataSetAgenda", false);
 			}
 	        
-	    	
-	 
-	        
-		 
+	    		 
 		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null ) {
 			form.setVisibleById("observacaoHotel",false);
 			form.setVisibleById("divDatasHotel1",false);

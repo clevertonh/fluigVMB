@@ -234,18 +234,17 @@
                                                       </div>
                                                    </div>
                                                    <!-- Linha 4 -->
-                                                   <div class="row">
-                                                      <div class="form-group col-md-3">
-                                                         <label>Tipo de Pagamento</label><br> <label
-                                                            for="normal">Normal</label> <input type="radio"
-                                                            id="normal" name="tipoPagamento" value="normal"
-                                                            onclick="clickPagamentoNormal();"> <label
-                                                            for="rateio">Rateio</label> <input type="radio"
-                                                            id="rateio" name="tipoPagamento" value="rateio"
-                                                            onclick="clickPagamentoRateio();">
+                                                   <!-- Linha 5  ( Tabela )-->
+                                                   <div class="panel panel-default" id="panelItens">
+                                                      <div class="panel-heading ">
+                                                         <h3 class="panel-title">
+                                                            <b>Informa&ccedil;&otilde;es do Pagamento</b>
+                                                         </h3>
                                                       </div>
+                                                      <div class="panel-body">
+                                                         <div class="form-group row">                                                                                                       
                                                       <div class="form-group col-md-6" id="selecaorateio">
-                                                         <label>Rateio pré-configurado</label> <input
+                                                         <label>Carregar rateio pré-configurado</label> <input
                                                             name="rateioconfigurado" class="form-control"
                                                             type="zoom" id="rateioconfigurado"
                                                             data-zoom="{'displayKey':'Descricao',
@@ -264,22 +263,8 @@
                                                             }						  					
                                                             ]
                                                             }">
-                                                      </div>
-                                                      <div class="form-group col-md-1">
-                                                         <input type="text" id="codigorateio"
-                                                            name="codigorateio">
-                                                      </div>
-                                                   </div>
-                                                   <!-- Linha 5  ( Tabela )-->
-                                                   <div class="panel panel-default" id="panelItens">
-                                                      <div class="panel-heading ">
-                                                         <h3 class="panel-title">
-                                                            <b>Informa&ccedil;&otilde;es do Pagamento</b>
-                                                         </h3>
-                                                      </div>
-                                                      <div class="panel-body">
-                                                         <div class="form-group row">
-                                                            <div class="col-md-12 fs-txt-right">
+                                                      </div>                                                                                                          
+                                                            <div class="col-md-6 fs-txt-right">
                                                                <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
                                                                <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
                                                                </button>
@@ -300,13 +285,13 @@
                                                                            <th class="tableColumn">Projeto</th>
                                                                            <th class="tableColumn">Atividade</th>
                                                                            <th class="tableColumn">Categoria</th>
-                                                                           <th class="tableColumn">Fonte de
-                                                                              Financiamento
+                                                                           <th class="tableColumn">Fonte de Financiamento
                                                                            </th>
                                                                            <th class="tableColumn">Area Estratégica</th>
                                                                            <th>Alocação</th>
                                                                            <th>Localização</th>
                                                                            <th>Conta Contábil</th>
+                                                                           <th>Rateio</th>
                                                                         </tr>
                                                                      </thead>
                                                                      <tbody id="tbodyItens">
@@ -432,6 +417,10 @@
                                                                               name="contacontabil" id="contacontabil"
                                                                               type="text" maxlength="10"
                                                                               style="width: 100px;" readonly /></td>
+                                                                            <td><input class="form-control"
+                                                                              name="rateio" id="rateio"
+                                                                              type="text" maxlength="10"
+                                                                              style="width: 100px;" readonly /></td>   
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>
@@ -505,9 +494,9 @@
                                                    	  <div class="form-group col-md-3" id="div_embaixador">
                                                    	  	<label>O passageiro é um Embaixador da Visão</label><br>
                                                    	  	<label for="embaixadorS">Sim</label>
-                                                   	  	<input type="radio" id="embaixadorS" name="embaixador" value="sim"/>
+                                                   	  	<input type="radio" id="embaixadorS" name="embaixador" value="sim" onclick="AprovadorEmbaixador()"/>
                                                    	  	<label for="embaixadorN">Não</label>
-                                                   	  	<input type="radio" id="embaixadorN" name="embaixador" value="nao"/>
+                                                   	  	<input type="radio" id="embaixadorN" name="embaixador" value="nao" onclick="carregaAprovador()"/>
                                                    	  </div>
                                                       <div class="form-group col-md-6" id="divOutroFun">
                                                          <label for="outroFuncionario">Nome do
@@ -1020,14 +1009,6 @@
                                                                placeholder="Sugira um local"></textarea>
                                                          </div>
                                                       </div>
-                                                      <div class="form-group col-md-2" id="div_tipohotel1">
-                                                         <Label for="tipo_hosp1">Tipo Hospedagem</Label>
-                                                         <div class="form-group">
-                                                            <select name="tipo_hosp1" id="tipo_hosp1"
-                                                               dataset="VM_TipoHospedagem" datasetkey="TIPO"
-                                                               datasetvalue="TIPO" addBlankLine=”false”></select>
-                                                         </div>
-                                                      </div>
                                                    </div>
                                                    <div class="row" id="divDatasHotel2">
                                                       <div class="form-group col-md-3">
@@ -1062,14 +1043,6 @@
                                                                placeholder="Sugira um local"></textarea>
                                                          </div>
                                                       </div>
-                                                      <div class="form-group col-md-2" id="div_tipohotel2">
-                                                         <Label for="tipo_hosp2">Tipo Hospedagem</Label>
-                                                         <div class="form-group">
-                                                            <select name="tipo_hosp2" id="tipo_hosp2"
-                                                               dataset="VM_TipoHospedagem" datasetkey="TIPO"
-                                                               datasetvalue="TIPO" addBlankLine=”false”></select>
-                                                         </div>
-                                                      </div>
                                                    </div>
                                                    <div class="row" id="divDatasHotel3">
                                                       <div class="form-group col-md-3">
@@ -1102,14 +1075,6 @@
                                                             <textarea class="form-control" rows="2"
                                                                id="localhotel3" name="localhotel3"
                                                                placeholder="Sugira um local"></textarea>
-                                                         </div>
-                                                      </div>
-                                                      <div class="form-group col-md-2" id="div_tipohotel3">
-                                                         <Label for="tipo_hosp3">Tipo Hospedagem</Label>
-                                                         <div class="form-group">
-                                                            <select name="tipo_hosp3" id="tipo_hosp3"
-                                                               dataset="VM_TipoHospedagem" datasetkey="TIPO"
-                                                               datasetvalue="TIPO" addBlankLine=”false”></select>
                                                          </div>
                                                       </div>
                                                    </div>
@@ -1307,10 +1272,11 @@
                                                       <thead>
                                                          <tr class="tableHeadRow">
                                                             <th></th>
-                                                            <th class="tableColumn">Serviço</th>
-                                                            <th class="tableColumn">Codigo</th>                                                            
+                                                            <th class="tableColumn">Serviço</th>                                                      
                                                             <th class="tableColumn">Valor</th>
-                                                            <th class="tableColumn">Data</th>
+                                                            <th class="tableColumn">Gera solicitacao</th>                                                            
+                                                            <th class="tableColumn">Data bilhete</th>
+                                                            <th class="tableColumn">Codigo Prod.</th>                                                                  
                                                          </tr>
                                                       </thead>
                                                       <tbody id="tbodyViagem">
@@ -1335,12 +1301,10 @@
                                                                                     }" />
                                                                               </div>                                                            
                                                             </td>
-                                                            <td>
-                                                            	<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                                            </td>
                                                             <td >
                                                                <input class="form-control money" name="valores" id="valores" type="number" style="width:200px;" />
-                                                            </td>                                                            
+                                                            </td>
+                                                            <td></td>                                                                                                                    
                                                             <td>                                 
                                                                   <div class="input-group date" id="calendardtViagem" style="width:150px;">
                                                         		 <input type="text" class="form-control" id="dtViagem" name="dtViagem" >
@@ -1348,7 +1312,10 @@
                                                        		  <span class="fluigicon fluigicon-calendar"></span>
                                                        		  </span>
                                                     		  </div>                                                                              
-                                                            </td>                                                            
+                                                            </td>       
+                                                            <td>
+                                                            	<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                            </td>                                                                                                                     
                                                          </tr>
                                                       </tbody>
                                                    </table>

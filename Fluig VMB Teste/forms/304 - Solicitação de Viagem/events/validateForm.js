@@ -51,9 +51,7 @@ function validateForm(form) {
         if (form.getValue("remarcacao") == "sim" && (form.getValue("justificativaremarcacao") == null  || form.getValue("justificativaremarcacao") == '' )) {
             throw "Você necessita informar uma justificativa para a remarcação.";
         }        
-        if (form.getValue("tipoPagamento") == "" || form.getValue("tipoPagamento") == null) {
-            throw "Você precisa indicar se o tipo de pagamento é normal ou rateio.";
-        }
+      
         if (form.getValue("solicitantepassageiro") == "" || form.getValue("solicitantepassageiro") == null) {
             throw "É necessário indicar se você é o passageiro da viagem.";
         }
@@ -212,7 +210,7 @@ function validateForm(form) {
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
         	if (form.getValue("valorVoo") == '' || form.getValue("valorVoo") == null || form.getValue("valorVoo") <= 0 ){
-        		throw "Você precisa informar o valor total da passagem aerea.";	
+        		throw "Você precisa informar o valor total da viagem aerea.";	
         	}
         	
         	if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
@@ -229,10 +227,6 @@ function validateForm(form) {
         
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("hotelComprado") != "" &&  form.getValue("hotelComprado") != null ) || form.getValue("hotelComprado") =='sim'){
-        	if (form.getValue("valorHotel") == '' || form.getValue("valorHotel") == null || form.getValue("valorHotel") <= 0 ){
-        		throw "Você precisa informar o valor total da base das diárias.";	
-        	}
-        	
         	if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null){
         		throw "Você não pode informar que comprou uma hospedagem se o solicitante não pediu.";	
 	    		}
@@ -302,131 +296,126 @@ function validateForm(form) {
 	   	
     }
     
-     
-         
-        //VALIDA SE AS LINHAS FORAM PREENCHIDAS CORRETAMENTE
-        if (form.getValue("tipoPagamento") == "normal") {
-            var indexes = form.getChildrenIndexes("tableItens");            
-   
-            for (var i = 0; i < indexes.length; i++) {
-                var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
-                var projeto = form.getValue("txtprojeto___" + indexes[i]);
-                var area = form.getValue("txtareaestrategica___" + indexes[i]);
-                var categoria = form.getValue("txtcategoria___" + indexes[i]);
-                var fonte = form.getValue("txtfontefinanciamento___" + indexes[i]);
-                var atividade = form.getValue("txtatividade___" + indexes[i]);
-             
-          if (ccusto == "99990") {
-                    if (projeto == null || projeto == "") {
-                        throw "Existem linhas no rateio de pagamento cujo campo projeto não foi informado";
+    validaLinhasPreenchidas();
+    validaLinhasRepetidas();
+    validaPercentualRateio();
+    
+    //VALIDA SE AS LINHAS FORAM PREENCHIDAS CORRETAMENTE
+     function validaLinhasPreenchidas(){
+    	   var indexes = form.getChildrenIndexes("tableItens");            
+    	   
+           for (var i = 0; i < indexes.length; i++) {
+               var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
+               var projeto = form.getValue("txtprojeto___" + indexes[i]);
+               var area = form.getValue("txtareaestrategica___" + indexes[i]);
+               var categoria = form.getValue("txtcategoria___" + indexes[i]);
+               var fonte = form.getValue("txtfontefinanciamento___" + indexes[i]);
+               var atividade = form.getValue("txtatividade___" + indexes[i]);
+            
+         if (ccusto == "99990") {
+                   if (projeto == null || projeto == "") {
+                       throw "Existem linhas no rateio de pagamento cujo campo projeto não foi informado";
 
-                    }
-               
-                    if (area == null || area == "") {
-                        throw "Existem linhas no rateio de pagamento cujo campo area estratégica não foi informado";
-
-                    }
-                    if (categoria == null || categoria == "") {
-                        throw "Existem linhas no rateio de pagamento cujo campo categoria não foi informado";
-
-                    }
-                    if (fonte == null || fonte == "") {
-                        throw "Existem linhas no rateio de pagamento cujo campo fonte de financiamento não foi informado";
-
-                    }
-                    if (atividade == null || atividade == "") {
-                        throw "Existem linhas no rateio de pagamento cujo campo atividade não foi informado";
-
-                    }
-                } 
-                else {                	
-                    if (ccusto == null || ccusto == "") {
-                        //    fieldValue = 0;
-                        throw "Existem linhas no rateio de pagamento cujo campo centro de custo não foi informado.";
-
-                    }
-
-                    
-                    if (atividade == null || atividade == "") {
-                        throw "Existem linhas no rateio de pagamento cujo campo atividade não foi informado";
-
-                    }
-               
                    }
-            }
-        } 
-        //se pagamento não é normal então é rateio
-        else {
-            if (form.getValue("tipoPagamento") == "rateio") {
-                if (form.getValue("rateioconfigurado") == null || form.getValue("rateioconfigurado") == "" || form.getValue("codigorateio") == null || form.getValue("codigorateio") == "") {
-                    throw "É necessário informar o código do rateio.";
-                }
-            }
-        }
+              
+                   if (area == null || area == "") {
+                       throw "Existem linhas no rateio de pagamento cujo campo area estratégica não foi informado";
 
-        
-        ///VALIDA LINHAS REPETIDAS
-        if (form.getValue("tipoPagamento") == "normal") {
-            var indexes = form.getChildrenIndexes("tableItens");            
-           
-            for (var i = 0; i < indexes.length; i++) {
-                var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
-                var projeto = form.getValue("txtprojeto___" + indexes[i]);
-                var area = form.getValue("txtareaestrategica___" + indexes[i]);
-                var categoria = form.getValue("txtcategoria___" + indexes[i]);
-                var fonte = form.getValue("txtfontefinanciamento___" + indexes[i]);
-                var atividade = form.getValue("txtatividade___" + indexes[i]);
- 
-				if (aCentroCusto.length > 0){
-                    		log.info("Segunda linha do rateio de projeto");
-                    		for (var a=0; a < aCentroCusto.length ; a++){
-                    				if (aCentroCusto[a] == ccusto && aProjeto[a] == projeto && aArea[a] == area && aCategoria[a] == categoria && aFonte[a] == fonte && aAtividade[a] == atividade  ) {
-                    					 throw "Existem linhas do rateio repetidas.";
-                    				}
-                				
-                    		}
-                    		
-                    		log.info("Adiciona os dados do projeto atual no array");
-							aCentroCusto.push(ccusto);	
-                    		aProjeto.push(projeto);	
-                    		aCategoria.push(categoria);
-                    		aFonte.push(fonte);
-                    		aAtividade.push(atividade);
-                    		aArea.push(area);
-                    		
-                 }
-                 else {
-                   		log.info("Adiciona a primeira linha de dados do projeto ao array");
-                   		aCentroCusto.push(ccusto);	
-						aProjeto.push(projeto);	
-                    	aCategoria.push(categoria);
-                    	aFonte.push(fonte);
-                    	aAtividade.push(atividade);
-                    	aArea.push(area);
-                 }
-               
-            }
-        } 
-        
- 
+                   }
+                   if (categoria == null || categoria == "") {
+                       throw "Existem linhas no rateio de pagamento cujo campo categoria não foi informado";
+
+                   }
+                   if (fonte == null || fonte == "") {
+                       throw "Existem linhas no rateio de pagamento cujo campo fonte de financiamento não foi informado";
+
+                   }
+                   if (atividade == null || atividade == "") {
+                       throw "Existem linhas no rateio de pagamento cujo campo atividade não foi informado";
+
+                   }
+               } 
+               else {                	
+                   if (ccusto == null || ccusto == "") {
+                       //    fieldValue = 0;
+                       throw "Existem linhas no rateio de pagamento cujo campo centro de custo não foi informado.";
+
+                   }
+
+                   
+                   if (atividade == null || atividade == "") {
+                       throw "Existem linhas no rateio de pagamento cujo campo atividade não foi informado";
+
+                   }
+              
+                  }
+           }
+     }
+     
+     function validaLinhasRepetidas(){
+         ///VALIDA LINHAS REPETIDAS
+             var indexes = form.getChildrenIndexes("tableItens");            
+            
+             for (var i = 0; i < indexes.length; i++) {
+                 var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
+                 var projeto = form.getValue("txtprojeto___" + indexes[i]);
+                 var area = form.getValue("txtareaestrategica___" + indexes[i]);
+                 var categoria = form.getValue("txtcategoria___" + indexes[i]);
+                 var fonte = form.getValue("txtfontefinanciamento___" + indexes[i]);
+                 var atividade = form.getValue("txtatividade___" + indexes[i]);
+  
+ 				if (aCentroCusto.length > 0){
+                     		log.info("Segunda linha do rateio de projeto");
+                     		for (var a=0; a < aCentroCusto.length ; a++){
+                     				if (aCentroCusto[a] == ccusto && aProjeto[a] == projeto && aArea[a] == area && aCategoria[a] == categoria && aFonte[a] == fonte && aAtividade[a] == atividade  ) {
+                     					 throw "Existem linhas do rateio repetidas.";
+                     				}
+                 				
+                     		}
+                     		
+                     		log.info("Adiciona os dados do projeto atual no array");
+ 							aCentroCusto.push(ccusto);	
+                     		aProjeto.push(projeto);	
+                     		aCategoria.push(categoria);
+                     		aFonte.push(fonte);
+                     		aAtividade.push(atividade);
+                     		aArea.push(area);
+                     		
+                  }
+                  else {
+                    		log.info("Adiciona a primeira linha de dados do projeto ao array");
+                    		aCentroCusto.push(ccusto);	
+ 						aProjeto.push(projeto);	
+                     	aCategoria.push(categoria);
+                     	aFonte.push(fonte);
+                     	aAtividade.push(atividade);
+                     	aArea.push(area);
+                  }
+                
+             }
+         
+     }
+     
+      function validaPercentualRateio(){
           //VALIDA PERCENTUAL TOTAL DO ORÇAMENTO
-        if (form.getValue("tipoPagamento") == "normal") {
-            var indexes = form.getChildrenIndexes("tableItens");
-            var total = 0;
+              var indexes = form.getChildrenIndexes("tableItens");
+              var total = 0;
 
-            for (var i = 0; i < indexes.length; i++) {
-                var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
-                if (isNaN(fieldValue)) {
-                    throw "Existem linhas sem percentual informado no rateio de pagamento.";
+              for (var i = 0; i < indexes.length; i++) {
+                  var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
+                  if (isNaN(fieldValue)) {
+                      throw "Existem linhas sem percentual informado no rateio de pagamento.";
 
-                }
+                  }
 
-                total = total + fieldValue;	        
-            }
-            if ((total < 100) || total > 100) {
-                throw "Percentual Total do rateio não pode ser inferior ou superior a 100";
-            }
-        }       
+                  total = total + fieldValue;	        
+              }
+              if ((total < 100) || total > 100) {
+                  throw "Percentual Total do rateio não pode ser inferior ou superior a 100";
+              }
+          
+      }
+   
     
 
   //recebe data do Fluig e convert para data normal
