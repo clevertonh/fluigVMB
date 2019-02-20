@@ -30,13 +30,15 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoreembolso", false);
      form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
+
+     
      
 	
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
        	form.setVisibleById("2b", false);
-    	form.setVisibleById("3b", false);
+    	//form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);
     	//form.setVisibleById("divCotacao", false);
     	
@@ -52,6 +54,7 @@ function displayFields(form,customHTML){
     	//campos aba passageiro
     	form.setVisibleById("divdadospassageiro", false);
     	form.setVisibleById("divOutroFun", false);
+        form.setVisibleById("div_embaixador", false);
     	
     	//campos aba agenda
     	form.setVisibleById("divDataSetAgenda", false);

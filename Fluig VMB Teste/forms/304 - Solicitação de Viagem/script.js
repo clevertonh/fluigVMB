@@ -39,11 +39,18 @@ var datacheckout3;
 var datacheckin3;
 var dataReembolso;
 var dataPagamento;
+var dataViagem;
+/*
+dataViagem = FLUIGC.calendar('#calendardtViagem',{
+	pickDate: true,
+    pickTime: false
+    }).setDate($('#calendardtViagem :input').attr('value') != null ? $("#calendardtViagem :input").attr('value') : new Date());
 
-
+*/
 $(document).ready(function() {
+	
 
-    if (ATIVIDADE == SOLICITACANCELAMENTO) {
+	if (ATIVIDADE == SOLICITACANCELAMENTO) {
         document.getElementById("cancelarpassagem").checked = false;
 
     }
@@ -104,15 +111,13 @@ $(document).ready(function() {
         dataretorno1 = FLUIGC.calendar('#calendariodataretorno1', {
             pickDate: true,
             pickTime: false,
-            minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
+            minDate: new Date().toLocaleString()            
         });
 
         datapartida2 = FLUIGC.calendar('#calendariodatapartida2', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
 
@@ -120,7 +125,6 @@ $(document).ready(function() {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
 
@@ -128,42 +132,36 @@ $(document).ready(function() {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
         datacheckin = FLUIGC.calendar('#calendariodatacheckin', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
         datacheckout2 = FLUIGC.calendar('#calendariodtcheckout2', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
         datacheckin2 = FLUIGC.calendar('#calendariodtcheckin2', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
         datacheckout3 = FLUIGC.calendar('#calendariodtcheckout3', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
         datacheckin3 = FLUIGC.calendar('#calendariodtcheckin3', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
-            //daysOfWeekDisabled: [0,6] desativar dias da semana
         });
 
     }
@@ -287,6 +285,7 @@ function passageiroFuncionario() {
     $('#passaporte').val("");
     dataNasc.setDate(null);
     window["outroFuncionario"].clear();
+    document.getElementById("div_embaixador").style.display = "none";
 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true) {
@@ -304,6 +303,7 @@ function passageiroFuncionario() {
         document.getElementById("passageirofuncionario").checked == true) {
         alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
         document.getElementById("divOutroFun").style.display = "block";
+        document.getElementById("div_embaixador").style.display = "none";
 
 
     }
@@ -334,6 +334,7 @@ function passageiroFuncionario() {
     	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
         document.getElementById("divOutroFun").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "none";
+        document.getElementById("div_embaixador").style.display = "none";
     	
     }
 
@@ -341,12 +342,15 @@ function passageiroFuncionario() {
 }
 
 function passageiroNfuncionario() {	 
+	//sim, sim, sim
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true &&
         document.getElementById("passageirofuncionario").checked == true) {
         $('#passageirofuncionarionao').attr("checked", false);
 
         document.getElementById("divdadospassageiro").style.display = "none";
+        document.getElementById("div_embaixador").style.display = "none";
+        
         $('#nomepassageiro').val("");
         $('#nomemae').val("");
         $('#rgpassageiro').val("");
@@ -354,9 +358,11 @@ function passageiroNfuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
+      
   
     }
 
+    //campos sim, nao, não
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitanteNpassageiro").checked == true &&
         document.getElementById("passageirofuncionarionao").checked == true) {
@@ -369,6 +375,7 @@ function passageiroNfuncionario() {
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
         document.getElementById("divdadospassageiro").style.display = "block";
+        document.getElementById("div_embaixador").style.display = "block";
 
 
     }
@@ -387,6 +394,8 @@ function passageiroNfuncionario() {
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
         document.getElementById("divdadospassageiro").style.display = "none";
+        document.getElementById("div_embaixador").style.display = "none";
+        
 
     }
     if (document.getElementById("solicitanteFuncionario").checked == true &&
@@ -409,6 +418,7 @@ function passageiroNfuncionario() {
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
         document.getElementById("divdadospassageiro").style.display = "block";
+        document.getElementById("div_embaixador").style.display = "block";
 
     }
 
@@ -427,6 +437,7 @@ function passageiroNfuncionario() {
     
         document.getElementById("divOutroFun").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "block";
+        document.getElementById("div_embaixador").style.display = "block";
     }
 
 
@@ -1060,6 +1071,14 @@ function adicionaLinha() {
     window["txtcategoria___" + indice].disable(true);
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
+}
+
+function adicionaLinhaServico() {
+	var row = wdkAddChild('tableViagem');
+	FLUIGC.calendar("#dtViagem___" + row, {
+		minDate : new Date(),
+	});
+	
 }
 
 function removedZoomItem(removedItem) {

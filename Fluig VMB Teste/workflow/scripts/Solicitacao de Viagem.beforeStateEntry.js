@@ -2,6 +2,7 @@ function beforeStateEntry(sequenceId){
 	//REST PADRÃO TOTVS USUÁRIO
 	//http://pessoasecultura.intranetvm.org.br:8082/REST/USERS
 	
+	//VARIAVEIS DEFAULT
 	var ABERTURA = 0;
 	var SOLICITARVIAGEM = 4;
 	var APROVACAO = 97;
@@ -13,31 +14,41 @@ function beforeStateEntry(sequenceId){
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
 	
-	//recupera atividade
-	var ativAtual = getValue("WKNumState");	
-	var codSolicitacao = getValue("WKNumProces");
-	var nextAtv  = getValue("WKNextState");
-	var idFormulario;
+	//RECUPERA NUMERO DA ATIVIDADE
+	var ativAtual 		 = getValue("WKNumState");		
+	//RECUPERA CODIGO DA SOLICITAÇÃO
+	var codSolicitacao 	 = getValue("WKNumProces");
+	//VERIFICA QUAL A PROXIMA ATIVIDADE
+	var nextAtv  		 = getValue("WKNextState");
 	
-	var vooComprado = hAPI.getCardValue("vooComprado");
-	var hotelComprado = hAPI.getCardValue("hotelComprado");
-
-	var tipoPagamento = hAPI.getCardValue("tipoPagamento");				
-	var codRateio = hAPI.getCardValue("codigorateio");
-	//var codSolicitacao = hAPI.getCardValue("solicitacao");				
-	var tipoViagem = hAPI.getCardValue("tipoviagem");				
+	var vooComprado		 = hAPI.getCardValue("vooComprado");
+	var hotelComprado	 = hAPI.getCardValue("hotelComprado");
+	var tipoPagamento 	 = hAPI.getCardValue("tipoPagamento");				
+	var codRateio		 = hAPI.getCardValue("codigorateio");				
+	var tipoViagem 		 = hAPI.getCardValue("tipoviagem");
+	var tipoHospedagem1  = hAPI.getCardValue("tipo_hosp1");
+	var tipoHospedagem2  = hAPI.getCardValue("tipo_hosp2");
+	var tipoHospedagem3  = hAPI.getCardValue("tipo_hosp3");
+	var valorDiarias 	 = hAPI.getCardValue("vl_diarias");
+	var voo 			 = hAPI.getCardValue("tipovoo");
+	var hospedagem 		 = hAPI.getCardValue("tipoquarto");
+	var recebeDiarias 	 = hAPI.getCardValue("recebediarias");
+	var emailsolicitante = hAPI.getCardValue("emailSolicitante");
+	var datasolicitacao  = hAPI.getCardValue("dataSolicitacao");	
+    var passageiro 		 = hAPI.getCardValue("nomepassageiro") ;
+    var solicitante 	 = hAPI.getCardValue("solicitante");
+    
+	
+	
+	//VARIAVEIS SIMPLES
 	var solicitacao;
-	var integraProtheus = false;
-	var tipoHospedagem1 = hAPI.getCardValue("tipo_hosp1");
-	var tipoHospedagem2 = hAPI.getCardValue("tipo_hosp2");
-	var tipoHospedagem3 = hAPI.getCardValue("tipo_hosp3");
+	var idFormulario;
+	var integraProtheus  = false;
 	
 	/*
 	 * verifica se foi adicionado anexo. 
 	 * Pois quando tem anexo é obrigatório marcar algo como comprado
 	 * */
-	
-	//falta identificar em que fase foi anexado o documento
 	 var anexos   = hAPI.listAttachments();
      var temAnexo = false;
 	
@@ -55,7 +66,9 @@ function beforeStateEntry(sequenceId){
      
 	   if (ativAtual == 13 && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
 		   
-				
+		   //GERAR LOG PARA VERIFICAR SE NUMERO DA ATIVIDADE ESTA SENDO GERADO IGUAL AO EVENTO DE CANCELAR
+		   //ONDE  É GERADO 13,129
+		   log.info('ATIVIDADE ATUAL DE COMPRA PASSAGEM : '+ ativAtual);
 	
 				if (anexos.size() > 0) {
 		            temAnexo = true;
@@ -65,40 +78,13 @@ function beforeStateEntry(sequenceId){
 		            throw "É preciso anexar o documento para continuar o processo!";
 		        }
 		        
-		  			
-				    //Cria a constraint para buscar os formulários ativos
-				    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-					var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
-					var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
-					
-				    var constraints = new Array(cst,cst3,cst5);
-				     //dataset interno: formularios preenchidos
-				    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
-				    
-				    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
-				        var documentId = datasetPrincipal.getValue(i, "metadata#id");
-				        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
-				        var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
-				        
-				        idFormulario = documentId;
-				        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-				        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
-				        var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-				        var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-				        var constraintsFilhos = new Array(c1, c2, c3);
-				 
-				        //Busca o dataset
-				        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
-					
-				        solicitacao = datasetFilhos;
-				        
-				    }
+		        //chama função que retorna informações financeiras de pagamento
+		  		solicitacao = itensPagamento();	
+				
 					//objeto serviço
 					var aItemServico = new Array();
 					//array referente ao Rateio
 					var aRateio = new Array();
-					var voo = hAPI.getCardValue("tipovoo");
-					var hospedagem = hAPI.getCardValue("tipoquarto");
 					var codProdutoH;
 					var codProdutoP;
 					var codSeguro = "DVVIG002";
@@ -119,7 +105,7 @@ function beforeStateEntry(sequenceId){
 					if (vooComprado != null && vooComprado != "" ){		
 						 valor = hAPI.getCardValue("valorVoo");						 	
 							
-						 //chama função para adicionar item ao array
+						 	//CHAMA FUNÇÃO PARA ADICIOANR ITEM AO ARRAY
 							addItemViagem(codProdutoP,codSolicitacao,tipoViagem,idFormulario,valor);							
 							
 							//voos internacional possuem seguro viagem
@@ -161,11 +147,12 @@ function beforeStateEntry(sequenceId){
 					}
 					
 					if (integraProtheus == true){
-						//verifica se informação do pagamento é normal
+						//VERIFICA SE INFORMAÇÃO FNIANCEIRO DE PAGAMENTO É NORMA OU RATEIO PRE-CONFIGURADO
 					    if ( tipoPagamento == "normal" ){		    		
-					    		//verifica quantidade de linhas do rateio manual: Falta implementar consulta da dataset para retornar quantidade e itens		    		
+					    		//VERIFICA QUANTIDADE DE LINHAS DA INFORMAÇÃO FINANCEIRA PARA SABER SE EXISTE RATEIO DIGITADO
+					    		//EM CASO DE UMA UNICA LINHA SIGNIFICA QUE NÃO É RATEIO
 					    		if ( solicitacao.rowsCount == 1){
-					    			for (var i=0; i < aItemServico.length ; i++){
+					    			for (var i=0; i < aItemServico.length ; i++){ //porque aItemServico ?
 					    				var obj = aItemServico[i];		    				 
 				    					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
 				    					
@@ -196,9 +183,8 @@ function beforeStateEntry(sequenceId){
 					    			}
 					    				
 					    		}
-					    		//possui rateio por centro de custo
-					    		else if ( solicitacao.rowsCount > 1){		    					    					    			
-					    			//só criar um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			
+					    		//INFORMAÇOES FINANCEIRAS PARA RATEIO DIGITADO
+					    		else if ( solicitacao.rowsCount > 1){		    					    					    								    					    		
 					    			for (var i=0; i < solicitacao.rowsCount ; i++){
 					    				var obj = {
 					    						ccusto : '' ,
@@ -238,7 +224,6 @@ function beforeStateEntry(sequenceId){
 				    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
 				    					
 				    					aRateio[i] = obj;	
-				    					//log.info(aRateio);
 					    			}		    			
 					    		}
 					  }
@@ -257,9 +242,9 @@ function beforeStateEntry(sequenceId){
 						            params : {
 						            	processo : '' + 1 + '' ,
 						            	solicitacao : '' + codSolicitacao + '' ,
-						            	solicitante : '' + hAPI.getCardValue("solicitante") +'',
-						                datasolicitacao :'' + hAPI.getCardValue("dataSolicitacao") +'',	
-						                passageiro : '' + hAPI.getCardValue("nomepassageiro") +'',
+						            	solicitante : '' + solicitante +'',
+						                datasolicitacao :'' + datasolicitacao +'',	
+						                passageiro : '' + passageiro +'',
 						                itens: aItemServico ,
 						        		rateioDigitado: aRateio ,
 						        		rateioConfigurado:'' +  codRateio +''
@@ -269,9 +254,7 @@ function beforeStateEntry(sequenceId){
 						             mediaType: 'application/json'
 						          }
 						        }
-						              
-						        //log.info(aRateio);
-						        
+						              						        
 						        var vo = clientService.invoke(JSON.stringify(data));
 						        
 						        if(vo.getResult()== null || vo.getResult().isEmpty()){
@@ -295,12 +278,10 @@ function beforeStateEntry(sequenceId){
 			   
 		   }
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-		   else if ( ativAtual == PAGARDIARIAS && hAPI.getCardValue("recebediarias") == "sim") {
-			    
+		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {
 			   var aRateio = new Array();
-			   var aItem = new Array();
-			   var valorDiarias = hAPI.getCardValue("vl_diarias");
-		   		solicitacao = itensPagamento();
+			   var aItem = new Array();			   
+		   	    solicitacao = itensPagamento();
 				
 		   		if ( solicitacao.rowsCount == 1){
 	    				var obj = new Array();	    				 
@@ -333,8 +314,52 @@ function beforeStateEntry(sequenceId){
 	    			
 	    				
 	    		}
+		   		//RATEIO DIGITADO
+		   		else if (solicitacao.rowsCount > 1){    			
+	    			for (var i=0; i < solicitacao.rowsCount ; i++){
+	    				var obj = {
+	    						ccusto : '' ,
+	    						projeto :'' ,
+	    						atividade :'' ,
+	    						categoria :'' ,
+	    						fonte :'' ,
+	    						area :'' ,
+	    						alocacao :'' ,
+	    						conta : '' ,
+	    						localizacao :''
+	    						
+	    				};		    				 
+	    				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
+    					if (solicitacao.getValue(i, "txtprojeto") != null){
+    						obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
+    					}
+    					obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
+    					if (solicitacao.getValue(i, "txtcategoria") != null){
+    						obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
+    					}		    					
+    					if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
+    						obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
+    					}	    					
+    					if (solicitacao.getValue(i, "txtareaestrategica")  != null){
+    						obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
+    					}
+    					if (solicitacao.getValue(i, "alocacao") != null){
+    						obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
+    					}
+    					if (solicitacao.getValue(i, "contacontabil") != null){
+    						obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
+    					}
+    					if (solicitacao.getValue(i, "localizacao") != null){
+    						obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
+    					}	    					
+    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
+    					
+    					aRateio[i] = obj;	
+    					//log.info(aRateio);
+		   		}
+		   		
 				
-				
+			}	
 				
 				
 				//throw "Integrado com o Protheus"			
@@ -349,10 +374,10 @@ function beforeStateEntry(sequenceId){
 				            params : {
 				            	processo : '' + 1 + '' ,
 				            	solicitacao : '' + codSolicitacao + '' ,
-				                solicitante : '' + hAPI.getCardValue("solicitante") +'',
+				                solicitante : '' + solicitante +'',
 				                valorTotal : '' + valorDiarias + '' ,
-				                datasolicitacao :'' + hAPI.getCardValue("dataSolicitacao") +'',	
-				                emailsolicitante : '' + hAPI.getCardValue("emailSolicitante") +'',
+				                datasolicitacao :'' + datasolicitacao +'',	
+				                emailsolicitante : '' + emailsolicitante +'',
 				                itens: aItem ,
 				        		rateioDigitado: aRateio ,
 				        		rateioConfigurado:'' +  codRateio +''
@@ -411,21 +436,22 @@ function beforeStateEntry(sequenceId){
 	   }
 	   
 	   
+	   
 	   function itensPagamento(){
+
 		   var datasetFilhos;
 		   
 		    //Cria a constraint para buscar os formulários ativos
 		    var cst1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-			var cst2 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);				
-			var cst3 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+			var cst2 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
 			
-		    var constraints = new Array(cst1,cst2,cst3);
+		    var constraints = new Array(cst1,cst2);
 		    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
 		    
 		    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
 		        var documentId = datasetPrincipal.getValue(i, "metadata#id");
 		        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
-		        var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
+		        //var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
 		        
 		        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
 		        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
@@ -435,7 +461,8 @@ function beforeStateEntry(sequenceId){
 		 
 		        //Busca o dataset
 		        datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
-					       
+			
+		       
 		      
 		    }
 		    return datasetFilhos;

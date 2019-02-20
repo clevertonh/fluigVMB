@@ -39,8 +39,14 @@ function enableFields(form) {
 		 form.setEnabled('hotelComprado', false);
 		 form.setEnabled('ressarcimento', false);
 		 form.setEnabled('justificativaReprovacao', false);		 
+		 form.setEnabled('cobranca', false);	
+		 form.setEnabled('tipormb', false);
+		 
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
+		 
+		 
+		 
 		 
 		 
 		 
@@ -93,7 +99,7 @@ function enableFields(form) {
 		 form.setEnabled('solicitanteFuncionario', false);
 		 form.setEnabled('solicitantepassageiro', false);
 		 form.setEnabled('passageirofuncionario', false);	
-		 form.setEnabled('solicitanteFuncionario', false);		 
+		 form.setEnabled('embaixador', false);
 		 form.setEnabled('nomepassageiro', false);
 		 form.setEnabled('nomemae', false);
 		 form.setEnabled('datanasc', false);
@@ -271,6 +277,9 @@ function enableFields(form) {
 			 //CAMPOS HOSPITALIDADE
 			 form.setEnabled('vooComprado', false);
 			 form.setEnabled('hotelComprado', false);
+			 form.setEnabled('cobranca', false);
+			 form.setEnabled('tipormb', false);
+			 
 			 
 			 form.setValue("cancelarpassagem","");
 			 form.setValue("justificativacancelamento",""); 

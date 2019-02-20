@@ -280,12 +280,8 @@
                                                       <div class="panel-body">
                                                          <div class="form-group row">
                                                             <div class="col-md-12 fs-txt-right">
-                                                               <button type="button" class="btn btn-primary"
-                                                                  id="btn_add_item" name="btn_add_item"
-                                                                  onclick="adicionaLinha()">
-                                                               <span
-                                                                  class="fluigicon fluigicon-plus-sign fluigicon-sm"></span>
-                                                               Adicionar
+                                                               <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
+                                                               <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
                                                                </button>
                                                             </div>
                                                          </div>
@@ -506,6 +502,13 @@
                                                       </div>                                                      
                                                    </div>
                                                    <div class="row">
+                                                   	  <div class="form-group col-md-3" id="div_embaixador">
+                                                   	  	<label>O passageiro é um Embaixador da Visão</label><br>
+                                                   	  	<label for="embaixadorS">Sim</label>
+                                                   	  	<input type="radio" id="embaixadorS" name="embaixador" value="sim"/>
+                                                   	  	<label for="embaixadorN">Não</label>
+                                                   	  	<input type="radio" id="embaixadorN" name="embaixador" value="nao"/>
+                                                   	  </div>
                                                       <div class="form-group col-md-6" id="divOutroFun">
                                                          <label for="outroFuncionario">Nome do
                                                          funcionário</label> <input name="outroFuncionario"
@@ -1289,6 +1292,71 @@
                                              type="number" name="valorTx">
                                        </div>
                                     </div>
+                                    		<div class="panel-body">
+                                                         <div class="form-group row">
+                                                            <div class="col-md-12 fs-txt-right">
+                                                               <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaServico()">
+                                                               <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar Serviço
+                                                               </button>
+                                                            </div>
+                                                         </div>
+										<div class="form-group row">
+										 <div class="col-md-12">
+   										<div class="form-field table-responsive">
+                                                   <table tablename="tableViagem" id="tableViagem" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true >
+                                                      <thead>
+                                                         <tr class="tableHeadRow">
+                                                            <th></th>
+                                                            <th class="tableColumn">Serviço</th>
+                                                            <th class="tableColumn">Codigo</th>                                                            
+                                                            <th class="tableColumn">Valor</th>
+                                                            <th class="tableColumn">Data</th>
+                                                         </tr>
+                                                      </thead>
+                                                      <tbody id="tbodyViagem">
+                                                         <tr>
+                                                            <td>
+                                                               <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha"></span>
+                                                            </td>
+                                                            <td>
+                                                                              <div class="form-group">
+                                                                                 <input type="hidden" name="servico"
+                                                                                    id="servico" /> <input type="zoom"
+                                                                                    name="txtservico"
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'Descricao',
+                                                                                    'datasetId':'VM_ServicosHospedagem',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione um serviço',
+                                                                                    'fields':[
+                                                                                    {'field':'Codigo', 'label':'Codigo'},
+                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
+                                                                                    {'field':'Produto', 'label':'Produto' , 'visible' : 'false'}]
+                                                                                    }" />
+                                                                              </div>                                                            
+                                                            </td>
+                                                            <td>
+                                                            	<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                            </td>
+                                                            <td >
+                                                               <input class="form-control money" name="valores" id="valores" type="number" style="width:200px;" />
+                                                            </td>                                                            
+                                                            <td>                                 
+                                                                  <div class="input-group date" id="calendardtViagem" style="width:150px;">
+                                                        		 <input type="text" class="form-control" id="dtViagem" name="dtViagem" >
+                                                        		 <span class="input-group-addon">
+                                                       		  <span class="fluigicon fluigicon-calendar"></span>
+                                                       		  </span>
+                                                    		  </div>                                                                              
+                                                            </td>                                                            
+                                                         </tr>
+                                                      </tbody>
+                                                   </table>
+                                                </div>  									
+									</div>  
+									</div>                                                         
+                                                     </div>    
+									
                                     <div class="row">
                                        <div class="form-group col-md-3"></div>
                                     </div>

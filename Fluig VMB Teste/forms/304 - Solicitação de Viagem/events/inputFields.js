@@ -14,6 +14,34 @@ function inputFields(form){
 	var nextAtv  = getValue("WKNextState");
 	log.info("----ATIVIDADE inputFields: " + activity);
 	
+	/*
+	if (activity == ABERTURA || activity == CORRIGIRSOLICITACAO){
+		var embaixador = getValue('embaixador');
+
+		log.info("EMBAIXADOR: " + embaixador);
+		
+		if (embaixador == 'sim'){					
+				 var constraints   = new Array();
+				 constraints.push(DatasetFactory.createConstraint("mail", 'raissa_rossiter@wvi.org', 'raissa_rossiter@wvi.org', ConstraintType.MUST));
+				 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+				 			 			 			 			
+				 if (dataset!= null && dataset != ''){
+					 form.setValue("emailGestor","raissa_rossiter@wvi.org");
+					 form.setValue("matriculaApr",dataset.getValue(0, "colleaguePK.colleagueId"));
+					 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));	 
+				 }
+				 else {
+					 form.setValue("emailGestor","");
+					 form.setValue("matriculaApr","");
+					 form.setValue("aprovador","");	
+				 }
+				 
+				 		
+		}
+			
+	}
+	
+*/
 	
 
 	
