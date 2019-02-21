@@ -10,8 +10,8 @@ var CORRIGIRSOLICITACAO = 98;
 var COTARREMARCACAO = 135;
 var PAGARDIARIAS = 129;
 var dadosGestor;
-
 var site;
+var AtividadeAtual;
 
 
 
@@ -49,7 +49,10 @@ dataViagem = FLUIGC.calendar('#calendardtViagem',{
 */
 $(document).ready(function() {
 	
-
+	//set valor da atividade atual enviada pelo displayField para variavel global
+	//AtividadeAtual = ATIVIDADE;
+	//console.log("----ATIVIDADE ATUAL----- "+AtividadeAtual);
+	
 	if (ATIVIDADE == SOLICITACANCELAMENTO) {
         document.getElementById("cancelarpassagem").checked = false;
 
@@ -669,21 +672,29 @@ function clickNovaSolicitacao() {
 }
 
 function removeItens() {
-    var linhas = $("#tbodyItens tr");
-    for (var i = 1; i < linhas.length; i++) {
-        var td = $(linhas[i]).children()[0];
-        var span = $(td).children()[0];
-        fnWdkRemoveChild(span);
-    }
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO || ATIVIDADE == COMPRARPASSAGEM){
+	    var linhas = $("#tbodyItens tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);
+	    }
+	}
+
 }
 
 function removeServico() {
-    var linhas = $("#tbodyViagem tr");
-    for (var i = 1; i < linhas.length; i++) {
-        var td = $(linhas[i]).children()[0];
-        var span = $(td).children()[0];
-        fnWdkRemoveChild(span);
-    }
+	console.log("------TENTANDO REMOVER SERVIÇO---------");
+	console.log("----ATIVIDADE ATUAL----- "+AtividadeAtual);
+	if (AtividadeAtual == COMPRARPASSAGEM){
+	    var linhas = $("#tbodyViagem tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);
+	    }
+	}
+
 }
 
 function removeItensAgenda() {

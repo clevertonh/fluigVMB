@@ -91,7 +91,7 @@ function enableFields(form) {
 		 form.setEnabled('justificativa', false);
 		 form.setEnabled('dataSolicitacao', false);
 		 form.setEnabled('justificativaremarcacao', false);
-		 
+		 form.setEnabled('rateioconfigurado', false)
 		 
  
 		 //CAMPOS DADOS DO PASSAGEIRO
@@ -395,7 +395,18 @@ function enableFields(form) {
 			     	   		form.setEnabled("percentual___"+ indexes[i], false);	
 			     	   		form.setEnabled("rateio___"+ indexes[i], false);
 		     	        
-			    	    }    	        	  
+			    	    }    
+			    	    
+			    	    //BLOQUEIA CAMPOS DE SERVIÇO
+				    	 var indexes = form.getChildrenIndexes("tableViagem");	    	    	    	   
+				    	    for (var i = 0; i < indexes.length; i++) {
+				     	        form.setEnabled("txtservico___"+ indexes[i], false);	
+				     	       	form.setEnabled("dtViagem___"+ indexes[i], false);
+				     	        form.setEnabled("Vvalores___"+ indexes[i], false);	
+				     	      	form.setEnabled("codigoProduto___"+ indexes[i], false);	
+				     	     	
+			     	        
+				    	    } 
 			    
 			  
 		 }

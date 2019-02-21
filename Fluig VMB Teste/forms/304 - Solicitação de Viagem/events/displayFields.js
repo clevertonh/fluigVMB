@@ -30,21 +30,9 @@ function displayFields(form,customHTML){
      form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
      form.setVisibleById("btn_add_itemS", false);
+     form.setVisibleById("removeServico", false);
      
-     
-     //falta ocultar o botao de remover
-     /*
-     var indexes = form.getChildrenIndexes("tableViagem");
-
-     for (var i = 0; i < indexes.length; i++) {
-         form.setVisibleById("removeServico___" + indexes[i], false);   	        
-     }
-     */
     
-
-     
-     
-	
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
