@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Viagem</processId>
-      <version>362</version>
+      <version>363</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>304</formId>
@@ -885,7 +885,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -897,7 +897,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -909,7 +909,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
@@ -921,7 +921,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
@@ -933,7 +933,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
@@ -945,7 +945,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;&quot;</condition>
@@ -957,7 +957,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -969,7 +969,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; &amp;&amp; &#xd;
@@ -982,7 +982,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;sim&quot;</condition>
@@ -994,7 +994,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>362</version>
+        <version>363</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;nao&quot;</condition>
@@ -1607,9 +1607,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 	&#xd;
 	//VARIAVEIS SIMPLES&#xd;
 	var solicitacao;&#xd;
-	var idFormulario;&#xd;
-	var servicos;&#xd;
-	var integraProtheus  = false;&#xd;
+	var documentId;&#xd;
 	&#xd;
 	/*&#xd;
 	 * verifica se foi adicionado anexo. &#xd;
@@ -1619,7 +1617,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
      var temAnexo = false;&#xd;
 	&#xd;
 	&#xd;
-     	if (ativAtual == 13 &amp;&amp; ( vooComprado == &apos;&apos; &amp;&amp; hotelComprado == &apos;&apos;) || ( vooComprado == null &amp;&amp; hotelComprado == null) ){&#xd;
+     	if (ativAtual == COMPRARPASSAGEM &amp;&amp; ( vooComprado == &apos;&apos; &amp;&amp; hotelComprado == &apos;&apos;) || ( vooComprado == null &amp;&amp; hotelComprado == null) ){&#xd;
      	     if (anexos.size() &gt; 0) {&#xd;
      	          temAnexo = true;&#xd;
      	      }&#xd;
@@ -1630,10 +1628,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 &#xd;
      	}&#xd;
      &#xd;
-	   if (ativAtual == 13 &amp;&amp; ( vooComprado == &apos;sim&apos; || hotelComprado == &apos;sim&apos; ) ) {&#xd;
-		   &#xd;
-		   //GERAR LOG PARA VERIFICAR SE NUMERO DA ATIVIDADE ESTA SENDO GERADO IGUAL AO EVENTO DE CANCELAR&#xd;
-		   //ONDE  É GERADO 13,129&#xd;
+	   if (ativAtual == COMPRARPASSAGEM &amp;&amp; ( vooComprado == &apos;sim&apos; || hotelComprado == &apos;sim&apos; ) ) {&#xd;
 		   log.info(&apos;ATIVIDADE ATUAL DE COMPRA PASSAGEM : &apos;+ ativAtual);&#xd;
 	&#xd;
 				if (anexos.size() &gt; 0) {&#xd;
@@ -1650,138 +1645,132 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 				&#xd;
 		        //chama função que retorna informações financeiras de pagamento&#xd;
 		  		solicitacao = itensPagamento();	&#xd;
-				&#xd;
-		  		&#xd;
-		  		&#xd;
-		  		//EXECUTA FUNÇÃO QUE RETORNA SERVIÇOS A SEREM GERADOS&#xd;
+&#xd;
+		  		//EXECUTA FUNÇÃO QUE RETORNA PRODUTOS A SEREM GERADOS PARA SOLICITAÇÃO DE VIAGEM&#xd;
 		  		itensServico();&#xd;
-															    		&#xd;
-					    		//VERIFICA QUANTIDADE DE LINHAS DA INFORMAÇÃO FINANCEIRA PARA SABER SE EXISTE RATEIO DIGITADO&#xd;
-					    		//EM CASO DE UMA UNICA LINHA SIGNIFICA QUE NÃO É RATEIO&#xd;
-					    		if ( solicitacao.rowsCount == 1){&#xd;
-					    			for (var i=0; i &lt; aItemServico.length ; i++){ &#xd;
-					    				var obj = aItemServico[i];		    				 &#xd;
-				    					obj.ccusto =  &apos;&apos; + solicitacao.getValue(0, &quot;txtcentrocusto&quot;) +&apos;&apos;;			&#xd;
-				    					&#xd;
-				    					if (solicitacao.getValue(0, &quot;txtprojeto&quot;) != null){&#xd;
-				    						obj.projeto = &apos;&apos; + solicitacao.getValue(0, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
-				    					}&#xd;
-				    					obj.atividade = &apos;&apos; + solicitacao.getValue(0, &quot;txtatividade&quot;) +&apos;&apos;;&#xd;
-				    					&#xd;
-				    					if (solicitacao.getValue(0, &quot;txtcategoria&quot;) != null){&#xd;
-				    						obj.categoria = &apos;&apos; + solicitacao.getValue(0, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
-				    					}&#xd;
-				    					if (solicitacao.getValue(0, &quot;txtfontefinanciamento&quot;) != null){&#xd;
-				    						obj.fonte = &apos;&apos; + solicitacao.getValue(0, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
-				    					}&#xd;
-				    					if (solicitacao.getValue(0, &quot;txtareaestrategica&quot;)  != null){&#xd;
-				    						obj.area = &apos;&apos; + solicitacao.getValue(0, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
-				    					}	    					&#xd;
-				    					if (solicitacao.getValue(0, &quot;alocacao&quot;) != null){&#xd;
-				    						obj.alocacao = &apos;&apos; + solicitacao.getValue(0, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
-				    					}&#xd;
-				    					if (solicitacao.getValue(0, &quot;contacontabil&quot;) != null){&#xd;
-				    						obj.conta = &apos;&apos; + solicitacao.getValue(0, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
-				    					}	    					&#xd;
-				    					if (solicitacao.getValue(0, &quot;localizacao&quot;) != null){&#xd;
-				    						obj.localizacao = &apos;&apos; + solicitacao.getValue(0, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
-				    					}&#xd;
-				    					aItemServico[i] = obj;	&#xd;
-					    			}&#xd;
-					    				&#xd;
-					    		}&#xd;
-					    		//INFORMAÇOES FINANCEIRAS&#xd;
-					    		else if ( solicitacao.rowsCount &gt; 1){		    					    					    								    					    		&#xd;
-					    			for (var i=0; i &lt; solicitacao.rowsCount ; i++){&#xd;
-					    				var obj = {&#xd;
-					    						ccusto : &apos;&apos; ,&#xd;
-					    						projeto :&apos;&apos; ,&#xd;
-					    						atividade :&apos;&apos; ,&#xd;
-					    						categoria :&apos;&apos; ,&#xd;
-					    						fonte :&apos;&apos; ,&#xd;
-					    						area :&apos;&apos; ,&#xd;
-					    						alocacao :&apos;&apos; ,&#xd;
-					    						conta : &apos;&apos; ,&#xd;
-					    						localizacao :&apos;&apos;&#xd;
-					    						&#xd;
-					    				};		    				 &#xd;
-					    				obj.ccusto =  &apos;&apos; + solicitacao.getValue(i, &quot;txtcentrocusto&quot;) +&apos;&apos;;				    					&#xd;
-				    					if (solicitacao.getValue(i, &quot;txtprojeto&quot;) != null){&#xd;
-				    						obj.projeto = &apos;&apos; + solicitacao.getValue(i, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
-				    					}&#xd;
-				    					obj.atividade = &apos;&apos; + solicitacao.getValue(i, &quot;txtatividade&quot;) +&apos;&apos;;		    					&#xd;
-				    					if (solicitacao.getValue(i, &quot;txtcategoria&quot;) != null){&#xd;
-				    						obj.categoria = &apos;&apos; + solicitacao.getValue(i, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
-				    					}		    					&#xd;
-				    					if (solicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) != null){&#xd;
-				    						obj.fonte = &apos;&apos; + solicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
-				    					}	    					&#xd;
-				    					if (solicitacao.getValue(i, &quot;txtareaestrategica&quot;)  != null){&#xd;
-				    						obj.area = &apos;&apos; + solicitacao.getValue(i, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
-				    					}&#xd;
-				    					if (solicitacao.getValue(i, &quot;alocacao&quot;) != null){&#xd;
-				    						obj.alocacao = &apos;&apos; + solicitacao.getValue(i, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
-				    					}&#xd;
-				    					if (solicitacao.getValue(i, &quot;contacontabil&quot;) != null){&#xd;
-				    						obj.conta = &apos;&apos; + solicitacao.getValue(i, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
-				    					}&#xd;
-				    					if (solicitacao.getValue(i, &quot;localizacao&quot;) != null){&#xd;
-				    						obj.localizacao = &apos;&apos; + solicitacao.getValue(i, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
-				    					}	    					&#xd;
-				    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, &quot;percentual&quot;)) ;&#xd;
-				    					&#xd;
-				    					aRateio[i] = obj;	&#xd;
-					    			}		    			&#xd;
-					    		}&#xd;
-					    &#xd;
-					    &#xd;
-						&#xd;
-						//throw &quot;Integrado com o Protheus&quot;			&#xd;
-						 try{&#xd;
-						        var clientService = fluigAPI.getAuthorizeClientService();&#xd;
-						        var data = {&#xd;
-						            companyId : getValue(&quot;WKCompany&quot;) + &apos;&apos;,&#xd;
-						            serviceCode : &apos;REST FLUIG&apos;,&#xd;
-						            endpoint : &apos;/F_MATA110&apos;,&#xd;
-						            method : &apos;POST&apos;,// &apos;delete&apos;, &apos;patch&apos;, &apos;put&apos;, &apos;get&apos;     &#xd;
-						            timeoutService: &apos;100&apos;, // segundos&#xd;
-						            params : {&#xd;
-						            	processo : &apos;&apos; + 1 + &apos;&apos; ,&#xd;
-						            	solicitacao : &apos;&apos; + codSolicitacao + &apos;&apos; ,&#xd;
-						            	solicitante : &apos;&apos; + solicitante +&apos;&apos;,&#xd;
-						                datasolicitacao :&apos;&apos; + datasolicitacao +&apos;&apos;,	&#xd;
-						                passageiro : &apos;&apos; + passageiro +&apos;&apos;,&#xd;
-						                itens: aItemServico ,&#xd;
-						        		rateioDigitado: aRateio &#xd;
-						            },&#xd;
-						          options : {&#xd;
-						             encoding : &apos;UTF-8&apos;,&#xd;
-						             mediaType: &apos;application/json&apos;&#xd;
-						          }&#xd;
-						        }&#xd;
-						              						        &#xd;
-						        var vo = clientService.invoke(JSON.stringify(data));&#xd;
-						        &#xd;
-						        if(vo.getResult()== null || vo.getResult().isEmpty()){&#xd;
-						            throw &quot;Retorno está vazio&quot;;&#xd;
-						        }&#xd;
-						        else if((JSON.parse(vo.getResult()).errorMessage != null &amp;&amp; JSON.parse(vo.getResult()).errorMessage != &quot;&quot;)){&#xd;
-						        	throw JSON.parse(vo.getResult()).errorMessage;&#xd;
-						        }&#xd;
-						        else {&#xd;
-						            log.info(vo.getResult());&#xd;
-						        }&#xd;
-						    } &#xd;
-							catch(err) {&#xd;
-						        throw err;&#xd;
-						    }					    &#xd;
-					    &#xd;
-					    &#xd;
-					    &#xd;
-					&#xd;
-				 	   &#xd;
-			   &#xd;
-		   }&#xd;
+				&#xd;
+		  		if (aItemServico.length &gt;0){&#xd;
+		    		//VERIFICA QUANTIDADE DE LINHAS DA INFORMAÇÃO FINANCEIRA PARA SABER SE EXISTE RATEIO DIGITADO&#xd;
+		    		//EM CASO DE UMA UNICA LINHA SIGNIFICA QUE NÃO É RATEIO&#xd;
+		    		if ( solicitacao.rowsCount == 1){&#xd;
+		    			for (var i=0; i &lt; aItemServico.length ; i++){ &#xd;
+		    				var obj = aItemServico[i];		    				 &#xd;
+	    					obj.ccusto =  &apos;&apos; + solicitacao.getValue(0, &quot;txtcentrocusto&quot;) +&apos;&apos;;			&#xd;
+	    					&#xd;
+	    					if (solicitacao.getValue(0, &quot;txtprojeto&quot;) != null){&#xd;
+	    						obj.projeto = &apos;&apos; + solicitacao.getValue(0, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
+	    					}&#xd;
+	    					obj.atividade = &apos;&apos; + solicitacao.getValue(0, &quot;txtatividade&quot;) +&apos;&apos;;&#xd;
+	    					&#xd;
+	    					if (solicitacao.getValue(0, &quot;txtcategoria&quot;) != null){&#xd;
+	    						obj.categoria = &apos;&apos; + solicitacao.getValue(0, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
+	    					}&#xd;
+	    					if (solicitacao.getValue(0, &quot;txtfontefinanciamento&quot;) != null){&#xd;
+	    						obj.fonte = &apos;&apos; + solicitacao.getValue(0, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
+	    					}&#xd;
+	    					if (solicitacao.getValue(0, &quot;txtareaestrategica&quot;)  != null){&#xd;
+	    						obj.area = &apos;&apos; + solicitacao.getValue(0, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
+	    					}	    					&#xd;
+	    					if (solicitacao.getValue(0, &quot;alocacao&quot;) != null){&#xd;
+	    						obj.alocacao = &apos;&apos; + solicitacao.getValue(0, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
+	    					}&#xd;
+	    					if (solicitacao.getValue(0, &quot;contacontabil&quot;) != null){&#xd;
+	    						obj.conta = &apos;&apos; + solicitacao.getValue(0, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
+	    					}	    					&#xd;
+	    					if (solicitacao.getValue(0, &quot;localizacao&quot;) != null){&#xd;
+	    						obj.localizacao = &apos;&apos; + solicitacao.getValue(0, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
+	    					}&#xd;
+	    					aItemServico[i] = obj;	&#xd;
+		    			}&#xd;
+		    				&#xd;
+		    		}&#xd;
+		    		//INFORMAÇOES FINANCEIRAS&#xd;
+		    		else if ( solicitacao.rowsCount &gt; 1){		    					    					    								    					    		&#xd;
+		    			for (var i=0; i &lt; solicitacao.rowsCount ; i++){&#xd;
+		    				var obj = {&#xd;
+		    						ccusto : &apos;&apos; ,&#xd;
+		    						projeto :&apos;&apos; ,&#xd;
+		    						atividade :&apos;&apos; ,&#xd;
+		    						categoria :&apos;&apos; ,&#xd;
+		    						fonte :&apos;&apos; ,&#xd;
+		    						area :&apos;&apos; ,&#xd;
+		    						alocacao :&apos;&apos; ,&#xd;
+		    						conta : &apos;&apos; ,&#xd;
+		    						localizacao :&apos;&apos;&#xd;
+		    						&#xd;
+		    				};		    				 &#xd;
+		    				obj.ccusto =  &apos;&apos; + solicitacao.getValue(i, &quot;txtcentrocusto&quot;) +&apos;&apos;;				    					&#xd;
+	    					if (solicitacao.getValue(i, &quot;txtprojeto&quot;) != null){&#xd;
+	    						obj.projeto = &apos;&apos; + solicitacao.getValue(i, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
+	    					}&#xd;
+	    					obj.atividade = &apos;&apos; + solicitacao.getValue(i, &quot;txtatividade&quot;) +&apos;&apos;;		    					&#xd;
+	    					if (solicitacao.getValue(i, &quot;txtcategoria&quot;) != null){&#xd;
+	    						obj.categoria = &apos;&apos; + solicitacao.getValue(i, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
+	    					}		    					&#xd;
+	    					if (solicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) != null){&#xd;
+	    						obj.fonte = &apos;&apos; + solicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
+	    					}	    					&#xd;
+	    					if (solicitacao.getValue(i, &quot;txtareaestrategica&quot;)  != null){&#xd;
+	    						obj.area = &apos;&apos; + solicitacao.getValue(i, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
+	    					}&#xd;
+	    					if (solicitacao.getValue(i, &quot;alocacao&quot;) != null){&#xd;
+	    						obj.alocacao = &apos;&apos; + solicitacao.getValue(i, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
+	    					}&#xd;
+	    					if (solicitacao.getValue(i, &quot;contacontabil&quot;) != null){&#xd;
+	    						obj.conta = &apos;&apos; + solicitacao.getValue(i, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
+	    					}&#xd;
+	    					if (solicitacao.getValue(i, &quot;localizacao&quot;) != null){&#xd;
+	    						obj.localizacao = &apos;&apos; + solicitacao.getValue(i, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
+	    					}	    					&#xd;
+	    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, &quot;percentual&quot;)) ;&#xd;
+	    					&#xd;
+	    					aRateio[i] = obj;	&#xd;
+		    			}		    			&#xd;
+		    		}	&#xd;
+		    		&#xd;
+					//throw &quot;Integrado com o Protheus&quot;			&#xd;
+					 try{&#xd;
+					        var clientService = fluigAPI.getAuthorizeClientService();&#xd;
+					        var data = {&#xd;
+					            companyId : getValue(&quot;WKCompany&quot;) + &apos;&apos;,&#xd;
+					            serviceCode : &apos;REST FLUIG&apos;,&#xd;
+					            endpoint : &apos;/F_MATA110&apos;,&#xd;
+					            method : &apos;POST&apos;,// &apos;delete&apos;, &apos;patch&apos;, &apos;put&apos;, &apos;get&apos;     &#xd;
+					            timeoutService: &apos;100&apos;, // segundos&#xd;
+					            params : {&#xd;
+					            	processo : &apos;&apos; + 1 + &apos;&apos; ,&#xd;
+					            	solicitacao : &apos;&apos; + codSolicitacao + &apos;&apos; ,&#xd;
+					            	solicitante : &apos;&apos; + solicitante +&apos;&apos;,&#xd;
+					                datasolicitacao :&apos;&apos; + datasolicitacao +&apos;&apos;,	&#xd;
+					                passageiro : &apos;&apos; + passageiro +&apos;&apos;,&#xd;
+					                itens: aItemServico ,&#xd;
+					        		rateioDigitado: aRateio &#xd;
+					            },&#xd;
+					          options : {&#xd;
+					             encoding : &apos;UTF-8&apos;,&#xd;
+					             mediaType: &apos;application/json&apos;&#xd;
+					          }&#xd;
+					        }&#xd;
+					              						        &#xd;
+					        var vo = clientService.invoke(JSON.stringify(data));&#xd;
+					        &#xd;
+					        if(vo.getResult()== null || vo.getResult().isEmpty()){&#xd;
+					            throw &quot;Retorno está vazio&quot;;&#xd;
+					        }&#xd;
+					        else if((JSON.parse(vo.getResult()).errorMessage != null &amp;&amp; JSON.parse(vo.getResult()).errorMessage != &quot;&quot;)){&#xd;
+					        	throw JSON.parse(vo.getResult()).errorMessage;&#xd;
+					        }&#xd;
+					        else {&#xd;
+					            log.info(vo.getResult());&#xd;
+					        }&#xd;
+					    } &#xd;
+						catch(err) {&#xd;
+					        throw err;&#xd;
+					    }		&#xd;
+		  		&#xd;
+		  		&#xd;
+		  		}	&#xd;
+			   }&#xd;
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050&#xd;
 		   else if ( ativAtual == PAGARDIARIAS &amp;&amp; recebeDiarias == &quot;sim&quot;) {&#xd;
 			   var aRateio = new Array();&#xd;
@@ -1953,7 +1942,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 		    var datasetPrincipal = DatasetFactory.getDataset(&quot;VM_SolicitacoesViagens&quot;, null, constraints, null);&#xd;
 		    &#xd;
 		    for (var i = 0; i &lt; datasetPrincipal.rowsCount; i++) {&#xd;
-		        var documentId = datasetPrincipal.getValue(i, &quot;metadata#id&quot;);&#xd;
+		        documentId = datasetPrincipal.getValue(i, &quot;metadata#id&quot;);&#xd;
 		        var documentVersion = datasetPrincipal.getValue(i, &quot;metadata#version&quot;);&#xd;
 		        //var solicitacaoId = datasetPrincipal.getValue(i, &quot;solicitacao&quot;);&#xd;
 		        &#xd;
@@ -1988,9 +1977,8 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 &#xd;
 			        var codproduto = campos.get(&quot;codigoProduto___&quot; + seq[1]);&#xd;
 			        var valor = campos.get(&quot;valores___&quot; + seq[1]);&#xd;
-			        log.info(&quot;---CODIGO PRODUTO: &quot; + codproduto);&#xd;
-			        &#xd;
-			        addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);&#xd;
+&#xd;
+			        addItemViagem(codproduto,codSolicitacao,tipoViagem,documentId,valor);&#xd;
 			        &#xd;
 			    }&#xd;
 			}&#xd;
@@ -1999,9 +1987,9 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 			/*&#xd;
 			   var indexes = hAPI.getChildrenIndexes(&quot;tableViagem&quot;);						   &#xd;
 			   for (var i = 0; i &lt; indexes.length; i++) {&#xd;
-				    var codproduto = form.getValue(&quot;codigoProduto___&quot; + indexes[i]);&#xd;
-				    var valor = form.getValue(&quot;valores___&quot; + indexes[i]);&#xd;
-				    var dtviagem = form.getValue(&quot;dtViagem___&quot; + indexes[i]);&#xd;
+				    var codproduto = getValue(&quot;codigoProduto___&quot; + indexes[i]);&#xd;
+				    var valor = getValue(&quot;valores___&quot; + indexes[i]);&#xd;
+				    var dtviagem = getValue(&quot;dtViagem___&quot; + indexes[i]);&#xd;
 				     &#xd;
 				    addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);&#xd;
 				     &#xd;
@@ -2152,7 +2140,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
-        <version>362</version>
+        <version>363</version>
         <linkSequence>73</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2163,7 +2151,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Viagem</processId>
-        <version>362</version>
+        <version>363</version>
         <linkSequence>127</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2181,7 +2169,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2191,7 +2179,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2201,7 +2189,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2211,7 +2199,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2221,7 +2209,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2231,7 +2219,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2241,7 +2229,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2251,7 +2239,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2261,7 +2249,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2271,7 +2259,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2281,7 +2269,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2291,7 +2279,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2301,7 +2289,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2311,7 +2299,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2321,7 +2309,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Viagem</processId>
-      <processVersion>362</processVersion>
+      <processVersion>363</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

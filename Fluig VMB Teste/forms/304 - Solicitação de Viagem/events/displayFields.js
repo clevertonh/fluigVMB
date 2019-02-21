@@ -29,6 +29,18 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoreembolso", false);
      form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
+     form.setVisibleById("btn_add_itemS", false);
+     
+     
+     //falta ocultar o botao de remover
+     /*
+     var indexes = form.getChildrenIndexes("tableViagem");
+
+     for (var i = 0; i < indexes.length; i++) {
+         form.setVisibleById("removeServico___" + indexes[i], false);   	        
+     }
+     */
+    
 
      
      
@@ -36,8 +48,8 @@ function displayFields(form,customHTML){
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
-       	//form.setVisibleById("2b", false);
-    	//form.setVisibleById("3b", false);
+       	form.setVisibleById("2b", false);
+    	form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);
     	//form.setVisibleById("divCotacao", false);
     	
@@ -226,8 +238,8 @@ function displayFields(form,customHTML){
         form.setVisibleById("divReembolso", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
 		form.setVisibleById("divTipormb", false);
-		
-               
+		form.setVisibleById("btn_add_itemS", true);
+		//form.setVisibleById("removeServico", true);               
     } 		
 	
 	else if (activity == OBTERPASSAGEM  ) {

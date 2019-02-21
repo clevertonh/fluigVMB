@@ -677,6 +677,15 @@ function removeItens() {
     }
 }
 
+function removeServico() {
+    var linhas = $("#tbodyViagem tr");
+    for (var i = 1; i < linhas.length; i++) {
+        var td = $(linhas[i]).children()[0];
+        var span = $(td).children()[0];
+        fnWdkRemoveChild(span);
+    }
+}
+
 function removeItensAgenda() {
     var linhas = $("#tbodyItensAgenda tr");
     for (var i = 1; i < linhas.length; i++) {
@@ -1050,7 +1059,8 @@ function adicionaLinha() {
 function adicionaLinhaServico() {
 	var row = wdkAddChild('tableViagem');
 	FLUIGC.calendar("#dtViagem___" + row, {
-		minDate : new Date(),
+		pickDate: true,
+		pickTime: false
 	});
 	
 }
@@ -1411,9 +1421,7 @@ function desejaHotel() {
 }
 
 function AprovadorEmbaixador() {
-	
-
-		 console.log("CARREGA APROVADOR");
+			 console.log("CARREGA APROVADOR");
 		//SET CAMPOS DO APROVADOR
          var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("mail", "raissa_rossiter@wvi.org", "raissa_rossiter@wvi.org", ConstraintType.MUST));
@@ -1435,6 +1443,7 @@ function carregaAprovador() {
 	        $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
 	        $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
 	        $('#aprovador').val(dataset.values[0]["DIRETOR"]);
+	        //$('solicitanteFuncionario').val(dataset.values[0]["FUNCIONARIO_VMB"]);
 
 
 	    }

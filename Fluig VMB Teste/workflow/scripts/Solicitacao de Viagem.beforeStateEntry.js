@@ -37,9 +37,7 @@ function beforeStateEntry(sequenceId){
 	
 	//VARIAVEIS SIMPLES
 	var solicitacao;
-	var idFormulario;
-	var servicos;
-	var integraProtheus  = false;
+	var documentId;
 	
 	/*
 	 * verifica se foi adicionado anexo. 
@@ -49,7 +47,7 @@ function beforeStateEntry(sequenceId){
      var temAnexo = false;
 	
 	
-     	if (ativAtual == 13 && ( vooComprado == '' && hotelComprado == '') || ( vooComprado == null && hotelComprado == null) ){
+     	if (ativAtual == COMPRARPASSAGEM && ( vooComprado == '' && hotelComprado == '') || ( vooComprado == null && hotelComprado == null) ){
      	     if (anexos.size() > 0) {
      	          temAnexo = true;
      	      }
@@ -60,10 +58,7 @@ function beforeStateEntry(sequenceId){
 
      	}
      
-	   if (ativAtual == 13 && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
-		   
-		   //GERAR LOG PARA VERIFICAR SE NUMERO DA ATIVIDADE ESTA SENDO GERADO IGUAL AO EVENTO DE CANCELAR
-		   //ONDE  É GERADO 13,129
+	   if (ativAtual == COMPRARPASSAGEM && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
 		   log.info('ATIVIDADE ATUAL DE COMPRA PASSAGEM : '+ ativAtual);
 	
 				if (anexos.size() > 0) {
@@ -80,138 +75,132 @@ function beforeStateEntry(sequenceId){
 				
 		        //chama função que retorna informações financeiras de pagamento
 		  		solicitacao = itensPagamento();	
-				
-		  		
-		  		
-		  		//EXECUTA FUNÇÃO QUE RETORNA SERVIÇOS A SEREM GERADOS
+
+		  		//EXECUTA FUNÇÃO QUE RETORNA PRODUTOS A SEREM GERADOS PARA SOLICITAÇÃO DE VIAGEM
 		  		itensServico();
-															    		
-					    		//VERIFICA QUANTIDADE DE LINHAS DA INFORMAÇÃO FINANCEIRA PARA SABER SE EXISTE RATEIO DIGITADO
-					    		//EM CASO DE UMA UNICA LINHA SIGNIFICA QUE NÃO É RATEIO
-					    		if ( solicitacao.rowsCount == 1){
-					    			for (var i=0; i < aItemServico.length ; i++){ 
-					    				var obj = aItemServico[i];		    				 
-				    					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
-				    					
-				    					if (solicitacao.getValue(0, "txtprojeto") != null){
-				    						obj.projeto = '' + solicitacao.getValue(0, "txtprojeto") +'';	
-				    					}
-				    					obj.atividade = '' + solicitacao.getValue(0, "txtatividade") +'';
-				    					
-				    					if (solicitacao.getValue(0, "txtcategoria") != null){
-				    						obj.categoria = '' + solicitacao.getValue(0, "txtcategoria") +'';
-				    					}
-				    					if (solicitacao.getValue(0, "txtfontefinanciamento") != null){
-				    						obj.fonte = '' + solicitacao.getValue(0, "txtfontefinanciamento") +'';
-				    					}
-				    					if (solicitacao.getValue(0, "txtareaestrategica")  != null){
-				    						obj.area = '' + solicitacao.getValue(0, "txtareaestrategica") +'';
-				    					}	    					
-				    					if (solicitacao.getValue(0, "alocacao") != null){
-				    						obj.alocacao = '' + solicitacao.getValue(0, "alocacao") +'';	
-				    					}
-				    					if (solicitacao.getValue(0, "contacontabil") != null){
-				    						obj.conta = '' + solicitacao.getValue(0, "contacontabil") +'';	
-				    					}	    					
-				    					if (solicitacao.getValue(0, "localizacao") != null){
-				    						obj.localizacao = '' + solicitacao.getValue(0, "localizacao") +'';	
-				    					}
-				    					aItemServico[i] = obj;	
-					    			}
-					    				
-					    		}
-					    		//INFORMAÇOES FINANCEIRAS
-					    		else if ( solicitacao.rowsCount > 1){		    					    					    								    					    		
-					    			for (var i=0; i < solicitacao.rowsCount ; i++){
-					    				var obj = {
-					    						ccusto : '' ,
-					    						projeto :'' ,
-					    						atividade :'' ,
-					    						categoria :'' ,
-					    						fonte :'' ,
-					    						area :'' ,
-					    						alocacao :'' ,
-					    						conta : '' ,
-					    						localizacao :''
-					    						
-					    				};		    				 
-					    				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
-				    					if (solicitacao.getValue(i, "txtprojeto") != null){
-				    						obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
-				    					}
-				    					obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
-				    					if (solicitacao.getValue(i, "txtcategoria") != null){
-				    						obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
-				    					}		    					
-				    					if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
-				    						obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
-				    					}	    					
-				    					if (solicitacao.getValue(i, "txtareaestrategica")  != null){
-				    						obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
-				    					}
-				    					if (solicitacao.getValue(i, "alocacao") != null){
-				    						obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
-				    					}
-				    					if (solicitacao.getValue(i, "contacontabil") != null){
-				    						obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
-				    					}
-				    					if (solicitacao.getValue(i, "localizacao") != null){
-				    						obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
-				    					}	    					
-				    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
-				    					
-				    					aRateio[i] = obj;	
-					    			}		    			
-					    		}
-					    
-					    
-						
-						//throw "Integrado com o Protheus"			
-						 try{
-						        var clientService = fluigAPI.getAuthorizeClientService();
-						        var data = {
-						            companyId : getValue("WKCompany") + '',
-						            serviceCode : 'REST FLUIG',
-						            endpoint : '/F_MATA110',
-						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-						            timeoutService: '100', // segundos
-						            params : {
-						            	processo : '' + 1 + '' ,
-						            	solicitacao : '' + codSolicitacao + '' ,
-						            	solicitante : '' + solicitante +'',
-						                datasolicitacao :'' + datasolicitacao +'',	
-						                passageiro : '' + passageiro +'',
-						                itens: aItemServico ,
-						        		rateioDigitado: aRateio 
-						            },
-						          options : {
-						             encoding : 'UTF-8',
-						             mediaType: 'application/json'
-						          }
-						        }
-						              						        
-						        var vo = clientService.invoke(JSON.stringify(data));
-						        
-						        if(vo.getResult()== null || vo.getResult().isEmpty()){
-						            throw "Retorno está vazio";
-						        }
-						        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-						        	throw JSON.parse(vo.getResult()).errorMessage;
-						        }
-						        else {
-						            log.info(vo.getResult());
-						        }
-						    } 
-							catch(err) {
-						        throw err;
-						    }					    
-					    
-					    
-					    
-					
-				 	   
-			   
-		   }
+				
+		  		if (aItemServico.length >0){
+		    		//VERIFICA QUANTIDADE DE LINHAS DA INFORMAÇÃO FINANCEIRA PARA SABER SE EXISTE RATEIO DIGITADO
+		    		//EM CASO DE UMA UNICA LINHA SIGNIFICA QUE NÃO É RATEIO
+		    		if ( solicitacao.rowsCount == 1){
+		    			for (var i=0; i < aItemServico.length ; i++){ 
+		    				var obj = aItemServico[i];		    				 
+	    					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
+	    					
+	    					if (solicitacao.getValue(0, "txtprojeto") != null){
+	    						obj.projeto = '' + solicitacao.getValue(0, "txtprojeto") +'';	
+	    					}
+	    					obj.atividade = '' + solicitacao.getValue(0, "txtatividade") +'';
+	    					
+	    					if (solicitacao.getValue(0, "txtcategoria") != null){
+	    						obj.categoria = '' + solicitacao.getValue(0, "txtcategoria") +'';
+	    					}
+	    					if (solicitacao.getValue(0, "txtfontefinanciamento") != null){
+	    						obj.fonte = '' + solicitacao.getValue(0, "txtfontefinanciamento") +'';
+	    					}
+	    					if (solicitacao.getValue(0, "txtareaestrategica")  != null){
+	    						obj.area = '' + solicitacao.getValue(0, "txtareaestrategica") +'';
+	    					}	    					
+	    					if (solicitacao.getValue(0, "alocacao") != null){
+	    						obj.alocacao = '' + solicitacao.getValue(0, "alocacao") +'';	
+	    					}
+	    					if (solicitacao.getValue(0, "contacontabil") != null){
+	    						obj.conta = '' + solicitacao.getValue(0, "contacontabil") +'';	
+	    					}	    					
+	    					if (solicitacao.getValue(0, "localizacao") != null){
+	    						obj.localizacao = '' + solicitacao.getValue(0, "localizacao") +'';	
+	    					}
+	    					aItemServico[i] = obj;	
+		    			}
+		    				
+		    		}
+		    		//INFORMAÇOES FINANCEIRAS
+		    		else if ( solicitacao.rowsCount > 1){		    					    					    								    					    		
+		    			for (var i=0; i < solicitacao.rowsCount ; i++){
+		    				var obj = {
+		    						ccusto : '' ,
+		    						projeto :'' ,
+		    						atividade :'' ,
+		    						categoria :'' ,
+		    						fonte :'' ,
+		    						area :'' ,
+		    						alocacao :'' ,
+		    						conta : '' ,
+		    						localizacao :''
+		    						
+		    				};		    				 
+		    				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
+	    					if (solicitacao.getValue(i, "txtprojeto") != null){
+	    						obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
+	    					}
+	    					obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
+	    					if (solicitacao.getValue(i, "txtcategoria") != null){
+	    						obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
+	    					}		    					
+	    					if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
+	    						obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
+	    					}	    					
+	    					if (solicitacao.getValue(i, "txtareaestrategica")  != null){
+	    						obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
+	    					}
+	    					if (solicitacao.getValue(i, "alocacao") != null){
+	    						obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
+	    					}
+	    					if (solicitacao.getValue(i, "contacontabil") != null){
+	    						obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
+	    					}
+	    					if (solicitacao.getValue(i, "localizacao") != null){
+	    						obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
+	    					}	    					
+	    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
+	    					
+	    					aRateio[i] = obj;	
+		    			}		    			
+		    		}	
+		    		
+					//throw "Integrado com o Protheus"			
+					 try{
+					        var clientService = fluigAPI.getAuthorizeClientService();
+					        var data = {
+					            companyId : getValue("WKCompany") + '',
+					            serviceCode : 'REST FLUIG',
+					            endpoint : '/F_MATA110',
+					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
+					            timeoutService: '100', // segundos
+					            params : {
+					            	processo : '' + 1 + '' ,
+					            	solicitacao : '' + codSolicitacao + '' ,
+					            	solicitante : '' + solicitante +'',
+					                datasolicitacao :'' + datasolicitacao +'',	
+					                passageiro : '' + passageiro +'',
+					                itens: aItemServico ,
+					        		rateioDigitado: aRateio 
+					            },
+					          options : {
+					             encoding : 'UTF-8',
+					             mediaType: 'application/json'
+					          }
+					        }
+					              						        
+					        var vo = clientService.invoke(JSON.stringify(data));
+					        
+					        if(vo.getResult()== null || vo.getResult().isEmpty()){
+					            throw "Retorno está vazio";
+					        }
+					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+					        	throw JSON.parse(vo.getResult()).errorMessage;
+					        }
+					        else {
+					            log.info(vo.getResult());
+					        }
+					    } 
+						catch(err) {
+					        throw err;
+					    }		
+		  		
+		  		
+		  		}	
+			   }
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
 		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {
 			   var aRateio = new Array();
@@ -383,7 +372,7 @@ function beforeStateEntry(sequenceId){
 		    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
 		    
 		    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
-		        var documentId = datasetPrincipal.getValue(i, "metadata#id");
+		        documentId = datasetPrincipal.getValue(i, "metadata#id");
 		        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
 		        //var solicitacaoId = datasetPrincipal.getValue(i, "solicitacao");
 		        
@@ -418,9 +407,8 @@ function beforeStateEntry(sequenceId){
 
 			        var codproduto = campos.get("codigoProduto___" + seq[1]);
 			        var valor = campos.get("valores___" + seq[1]);
-			        log.info("---CODIGO PRODUTO: " + codproduto);
-			        
-			        addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);
+
+			        addItemViagem(codproduto,codSolicitacao,tipoViagem,documentId,valor);
 			        
 			    }
 			}
@@ -429,9 +417,9 @@ function beforeStateEntry(sequenceId){
 			/*
 			   var indexes = hAPI.getChildrenIndexes("tableViagem");						   
 			   for (var i = 0; i < indexes.length; i++) {
-				    var codproduto = form.getValue("codigoProduto___" + indexes[i]);
-				    var valor = form.getValue("valores___" + indexes[i]);
-				    var dtviagem = form.getValue("dtViagem___" + indexes[i]);
+				    var codproduto = getValue("codigoProduto___" + indexes[i]);
+				    var valor = getValue("valores___" + indexes[i]);
+				    var dtviagem = getValue("dtViagem___" + indexes[i]);
 				     
 				    addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);
 				     
