@@ -953,9 +953,10 @@ function setSelectedZoomItem(selectedItem) {
 
     }
 
-    if (campoZOOM == RATEIO) {
+    if (campoZOOM == RATEIO) {    	 
        //CARREGAR ITENS DO RATEIO
-
+    	buscaItensRateio(selectedItem["Codigo"]);
+    	
     }
 
     //preenche dados do funcionario
@@ -1023,7 +1024,6 @@ function adicionaItem(itens) {
 
         if (itens[i].txtprojeto == null || itens[i].txtprojeto == "") {
             window["txtprojeto___" + indice].disable(true);
-            //$('#'+"txtprojeto___" + indice).attr('readonly', 'readonly');
         } else {
             window["txtprojeto___" + indice].setValue(itens[i].txtprojeto);
         }
@@ -1085,7 +1085,7 @@ function removedZoomItem(removedItem) {
     var AREAESTRATEGICA = "txtareaestrategica";
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
-    var RATEIO = "rateio";
+    var RATEIO = "rateioconfigurado";
     var REMARCACAO = "dataset_solicitacaoviagem"; 
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
@@ -1167,6 +1167,18 @@ function removedZoomItem(removedItem) {
     if (campoZOOM == AGENDA) {
         removeItensAgenda();
 
+    }
+
+    if (campoZOOM == RATEIO) {
+        //removeItensRateio();
+
+	    var linhas = $("#tbodyItens tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);	
+	        
+	    }
     }
 
 
@@ -1530,6 +1542,63 @@ function carregaDados() {
             loading.hide();
         }
     });
+}
+
+
+//carrega itens do rateio para informações de pagamento
+function buscaItensRateio(rateio) {
+
+	
+	var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("Rateio", rateio, rateio, ConstraintType.MUST));	
+	var dataset = DatasetFactory.getDataset("VM_ItensRateio", null, constraints, null);
+	
+	adicionaItensRateio(dataset.values) ;
+
+}
+
+function adicionaItensRateio(itens) {
+    for (var i in itens) {
+        var indice = wdkAddChild("tableItens");
+
+        window["txtcentrocusto___" + indice].setValue(itens[i].CentroCusto);
+        
+        if (itens[i].Projeto == null || itens[i].Projeto == "") {
+            window["txtprojeto___" + indice].disable(true);
+        } else {
+            window["txtprojeto___" + indice].setValue(itens[i].Projeto);
+        }
+        
+        window["txtatividade___" + indice].setValue(itens[i].Atividade);
+        
+        if (itens[i].Categoria == null || itens[i].Categoria == "") {
+            window["txtcategoria___" + indice].disable(true);
+        } else {
+            window["txtcategoria___" + indice].setValue(itens[i].Categoria);
+        }
+
+        if (itens[i].Fonte == null || itens[i].Fonte == "") {
+            window["txtfontefinanciamento___" + indice].disable(true);
+        } else {
+            window["txtfontefinanciamento___" + indice].setValue(itens[i].Fonte);
+        }
+
+        if (itens[i].Area == null || itens[i].Area == "") {
+            window["txtareaestrategica___" + indice].disable(true);
+        } else {
+            window["txtareaestrategica___" + indice].setValue(itens[i].Area);
+        }
+
+        $("#alocacao___" + indice).val(itens[i].Alocacao);
+        $("#localizacao___" + indice).val(itens[i].Localizacao);
+        $("#contacontabil___" + indice).val(itens[i].Conta);
+        
+        //precisa trocar o ponto por virgula
+        //$("#percentual___" + indice).val(itens[i].Percentual);
+        
+        $("#rateio___" + indice).val(itens[i].Rateio);
+
+    }
 }
 
 

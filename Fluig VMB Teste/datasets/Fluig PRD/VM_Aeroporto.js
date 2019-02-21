@@ -34,6 +34,8 @@ function createDataset(fields, constraints, sortFields) {
                       {AEROPORTO:  'AEROPORTO PINTO MARTINS',CIDADE: 'FORTALEZA',ESTADO: 'CE'},
                       {AEROPORTO:  'AEROPORTO DO GALEAO',CIDADE: 'GALEÃO - RIO DE JANEIRO',ESTADO: 'RJ'},
                       {AEROPORTO:  'AEROPORTO DE GUARAPUAVA',CIDADE: '',ESTADO: 'PR'},
+                      {AEROPORTO:  'AEROPORTO DE RIO BRANCO',CIDADE: 'RIO BRANCO',ESTADO: 'AC'},
+                      {AEROPORTO:  'AEROPORTO DE MACAPA',CIDADE: 'MACAPA',ESTADO: 'AP'},
                       {AEROPORTO:  'AEROPORTO FRANCO MONTORO',CIDADE: 'GUARULHOS',ESTADO: 'SP'},
                       {AEROPORTO:  'AEROPORTO DE GOIÂNIA',CIDADE: '',ESTADO: 'GO'},
                       {AEROPORTO:  'AEROPORTO DE CALDAS NOVAS',CIDADE: 'CALDAS NOVAS',ESTADO: 'GO'},

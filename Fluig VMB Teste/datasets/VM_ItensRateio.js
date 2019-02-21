@@ -1,24 +1,33 @@
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
+	dataset.addColumn("Sequencial");
+	dataset.addColumn("Localizacao");
+	dataset.addColumn("CentroCusto");
+	dataset.addColumn("Categoria");
+	dataset.addColumn("Fonte");
+	dataset.addColumn("Atividade");	
+    dataset.addColumn("Area");
     dataset.addColumn("Projeto");
-	dataset.addColumn("Codigo");
-    dataset.addColumn("Descricao");
+    dataset.addColumn("Alocacao");
+    dataset.addColumn("Conta");
+    dataset.addColumn("Rateio");
+    dataset.addColumn("Percentual");
 
-    var dados;
     
-    var codigo = getConstraints(constraints,"Projeto");
-    //var codigo = '186412';
-    
-    var filtro = getConstraints(constraints,"Codigo","Descricao");
-    
+    var codigo = getConstraints(constraints,"Rateio");   
+    //codigo = 366;
  
+    
+    log.info('-------CODIGO RATEIO PARAMETRO-------');
+    log.info(codigo);
+    
     if (codigo!= null){
-    	var webservice = '/AREA_ESTRATEGICA/'+codigo +'';
+    	var webservice = '/ITENSRATEIO/'+codigo +'';
+    	
     	
     	try {
        	 var clientService = fluigAPI.getAuthorizeClientService();
-       //realiza tentativa de conexão com link primario
    	        var data = {
    	            companyId : getValue("WKCompany") + '',
    	            serviceCode : 'REST FLUIG',
@@ -30,11 +39,10 @@ function createDataset(fields, constraints, sortFields) {
        var vo = clientService.invoke(JSON.stringify(data));
        
    	        if(vo.getResult()== null || vo.getResult().isEmpty()){
-   	        	//realiza tentativa de conexão com link secundario
+   	        	//realiza tentativa de conexão com segundo link de internet
    	            var data = {
    	    	            companyId : getValue("WKCompany") + '',
    	    	            serviceCode : 'REST FLUIG 2',
-   	    	         //endpoint : '/AREA_ESTRATEGICA/'+codigo +'',
    	    	            endpoint :  webservice,
    	    	            method : 'get',// 'delete', 'patch', 'put', 'get'     
    	    	            timeoutService: '100' // segundos	            	  
@@ -64,14 +72,7 @@ function createDataset(fields, constraints, sortFields) {
         if(dados != null){
         	objdata = JSON.parse(dados);
     		for(var i in objdata){
-    			if (filtro != "" && filtro!= null && filtro != undefined){
-    				if ( objdata[i].CCODIGO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CDESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 ) {
-    					dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO]);
-    				}    				
-    			}
-    			else {
-    				dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO]);
-    			}    			    			
+    			dataset.addRow([objdata[i].CSEQ, objdata[i].CT0, objdata[i].CT1, objdata[i].CT2, objdata[i].CT4, objdata[i].CT6, objdata[i].CT7, objdata[i].CT8, objdata[i].CT9, objdata[i].CCONTA, objdata[i].CRATEIO, objdata[i].CPERCENT]);    			    			
     		}
     	}
     		
@@ -82,12 +83,12 @@ function createDataset(fields, constraints, sortFields) {
 
 }
 
-function getConstraints(constraints, field, field2){
+function getConstraints(constraints, field){
 	if(constraints == null)
 		return null;
 	
 	for(var i=0;i<constraints.length;i++){
-		if(constraints[i].fieldName == field || constraints[i].fieldName == field2){
+		if(constraints[i].fieldName == field){
 			return constraints[i].initialValue;
 		}
 	}

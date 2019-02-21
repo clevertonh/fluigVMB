@@ -205,7 +205,7 @@ function beforeStateEntry(sequenceId){
 		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {
 			   var aRateio = new Array();
 			   var aItem = new Array();			   
-		   	    solicitacao = itensPagamento();
+		   	   solicitacao = itensPagamento();
 				
 		   		if ( solicitacao.rowsCount == 1){
 	    				var obj = new Array();	    				 
