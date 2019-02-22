@@ -10,197 +10,170 @@ function beforeStateEntry(sequenceId){
 	var PROCESSO_ID = 3;
 	
 	//recupera atividade
-	var ativAtual = getValue("WKNumState");	
-	var nextAtv  = getValue("WKNextState");
+	var ativAtual 		= getValue("WKNumState");	
+	var nextAtv  		= getValue("WKNextState");
+	var codSolicitacao  = getValue("WKNumProces");
+	
+	var autorizado 		 = hAPI.getCardValue("aprovacao");
+	var aprovadoNoPrazo  = hAPI.getCardValue("aprPrazo");		
+	
+	var solicitante;
 	var idFormulario;
-	
-	var autorizado = hAPI.getCardValue("aprovacao");
-	var aprovadoNoPrazo = hAPI.getCardValue("aprPrazo");
-	
-	var codSolicitacao = getValue("WKNumProces");
-	
 	var emailSolicitante;
     var dtVencimento;
+    var dtSolicitacao;
     var valorTotal;
     var documentId;
-
 	var aRateio = new Array();
-	var itemContabil = new Array();
-	var itensSolicitacao;
+	var solicitacao;
+	var cpfbeneficiario;
+		
 	
 	
 	if ((ativAtual == APROVACAO_RH && autorizado == "aprovado" && aprovadoNoPrazo == "" ) || ativAtual == ALTERACAO_DATA){
 		
-	
-		
-		 //Cria a constraint para buscar os formulários ativos
-	    var cst = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-		var cst3 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
-		var cst5 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
-		
-		
-	    var constraints = new Array(cst,cst3,cst5);
-	    var datasetPrincipal = DatasetFactory.getDataset("VM_Reembolso_creche", null, constraints, null);
-	    	    
-	    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
-	        documentId = datasetPrincipal.getValue(i, "metadata#id");
-	        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");	        
-	        emailSolicitante = datasetPrincipal.getValue(i, "emailSolicitante");
-	        dtVencimento = datasetPrincipal.getValue(i, "dtPagamento");
-	        valorTotal = datasetPrincipal.getValue(i, "vl_rmb");
-	        
-	        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-	        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
-	        var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-	        var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-	        var constraintsFilhos = new Array(c1, c2, c3);
-	 
-	        //Busca o dataset
-	        var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
-		
-	        itensSolicitacao = datasetFilhos;
-	 
-	                
-	        
-	    }
-	    
-	    //verifica quantidade de linhas do rateio manual		    		
-		if ( itensSolicitacao.rowsCount == 1){
-			for (var i=0; i < itensSolicitacao.length ; i++){
-				var obj = new Array();		
-				obj.valor = '' + valorTotal + '';
-				obj.ccusto =  '' + itensSolicitacao.getValue(0, "txtcentrocusto") +'';			
-				
-				if (itensSolicitacao.getValue(0, "txtprojeto") != null ){
-					obj.projeto = '' + itensSolicitacao.getValue(0, "txtprojeto") +'';	
+		//chama função de retorna dados do formulário filho
+		solicitacao = itensPagamento();				    
+		    
+		if ( solicitacao.rowsCount > 1){		    					    					    			
+			//só cria um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			
+			for (var i=0; i < solicitacao.rowsCount ; i++){
+				var obj = new Array();				
+				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
+				if (solicitacao.getValue(i, "txtprojeto") != null){
+					obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
 				}
-				obj.atividade = '' + itensSolicitacao.getValue(0, "txtatividade") +'';
-				
-				if (itensSolicitacao.getValue(0, "txtcategoria") != null){
-					obj.categoria = '' + itensSolicitacao.getValue(0, "txtcategoria") +'';
-				}
-				if (itensSolicitacao.getValue(0, "txtfontefinanciamento") != null){
-					obj.fonte = '' + itensSolicitacao.getValue(0, "txtfontefinanciamento") +'';
-				}
-				if (itensSolicitacao.getValue(0, "txtareaestrategica")  != null){
-					obj.area = '' + solicitacao.getValue(0, "txtareaestrategica") +'';
-				}	    					
-				if (itensSolicitacao.getValue(0, "alocacao") != null){
-					obj.alocacao = '' + itensSolicitacao.getValue(0, "alocacao") +'';	
-				}
-				if (itensSolicitacao.getValue(0, "contacontabil") != null){
-					obj.conta = '' + itensSolicitacao.getValue(0, "contacontabil") +'';	
-				}	    					
-				if (itensSolicitacao.getValue(0, "localizacao") != null){
-					obj.localizacao = '' + itensSolicitacao.getValue(0, "localizacao") +'';	
-				}
-				
-				itemContabil[i] = obj;	
-				
-			}
-
-			
-		}
-		//possui rateio por centro de custo
-		else if ( itensSolicitacao.rowsCount > 1){		    					    					    			
-			//só criar um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			
-			for (var i=0; i < itensSolicitacao.rowsCount ; i++){
-				var obj = {
-						ccusto : '' ,
-						projeto :'' ,
-						atividade :'' ,
-						categoria :'' ,
-						fonte :'' ,
-						area :'' ,
-						alocacao :'' ,
-						conta : '' ,
-						localizacao :''
-						
-				};		    	
-				obj.valor = '' + valorTotal + '';				
-				obj.ccusto =  '' + itensSolicitacao.getValue(i, "txtcentrocusto") +'';				    					
-				if (itensSolicitacao.getValue(i, "txtprojeto") != null){
-					obj.projeto = '' + itensSolicitacao.getValue(i, "txtprojeto") +'';	
-				}
-				obj.atividade = '' + itensSolicitacao.getValue(i, "txtatividade") +'';		    					
-				if (itensSolicitacao.getValue(i, "txtcategoria") != null){
-					obj.categoria = '' + itensSolicitacao.getValue(i, "txtcategoria") +'';
+				obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
+				if (solicitacao.getValue(i, "txtcategoria") != null){
+					obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
 				}		    					
-				if (itensSolicitacao.getValue(i, "txtfontefinanciamento") != null){
-					obj.fonte = '' + itensSolicitacao.getValue(i, "txtfontefinanciamento") +'';
+				if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
+					obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
 				}	    					
-				if (itensSolicitacao.getValue(i, "txtareaestrategica")  != null){
-					obj.area = '' + itensSolicitacao.getValue(i, "txtareaestrategica") +'';
+				if (solicitacao.getValue(i, "txtareaestrategica")  != null){
+					obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
 				}
-				if (itensSolicitacao.getValue(i, "alocacao") != null){
-					obj.alocacao = '' + itensSolicitacao.getValue(i, "alocacao") +'';	
+				if (solicitacao.getValue(i, "alocacao") != null){
+					obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
 				}
-				if (itensSolicitacao.getValue(i, "contacontabil") != null){
-					obj.conta = '' + itensSolicitacao.getValue(i, "contacontabil") +'';	
+				if (solicitacao.getValue(i, "contacontabil") != null){
+					obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
 				}
-				if (itensSolicitacao.getValue(i, "localizacao") != null){
-					obj.localizacao = '' + itensSolicitacao.getValue(i, "localizacao") +'';	
+				if (solicitacao.getValue(i, "localizacao") != null){
+					obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
 				}	    					
-				obj.percentual = 1 * parseInt(itensSolicitacao.getValue(i, "percentual")) ;
+				obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
 				
 				aRateio[i] = obj;	
-				//log.info(aRateio);
-			}		    			
+				
+			}	
+			log.info('----------RATEIO REEMBOLSO CRECHE');
+			log.info(aRateio);
 		}	
-		
-		
-	    if (datasetPrincipal.rowsCount > 0){
-	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,itemContabil,aRateio);
-	    }
-	    
+	
+			
+			//chama função de integração
+	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtSolicitacao,dtVencimento,valorTotal,aRateio);
+	   
+	
+	
 	}
-
-
+		
+			
+	    
+	    
 	
-}
+		 function itensPagamento(){
+			 var datasetFilhos;
+			 //Cria a constraint para buscar os formulários ativos
+			    var cst1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
+				//var cst2 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
+				var cst2 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+				
+				
+			    var constraints = new Array(cst1,cst2);
+			    var datasetPrincipal = DatasetFactory.getDataset("VM_Solicitacao_Reembolso_creche", null, constraints, null);
+			    	    
+			    for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
+			        documentId = datasetPrincipal.getValue(i, "metadata#id");
+			        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
+			        solicitante = datasetPrincipal.getValue(i, "solicitante");
+			        emailSolicitante = datasetPrincipal.getValue(i, "emailSolicitante");
+			        dtSolicitacao = datasetPrincipal.getValue(i, "dataSolicitacao");
+			        dtVencimento = datasetPrincipal.getValue(i, "dtPagamento");
+			        valorTotal = datasetPrincipal.getValue(i, "vl_rmb");
+			        cpfbeneficiario = datasetPrincipal.getValue(i, "cpfbeneficiario");
+			        
+			        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
+			        var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
+			        var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
+			        var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
+			        var constraintsFilhos = new Array(c1, c2, c3);
+			 
+			        //Busca o dataset
+			        datasetFilhos = DatasetFactory.getDataset("VM_Solicitacao_Reembolso_creche", null, constraintsFilhos, null);
+				
+			 
+			    }
+			    
+			    log.info('------DATASETFILHO');
+			    log.info(datasetFilhos);
+			    
+			    return datasetFilhos;
+			    
+			    
+		 }
+	    
+		 
 
-function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,itemContabil,aRateio){	
-	 try{
-	        var clientService = fluigAPI.getAuthorizeClientService();
-	        var data = {
-	            companyId : getValue("WKCompany") + '',
-	            serviceCode : 'REST FLUIG',
-	            endpoint : '/REST/FLUIG',
-	            method : 'post',// 'delete', 'patch', 'put', 'get'     
-	            timeoutService: '100', // segundos
-	            params : {
-	                processoId : '' + processoID +'',
-	                codSolicitacao : '' + codSolicitacao + '' ,	                
-	            	solicitante : '' + emailSolicitante +'',	
-	            	dataEmissao :'' + dtEmissao +'',
-	            	dataVencimento :'' + dtVencimento +'',
-	                valorTotal :'' + valorTotal +'',	
-	                itens: itemContabil ,
-	        		rateioDigitado: aRateio + ''
-	        		
-	            },
-	          options : {
-	             encoding : 'UTF-8',
-	             mediaType: 'application/json'
-	          }
-	        }
-	              
-	        //log.info(aRateio);
-	        
-	        var vo = clientService.invoke(JSON.stringify(data));
-	        
-	        if(vo.getResult()== null || vo.getResult().isEmpty()){
-	            throw "Retorno está vazio";
-	        }
-	        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-	        	throw JSON.parse(vo.getResult()).errorMessage;
-	        }
-	        else {
-	            log.info(vo.getResult());
-	        }
-	    } catch(err) {
-	        throw err;
-	    }
+			function integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,aRateio){	
+				 try{
+				        var clientService = fluigAPI.getAuthorizeClientService();
+				        var data = {
+				            companyId : getValue("WKCompany") + '',
+				            serviceCode : 'REST FLUIG',
+				            endpoint : '/F_FINA050',
+				            method : 'post',// 'delete', 'patch', 'put', 'get'     
+				            timeoutService: '100', // segundos
+				            params : {
+				            	processo : '' + PROCESSO_ID +'',
+				            	solicitacao : '' + codSolicitacao + '' ,	                
+				                solicitante : '' + solicitante + '' ,
+				                emailSolicitante : '' + emailSolicitante +'',
+				                cpf : '' + cpfbeneficiario + '',
+				            	dataEmissao :'' + dtEmissao +'',
+				            	dataVencimento :'' + dtVencimento +'',
+				                valorTotal :'' + valorTotal +'',	
+				        		rateioDigitado: aRateio + ''
+				        		
+				            },
+				          options : {
+				             encoding : 'UTF-8',
+				             mediaType: 'application/json'
+				          }
+				        }
+				              
+				        //log.info(aRateio);
+				        
+				        var vo = clientService.invoke(JSON.stringify(data));
+				        
+				        if(vo.getResult()== null || vo.getResult().isEmpty()){
+				            throw "Retorno está vazio";
+				        }
+				        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+				        	throw JSON.parse(vo.getResult()).errorMessage;
+				        }
+				        else {
+				            log.info(vo.getResult());
+				        }
+				    } catch(err) {
+				        throw err;
+				    }
+				
+				
+			}	
+	    
+	    
 	
-	
+
 }

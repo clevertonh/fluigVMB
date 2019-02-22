@@ -7,7 +7,7 @@
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
       <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-      <link type="text/css" rel="stylesheet" href="style.css"/>
+      <link type="text/css" rel="stylesheet" href="SolicitacaoReembolsoAuxilioCreche.css"/>
    </head>
    <body>
       <div class="container">
@@ -71,10 +71,27 @@
                                           <label for="vl_rmb">Valor a ser reembolsado</label>
                                           <input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
                                        </div>
-                                       <div class="form-group col-md-3" id="divApPrazo">                               
-                                       	<input type="text" id ="aprPrazo" class="form-control" name="aprPrazo">
-                                       </div>
-                                    </div>                            
+                                                      <div class="form-group col-md-4">
+                                                         <label for="Funcionario">Nome do beneficiário</label> 
+                                                           <input name="Funcionario"
+                                                            class="form-control" type="zoom"
+                                                            id="Funcionario"
+                                                            data-zoom="{'displayKey':'NOME',
+                                                            'datasetId':'VM_Funcionario',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o funcionário',
+                                                            'fields':[
+                                                            {'field':'NOME','label':'NOME','standard':'true'},
+                                                            {'field':'CPF','label':'CPF'},
+                                                            {'field':'RG','label':'RG'}					  					
+                                                            ]
+                                                            }">
+                                                      </div>
+                                    </div>    
+                                    <div class="row">
+                                    	<input type="text" id ="aprPrazo" class="form-control" name="aprPrazo">
+                                    	<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario">
+                                    </div>                        
                                     <div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">
                                           <h3 class="panel-title">
@@ -343,6 +360,6 @@
             </form>
          </div>
       </div>
-      <script src="script.js"></script>
+      <script src="SolicitacaoReembolsoAuxilioCreche.js"></script>
    </body>
 </html>

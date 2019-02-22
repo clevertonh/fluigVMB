@@ -5,13 +5,7 @@ var APROVACAO_RH = 27;
 
 
 
-var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
+var dtSolicitacao;
 
 
 
@@ -19,6 +13,14 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
 $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
+		dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
+		    pickDate: true,
+		    pickTime: false,
+		    useCurrent: true,
+		    minDate: new Date().toLocaleString(),
+		    maxDate: new Date().toLocaleString()
+		});
+		
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
 	}
@@ -95,6 +97,7 @@ function removedZoomItem(removedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
+    var FUNCIONARIO = "Funcionario";
 
 
     //Recebe o nome do campo zoom
@@ -155,7 +158,11 @@ function removedZoomItem(removedItem) {
     if (campoZOOM == RATEIO) {
         removeItens();
         $("#codigorateio").val('');
-
+        	
+    }
+    
+    if (campoZOOM == FUNCIONARIO){
+    	 $("#cpfbeneficiario").val("");
     }
         
   
@@ -177,6 +184,8 @@ function setSelectedZoomItem(selectedItem) {
   var PROJETO = "txtprojeto";
   var ALOCACAO = "alocacao";
   var RATEIO = "rateioconfigurado";
+  var FUNCIONARIO = "Funcionario";
+
 
 
   //Recebe o nome do campo zoom
@@ -190,7 +199,13 @@ function setSelectedZoomItem(selectedItem) {
   console.log("---IDENTIFICANDO CAMPO ZOOM FILHOS-------");
   console.log(linhaPagamento[0]);
   console.log(linhaPagamento[1]);
+  
+  console.log("Retornando resultado selectedItem");  
+  console.log(selectedItem);
 
+  
+
+  
   //compara para verificar se o zoom é o campo centro de custo
   if (linhaPagamento[0] == CCUSTO) {
 
@@ -210,7 +225,8 @@ function setSelectedZoomItem(selectedItem) {
           window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
           reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + selectedItem["Codigo"]);
 
-      } else {
+      } 
+      else {
           //desabilita zoom que não devem ser preenchidos
           console.log(selectedItem["Codigo"]);
           window[PROJETO + "___" + linhaPagamento[1]].disable(false);
@@ -223,7 +239,8 @@ function setSelectedZoomItem(selectedItem) {
       window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(true);
 
 
-  } else if (linhaPagamento[0] == PROJETO) {
+  } 
+  else if (linhaPagamento[0] == PROJETO) {
 
       console.log("------PROJETO--------");
       console.log(selectedItem["Codigo"]);
@@ -252,11 +269,18 @@ function setSelectedZoomItem(selectedItem) {
       reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "Projeto," + selectedItem["Codigo"]);
       $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["Conta"]);
 
-  } else if (linhaPagamento[0] == ATIVIDADE) {
+  } 
+  else if (linhaPagamento[0] == ATIVIDADE) {
       $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["Localizacao"]);
       $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["Alocacao"]);
 
   }
+  
+  else if (campoZOOM == FUNCIONARIO ){	 	  
+		 console.log(selectedItem["CPF"]);
+	  	 $("#cpfbeneficiario").val(selectedItem["CPF"]);
+	  	 
+	  }
 
 
  
@@ -267,6 +291,9 @@ function setSelectedZoomItem(selectedItem) {
 
   }
 
+  
+
+      
   
 }
 

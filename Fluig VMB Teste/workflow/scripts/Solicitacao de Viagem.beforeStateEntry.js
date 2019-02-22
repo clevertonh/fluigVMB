@@ -32,7 +32,7 @@ function beforeStateEntry(sequenceId){
 	var datasolicitacao  = hAPI.getCardValue("dataSolicitacao");	
     var passageiro 		 = hAPI.getCardValue("nomepassageiro") ;
     var solicitante 	 = hAPI.getCardValue("solicitante");
-    
+    var cpf 			 = hAPI.getCardValue("cpfpassageiro");
 	
 	
 	//VARIAVEIS SIMPLES
@@ -171,6 +171,8 @@ function beforeStateEntry(sequenceId){
 					            	processo : '' + 1 + '' ,
 					            	solicitacao : '' + codSolicitacao + '' ,
 					            	solicitante : '' + solicitante +'',
+					            	emailsolicitante : '' + emailsolicitante +'',
+					                cpf				: '' + cpf +'',
 					                datasolicitacao :'' + datasolicitacao +'',	
 					                passageiro : '' + passageiro +'',
 					                itens: aItemServico ,
@@ -302,6 +304,7 @@ function beforeStateEntry(sequenceId){
 				                valorTotal : '' + valorDiarias + '' ,
 				                datasolicitacao :'' + datasolicitacao +'',	
 				                emailsolicitante : '' + emailsolicitante +'',
+				                cpf				: '' + cpf +'',
 				                itens: aItem ,
 				        		rateioDigitado: aRateio 
 				            },

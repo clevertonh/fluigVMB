@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <version>21</version>
+      <version>23</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>943</formId>
+    <formId>1509</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
@@ -549,7 +549,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>21</version>
+        <version>23</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -561,7 +561,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>21</version>
+        <version>23</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -573,7 +573,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>21</version>
+        <version>23</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;&quot;</condition>
@@ -585,7 +585,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>21</version>
+        <version>23</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;nao&quot;</condition>
@@ -597,7 +597,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>21</version>
+        <version>23</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -609,7 +609,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>4</expressionOrder>
-        <version>21</version>
+        <version>23</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -880,199 +880,178 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 	var PROCESSO_ID = 3;&#xd;
 	&#xd;
 	//recupera atividade&#xd;
-	var ativAtual = getValue(&quot;WKNumState&quot;);	&#xd;
-	var nextAtv  = getValue(&quot;WKNextState&quot;);&#xd;
+	var ativAtual 		= getValue(&quot;WKNumState&quot;);	&#xd;
+	var nextAtv  		= getValue(&quot;WKNextState&quot;);&#xd;
+	var codSolicitacao  = getValue(&quot;WKNumProces&quot;);&#xd;
+	&#xd;
+	var autorizado 		 = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+	var aprovadoNoPrazo  = hAPI.getCardValue(&quot;aprPrazo&quot;);		&#xd;
+	&#xd;
+	var solicitante;&#xd;
 	var idFormulario;&#xd;
-	&#xd;
-	var autorizado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
-	var aprovadoNoPrazo = hAPI.getCardValue(&quot;aprPrazo&quot;);&#xd;
-	&#xd;
-	var codSolicitacao = getValue(&quot;WKNumProces&quot;);&#xd;
-	&#xd;
 	var emailSolicitante;&#xd;
     var dtVencimento;&#xd;
+    var dtSolicitacao;&#xd;
     var valorTotal;&#xd;
     var documentId;&#xd;
-&#xd;
 	var aRateio = new Array();&#xd;
-	var itemContabil = new Array();&#xd;
-	var itensSolicitacao;&#xd;
+	var solicitacao;&#xd;
+	var cpfbeneficiario;&#xd;
+		&#xd;
 	&#xd;
 	&#xd;
 	if ((ativAtual == APROVACAO_RH &amp;&amp; autorizado == &quot;aprovado&quot; &amp;&amp; aprovadoNoPrazo == &quot;&quot; ) || ativAtual == ALTERACAO_DATA){&#xd;
 		&#xd;
-	&#xd;
+		//chama função de retorna dados do formulário filho&#xd;
+		//solicitacao = itensPagamento();	&#xd;
 		&#xd;
-		 //Cria a constraint para buscar os formulários ativos&#xd;
-	    var cst = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);	&#xd;
-		var cst3 = DatasetFactory.createConstraint(&quot;aprovacao&quot;, &quot;aprovado&quot; , &quot;aprovado&quot;, ConstraintType.MUST);&#xd;
-		var cst5 = DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST);&#xd;
-		&#xd;
-		&#xd;
-	    var constraints = new Array(cst,cst3,cst5);&#xd;
-	    var datasetPrincipal = DatasetFactory.getDataset(&quot;VM_Reembolso_creche&quot;, null, constraints, null);&#xd;
-	    	    &#xd;
-	    for (var i = 0; i &lt; datasetPrincipal.rowsCount; i++) {&#xd;
-	        documentId = datasetPrincipal.getValue(i, &quot;metadata#id&quot;);&#xd;
-	        var documentVersion = datasetPrincipal.getValue(i, &quot;metadata#version&quot;);	        &#xd;
-	        emailSolicitante = datasetPrincipal.getValue(i, &quot;emailSolicitante&quot;);&#xd;
-	        dtVencimento = datasetPrincipal.getValue(i, &quot;dtPagamento&quot;);&#xd;
-	        valorTotal = datasetPrincipal.getValue(i, &quot;vl_rmb&quot;);&#xd;
-	        &#xd;
-	        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão&#xd;
-	        var c1 = DatasetFactory.createConstraint(&quot;tablename&quot;, &quot;tableItens&quot; , &quot;tableItens&quot;, ConstraintType.MUST);&#xd;
-	        var c2 = DatasetFactory.createConstraint(&quot;metadata#id&quot;, documentId, documentId, ConstraintType.MUST);&#xd;
-	        var c3 = DatasetFactory.createConstraint(&quot;metadata#version&quot;, documentVersion, documentVersion, ConstraintType.MUST);&#xd;
-	        var constraintsFilhos = new Array(c1, c2, c3);&#xd;
-	 &#xd;
-	        //Busca o dataset&#xd;
-	        var datasetFilhos = DatasetFactory.getDataset(&quot;VM_SolicitacoesViagens&quot;, null, constraintsFilhos, null);&#xd;
-		&#xd;
-	        itensSolicitacao = datasetFilhos;&#xd;
-	 &#xd;
-	                &#xd;
-	        &#xd;
-	    }&#xd;
-	    &#xd;
-	    //verifica quantidade de linhas do rateio manual		    		&#xd;
-		if ( itensSolicitacao.rowsCount == 1){&#xd;
-			for (var i=0; i &lt; itensSolicitacao.length ; i++){&#xd;
-				var obj = new Array();		&#xd;
-				obj.valor = &apos;&apos; + valorTotal + &apos;&apos;;&#xd;
-				obj.ccusto =  &apos;&apos; + itensSolicitacao.getValue(0, &quot;txtcentrocusto&quot;) +&apos;&apos;;			&#xd;
-				&#xd;
-				if (itensSolicitacao.getValue(0, &quot;txtprojeto&quot;) != null ){&#xd;
-					obj.projeto = &apos;&apos; + itensSolicitacao.getValue(0, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
+		  var solicitacaoA = new Array();&#xd;
+		  solicitacaoA = itensPagamento();	&#xd;
+		  log.info(&apos;-----DATASET AUXILIIO CRECHE&apos;);&#xd;
+		  log.info(solicitacaoA);&#xd;
+		    &#xd;
+		    &#xd;
+		if ( solicitacao.rowsCount &gt; 1){		    					    					    			&#xd;
+			//só cria um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			&#xd;
+			for (var i=0; i &lt; solicitacao.rowsCount ; i++){&#xd;
+				var obj = new Array();				&#xd;
+				obj.ccusto =  &apos;&apos; + solicitacao.getValue(i, &quot;txtcentrocusto&quot;) +&apos;&apos;;				    					&#xd;
+				if (solicitacao.getValue(i, &quot;txtprojeto&quot;) != null){&#xd;
+					obj.projeto = &apos;&apos; + solicitacao.getValue(i, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
 				}&#xd;
-				obj.atividade = &apos;&apos; + itensSolicitacao.getValue(0, &quot;txtatividade&quot;) +&apos;&apos;;&#xd;
-				&#xd;
-				if (itensSolicitacao.getValue(0, &quot;txtcategoria&quot;) != null){&#xd;
-					obj.categoria = &apos;&apos; + itensSolicitacao.getValue(0, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
-				}&#xd;
-				if (itensSolicitacao.getValue(0, &quot;txtfontefinanciamento&quot;) != null){&#xd;
-					obj.fonte = &apos;&apos; + itensSolicitacao.getValue(0, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
-				}&#xd;
-				if (itensSolicitacao.getValue(0, &quot;txtareaestrategica&quot;)  != null){&#xd;
-					obj.area = &apos;&apos; + solicitacao.getValue(0, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
-				}	    					&#xd;
-				if (itensSolicitacao.getValue(0, &quot;alocacao&quot;) != null){&#xd;
-					obj.alocacao = &apos;&apos; + itensSolicitacao.getValue(0, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
-				}&#xd;
-				if (itensSolicitacao.getValue(0, &quot;contacontabil&quot;) != null){&#xd;
-					obj.conta = &apos;&apos; + itensSolicitacao.getValue(0, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
-				}	    					&#xd;
-				if (itensSolicitacao.getValue(0, &quot;localizacao&quot;) != null){&#xd;
-					obj.localizacao = &apos;&apos; + itensSolicitacao.getValue(0, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
-				}&#xd;
-				&#xd;
-				itemContabil[i] = obj;	&#xd;
-				&#xd;
-			}&#xd;
-&#xd;
-			&#xd;
-		}&#xd;
-		//possui rateio por centro de custo&#xd;
-		else if ( itensSolicitacao.rowsCount &gt; 1){		    					    					    			&#xd;
-			//só criar um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			&#xd;
-			for (var i=0; i &lt; itensSolicitacao.rowsCount ; i++){&#xd;
-				var obj = {&#xd;
-						ccusto : &apos;&apos; ,&#xd;
-						projeto :&apos;&apos; ,&#xd;
-						atividade :&apos;&apos; ,&#xd;
-						categoria :&apos;&apos; ,&#xd;
-						fonte :&apos;&apos; ,&#xd;
-						area :&apos;&apos; ,&#xd;
-						alocacao :&apos;&apos; ,&#xd;
-						conta : &apos;&apos; ,&#xd;
-						localizacao :&apos;&apos;&#xd;
-						&#xd;
-				};		    	&#xd;
-				obj.valor = &apos;&apos; + valorTotal + &apos;&apos;;				&#xd;
-				obj.ccusto =  &apos;&apos; + itensSolicitacao.getValue(i, &quot;txtcentrocusto&quot;) +&apos;&apos;;				    					&#xd;
-				if (itensSolicitacao.getValue(i, &quot;txtprojeto&quot;) != null){&#xd;
-					obj.projeto = &apos;&apos; + itensSolicitacao.getValue(i, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
-				}&#xd;
-				obj.atividade = &apos;&apos; + itensSolicitacao.getValue(i, &quot;txtatividade&quot;) +&apos;&apos;;		    					&#xd;
-				if (itensSolicitacao.getValue(i, &quot;txtcategoria&quot;) != null){&#xd;
-					obj.categoria = &apos;&apos; + itensSolicitacao.getValue(i, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
+				obj.atividade = &apos;&apos; + solicitacao.getValue(i, &quot;txtatividade&quot;) +&apos;&apos;;		    					&#xd;
+				if (solicitacao.getValue(i, &quot;txtcategoria&quot;) != null){&#xd;
+					obj.categoria = &apos;&apos; + solicitacao.getValue(i, &quot;txtcategoria&quot;) +&apos;&apos;;&#xd;
 				}		    					&#xd;
-				if (itensSolicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) != null){&#xd;
-					obj.fonte = &apos;&apos; + itensSolicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
+				if (solicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) != null){&#xd;
+					obj.fonte = &apos;&apos; + solicitacao.getValue(i, &quot;txtfontefinanciamento&quot;) +&apos;&apos;;&#xd;
 				}	    					&#xd;
-				if (itensSolicitacao.getValue(i, &quot;txtareaestrategica&quot;)  != null){&#xd;
-					obj.area = &apos;&apos; + itensSolicitacao.getValue(i, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
+				if (solicitacao.getValue(i, &quot;txtareaestrategica&quot;)  != null){&#xd;
+					obj.area = &apos;&apos; + solicitacao.getValue(i, &quot;txtareaestrategica&quot;) +&apos;&apos;;&#xd;
 				}&#xd;
-				if (itensSolicitacao.getValue(i, &quot;alocacao&quot;) != null){&#xd;
-					obj.alocacao = &apos;&apos; + itensSolicitacao.getValue(i, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
+				if (solicitacao.getValue(i, &quot;alocacao&quot;) != null){&#xd;
+					obj.alocacao = &apos;&apos; + solicitacao.getValue(i, &quot;alocacao&quot;) +&apos;&apos;;	&#xd;
 				}&#xd;
-				if (itensSolicitacao.getValue(i, &quot;contacontabil&quot;) != null){&#xd;
-					obj.conta = &apos;&apos; + itensSolicitacao.getValue(i, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
+				if (solicitacao.getValue(i, &quot;contacontabil&quot;) != null){&#xd;
+					obj.conta = &apos;&apos; + solicitacao.getValue(i, &quot;contacontabil&quot;) +&apos;&apos;;	&#xd;
 				}&#xd;
-				if (itensSolicitacao.getValue(i, &quot;localizacao&quot;) != null){&#xd;
-					obj.localizacao = &apos;&apos; + itensSolicitacao.getValue(i, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
+				if (solicitacao.getValue(i, &quot;localizacao&quot;) != null){&#xd;
+					obj.localizacao = &apos;&apos; + solicitacao.getValue(i, &quot;localizacao&quot;) +&apos;&apos;;	&#xd;
 				}	    					&#xd;
-				obj.percentual = 1 * parseInt(itensSolicitacao.getValue(i, &quot;percentual&quot;)) ;&#xd;
+				obj.percentual = 1 * parseInt(solicitacao.getValue(i, &quot;percentual&quot;)) ;&#xd;
 				&#xd;
 				aRateio[i] = obj;	&#xd;
-				//log.info(aRateio);&#xd;
-			}		    			&#xd;
+				&#xd;
+			}	&#xd;
+			log.info(&apos;----------RATEIO REEMBOLSO CRECHE&apos;);&#xd;
+			log.info(aRateio);&#xd;
 		}	&#xd;
-		&#xd;
-		&#xd;
-	    if (datasetPrincipal.rowsCount &gt; 0){&#xd;
-	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,itemContabil,aRateio);&#xd;
-	    }&#xd;
-	    &#xd;
+	&#xd;
+			&#xd;
+			//chama função de integração&#xd;
+	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtSolicitacao,dtVencimento,valorTotal,aRateio);&#xd;
+	   &#xd;
+	&#xd;
+	&#xd;
 	}&#xd;
-&#xd;
-&#xd;
+		&#xd;
+			&#xd;
+	    &#xd;
+	    &#xd;
 	&#xd;
-}&#xd;
+		 function itensPagamento(){&#xd;
+			 var datasetFilhos;&#xd;
+			 //Cria a constraint para buscar os formulários ativos&#xd;
+			    var cst1 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);	&#xd;
+				//var cst2 = DatasetFactory.createConstraint(&quot;aprovacao&quot;, &quot;aprovado&quot; , &quot;aprovado&quot;, ConstraintType.MUST);&#xd;
+				var cst2 = DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST);&#xd;
+				&#xd;
+				&#xd;
+			    var constraints = new Array(cst1,cst2);&#xd;
+			    var datasetPrincipal = DatasetFactory.getDataset(&quot;VM_Solicitacao_Reembolso_creche&quot;, null, constraints, null);&#xd;
+			    	    &#xd;
+			    for (var i = 0; i &lt; datasetPrincipal.rowsCount; i++) {&#xd;
+			        documentId = datasetPrincipal.getValue(i, &quot;metadata#id&quot;);&#xd;
+			        var documentVersion = datasetPrincipal.getValue(i, &quot;metadata#version&quot;);&#xd;
+			        solicitante = datasetPrincipal.getValue(i, &quot;solicitante&quot;);&#xd;
+			        emailSolicitante = datasetPrincipal.getValue(i, &quot;emailSolicitante&quot;);&#xd;
+			        dtSolicitacao = datasetPrincipal.getValue(i, &quot;dataSolicitacao&quot;);&#xd;
+			        dtVencimento = datasetPrincipal.getValue(i, &quot;dtPagamento&quot;);&#xd;
+			        valorTotal = datasetPrincipal.getValue(i, &quot;vl_rmb&quot;);&#xd;
+			        cpfbeneficiario = datasetPrincipal.getValue(i, &quot;cpfbeneficiario&quot;);&#xd;
+			        &#xd;
+			        //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão&#xd;
+			        var c1 = DatasetFactory.createConstraint(&quot;tablename&quot;, &quot;tableItens&quot; , &quot;tableItens&quot;, ConstraintType.MUST);&#xd;
+			        var c2 = DatasetFactory.createConstraint(&quot;metadata#id&quot;, documentId, documentId, ConstraintType.MUST);&#xd;
+			        var c3 = DatasetFactory.createConstraint(&quot;metadata#version&quot;, documentVersion, documentVersion, ConstraintType.MUST);&#xd;
+			        var constraintsFilhos = new Array(c1, c2, c3);&#xd;
+			 &#xd;
+			        //Busca o dataset&#xd;
+			        datasetFilhos = DatasetFactory.getDataset(&quot;VM_Solicitacao_Reembolso_creche&quot;, null, constraintsFilhos, null);&#xd;
+				&#xd;
+			 &#xd;
+			    }&#xd;
+			    &#xd;
+			    log.info(&apos;------DATASETFILHO&apos;);&#xd;
+			    log.info(datasetFilhos);&#xd;
+			    &#xd;
+			    return datasetFilhos;&#xd;
+			    &#xd;
+			    &#xd;
+		 }&#xd;
+	    &#xd;
+		 &#xd;
 &#xd;
-function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,itemContabil,aRateio){	&#xd;
-	 try{&#xd;
-	        var clientService = fluigAPI.getAuthorizeClientService();&#xd;
-	        var data = {&#xd;
-	            companyId : getValue(&quot;WKCompany&quot;) + &apos;&apos;,&#xd;
-	            serviceCode : &apos;REST FLUIG&apos;,&#xd;
-	            endpoint : &apos;/REST/FLUIG&apos;,&#xd;
-	            method : &apos;post&apos;,// &apos;delete&apos;, &apos;patch&apos;, &apos;put&apos;, &apos;get&apos;     &#xd;
-	            timeoutService: &apos;100&apos;, // segundos&#xd;
-	            params : {&#xd;
-	                processoId : &apos;&apos; + processoID +&apos;&apos;,&#xd;
-	                codSolicitacao : &apos;&apos; + codSolicitacao + &apos;&apos; ,	                &#xd;
-	            	solicitante : &apos;&apos; + emailSolicitante +&apos;&apos;,	&#xd;
-	            	dataEmissao :&apos;&apos; + dtEmissao +&apos;&apos;,&#xd;
-	            	dataVencimento :&apos;&apos; + dtVencimento +&apos;&apos;,&#xd;
-	                valorTotal :&apos;&apos; + valorTotal +&apos;&apos;,	&#xd;
-	                itens: itemContabil ,&#xd;
-	        		rateioDigitado: aRateio + &apos;&apos;&#xd;
-	        		&#xd;
-	            },&#xd;
-	          options : {&#xd;
-	             encoding : &apos;UTF-8&apos;,&#xd;
-	             mediaType: &apos;application/json&apos;&#xd;
-	          }&#xd;
-	        }&#xd;
-	              &#xd;
-	        //log.info(aRateio);&#xd;
-	        &#xd;
-	        var vo = clientService.invoke(JSON.stringify(data));&#xd;
-	        &#xd;
-	        if(vo.getResult()== null || vo.getResult().isEmpty()){&#xd;
-	            throw &quot;Retorno está vazio&quot;;&#xd;
-	        }&#xd;
-	        else if((JSON.parse(vo.getResult()).errorMessage != null &amp;&amp; JSON.parse(vo.getResult()).errorMessage != &quot;&quot;)){&#xd;
-	        	throw JSON.parse(vo.getResult()).errorMessage;&#xd;
-	        }&#xd;
-	        else {&#xd;
-	            log.info(vo.getResult());&#xd;
-	        }&#xd;
-	    } catch(err) {&#xd;
-	        throw err;&#xd;
-	    }&#xd;
+			function integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,aRateio){	&#xd;
+				 try{&#xd;
+				        var clientService = fluigAPI.getAuthorizeClientService();&#xd;
+				        var data = {&#xd;
+				            companyId : getValue(&quot;WKCompany&quot;) + &apos;&apos;,&#xd;
+				            serviceCode : &apos;REST FLUIG&apos;,&#xd;
+				            endpoint : &apos;/F_FINA050&apos;,&#xd;
+				            method : &apos;post&apos;,// &apos;delete&apos;, &apos;patch&apos;, &apos;put&apos;, &apos;get&apos;     &#xd;
+				            timeoutService: &apos;100&apos;, // segundos&#xd;
+				            params : {&#xd;
+				            	processo : &apos;&apos; + PROCESSO_ID +&apos;&apos;,&#xd;
+				            	solicitacao : &apos;&apos; + codSolicitacao + &apos;&apos; ,	                &#xd;
+				                solicitante : &apos;&apos; + solicitante + &apos;&apos; ,&#xd;
+				                emailSolicitante : &apos;&apos; + emailSolicitante +&apos;&apos;,&#xd;
+				                cpf : &apos;&apos; + cpfbeneficiario + &apos;&apos;,&#xd;
+				            	dataEmissao :&apos;&apos; + dtEmissao +&apos;&apos;,&#xd;
+				            	dataVencimento :&apos;&apos; + dtVencimento +&apos;&apos;,&#xd;
+				                valorTotal :&apos;&apos; + valorTotal +&apos;&apos;,	&#xd;
+				        		rateioDigitado: aRateio + &apos;&apos;&#xd;
+				        		&#xd;
+				            },&#xd;
+				          options : {&#xd;
+				             encoding : &apos;UTF-8&apos;,&#xd;
+				             mediaType: &apos;application/json&apos;&#xd;
+				          }&#xd;
+				        }&#xd;
+				              &#xd;
+				        //log.info(aRateio);&#xd;
+				        &#xd;
+				        var vo = clientService.invoke(JSON.stringify(data));&#xd;
+				        &#xd;
+				        if(vo.getResult()== null || vo.getResult().isEmpty()){&#xd;
+				            throw &quot;Retorno está vazio&quot;;&#xd;
+				        }&#xd;
+				        else if((JSON.parse(vo.getResult()).errorMessage != null &amp;&amp; JSON.parse(vo.getResult()).errorMessage != &quot;&quot;)){&#xd;
+				        	throw JSON.parse(vo.getResult()).errorMessage;&#xd;
+				        }&#xd;
+				        else {&#xd;
+				            log.info(vo.getResult());&#xd;
+				        }&#xd;
+				    } catch(err) {&#xd;
+				        throw err;&#xd;
+				    }&#xd;
+				&#xd;
+				&#xd;
+			}	&#xd;
+	    &#xd;
+	    &#xd;
 	&#xd;
-	&#xd;
+&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -1166,7 +1145,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-        <version>21</version>
+        <version>23</version>
         <linkSequence>74</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1177,7 +1156,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-        <version>21</version>
+        <version>23</version>
         <linkSequence>74</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1188,7 +1167,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-        <version>21</version>
+        <version>23</version>
         <linkSequence>74</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1206,7 +1185,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1216,7 +1195,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1226,7 +1205,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1236,7 +1215,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1246,7 +1225,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1256,7 +1235,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1266,7 +1245,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1276,7 +1255,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1286,7 +1265,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1296,7 +1275,7 @@ function integracao(processoID,codSolicitacao,emailSolicitante,dtEmissao,dtVenci
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>21</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
