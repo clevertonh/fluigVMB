@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <version>23</version>
+      <version>39</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1509</formId>
@@ -549,7 +549,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>23</version>
+        <version>39</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -561,7 +561,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>23</version>
+        <version>39</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -573,7 +573,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>23</version>
+        <version>39</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;&quot;</condition>
@@ -585,7 +585,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>23</version>
+        <version>39</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;nao&quot;</condition>
@@ -597,7 +597,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>23</version>
+        <version>39</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -609,7 +609,7 @@
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
         <expressionOrder>4</expressionOrder>
-        <version>23</version>
+        <version>39</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -903,18 +903,25 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 	if ((ativAtual == APROVACAO_RH &amp;&amp; autorizado == &quot;aprovado&quot; &amp;&amp; aprovadoNoPrazo == &quot;&quot; ) || ativAtual == ALTERACAO_DATA){&#xd;
 		&#xd;
 		//chama função de retorna dados do formulário filho&#xd;
-		//solicitacao = itensPagamento();	&#xd;
-		&#xd;
-		  var solicitacaoA = new Array();&#xd;
-		  solicitacaoA = itensPagamento();	&#xd;
-		  log.info(&apos;-----DATASET AUXILIIO CRECHE&apos;);&#xd;
-		  log.info(solicitacaoA);&#xd;
-		    &#xd;
-		    &#xd;
-		if ( solicitacao.rowsCount &gt; 1){		    					    					    			&#xd;
+		solicitacao = itensPagamento();				    &#xd;
+		    	    					    					    			&#xd;
 			//só cria um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			&#xd;
 			for (var i=0; i &lt; solicitacao.rowsCount ; i++){&#xd;
-				var obj = new Array();				&#xd;
+				var obj = {&#xd;
+						ccusto : &apos;&apos; ,&#xd;
+						projeto :&apos;&apos; ,&#xd;
+						atividade :&apos;&apos; ,&#xd;
+						categoria :&apos;&apos; ,&#xd;
+						fonte :&apos;&apos; ,&#xd;
+						area :&apos;&apos; ,&#xd;
+						alocacao :&apos;&apos; ,&#xd;
+						conta : &apos;&apos; ,&#xd;
+						localizacao :&apos;&apos;&#xd;
+						&#xd;
+				};&#xd;
+				&#xd;
+				log.info(&apos;----------RATEIO REEMBOLSO CRECHE&apos;);&#xd;
+				log.info(solicitacao.getValue(i, &quot;txtcentrocusto&quot;));&#xd;
 				obj.ccusto =  &apos;&apos; + solicitacao.getValue(i, &quot;txtcentrocusto&quot;) +&apos;&apos;;				    					&#xd;
 				if (solicitacao.getValue(i, &quot;txtprojeto&quot;) != null){&#xd;
 					obj.projeto = &apos;&apos; + solicitacao.getValue(i, &quot;txtprojeto&quot;) +&apos;&apos;;	&#xd;
@@ -941,15 +948,15 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 				obj.percentual = 1 * parseInt(solicitacao.getValue(i, &quot;percentual&quot;)) ;&#xd;
 				&#xd;
 				aRateio[i] = obj;	&#xd;
+			&#xd;
+				//log.info(&apos;--------OBJETO ARATEIO&apos;);&#xd;
+				//log.info(obj.ccusto);&#xd;
 				&#xd;
 			}	&#xd;
-			log.info(&apos;----------RATEIO REEMBOLSO CRECHE&apos;);&#xd;
-			log.info(aRateio);&#xd;
-		}	&#xd;
 	&#xd;
 			&#xd;
 			//chama função de integração&#xd;
-	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtSolicitacao,dtVencimento,valorTotal,aRateio);&#xd;
+	    	integracao();&#xd;
 	   &#xd;
 	&#xd;
 	&#xd;
@@ -963,7 +970,6 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 			 var datasetFilhos;&#xd;
 			 //Cria a constraint para buscar os formulários ativos&#xd;
 			    var cst1 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);	&#xd;
-				//var cst2 = DatasetFactory.createConstraint(&quot;aprovacao&quot;, &quot;aprovado&quot; , &quot;aprovado&quot;, ConstraintType.MUST);&#xd;
 				var cst2 = DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST);&#xd;
 				&#xd;
 				&#xd;
@@ -975,7 +981,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 			        var documentVersion = datasetPrincipal.getValue(i, &quot;metadata#version&quot;);&#xd;
 			        solicitante = datasetPrincipal.getValue(i, &quot;solicitante&quot;);&#xd;
 			        emailSolicitante = datasetPrincipal.getValue(i, &quot;emailSolicitante&quot;);&#xd;
-			        dtSolicitacao = datasetPrincipal.getValue(i, &quot;dataSolicitacao&quot;);&#xd;
+			        dtSolicitacao = datasetPrincipal.getValue(i, &quot;dtSolicitacao&quot;);&#xd;
 			        dtVencimento = datasetPrincipal.getValue(i, &quot;dtPagamento&quot;);&#xd;
 			        valorTotal = datasetPrincipal.getValue(i, &quot;vl_rmb&quot;);&#xd;
 			        cpfbeneficiario = datasetPrincipal.getValue(i, &quot;cpfbeneficiario&quot;);&#xd;
@@ -988,12 +994,13 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 			 &#xd;
 			        //Busca o dataset&#xd;
 			        datasetFilhos = DatasetFactory.getDataset(&quot;VM_Solicitacao_Reembolso_creche&quot;, null, constraintsFilhos, null);&#xd;
-				&#xd;
-			 &#xd;
+			       // log.info(&apos;------RETORNO DATASET--------&apos;);&#xd;
+			       // log.info(datasetFilhos.getValue(0, &quot;txtcentrocusto&quot;));&#xd;
 			    }&#xd;
 			    &#xd;
-			    log.info(&apos;------DATASETFILHO&apos;);&#xd;
-			    log.info(datasetFilhos);&#xd;
+			   &#xd;
+			   &#xd;
+			    //log.info(datasetFilhos.getValue());&#xd;
 			    &#xd;
 			    return datasetFilhos;&#xd;
 			    &#xd;
@@ -1002,7 +1009,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 	    &#xd;
 		 &#xd;
 &#xd;
-			function integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,aRateio){	&#xd;
+			function integracao(){	&#xd;
 				 try{&#xd;
 				        var clientService = fluigAPI.getAuthorizeClientService();&#xd;
 				        var data = {&#xd;
@@ -1012,15 +1019,15 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 				            method : &apos;post&apos;,// &apos;delete&apos;, &apos;patch&apos;, &apos;put&apos;, &apos;get&apos;     &#xd;
 				            timeoutService: &apos;100&apos;, // segundos&#xd;
 				            params : {&#xd;
-				            	processo : &apos;&apos; + PROCESSO_ID +&apos;&apos;,&#xd;
+				            	processo : &apos;&apos; + 3 +&apos;&apos;,&#xd;
 				            	solicitacao : &apos;&apos; + codSolicitacao + &apos;&apos; ,	                &#xd;
 				                solicitante : &apos;&apos; + solicitante + &apos;&apos; ,&#xd;
 				                emailSolicitante : &apos;&apos; + emailSolicitante +&apos;&apos;,&#xd;
 				                cpf : &apos;&apos; + cpfbeneficiario + &apos;&apos;,&#xd;
-				            	dataEmissao :&apos;&apos; + dtEmissao +&apos;&apos;,&#xd;
+				            	dataEmissao :&apos;&apos; + dtSolicitacao +&apos;&apos;,&#xd;
 				            	dataVencimento :&apos;&apos; + dtVencimento +&apos;&apos;,&#xd;
 				                valorTotal :&apos;&apos; + valorTotal +&apos;&apos;,	&#xd;
-				        		rateioDigitado: aRateio + &apos;&apos;&#xd;
+				        		rateioDigitado:  aRateio &#xd;
 				        		&#xd;
 				            },&#xd;
 				          options : {&#xd;
@@ -1145,7 +1152,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-        <version>23</version>
+        <version>39</version>
         <linkSequence>74</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1156,7 +1163,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-        <version>23</version>
+        <version>39</version>
         <linkSequence>74</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1167,7 +1174,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-        <version>23</version>
+        <version>39</version>
         <linkSequence>74</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1185,7 +1192,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1195,7 +1202,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1205,7 +1212,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1215,7 +1222,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1225,7 +1232,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1235,7 +1242,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1245,7 +1252,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1255,7 +1262,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1265,7 +1272,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1275,7 +1282,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <processVersion>23</processVersion>
+      <processVersion>39</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

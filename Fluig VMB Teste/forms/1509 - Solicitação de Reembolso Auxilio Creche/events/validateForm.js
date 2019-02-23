@@ -35,7 +35,7 @@ function validateForm(form){
 		}	
 		
 		else if (form.getValue("emailSolicitante") ==  emailSolicitante() ){
-			 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+			// throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		}
 		
 		

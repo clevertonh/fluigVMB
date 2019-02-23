@@ -34,11 +34,24 @@ function beforeStateEntry(sequenceId){
 		
 		//chama função de retorna dados do formulário filho
 		solicitacao = itensPagamento();				    
-		    
-		if ( solicitacao.rowsCount > 1){		    					    					    			
+		    	    					    					    			
 			//só cria um array de objeto com os dados de pagamento e enviar para a propriedade rateio		    			
 			for (var i=0; i < solicitacao.rowsCount ; i++){
-				var obj = new Array();				
+				var obj = {
+						ccusto : '' ,
+						projeto :'' ,
+						atividade :'' ,
+						categoria :'' ,
+						fonte :'' ,
+						area :'' ,
+						alocacao :'' ,
+						conta : '' ,
+						localizacao :''
+						
+				};
+				
+				log.info('----------RATEIO REEMBOLSO CRECHE');
+				log.info(solicitacao.getValue(i, "txtcentrocusto"));
 				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
 				if (solicitacao.getValue(i, "txtprojeto") != null){
 					obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
@@ -65,15 +78,15 @@ function beforeStateEntry(sequenceId){
 				obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
 				
 				aRateio[i] = obj;	
+			
+				//log.info('--------OBJETO ARATEIO');
+				//log.info(obj.ccusto);
 				
 			}	
-			log.info('----------RATEIO REEMBOLSO CRECHE');
-			log.info(aRateio);
-		}	
 	
 			
 			//chama função de integração
-	    	integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtSolicitacao,dtVencimento,valorTotal,aRateio);
+	    	integracao();
 	   
 	
 	
@@ -87,7 +100,6 @@ function beforeStateEntry(sequenceId){
 			 var datasetFilhos;
 			 //Cria a constraint para buscar os formulários ativos
 			    var cst1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);	
-				//var cst2 = DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST);
 				var cst2 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);
 				
 				
@@ -99,7 +111,7 @@ function beforeStateEntry(sequenceId){
 			        var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
 			        solicitante = datasetPrincipal.getValue(i, "solicitante");
 			        emailSolicitante = datasetPrincipal.getValue(i, "emailSolicitante");
-			        dtSolicitacao = datasetPrincipal.getValue(i, "dataSolicitacao");
+			        dtSolicitacao = datasetPrincipal.getValue(i, "dtSolicitacao");
 			        dtVencimento = datasetPrincipal.getValue(i, "dtPagamento");
 			        valorTotal = datasetPrincipal.getValue(i, "vl_rmb");
 			        cpfbeneficiario = datasetPrincipal.getValue(i, "cpfbeneficiario");
@@ -112,12 +124,13 @@ function beforeStateEntry(sequenceId){
 			 
 			        //Busca o dataset
 			        datasetFilhos = DatasetFactory.getDataset("VM_Solicitacao_Reembolso_creche", null, constraintsFilhos, null);
-				
-			 
+			       // log.info('------RETORNO DATASET--------');
+			       // log.info(datasetFilhos.getValue(0, "txtcentrocusto"));
 			    }
 			    
-			    log.info('------DATASETFILHO');
-			    log.info(datasetFilhos);
+			   
+			   
+			    //log.info(datasetFilhos.getValue());
 			    
 			    return datasetFilhos;
 			    
@@ -126,7 +139,7 @@ function beforeStateEntry(sequenceId){
 	    
 		 
 
-			function integracao(PROCESSO_ID,codSolicitacao,emailSolicitante,dtEmissao,dtVencimento,valorTotal,aRateio){	
+			function integracao(){	
 				 try{
 				        var clientService = fluigAPI.getAuthorizeClientService();
 				        var data = {
@@ -136,15 +149,15 @@ function beforeStateEntry(sequenceId){
 				            method : 'post',// 'delete', 'patch', 'put', 'get'     
 				            timeoutService: '100', // segundos
 				            params : {
-				            	processo : '' + PROCESSO_ID +'',
+				            	processo : '' + 3 +'',
 				            	solicitacao : '' + codSolicitacao + '' ,	                
 				                solicitante : '' + solicitante + '' ,
 				                emailSolicitante : '' + emailSolicitante +'',
 				                cpf : '' + cpfbeneficiario + '',
-				            	dataEmissao :'' + dtEmissao +'',
+				            	dataEmissao :'' + dtSolicitacao +'',
 				            	dataVencimento :'' + dtVencimento +'',
 				                valorTotal :'' + valorTotal +'',	
-				        		rateioDigitado: aRateio + ''
+				        		rateioDigitado:  aRateio 
 				        		
 				            },
 				          options : {
