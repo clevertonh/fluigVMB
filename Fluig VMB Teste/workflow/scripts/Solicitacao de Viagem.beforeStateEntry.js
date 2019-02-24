@@ -38,6 +38,7 @@ function beforeStateEntry(sequenceId){
 	//VARIAVEIS SIMPLES
 	var solicitacao;
 	var documentId;
+	var aRateio = new Array();
 	
 	/*
 	 * verifica se foi adicionado anexo. 
@@ -116,46 +117,8 @@ function beforeStateEntry(sequenceId){
 		    		}
 		    		//INFORMAÇOES FINANCEIRAS
 		    		else if ( solicitacao.rowsCount > 1){		    					    					    								    					    		
-		    			for (var i=0; i < solicitacao.rowsCount ; i++){
-		    				var obj = {
-		    						ccusto : '' ,
-		    						projeto :'' ,
-		    						atividade :'' ,
-		    						categoria :'' ,
-		    						fonte :'' ,
-		    						area :'' ,
-		    						alocacao :'' ,
-		    						conta : '' ,
-		    						localizacao :''
-		    						
-		    				};		    				 
-		    				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
-	    					if (solicitacao.getValue(i, "txtprojeto") != null){
-	    						obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
-	    					}
-	    					obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
-	    					if (solicitacao.getValue(i, "txtcategoria") != null){
-	    						obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
-	    					}		    					
-	    					if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
-	    						obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
-	    					}	    					
-	    					if (solicitacao.getValue(i, "txtareaestrategica")  != null){
-	    						obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
-	    					}
-	    					if (solicitacao.getValue(i, "alocacao") != null){
-	    						obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
-	    					}
-	    					if (solicitacao.getValue(i, "contacontabil") != null){
-	    						obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
-	    					}
-	    					if (solicitacao.getValue(i, "localizacao") != null){
-	    						obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
-	    					}	    					
-	    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
-	    					
-	    					aRateio[i] = obj;	
-		    			}		    			
+		    			    //chama função que monta rateio de pagament
+		 			   		preencheRateio(solicitacao);	    			
 		    		}	
 		    		
 					//throw "Integrado com o Protheus"			
@@ -204,139 +167,106 @@ function beforeStateEntry(sequenceId){
 		  		}	
 			   }
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {
-			   var aRateio = new Array();
-			   var aItem = new Array();			   
-		   	   solicitacao = itensPagamento();
+		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {		   
+		   	   //chama função que retorna informações financeiras do formulário
+			   solicitacao = itensPagamento();
 				
-		   		if ( solicitacao.rowsCount == 1){
-	    				var obj = new Array();	    				 
-    					obj.ccusto =  '' + solicitacao.getValue(0, "txtcentrocusto") +'';			
-    					
-    					if (solicitacao.getValue(0, "txtprojeto") != null){
-    						obj.projeto = '' + solicitacao.getValue(0, "txtprojeto") +'';	
-    					}
-    					obj.atividade = '' + solicitacao.getValue(0, "txtatividade") +'';
-    					
-    					if (solicitacao.getValue(0, "txtcategoria") != null){
-    						obj.categoria = '' + solicitacao.getValue(0, "txtcategoria") +'';
-    					}
-    					if (solicitacao.getValue(0, "txtfontefinanciamento") != null){
-    						obj.fonte = '' + solicitacao.getValue(0, "txtfontefinanciamento") +'';
-    					}
-    					if (solicitacao.getValue(0, "txtareaestrategica")  != null){
-    						obj.area = '' + solicitacao.getValue(0, "txtareaestrategica") +'';
-    					}	    					
-    					if (solicitacao.getValue(0, "alocacao") != null){
-    						obj.alocacao = '' + solicitacao.getValue(0, "alocacao") +'';	
-    					}
-    					if (solicitacao.getValue(0, "contacontabil") != null){
-    						obj.conta = '' + solicitacao.getValue(0, "contacontabil") +'';	
-    					}	    					
-    					if (solicitacao.getValue(0, "localizacao") != null){
-    						obj.localizacao = '' + solicitacao.getValue(0, "localizacao") +'';	
-    					}
-    					aItem[i] = obj;	
-	    			
-	    				
-	    		}
-		   		//RATEIO DIGITADO
-		   		else if (solicitacao.rowsCount > 1){    			
-	    			for (var i=0; i < solicitacao.rowsCount ; i++){
-	    				var obj = {
-	    						ccusto : '' ,
-	    						projeto :'' ,
-	    						atividade :'' ,
-	    						categoria :'' ,
-	    						fonte :'' ,
-	    						area :'' ,
-	    						alocacao :'' ,
-	    						conta : '' ,
-	    						localizacao :''
-	    						
-	    				};		    				 
-	    				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
-    					if (solicitacao.getValue(i, "txtprojeto") != null){
-    						obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
-    					}
-    					obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
-    					if (solicitacao.getValue(i, "txtcategoria") != null){
-    						obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
-    					}		    					
-    					if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
-    						obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
-    					}	    					
-    					if (solicitacao.getValue(i, "txtareaestrategica")  != null){
-    						obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
-    					}
-    					if (solicitacao.getValue(i, "alocacao") != null){
-    						obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
-    					}
-    					if (solicitacao.getValue(i, "contacontabil") != null){
-    						obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
-    					}
-    					if (solicitacao.getValue(i, "localizacao") != null){
-    						obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
-    					}	    					
-    					obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
-    					
-    					aRateio[i] = obj;	
-    					//log.info(aRateio);
-		   		}
-		   		
-				
-			}	
-				
-				
-				//throw "Integrado com o Protheus"			
-				 try{
-				        var clientService = fluigAPI.getAuthorizeClientService();
-				        var data = {
-				            companyId : getValue("WKCompany") + '',
-				            serviceCode : 'REST FLUIG',
-				            endpoint : '/F_FINA050',
-				            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-				            timeoutService: '100', // segundos
-				            params : {
-				            	processo : '' + 1 + '' ,
-				            	solicitacao : '' + codSolicitacao + '' ,
-				                solicitante : '' + solicitante +'',
-				                valorTotal : '' + valorDiarias + '' ,
-				                datasolicitacao :'' + datasolicitacao +'',	
-				                emailsolicitante : '' + emailsolicitante +'',
-				                cpf				: '' + cpf +'',
-				                itens: aItem ,
-				        		rateioDigitado: aRateio 
-				            },
-				          options : {
-				             encoding : 'UTF-8',
-				             mediaType: 'application/json'
-				          }
-				        }
-				              
-				        //log.info(aRateio);
-				        
-				        var vo = clientService.invoke(JSON.stringify(data));
-				        
-				        if(vo.getResult()== null || vo.getResult().isEmpty()){
-				            throw "Retorno está vazio";
-				        }
-				        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-				        	throw JSON.parse(vo.getResult()).errorMessage;
-				        }
-				        else {
-				            log.info(vo.getResult());
-				        }
-				    } 
-					catch(err) {
-				        throw err;
-				    }	
-			   
-			   
-			   
-		   
-	   
+			   //chama função que monta rateio de pagament
+			   preencheRateio(solicitacao)
+			  								
+		   	  //chama função de integração com contas a pagar
+		   	  integraFina050();
+   
 	}
+	   
+	   function preencheRateio(solicitacao){
+		   for (var i=0; i < solicitacao.rowsCount ; i++){
+				var obj = {
+						ccusto : '' ,
+						projeto :'' ,
+						atividade :'' ,
+						categoria :'' ,
+						fonte :'' ,
+						area :'' ,
+						alocacao :'' ,
+						conta : '' ,
+						localizacao :''
+						
+				};		    				 
+				obj.ccusto =  '' + solicitacao.getValue(i, "txtcentrocusto") +'';				    					
+				if (solicitacao.getValue(i, "txtprojeto") != null){
+					obj.projeto = '' + solicitacao.getValue(i, "txtprojeto") +'';	
+				}
+				obj.atividade = '' + solicitacao.getValue(i, "txtatividade") +'';		    					
+				if (solicitacao.getValue(i, "txtcategoria") != null){
+					obj.categoria = '' + solicitacao.getValue(i, "txtcategoria") +'';
+				}		    					
+				if (solicitacao.getValue(i, "txtfontefinanciamento") != null){
+					obj.fonte = '' + solicitacao.getValue(i, "txtfontefinanciamento") +'';
+				}	    					
+				if (solicitacao.getValue(i, "txtareaestrategica")  != null){
+					obj.area = '' + solicitacao.getValue(i, "txtareaestrategica") +'';
+				}
+				if (solicitacao.getValue(i, "alocacao") != null){
+					obj.alocacao = '' + solicitacao.getValue(i, "alocacao") +'';	
+				}
+				if (solicitacao.getValue(i, "contacontabil") != null){
+					obj.conta = '' + solicitacao.getValue(i, "contacontabil") +'';	
+				}
+				if (solicitacao.getValue(i, "localizacao") != null){
+					obj.localizacao = '' + solicitacao.getValue(i, "localizacao") +'';	
+				}	    					
+				obj.percentual = 1 * parseInt(solicitacao.getValue(i, "percentual")) ;
+				
+				aRateio[i] = obj;	
+		   }
+	   }
+	   
+	   function integraFina050(){
+		 //throw "Integrado com o Protheus"			
+			 try{
+			        var clientService = fluigAPI.getAuthorizeClientService();
+			        var data = {
+			            companyId : getValue("WKCompany") + '',
+			            serviceCode : 'REST FLUIG',
+			            endpoint : '/F_FINA050',
+			            method : 'POST',// 'delete', 'patch', 'put', 'get'     
+			            timeoutService: '100', // segundos
+			            params : {
+			            	processo : '' + 1 + '' ,
+			            	solicitacao : '' + codSolicitacao + '' ,
+			                solicitante : '' + solicitante +'',
+			                valorTotal : '' + valorDiarias + '' ,
+			                datasolicitacao :'' + datasolicitacao +'',	
+			                emailsolicitante : '' + emailsolicitante +'',
+			                cpf				: '' + cpf +'',
+			        		rateioDigitado: aRateio 
+			            },
+			          options : {
+			             encoding : 'UTF-8',
+			             mediaType: 'application/json'
+			          }
+			        }
+			              
+			        //log.info(aRateio);
+			        
+			        var vo = clientService.invoke(JSON.stringify(data));
+			        
+			        if(vo.getResult()== null || vo.getResult().isEmpty()){
+			            throw "Retorno está vazio";
+			        }
+			        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+			        	throw JSON.parse(vo.getResult()).errorMessage;
+			        }
+			        else {
+			            log.info(vo.getResult());
+			        }
+			    } 
+				catch(err) {
+			        throw err;
+			    }
+	   }
+	   
 	   
 	   //FUNÇÃO QUE ADD ITEM NA SOLICITAÇÃO DE COMPRA
 	   function addItemViagem(produto,codigo,tipoV,id_form,nValor){

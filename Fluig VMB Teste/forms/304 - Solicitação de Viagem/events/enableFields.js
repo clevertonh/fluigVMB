@@ -92,12 +92,13 @@ function enableFields(form) {
 		 form.setEnabled('dataSolicitacao', false);
 		 form.setEnabled('justificativaremarcacao', false);
 		 form.setEnabled('rateioconfigurado', false)
-		 
+		 form.setEnabled('finalidade', false);
  
 		 //CAMPOS DADOS DO PASSAGEIRO
 		 form.setEnabled('solicitanteFuncionario', false);
 		 form.setEnabled('solicitantepassageiro', false);
 		 form.setEnabled('passageirofuncionario', false);	
+		 form.setEnabled('passageiroestrangeiro', false);
 		 form.setEnabled('embaixador', false);
 		 form.setEnabled('nomepassageiro', false);
 		 form.setEnabled('nomemae', false);
@@ -105,7 +106,7 @@ function enableFields(form) {
 		 form.setEnabled('cpfpassageiro', false);
 		 form.setEnabled('rgpassageiro', false);
 		 form.setEnabled('passaporte', false);
-		 form.setEnabled('finalidade', false);
+		 form.setEnabled('outroFuncionario', false);
 		 
 		 
 		 //CAMPOS DA ABA AGENDA
@@ -173,6 +174,11 @@ function enableFields(form) {
 			 
 			 form.setEnabled('cotacaoHotel', true);
 			 form.setEnabled('cotacaoVoo', true);
+			 
+			 if (form.getValue('passageirofuncionario') =='sim'){
+				// form.setValue("embaixador","nao");
+			 }
+			 
 		 }
 		 
 		 		 

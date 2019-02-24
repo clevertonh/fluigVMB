@@ -295,6 +295,8 @@ function passageiroFuncionario() {
         //busca dados do funcionario
         dadosFuncionario();
 
+        document.getElementById("embaixadorN").click();
+        $("#embaixadorN").attr('checked', 'checked');
 
         document.getElementById("divdadospassageiro").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
@@ -307,10 +309,9 @@ function passageiroFuncionario() {
         alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
         document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("div_embaixador").style.display = "none";
-
-
+        document.getElementById("embaixadorN").click();
+        $("#embaixadorN").attr('checked', 'checked');
     }
-
 
     if (document.getElementById("solicitanteNfuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true &&
@@ -324,6 +325,8 @@ function passageiroFuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
+       // document.getElementById("embaixadorN").click();
+       // $("#embaixadorN").attr('checked', 'checked');
     
         document.getElementById("divOutroFun").style.display = "none";
          document.getElementById("divdadospassageiro").style.display = "none";
@@ -335,10 +338,11 @@ function passageiroFuncionario() {
     		 document.getElementById("passageirofuncionario").checked == true
     ){
     	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
-        document.getElementById("divOutroFun").style.display = "none";
+        document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("divdadospassageiro").style.display = "none";
         document.getElementById("div_embaixador").style.display = "none";
-    	
+        document.getElementById("embaixadorN").click();
+        $("#embaixadorN").attr('checked', 'checked');
     }
 
 
@@ -351,6 +355,8 @@ function passageiroNfuncionario() {
         document.getElementById("passageirofuncionario").checked == true) {
         $('#passageirofuncionarionao').attr("checked", false);
 
+        $('#embaixadorN').attr("checked", false);
+        
         document.getElementById("divdadospassageiro").style.display = "none";
         document.getElementById("div_embaixador").style.display = "none";
         
