@@ -30,7 +30,10 @@ function displayFields(form,customHTML){
      form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
      form.setVisibleById("btn_add_itemS", false);
-     form.setVisibleById("removeServico", false);
+    
+     form.setVisibleById("div_valorp", false);
+     form.setVisibleById("div_valorh", false);
+     
      
     
 	   
@@ -46,13 +49,15 @@ function displayFields(form,customHTML){
       	form.setVisibleById("div_justificativaremarcacao", false);    
       	form.setVisibleById("divJustificativaCancelamento", false);
       	form.setVisibleById("divDataSetAgenda", false);
-      	
+  
       	
     	//campos aba passageiro
     	form.setVisibleById("divdadospassageiro", false);
     	form.setVisibleById("divOutroFun", false);
         form.setVisibleById("div_embaixador", false);
-    	
+        form.setVisibleById("div_funcionario", false);
+        
+        
     	//campos aba agenda
     	form.setVisibleById("divDataSetAgenda", false);
     	
@@ -87,7 +92,7 @@ function displayFields(form,customHTML){
     	//remove botão de excluir item da agenda
     	//tomar cuidado porque essa função oculta o botao padrão de deletar do filho. Se um outro form for adicionado
     	//irá ocultar os botões dele tambem.
-		 form.setHideDeleteButton(true);        
+		 form.setHideDeleteButton(true);
 	       
 	        if (form.getValue("viagemplanejada") == "nao"){
 	        	form.setVisibleById("divDataSetAgenda", false);
@@ -227,7 +232,9 @@ function displayFields(form,customHTML){
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
 		form.setVisibleById("divTipormb", false);
 		form.setVisibleById("btn_add_itemS", true);
-		//form.setVisibleById("removeServico", true);               
+		
+
+		
     } 		
 	
 	else if (activity == OBTERPASSAGEM  ) {
@@ -247,14 +254,16 @@ function displayFields(form,customHTML){
             form.setVisibleById("div_aptodiarias", false);
             form.setVisibleById("div_dtPgto", false);
             
-            
+        	//form.setVisibleById("removeitem", false);
+          	//form.setVisibleById("removeServico", false);
             
             if (form.getValue("tipovoo") != "varios"){
 	            form.setVisibleById("divDatasHotel2", false);
 	            form.setVisibleById("divDatasHotel3", false);
             	
             }
-          
+              //so funciona quando é o botao padrão de deletar 
+            //form.setHideDeleteButton(false);
             
 	}
 	else if (activity == REGISTRARCANCELAMENTO ){

@@ -209,10 +209,12 @@ function validateForm(form) {
     	
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
+        	/*
+        	
         	if (form.getValue("valorVoo") == '' || form.getValue("valorVoo") == null || form.getValue("valorVoo") <= 0 ){
         		throw "Você precisa informar o valor total da viagem aerea.";	
         	}
-        	
+        	*/
         	if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
         		throw "Você não pode informar que comprou uma passagem aerea se o solicitante não pediu.";	
 	    		}

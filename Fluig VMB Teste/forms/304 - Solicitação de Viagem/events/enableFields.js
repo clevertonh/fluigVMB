@@ -408,7 +408,7 @@ function enableFields(form) {
 				    	    for (var i = 0; i < indexes.length; i++) {
 				     	        form.setEnabled("txtservico___"+ indexes[i], false);	
 				     	       	form.setEnabled("dtViagem___"+ indexes[i], false);
-				     	        form.setEnabled("Vvalores___"+ indexes[i], false);	
+				     	        form.setEnabled("valores___"+ indexes[i], false);	
 				     	      	form.setEnabled("codigoProduto___"+ indexes[i], false);	
 				     	     	
 			     	        

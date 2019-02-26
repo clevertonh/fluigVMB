@@ -52,7 +52,7 @@ $(document).ready(function() {
 	//set valor da atividade atual enviada pelo displayField para variavel global
 	//AtividadeAtual = ATIVIDADE;
 	//console.log("----ATIVIDADE ATUAL----- "+AtividadeAtual);
-	
+
 	if (ATIVIDADE == SOLICITACANCELAMENTO) {
         document.getElementById("cancelarpassagem").checked = false;
 
@@ -253,6 +253,8 @@ function solicitantePassageiro() {
 
         $('#passageirofuncionarionao').attr("checked", false);
         document.getElementById("passageirofuncionario").click();
+        
+        
         document.getElementById("divOutroFun").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "block";
 
@@ -265,6 +267,9 @@ function solicitantePassageiro() {
 function solicitanteNaoPass() {
     $('#passageirofuncionarionao').attr("checked", false);
     $('#passageirofuncionario').attr("checked", false);
+    $("#passageiroestrangeironao").attr('checked', false);
+    $("#passageiroestrangeiro").attr('checked', false);
+    
     $('#nomepassageiro').val("");
     $('#nomemae').val("");
     $('#rgpassageiro').val("");
@@ -276,6 +281,8 @@ function solicitanteNaoPass() {
     document.getElementById("divdadospassageiro").style.display = "none";
     document.getElementById("divOutroFun").style.display = "none";
 
+    
+    
 }
 
 function passageiroFuncionario() {
@@ -296,7 +303,7 @@ function passageiroFuncionario() {
         dadosFuncionario();
 
         document.getElementById("embaixadorN").click();
-        $("#embaixadorN").attr('checked', 'checked');
+       
 
         document.getElementById("divdadospassageiro").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
@@ -310,7 +317,7 @@ function passageiroFuncionario() {
         document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("div_embaixador").style.display = "none";
         document.getElementById("embaixadorN").click();
-        $("#embaixadorN").attr('checked', 'checked');
+     
     }
 
     if (document.getElementById("solicitanteNfuncionario").checked == true &&
@@ -325,10 +332,9 @@ function passageiroFuncionario() {
         $('#passaporte').val("");
         dataNasc.setDate(null);
         window["outroFuncionario"].clear();
-       // document.getElementById("embaixadorN").click();
-       // $("#embaixadorN").attr('checked', 'checked');
+
     
-        document.getElementById("divOutroFun").style.display = "none";
+         document.getElementById("divOutroFun").style.display = "none";
          document.getElementById("divdadospassageiro").style.display = "none";
     }
 
@@ -342,7 +348,7 @@ function passageiroFuncionario() {
         document.getElementById("divdadospassageiro").style.display = "none";
         document.getElementById("div_embaixador").style.display = "none";
         document.getElementById("embaixadorN").click();
-        $("#embaixadorN").attr('checked', 'checked');
+
     }
 
 
@@ -678,6 +684,7 @@ function clickNovaSolicitacao() {
 }
 
 function removeItens() {
+	
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO || ATIVIDADE == COMPRARPASSAGEM){
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
@@ -975,6 +982,14 @@ function setSelectedZoomItem(selectedItem) {
         $('#datanasc').val(selectedItem["DTNASC"]);
         $('#emailPassageiro').val(selectedItem["EMAIL_F"]);
 
+        if (selectedItem["EXTRANGEIRO"] == 'SIM'){        
+        	document.getElementById("passageiroestrangeiro").click();
+        }
+        else{
+        	document.getElementById("passageiroestrangeironao").click();
+        } 
+        
+        
         //mostra campos do passageiro
         var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
 
@@ -1496,6 +1511,13 @@ function dadosFuncionarioDataSet() {
         $('#cpfpassageiro').val(dataset.values[0]["CPF"]);
         $('#passaporte').val(dataset.values[0]["PASSAPORTE"]);
         dataNasc.setDate(dataset.values[0]["DTNASC"]);
+        
+        if (dataset.values[0]["EXTRANGEIRO"] == 'SIM'){        
+        	document.getElementById("passageiroestrangeiro").click();
+        }
+        else{
+        	document.getElementById("passageiroestrangeironao").click();
+        } 
 
     }
 
@@ -1537,6 +1559,20 @@ function carregaDados() {
                 $('#passaporte').val(infoUser.CPASSAP);
                 dataNasc.setDate(infoUser.CDATANASC);
 
+                
+                if (infoUser.CESTRAN == 'SIM'){
+                	document.getElementById("passageiroestrangeiro").click();
+  //              	 $("#passageiroestrangeiro").prop( "disabled", true );
+//                 	$("#passageiroestrangeironao").prop( "disabled", true );
+                }
+                else {
+                	document.getElementById("passageiroestrangeironao").click();
+//                	 $("#passageiroestrangeiro").prop( "disabled", true );
+//                 	$("#passageiroestrangeironao").prop( "disabled", true );
+                }
+                
+                
+                
                 loading.hide();
             }
         },
