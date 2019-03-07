@@ -8,9 +8,10 @@ function createDataset(fields, constraints, sortFields) {
 	 dataset.addColumn("PeriodoAte");
 	 dataset.addColumn("Atividade");
 
-		
+	 var codigo = 1509;
 		var constraints = new Array();
-		constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));			
+		constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
+		constraints.push(DatasetFactory.createConstraint("CodigoAgenda", codigo, codigo, ConstraintType.MUST));
 	    var datasetPrincipal = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
 	    
   	  for(var i = 0 ; i < datasetPrincipal.rowsCount; i++){

@@ -968,7 +968,9 @@ function setSelectedZoomItem(selectedItem) {
 
     if (campoZOOM == RATEIO) {    	 
        //CARREGAR ITENS DO RATEIO
-    	buscaItensRateio(selectedItem["Codigo"]);
+    	console.log("------CODIGO RATEIO-----");
+    	console.log(selectedItem["CODIGO"]);
+    	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
 
@@ -1021,6 +1023,7 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
+//Preciso criar um dataset customizado para retornar essa informação
 function buscaRemarcacao(item) {
     var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("solicitacao", item.solicitacao, item.solicitacao, ConstraintType.MUST));
@@ -1420,6 +1423,19 @@ function viagemPlanejadaN() {
 
 }
 
+//preciso criar um dataset para isso: é um dataset interno
+function buscaAtividades(item) {
+	var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("CODIGO", item.Codigo, item.Codigo, ConstraintType.MUST));
+    var dataset = DatasetFactory.getDataset("VM_ItensAgenda", null, constraints, null);
+    
+    if (dataset != null && dataset.values.length > 0) {
+        analisaItem(dataset.values);
+    }
+    
+}
+
+/*
 function buscaAtividades(item) {
     console.log("AGENDA DE VIAGEM: ");
     console.log(item.Codigo);
@@ -1443,6 +1459,7 @@ function buscaAtividades(item) {
     }
 
 }
+*/
 
 function analisaItem(itens) {
     for (var i in itens) {
@@ -1464,8 +1481,9 @@ function desejaHotel() {
     document.getElementById("div_tipoHotel").style.display = "block";
 }
 
+//Preciso criar um dataset customizado para retornar essa informação
 function AprovadorEmbaixador() {
-			 console.log("CARREGA APROVADOR");
+		 //console.log("CARREGA APROVADOR");
 		//SET CAMPOS DO APROVADOR
          var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("mail", "raissa_rossiter@wvi.org", "raissa_rossiter@wvi.org", ConstraintType.MUST));
@@ -1478,6 +1496,7 @@ function AprovadorEmbaixador() {
 
 }
 
+//Preciso criar um dataset customizado para retornar essa informação
 function carregaAprovador() {		
 		//analisar para descobrir como enviar parametro para um dataset customizado
 	    var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
@@ -1495,7 +1514,7 @@ function carregaAprovador() {
 	
 }
 
-////falta implementar dataset para receber email funcionario porque dataset customizado não aceita constraint
+//Preciso criar um dataset customizado para retornar essa informação
 function dadosFuncionarioDataSet() {
     var email = parent.WCMAPI.userEmail.toUpperCase();
 
@@ -1586,14 +1605,12 @@ function carregaDados() {
     });
 }
 
-
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
 
-	
 	var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("Rateio", rateio, rateio, ConstraintType.MUST));	
-	var dataset = DatasetFactory.getDataset("VM_ItensRateio", null, constraints, null);
+	var dataset = DatasetFactory.getDataset("ds_get_ItensRateio", null, constraints, null);
 	
 	adicionaItensRateio(dataset.values) ;
 
@@ -1603,42 +1620,44 @@ function adicionaItensRateio(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
-        window["txtcentrocusto___" + indice].setValue(itens[i].CentroCusto);
+        console.log("-------PREENCHE RATEIO----");
+        console.log(itens[i].CENTROCUSTO);
+        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);
         
-        if (itens[i].Projeto == null || itens[i].Projeto == "") {
+        if (itens[i].PROJETO == null || itens[i].PROJETO == "") {
             window["txtprojeto___" + indice].disable(true);
         } else {
-            window["txtprojeto___" + indice].setValue(itens[i].Projeto);
+            window["txtprojeto___" + indice].setValue(itens[i].PROJETO);
         }
         
-        window["txtatividade___" + indice].setValue(itens[i].Atividade);
+        window["txtatividade___" + indice].setValue(itens[i].ATIVIDADE);
         
-        if (itens[i].Categoria == null || itens[i].Categoria == "") {
+        if (itens[i].CATEGORIA == null || itens[i].CATEGORIA == "") {
             window["txtcategoria___" + indice].disable(true);
         } else {
-            window["txtcategoria___" + indice].setValue(itens[i].Categoria);
+            window["txtcategoria___" + indice].setValue(itens[i].CATEGORIA);
         }
 
-        if (itens[i].Fonte == null || itens[i].Fonte == "") {
+        if (itens[i].FONTE == null || itens[i].FONTE == "") {
             window["txtfontefinanciamento___" + indice].disable(true);
         } else {
-            window["txtfontefinanciamento___" + indice].setValue(itens[i].Fonte);
+            window["txtfontefinanciamento___" + indice].setValue(itens[i].FONTE);
         }
 
-        if (itens[i].Area == null || itens[i].Area == "") {
+        if (itens[i].AREA == null || itens[i].AREA == "") {
             window["txtareaestrategica___" + indice].disable(true);
         } else {
-            window["txtareaestrategica___" + indice].setValue(itens[i].Area);
+            window["txtareaestrategica___" + indice].setValue(itens[i].AREA);
         }
 
-        $("#alocacao___" + indice).val(itens[i].Alocacao);
-        $("#localizacao___" + indice).val(itens[i].Localizacao);
-        $("#contacontabil___" + indice).val(itens[i].Conta);
+        $("#alocacao___" + indice).val(itens[i].ALOCACAO);
+        $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
         
         //precisa trocar o ponto por virgula
         //$("#percentual___" + indice).val(itens[i].Percentual);
         
-        $("#rateio___" + indice).val(itens[i].Rateio);
+        $("#rateio___" + indice).val(itens[i].RATEIO);
 
     }
 }

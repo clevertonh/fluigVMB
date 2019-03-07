@@ -34,11 +34,10 @@ function createDataset(fields, constraints, sortFields) {
 	//verificar se usuario logado faz parte do grupo de hospitalidade
 	if(!existeGrupo(user)) {
 		//se ele for o solicitante
-		constraints.push(DatasetFactory.createConstraint("matriculasolicitante", user , user, ConstraintType.MUST));
+		constraints.push(DatasetFactory.createConstraint("matriculasolicitante", user , user, ConstraintType.SHOULD));
 		//se ele for o passageiro
 		var emailPass = emailPassageiro(user);
-		log.info("EMAIL PASSAGEIRO "+emailPass);
-		//constraints.push(DatasetFactory.createConstraint("emailPassageiro", emailPass, emailPass, ConstraintType.MUST));
+		//constraints.push(DatasetFactory.createConstraint("emailPassageiro", emailPass, emailPass, ConstraintType.SHOULD));
 		
 	}		
 		
@@ -51,8 +50,6 @@ function createDataset(fields, constraints, sortFields) {
     	 var hotelComprado = retornoDataset.getValue(x, "hotelComprado");	
     	 var documentId =  retornoDataset.getValue(x, "documentid");
     	 var empresa = retornoDataset.getValue(x, "companyid");
-    	 var emailPassageiro = retornoDataset.getValue(x, "emailPassageiro");
-    	 var matriculaSolicitante = retornoDataset.getValue(x, "matriculasolicitante");
     	 var formulario = retornoDataset.getValue(x, "metadata#parent_id")	         
 	    	
     	     		

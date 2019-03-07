@@ -15,8 +15,8 @@ function enableFields(form) {
     /*
      * Evento usado para desabilitar campos
     */
-
-	 form.setEnabled('viagemplanejada', false);		
+		//apenas teste
+	 //form.setEnabled('viagemplanejada', false);		
 	 form.setEnabled('cotacaoVoo', false);
 	 form.setEnabled('cotacaoHotel', false);
 	 form.setEnabled('aprovacao', false);

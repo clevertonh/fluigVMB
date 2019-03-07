@@ -1,12 +1,23 @@
+function defineStructure() {
+	addColumn("CODIGO");
+	addColumn("DESCRICAO");
+	
+	setKey(["CODIGO"]);
+	addIndex(["CODIGO"]);
+	
+}
+function onSync(lastSyncDate) {
+	
+}
+
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("Codigo");
-    dataset.addColumn("Descricao");
+	dataset.addColumn("CODIGO");
+    dataset.addColumn("DESCRICAO");
     
-    var filtro = getConstraints(constraints, "Descricao");
-    
-    //filtro ='20201';
+   // var filtro = getConstraints(constraints, "Descricao");
+   
 	var dados;       
     var webservice = '/RATEIO';
 	
@@ -34,14 +45,18 @@ function createDataset(fields, constraints, sortFields) {
 	    	        }   	
 	            vo = clientService.invoke(JSON.stringify(data));
 	            
-	        }
-	        else if (vo.getResult()== null || vo.getResult().isEmpty()){
-	        
-	        	throw new Exception("Retorno está vazio");
-	        }
+	            if (vo.getResult()== null || vo.getResult().isEmpty()){
+	    	        
+		        	throw new Exception("Retorno está vazio");
+		        }
+	   
+	            else{  
+	            	dados = vo.getResult();
+	            }
+	            
+	        }	      
    
-   else{
-//       log.info(vo.getResult());        
+   else{  
        dados = vo.getResult();
    }
    
@@ -54,9 +69,6 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			if(filtro != null && (objdata[i].CDESC.toUpperCase().indexOf(filtro.toUpperCase())  > -1 ) )
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESC]);
-			if(filtro == null)
 				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESC]);
 		}
 	}

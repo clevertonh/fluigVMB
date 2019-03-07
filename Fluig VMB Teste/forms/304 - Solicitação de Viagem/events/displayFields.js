@@ -27,7 +27,8 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("matriculasolicitante", false); 
 	 form.setVisibleById("cpfaprovador", false); 
 	 form.setVisibleById("prazoreembolso", false);
-     form.setVisibleById("divDataSetAgenda", false);
+	 //apenas teste, tem que ficar oculto
+     //form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
      form.setVisibleById("btn_add_itemS", false);
     
@@ -48,7 +49,7 @@ function displayFields(form,customHTML){
     	form.setVisibleById("selecaodeviagens", false);
       	form.setVisibleById("div_justificativaremarcacao", false);    
       	form.setVisibleById("divJustificativaCancelamento", false);
-      	form.setVisibleById("divDataSetAgenda", false);
+      
   
       	
     	//campos aba passageiro
@@ -59,6 +60,7 @@ function displayFields(form,customHTML){
         
         
     	//campos aba agenda
+    	//retirar depois do teste
     	form.setVisibleById("divDataSetAgenda", false);
     	
     	//campos aba voo

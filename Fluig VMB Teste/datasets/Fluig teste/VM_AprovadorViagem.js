@@ -9,7 +9,13 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("FUNCIONARIO_VMB");   
     
         
+    //verificar documentação sobre query param
+    //rest/webservice?parametro=+variavel
+    
+     //var user = getConstraints(constraints, field);
+    
 	 var user = getValue("WKUser");	
+	 
 	 var constraintUser   = new Array();
 	 constraintUser.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST));
 	 var datasetFuncionario = DatasetFactory.getDataset("colleague", null, constraintUser, null);
@@ -75,6 +81,19 @@ function createDataset(fields, constraints, sortFields) {
 		
     return dataset;
 
+    function getConstraints(constraints, field){
+    	if(constraints == null)
+    		return null;
+    	
+    	for(var i=0;i<constraints.length;i++){
+    		if(constraints[i].fieldName == field){
+    			return constraints[i].initialValue;
+    		}
+    	}
+    	
+    	return null;
+    }
+    
 }
 
 

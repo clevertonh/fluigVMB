@@ -1,48 +1,30 @@
-/*
 function createDataset(fields, constraints, sortFields) {
-	 var dataset = DatasetBuilder.newDataset();
 	
-	 dataset.addColumn("CODIGO");
-	 dataset.addColumn("DESCRICAO");
-	 dataset.addColumn("PRODUTO");
-	 
-	
-	 
-	 dataset.addRow(new Array("DVPSG001", "PASSAGEM NACIONAL", "DVPSG001-PASSAGEM NACIONAL"));
-	 dataset.addRow(new Array("DVPSG002", "PASSAGEM INTERNACIONAL", "DVPSG002-PASSAGEM INTERNACIONAL"));
-	 dataset.addRow(new Array("DVVIG002", "SEGURO VIAGEM", "DVVIG002-SEGURO VIAGEM"));
-	 dataset.addRow(new Array("DVVIG003", "VISTO", "DVVIG003-VISTO"));
-	 dataset.addRow(new Array("DVHOS001", "HOSPEDAGEM NACIONAL", "DVHOS001-HOSPEDAGEM NACIONAL"));
-	 dataset.addRow(new Array("DVHOS002", "HOSPEDAGEM INTERNACIONAL", "DVHOS002-HOSPEDAGEM INTERNACIONAL"));
-	 
-	   
-	    
-	  
-	  return dataset;
-
-}
-
-*/
-
-function createDataset(fields, constraints, sortFields) {
+	//retorna lista de funcionários
 	
 	var dataset = DatasetBuilder.newDataset();
-	 dataset.addColumn("CODIGO");
-	 dataset.addColumn("DESCRICAO");
-	 dataset.addColumn("PRODUTO");
-	 dataset.addColumn("FLUIG");
-          
+    dataset.addColumn("NOME");
+	dataset.addColumn("MAE");
+    dataset.addColumn("RG");
+    dataset.addColumn("CPF");
+    dataset.addColumn("PASSAPORTE");
+    dataset.addColumn("DTNASC");
+    dataset.addColumn("EMAIL_G");
+    dataset.addColumn("EMAIL_F");
+           
     var dados;
     var webservice;
+    var emailFuncionario = null;
     
-    //var filtro = getConstraints(constraints, "FLUIG");
-    var filtro = 1;
-    if (filtro!= null){
-    	webservice = '/PRODUTO/'+filtro +'';
+    //var emailFuncionario =  getConstraints(constraints, 'CEMAILFUN');
+    
+    if (emailFuncionario != null && emailFuncionario != ''){
+    	webservice = '/FUNCIONARIO/'+emailFuncionario +'';
     }
     else {
-    	webservice = '/PRODUTO/';
+    	webservice = '/FUNCIONARIO';
     }
+    
     
     
     try {
@@ -83,19 +65,12 @@ function createDataset(fields, constraints, sortFields) {
     	throw new Exception(err);
     }
     
-   
     var objdata;
     
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			if(filtro != null ){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG]);
-			
-			}
-			if(filtro == null){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG]);		
-			}		
+			dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN]);
 		}
 	}
 		
@@ -103,27 +78,20 @@ function createDataset(fields, constraints, sortFields) {
 
 }
 
-
-
-
 function getConstraints(constraints, field){
-	
 	if(constraints == null)
 		return null;
 	
 	for(var i=0;i<constraints.length;i++){
-		if(constraints[i].fieldName == field  ){		
-			log.info("--------------DATASET CENTRO DE CUSTO-------------");
-//			log.info("CAMPO: "+field);
-			log.info("CONSTRAINTS: "+constraints[i]);
-			log.info("INFORMACAO DIGITADA: "+constraints[i].initialValue);
-							
+		if(constraints[i].fieldName == field){
 			return constraints[i].initialValue;
 		}
 	}
 	
 	return null;
 }
+
+
 
 
 
