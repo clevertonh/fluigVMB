@@ -6,14 +6,14 @@ function onSync(lastSyncDate) {
 }
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
-		  
-	var Codigorateio =  getConstraints(constraints, 'RATEIO');
+	  
+	var getCentroCusto =  getConstraints(constraints, 'CENTRO_CUSTO');
 	
-	var codigo = DatasetFactory.createConstraint("RATEIO",Codigorateio,Codigorateio, ConstraintType.MUST);
-	var dataset = DatasetFactory.getDataset("VM_ItensRateio",null,new Array(codigo),null);
+	//var getCentroCusto = "20201";
+	var atividades = DatasetFactory.createConstraint("CENTRO_CUSTO",getCentroCusto,getCentroCusto, ConstraintType.MUST);
+	var dataset = DatasetFactory.getDataset("VM_Atividades",null,new Array(atividades),null);
 	
 	return dataset;
-	
 	
 }function onMobileSync(user) {
 

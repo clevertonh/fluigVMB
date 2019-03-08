@@ -19,17 +19,8 @@ function createDataset(fields, constraints, sortFields) {
 	 dataset.addColumn("FLUIG");
           
     var dados;
-    var webservice;
-    
-    //var filtro = getConstraints(constraints, "FLUIG");
-    var filtro = 1;
-    if (filtro!= null){
-    	webservice = '/PRODUTO/'+filtro +'';
-    }
-    else {
-    	webservice = '/PRODUTO/';
-    }
-    
+    var webservice = '/PRODUTO';
+     
     
     try {
     	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -75,13 +66,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			if(filtro != null ){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG]);
-			
-			}
-			if(filtro == null){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG]);		
-			}		
+			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG]);		
 		}
 	}
 		

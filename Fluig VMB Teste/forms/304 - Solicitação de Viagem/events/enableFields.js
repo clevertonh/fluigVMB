@@ -192,6 +192,7 @@ function enableFields(form) {
 		 		 
 		 //PROCESSO DE COMPRA DE PASSAGEM
 		 else  if (activityEnable == COMPRARPASSAGEM){
+			 			
 			 //CAMPOS APROVACAO 
 			 form.setEnabled('aprovacao', false);
 			 form.setEnabled('justificativaReprovacao', false);
@@ -438,8 +439,7 @@ function enableFields(form) {
 		log.info("---APROVADOR VIAGEM----"); 
 		log.info(emailSolicitante);
 		
-		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);
-		
+		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
 		 
 		  
@@ -448,4 +448,5 @@ function enableFields(form) {
 	}
 					
 
+	
 }

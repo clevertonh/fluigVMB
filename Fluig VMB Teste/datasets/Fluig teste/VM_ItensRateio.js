@@ -24,18 +24,18 @@ function onSync(lastSyncDate) {
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("Sequencial");
-	dataset.addColumn("Localizacao");
-	dataset.addColumn("CentroCusto");
-	dataset.addColumn("Categoria");
-	dataset.addColumn("Fonte");
-	dataset.addColumn("Atividade");	
-    dataset.addColumn("Area");
-    dataset.addColumn("Projeto");
-    dataset.addColumn("Alocacao");
-    dataset.addColumn("Conta");
-    dataset.addColumn("Rateio");
-    dataset.addColumn("Percentual");
+	dataset.addColumn("SEQUENCIAL");
+	dataset.addColumn("LOCALIZACAO");
+	dataset.addColumn("CENTROCUSTO");
+	dataset.addColumn("CATEGORIA");
+	dataset.addColumn("FONTE");
+	dataset.addColumn("ATIVIDADE");	
+    dataset.addColumn("AREA");
+    dataset.addColumn("PROJETO");
+    dataset.addColumn("ALOCACAO");
+    dataset.addColumn("CONTA");
+    dataset.addColumn("RATEIO");
+    dataset.addColumn("PERCENTUAL");
 
     
        	

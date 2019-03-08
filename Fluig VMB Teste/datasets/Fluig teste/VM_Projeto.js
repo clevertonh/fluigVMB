@@ -1,18 +1,23 @@
+/*
+ * APONTAR WEBSERVICE DO PROTHEUS PARA TABELA CV0 QUE POSSUI OS CODIGOS DE ENTIDADES DE PROJETO
+ * 
+ */
+
 function defineStructure() {
-	addColumn("Codigo");
-	addColumn("Descricao");
-	addColumn("Conta");
+	addColumn("CODIGO");
+	addColumn("DESCRICAO");
+	addColumn("CONTA");
 	
-	setKey(["Codigo"]);
-	addIndex(["Codigo"]);
+	setKey(["CODIGO"]);
+	addIndex(["CODIGO"]);
 }
 
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("Codigo");
-    dataset.addColumn("Descricao");
-    dataset.addColumn("Conta");
+	dataset.addColumn("CODIGO");
+    dataset.addColumn("DESCRICAO");
+    dataset.addColumn("CONTA");
     
    // var filtro = getConstraints(constraints, "Codigo");
 

@@ -1,18 +1,18 @@
 //NO PROTHEUS CORRESPONDE A CLASSE DE VALOR
 function defineStructure() {
-	addColumn("Codigo");
-	addColumn("Descricao");
+	addColumn("CODIGO");
+	addColumn("DESCRICAO");
 	
-	setKey(["Codigo"]);
-	addIndex(["Codigo"]);
+	setKey(["CODIGO"]);
+	addIndex(["CODIGO"]);
 }
 
 
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("Codigo");
-    dataset.addColumn("Descricao");
+	dataset.addColumn("CODIGO");
+    dataset.addColumn("DESCRICAO");
    
     var dados;
     

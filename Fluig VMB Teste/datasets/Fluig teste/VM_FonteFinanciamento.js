@@ -1,19 +1,21 @@
+function defineStructure() {
+	addColumn("PROJETO");
+	addColumn("CODIGO");
+	addColumn("DESCRICAO");
+	
+	setKey(["CODIGO"]);
+	addIndex(["CODIGO"]);
+}
+
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-    dataset.addColumn("Projeto");
-	dataset.addColumn("Codigo");
-    dataset.addColumn("Descricao");
+    dataset.addColumn("PROJETO");
+	dataset.addColumn("CODIGO");
+    dataset.addColumn("DESCRICAO");
     
-    var codigo = getConstraints(constraints, "Projeto");
-    var filtro = getConstraints(constraints, "Codigo","Descricao");
     var dados;
-    
-    codigo ='186412';
-    
-    
-    if (codigo!= null){   
-        var webservice = '/FONTE_FINANCIAMENTO/'+codigo +'';
+    var webservice = '/FONTE_FINANCIAMENTO';
     	
     	try {
        	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -62,18 +64,12 @@ function createDataset(fields, constraints, sortFields) {
         if(dados != null){
         	objdata = JSON.parse(dados);
     		for(var i in objdata){
-    			if (filtro != "" && filtro != null && filtro != undefined) {
-    				if(objdata[i].CCODIGO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CDESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 )
-        				dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO]);	
-    			} 
-    			else {
-        				dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO]);	
-    			}
+    			dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO]);	
     			
     		}
     	}
     		
-    }
+  
     
     
     return dataset;

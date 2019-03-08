@@ -6,19 +6,17 @@ function onSync(lastSyncDate) {
 }
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
-		  
-	var Codigorateio =  getConstraints(constraints, 'RATEIO');
+	  
+	var getServico =  getConstraints(constraints, 'FLUIG');
 	
-	var codigo = DatasetFactory.createConstraint("RATEIO",Codigorateio,Codigorateio, ConstraintType.MUST);
-	var dataset = DatasetFactory.getDataset("VM_ItensRateio",null,new Array(codigo),null);
+	//var getServico = "1";
+	var produtoViagem = DatasetFactory.createConstraint("FLUIG",getServico,getServico, ConstraintType.MUST);
+	var dataset = DatasetFactory.getDataset("VM_Produtos",null,new Array(produtoViagem),null);
 	
 	return dataset;
-	
-	
 }function onMobileSync(user) {
 
 }
-
 function getConstraints(constraints, field){
 	if(constraints == null)
 		return null;

@@ -300,12 +300,8 @@ function passageiroFuncionario() {
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true) {
         //busca dados do funcionario
-        //dadosFuncionario();
-    	dadosFuncionarioDataSet();
-    	
+    	dadosFuncionarioDataSet();	
         document.getElementById("embaixadorN").click();
-       
-
         document.getElementById("divdadospassageiro").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
     
@@ -344,8 +340,15 @@ function passageiroFuncionario() {
     		 document.getElementById("solicitanteNpassageiro").checked == true &&
     		 document.getElementById("passageirofuncionario").checked == true
     ){
-    	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
-        document.getElementById("divOutroFun").style.display = "block";
+//    	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
+        
+        FLUIGC.toast({
+            title: 'Orientação: ',
+            message: 'É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.',
+            type: 'info'
+        });
+    	
+    	document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("divdadospassageiro").style.display = "none";
         document.getElementById("div_embaixador").style.display = "none";
         document.getElementById("embaixadorN").click();
@@ -554,7 +557,14 @@ function ocultaCamposVooInternacional() {
 }
 
 function alertaTipoViagem() {
-    alert("Você deve selecionar o tipo de viagem primeiro!");
+  //  alert("Você deve selecionar o tipo de viagem primeiro!");
+    
+    FLUIGC.toast({
+        title: 'Atenção: ',
+        message: 'Você deve selecionar o tipo de viagem primeiro!',
+        type: 'warning'
+    });
+    
 }
 
 function clickTipoVoo0() {
@@ -869,7 +879,7 @@ function setSelectedZoomItem(selectedItem) {
 
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
-
+    	console.log("---ENTROU AQUI 1 ----");
         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -880,15 +890,17 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
-        if (selectedItem["Codigo"] != '99990') {
-
-            console.log(selectedItem["Codigo"]);
+        if (selectedItem["CODIGO"] != '99990') {
+        	console.log("---ENTROU AQUI 2 ----");
+            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
-            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + selectedItem["Codigo"]);
+            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
         } else {
+        	console.log("---ENTROU AQUI 3 ----");
             //desabilita zoom que não devem ser preenchidos
-            console.log(selectedItem["Codigo"]);
+        	console.log("---desabilita zoom que não devem ser preenchidos---");
+            console.log(selectedItem["CODIGO"]);
             window[PROJETO + "___" + linhaPagamento[1]].disable(false);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -900,9 +912,9 @@ function setSelectedZoomItem(selectedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-
+    	console.log("---ENTROU AQUI 4 ----");
         console.log("------PROJETO--------");
-        console.log(selectedItem["Codigo"]);
+        console.log(selectedItem["CODIGO"]);
 
         console.log("------CAMPO ATIVIDADE--------");
         console.log(ATIVIDADE + "___" + linhaPagamento[1]);
@@ -923,27 +935,30 @@ function setSelectedZoomItem(selectedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].disable(false);
 
         //ENVIA VALOR DE PROJETO COMO FILTRO PARA OS CAMPOS
-        reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + selectedItem["Codigo"]);
-        reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "Projeto," + selectedItem["Codigo"]);
-        reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "Projeto," + selectedItem["Codigo"]);
-        $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["Conta"]);
+        reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+        reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
+        reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
+        $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["Localizacao"]);
-        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["Alocacao"]);
+    	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
 
 
     if (campoZOOM == REMARCACAO) {
-
+    	console.log("---ENTROU AQUI 6 ----");
         console.log("-----REMARCACAO: PREENCHENDO CAMPOS AUTOMATICAMENTE--------");
 
         if (selectedItem["tipoviagem"] == "nacional") {
+        	console.log("---ENTROU AQUI 7 ----");
             document.getElementById("nacional").checked = true;
 
             document.getElementById("nacional").click();
         } else {
+        	console.log("---ENTROU AQUI 8 ----");
             $("#internacional").attr('checked', 'checked');
             //document.getElementById("internacional").checked = true;			 
             document.getElementById("internacional").click();
@@ -967,13 +982,15 @@ function setSelectedZoomItem(selectedItem) {
 
     }
 
-    if (campoZOOM == RATEIO) {    	 
+    if (campoZOOM == RATEIO) {    
+    	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
 
     //preenche dados do funcionario
     if (campoZOOM == FUNCIONARIO) {
+    	console.log("---ENTROU AQUI 10 ----");
         $('#nomepassageiro').val(selectedItem["NOME"]);
         $('#nomemae').val(selectedItem["MAE"]);
         $('#cpfpassageiro').val(selectedItem["CPF"]);
@@ -1011,12 +1028,14 @@ function setSelectedZoomItem(selectedItem) {
 
 
     if (linhaPagamento[0] == AGENDA) {
+    	console.log("---ENTROU AQUI 11 ----");
         buscaAtividades(selectedItem);
     }   
     
 
     if (linhaPagamento[0] == SERVICO) {
-    	$('#' + PRODUTO + "___" + linhaPagamento[1]).val(selectedItem["Codigo"]);
+    	console.log("---ENTROU AQUI 12 ----");    	
+    	$('#' + PRODUTO + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     }
     
 }
@@ -1096,6 +1115,8 @@ function adicionaLinhaServico() {
 		pickTime: false
 	});
 	
+	reloadZoomFilterValues("txtservico" + "___" + row, "FLUIG," + "1");
+
 }
 
 function removedZoomItem(removedItem) {
@@ -1108,10 +1129,12 @@ function removedZoomItem(removedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
+    var ITEMRATEIO ="rateio";
     var REMARCACAO = "dataset_solicitacaoviagem"; 
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
-   
+    var SERVICO = "txtservico";
+    var PRODUTO ="codigoProduto";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -1123,6 +1146,7 @@ function removedZoomItem(removedItem) {
 
 
     if (linhaPagamento[0] == CCUSTO) {
+    	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
@@ -1131,14 +1155,15 @@ function removedZoomItem(removedItem) {
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
         var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
         var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(RATEIO + "___" + linhaPagamento[1]).value = "";
+        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
 
         //limpa filtro
-        reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "Centro_Custo," + null);
+        console.log("---LIMPANDO FILTROS ZOOM----");
+        //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
 
 
         window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
@@ -1151,27 +1176,27 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-
+    	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
         var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
         var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(RATEIO + "___" + linhaPagamento[1]).value = "";
+        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
 
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-
+    	console.log("---REMOVEU AQUI 3----");
         var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
         var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(RATEIO + "___" + linhaPagamento[1]).value = "";
+        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
 
 
     }
 
     //REMOVE INFORMAÇÕES DE REMARCAÇÃO
     else if (campoZOOM == REMARCACAO) {
-
+    	console.log("---REMOVEU AQUI 4----");
         console.log("-----REMOVE INFORMAÇÕES DE REMARCAÇÃO AUTOMATICAMENTE--------");
         document.getElementById("nacional").checked = false;
         $("#internacional").attr('checked', false);
@@ -1187,13 +1212,14 @@ function removedZoomItem(removedItem) {
     }
 
     if (campoZOOM == AGENDA) {
+    	console.log("---REMOVEU AQUI 5----");
         removeItensAgenda();
 
     }
 
     if (campoZOOM == RATEIO) {
         //removeItensRateio();
-
+    	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -1205,6 +1231,7 @@ function removedZoomItem(removedItem) {
 
 
     if (campoZOOM == FUNCIONARIO) {
+    	console.log("---REMOVEU AQUI 7----");
         $('#nomepassageiro').val('');
         $('#nomemae').val('');
         $('#cpfpassageiro').val('');
@@ -1215,7 +1242,9 @@ function removedZoomItem(removedItem) {
     
     }
 
-
+    if (linhaPagamento[0] == SERVICO) {   	
+    	var codServico =  document.getElementById(PRODUTO + "___" + linhaPagamento[1]).value = "";
+    }
 
 
 }
@@ -1479,7 +1508,6 @@ function desejaHotel() {
     document.getElementById("div_tipoHotel").style.display = "block";
 }
 
-//Preciso criar um dataset customizado para retornar essa informação
 function AprovadorEmbaixador() {
 		 //console.log("CARREGA APROVADOR");
 		//SET CAMPOS DO APROVADOR
@@ -1494,10 +1522,13 @@ function AprovadorEmbaixador() {
 
 }
 
-//Preciso criar um dataset customizado para retornar essa informação
 function carregaAprovador() {		
-		//analisar para descobrir como enviar parametro para um dataset customizado
-	    var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
+	var email = parent.WCMAPI.userEmail.toUpperCase();
+		
+	var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("EMAIL_USUARIO", email, email, ConstraintType.MUST));
+	
+	    var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, constraints, null);
 	    if (dataset != null && dataset.values.length > 0) {
 
 	    	//SET CAMPOS DO APROVADOR
@@ -1512,7 +1543,6 @@ function carregaAprovador() {
 	
 }
 
-//Preciso criar um dataset customizado para retornar essa informação
 function dadosFuncionarioDataSet() {
     var email = parent.WCMAPI.userEmail.toUpperCase();
 
@@ -1540,74 +1570,11 @@ function dadosFuncionarioDataSet() {
 
 }
 
-//depois que o metodo dadosFuncionarioDataSet for implementado esse metado pode ser descartado
-function dadosFuncionario() {
-    if ((ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO)) {
-        var email = parent.WCMAPI.userEmail.toUpperCase();
-        site = 'http://189.80.206.136:8087/rest/FUNCIONARIO/' + email;
-        //site = 'http://189.80.206.136:8082/rest/FUNCIONARIO/'+ email;
-        carregaDados();
-    }
-}
-
-//carrega dados do funcionario quando ele clica em solicitante é passageiro e funcionario solicitante esta marcado como true
-function carregaDados() {
-    var loading = FLUIGC.loading("body", {
-        textMessage: "Carregando Dados, aguarde..."
-    });
-    loading.show();
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'applpication/json',
-        url: site,
-        success: function(data, status, xhr) {
-            if (data != null) {
-                console.log("Usuario Obtido");
-                console.log(data);
-                infoUser = data;
-                infoUser = infoUser[0];
-
-                window["outroFuncionario"].clear();
-                $('#nomepassageiro').val(infoUser.CNOME);
-                $('#nomemae').val(infoUser.CMAE);
-                $('#rgpassageiro').val(infoUser.CRG);
-                $('#cpfpassageiro').val(infoUser.CCPF);
-                $('#passaporte').val(infoUser.CPASSAP);
-                dataNasc.setDate(infoUser.CDATANASC);
-
-                
-                if (infoUser.CESTRAN == 'SIM'){
-                	document.getElementById("passageiroestrangeiro").click();
-  //              	 $("#passageiroestrangeiro").prop( "disabled", true );
-//                 	$("#passageiroestrangeironao").prop( "disabled", true );
-                }
-                else {
-                	document.getElementById("passageiroestrangeironao").click();
-//                	 $("#passageiroestrangeiro").prop( "disabled", true );
-//                 	$("#passageiroestrangeironao").prop( "disabled", true );
-                }
-                
-                
-                
-                loading.hide();
-            }
-        },
-        error: function(xhr, status, error) {
-            FLUIGC.toast({
-                message: "Erro ao carregar os dados, caso não esteja de férias, atualize a página ou tente novamente mais tarde",
-                type: "danger"
-            });
-            loading.hide();
-        }
-    });
-}
-
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
 
 	var constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("Rateio", rateio, rateio, ConstraintType.MUST));	
+    constraints.push(DatasetFactory.createConstraint("RATEIO", rateio, rateio, ConstraintType.MUST));	
 	var dataset = DatasetFactory.getDataset("ds_get_ItensRateio", null, constraints, null);
 	
 	adicionaItensRateio(dataset.values) ;

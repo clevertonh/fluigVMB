@@ -310,14 +310,14 @@
                                                                                     style="width: 200px !important;" type="zoom"
                                                                                     name="txtcentrocusto"
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Codigo',
+                                                                                    'displayKey':'CODIGO',
                                                                                     'datasetId':'VM_CentroCusto',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione um centro de custo',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo', 'standard':'true'},
-                                                                                    {'field':'Descricao', 'label':'Descricao'},
-                                                                                    {'field':'Tipo', 'label':'Tipo' , 'visible' : 'false'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO'},
+                                                                                    {'field':'TIPO', 'label':'TIPO' , 'visible' : 'false'}]
                                                                                     }" />
                                                                               </div>
                                                                            </td>
@@ -327,14 +327,14 @@
                                                                                     id="projeto" /> <input type="zoom"
                                                                                     name="txtprojeto"
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Codigo',
-                                                                                    'datasetId':'VM_projeto',
+                                                                                    'displayKey':'CODIGO',
+                                                                                    'datasetId':'VM_Projeto',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione um projeto',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo'},
-                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                                    {'field':'Conta', 'label':'Conta' , 'visible' : 'false'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO'},
+                                                                                    {'field':'CONTA', 'label':'CONTA' , 'visible' : 'false'}]
                                                                                     }" />
                                                                               </div>
                                                                            </td>
@@ -344,14 +344,14 @@
                                                                                     id="atividade" style="width: 200px;"/> <input type="zoom"
                                                                                     name="txtatividade" style="width: 200px;"
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Codigo',
-                                                                                    'datasetId':'VM_Atividades',
+                                                                                    'displayKey':'CODIGO',
+                                                                                    'datasetId':'ds_get_Atividade',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Escolha uma atividade',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo'},
-                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                                    {'field':'Centro_Custo', 'label':'Centro_Custo', 'visible' : 'false'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},                                                                                   
+                                                                                    {'field':'CENTRO_CUSTO', 'label':'CENTRO_CUSTO', 'visible' : 'false'}]
                                                                                     }" />
                                                                               </div>
                                                                            </td>
@@ -361,13 +361,13 @@
                                                                                     id="categoria" /> <input type="zoom"
                                                                                     name="txtcategoria"
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Codigo',
+                                                                                    'displayKey':'CODIGO',
                                                                                     'datasetId':'VM_Categoria',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione uma despesa',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo', 'standard':'true'},
-                                                                                    {'field':'Descricao', 'label':'Descricao'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO'}]
                                                                                     }" />
                                                                               </div>
                                                                            </td>
@@ -377,14 +377,14 @@
                                                                                     id="fontefinanciamento" /> <input
                                                                                     type="zoom" name="txtfontefinanciamento"
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Codigo',
+                                                                                    'displayKey':'CODIGO',
                                                                                     'datasetId':'VM_FonteFinanciamento',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione uma fonte de financ.',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo'},
-                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                                    {'field':'Projeto', 'label':'Projeto', 'visible':'false'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                                    {'field':'PROJETO', 'label':'PROJETO', 'visible':'false'}]
                                                                                     }" />
                                                                               </div>
                                                                            </td>
@@ -392,16 +392,15 @@
                                                                               <div class="form-group">
                                                                                  <input type="hidden" name="areaestrategica"
                                                                                     id="areaestrategica" /> <input type="zoom"
-                                                                                    name="txtareaestrategica"
+                                                                                    name="txtareaestrategica" 
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Codigo',
-                                                                                    'datasetId':'VM_AreaEstrategica',
+                                                                                    'displayKey':'CODIGO',
+                                                                                    'datasetId':'ds_get_AreaEstrategica',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione uma Area Estrategica',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo'},
-                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                                    {'field':'Projeto', 'label':'Projeto', 'visible':'false'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}]
                                                                                     }" />
                                                                               </div>
                                                                            </td>
@@ -1292,13 +1291,13 @@
                                                                                     id="servico" /> <input type="zoom"
                                                                                     name="txtservico"
                                                                                     data-zoom="{
-                                                                                    'displayKey':'Descricao',
-                                                                                    'datasetId':'VM_ServicosHospitalidade',
+                                                                                    'displayKey':'DESCRICAO',
+                                                                                    'datasetId':'ds_get_Produtos',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione um serviço',
                                                                                     'fields':[
-                                                                                    {'field':'Codigo', 'label':'Codigo'},
-                                                                                    {'field':'Descricao', 'label':'Descricao', 'standard':'true'}]
+                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}]
                                                                                     }" />
                                                                               </div>                                                            
                                                             </td>
