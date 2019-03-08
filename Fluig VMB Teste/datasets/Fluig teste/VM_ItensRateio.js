@@ -70,22 +70,13 @@ function createDataset(fields, constraints, sortFields) {
         
         var objdata;  
       //var Codigorateio =  getConstraints(constraints, 'RATEIO');
-        var Codigorateio = null;
+       // var Codigorateio = null;
         
         if(dados !== null){
            	objdata = JSON.parse(dados);
            		for(var i in objdata){
-           			
-           			if (Codigorateio !== null && Codigorateio != ''){
-           				if (Codigorateio == objdata[i].CRATEIO){
-           					dataset.addRow([objdata[i].CSEQ, objdata[i].CT0, objdata[i].CT1, objdata[i].CT2, objdata[i].CT4, objdata[i].CT6, objdata[i].CT7, objdata[i].CT8, objdata[i].CT9, objdata[i].CCONTA, objdata[i].CRATEIO, objdata[i].CPERCENT]);	
-           				}
-           			}
-           			else {
-           				dataset.addRow([objdata[i].CSEQ, objdata[i].CT0, objdata[i].CT1, objdata[i].CT2, objdata[i].CT4, objdata[i].CT6, objdata[i].CT7, objdata[i].CT8, objdata[i].CT9, objdata[i].CCONTA, objdata[i].CRATEIO, objdata[i].CPERCENT]);
-           			}
-           			
-           			
+          
+           			dataset.addRow([objdata[i].CSEQ, objdata[i].CT0, objdata[i].CT1, objdata[i].CT2, objdata[i].CT4, objdata[i].CT6, objdata[i].CT7, objdata[i].CT8, objdata[i].CT9, objdata[i].CCONTA, objdata[i].CRATEIO, objdata[i].CPERCENT]);
            			
         		}
           

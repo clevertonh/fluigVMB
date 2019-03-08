@@ -300,8 +300,9 @@ function passageiroFuncionario() {
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true) {
         //busca dados do funcionario
-        dadosFuncionario();
-
+        //dadosFuncionario();
+    	dadosFuncionarioDataSet();
+    	
         document.getElementById("embaixadorN").click();
        
 
@@ -967,9 +968,6 @@ function setSelectedZoomItem(selectedItem) {
     }
 
     if (campoZOOM == RATEIO) {    	 
-       //CARREGAR ITENS DO RATEIO
-    	console.log("------CODIGO RATEIO-----");
-    	console.log(selectedItem["CODIGO"]);
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
@@ -1519,8 +1517,8 @@ function dadosFuncionarioDataSet() {
     var email = parent.WCMAPI.userEmail.toUpperCase();
 
     var constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
-    var dataset = DatasetFactory.getDataset("VM_Funcionario", null, constraints, null);
+    constraints.push(DatasetFactory.createConstraint("EMAIL_F", email, email, ConstraintType.MUST));
+    var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
 
     if (dataset != null && dataset.values.length > 0) {
 
@@ -1619,9 +1617,7 @@ function buscaItensRateio(rateio) {
 function adicionaItensRateio(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
-
-        console.log("-------PREENCHE RATEIO----");
-        console.log(itens[i].CENTROCUSTO);
+        
         window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);
         
         if (itens[i].PROJETO == null || itens[i].PROJETO == "") {

@@ -1,3 +1,12 @@
+function defineStructure() {
+	addColumn("Codigo");
+	addColumn("Descricao");
+	addColumn("Conta");
+	
+	setKey(["Codigo"]);
+	addIndex(["Codigo"]);
+}
+
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
@@ -5,7 +14,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("Descricao");
     dataset.addColumn("Conta");
     
-    var filtro = getConstraints(constraints, "Codigo","Descricao","Conta");
+   // var filtro = getConstraints(constraints, "Codigo");
 
     var dados;
     
@@ -56,10 +65,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			if(filtro != null && (objdata[i].CCODIGO.indexOf(filtro)  > -1 || objdata[i].CDESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCONTA.toUpperCase().indexOf(filtro.toUpperCase())  > -1 ))
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CCONTA]);
-			if(filtro == null)
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CCONTA]);
+			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CCONTA]);
 		}
 	}
 		
@@ -67,12 +73,12 @@ function createDataset(fields, constraints, sortFields) {
 
 }
 
-function getConstraints(constraints, field, field2, field3){
+function getConstraints(constraints, field){
 	if(constraints == null)
 		return null;
 	
 	for(var i=0;i<constraints.length;i++){
-		if(constraints[i].fieldName == field || constraints[i].fieldName == field2 || constraints[i].fieldName == field3){
+		if(constraints[i].fieldName == field ){
 			return constraints[i].initialValue;
 		}
 	}

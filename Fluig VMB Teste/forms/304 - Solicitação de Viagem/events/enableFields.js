@@ -12,6 +12,10 @@ function enableFields(form) {
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
 	
+	
+	var nomeSolicitante;
+	var emailSolicitante;
+	
     /*
      * Evento usado para desabilitar campos
     */
@@ -56,22 +60,26 @@ function enableFields(form) {
 			 var constraints   = new Array();
 			 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
 			 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
-			 			 			 			 
-			 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
-			 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
+			
+			 nomeSolicitante = dataset.getValue(0, "colleagueName");
+			 emailSolicitante = dataset.getValue(0, "mail");
+			 
+			 form.setValue("solicitante",nomeSolicitante);
+			 form.setValue("emailSolicitante",emailSolicitante);
 			
 	
 			 var aprovador = usuarioAprovador();
+	
 			 if (aprovador!= null && aprovador != ""){
 				 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
 				 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
 				 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
 				 form.setValue("solicitanteFuncionario",aprovador.getValue(0, "FUNCIONARIO_VMB"));
 				 
-				 //form.setEnabled('solicitanteFuncionario', false);
+				
 			 }
-			 //log.info("Campo funcionario: "+form.getValue("solicitanteFuncionario"));
 			 
+			
 		 }
 		 
 	}
@@ -426,13 +434,18 @@ function enableFields(form) {
 	
 	
 
-	function usuarioAprovador(){	
-		 var dataset = DatasetFactory.getDataset("VM_AprovadorViagem", null, null, null);
+	function usuarioAprovador(){
+		log.info("---APROVADOR VIAGEM----"); 
+		log.info(emailSolicitante);
+		
+		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);
+		
+		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
 		 
+		  
+		  log.info(dataset.getValue(0, "EMAIL_APROVADOR"));
 		 return dataset;
 	}
 					
-
-
 
 }

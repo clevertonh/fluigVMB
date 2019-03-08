@@ -1,3 +1,18 @@
+function defineStructure() {
+	addColumn("NOME");
+	addColumn("MAE");
+	addColumn("RG");
+	addColumn("CPF");
+	addColumn("PASSAPORTE");
+	addColumn("DTNASC");
+	addColumn("EMAIL_G");
+	addColumn("EMAIL_F");
+	
+	setKey(["EMAIL_F"]);
+	addIndex(["EMAIL_F"]);
+}
+
+
 function createDataset(fields, constraints, sortFields) {
 	
 	//retorna lista de funcionários
@@ -13,17 +28,12 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("EMAIL_F");
            
     var dados;
-    var webservice;
-    var emailFuncionario = null;
+    var webservice = '/FUNCIONARIO';
+   // var emailFuncionario = null;
     
     //var emailFuncionario =  getConstraints(constraints, 'CEMAILFUN');
     
-    if (emailFuncionario != null && emailFuncionario != ''){
-    	webservice = '/FUNCIONARIO/'+emailFuncionario +'';
-    }
-    else {
-    	webservice = '/FUNCIONARIO';
-    }
+    
     
     
     

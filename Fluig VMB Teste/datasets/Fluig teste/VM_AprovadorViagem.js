@@ -1,3 +1,15 @@
+function defineStructure() {
+	addColumn("NOME");
+	addColumn("EMAIL_USUARIO");
+	addColumn("EMAIL_APROVADOR");
+	addColumn("MATRICULA_APROVADOR");
+	addColumn("DIRETOR");
+	addColumn("FUNCIONARIO_VMB");
+	
+	setKey(["EMAIL_USUARIO"]);
+	addIndex(["EMAIL_USUARIO"]);
+}
+
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
@@ -14,13 +26,7 @@ function createDataset(fields, constraints, sortFields) {
     
      //var user = getConstraints(constraints, field);
     
-	 var user = getValue("WKUser");	
-	 
-	 var constraintUser   = new Array();
-	 constraintUser.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST));
-	 var datasetFuncionario = DatasetFactory.getDataset("colleague", null, constraintUser, null);
-	 			 			 			 	 
-	 var emailFuncionario = datasetFuncionario.getValue(0, "mail"); 
+	
 	 
            
      var dados;
@@ -30,7 +36,7 @@ function createDataset(fields, constraints, sortFields) {
 	        var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'REST FLUIG',
-	            endpoint : '/APR_VIAGEM/'+ emailFuncionario,
+	            endpoint : '/APR_VIAGEM',
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
 	        }
@@ -42,7 +48,7 @@ function createDataset(fields, constraints, sortFields) {
 	            var data = {
 	    	            companyId : getValue("WKCompany") + '',
 	    	            serviceCode : 'REST FLUIG 2',
-	    	            endpoint : '/APR_VIAGEM/'+ emailFuncionario,
+	    	            endpoint : '/APR_VIAGEM',
 	    	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	    	            timeoutService: '100' // segundos	            	  
 	    	        }   	
@@ -69,7 +75,8 @@ function createDataset(fields, constraints, sortFields) {
     	objdata = JSON.parse(dados);
 		    	 
     	for(var i in objdata){
-    		var constraintsApr   = new Array();		    		
+    		
+      		var constraintsApr   = new Array();		    		
 			constraintsApr.push(DatasetFactory.createConstraint("mail", objdata[i].CEMAILG, objdata[i].CEMAILG, ConstraintType.MUST));    		
 			var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsApr, null);    	    		
 		
@@ -81,19 +88,21 @@ function createDataset(fields, constraints, sortFields) {
 		
     return dataset;
 
-    function getConstraints(constraints, field){
-    	if(constraints == null)
-    		return null;
-    	
-    	for(var i=0;i<constraints.length;i++){
-    		if(constraints[i].fieldName == field){
-    			return constraints[i].initialValue;
-    		}
-    	}
-    	
-    	return null;
-    }
+
     
+}
+
+function getConstraints(constraints, field){
+	if(constraints == null)
+		return null;
+	
+	for(var i=0;i<constraints.length;i++){
+		if(constraints[i].fieldName == field){
+			return constraints[i].initialValue;
+		}
+	}
+	
+	return null;
 }
 
 
