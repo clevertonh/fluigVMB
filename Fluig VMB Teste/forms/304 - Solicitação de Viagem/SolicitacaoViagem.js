@@ -1622,7 +1622,11 @@ function adicionaItensRateio(itens) {
 
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
-        $("#contacontabil___" + indice).val(itens[i].CONTA);
+        
+        
+        if (itens[i].CENTROCUSTO == '99990'){
+       	 $("#contacontabil___" + indice).val(itens[i].CONTA);
+        }
         
         //precisa trocar o ponto por virgula
         //$("#percentual___" + indice).val(itens[i].Percentual);
