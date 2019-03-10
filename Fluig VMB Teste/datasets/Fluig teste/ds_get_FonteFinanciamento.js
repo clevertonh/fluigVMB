@@ -18,3 +18,16 @@ function createDataset(fields, constraints, sortFields) {
 }function onMobileSync(user) {
 
 }
+
+function getConstraints(constraints, field){
+	if(constraints == null)
+		return null;
+	
+	for(var i=0;i<constraints.length;i++){
+		if(constraints[i].fieldName == field){
+			return constraints[i].initialValue;
+		}
+	}
+	
+	return null;
+}

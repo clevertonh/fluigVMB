@@ -7,7 +7,7 @@
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
       <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-      <link type="text/css" rel="stylesheet" href="solicitacaodeviagem.css" />
+      <link type="text/css" rel="stylesheet" href="SolicitacaoViagem.css" />
    </head>
    <body>
       <div class="container">
@@ -67,7 +67,7 @@
                                                       </span>
                                                       </a>
                                                    </li>
-                                                    
+                                                    <!-- 
                                                    <li role="presentation" class="disabled"><a
                                                       href="#step3" data-toggle="tab" aria-controls="step3"
                                                       role="tab" title="Agenda de viagem"> <span
@@ -76,7 +76,7 @@
                                                       </span>
                                                       </a>
                                                    </li>
-                                                    
+                                                     -->
                                                    <li role="presentation" class="disabled"><a
                                                       href="#step4" data-toggle="tab" aria-controls="step4"
                                                       role="tab" title="Voo"> <span class="round-tab">
@@ -378,12 +378,12 @@
                                                                                     type="zoom" name="txtfontefinanciamento"
                                                                                     data-zoom="{
                                                                                     'displayKey':'CODIGO',
-                                                                                    'datasetId':'VM_FonteFinanciamento',
+                                                                                    'datasetId':'ds_get_FonteFinanciamento',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione uma fonte de financ.',
                                                                                     'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                                    {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO'},
                                                                                     {'field':'PROJETO', 'label':'PROJETO', 'visible':'false'}]
                                                                                     }" />
                                                                               </div>
@@ -395,7 +395,7 @@
                                                                                     name="txtareaestrategica" 
                                                                                     data-zoom="{
                                                                                     'displayKey':'CODIGO',
-                                                                                    'datasetId':'ds_get_AreaEstrategica',
+                                                                                    'datasetId':'ds_get_AreaProjeto',
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione uma Area Estrategica',
                                                                                     'fields':[
@@ -1375,6 +1375,6 @@
             </form>
          </div>
       </div>
-      <script src="solicitacaodeviagem.js"></script>
+      <script src="SolicitacaoViagem.js"></script>
    </body>
 </html>

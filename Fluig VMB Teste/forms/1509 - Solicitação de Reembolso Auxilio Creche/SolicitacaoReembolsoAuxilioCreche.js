@@ -73,7 +73,7 @@ function adicionaItem(itens) {
         $("#localizacao___" + indice).val(itens[i].localizacao);
         $("#contacontabil___" + indice).val(itens[i].contacontabil);
         $("#percentual___" + indice).val(itens[i].percentual);
-
+        $("#rateio___" + indice).val(itens[i].rateio);
 
     }
 }
@@ -97,6 +97,7 @@ function removedZoomItem(removedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
+    var ITEMRATEIO ="rateio";
     var FUNCIONARIO = "Funcionario";
 
 
@@ -118,13 +119,13 @@ function removedZoomItem(removedItem) {
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
         var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
         var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-
+        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
         //limpa filtro
-        reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "Centro_Custo," + null);
-        reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "Centro_Custo," + null);
+        //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+        //reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
 
 
         window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
@@ -143,22 +144,27 @@ function removedZoomItem(removedItem) {
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
         var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
         var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-
+        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
 
         var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
         var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-
+        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
 
     }
 
 
-    //GRAVA CODIGO DO RATEIO EM CAMPO OCULTO 
     if (campoZOOM == RATEIO) {
-        removeItens();
-        $("#codigorateio").val('');
-        	
+        //removeItensRateio();
+    	console.log("---REMOVEU AQUI 6----");
+	    var linhas = $("#tbodyItens tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);	
+	        
+	    }
     }
     
     if (campoZOOM == FUNCIONARIO){
@@ -219,16 +225,16 @@ function setSelectedZoomItem(selectedItem) {
       $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
       $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
-      if (selectedItem["Codigo"] != '99990') {
+      if (selectedItem["CODIGO"] != '99990') {
 
           console.log(selectedItem["Codigo"]);
           window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
-          reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + selectedItem["Codigo"]);
+          reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
       } 
       else {
           //desabilita zoom que não devem ser preenchidos
-          console.log(selectedItem["Codigo"]);
+          console.log(selectedItem["CODIGO"]);
           window[PROJETO + "___" + linhaPagamento[1]].disable(false);
           window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -243,7 +249,7 @@ function setSelectedZoomItem(selectedItem) {
   else if (linhaPagamento[0] == PROJETO) {
 
       console.log("------PROJETO--------");
-      console.log(selectedItem["Codigo"]);
+      console.log(selectedItem["CODIGO"]);
 
       console.log("------CAMPO ATIVIDADE--------");
       console.log(ATIVIDADE + "___" + linhaPagamento[1]);
@@ -264,15 +270,15 @@ function setSelectedZoomItem(selectedItem) {
       window[CATEGORIA + "___" + linhaPagamento[1]].disable(false);
 
       //ENVIA VALOR DE PROJETO COMO FILTRO PARA OS CAMPOS
-      reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "Centro_Custo," + selectedItem["Codigo"]);
-      reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "Projeto," + selectedItem["Codigo"]);
-      reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "Projeto," + selectedItem["Codigo"]);
-      $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["Conta"]);
+      reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+      reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
+      reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
+      $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
   } 
   else if (linhaPagamento[0] == ATIVIDADE) {
-      $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["Localizacao"]);
-      $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["Alocacao"]);
+      $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
+      $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
   }
   
@@ -284,17 +290,71 @@ function setSelectedZoomItem(selectedItem) {
 
 
  
-  //GRAVA CODIGO DO RATEIO EM CAMPO OCULTO 
-  if (campoZOOM == RATEIO) {
-      removeItens();
-      $("#codigorateio").val(selectedItem["Codigo"]);
-
+  if (campoZOOM == RATEIO) {    
+  	console.log("---ENTROU AQUI 9 ----");
+  	buscaItensRateio(selectedItem["CODIGO"]);
+  	
   }
 
   
 
       
   
+}
+
+//carrega itens do rateio para informações de pagamento
+function buscaItensRateio(rateio) {
+
+	var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("RATEIO", rateio, rateio, ConstraintType.MUST));	
+	var dataset = DatasetFactory.getDataset("ds_get_ItensRateio", null, constraints, null);
+	
+	adicionaItensRateio(dataset.values) ;
+
+}
+
+function adicionaItensRateio(itens) {
+    for (var i in itens) {
+        var indice = wdkAddChild("tableItens");
+        
+        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);
+        
+        if (itens[i].PROJETO == null || itens[i].PROJETO == "") {
+            window["txtprojeto___" + indice].disable(true);
+        } else {
+            window["txtprojeto___" + indice].setValue(itens[i].PROJETO);
+        }
+        
+        window["txtatividade___" + indice].setValue(itens[i].ATIVIDADE);
+        
+        if (itens[i].CATEGORIA == null || itens[i].CATEGORIA == "") {
+            window["txtcategoria___" + indice].disable(true);
+        } else {
+            window["txtcategoria___" + indice].setValue(itens[i].CATEGORIA);
+        }
+
+        if (itens[i].FONTE == null || itens[i].FONTE == "") {
+            window["txtfontefinanciamento___" + indice].disable(true);
+        } else {
+            window["txtfontefinanciamento___" + indice].setValue(itens[i].FONTE);
+        }
+
+        if (itens[i].AREA == null || itens[i].AREA == "") {
+            window["txtareaestrategica___" + indice].disable(true);
+        } else {
+            window["txtareaestrategica___" + indice].setValue(itens[i].AREA);
+        }
+
+        $("#alocacao___" + indice).val(itens[i].ALOCACAO);
+        $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
+        
+        //precisa trocar o ponto por virgula
+        //$("#percentual___" + indice).val(itens[i].Percentual);
+        
+        $("#rateio___" + indice).val(itens[i].RATEIO);
+
+    }
 }
 
 function justificativaValidacao(){

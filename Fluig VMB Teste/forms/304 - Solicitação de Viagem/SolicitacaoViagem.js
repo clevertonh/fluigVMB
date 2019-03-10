@@ -310,7 +310,10 @@ function passageiroFuncionario() {
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitanteNpassageiro").checked == true &&
         document.getElementById("passageirofuncionario").checked == true) {
-        alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
+        
+    	//alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
+    	alertaFuncionario();
+        
         document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("div_embaixador").style.display = "none";
         document.getElementById("embaixadorN").click();
@@ -342,11 +345,7 @@ function passageiroFuncionario() {
     ){
 //    	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
         
-        FLUIGC.toast({
-            title: 'Orientação: ',
-            message: 'É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.',
-            type: 'info'
-        });
+    	alertaFuncionario();
     	
     	document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("divdadospassageiro").style.display = "none";
@@ -356,6 +355,14 @@ function passageiroFuncionario() {
     }
 
 
+}
+
+function alertaFuncionario(){
+    FLUIGC.toast({
+        title: 'Orientação: ',
+        message: 'É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.',
+        type: 'info'
+    });
 }
 
 function passageiroNfuncionario() {	 
@@ -934,7 +941,7 @@ function setSelectedZoomItem(selectedItem) {
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(false);
         window[CATEGORIA + "___" + linhaPagamento[1]].disable(false);
 
-        //ENVIA VALOR DE PROJETO COMO FILTRO PARA OS CAMPOS
+        //ENVIAR VALOR DE PROJETO COMO FILTRO PARA OS CAMPOS
         reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
