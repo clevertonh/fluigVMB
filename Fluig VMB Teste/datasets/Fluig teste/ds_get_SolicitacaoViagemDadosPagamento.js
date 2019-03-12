@@ -2,6 +2,9 @@ function createDataset(fields, constraints, sortFields) {
 	//var getSolicitacao =  getConstraints(constraints, 'metadata#id');
 	var getSolicitacao = "1579";
 	
+	log.info("----RETORNO DATASET---");
+	log.dir(getSolicitacao);
+	
     var c1 = DatasetFactory.createConstraint("metadata#id", getSolicitacao, getSolicitacao, ConstraintType.MUST);    
     var dataset = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c1), null);
     

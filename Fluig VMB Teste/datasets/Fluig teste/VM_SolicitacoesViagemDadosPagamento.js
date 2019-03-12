@@ -13,6 +13,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("LOCALIZACAO");
     dataset.addColumn("CONTA_CONTABIL");
     dataset.addColumn("PERCENTUAL");
+    dataset.addColumn("SOLICITACAO");
    
     
     //dataset interno
@@ -24,6 +25,7 @@ function createDataset(fields, constraints, sortFields) {
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");
+            	var solicitacao = datasetPrincipal.getValue(a, "solicitacao");
             	var formulario = datasetPrincipal.getValue(a, "metadata#parent_id")
                 var documentVersion = datasetPrincipal.getValue(a, "metadata#version");
             	
@@ -57,10 +59,13 @@ function createDataset(fields, constraints, sortFields) {
                                 datasetFilhos.getValue(j, "alocacao"),
                                 datasetFilhos.getValue(j, "localizacao"),
                                 datasetFilhos.getValue(j, "contacontabil"),
-                                datasetFilhos.getValue(j, "percentual")
+                                datasetFilhos.getValue(j, "percentual"),
+                                solicitacao
                         ));
                     }
-                 }
+                //retorna dataset 
+                 return dataset;
+            	}
           
             	
             }
@@ -71,6 +76,7 @@ function createDataset(fields, constraints, sortFields) {
     		var documentId = datasetPrincipal.getValue(a, "metadata#id");
         	var formulario = datasetPrincipal.getValue(a, "metadata#parent_id")
             var documentVersion = datasetPrincipal.getValue(a, "metadata#version");
+        	var solicitacao = datasetPrincipal.getValue(a, "solicitacao");
         	
        		
         	//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
@@ -95,7 +101,8 @@ function createDataset(fields, constraints, sortFields) {
                         datasetFilhos.getValue(j, "alocacao"),
                         datasetFilhos.getValue(j, "localizacao"),
                         datasetFilhos.getValue(j, "contacontabil"),
-                        datasetFilhos.getValue(j, "percentual")
+                        datasetFilhos.getValue(j, "percentual"),
+                        solicitacao
                 ));
             }
         	
