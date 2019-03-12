@@ -1,20 +1,20 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("metadata#id", "1579", "1579", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("solicitacao", "1570", "1570", ConstraintType.MUST));     
 	 
 	 var itemServico = new Array();
 	 
 	 itemServico.push({ 
 			produto: ''+"DVPSG001" +'', 
-			quantidade: 1, 
+			quantidade: 2, 
 			valor: '' + "200" + ''
 				});
 	
 	 itemServico.push({ 
 			produto: ''+"DVPSG002" +'', 
 			quantidade: 1, 
-			valor: '' + "200" + ''
+			valor: '' + "10000" + ''
 				});
 	  
 	for (var a=0; a<itemServico.length; a++){

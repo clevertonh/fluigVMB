@@ -1,15 +1,15 @@
-function defineStructure() {
-
-}
-function onSync(lastSyncDate) {
-
-}
 function createDataset(fields, constraints, sortFields) {
+	var dataset = DatasetBuilder.newDataset();
+	dataset.addColumn("RETORNO");
+	
 	var valorDiarias;
-	 var dataVencimento;
+	var dataVencimento;
+	var aRateio = new Array();
 	 
 	 if(constraints !== null && constraints.length){
-	    	if(constraints[0].constraintType==ConstraintType.MUST) {
+		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
+		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "solicitacao") {
+			// log.info("entrando aqui 1");
 	    		var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
 	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
@@ -17,27 +17,41 @@ function createDataset(fields, constraints, sortFields) {
 	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
-	    		 try {
-						//chama função que monta array de objetos dos itens do rateio
-						 aRateio = preencheRateio(itensSolicitacao);
-					 }
-					 catch (erro){
-						 dataset.addRow(["ERRO AO RECUPERAR RATEIO"]);
-					 }
-				
+
+				 try {
+					//chama função que monta array de objetos dos itens do rateio
+					 aRateio = preencheRateio(itensSolicitacao);
+				 }
+				 catch (erro){
+					 dataset.addRow(["ERRO AO RECUPERAR RATEIO"]);
+					 return dataset;
+				 }
+			  			
+				 
+				 if(aRateio === null || aRateio == ""){
+					 dataset.addRow(new Array("NÃO FOI POSSÍVEL MONTAR AS INFORMAÇÕES DE PAGAMENTO"));
+					 return dataset;
+					 
+				 }
+					 //atribui constraints recebida de valor e datavencimento a variaveis
 					 for (var a=0; a<constraints.length;a++){						
 						 if (constraints[a].fieldName == "valorDiarias" ){
 							 valorDiarias = constraints[a].initialValue;
 						 }
 						 else if (constraints[a].fieldName == "dataVencimento" ){
 							 dataVencimento = constraints[a].initialValue;
+							 
+							 
 						 }
 					 }
-					 
+					 //log.info("entrando aqui 2");
+					// log.dir(constraints);
+				
 					 try {
-				    		var clientService = fluigAPI.getAuthorizeClientService();
-					        var data = {					            
-					            serviceCode : 'REST FLUIG',
+						 var clientService = fluigAPI.getAuthorizeClientService();
+					        var data = {
+					        		 companyId : 1 + '',
+					        	serviceCode : 'REST FLUIG',
 					            endpoint : '/F_FINA050',
 					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 					            timeoutService: '100', // segundos
@@ -48,24 +62,30 @@ function createDataset(fields, constraints, sortFields) {
 					                valorTotal : '' + valorDiarias + '' ,
 					                datasolicitacao :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
 					                emailsolicitante : '' + solicitacao.getValue(0,"emailsolicitante") +'',
-					                cpf				: '' + cpf +'',
+					                cpf				: '' + solicitacao.getValue(0,"cpfpassageiro") +'',
 					                dataVencimento  : '' + dataVencimento + '',
 					        		rateioDigitado: aRateio 
 					            },
+					      
+					            
+					            
 					          options : {
 					             encoding : 'UTF-8',
 					             mediaType: 'application/json'
 					          }
 					        }
 				         
-				     	        var vo = clientService.invoke(JSON.stringify(data));
+					        //log.info("---RETORNO PARAMETROS---");
+					        //log.dir(params);
+					        
+					        var vo = clientService.invoke(JSON.stringify(data));
 				         
 					        if(vo.getResult()== null || vo.getResult().isEmpty()){
 					        	log.info("RETORNO ESTA VAZIO");
 					        	dataset.addRow(new Array("RETORNO VAZIO"));
 					        }
-					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-					        	log.info(JSON.parse(vo.getResult()).errorMessage);
+					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){					        	
+					        	//log.info(JSON.parse(vo.getResult()).errorMessage);
 					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 					        }
 					        else {	            
@@ -78,8 +98,11 @@ function createDataset(fields, constraints, sortFields) {
 				    		   //throw err;
 							//log.info(err);
 							dataset.addRow([err.message]);
+				    		//dataset.addRow(new Array("entrando aqui"));
 							
 				        }	 
+				    	
+				    
 					 
 					 
 	    	}
@@ -87,9 +110,9 @@ function createDataset(fields, constraints, sortFields) {
 	 }
 	
     	
-    	
+	 //dataset.addRow(new Array("RETORNO VAZIO"));
  
-	
+		return dataset;
 	
 
 }
@@ -97,7 +120,7 @@ function createDataset(fields, constraints, sortFields) {
 function preencheRateio(solicitacao){
 	   var rateio = new Array();
 	   
-	   for (var i=0; i < solicitacao.length ; i++){
+	   for (var i=0; i < solicitacao.rowsCount ; i++){
 			var obj = {
 					ccusto : '' ,
 					projeto :'' ,
@@ -109,7 +132,8 @@ function preencheRateio(solicitacao){
 					conta : '' ,
 					localizacao :''
 					
-			};		    				 
+			};		
+			
 			obj.ccusto =  '' + solicitacao.getValue(i, "CENTRO_CUSTO") +'';	
 			obj.atividade = '' + solicitacao.getValue(i, "ATIVIDADE") +'';	
 			obj.alocacao = '' + solicitacao.getValue(i, "ALOCACAO") +'';
@@ -133,7 +157,9 @@ function preencheRateio(solicitacao){
 			}
 			
 			rateio[i] = obj;	
-				
+			
+			//log.info("--retorno rateio--");
+			//log.dir(rateio[i]);
 	   }
 	 			   
 	   return rateio;

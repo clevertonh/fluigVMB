@@ -62,13 +62,14 @@ function beforeStateEntry(sequenceId){
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
  		  		if (aItemServico.length >0){ 		    					     	    		     	   
  		  			var constraint = new Array();		  			
- 		  			constraint.push(DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
+ 		  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
  		  			  
  		  			//Cria constraints para enviar produtos e valores
  		  			for (var a=0; a<aItemServico.length; a++){
  		  				constraint.push(DatasetFactory.createConstraint("produto", aItemServico[a].produto, aItemServico[a].produto, ConstraintType.MUST));  
  		  				constraint.push(DatasetFactory.createConstraint("quantidade", aItemServico[a].quantidade, aItemServico[a].quantidade, ConstraintType.MUST));
- 		  				constraint.push(DatasetFactory.createConstraint("valor", aItemServico[a].valor, aItemServico[a].valor, ConstraintType.MUST)); 
+ 		  				constraint.push(DatasetFactory.createConstraint("valor", aItemServico[a].valor, aItemServico[a].valor, ConstraintType.MUST));
+ 		  				constraint.push(DatasetFactory.createConstraint("dataViagem", aItemServico[a].dtviagem, aItemServico[a].dtviagem, ConstraintType.MUST));
  		  			}
  		  			
  		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110", null, constraint, null);
@@ -81,7 +82,7 @@ function beforeStateEntry(sequenceId){
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
 		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {		   
 			   var constraint = new Array();		  			
-	  			constraint.push(DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
+	  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
 	  			constraint.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 	  			constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	  			
@@ -107,11 +108,13 @@ function beforeStateEntry(sequenceId){
 			        var seq   = id.split("___");
 			        var codproduto = campos.get("codigoProduto___" + seq[1]);
 			        var valor = campos.get("valores___" + seq[1]);
+			        var dataviagem = campos.get("dtViagem___" + seq[1]);
 			        
 			        var itemServico = { 
 							produto: ''+codproduto +'', 
 							quantidade: 1, 				
-							valor: '' + valor + ''
+							valor: '' + valor + '',
+							dtviagem: ''+ dataviagem +''
 								};	
 					
 				   aItemServico.push(itemServico);
