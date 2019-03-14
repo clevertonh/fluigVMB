@@ -1,6 +1,7 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
 	var APROVACAO = 5;
+	var REGISTRAR_PGTO = 16; 
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -32,10 +33,11 @@ function enableFields(form){
 		 //form.setEnabled('dtSaida', false);
 		 
 		 
-		 
 	}
 	else if (activity == APROVACAO){
 		 form.setEnabled('vl_diarias', false);
+		 
+	       
 	}
 	
 
@@ -58,5 +60,8 @@ function enableFields(form){
 		 log.info(dataset.getValue(0, "EMAIL_G"));
 		 return dataset;
 	}
+
+
+
 }
 

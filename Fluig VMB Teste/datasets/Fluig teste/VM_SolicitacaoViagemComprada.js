@@ -28,19 +28,6 @@ function createDataset(fields, constraints, sortFields) {
 	constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("cancelarpassagem", "" , "", ConstraintType.MUST));
-	//constraints.push(DatasetFactory.createConstraint("solicitacao", "" , "", ConstraintType.MUST_NOT));
-	
-		
-	//verificar se usuario logado faz parte do grupo de hospitalidade
-	if(!existeGrupo(user)) {
-		//se ele for o solicitante
-		constraints.push(DatasetFactory.createConstraint("matriculasolicitante", user , user, ConstraintType.SHOULD));
-		//se ele for o passageiro
-		//var emailPass = emailPassageiro(user);
-		//constraints.push(DatasetFactory.createConstraint("emailPassageiro", emailPass, emailPass, ConstraintType.SHOULD));
-		
-	}		
-		
 	
     var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
     
@@ -48,40 +35,77 @@ function createDataset(fields, constraints, sortFields) {
     	 var atendida = retornoDataset.getValue(x, "atendida");	
     	 var vooComprado = retornoDataset.getValue(x, "vooComprado");	
     	 var hotelComprado = retornoDataset.getValue(x, "hotelComprado");	
-    	 var documentId =  retornoDataset.getValue(x, "documentid");
+    	 
+    	    	 
+    	 var passageiro = retornoDataset.getValue(x, "emailPassageiro");
+    	 var matricula = retornoDataset.getValue(x, "matriculasolicitante");
+    	 
     	 var empresa = retornoDataset.getValue(x, "companyid");
-    	 var formulario = retornoDataset.getValue(x, "metadata#parent_id")	         
+    	 var carddocumentid =  retornoDataset.getValue(x, "metadata#id");
+    	 var cardindexdocumentid = retornoDataset.getValue(x, "metadata#card_index_id")
 	    	
     	     		
     	 if (vooComprado =='sim' || hotelComprado =='sim' || atendida =="atendida"){
-    		 /*
-    		 var constraintsHistorico  = new Array();	    	 
-    		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", formulario , formulario, ConstraintType.MUST));
-    		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", documentId , documentId, ConstraintType.MUST));	    	
-    		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
-	    	   	   	 
-	         var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
-	         var numFormulario = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-	         var dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
-	        */ 
-     		dataset.addRow([formulario,
-     		                retornoDataset.getValue(x,"solicitante"),
-     		                retornoDataset.getValue(x,"nomepassageiro"),
-     		//                dataSolicitacao.toString(),
-     		                retornoDataset.getValue(x,"tipoviagem"),
-     		                retornoDataset.getValue(x,"finalidade"),    		                
-     		                retornoDataset.getValue(x,"solicitantepassageiro"),
-     		                retornoDataset.getValue(x,"passageirofuncionarionao"),
-     		                retornoDataset.getValue(x,"nomemae"),
-     		                retornoDataset.getValue(x,"datanasc"),
-     		                retornoDataset.getValue(x,"cpfpassageiro"),
-     		                retornoDataset.getValue(x,"rgpassageiro"),    		               
-     		                retornoDataset.getValue(x,"passaporte"),
-     		                retornoDataset.getValue(x,"tipoPagamento"),
-     		                retornoDataset.getValue(x,"rateioconfigurado"),
-     		                retornoDataset.getValue(x,"codigorateio"),
-     		                documentId
-     		                ]);
+    		
+    		 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa);
+    		 
+    		 var numSolicitacao;
+	         var dataSolicitacao;
+	         if (historicoFormulario.rowsCount > 0){
+	        	 numSolicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+	   	         dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
+	   	         
+	   	      var emailPass = emailPassageiro(user);
+	    		 var emailpassageiro = emailPass.toUpperCase();
+	    			
+	    		//verificar se usuario logado faz parte do grupo de hospitalidade. Se não fizer parte entra no if
+	    		 if(!existeGrupo(user)){
+	    			 if (passageiro == emailpassageiro || matricula == user){
+	    				 dataset.addRow([numSolicitacao,
+	     	     		                retornoDataset.getValue(x,"solicitante"),
+	     	     		                retornoDataset.getValue(x,"nomepassageiro"),
+	     	     		                retornoDataset.getValue(x,"tipoviagem"),
+	     	     		                retornoDataset.getValue(x,"finalidade"),    		                
+	     	     		                retornoDataset.getValue(x,"solicitantepassageiro"),
+	     	     		                retornoDataset.getValue(x,"passageirofuncionarionao"),
+	     	     		                retornoDataset.getValue(x,"nomemae"),
+	     	     		                retornoDataset.getValue(x,"datanasc"),
+	     	     		                retornoDataset.getValue(x,"cpfpassageiro"),
+	     	     		                retornoDataset.getValue(x,"rgpassageiro"),    		               
+	     	     		                retornoDataset.getValue(x,"passaporte"),
+	     	     		                retornoDataset.getValue(x,"tipoPagamento"),
+	     	     		                retornoDataset.getValue(x,"rateioconfigurado"),
+	     	     		                retornoDataset.getValue(x,"codigorateio"),
+	     	     		                retornoDataset.getValue(x, "documentid")
+	     	     		                ]);
+	    			 }
+	    		 }
+	    		 else {
+	    			 dataset.addRow([numSolicitacao,
+	    	     		                retornoDataset.getValue(x,"solicitante"),
+	    	     		                retornoDataset.getValue(x,"nomepassageiro"),
+	    	     		                retornoDataset.getValue(x,"tipoviagem"),
+	    	     		                retornoDataset.getValue(x,"finalidade"),    		                
+	    	     		                retornoDataset.getValue(x,"solicitantepassageiro"),
+	    	     		                retornoDataset.getValue(x,"passageirofuncionarionao"),
+	    	     		                retornoDataset.getValue(x,"nomemae"),
+	    	     		                retornoDataset.getValue(x,"datanasc"),
+	    	     		                retornoDataset.getValue(x,"cpfpassageiro"),
+	    	     		                retornoDataset.getValue(x,"rgpassageiro"),    		               
+	    	     		                retornoDataset.getValue(x,"passaporte"),
+	    	     		                retornoDataset.getValue(x,"tipoPagamento"),
+	    	     		                retornoDataset.getValue(x,"rateioconfigurado"),
+	    	     		                retornoDataset.getValue(x,"codigorateio"),
+	    	     		                retornoDataset.getValue(x, "documentid")
+	    	     		                ]);	 
+	    		 }
+	    		 
+	         }
+	         
+	   
+    
+    		
+    		 
     	 }
     
 
@@ -119,3 +143,14 @@ function emailPassageiro(user){
 	 			 			 			 	 
 	 return datasetFuncionario.getValue(0, "mail"); 
 }
+//recebe como parametro:metadata#card_index_id, metadate#id, companyid
+function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
+	  var constraintsHistorico  = new Array();	    	 
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
+		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+		 
+   var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
+
+   return historicoFormulario;
+} 

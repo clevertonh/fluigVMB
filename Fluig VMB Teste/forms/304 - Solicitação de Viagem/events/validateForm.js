@@ -28,7 +28,7 @@ function validateForm(form) {
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
       
-    if (activity == ABERTURA || activity == CORRIGIRSOLICITACAO) {
+    if ((activity == ABERTURA || activity == CORRIGIRSOLICITACAO ) && (nextAtv == 133))  {
 
       	if (form.getValue("solicitante") == "" || form.getValue("solicitante") == null
     			|| form.getValue("emailSolicitante") == "" || form.getValue("emailSolicitante") == null
@@ -187,7 +187,11 @@ function validateForm(form) {
              	 throw "Você precisa escolher um tipo de voo.";
            }
          
-    } else if (activity == APROVACAO) {
+         validaLinhasPreenchidas();
+         validaLinhasRepetidas();
+         validaPercentualRateio();
+         
+    } else if (activity == APROVACAO && nextAtv ==9) {
         	
         		//valida se o aprovador marcou o campo de aprovacao ou reprovação
             if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
@@ -202,6 +206,10 @@ function validateForm(form) {
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
            }     
 
+            validaLinhasPreenchidas();
+            validaLinhasRepetidas();
+            validaPercentualRateio();
+            
     }
 
 //    else if (activity == COMPRARPASSAGEM && nextAtv == OBTERPASSAGEM ) {  	
@@ -298,9 +306,7 @@ function validateForm(form) {
 	   	
     }
     
-    validaLinhasPreenchidas();
-    validaLinhasRepetidas();
-    validaPercentualRateio();
+    
     
     //VALIDA SE AS LINHAS FORAM PREENCHIDAS CORRETAMENTE
      function validaLinhasPreenchidas(){

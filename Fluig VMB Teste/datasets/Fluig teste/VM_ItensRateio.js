@@ -10,7 +10,7 @@ function defineStructure() {
 	addColumn("ALOCACAO");
 	addColumn("CONTA");
 	addColumn("RATEIO");
-	addColumn("PERCENTUAL");
+	addColumn("PERCENTUAL",DatasetFieldType.NUMBER );
 	
 	
 	setKey(["RATEIO"]);
@@ -35,7 +35,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("ALOCACAO");
     dataset.addColumn("CONTA");
     dataset.addColumn("RATEIO");
-    dataset.addColumn("PERCENTUAL");
+    dataset.addColumn("PERCENTUAL",DatasetFieldType.NUMBER );
 
     
        	

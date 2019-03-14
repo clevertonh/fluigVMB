@@ -7,7 +7,9 @@ function defineStructure() {
 	addColumn("FUNCIONARIO_VMB");
 	
 	setKey(["EMAIL_USUARIO"]);
-	addIndex(["EMAIL_USUARIO"]);
+	addIndex(["NOME"]);
+	addIndex(["EMAIL_APROVADOR"]);
+	addIndex(["DIRETOR"]);
 }
 
 function createDataset(fields, constraints, sortFields) {
@@ -21,14 +23,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("FUNCIONARIO_VMB");   
     
         
-    //verificar documentação sobre query param
-    //rest/webservice?parametro=+variavel
     
-     //var user = getConstraints(constraints, field);
-    
-	
-	 
-           
      var dados;
     
     try {

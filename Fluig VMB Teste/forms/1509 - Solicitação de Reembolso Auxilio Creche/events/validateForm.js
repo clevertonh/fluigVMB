@@ -8,7 +8,13 @@ function validateForm(form){
 	
 	var activity = getValue('WKNumState');
 	
-	 
+	var aCentroCusto = new Array();
+    var aProjeto	  = new Array();    
+    var aAtividade	  = new Array();
+    var aCategoria	  = new Array();
+    var aFonte	  = new Array();
+    var aArea	  = new Array();
+    
 	
 	
 	
@@ -97,14 +103,27 @@ function validateForm(form){
         var total = 0;
 
         for (var i = 0; i < indexes.length; i++) {
-            var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
+            var fieldValue = parseFloat(form.getValue("percentual___" + indexes[i]));
+           
+           // log.info("---RETORNO BASE RATEIO 2---");
+            //log.info(fieldValue);
+            
             if (isNaN(fieldValue)) {
                 throw "Existem linhas sem percentual informado no rateio de pagamento.";
             }
+            //log.info("--ANTES--");
+            //log.info(total);
+            
             total = total + fieldValue;
+            log.info("--VALOR--");
+            log.info(fieldValue);
+            log.info("--DEPOIS--");
+            log.info(total);
         }
+        log.info("----RATEIO TOTAL 2----");
+        log.info(total);
         if ((total < 100) || total > 100) {
-            throw "Percentual Total do rateio não pode ser inferior ou superior a 100";
+            throw "Percentual Total do rateio não pode ser inferior ou superior a 100%. Percentual informado foi de  "+ total +"%";
         }
 
        

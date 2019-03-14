@@ -15,7 +15,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("PERCENTUAL");
     dataset.addColumn("SOLICITACAO");
    
-    
+    var solicitacao;
     
     //dataset interno
     var constraintsActive = new Array();
@@ -31,16 +31,17 @@ function createDataset(fields, constraints, sortFields) {
             	var empresa = datasetPrincipal.getValue(a, "companyid");            	
             	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
             	
-            	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
+            	var constraintsHistorico = new Array();
+            	constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId",cardindexdocumentid,cardindexdocumentid, ConstraintType.MUST));
+            	constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId",documentId,documentId, ConstraintType.MUST));
+            	constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId",empresa,empresa, ConstraintType.MUST));
             	
-            	 var solicitacao;
-                    
-            	 if (historicoFormulario.rowsCount > 0){
-                	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-                 }
-                 
+            	var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);
             	
-          
+            	if (historicoFormulario.rowsCount > 0){
+            		solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+            	}
+            	
             	
             	//log.info("-----RETORNO CONTRAINT 20:45------");
             	//log.dir(constraints);
@@ -74,7 +75,8 @@ function createDataset(fields, constraints, sortFields) {
                                 solicitacao
                         ));
                     }
-                
+                //retorna dataset 
+                 return dataset;
             	}
           
             	
@@ -83,18 +85,10 @@ function createDataset(fields, constraints, sortFields) {
     } else { // se não tiver constraint adiciona todas as linhas
     	for(var a=0;a< datasetPrincipal.rowsCount;a++){
     		
-        	var documentId = datasetPrincipal.getValue(a, "metadata#id");
-            var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
-        	var empresa = datasetPrincipal.getValue(a, "companyid");            	
-        	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
-        	
-        	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
-         	
-        	 var solicitacao;
-                
-        	 if (historicoFormulario.rowsCount > 0){
-            	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-             }
+    		var documentId = datasetPrincipal.getValue(a, "metadata#id");
+        	var formulario = datasetPrincipal.getValue(a, "metadata#parent_id")
+            var documentVersion = datasetPrincipal.getValue(a, "metadata#version");
+        	var solicitacao = datasetPrincipal.getValue(a, "solicitacao");
         	
        		
         	//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
@@ -146,14 +140,3 @@ function getConstraints(constraints, field){
 	
 	return null;
 }
-//recebe como parametro:metadata#card_index_id, metadate#id, companyid
-function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
-	  var constraintsHistorico  = new Array();	    	 
-		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
-		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
-		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
-		 
-   var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
-
-   return historicoFormulario;
-} 

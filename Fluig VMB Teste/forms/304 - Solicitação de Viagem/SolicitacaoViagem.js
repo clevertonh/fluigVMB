@@ -59,7 +59,7 @@ $(document).ready(function() {
     }
     
     if (ATIVIDADE == CONFIRMARREEMBOLSO) {
-    		dataReembolso = FLUIGC.calendar('#calendariodataReembolso', {
+    		dataReembolso = FLUIGC.calendar('#datareembolso', {
     	    pickDate: true,
     	    pickTime: false
     	    //    sideBySide: true,
@@ -72,7 +72,7 @@ $(document).ready(function() {
     
     
     if (ATIVIDADE == PAGARDIARIAS) {
-    	dataPagamento = FLUIGC.calendar('#calendariodtPgto', {
+    	dataPagamento = FLUIGC.calendar('#dtPgto', {
               pickDate: true,
               pickTime: false
           });
@@ -93,15 +93,39 @@ $(document).ready(function() {
             
             onlyDate.setDate(new Date().toLocaleString());
 
+            var datasSolicitacao = ["datapartida1","dataretorno1","datapartida2","datapartida3","datacheckin","datacheckout","datacheckin2","datacheckout2","datacheckin3","datacheckout3"];
+            
+            var semana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
+            
+           for (var a=0; a < datasSolicitacao.length; a++){
+        	   $("#"+datasSolicitacao[a]).blur(function(){
+                   var data = this.value;
+                   var arr = data.split("/").reverse();
+                   var teste = new Date(arr[0], arr[1] - 1, arr[2]);
+                   var dia = teste.getDay();
+                   
+                   if (dia ==0 || dia == 6){
+                       FLUIGC.toast({
+                           title: 'Atenção',
+                           message: 'Você está informando que irá viajar no '+ semana[dia] +', será necessário justificar o motivo através do campo observação.',
+                           type: 'warning',
+                           timeout: 6000
+                       });
+                   }
+               }); 
+           }
+            
+           
+            
         }
     	
     	
-        dataNasc = FLUIGC.calendar('#calendariodatanasc', {
+        dataNasc = FLUIGC.calendar('#datanasc', {
             pickDate: true,
             pickTime: false
         });
 
-        datapartida1 = FLUIGC.calendar('#calendariodatapartida1', {
+        datapartida1 = FLUIGC.calendar('#datapartida1', {
             pickDate: true,
             pickTime: false,
             //    sideBySide: true,
@@ -111,57 +135,57 @@ $(document).ready(function() {
         });
 
 
-        dataretorno1 = FLUIGC.calendar('#calendariodataretorno1', {
+        dataretorno1 = FLUIGC.calendar('#dataretorno1', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()            
         });
 
-        datapartida2 = FLUIGC.calendar('#calendariodatapartida2', {
+        datapartida2 = FLUIGC.calendar('#datapartida2', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
 
-        datapartida3 = FLUIGC.calendar('#calendariodatapartida3', {
+        datapartida3 = FLUIGC.calendar('#datapartida3', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
 
-        datacheckout = FLUIGC.calendar('#calendariodatacheckout', {
+        datacheckout = FLUIGC.calendar('#datacheckout', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
-        datacheckin = FLUIGC.calendar('#calendariodatacheckin', {
+        datacheckin = FLUIGC.calendar('#datacheckin', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
-        datacheckout2 = FLUIGC.calendar('#calendariodtcheckout2', {
+        datacheckout2 = FLUIGC.calendar('#datacheckout2', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
-        datacheckin2 = FLUIGC.calendar('#calendariodtcheckin2', {
+        datacheckin2 = FLUIGC.calendar('#datacheckin2', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
-        datacheckout3 = FLUIGC.calendar('#calendariodtcheckout3', {
+        datacheckout3 = FLUIGC.calendar('#datacheckout3', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
 
-        datacheckin3 = FLUIGC.calendar('#calendariodtcheckin3', {
+        datacheckin3 = FLUIGC.calendar('#datacheckin3', {
             pickDate: true,
             pickTime: false,
             minDate: new Date().toLocaleString()
@@ -748,7 +772,7 @@ function prazoMinino() {
         var prazoMinimo;
         var menorDataInformada;
 
-	        //verificar se data de voo é diferente de vazio ou null
+        //verificar se data de voo é diferente de vazio ou null
 	        if (dataVoo.length > 0 && dataHotel.length > 0) {
 	            //verifica se a data de voo é menor que a data de hospedagem ja que nao sao null/vazio
 	            if (dataVoo <= dataHotel) {
@@ -874,6 +898,8 @@ function setSelectedZoomItem(selectedItem) {
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
+    console.log("--CAMPO SELECIONADO----");
+    console.log(selectedItem.inputId);
 
     //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
     //separa string
@@ -948,6 +974,10 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
+    	//POR CAUSA DA EDIÇÃO
+    	//PRIMEIRO PRECISO RECUPERAR O QUE ESTÁ NO CAMPO DO PROJETO
+    	//reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+        
     	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
         $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
@@ -1006,6 +1036,8 @@ function setSelectedZoomItem(selectedItem) {
         $('#datanasc').val(selectedItem["DTNASC"]);
         $('#emailPassageiro').val(selectedItem["EMAIL_F"]);
 
+        console.log(selectedItem["EMAIL_F"]);
+        
         if (selectedItem["EXTRANGEIRO"] == 'SIM'){        
         	document.getElementById("passageiroestrangeiro").click();
         }
@@ -1592,15 +1624,19 @@ function adicionaItensRateio(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
         
-        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);
+        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);   
+        
+       
         
         if (itens[i].PROJETO == null || itens[i].PROJETO == "") {
             window["txtprojeto___" + indice].disable(true);
         } else {
             window["txtprojeto___" + indice].setValue(itens[i].PROJETO);
+            //$("#projeto").val(itens[i].PROJETO);
         }
         
         window["txtatividade___" + indice].setValue(itens[i].ATIVIDADE);
+       
         
         if (itens[i].CATEGORIA == null || itens[i].CATEGORIA == "") {
             window["txtcategoria___" + indice].disable(true);
@@ -1633,9 +1669,11 @@ function adicionaItensRateio(itens) {
         
         $("#rateio___" + indice).val(itens[i].RATEIO);
 
+        
     }
+    
+    
 }
-
 
 
 /*

@@ -1,4 +1,3 @@
-<html>
    <head>
       <meta charset="utf-8">
       <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
@@ -155,7 +154,7 @@
                                                             type="zoom" id="dataset_solicitacaoviagem"
                                                             data-zoom="{
                                                             'displayKey':'solicitacao',
-                                                            'datasetId':'VM_SolicitacaoViagemCompra',
+                                                            'datasetId':'VM_SolicitacaoViagemComprada',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione uma viagem anterior',
                                                             'fields':[
@@ -244,7 +243,7 @@
                                                       <div class="panel-body">
                                                          <div class="form-group row">                                                                                                       
                                                       <div class="form-group col-md-6" id="selecaorateio">
-                                                         <label>Carregar rateio pré-configurado</label> <input
+                                                         <label>Carregar base rateio pré-configurado</label> <input
                                                             name="rateioconfigurado" class="form-control"
                                                             type="zoom" id="rateioconfigurado"
                                                             data-zoom="{'displayKey':'DESCRICAO',
@@ -512,6 +511,7 @@
                                                             {'field':'DTNASC','label':'DTNASC', 'visible':'false'},
                                                             {'field':'PASSAPORTE','label':'PASSAPORTE', 'visible':'false'},
                                                             {'field':'MAE','label':'MAE', 'visible':'false'},
+                                                            {'field':'EMAIL_F','label':'EMAIL_F', 'visible':'false'},
                                                             {'field':'RG','label':'RG'}					  					
                                                             ]
                                                             }">
@@ -538,7 +538,7 @@
                                                             <div class="input-group date" id="calendariodatanasc">
                                                                <input type="text" class="form-control"
                                                                   id="datanasc" placeholder="Selecione uma data "
-                                                                  name="datanasc" readonly> <span
+                                                                  name="datanasc" > <span
                                                                   class="input-group-addon"> <span
                                                                   class="fluigicon fluigicon-calendar"></span>
                                                                </span>
@@ -744,7 +744,7 @@
                                                                id="calendariodatapartida1">
                                                                <input type="text" class="form-control"
                                                                   placeholder="Selecione a data" id="datapartida1"
-                                                                  name="datapartida1" readonly> <span
+                                                                  name="datapartida1" > <span
                                                                   class="input-group-addon"> <span
                                                                   class="fluigicon fluigicon-calendar"></span>
                                                                </span>
@@ -756,7 +756,7 @@
                                                                id="calendariodataretorno1">
                                                                <input type="text" class="form-control"
                                                                   placeholder="Selecione a data" id="dataretorno1"
-                                                                  name="dataretorno1" readonly> <span
+                                                                  name="dataretorno1" > <span
                                                                   class="input-group-addon"> <span
                                                                   class="fluigicon fluigicon-calendar"></span>
                                                                </span>
@@ -839,7 +839,7 @@
                                                                id="calendariodatapartida2">
                                                                <input type="text" class="form-control"
                                                                   placeholder="Selecione a data" id="datapartida2"
-                                                                  name="datapartida2" readonly> <span
+                                                                  name="datapartida2" > <span
                                                                   class="input-group-addon"> <span
                                                                   class="fluigicon fluigicon-calendar"></span>
                                                                </span>
@@ -922,7 +922,7 @@
                                                                id="calendariodatapartida3">
                                                                <input type="text" class="form-control"
                                                                   placeholder="Selecione a data" id="datapartida3"
-                                                                  name="datapartida3" readonly> <span
+                                                                  name="datapartida3" > <span
                                                                   class="input-group-addon"> <span
                                                                   class="fluigicon fluigicon-calendar"></span>
                                                                </span>
@@ -985,7 +985,7 @@
                                                             id="calendariodatacheckin">
                                                             <input type="text" class="form-control"
                                                                placeholder="Selecione a data" id="datacheckin"
-                                                               name="datacheckin" readonly> <span
+                                                               name="datacheckin" > <span
                                                                class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -997,7 +997,7 @@
                                                             id="calendariodatacheckout">
                                                             <input type="text" class="form-control"
                                                                placeholder="Selecione a data" id="datacheckout"
-                                                               name="datacheckout" readonly> <span
+                                                               name="datacheckout" > <span
                                                                class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -1019,7 +1019,7 @@
                                                             id="calendariodtcheckin2">
                                                             <input type="text" class="form-control"
                                                                placeholder="Selecione a data" id="datacheckin2"
-                                                               name="datacheckin2" readonly> <span
+                                                               name="datacheckin2" > <span
                                                                class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -1031,7 +1031,7 @@
                                                             id="calendariodtcheckout2">
                                                             <input type="text" class="form-control"
                                                                placeholder="Selecione a data" id="datacheckout2"
-                                                               name="datacheckout2" readonly> <span
+                                                               name="datacheckout2" > <span
                                                                class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -1053,7 +1053,7 @@
                                                             id="calendariodtcheckin3">
                                                             <input type="text" class="form-control"
                                                                placeholder="Selecione a data" id="datacheckin3"
-                                                               name="datacheckin3" readonly> <span
+                                                               name="datacheckin3" > <span
                                                                class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -1065,7 +1065,7 @@
                                                             id="calendariodtcheckout3">
                                                             <input type="text" class="form-control"
                                                                placeholder="Selecione a data" id="datacheckout3"
-                                                               name="datacheckout3" readonly> <span
+                                                               name="datacheckout3" > <span
                                                                class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -1229,7 +1229,7 @@
                                           <div class="input-group date" id="calendariodataReembolso">
                                              <input type="text" class="form-control"
                                                 placeholder="Selecione a data" id="datareembolso"
-                                                name="datareembolso" readonly> <span
+                                                name="datareembolso" > <span
                                                 class="input-group-addon"> <span
                                                 class="fluigicon fluigicon-calendar"></span>
                                              </span>
@@ -1358,7 +1358,7 @@
                                        <div class="form-group col-md-3" id="div_dtPgto">
                                           <label for="dtPgto">Data de pagamento</label>
                                           <div class="input-group date" id="calendariodtPgto">
-                                             <input type="text" class="form-control" id="dtPgto" name="dtPgto" mask="00/00/0000" readonly> <span
+                                             <input type="text" class="form-control" id="dtPgto" name="dtPgto" mask="00/00/0000" > <span
                                                 class="input-group-addon"> <span
                                                 class="fluigicon fluigicon-calendar"></span>
                                              </span>

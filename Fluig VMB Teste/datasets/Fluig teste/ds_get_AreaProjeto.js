@@ -1,9 +1,3 @@
-function defineStructure() {
-
-}
-function onSync(lastSyncDate) {
-
-}
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	  
@@ -14,8 +8,6 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetFactory.getDataset("VM_AreaProjeto",null,new Array(projeto),null);
 	
 	return dataset;
-}function onMobileSync(user) {
-
 }
 
 function getConstraints(constraints, field){

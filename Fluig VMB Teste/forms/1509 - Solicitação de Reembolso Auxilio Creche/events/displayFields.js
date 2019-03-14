@@ -1,6 +1,7 @@
 function displayFields(form,customHTML){ 
 	
 	var ABERTURA = 0;
+	var SOLICITAR = 4;
 	var APROVACAO_GESTOR = 5;
 	var VALIDACAO = 48;
 	var APROVACAO_RH = 27;
@@ -21,7 +22,7 @@ function displayFields(form,customHTML){
     
     
     
-    if (activity == ABERTURA){
+    if (activity == ABERTURA || activity == SOLICITAR){
    	 form.setVisibleById("3b", false);
 	 form.setVisibleById("4b", false);	 
 	

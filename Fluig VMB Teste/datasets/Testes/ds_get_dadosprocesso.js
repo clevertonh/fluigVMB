@@ -1,11 +1,13 @@
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	  
-	var getFuncionario =  getConstraints(constraints, 'EMAIL_F');
+	
 	
 	//var getFuncionario = "wasley_santos@wvi.org";
-	var funcionario = DatasetFactory.createConstraint("EMAIL_F",getFuncionario,getFuncionario, ConstraintType.MUST);
-	var dataset = DatasetFactory.getDataset("VM_Funcionario",null,new Array(funcionario),null);
+	var processo = DatasetFactory.createConstraint("cardIndexDocumentId","304","304", ConstraintType.MUST);
+	var idregistro = DatasetFactory.createConstraint("cardDocumentId","1610","1610", ConstraintType.MUST);
+	
+	var dataset = DatasetFactory.getDataset("VM_DadosProcesso",null,new Array(processo,idregistro),null);
 	
 	return dataset;
 }

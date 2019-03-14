@@ -9,7 +9,7 @@ function defineStructure() {
 	addColumn("PROJETO");
 	
 	setKey(["CODIGO","PROJETO"]);
-	addIndex(["CODIGO","PROJETO"]);
+	addIndex(["PROJETO"]);
 }
 
 

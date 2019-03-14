@@ -35,7 +35,7 @@ function enableFields(form) {
 	
 	 log.info("numero da atividade "+activityEnable);
 	
-	if (activityEnable == ABERTURA || activityEnable == CORRIGIRSOLICITACAO){
+	if (activityEnable == ABERTURA || activityEnable == CORRIGIRSOLICITACAO || activityEnable == SOLICITARVIAGEM){
 		//CAMPOS DO APROVADOR
 
 		 form.setEnabled('aprovacao', false);
@@ -183,9 +183,7 @@ function enableFields(form) {
 			 form.setEnabled('cotacaoHotel', true);
 			 form.setEnabled('cotacaoVoo', true);
 			 
-			 if (form.getValue('passageirofuncionario') =='sim'){
-				// form.setValue("embaixador","nao");
-			 }
+		
 			 
 		 }
 		 
@@ -397,7 +395,9 @@ function enableFields(form) {
 		  
 
 
-		 if (activityEnable != ABERTURA &&  activityEnable != APROVACAO && activityEnable != COMPRARPASSAGEM && activityEnable != CORRIGIRSOLICITACAO){
+		 if (activityEnable != ABERTURA &&  
+				 activityEnable != APROVACAO && 				 
+				 activityEnable != CORRIGIRSOLICITACAO){
 				//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
 			    	 var indexes = form.getChildrenIndexes("tableItens");	    	    	    	   
 			    	    for (var i = 0; i < indexes.length; i++) {

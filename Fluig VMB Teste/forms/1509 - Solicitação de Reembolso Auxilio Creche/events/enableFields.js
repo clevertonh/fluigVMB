@@ -1,6 +1,7 @@
 function enableFields(form){ 
 	
 	var ABERTURA = 0;
+	var SOLICITAR = 4;
 	var APROVACAO_GESTOR = 5;
 	var VALIDACAO = 48;
 	var APROVACAO_RH = 27;
@@ -15,7 +16,7 @@ function enableFields(form){
 	var emailSolicitante;
 	
 	
-	if (activity == ABERTURA){
+	if (activity == ABERTURA || activity == SOLICITAR){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 		 
 		 nomeSolicitante = dataset.getValue(0, "colleagueName");
 		 emailSolicitante = dataset.getValue(0, "mail");
@@ -27,10 +28,10 @@ function enableFields(form){
 		 
 		 var aprovador = usuarioAprovador();
 		 if (aprovador!= null && aprovador != ""){
-			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
-			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
-			 	 
+			// form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
+			// form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
+			// form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
+			 form.setValue("matriculaApr","001649");	 
 		 }
 		 
 	}
@@ -103,6 +104,27 @@ function enableFields(form){
 	}
 
 
+
+
+	 if (activity != ABERTURA &&  activity != APROVACAO_GESTOR){
+			//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
+		    	 var indexes = form.getChildrenIndexes("tableItens");	    	    	    	   
+		    	    for (var i = 0; i < indexes.length; i++) {
+		     	        form.setEnabled("txtcentrocusto___"+ indexes[i], false);	
+		     	       	form.setEnabled("txtprojeto___"+ indexes[i], false);	
+		     	      	form.setEnabled("txtareaestrategica___"+ indexes[i], false);	
+		     	     	form.setEnabled("txtcategoria___"+ indexes[i], false);	
+		     	    	form.setEnabled("txtfontefinanciamento___"+ indexes[i], false);	
+		     	   		form.setEnabled("txtatividade___"+ indexes[i], false);	
+		     	   		form.setEnabled("percentual___"+ indexes[i], false);	
+		     	   		form.setEnabled("rateio___"+ indexes[i], false);
+	     	        
+		    	    }    
+		    	    
+		    	
+		    
+		  
+	 }
 	
 }
 //recebe data do Fluig e convert para data normal

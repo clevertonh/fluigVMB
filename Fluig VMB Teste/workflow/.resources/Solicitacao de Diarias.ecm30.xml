@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Diarias</processId>
-      <version>6</version>
+      <version>3</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1241</formId>
@@ -110,7 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>VM_Procuradores</engineAllocationId>
+      <engineAllocationId>Usuário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -177,7 +178,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>360</positionX>
-      <positionY>260</positionY>
+      <positionY>294</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -228,53 +229,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeDiarias</processId>
         <version>1</version>
-        <sequence>14</sequence>
-      </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
-      <instruction>Atividade final do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>520</positionX>
-      <positionY>163</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>60</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeDiarias</processId>
-        <version>1</version>
         <sequence>18</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -299,8 +253,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
-      <positionY>277</positionY>
+      <positionX>510</positionX>
+      <positionY>280</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -317,6 +271,53 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
     </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeDiarias</processId>
+        <version>1</version>
+        <sequence>20</sequence>
+      </processStatePK>
+      <stateName>Reprovado</stateName>
+      <stateDescription>Reprovado</stateDescription>
+      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>520</positionX>
+      <positionY>163</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>68</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
   </list>
   <list>
     <ConditionProcessState>
@@ -324,10 +325,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeDiarias</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>3</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
       <destinationSequenceId>16</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -336,11 +337,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeDiarias</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>3</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; </condition>
-      <destinationSequenceId>14</destinationSequenceId>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot; </condition>
+      <destinationSequenceId>20</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -389,7 +390,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>12</initialStateSequence>
-      <finalStateSequence>14</finalStateSequence>
+      <finalStateSequence>20</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -432,12 +433,65 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>SolicitacaodeDiarias</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+	var ABERTURA = 4;&#xd;
+	var APROVACAO = 5;&#xd;
+	var REGISTRAR_PGTO = 16; &#xd;
+	&#xd;
+	&#xd;
+	//recupera atividade&#xd;
+	var ativAtual 		= getValue(&quot;WKNumState&quot;);	&#xd;
+	var nextAtv  		= getValue(&quot;WKNextState&quot;);&#xd;
+	var codSolicitacao  = getValue(&quot;WKNumProces&quot;);&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	var autorizado 		 = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+	&#xd;
+	&#xd;
+    var dtVencimento	 = hAPI.getCardValue(&quot;dtPagamento&quot;);&#xd;
+    var valorTotal		 = hAPI.getCardValue(&quot;vl_rmb&quot;);&#xd;
+ 	&#xd;
+	&#xd;
+	if (ativAtual == REGISTRAR_PGTO &amp;&amp; autorizado == &quot;aprovado&quot; ){&#xd;
+			var constraint = new Array();		  			&#xd;
+			constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));     &#xd;
+			  &#xd;
+			&#xd;
+			constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valorTotal, valorTotal, ConstraintType.MUST));  &#xd;
+			constraint.push(DatasetFactory.createConstraint(&quot;dataVencimento&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));&#xd;
+				&#xd;
+			&#xd;
+			var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE&quot;, null, constraint, null);&#xd;
+			     &#xd;
+		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		    } &#xd;
+	&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>341</height>
+      <height>381</height>
       <width>831</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
@@ -453,7 +507,7 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>113</height>
+      <height>127</height>
       <width>801</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
@@ -469,10 +523,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>113</height>
+      <height>127</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>123</positionY>
+      <positionY>137</positionY>
       <stateName>Gerente</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -485,10 +539,10 @@
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>115</height>
+      <height>127</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>236</positionY>
+      <positionY>264</positionY>
       <stateName>Tesouraria</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -531,7 +585,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeDiarias</processId>
-        <version>6</version>
+        <version>3</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -542,7 +596,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeDiarias</processId>
-        <version>6</version>
+        <version>3</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

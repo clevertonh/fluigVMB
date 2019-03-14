@@ -38,7 +38,7 @@ function displayFields(form,customHTML){
      
     
 	   
-    if (activity == ABERTURA ) {
+    if (activity == ABERTURA  || activity == SOLICITARVIAGEM) {
     	//campos aba aprovador e hospitalidade
        	form.setVisibleById("2b", false);
     	form.setVisibleById("3b", false);

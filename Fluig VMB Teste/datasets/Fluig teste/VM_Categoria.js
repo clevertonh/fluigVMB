@@ -4,7 +4,8 @@ function defineStructure() {
 	addColumn("DESCRICAO");
 	
 	setKey(["CODIGO"]);
-	addIndex(["CODIGO"]);
+	addIndex(["DESCRICAO"]);
+	
 }
 
 

@@ -13,6 +13,9 @@ function createDataset(fields, constraints, sortFields) {
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "solicitacao") {
+    		
+    			
+    		
     			var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
         		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
@@ -39,7 +42,7 @@ function createDataset(fields, constraints, sortFields) {
         							 var codproduto;
         							 var vpassagem;
         							 var qtde;
-        							 
+        							 var dataviagem;
         								 
         							 if (constraints[a].fieldName == "produto" ){
         								 codproduto = constraints[a].initialValue;
@@ -52,10 +55,13 @@ function createDataset(fields, constraints, sortFields) {
         							 else if (constraints[a].fieldName == "valor" ){
         								 vpassagem = constraints[a].initialValue;
         								//chama função que monta array de objetos dos itens da viagem   
-        								 aItemServico.push(addItemViagem(codproduto,qtde,solicitacao.getValue(0,"tipoviagem"),solicitacao.getValue(0,"solicitacao"),vpassagem));    						 
-        	        				
-        								 //log.dir(aItemServico);
-        							 }    			     				
+        								 //aItemServico.push(addItemViagem(codproduto,qtde,solicitacao.getValue(0,"tipoviagem"),solicitacao.getValue(0,"solicitacao"),vpassagem));    						 
+        							 }
+        							 else if (constraints[a].fieldName == "dataViagem" ){
+        								 dataviagem = constraints[a].initialValue;
+        								//chama função que monta array de objetos dos itens da viagem   
+        								 aItemServico.push(addItemViagem(codproduto,qtde,solicitacao.getValue(0,"tipoviagem"),solicitacao.getValue(0,"solicitacao"),vpassagem,dataviagem));    						 
+        							 }
          						 }
         					 }
         					 catch (erro){
@@ -121,7 +127,7 @@ function createDataset(fields, constraints, sortFields) {
 
 
 //FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA
-function addItemViagem(produto,codigo,tipoV,id_form,nValor){
+function addItemViagem(produto,codigo,tipoV,id_form,nValor,dataviagem){
 	   var itemServico = { 
 				produto: ''+produto +'', 
 				quantidade: 1, 
@@ -201,3 +207,15 @@ function getConstraints(constraints, field){
 	
 	return null;
 }
+
+//recebe como parametro:metadata#card_index_id, metadate#id, companyid
+function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
+	  var constraintsHistorico  = new Array();	    	 
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
+		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+		 
+   var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
+
+   return historicoFormulario;
+} 

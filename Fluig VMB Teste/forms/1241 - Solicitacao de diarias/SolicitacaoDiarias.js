@@ -1,7 +1,8 @@
 var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
 
-var dtSolicitacao = FLUIGC.calendar('#calendariodtSolicitacao', {
+
+var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     pickDate: true,
     pickTime: false,
     useCurrent: true,
@@ -9,17 +10,14 @@ var dtSolicitacao = FLUIGC.calendar('#calendariodtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
-var dtSaida = FLUIGC.calendar('#calendariodtSaida', {
+/*
+var dtVencimento = FLUIGC.calendar('#dtVencimento', {
     pickDate: true,
     pickTime: true,
     minDate: new Date().toLocaleString(),
 });
 
-var dtRetorno = FLUIGC.calendar('#calendariodtRetorno', {
-    pickDate: true,
-    pickTime: true,
-    minDate: new Date().toLocaleString(),
-});
+*/
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {

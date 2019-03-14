@@ -2,10 +2,11 @@ var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
 var VALIDACAO = 48;
 var APROVACAO_RH = 27;
-
+var ALTERACAO_DATA = 67;
 
 
 var dtSolicitacao;
+var dtPagamento;
 
 
 
@@ -24,17 +25,20 @@ $(document).ready(function() {
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
 	}
+	else if (ATIVIDADE == VALIDACAO || ATIVIDADE == ALTERACAO_DATA){
+		 dtPagamento = FLUIGC.calendar('#dtPagamento', {
+		    pickDate: true,
+		    pickTime: false,
+		    useCurrent: true, 
+		    minDate: new Date().toLocaleString()
+		    
+		});		
+	}
 
 	
 });
 
-var dtPagamento = FLUIGC.calendar('#dtPagamento', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true, 
-    minDate: new Date().toLocaleString()
-    
-});
+
 
 function adicionaItem(itens) {
     for (var i in itens) {
@@ -354,7 +358,7 @@ function adicionaItensRateio(itens) {
        
         
         //precisa trocar o ponto por virgula
-        //$("#percentual___" + indice).val(itens[i].Percentual);
+       // $("#percentual___" + indice).val(itens[i].PERCENTUAL);
         
         $("#rateio___" + indice).val(itens[i].RATEIO);
 
@@ -380,6 +384,4 @@ function justificativaReprovacao(){
 	}
 	
 }
-
-
 

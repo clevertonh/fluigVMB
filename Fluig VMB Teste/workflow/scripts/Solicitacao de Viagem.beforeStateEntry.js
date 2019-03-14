@@ -72,7 +72,7 @@ function beforeStateEntry(sequenceId){
  		  				constraint.push(DatasetFactory.createConstraint("dataViagem", aItemServico[a].dtviagem, aItemServico[a].dtviagem, ConstraintType.MUST));
  		  			}
  		  			
- 		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110", null, constraint, null);
+ 		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
  		  		    
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
@@ -87,7 +87,7 @@ function beforeStateEntry(sequenceId){
 	  			constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	  			
 	  			
-	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050", null, constraint, null);
+	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraint, null);
 		  		    
 		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
 		  		    	throw resultDateset.getValue(0,"RETORNO");

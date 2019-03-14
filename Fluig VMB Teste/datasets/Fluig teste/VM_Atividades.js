@@ -1,12 +1,12 @@
 function defineStructure() {
 	addColumn("CODIGO");
-	addColumn("DESCRICAO");
+	addColumn("DESCRICAO",DatasetFieldType.TEXT);
 	addColumn("CENTRO_CUSTO");
 	addColumn("ALOCACAO");
 	addColumn("LOCALIZACAO");
 	
 	setKey(["CODIGO","CENTRO_CUSTO"]);
-	addIndex(["CODIGO","CENTRO_CUSTO"]);
+	addIndex(["CENTRO_CUSTO"]);
 }
 
 
@@ -15,7 +15,7 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 
 	dataset.addColumn("CODIGO");
-	dataset.addColumn("DESCRICAO");
+	dataset.addColumn("DESCRICAO",DatasetFieldType.TEXT);
 	dataset.addColumn("CENTRO_CUSTO");
 	dataset.addColumn("ALOCACAO");
 	dataset.addColumn("LOCALIZACAO");

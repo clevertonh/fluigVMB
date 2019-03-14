@@ -27,12 +27,28 @@ function createDataset(fields, constraints, sortFields) {
     var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsActive, null);
     
     //log.dir(constraints);
+    var numSolicitacao;
+    var dataSolicitacao;
     
     if(constraints!==null && constraints.length){ //se tiver constraint filtra 
     	if(constraints[0].constraintType==ConstraintType.MUST) {
     		 for(var a=0;a < retornoDataset.rowsCount;a++){
+    			 
+    			 var empresa = retornoDataset.getValue(a, "companyid");
+    	    	 var carddocumentid =  retornoDataset.getValue(a, "metadata#id");
+    	    	 var cardindexdocumentid = retornoDataset.getValue(a, "metadata#card_index_id")
+    		
+    	    	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa);
+    	    	 
+    	    	
+    	         
+    	         if (historicoFormulario.rowsCount > 0){
+    	        	 numSolicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+    	   	         dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
+    	         }
+    			 
     			 if(constraints[0].initialValue==retornoDataset.getValue(a,constraints[0].fieldName)){    					    
-     		     		dataset.addRow([retornoDataset.getValue(a,"solicitacao"),
+     		     		dataset.addRow([numSolicitacao,
      		     		                retornoDataset.getValue(a,"solicitante"),
      		     		                retornoDataset.getValue(a,"emailSolicitante"),
      		     		                retornoDataset.getValue(a,"nomepassageiro"),
@@ -48,8 +64,8 @@ function createDataset(fields, constraints, sortFields) {
      		     		                retornoDataset.getValue(a,"tipoPagamento"),
      		     		                retornoDataset.getValue(a,"rateioconfigurado"),
      		     		                retornoDataset.getValue(a,"codigorateio"),
-     		     		                retornoDataset.getValue(a,"documentid"),,
-     		     		                retornoDataset.getValue(a,"dataSolicitacao")
+     		     		                retornoDataset.getValue(a,"documentid"),
+     		     		                dataSolicitacao
      		     		                ]);
      		     		
      		     		return dataset;
@@ -61,8 +77,22 @@ function createDataset(fields, constraints, sortFields) {
     }
    
     else {
-  	  for(var x = 0 ; x < retornoDataset.rowsCount; x++){
-  		dataset.addRow([retornoDataset.getValue(a,"solicitacao"),
+  	  for(var a = 0 ; a < retornoDataset.rowsCount; a++){
+  		  
+  		 var empresa = retornoDataset.getValue(a, "companyid");
+    	 var carddocumentid =  retornoDataset.getValue(a, "metadata#id");
+    	 var cardindexdocumentid = retornoDataset.getValue(a, "metadata#card_index_id")
+	
+    	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa);
+    	 
+    	
+         
+         if (historicoFormulario.rowsCount > 0){
+        	 numSolicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+   	         dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
+         }
+  		  
+  		dataset.addRow([numSolicitacao, 
   		                retornoDataset.getValue(a,"solicitante"),
   		                retornoDataset.getValue(a,"emailSolicitante"),
   		                retornoDataset.getValue(a,"nomepassageiro"),
@@ -79,7 +109,7 @@ function createDataset(fields, constraints, sortFields) {
   		                retornoDataset.getValue(a,"rateioconfigurado"),
   		                retornoDataset.getValue(a,"codigorateio"),
   		                retornoDataset.getValue(a,"documentid"),,
-  		                retornoDataset.getValue(a,"dataSolicitacao")
+  		             	dataSolicitacao
   		                ]);
 	    	
 	    
@@ -88,7 +118,19 @@ function createDataset(fields, constraints, sortFields) {
     }
     
   
+
     	
 	return dataset;
 	
 }
+//recebe como parametro:metadata#card_index_id, metadate#id, companyid
+function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
+	  var constraintsHistorico  = new Array();	    	 
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
+		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+		 
+     var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
+
+     return historicoFormulario;
+} 
