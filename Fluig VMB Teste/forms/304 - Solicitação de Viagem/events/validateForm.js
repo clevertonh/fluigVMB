@@ -1,17 +1,24 @@
 function validateForm(form) {
-    //NESSE EVENTO A ATIVIDADE INICIAL É 4 E NÃO 0
-    var ABERTURA = 4;
+    //NESSE EVENTO NÃO EXISTE A ATIVIDADE ABERTURA == 0, A TAREFA INICIAL É A 4
+    //TAREFAS
+	var SOLICITARVIAGEM = 4;
 	var APROVACAO = 97;
-    var VERIFICARAPROVACAO = 9;
     var COMPRARPASSAGEM = 13;
     var OBTERPASSAGEM = 33
     var REGISTRARCANCELAMENTO = 64;
     var CONFIRMARREEMBOLSO = 79;
-    var FINALIZARCOMPRA = 77;
-	var CORRIGIRSOLICITACAO = 98;
-	var VERIFICARCOMPRA = 87;
+    var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
+	var CALCULARDIARIAS = 129;
+	
+	
+	//GATEWAY
+	var GATEWAYPASSAGEMCOMPRADA = 143;
+	var GATEWAYREMARCACAO = 133;
+	var GATEWAYVERIFICARAPROVACAO = 9;
+	var GATEWAYFINALIZARSOLICITACAO = 116;
 
+	 //variaveis usadas para validação de linhas repetidas no rateio
  	 var aCentroCusto = new Array();
      var aProjeto	  = new Array();    
      var aAtividade	  = new Array();
@@ -28,7 +35,7 @@ function validateForm(form) {
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
       
-    if ((activity == ABERTURA || activity == CORRIGIRSOLICITACAO ) && (nextAtv == 133))  {
+    if ((activity == SOLICITARVIAGEM || activity == CORRIGIRSOLICITACAO ) && (nextAtv == GATEWAYREMARCACAO))  {
 
       	if (form.getValue("solicitante") == "" || form.getValue("solicitante") == null
     			|| form.getValue("emailSolicitante") == "" || form.getValue("emailSolicitante") == null
@@ -133,14 +140,22 @@ function validateForm(form) {
                 	throw "Existem campos relacionados ao voo que não foram preenchidos e são obrigatórios.";
                 } else if (form.getValue("tipoviagem") == "internacional" && (form.getValue("internacionalOrigem1") == null || form.getValue("internacionalOrigem1") == "" || form.getValue("datapartida1") == "")) {
 
-                }
-
+                }               	
             } else if (form.getValue("tipovoo") == "idavolta") {
                 if (form.getValue("tipoviagem") == "nacional" && (form.getValue("datapartida1") == "" || form.getValue("origem1") == "" || form.getValue("origem1") == null || form.getValue("dataretorno1") == "" || form.getValue("destino1") == "" || form.getValue("destino1") == null)) {
                     throw "Existem campos relacionados ao voo que não foram preenchidos e são obrigatórios.";
                 } else if (form.getValue("tipoviagem") == "internacional" && (form.getValue("datapartida1") == "" || form.getValue("internacionalOrigem1") == "" || form.getValue("internacionalOrigem1") == null || form.getValue("dataretorno1") == "" || form.getValue("destino1") == "" || form.getValue("internacionalDestino1") == null)) {
 
                 }
+            
+        		var dataPartida = convertStringToData(form.getValue("datapartida1"));
+        		var dataRetorno = convertStringToData(form.getValue("dataretorno1"));
+
+               	//verifica datas
+               	if (dataPartida > dataRetorno){
+               		throw "Atenção! A data de partida é maior que a data de retorno. Por favor, corriga um dos campos";
+               	}
+            
             } else if (form.getValue("tipovoo") == "varios") {
                 if (form.getValue("tipoviagem") == "nacional" && (form.getValue("datapartida1") == "" || form.getValue("datapartida2") == ""  || form.getValue("origem1") == "" || form.getValue("origem2") == "" || form.getValue("destino1") == "" || form.getValue("destino2") == "" || form.getValue("origem1") == null || form.getValue("destino1") == null || form.getValue("origem2") == null || form.getValue("destino2") == null  )) {
                     throw "Existem campos relacionados ao voo que não foram preenchidos e são obrigatórios.";
@@ -153,17 +168,129 @@ function validateForm(form) {
                 if (form.getValue("tipoviagem") == "nacional" &&  (form.getValue("origem3") != "" && form.getValue("origem3") != null) && (form.getValue("datapartida3") == "" || form.getValue("datapartida3") == null)){
                	 throw "Existem campos relacionados ao 3 trecho do voo que não foram preenchidos corretamemte e são obrigatórios.";
                }
+                var dataPartida1 = convertStringToData(form.getValue("datapartida1"));        		
+                var dataPartida2;
+                var dataPartida3;
+                
+                if (form.getValue("datapartida2") != null &&  form.getValue("datapartida2") != ""){
+                	dataPartida2 = convertStringToData(form.getValue("datapartida2"));	
+                	//verifica datas
+                   	if (dataPartida1 > dataPartida2){
+                   		throw "Atenção! A data de partida do primeiro voo é maior que a data do segundo voo. Por favor, corriga um dos campos";
+                   	}               
+                }
+                
+                	if (form.getValue("datapartida3") != null &&  form.getValue("datapartida3") != ""){
+                		dataPartida3 = convertStringToData(form.getValue("datapartida3"));	
+                		if (dataPartida1 > dataPartida3){
+                			throw "Atenção! A data de partida do primeiro voo é maior que a data do terceiro voo. Por favor, corriga um dos campos";
+                		}
+                			else if (dataPartida2 > dataPartida3){
+                				throw "Atenção! A data de partida do segundo voo é maior que a data do terceiro voo. Por favor, corriga um dos campos";
+                			}
+                	
+                	}
+ 
             }
 
 
-            if (form.getValue("tipoquarto") != "" && (form.getValue("datacheckin") == "" || form.getValue("datacheckout") == "" )) {
-                throw "Existem campos relacionados a hospedagem que não foram preenchidos e são obrigatórios.";
-            }
             
-        
 
         }
 
+        
+          	//dados de hospedagem
+           	if (form.getValue("tipoquarto") != "" && form.getValue("tipoquarto") !== null ){
+           		
+           		if (form.getValue("datacheckin") == "" || form.getValue("datacheckout") == "" ){
+           			throw "A data de check-out da primeira hospedagem não foi informada.";
+           		}
+           		if (form.getValue("tipovoo") == "varios"){
+           			if (form.getValue("datacheckin2") == "" || form.getValue("datacheckin2") == null ){
+                   		throw "A data de check-in da segunda hospedagem não foi informada.";
+                   	}
+           			if (form.getValue("datacheckout2") == "" || form.getValue("datacheckout2") == null ){
+                   		throw "A data de check-out da segunda hospedagem não foi informada.";
+                   	}
+           		}
+           		
+           		
+           		//log.info("-----DATAS CHECK-IN----");
+           		//log.info(form.getValue("datacheckin"));
+           		//log.info(form.getValue("datacheckout"));
+           		
+           		var dataCheckin1 = convertStringToData(form.getValue("datacheckin"));
+           		var dataCheckout1 = convertStringToData(form.getValue("datacheckout"));
+           		var dataCheckin2;
+           		var dataCheckout2;
+           		var dataCheckin3;
+        		var dataCheckout3;
+
+        		
+           		if (dataCheckin1 > dataCheckout1){
+           			throw "A data de check-in está maior que a data de check-out. Por favor, corrija uma das datas.";
+           		}
+           		
+           		if(form.getValue("datacheckin2") != '' && form.getValue("datacheckin2") !== null ){
+           			dataCheckin2 = convertStringToData(form.getValue("datacheckin2"));                		
+           			if (dataCheckin1 > dataCheckin2){
+           				throw "A data de check-in da primeira hospedagem está maior que a data de check-in da segunda hospedagem. Por favor, corrija uma das datas.";	
+           			}
+           			
+           		}
+           		if(form.getValue("datacheckout2") != '' && form.getValue("datacheckout2") !== null ){
+           			dataCheckout2 = convertStringToData(form.getValue("datacheckout2"));	
+           			if (dataCheckin1 > dataCheckout2){
+           				throw "A data de check-in da primeira hospedagem está maior que a data de check-out da segunda hospedagem. Por favor, corrija uma das datas.";
+           			}
+           			else if (dataCheckin2 > dataCheckout2){
+           				throw "A data de check-in da segunda hospedagem está maior que a data de check-out da segunda hospedagem. Por favor, corrija uma das datas.";
+           			}
+           			else if (dataCheckout1 > dataCheckin2){
+           				throw "A data de check-in da segunda hospedagem está menor que a data de check-out da primeira hospedagem. Por favor, corrija uma das datas.";
+           			}
+           		}
+           		if(form.getValue("datacheckin3") != '' && form.getValue("datacheckin3") !== null ){
+           			if (form.getValue("datacheckout3") == "" || form.getValue("datacheckout3") == null ){
+               			throw "A data de check-out da terceira hospedagem não foi informada.";
+               		}
+           			
+           			dataCheckin3 = convertStringToData(form.getValue("datacheckin3"));	
+           			if (dataCheckin1 > dataCheckin3){
+           				throw "A data de check-in da primeira hospedagem está maior que a data de check-in da terceira hospedagem. Por favor, corrija uma das datas.";
+           			}
+           			else if (dataCheckin2 > dataCheckin3){
+           				throw "A data de check-in da segunda hospedagem está maior que a data de check-in da terceira hospedagem. Por favor, corrija uma das datas.";
+           			}
+           			else if (dataCheckout2 > dataCheckin3){
+           				throw "A data de check-out da segunda hospedagem está maior que a data de check-in da terceira hospedagem. Por favor, corrija uma das datas.";
+           			}
+           			
+           		}
+           		if(form.getValue("datacheckout3") != '' && form.getValue("datacheckout3") !== null ){
+           			dataCheckout3 = convertStringToData(form.getValue("datacheckout3"));	
+           			if (dataCheckin1 > dataCheckout3){
+           				throw "A data de check-in da primeira hospedagem está maior que a data de check-out da terceira hospedagem. Por favor, corrija uma das datas.";
+           				
+           			}
+           			else if (dataCheckin2 > dataCheckout3){
+           				throw "A data de check-in da segunda hospedagem está maior que a data de check-out da terceira hospedagem. Por favor, corrija uma das datas.";
+           				
+           			}
+           			else if (dataCheckout2 > dataCheckin3){
+           				throw "A data de check-out da segunda hospedagem está maior que a data de check-in da terceira hospedagem. Por favor, corrija uma das datas.";
+           				
+           			}
+           			else if (dataCheckout2 > dataCheckout3){
+           				throw "A data de check-out da segunda hospedagem está maior que a data de check-out da terceira hospedagem. Por favor, corrija uma das datas.";
+           				
+           			}
+           		}
+           		
+        		
+           	}
+
+        
         //valida se o campo estou ciente da norma foi marcado
         if (form.getValue("aceitenorma") == "") {
             throw "Você precisa informar que está ciente das normas de viagem.";
@@ -191,7 +318,7 @@ function validateForm(form) {
          validaLinhasRepetidas();
          validaPercentualRateio();
          
-    } else if (activity == APROVACAO && nextAtv ==9) {
+    } else if (activity == APROVACAO && nextAtv ==GATEWAYVERIFICARAPROVACAO) {
         	
         		//valida se o aprovador marcou o campo de aprovacao ou reprovação
             if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
@@ -212,8 +339,8 @@ function validateForm(form) {
             
     }
 
-//    else if (activity == COMPRARPASSAGEM && nextAtv == OBTERPASSAGEM ) {  	
-    else if (activity == COMPRARPASSAGEM) {    	
+    else if (activity == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA ) {  	
+//    else if (activity == COMPRARPASSAGEM) {    	
     	
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
@@ -225,13 +352,7 @@ function validateForm(form) {
         	*/
         	if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
         		throw "Você não pode informar que comprou uma passagem aerea se o solicitante não pediu.";	
-	    		}
-
-		   		
-						
-        	
-        	
-        	
+	    		}        	
         }
         
         
@@ -241,14 +362,7 @@ function validateForm(form) {
         		throw "Você não pode informar que comprou uma hospedagem se o solicitante não pediu.";	
 	    		}
         	
-        	
-        }
-        
-       
-        
-        
-        
-        
+        }        
     }
     else if (activity == OBTERPASSAGEM) {
         //valida se o campo de cancelamento foi marcado
@@ -273,8 +387,16 @@ function validateForm(form) {
         
         
 
-    } 
-    else if (activity == CONFIRMARREEMBOLSO && nextAtv == FINALIZARCOMPRA) {
+    }
+    else if (activity == CALCULARDIARIAS && nextAtv == GATEWAYFINALIZARSOLICITACAO){
+    	if (form.getValue("recebediarias") == "sim") {
+    		if (form.getValue("vl_diarias") == "" || form.getValue("vl_diarias") === null || parseFloat(form.getValue("vl_diarias")) < 0){
+    			throw "Você deve informar o valor total das diarias.";	
+    		}
+            
+        }
+    }
+    else if (activity == CONFIRMARREEMBOLSO) {
         if (form.getValue("datareembolso") == "") {
             throw "Você deve informar a data do reembolso.";
         }
@@ -426,13 +548,24 @@ function validateForm(form) {
    
     
 
-  //recebe data do Fluig e convert para data normal
-    function convertStringToData(StringToData) {
-        //variavel para armazenar a data limite para aprovação   
-        var data = StringToData.split('/');
 
-        return new Date(data[1] + "/" + data[0] + "/" + data[2]);
-    }    
+
+    function validaDatas(){
+    	//retorna todos os ID de campos com informação de datas    	
+      	var datasHospedagem = ["datacheckin","datacheckout","datacheckin2","datacheckout2","datacheckin3","datacheckout3"];    	
+    	    	
+          
+    }
+
+    
+    
 }
 
+//recebe data do Fluig e convert para data normal
+function convertStringToData(StringToData) {
+    //variavel para armazenar a data limite para aprovação   
+    var data = StringToData.split('/');
+
+    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+}    
 

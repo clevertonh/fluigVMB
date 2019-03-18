@@ -93,16 +93,24 @@ $(document).ready(function() {
             
             onlyDate.setDate(new Date().toLocaleString());
 
-            var datasSolicitacao = ["datapartida1","dataretorno1","datapartida2","datapartida3","datacheckin","datacheckout","datacheckin2","datacheckout2","datacheckin3","datacheckout3"];
+            var datasFormulario = retornaDatas();
             
             var semana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
             
-           for (var a=0; a < datasSolicitacao.length; a++){
-        	   $("#"+datasSolicitacao[a]).blur(function(){
+           for (var a=0; a < datasFormulario.length; a++){
+        	   
+        	   $("#"+datasFormulario[a]).blur(function(){
                    var data = this.value;
+                   //reset campo aceite norma
+            	   //$("#aceitenorma").value("");
+            	   document.getElementById("aceitenorma").checked = false;
+                   //$("#aceitenorma").attr('checked', false);
+                  
                    var arr = data.split("/").reverse();
                    var teste = new Date(arr[0], arr[1] - 1, arr[2]);
                    var dia = teste.getDay();
+                   
+                   //minDate: new Date().toLocaleString()
                    
                    if (dia ==0 || dia == 6){
                        FLUIGC.toast({
@@ -762,6 +770,8 @@ function removeItensAgenda() {
 }
 
 function prazoMinino() {
+	
+	
 	var dataVoo = document.getElementById("datapartida1").value;
     var dataHotel = document.getElementById("datacheckin").value;
 
@@ -835,6 +845,8 @@ function prazoMinino() {
 	
 
 }
+
+
 
 function prazoReembolso() {	
 	if (document.getElementById("credito").checked == true) {
@@ -1673,6 +1685,13 @@ function adicionaItensRateio(itens) {
     }
     
     
+}
+
+
+function retornaDatas(){
+	var datasSolicitacao = ["datapartida1","dataretorno1","datapartida2","datapartida3","datacheckin","datacheckout","datacheckin2","datacheckout2","datacheckin3","datacheckout3"];
+
+	return datasSolicitacao;
 }
 
 

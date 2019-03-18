@@ -13,6 +13,11 @@ function beforeStateEntry(sequenceId){
 	var ativAtual 		= getValue("WKNumState");	
 	var nextAtv  		= getValue("WKNextState");
 	var codSolicitacao  = getValue("WKNumProces");
+	//RECUPERA NUMERO DO DOCUMENTO
+	var idDocumento = getValue("WKCardId");
+	var idFormulario = getValue("WKFormId")
+	var empresa = getValue("WKCompany");
+
 	
 	var autorizado 		 = hAPI.getCardValue("aprovacao");
 	var aprovadoNoPrazo  = hAPI.getCardValue("aprPrazo");		
@@ -23,8 +28,10 @@ function beforeStateEntry(sequenceId){
 	
 	if ((ativAtual == APROVACAO_RH && autorizado == "aprovado" && aprovadoNoPrazo == "" ) || ativAtual == ALTERACAO_DATA){
 			var constraint = new Array();		  			
-			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
-			  
+			//constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
+			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+			//constraint.push(DatasetFactory.createConstraint("companyid", empresa, empresa, ConstraintType.MUST));
+	  					  
 			
 			constraint.push(DatasetFactory.createConstraint("valor", valorTotal, valorTotal, ConstraintType.MUST));  
 			constraint.push(DatasetFactory.createConstraint("dataVencimento", dtVencimento, dtVencimento, ConstraintType.MUST));

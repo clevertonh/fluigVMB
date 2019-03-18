@@ -1,29 +1,27 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("solicitacao", "1570", "1570", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("documentid", "1613", "1613", ConstraintType.MUST));     
 	 
 	 var itemServico = new Array();
 	 
 	 itemServico.push({ 
 			produto: ''+"DVPSG001" +'', 
-			quantidade: 2, 
-			valor: '' + "200" + ''
+			quantidade: 1, 
+			valor: '' + "200" + '',
+			data: '' + "18/03/2019" + '' 
 				});
 	
-	 itemServico.push({ 
-			produto: ''+"DVPSG002" +'', 
-			quantidade: 1, 
-			valor: '' + "10000" + ''
-				});
+	
 	  
 	for (var a=0; a<itemServico.length; a++){
 		constraint.push(DatasetFactory.createConstraint("produto", itemServico[a].produto, itemServico[a].produto, ConstraintType.MUST));  
 		constraint.push(DatasetFactory.createConstraint("quantidade", itemServico[a].quantidade, itemServico[a].quantidade, ConstraintType.MUST));
-		constraint.push(DatasetFactory.createConstraint("valor", itemServico[a].valor, itemServico[a].valor, ConstraintType.MUST)); 
+		constraint.push(DatasetFactory.createConstraint("valor", itemServico[a].valor, itemServico[a].valor, ConstraintType.MUST));
+		constraint.push(DatasetFactory.createConstraint("dataViagem", itemServico[a].data, itemServico[a].data, ConstraintType.MUST));
 	}
 	
-    var dataset = DatasetFactory.getDataset("VM_MATA110", null, constraint, null);
+    var dataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
     
     return dataset;
 	

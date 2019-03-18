@@ -14,12 +14,23 @@ function beforeStateEntry(sequenceId){
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
 	
+	//GATEWAY
+	var GATEWAYPASSAGEMCOMPRADA = 143;
+	var GATEWAYREMARCACAO = 133;
+	var GATEWAYVERIFICARAPROVACAO = 9;
+	var GATEWAYFINALIZARSOLICITACAO = 116;
+	
 	//RECUPERA NUMERO DA ATIVIDADE
 	var ativAtual 		 = getValue("WKNumState");		
 	//RECUPERA CODIGO DA SOLICITAÇÃO
 	var codSolicitacao 	 = getValue("WKNumProces");
 	//VERIFICA QUAL A PROXIMA ATIVIDADE
 	var nextAtv  		 = getValue("WKNextState");
+	//RECUPERA NUMERO DO DOCUMENTO
+	var idDocumento = getValue("WKCardId");
+	var idFormulario = getValue("WKFormId")
+	var empresa = getValue("WKCompany");
+	
 	
 	var vooComprado		 = hAPI.getCardValue("vooComprado");
 	var hotelComprado	 = hAPI.getCardValue("hotelComprado");					
@@ -38,7 +49,8 @@ function beforeStateEntry(sequenceId){
      var temAnexo = false;
 	
 	
-     	if (ativAtual == COMPRARPASSAGEM && ( vooComprado == '' && hotelComprado == '') || ( vooComprado == null && hotelComprado == null) ){
+     	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA &&
+     			( vooComprado == '' && hotelComprado == '') || ( vooComprado == null && hotelComprado == null) ){
      	     if (anexos.size() > 0) {
      	          temAnexo = true;
      	      }
@@ -49,7 +61,7 @@ function beforeStateEntry(sequenceId){
 
      	}
      
-     	if (ativAtual == COMPRARPASSAGEM && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
+     	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
  	 		  	//EXECUTA FUNÇÃO QUE RETORNA PRODUTOS A SEREM GERADOS PARA SOLICITAÇÃO DE COMPRA 		  	
  		  		try{
  		  			itensServico();
@@ -58,12 +70,27 @@ function beforeStateEntry(sequenceId){
  		  			throw "FALHA AO RECUPERAR ITENS COMPRADOS NA SOLICITAÇÃO DE VIAGEM.";
  		  		}
      			
- 				
+ 		  		
+ 		  		
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
  		  		if (aItemServico.length >0){ 		    					     	    		     	   
+ 		
+ 		  		  //var constraintsHistorico  = new Array();	    	 
+ 				 //constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
+ 				 //constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
+ 				 //constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));
+ 				 //constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.processInstanceId", codSolicitacao , codSolicitacao, ConstraintType.MUST));
+ 				 //workflowProcessPK.processInstanceId
+ 				 
+ 				 //var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
+ 				 //var idDocumento = historicoFormulario.getValue(0,"cardDocumentId");
+ 		  			
+ 		  			
+ 		  			
  		  			var constraint = new Array();		  			
- 		  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
- 		  			  
+ 		  			//constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
+ 		  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+ 		  			 
  		  			//Cria constraints para enviar produtos e valores
  		  			for (var a=0; a<aItemServico.length; a++){
  		  				constraint.push(DatasetFactory.createConstraint("produto", aItemServico[a].produto, aItemServico[a].produto, ConstraintType.MUST));  
@@ -80,9 +107,10 @@ function beforeStateEntry(sequenceId){
  		  		}	
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-		   else if ( ativAtual == PAGARDIARIAS && recebeDiarias == "sim") {		   
+		   else if ( ativAtual == PAGARDIARIAS && nextAtv == GATEWAYPASSAGEMCOMPRADA && recebeDiarias == "sim") {		   
 			   var constraint = new Array();		  			
-	  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
+//	  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
+	  			constraint.push(DatasetFactory.createConstraint("documentid", idDocunento, idDocunento, ConstraintType.MUST)); 		  		
 	  			constraint.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 	  			constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	  			
@@ -131,6 +159,19 @@ function beforeStateEntry(sequenceId){
 				    addItemViagem(codproduto,codSolicitacao,tipoViagem,idFormulario,valor);
 				     
 			   }
+
+    // Busca a Lista com o número da solicitação dos filhos
+    var childrenProcess = hAPI.getChildrenInstances(numProcess);
+  
+    for (var i = 0; i < childrenProcess.size(); i++) {
+        // Busca os dados do formulário da solicitação filha
+        var childCardData = hAPI.getCardData(childrenProcess.get(i));
+  
+        // Replica um dado do formulário da solicitação filha para o formulário da solicitação pai
+        var obs = childCardData.get("obs");
+        hAPI.setCardValue("obs", obs );
+        }
+
 
 			   */
 		   }	   

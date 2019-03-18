@@ -8,23 +8,38 @@ function createDataset(fields, constraints, sortFields) {
 	var itens = new Array();
 
 	
-	log.info("LOG CONSTRAINTS");
-	log.dir(constraints);
+	//log.info("LOG CONSTRAINTS 1");
+	//log.dir(constraints);
+	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
-    	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "solicitacao") {
+    	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
     		
     			
     		
-    			var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-        		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
+    			//var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+    			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
+    			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
         		
-        		var c2 = DatasetFactory.createConstraint("SOLICITACAO", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-        	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
+        		
+        		//log.info("LOG SOLICITACAO");
+        		//log.dir(solicitacao);
+        		
+        		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
+        		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
+        		
+        		//log.info("---RETORNO METADATA");
+        		//log.info(codSolicitacao);
+        		
+        		//var c2 = DatasetFactory.createConstraint("SOLICITACAO", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+        		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+        		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
-        	   // log.info("--RETORNO DE CONTRAINTS 23:51---")
-        	    //log.dir(constraints);
+        		
+        		
+        	    //log.info("--RETORNO DE CONTRAINTS 112:34---")
+        	    //log.dir(itensSolicitacao);
         	    
         					 try {
         						//chama função que monta array de objetos dos itens do rateio
@@ -68,7 +83,8 @@ function createDataset(fields, constraints, sortFields) {
         						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
         					 }
         					 
-        							
+				            	//solicitacao : '' + solicitacao.getValue(0,"solicitacao") + '' ,
+        					        							
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
         					        var data = {
@@ -79,7 +95,7 @@ function createDataset(fields, constraints, sortFields) {
         					            timeoutService: '100', // segundos
         					            params : {
         					            	processo : '' + 1 + '' ,
-        					            	solicitacao : '' + solicitacao.getValue(0,"solicitacao") + '' ,
+        					            	solicitacao : '' + codSolicitacao + '' ,
         					            	solicitante : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	emailsolicitante : '' + solicitacao.getValue(0,"emailsolicitante") +'', 
         					                datasolicitacao :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
@@ -218,4 +234,4 @@ function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
    var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
 
    return historicoFormulario;
-} 
+}
