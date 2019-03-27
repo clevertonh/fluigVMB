@@ -342,6 +342,9 @@ function validateForm(form) {
     else if (activity == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA ) {  	
 //    else if (activity == COMPRARPASSAGEM) {    	
     	
+    	log.info("PROXIMA ATIVIDADE");
+    	log.info(nextAtv);
+    	
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
         	/*
@@ -362,7 +365,11 @@ function validateForm(form) {
         		throw "Você não pode informar que comprou uma hospedagem se o solicitante não pediu.";	
 	    		}
         	
-        }        
+        }  
+        
+        //valida se serviço de viagem foi informado
+        validaProdutos();
+       
     }
     else if (activity == OBTERPASSAGEM) {
         //valida se o campo de cancelamento foi marcado
@@ -495,7 +502,7 @@ function validateForm(form) {
                  var atividade = form.getValue("txtatividade___" + indexes[i]);
   
  				if (aCentroCusto.length > 0){
-                     		log.info("Segunda linha do rateio de projeto");
+                     		//log.info("Segunda linha do rateio de projeto");
                      		for (var a=0; a < aCentroCusto.length ; a++){
                      				if (aCentroCusto[a] == ccusto && aProjeto[a] == projeto && aArea[a] == area && aCategoria[a] == categoria && aFonte[a] == fonte && aAtividade[a] == atividade  ) {
                      					 throw "Existem linhas do rateio repetidas.";
@@ -503,7 +510,7 @@ function validateForm(form) {
                  				
                      		}
                      		
-                     		log.info("Adiciona os dados do projeto atual no array");
+                     		//log.info("Adiciona os dados do projeto atual no array");
  							aCentroCusto.push(ccusto);	
                      		aProjeto.push(projeto);	
                      		aCategoria.push(categoria);
@@ -513,7 +520,7 @@ function validateForm(form) {
                      		
                   }
                   else {
-                    		log.info("Adiciona a primeira linha de dados do projeto ao array");
+                    		//log.info("Adiciona a primeira linha de dados do projeto ao array");
                     		aCentroCusto.push(ccusto);	
  						aProjeto.push(projeto);	
                      	aCategoria.push(categoria);
@@ -546,7 +553,41 @@ function validateForm(form) {
           
       }
    
-    
+      //VALIDA SE FOI INFORMADO PELO MENOS 1 SERVIÇO E SE TODOS OS CAMPOS FORAM PREENCHIDOS
+      function validaProdutos(){
+     	   var indexes = form.getChildrenIndexes("tableViagem");            
+     	   
+     	  if (form.getValue("vooComprado") =="sim" ){
+     		  if (indexes.length < 0 ){
+     			 throw "É obrigatório informar o bilhete aéreo!";
+     		  }
+     		  else {
+     	         for (var i = 0; i < indexes.length; i++) {
+                     var produto = form.getValue("txtservico___" + indexes[i]);
+                     var valor = form.getValue("valores___" + indexes[i]);
+                     var dataViagem = form.getValue("dtViagem___" + indexes[i]);               
+              
+                     if (produto == "" || produto === null){
+                     	throw "O serviço comprado não foi informado";
+                     }
+                     else if (valor == "" || valor === null){
+                     	throw "O valor do serviço não foi informado";
+                     }
+                     else if (dataViagem == "" || dataViagem === null){
+                     	throw "A data do serviço não foi informado";
+                     }
+                     
+                 } 
+     		  }
+     		 
+     	  }
+     	  
+     	   
+   
+      
+            
+      }
+      
 
 
 

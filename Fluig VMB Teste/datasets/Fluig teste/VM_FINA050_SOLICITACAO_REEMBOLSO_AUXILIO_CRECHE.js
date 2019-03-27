@@ -7,7 +7,7 @@ function createDataset(fields, constraints, sortFields) {
 	var aRateio = new Array();
 	 
 	 if(constraints !== null && constraints.length){
-		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
+		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO documentId NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			// log.info("entrando aqui 1");
 	    		var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    

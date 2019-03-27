@@ -7,7 +7,7 @@
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
       <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-      <link type="text/css" rel="stylesheet" href="style.css"/>
+      <link type="text/css" rel="stylesheet" href="SolicitacaoAdiantamento.css"/>
    </head>
    <body>
       <div class="container">
@@ -82,7 +82,17 @@
                                              </span>
                                           </div>
                                        </div>                                                                                                                    
+                                    <div class="form-group col-md-3">
+                                          <label for="dtPgto">Data de Pagamento</label>
+                                          <div class="input-group date">
+                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagto" name="dtPgto">
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>   
                                     </div>
+									                                   
                                     <div class="row">                                    		
                         				  <div class="form-group col-md-3">
                         				  	<label>Centro de custo</label>                                                                   																					
@@ -90,14 +100,13 @@
                                                                      type="zoom" 
                                                                      name="centrocusto" 
                                                                      data-zoom="{
-                                                                     'displayKey':'Codigo',
+                                                                     'displayKey':'CODIGO',
                                                                      'datasetId':'VM_CentroCusto',
                                                                      'maximumSelectionLength':'1',
                                                                      'placeholder':'Selecione um centro de custo',
                                                                      'fields':[
-                                                                     {'field':'Codigo', 'label':'Codigo', 'standard':'true'},
-                                                                     {'field':'Descricao', 'label':'Descricao'},
-                                                                     {'field':'Tipo', 'label':'Tipo' , 'visible' : 'false'}]
+                                                                     {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO'}]
                                                                      }" />
                                                                </div>
 															<div class="form-group col-md-3">
@@ -106,14 +115,14 @@
                                                                      type="zoom" 
                                                                      name="projeto" 
                                                                      data-zoom="{
-                                                                     'displayKey':'Codigo',
+                                                                     'displayKey':'CODIGO',
                                                                      'datasetId':'VM_projeto',
                                                                      'maximumSelectionLength':'1',
                                                                      'placeholder':'Selecione um projeto',
                                                                      'fields':[
-                                                                     {'field':'Codigo', 'label':'Codigo'},
-                                                                     {'field':'Descricao', 'label':'Descricao', 'standard':'true'},
-                                                                     {'field':'Conta', 'label':'Conta' , 'visible' : 'false'}]
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}
+                                                                     ]
                                                                      }" />
                                                                </div>                                      	
                                     </div>                            
@@ -135,7 +144,7 @@
                                           	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
                                           </div>                                        								
 									</div>
-          <div class="row">
+         							 <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
                                        <div class="form-group col-md-2">
                                           <Label for="aprovacao">Aprovado</Label> <input type="radio"
@@ -182,6 +191,6 @@
             </form>
          </div>
       </div>
-      <script src="script.js"></script>
+      <script src="SolicitacaoAdiantamento.js"></script>
    </body>
 </html>

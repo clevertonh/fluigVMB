@@ -6,7 +6,11 @@ function validateForm(form){
 	var APROVACAO_RH = 27;
 	var ALTERACAO_DATA = 67;
 	
+	var GATEWAYVALIDARDOCUMENTO = 21;
+	
+	
 	var activity = getValue('WKNumState');
+	var nextAtv  = getValue("WKNextState");
 	
 	var aCentroCusto = new Array();
     var aProjeto	  = new Array();    
@@ -18,7 +22,7 @@ function validateForm(form){
 	
 	
 	
-	if (activity == ABERTURA){
+	if (activity == ABERTURA && nextAtv == APROVACAO_GESTOR){
 		
 		if (form.getValue("vl_rmb") == "" ){
 			throw "Você precisa informar o valor a ser reembolsado.";
@@ -41,13 +45,13 @@ function validateForm(form){
 		}	
 		
 		else if (form.getValue("emailSolicitante") ==  emailSolicitante() ){
-			// throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+			 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		}
 		
 		
 	}
 	
-	else if (activity == VALIDACAO){
+	else if (activity == VALIDACAO && nextAtv == GATEWAYVALIDARDOCUMENTO){
 		if (form.getValue("validacao") == "" ){
 			throw "Você precisa escolher entre as opções de validar ou negar documentação.";
 		}

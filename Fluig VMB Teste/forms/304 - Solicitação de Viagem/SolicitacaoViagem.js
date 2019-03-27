@@ -813,13 +813,34 @@ function prazoMinino() {
 
 	        //adiciona prazo minimo de solicitação de viagem internacional
 	        if (document.getElementById("internacional").checked == true) {
-	            prazoMinimo = addDias(dataAtual, 15);
+	        	
+	        	var constraints = new Array();
+	            constraints.push(DatasetFactory.createConstraint("CODIGO", "VM_PRVIAGI", "VM_PRVIAGI", ConstraintType.MUST));	        	
+	        	
+	            var dataset = DatasetFactory.getDataset("ds_get_Parametros", null, constraints, null);
+	        	if (dataset != null && dataset.values.length > 0) {
 
-	        }
+	        		//prazoMinimo = addDias(dataAtual, 15);
+	        		prazoMinimo = addDias(dataAtual, parseInt(dataset.values[0]["VALOR"]));
+
+	        	}
 	        //adiciona prazo minimo de solicitação de viagem nacional
+	        }
 	        else {
-	            prazoMinimo = addDias(dataAtual, 8);
-
+	        	var constraints = new Array();
+	            constraints.push(DatasetFactory.createConstraint("CODIGO", "VM_PRVIAGN", "VM_PRVIAGN", ConstraintType.MUST));	        	
+	        	
+	            var dataset = DatasetFactory.getDataset("ds_get_Parametros", null, constraints, null);
+	        	if (dataset != null && dataset.values.length > 0) {
+	
+	        		//console.log("prazo");
+	        		//console.log(parseInt(dataset.values[0]["VALOR"]));
+	        		
+	        		prazoMinimo = addDias(dataAtual, parseInt(dataset.values[0]["VALOR"]));
+	        		//prazoMinimo = addDias(dataAtual, 8);
+	        		
+	        		//console.log(prazoMinimo);
+	        	}
 	        }
 
 	        //recebe menor data string do Fluig e converte para tipo Data MM/DD/YYYY

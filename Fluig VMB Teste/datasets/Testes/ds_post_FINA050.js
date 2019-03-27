@@ -6,7 +6,7 @@ function createDataset(fields, constraints, sortFields) {
 	
 	
 	 var valorDiarias="300";
-	 var dataVencimento="15/03/2019";	 	
+	 var dataVencimento="26/03/2019";	 	
 	 constraint.push(DatasetFactory.createConstraint("valor", valorDiarias, valorDiarias, ConstraintType.MUST));  
 	 constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	

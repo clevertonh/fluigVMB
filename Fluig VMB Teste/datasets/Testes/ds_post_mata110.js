@@ -7,7 +7,7 @@ function createDataset(fields, constraints, sortFields) {
 	 
 	 itemServico.push({ 
 			produto: ''+"DVPSG001" +'', 
-			quantidade: 1, 
+			quantidade: ''+ 1 +'', 
 			valor: '' + "200" + '',
 			data: '' + "18/03/2019" + '' 
 				});

@@ -28,10 +28,10 @@ function enableFields(form){
 		 
 		 var aprovador = usuarioAprovador();
 		 if (aprovador!= null && aprovador != ""){
-			// form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
-			// form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
-			// form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
-			 form.setValue("matriculaApr","001649");	 
+			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
+			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
+			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
+			// form.setValue("matriculaApr","001649");	 
 		 }
 		 
 	}

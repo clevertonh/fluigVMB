@@ -24,13 +24,22 @@ $(document).ready(function() {
 	
 });
 
-var dtPagamento = FLUIGC.calendar('#calendariodtNeces', {
+var dtNecessidade = FLUIGC.calendar('#dtNecessidade', {
     pickDate: true,
     pickTime: false,
     useCurrent: true, 
     minDate: new Date().toLocaleString()
     
 });
+
+var dtPagamento = FLUIGC.calendar('#dtPgto', {
+    pickDate: true,
+    pickTime: false,
+    useCurrent: true, 
+    minDate: new Date().toLocaleString()
+    
+});
+
 
 function removedZoomItem(removedItem) {
     var CCUSTO = "centrocusto";

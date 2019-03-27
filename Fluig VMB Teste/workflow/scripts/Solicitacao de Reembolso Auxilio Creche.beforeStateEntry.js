@@ -6,6 +6,8 @@ function beforeStateEntry(sequenceId){
 	var APROVACAO_RH = 27;
 	var ALTERACAO_DATA = 67;
 	
+	var GATEWAYVALIDARDOCUMENTO = 21;
+	
 	//RECUPERAR O ID DO PROCESSO
 	var PROCESSO_ID = 3;
 	

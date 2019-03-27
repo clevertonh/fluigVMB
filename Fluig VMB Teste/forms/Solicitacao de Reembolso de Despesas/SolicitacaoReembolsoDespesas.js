@@ -1,19 +1,20 @@
 var ABERTURA = 0;
-var APROVACAO_GESTOR = 5;
-var VALIDACAO = 48;
-var APROVACAO_RH = 27;
-var ALTERACAO_DATA = 67;
-
+var SOLICITAR = 4;
+var APROVACAO = 5;
+var CORRIGIR = 20;
+var VALIDACAO = 13;
+var GERACAO = 16;
 
 var dtSolicitacao;
 var dtPagamento;
 
 
 
+
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
-	if (ATIVIDADE == ABERTURA){
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR){
 		dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
 		    pickDate: true,
 		    pickTime: false,
@@ -25,7 +26,7 @@ $(document).ready(function() {
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
 	}
-	else if (ATIVIDADE == VALIDACAO || ATIVIDADE == ALTERACAO_DATA){
+	else if (ATIVIDADE == VALIDACAO ){
 		 dtPagamento = FLUIGC.calendar('#dtPagamento', {
 		    pickDate: true,
 		    pickTime: false,
@@ -37,7 +38,6 @@ $(document).ready(function() {
 
 	
 });
-
 
 
 function adicionaItem(itens) {
@@ -364,24 +364,3 @@ function adicionaItensRateio(itens) {
 
     }
 }
-
-function justificativaValidacao(){
-	if (document.getElementById("validacao").checked == true){
-		document.getElementById("justificativaReprovacaoV").style.display = "none";
-	}
-	else {
-		document.getElementById("justificativaReprovacaoV").style.display = "block";	
-	}
-	
-}
-
-function justificativaReprovacao(){
-	if (document.getElementById("aprovacao").checked == true || document.getElementById("devolver").checked == true ){
-		document.getElementById("justificativaR").style.display = "none";
-	}
-	else {
-		document.getElementById("justificativaR").style.display = "block";	
-	}
-	
-}
-

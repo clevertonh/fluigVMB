@@ -70,8 +70,11 @@ function beforeStateEntry(sequenceId){
  		  			throw "FALHA AO RECUPERAR ITENS COMPRADOS NA SOLICITAÇÃO DE VIAGEM.";
  		  		}
      			
- 		  		
- 		  		
+ 		  		/*
+ 		  		if (vooComprado == 'sim' && aItemServico.length <=0){
+ 		  			throw "ATENÇÃO: BILHETE DE PASSAGEM AEREA NAO INFORMADO.";
+ 		  		}
+ 		  		*/
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
  		  		if (aItemServico.length >0){ 		    					     	    		     	   
  		
@@ -104,7 +107,12 @@ function beforeStateEntry(sequenceId){
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
- 		  		}	
+ 		  		}
+ 		  		/*
+ 		  		else if (vooComprado == 'sim' && aItemServico.length <=0){
+ 		  			throw "ATENÇÃO: BILHETE DE PASSAGEM AEREA NAO INFORMADO.";
+ 		  		}
+ 		  		*/
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
 		   else if ( ativAtual == PAGARDIARIAS && nextAtv == GATEWAYPASSAGEMCOMPRADA && recebeDiarias == "sim") {		   

@@ -1,22 +1,28 @@
 function defineStructure() {
+	addColumn("FILIAL");
 	addColumn("CODIGO");
-	addColumn("DESCRICAO");
 	addColumn("TIPO");
-
-	
-	setKey(["CODIGO"]);
-	addIndex(["CODIGO"]);
+	addColumn("DESCRICAO");
+	addColumn("VALOR");
+		
+	setKey(["FILIAL","CODIGO"]);
+		
 }
 
 function createDataset(fields, constraints, sortFields) {
-	
 	var dataset = DatasetBuilder.newDataset();
+	dataset.addColumn("FILIAL");
 	dataset.addColumn("CODIGO");
-    dataset.addColumn("DESCRICAO");
-    dataset.addColumn("TIPO");
-         
-    var objdata;
+	dataset.addColumn("TIPO");
+	dataset.addColumn("DESCRICAO");
+    dataset.addColumn("VALOR");
+    
+	 
+    
+  
+    
     var dados;
+    var webservice = '/VM_PARAMETROS';
     
     try {
     	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -24,7 +30,7 @@ function createDataset(fields, constraints, sortFields) {
     	 var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'REST FLUIG',
-	            endpoint : '/CENTRO_CUSTO',
+	            endpoint : webservice,
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
 	        }
@@ -36,7 +42,7 @@ function createDataset(fields, constraints, sortFields) {
         var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'REST FLUIG 2',
-	            endpoint : '/CENTRO_CUSTO',
+	            endpoint : webservice,
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
 	        }   	
@@ -50,57 +56,58 @@ function createDataset(fields, constraints, sortFields) {
     
     else{
         //log.info(vo.getResult());        
-    	dados = vo.getResult();
+        dados = vo.getResult();
     }
     
     } catch(err) {
     	throw new Exception(err);
     }
     
-    var filtro = getConstraints(constraints, "Descricao","Codigo");
-    
-    
-    if(dados != null){
-    	objdata = JSON.parse(dados);
-		for(var i in objdata){
-			if(filtro != null && (objdata[i].CDESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CTIPO]);
-			
-			}
-			if(filtro == null){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CTIPO]);			
-			}		
+     var objdata;
+     
+        if(dados != null){
+    		objdata = JSON.parse(dados);
+			for(var i in objdata){
+				var valor = objdata[i].CVALOR;
+				
+				dataset.addRow([objdata[i].CFIL, objdata[i].CCODIGO, objdata[i].CTIPO, objdata[i].CDESC, valor.trim()]);			
 		}
 	}
-    	
-    return dataset;
-
+	
+	/*
+	 * 
+    var tempDataset = getDefaultValues();  
+	 
+    for(var a=0;a<   tempDataset.length;a++){
+        dataset.addRow(new Array(tempDataset[a]["CODIGO"], tempDataset[a]["VALOR"]));
+    }
+    */
+    
+   return dataset;
+	 
 }
 
+function getDefaultValues(){ // retorna valores default para serem filtrados
+    return  [{
+                CODIGO: "VM_PRVIAGN",                
+                VALOR: "8"
+            },
+            {
+            	CODIGO: "VM_PRVIAGI",               
+            	VALOR: "15"
+            }]
+            
+}
 
-
-
-function getConstraints(constraints, field, field2){
-	
+function getConstraints(constraints, field){
 	if(constraints == null)
 		return null;
 	
 	for(var i=0;i<constraints.length;i++){
-		if(constraints[i].fieldName == field || constraints[i].fieldName == field2 ){		
-			log.info("--------------DATASET CENTRO DE CUSTO-------------");
-			log.info("CAMPO: "+field);
-			log.info("CONSTRAINTS: "+constraints[i]);
-			log.info("INFORMACAO DIGITADA: "+constraints[i].initialValue);
-							
+		if(constraints[i].fieldName == field){
 			return constraints[i].initialValue;
 		}
 	}
 	
 	return null;
 }
-
-
-
-
-
-

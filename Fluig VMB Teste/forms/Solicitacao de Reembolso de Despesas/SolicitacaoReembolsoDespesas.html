@@ -1,0 +1,385 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+      <link type="text/css" rel="stylesheet" href="SolicitacaoReembolsoDespesas.css"/>
+   </head>
+   <body>
+      <div class="container">
+         <div class="fluig-style-guide">
+            <!--  Imagem  -->
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <div class="col-xs-6 col-md-3">
+                     <img src="https://visaomundial.org/images/logo_VMB.svg">
+                  </div>
+               </div>
+            </div>
+            <!--  Formulário  -->
+            <form role="form">
+               <div class='panel panel-primary'>
+                  <div class="panel-heading">
+                     <div class="container text-center">
+                        <h4>Solicitação de reembolso de despesas</h4>
+                     </div>
+                  </div>
+                  <div class="panel-body">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div id="exTab3" class="container-fluid">
+                              <ul class="nav nav-pills nav-justified">
+                                 <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
+                                 <li><a href="#2b" data-toggle="tab">Gestor imediato</a></li>
+                                 <li><a href="#3b" data-toggle="tab">Tesouraria</a></li>                                 
+                              </ul>
+                              <div class="tab-content clearfix">
+                                 <!-- Aba Solicitante -->                                                              
+                                 <div class="tab-pane active" id="1b">
+                                    <div class="row">
+                                       <div class="form-group col-md-2">
+                                          <label for="id" class="required">Cód. solicitação</label>
+                                          <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-5">
+                                          <label for="solicitante" class="required">Solicitante</label>
+                                          <input type="text" class="form-control" id="solicitante" name="solicitante" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="exampleInputEmail1">Email</label>
+                                          <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
+                                       </div>
+                                       <div class="form-group col-md-3">
+                                          <label for="dtSolicitacao">Data da solicitação</label>
+                                          <div class="input-group date" id="calendariodtSolicitacao">
+                                             <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-2">
+                                          <label for="vl_rmb">Valor total a ser reembolsado</label>
+                                          <input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
+                                       </div>
+                                                      <div class="form-group col-md-5">
+                                                         <label for="Funcionario">Nome do beneficiário</label> 
+                                                           <input name="Funcionario"
+                                                            class="form-control" type="zoom"
+                                                            id="Funcionario"
+                                                            data-zoom="{'displayKey':'NOME',
+                                                            'datasetId':'VM_Funcionario',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o funcionário',
+                                                            'fields':[
+                                                            {'field':'NOME','label':'NOME','standard':'true'},
+                                                            {'field':'CPF','label':'CPF'},
+                                                            {'field':'RG','label':'RG'}					  					
+                                                            ]
+                                                            }">
+                                                      </div>
+                                    	<div class="form-group col-md-3">
+                                    		<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario">
+                                    	</div> 
+                                    </div>                            
+                                    <div class="panel panel-default" id="panelItens">
+                                       <div class="panel-heading ">
+                                          <h3 class="panel-title">
+                                             <b>Informações do Pagamento</b>
+                                          </h3>
+                                       </div>
+                                       <div class="panel-body">
+                                          <div class="form-group row">
+                                                      <div class="form-group col-md-6" id="selecaorateio">
+                                                         <label>Carregar base rateio pré-configurado</label> <input
+                                                            name="rateioconfigurado" class="form-control"
+                                                            type="zoom" id="rateioconfigurado"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'VM_RateioConfigurado',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um rateio',
+                                                            'fields':[
+                                                            {
+                                                            'field':'CODIGO',
+                                                            'label':'CODIGO'
+                                                            },                                                              
+                                                            {
+                                                            'field':'DESCRICAO',
+                                                            'label':'DESCRICAO',
+                                                            'standard':'true'
+                                                            }						  					
+                                                            ]
+                                                            }">
+                                                      </div>                                          
+                                             <div class="col-md-12 fs-txt-right">
+                                                <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
+                                                <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
+                                                </button>
+                                             </div>
+                                          </div>
+                                          <div class="form-group row">
+                                             <div class="col-md-12">
+                                                <div class="form-field table-responsive">
+                                                   <table tablename="tableItens" id="tableItens" border="0" class="table table-striped table-bordered" noaddbutton="true" nodeletebutton="true">
+                                                      <thead>
+                                                         <tr class="tableHeadRow">
+                                                            <th></th>
+                                                            <th>Percentual</th>
+                                                            <th class="tableColumn">Centro de Custo</th>
+                                                            <th class="tableColumn">Projeto</th>
+                                                            <th class="tableColumn">Atividade</th>
+                                                            <th class="tableColumn">Categoria</th>
+                                                            <th class="tableColumn">Fonte de Financiamento</th>
+                                                            <th class="tableColumn">Area Estratégica</th>
+                                                            <th>Alocação</th>
+                                                            <th>Localização</th>
+                                                            <th>Conta Contábil </th>
+                                                            <th>Rateio</th>
+                                                         </tr>
+                                                      </thead>
+                                                      <tbody id="tbodyItens">
+                                                         <tr>
+                                                            <td>
+                                                               <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id ="removeitem" onclick="fnWdkRemoveChild(this)"></span>
+                                                            </td>
+                                                            <td >
+                                                               <input class="form-control money" name="percentual" id="percentual" type="text" style="width:100px;" />
+                                                            </td>
+                                                            <td>
+                                                               <div class="form-group">
+                                                                  <input type="hidden" name="centrocusto" id="centrocusto" style="width:200px;"/> 																						
+                                                                  <input style="width:200px !important;"
+                                                                     type="zoom" 
+                                                                     name="txtcentrocusto" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'VM_CentroCusto',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione um centro de custo',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO'},
+                                                                     {'field':'TIPO', 'label':'TIPO' , 'visible' : 'false'}]
+                                                                     }" />
+                                                               </div>
+                                                            </td>
+                                                            <td>
+                                                               <div class="form-group">
+                                                                  <input type="hidden" name="projeto" id="projeto" /> 																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="txtprojeto" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'VM_projeto',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione um projeto',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                     {'field':'CONTA', 'label':'CONTA' , 'visible' : 'false'}]
+                                                                     }" />
+                                                               </div>
+                                                            </td>
+                                                            <td >
+                                                               <div class="form-group">
+                                                                  <input type="hidden" name="atividade" id="atividade" /> 																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="txtatividade" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'ds_get_Atividade',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Escolha uma atividade',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                     {'field':'CENTRO_CUSTO', 'label':'CENTRO_CUSTO', 'visible' : 'false'}]
+                                                                     }" />
+                                                               </div>
+                                                            </td>
+                                                            <td >
+                                                               <div class="form-group">
+                                                                  <input type="hidden" name="categoria" id="categoria" /> 																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="txtcategoria" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'VM_Categoria',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione uma despesa',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO'}]
+                                                                     }" />
+                                                               </div>
+                                                            </td>
+                                                            <td >
+                                                               <div class="form-group">
+                                                                  <input type="hidden" name="fontefinanciamento" id="fontefinanciamento" /> 																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="txtfontefinanciamento" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'ds_get_FonteFinanciamento',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione uma fonte de financ.',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                     {'field':'PROJETO', 'label':'PROJETO', 'visible':'false'}]
+                                                                     }" />
+                                                               </div>
+                                                            </td>
+                                                            <td >
+                                                               <div class="form-group">
+                                                                  <input type="hidden" name="areaestrategica" id="areaestrategica" /> 																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="txtareaestrategica" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'ds_get_AreaProjeto',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione uma Area Estrategica',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                     {'field':'PROJETO', 'label':'PROJETO', 'visible':'false'}]
+                                                                     }" />
+                                                               </div>
+                                                            </td>
+                                                            <td >
+                                                               <input class="form-control" name="alocacao" id ="alocacao" type="text"  maxlength="5" style="width:100px;" readOnly/>
+                                                            </td>
+                                                            <td >
+                                                               <input class="form-control" name="localizacao" id="localizacao" type="text" maxlength="3" style="width:70px;" readonly/>
+                                                            </td>
+                                                            <td >
+                                                               <input class="form-control" name="contacontabil" id="contacontabil" type="text" maxlength="10" style="width:100px;" readonly/>
+                                                            </td>
+                                                            <td>
+                                                            	<input class="form-control" name="rateio" id="rateio" type="text" maxlength="10" style="width: 100px;" readonly /></td>
+                                                         </tr>
+                                                      </tbody>
+                                                   </table>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!-- Aba Gestor -->
+                                 <div class="tab-pane" id="2b">
+									<div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="gestor" class="required">Gestor</label>
+                                          <input type="text" class="form-control" id="gestor" name="gestor" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailLider">Email do Gestor</label>
+                                          <input type="email" class="form-control" id="emailLider" name="emailLider" readonly>
+                                       </div>	
+                                          <div class="form-group col-md-4" id="divMatricualApr">
+                                          	<label for="matriculaApr">Matricula Aprovador</label>
+                                          	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
+                                          </div>                                        								
+									</div>
+                                    <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprovacao">Aprovado</Label> <input type="radio"
+                                             id="aprovacao" name="aprovacao" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprovacaon">Reprovado</Label> <input
+                                             type="radio" id="aprovacaon" name="aprovacao"
+                                             value="reprovado"  />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="devolver">Devolver para correção</Label> <input
+                                             type="radio" id="devolver" name="aprovacao"
+                                             value="devolvido"  />
+                                       </div>
+                                       <div class="form-group col-md-2">
+                                    		 <input type="text" class="form-control" id="prazoaprovacao" name="prazoaprovacao" readonly>
+                                    	</div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-12">
+                                          <div class="form-group"
+                                             id='divJustificativaReprovacaoViagem'>
+                                             <label for="justificativaReprovacao">Justificativa</label>
+                                             <textarea class="form-control" rows="3"
+                                                id="justificativaReprovacao"
+                                                name="justificativaReprovacao"
+                                                placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                          </div>
+                                       </div>
+                                    </div>									
+                                 </div>
+                                 <!-- Aba Assistente -->
+                                 <div class="tab-pane" id="3b">
+                                    <div class="row">
+                                       <div class="form-group col-md-5">
+                                          <label for="assistente" class="required">Assistente</label>
+                                          <input type="text" class="form-control" id="assistente" name="assistente" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailAssistente">Email do assistente</label>
+                                          <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
+                                       </div>
+                                       <div class="form-group col-md-3">
+                                          <label for="dtPagamento">Data de pagamento</label>
+                                          <div class="input-group date" id="calendariodtPgto">
+                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <h3>Para validar marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">	
+                                          <Label for="validacao">Validado</Label>
+                                          <input type="radio" id ="validacao" name="validacao" value ="validado" onclick="justificativaValidacao()"/>											
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for ="negado">Negado</Label>					
+                                          <input type="radio" id ="negado" name="validacao" value ="negado" onclick="justificativaValidacao()"/>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-12">
+                                          <div class="form-group" >
+                                             <label for="justificativaReprovacaoV">Justificativa</label>
+                                             <textarea class="form-control" rows="3" id="justificativaReprovacaoV" name="justificativaReprovacaoV" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <script src="SolicitacaoReembolsoDespesas.js"></script>
+   </body>
+</html>
