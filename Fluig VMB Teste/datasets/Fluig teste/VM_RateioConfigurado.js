@@ -1,6 +1,8 @@
 function defineStructure() {
-	addColumn("CODIGO");
+	addColumn("CODIGO");	
 	addColumn("DESCRICAO");
+	addColumn("TIPO");
+	
 	
 	setKey(["CODIGO"]);
 	addIndex(["CODIGO"]);
@@ -15,6 +17,7 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("CODIGO");
     dataset.addColumn("DESCRICAO");
+    dataset.addColumn("TIPO");
     
    // var filtro = getConstraints(constraints, "Descricao");
    
@@ -69,7 +72,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESC]);
+				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESC, objdata[i].CTIPO]);
 		}
 	}
 		

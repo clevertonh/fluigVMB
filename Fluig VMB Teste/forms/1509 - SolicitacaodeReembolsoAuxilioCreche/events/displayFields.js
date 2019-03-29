@@ -16,9 +16,12 @@ function displayFields(form,customHTML){
 	
     
     form.setVisibleById("aprPrazo", false);
-    form.setVisibleById("cpfbeneficiario", false);    
+    //form.setVisibleById("cpfbeneficiario", false);    
     form.setVisibleById("divPrazoApr", false);
-    form.setVisibleById("divMatricualApr", false);
+    //form.setVisibleById("divMatricualApr", false);
+    
+    //após implementado as informações de dependente, retirar a ocultação do campo
+    //form.setVisibleById("div_dependente", false);
     
     
     

@@ -35,7 +35,21 @@ function validateForm(form){
 		else if (form.getValue("emailSolicitante")==""){
 			throw "Seu aprovador não foi carregado automaticamente. Tente novamente mais tarde, se o problema persisti, entre em contato com o setor de TI.";
 		}
-		
+		else if (form.getValue("Funcionario")==""){
+			throw "Você precisa selecionar o funcionário que receberá o reembolso.";
+		}
+		else if (form.getValue("cpfbeneficiario")==""){
+			throw "O CPF do beneficiário não foi preenchido. Entre em contato com o setor de TI.";
+		}
+		else if (form.getValue("dependente")==""){
+			throw "Você precisa selecionar um dependente.";
+		}
+		else if (form.getValue("dtNascimento")==""){
+			throw "A data de nascimento do dependente não foi preenchida. Entre em contato com o setor de TI.";
+		}
+		else if (form.getValue("idade")==""){
+			throw "A idade atual do dependente não foi calculada pelo sistema. Entre em contato com o setor de TI.";
+		}
 		
 	}
 	

@@ -58,7 +58,7 @@
                                        </div>
                                        <div class="form-group col-md-3">
                                           <label for="dtSolicitacao">Data da solicitação</label>
-                                          <div class="input-group date" id="calendariodtSolicitacao">
+                                          <div class="input-group date">
                                              <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
@@ -66,12 +66,15 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="row">
-                                       <div class="form-group col-md-2">
-                                          <label for="vl_rmb">Valor a ser reembolsado</label>
-                                          <input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
+                                      <div class="panel panel-success">
+                                       <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Informações do beneficiário</b>
+                                          </h5>
                                        </div>
-                                                      <div class="form-group col-md-4">
+                                        <div class="panel-body">
+                                          <div class="form-group row">                                          	 
+                                                  <div class="form-group col-md-6">
                                                          <label for="Funcionario">Nome do beneficiário</label> 
                                                            <input name="Funcionario"
                                                             class="form-control" type="zoom"
@@ -87,10 +90,63 @@
                                                             ]
                                                             }">
                                                       </div>
-                                    </div>    
+                                                      <div class="form-group col-md-3">
+                                                      	<label>CPF Beneficiário</label>
+                                                      		<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
+                                                      </div> 
+                                                      <div class="form-group col-md-2">
+                                          		<label for="vl_rmb">Valor a ser reembolsado</label>
+                                          		<input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
+                                      		 </div>		 
+                                          </div>
+                                         </div> 
+                                       </div>   
+                                    <div class="panel panel-success">
+                                       <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Informações do dependente</b>
+                                          </h5>
+                                       </div>
+                                       
+                                        <div class="panel-body">
+                                          <div class="form-group row">                                       	
+                                    	   <div class="form-group col-md-6">
+                                                         <label for="Funcionario">Nome do filho (a)</label> 
+                                                           <input name="dependente"
+                                                            class="form-control" type="zoom"
+                                                            id="dependente"
+                                                            data-zoom="{'displayKey':'NOME_DEP',
+                                                            'datasetId':'ds_get_Dependente',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o dependente',
+                                                            'fields':[
+                                                            {'field':'NOME_DEP','label':'NOME_DEP','standard':'true'},
+                                                            {'field':'DTNASC','label':'DTNASC'},
+                                                            {'field':'GENERO','label':'GENERO'}					  					
+                                                            ]
+                                                            }">
+                                             </div>
+                                                <div class="form-group col-md-3">
+                                          <label for="dtNascimento">Data de Nascimento</label>
+                                          <div class="input-group date">
+                                             <input type="text" class="form-control" id="dtNascimento" name="dtNascimento"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group col-md-3">
+                                       	<label>Idade atual</label>
+                                       	<input type="text" class="form-control" name="idade" id="idade" readonly>
+                                       </div>
+                                   
+                                       	  </div> 
+                                       </div> 
+                                       
+                                     </div>   
+                                    
                                     <div class="row">
-                                    	<input type="text" id ="aprPrazo" class="form-control" name="aprPrazo">
-                                    	<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario">
+                                    	<input type="text" id ="aprPrazo" class="form-control" name="aprPrazo">                                    	
                                     </div>                        
                                     <div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">

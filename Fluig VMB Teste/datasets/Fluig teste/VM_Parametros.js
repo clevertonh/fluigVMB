@@ -1,3 +1,8 @@
+//VERIFICAR API PADRAO DO PROTHEUS POIS JA EXISTE MAS NÃO CONSEGUI FAZER RETORNAR LISTA DE PARAMETROS
+//https://api.totvs.com.br/apidetails/SystemParameter_v1_000.json
+
+
+
 function defineStructure() {
 	addColumn("FILIAL");
 	addColumn("CODIGO");

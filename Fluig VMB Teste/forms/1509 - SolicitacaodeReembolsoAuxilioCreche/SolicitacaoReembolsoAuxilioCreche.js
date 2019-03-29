@@ -104,6 +104,8 @@ function removedZoomItem(removedItem) {
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
     var FUNCIONARIO = "Funcionario";
+    var DEPENDENTE ="dependente"
+    
 
 
     //Recebe o nome do campo zoom
@@ -160,7 +162,7 @@ function removedZoomItem(removedItem) {
     }
 
 
-    if (campoZOOM == RATEIO) {
+    else if (campoZOOM == RATEIO) {
         //removeItensRateio();
     	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
@@ -172,8 +174,17 @@ function removedZoomItem(removedItem) {
 	    }
     }
     
-    if (campoZOOM == FUNCIONARIO){
+    else if (campoZOOM == FUNCIONARIO){
     	 $("#cpfbeneficiario").val("");
+    	 window[DEPENDENTE].clear();
+    	 $("#dtNascimento").val("");
+     	 $("#idade").val("");
+     	 //window[DEPENDENTE].disable(false);
+    }
+    
+    else if (campoZOOM == DEPENDENTE){
+    	$("#dtNascimento").val("");
+    	$("#idade").val("");
     }
         
   
@@ -182,6 +193,8 @@ function removedZoomItem(removedItem) {
 function setZoomData(instance, value) {
     window[instance].setValue(value);
 }
+
+
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
@@ -196,6 +209,7 @@ function setSelectedZoomItem(selectedItem) {
   var ALOCACAO = "alocacao";
   var RATEIO = "rateioconfigurado";
   var FUNCIONARIO = "Funcionario";
+  var DEPENDENTE ="dependente";
 
 
 
@@ -291,11 +305,32 @@ function setSelectedZoomItem(selectedItem) {
 		 console.log(selectedItem["CPF"]);
 	  	 $("#cpfbeneficiario").val(selectedItem["CPF"]);
 	  	 
+	  	 //window[DEPENDENTE].disable(true);
+	  	 //window[DEPENDENTE].clear();
+	  	
+	  	 reloadZoomFilterValues(DEPENDENTE, "CPF_F," + selectedItem["CPF"]);
+	  
+	  	 
 	  }
+  else if (campoZOOM == DEPENDENTE){
+		$('#dtNascimento').val(selectedItem["DTNASC"]);
+				
+		var datanasc = convertStringToData($('#dtNascimento').val());
+
+		console.log(datanasc.getFullYear());
+		console.log(datanasc.getMonth());
+		console.log(datanasc.getDate());
+	
+		$('#idade').val(idade(datanasc.getFullYear(), datanasc.getMonth()+1, datanasc.getDate()));
+		
+		
+		
+  }
+  
 
 
  
-  if (campoZOOM == RATEIO) {    
+  else if (campoZOOM == RATEIO) {    
   	console.log("---ENTROU AQUI 9 ----");
   	buscaItensRateio(selectedItem["CODIGO"]);
   	
@@ -305,6 +340,59 @@ function setSelectedZoomItem(selectedItem) {
 
       
   
+}
+
+
+function DaysInMonth(Y, M) {
+    with (new Date(Y, M, 1, 12)) {
+        setDate(0);
+        return getDate();
+    }
+}
+
+
+function datediff(date1, date2) {
+    var y1 = date1.getFullYear(), m1 = date1.getMonth(), d1 = date1.getDate(),
+	 y2 = date2.getFullYear(), m2 = date2.getMonth(), d2 = date2.getDate();
+
+    if (d1 < d2) {
+        m1--;
+        d1 += DaysInMonth(y2, m2);
+    }
+    if (m1 < m2) {
+        y1--;
+        m1 += 12;
+    }
+    return [y1 - y2, m1 - m2, d1 - d2];
+}
+
+function idade(calyear,calmon,calday)
+{
+	var d = new Date();
+	var curday = d.getDate();
+	var curmon = d.getMonth() + 1;
+	var curyear = d.getFullYear();
+	
+		var curd = new Date(curyear,curmon-1,curday);
+		var cald = new Date(calyear,calmon-1,calday);
+		
+		var diff =  Date.UTC(curyear,curmon,curday,0,0,0)
+			 - Date.UTC(calyear,calmon,calday,0,0,0);
+
+		var dife = datediff(curd,cald);
+		
+		return dife[0]+" anos, "+dife[1]+" meses e "+dife[2]+" dias";
+
+}
+
+
+
+//recebe data do Fluig e convert para data normal
+function convertStringToData(StringToData) {
+    //variavel para armazenar a data limite para aprovação   
+    var data = StringToData.split('/');
+
+    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
 }
 
 //carrega itens do rateio para informações de pagamento

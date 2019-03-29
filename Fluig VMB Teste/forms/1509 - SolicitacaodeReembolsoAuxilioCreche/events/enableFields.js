@@ -34,12 +34,16 @@ function enableFields(form){
 			// form.setValue("matriculaApr","001649");	 
 		 }
 		 
+		 
+		// form.setEnabled('dependente', false);
+		 
 	}
 	
 	else if (activity == APROVACAO_GESTOR){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 form.setEnabled('Funcionario', false);
+		 form.setEnabled('dependente', false);
 		
 		
 	}
@@ -50,7 +54,7 @@ function enableFields(form){
 		 form.setValue("emailAssistente",dataset.getValue(0, "mail"));		 
 		 form.setValue("aprovacao","");
 		 form.setEnabled('Funcionario', false);
-		 
+		 form.setEnabled('dependente', false);
 		
 	}
 	
@@ -58,6 +62,7 @@ function enableFields(form){
 		form.setEnabled('validacao', false);
 		form.setEnabled('justificativaReprovacaoV', false);
 		 form.setEnabled('Funcionario', false);
+		 form.setEnabled('dependente', false);
 		 
 		//recupera data de pagamento do Fluig
 		var dtPagamento = form.getValue("dtPagamento");
@@ -80,6 +85,7 @@ function enableFields(form){
 		form.setEnabled('vl_rmb', false);
 		form.setEnabled('justificativaReprovacaoV', false);
 		 form.setEnabled('Funcionario', false);
+		 form.setEnabled('dependente', false);
 	}
  
 
