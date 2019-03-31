@@ -280,20 +280,13 @@ function solicitanteNFunc() {
 }
 
 function solicitantePassageiro() {
-
     if (document.getElementById("solicitanteFuncionario").checked == true) {
-
         $('#passageirofuncionarionao').attr("checked", false);
         document.getElementById("passageirofuncionario").click();
-        
-        
         document.getElementById("divOutroFun").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "block";
 
-
     }
-
-
 }
 
 function solicitanteNaoPass() {
@@ -318,7 +311,6 @@ function solicitanteNaoPass() {
 }
 
 function passageiroFuncionario() {
-
     $('#passageirofuncionarionao').attr("checked", false);
     $('#nomepassageiro').val("");
     $('#nomemae').val("");
@@ -333,7 +325,8 @@ function passageiroFuncionario() {
         document.getElementById("solicitantepassageiro").checked == true) {
         //busca dados do funcionario
     	dadosFuncionarioDataSet();	
-        document.getElementById("embaixadorN").click();
+       
+    	document.getElementById("embaixadorN").click();
         document.getElementById("divdadospassageiro").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
     
@@ -812,34 +805,19 @@ function prazoMinino() {
 	        }
 
 	        //adiciona prazo minimo de solicitação de viagem internacional
-	        if (document.getElementById("internacional").checked == true) {
-	        	
-	        	var constraints = new Array();
-	            constraints.push(DatasetFactory.createConstraint("CODIGO", "VM_PRVIAGI", "VM_PRVIAGI", ConstraintType.MUST));	        	
-	        	
-	            var dataset = DatasetFactory.getDataset("ds_get_Parametros", null, constraints, null);
-	        	if (dataset != null && dataset.values.length > 0) {
-
-	        		//prazoMinimo = addDias(dataAtual, 15);
+	        if (document.getElementById("internacional").checked == true) {	        
+	            var dataset = prazoViagem("VM_PRVIAGI");	        
+	        	if (dataset != null && dataset.values.length > 0) {	        		
 	        		prazoMinimo = addDias(dataAtual, parseInt(dataset.values[0]["VALOR"]));
 
 	        	}
-	        //adiciona prazo minimo de solicitação de viagem nacional
 	        }
-	        else {
-	        	var constraints = new Array();
-	            constraints.push(DatasetFactory.createConstraint("CODIGO", "VM_PRVIAGN", "VM_PRVIAGN", ConstraintType.MUST));	        	
-	        	
-	            var dataset = DatasetFactory.getDataset("ds_get_Parametros", null, constraints, null);
-	        	if (dataset != null && dataset.values.length > 0) {
-	
-	        		//console.log("prazo");
-	        		//console.log(parseInt(dataset.values[0]["VALOR"]));
-	        		
+	        //adiciona prazo minimo de solicitação de viagem nacional
+	        else {	        	
+	        	var dataset = prazoViagem("VM_PRVIAGN");	        
+	        	if (dataset != null && dataset.values.length > 0) {	        		
 	        		prazoMinimo = addDias(dataAtual, parseInt(dataset.values[0]["VALOR"]));
-	        		//prazoMinimo = addDias(dataAtual, 8);
-	        		
-	        		//console.log(prazoMinimo);
+
 	        	}
 	        }
 
@@ -858,16 +836,25 @@ function prazoMinino() {
 	        prazoAprovacao(menorDataConvertida);
 
 	        //chama função que verifica qual maior data informada da viagem
-	        maiorDataInformadaViagem();
-	    	
-
-	
+	        maiorDataInformadaViagem();	    	
     }
 	
 
 }
 
-
+//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
+function prazoViagem(parametro){
+	var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("CODIGO", parametro, parametro, ConstraintType.MUST));	        	
+	
+    var dataset = DatasetFactory.getDataset("ds_get_Parametros", null, constraints, null);
+	if (dataset != null && dataset.values.length > 0) {
+		return dataset;
+	}
+	
+	return null;
+	
+}
 
 function prazoReembolso() {	
 	if (document.getElementById("credito").checked == true) {
@@ -1044,7 +1031,6 @@ function setSelectedZoomItem(selectedItem) {
         $('#datanasc').val(selectedItem["datanasc"]);
         $('#finalidade').val(selectedItem["finalidade"]);
 
-
         //preenche informações de pagamento
         buscaRemarcacao(selectedItem);
 
@@ -1112,7 +1098,8 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
-//Preciso criar um dataset customizado para retornar essa informação
+//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
+//Preciso criar um dataset customizado para retornar essa informação pois o campo solicitacao pode nao ter sido salvo
 function buscaRemarcacao(item) {
     var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("solicitacao", item.solicitacao, item.solicitacao, ConstraintType.MUST));
@@ -1522,7 +1509,6 @@ function viagemPlanejadaN() {
 
 }
 
-//preciso criar um dataset para isso: é um dataset interno
 function buscaAtividades(item) {
 	var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("CODIGO", item.Codigo, item.Codigo, ConstraintType.MUST));
@@ -1580,9 +1566,8 @@ function desejaHotel() {
     document.getElementById("div_tipoHotel").style.display = "block";
 }
 
+//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
 function AprovadorEmbaixador() {
-		 //console.log("CARREGA APROVADOR");
-		//SET CAMPOS DO APROVADOR
          var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("mail", "raissa_rossiter@wvi.org", "raissa_rossiter@wvi.org", ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
@@ -1594,6 +1579,7 @@ function AprovadorEmbaixador() {
 
 }
 
+//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
 function carregaAprovador() {		
 	var email = parent.WCMAPI.userEmail.toUpperCase();
 		
@@ -1615,6 +1601,7 @@ function carregaAprovador() {
 	
 }
 
+//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
 function dadosFuncionarioDataSet() {
     var email = parent.WCMAPI.userEmail.toUpperCase();
 
@@ -1639,9 +1626,16 @@ function dadosFuncionarioDataSet() {
         } 
 
     }
-
+    else {
+    	  FLUIGC.toast({
+    	        title: 'Atenção: ',
+    	        message: 'Dados do funcionário não localizados',
+    	        type: 'warning'
+    	    });    		
+    }    
 }
 
+//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
 
