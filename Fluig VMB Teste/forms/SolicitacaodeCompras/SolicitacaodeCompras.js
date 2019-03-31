@@ -1,4 +1,6 @@
 var infoUser;
+var ABERTURA = 0;
+
 
 var dataAprovacao = FLUIGC.calendar('#dtNecessidade', {
     pickDate: true,
@@ -118,7 +120,7 @@ function setSelectedZoomItem(selectedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var SERVICO = "txtproduto";
-    var PRODUTO = "codigoProduto"
+    
    
 
     //Recebe o nome do campo zoom
@@ -225,7 +227,8 @@ function setSelectedZoomItem(selectedItem) {
 
     if (linhaPagamento[0] == SERVICO) {
     	console.log("---ENTROU AQUI 12 ----");    	
-    	$('#' + PRODUTO + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
     }
     
 }
@@ -249,7 +252,7 @@ function adicionaLinhaProduto() {
 		
 		reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
 	
-	
+		//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 
 }
 

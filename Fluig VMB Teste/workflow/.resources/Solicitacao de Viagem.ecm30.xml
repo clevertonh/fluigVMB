@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Viagem</processId>
-      <version>396</version>
+      <version>29</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>304</formId>
@@ -863,7 +863,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -875,7 +875,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -887,7 +887,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
@@ -899,7 +899,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
@@ -911,7 +911,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
@@ -923,7 +923,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -935,7 +935,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; &amp;&amp; &#xd;
@@ -948,7 +948,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;sim&quot;</condition>
@@ -960,7 +960,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;nao&quot;</condition>
@@ -972,7 +972,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>143</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;&quot;</condition>
@@ -984,7 +984,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>396</version>
+        <version>29</version>
         <sequence>143</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -1638,8 +1638,11 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
  		  			throw &quot;FALHA AO RECUPERAR ITENS COMPRADOS NA SOLICITAÇÃO DE VIAGEM.&quot;;&#xd;
  		  		}&#xd;
      			&#xd;
- 		  		&#xd;
- 		  		&#xd;
+ 		  		/*&#xd;
+ 		  		if (vooComprado == &apos;sim&apos; &amp;&amp; aItemServico.length &lt;=0){&#xd;
+ 		  			throw &quot;ATENÇÃO: BILHETE DE PASSAGEM AEREA NAO INFORMADO.&quot;;&#xd;
+ 		  		}&#xd;
+ 		  		*/&#xd;
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS&#xd;
  		  		if (aItemServico.length &gt;0){ 		    					     	    		     	   &#xd;
  		&#xd;
@@ -1672,7 +1675,12 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
  		  		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
  		  		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
  		  		    } &#xd;
- 		  		}	&#xd;
+ 		  		}&#xd;
+ 		  		/*&#xd;
+ 		  		else if (vooComprado == &apos;sim&apos; &amp;&amp; aItemServico.length &lt;=0){&#xd;
+ 		  			throw &quot;ATENÇÃO: BILHETE DE PASSAGEM AEREA NAO INFORMADO.&quot;;&#xd;
+ 		  		}&#xd;
+ 		  		*/&#xd;
      	}&#xd;
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050&#xd;
 		   else if ( ativAtual == PAGARDIARIAS &amp;&amp; nextAtv == GATEWAYPASSAGEMCOMPRADA &amp;&amp; recebeDiarias == &quot;sim&quot;) {		   &#xd;
@@ -1837,7 +1845,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
-        <version>396</version>
+        <version>29</version>
         <linkSequence>73</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1848,7 +1856,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
-        <version>396</version>
+        <version>29</version>
         <linkSequence>127</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1866,7 +1874,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1876,7 +1884,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1886,7 +1894,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1896,7 +1904,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1906,7 +1914,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1916,7 +1924,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1926,7 +1934,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1936,7 +1944,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1946,7 +1954,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1956,7 +1964,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1966,7 +1974,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1976,7 +1984,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1986,7 +1994,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1996,7 +2004,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2006,7 +2014,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeViagem</processId>
-      <processVersion>396</processVersion>
+      <processVersion>29</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

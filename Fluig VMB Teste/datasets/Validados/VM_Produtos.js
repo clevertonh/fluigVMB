@@ -2,9 +2,10 @@ function defineStructure() {
 	addColumn("CODIGO");
 	addColumn("DESCRICAO");
 	addColumn("PRODUTO");
+	addColumn("UNIDADE_MEDIDA");
+	addColumn("ULTIMA_COMPRA");
+	addColumn("TERMO_REFERENCIA");
 	addColumn("FLUIG");
-
-	
 	
 	setKey(["CODIGO"]);
 	addIndex(["CODIGO"]);
@@ -16,8 +17,11 @@ function createDataset(fields, constraints, sortFields) {
 	 dataset.addColumn("CODIGO");
 	 dataset.addColumn("DESCRICAO");
 	 dataset.addColumn("PRODUTO");
+	 dataset.addColumn("UNIDADE_MEDIDA");
+	 dataset.addColumn("ULTIMA_COMPRA");
+	 dataset.addColumn("TERMO_REFERENCIA");
 	 dataset.addColumn("FLUIG");
-          
+	 
     var dados;
     var webservice = '/PRODUTO';
      
@@ -38,7 +42,7 @@ function createDataset(fields, constraints, sortFields) {
 	        	
 	            var data = {
 	    	            companyId : getValue("WKCompany") + '',
-	    	            serviceCode : 'REST FLUIG 2',
+	    	            serviceCode : 'REST FLUIG ',
 	    	            endpoint : webservice,
 	    	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	    	            timeoutService: '100' // segundos	            	  
@@ -66,7 +70,8 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG]);		
+			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CUNIDADE, objdata[i].CULTIMAC,objdata[i].CTERMOREF, objdata[i].CFLUIG]);					
+//			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG , "UN"]);
 		}
 	}
 		

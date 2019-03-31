@@ -23,9 +23,7 @@ function enableFields(form){
 		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
-		 
-		 //emailSolicitante = emailSolicitante.toUpperCase();
-		 
+ 
 		 var aprovador = usuarioAprovador();
 		 if (aprovador!= null && aprovador != ""){
 			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));

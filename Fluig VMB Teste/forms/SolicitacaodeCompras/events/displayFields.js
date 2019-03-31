@@ -10,6 +10,14 @@ function displayFields(form,customHTML){
     
   //campos sempre ocultos
 	 form.setVisibleById("matriculasolicitante", false);
-    
+	 
+	 /*
+	 form.setVisibleById("div_codProduto", false);	 
+	 var indexes = form.getChildrenIndexes("tableCompras");
+     for (var i = 0; i < indexes.length; i++) {
+         form.setVisibleById("codigoProduto___" + indexes[i], false);
+     }
+     */
+	 
     
 }

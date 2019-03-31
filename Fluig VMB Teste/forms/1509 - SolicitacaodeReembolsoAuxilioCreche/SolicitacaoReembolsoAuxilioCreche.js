@@ -311,6 +311,11 @@ function setSelectedZoomItem(selectedItem) {
 	  	 reloadZoomFilterValues(DEPENDENTE, "CPF_F," + selectedItem["CPF"]);
 	  
 	  	 
+	  	 //enviar email do funcionario para recuperar login fluig
+	  	 var dataset = UsuarioLogado(selectedItem["EMAIL_F"]);	  	
+	  	 var login =  dataset.getValue(0, "login");
+	  	 ///social/api/rest/social/image/profile/login/SMALL_PICTURE;
+			
 	  }
   else if (campoZOOM == DEPENDENTE){
 		$('#dtNascimento').val(selectedItem["DTNASC"]);
@@ -340,6 +345,14 @@ function setSelectedZoomItem(selectedItem) {
 
       
   
+}
+
+function UsuarioLogado(solicitante){
+	 var constraints   = new Array();
+	 constraints.push(DatasetFactory.createConstraint("mail", solicitante, solicitante, ConstraintType.MUST));
+	 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+
+	 return dataset;
 }
 
 

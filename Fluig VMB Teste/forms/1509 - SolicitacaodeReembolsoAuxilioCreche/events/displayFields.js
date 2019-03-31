@@ -20,8 +20,7 @@ function displayFields(form,customHTML){
     form.setVisibleById("divPrazoApr", false);
     //form.setVisibleById("divMatricualApr", false);
     
-    //após implementado as informações de dependente, retirar a ocultação do campo
-    //form.setVisibleById("div_dependente", false);
+    form.setVisibleById("div_photo", false);
     
     
     

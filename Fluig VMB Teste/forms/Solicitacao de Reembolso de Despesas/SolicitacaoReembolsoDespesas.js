@@ -364,3 +364,14 @@ function adicionaItensRateio(itens) {
 
     }
 }
+
+function somaProdutos() {
+    var soma = 0;
+    // dessa forma irá funcionar
+    $(document).on("blur", "input[id^='txt_valorProduto___']", function(e){
+        soma = soma + parseFloat($(this).val());
+    });
+
+    // alimenta o campo Total com a soma dos valores dos produtos
+    $("#txt_valorTotal").val(soma);
+}

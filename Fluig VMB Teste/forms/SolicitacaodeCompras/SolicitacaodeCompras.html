@@ -48,7 +48,7 @@
                                                 <ul class="nav nav-tabs" role="tablist">
                                                    <li role="presentation" class="active"><a
                                                       href="#step1" data-toggle="tab" aria-controls="step1"
-                                                      role="tab" title="Dados"> <span class="round-tab">
+                                                      role="tab" title="Dados financeiro"> <span class="round-tab">
                                                       <i class="fluigicon fluigicon-folder-open"></i>
                                                       </span>
                                                       </a>
@@ -339,10 +339,11 @@
                                                             <th></th>
                                                             <th class="tableColumn">Descrição do Produto</th> 
                                                             <th class="tableColumn">Unid. Med.</th>
-                                                            <th class="tableColumn">Qtd</th>                                                     
+                                                            <th class="tableColumn">Qtd</th>             
+                                                            <th class="tableColumn">Valor da ultima compra</th>                                         
                                                             <th class="tableColumn">Valor empenhado</th>                                                                                                                       
                                                             <th class="tableColumn">Data de necessidade</th>
-                                                            <th class="tableColumn">Codigo Prod.</th>                                                                  
+                                                            <th class="tableColumn" id="div_codProduto">Codigo Prod.</th>                                                                  
                                                          </tr>
                                                       </thead>
                                                       <tbody id="tbodyCompras">
@@ -367,13 +368,16 @@
                                                                               </div>                                                            
                                                             </td>
 															<td>
-																<input class="form-control" name="id_um" id="id_um" type="text" maxlength="2" style="width:100px;"/>
+																<input class="form-control" name="id_um" id="id_um" type="text" maxlength="2" style="width:100px;" readonly/>
 															</td>
 												             <td>
-																<input class="form-control money" name="id_quantidade" type="text"  maxlength="6" style="width:100px;"/>
-															</td>                                               
+																<input class="form-control money" name="id_quantidade" type="text" maxlength="6" style="width:100px;"/>
+															</td>
+															<td >
+                                                               <input class="form-control money" name="vrUltima" id="vrUltima" type="number" style="width:200px;" readonly/>
+                                                            </td>                                               
                                                             <td >
-                                                               <input class="form-control money" name="vrUnit" id="vrUnit" type="number" style="width:200px;" />
+                                                               <input class="form-control money" name="vrEmpUnit" id="vrEmpUnit" type="number" style="width:200px;" />
                                                             </td>                                                                                                                                                                             
                                                             <td>                                 
                                                                   <div class="input-group date" style="width:150px;">

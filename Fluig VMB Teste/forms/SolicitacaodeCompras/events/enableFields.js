@@ -1,5 +1,6 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
+	var APROVACAO =5;
 	
 	
 	var activity = getValue('WKNumState');
@@ -27,8 +28,45 @@ function enableFields(form){
 		 }
 			 
 	}
+	else if (activity == APROVACAO){
+		bloqueiaDadosFinanceiro();
+		bloqueiaDadosProduto();
+	}
 
 
+	
+	function bloqueiaDadosFinanceiro(){
+		//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
+   	 var indexes = form.getChildrenIndexes("tableItens");	    	    	    	   
+   	    for (var i = 0; i < indexes.length; i++) {
+    	        form.setEnabled("txtcentrocusto___"+ indexes[i], false);	
+    	       	form.setEnabled("txtprojeto___"+ indexes[i], false);	
+    	      	form.setEnabled("txtareaestrategica___"+ indexes[i], false);	
+    	     	form.setEnabled("txtcategoria___"+ indexes[i], false);	
+    	    	form.setEnabled("txtfontefinanciamento___"+ indexes[i], false);	
+    	   		form.setEnabled("txtatividade___"+ indexes[i], false);	
+    	   		form.setEnabled("percentual___"+ indexes[i], false);	
+    	   		form.setEnabled("rateio___"+ indexes[i], false);
+	        
+   	    }    
+   
+ 
+}
+	
+	function bloqueiaDadosProduto(){		
+   	    //BLOQUEIA CAMPOS DE SERVIÇO
+	    	 var indexes = form.getChildrenIndexes("tableCompras");	    	    	    	   
+	    	    for (var i = 0; i < indexes.length; i++) {
+	     	        form.setEnabled("txtproduto___"+ indexes[i], false);	
+	     	         form.setEnabled("id_quantidade___"+ indexes[i], false);	
+	     	      	 form.setEnabled("vrEmpUnit___"+ indexes[i], false);	
+	     	     	
+    	        
+	    	    } 
+   
+ 
+	}
+	
 	function UsuarioLogado(solicitante){
 		 var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
