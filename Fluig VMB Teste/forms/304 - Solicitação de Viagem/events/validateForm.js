@@ -34,7 +34,8 @@ function validateForm(form) {
 
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
-      
+	var emailSolicitante;
+
     if ((activity == SOLICITARVIAGEM || activity == CORRIGIRSOLICITACAO ) && (nextAtv == GATEWAYREMARCACAO))  {
 
       	if (form.getValue("solicitante") == "" || form.getValue("solicitante") == null
@@ -331,8 +332,13 @@ function validateForm(form) {
       	        
             if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-           }     
+            }     
 
+            if (form.getValue("cpfpassageiro") == retornaCPFAprovador()){
+            	 throw "Você não pode aprovar uma solicitação onde você é o passageiro.";
+            }
+            
+            
             validaLinhasPreenchidas();
             validaLinhasRepetidas();
             validaPercentualRateio();
@@ -596,6 +602,35 @@ function validateForm(form) {
       	var datasHospedagem = ["datacheckin","datacheckout","datacheckin2","datacheckout2","datacheckin3","datacheckout3"];    	
     	    	
           
+    }
+
+    
+    function retornaCPFAprovador(){
+        var email = retornaEmailAprovador(usuarioLogado);
+
+        var constraints = new Array();
+        constraints.push(DatasetFactory.createConstraint("EMAIL_F", email, email, ConstraintType.MUST));
+        var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
+
+        if (dataset != null && dataset.values.length > 0) {
+        	return dataset.getValue(0, "CPF");
+        }  
+        else {
+        	return null;
+        }
+    }
+    
+    function retornaEmailAprovador(userId){
+    	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", userId, userId, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+			
+	        if (dataset != null && dataset.values.length > 0) {
+	        	return dataset.getValue(0, "mail");
+	        }  
+	        else {
+	        	return null;
+	        }	    
     }
 
     

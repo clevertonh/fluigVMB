@@ -19,6 +19,8 @@ function validateForm(form){
     var aFonte	  = new Array();
     var aArea	  = new Array();
     
+    //recupera usuario logado
+    var usuarioLogado = getValue('WKUser');
 	
 	
 	
@@ -61,7 +63,9 @@ function validateForm(form){
 		else if (form.getValue("emailSolicitante") ==  emailSolicitante() ){
 			 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		}
-		
+		else if (form.getValue("cpfpassageiro") == retornaCPFAprovador()){
+        	 throw "Você não pode aprovar uma solicitação onde você é o beneficiário.";
+        }
 		
 	}
 	
@@ -200,15 +204,34 @@ function validateForm(form){
 
             }
 
+            function emailSolicitante(){
+	           	 var user = getValue("WKUser");	
+	           	 var constraintUser   = new Array();
+	           	 constraintUser.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST));
+	           	 var datasetFuncionario = DatasetFactory.getDataset("colleague", null, constraintUser, null);
+	           	 			 			 			 	 
+	           	 var emailFuncionario = datasetFuncionario.getValue(0, "mail"); 
+	           	 
+	           	 return emailFuncionario;
+            }
+            
+            
+            function retornaCPFAprovador(){
+                var email = emailSolicitante();
+
+                if (email != null && email.length>0){
+                	  var constraints = new Array();
+                      constraints.push(DatasetFactory.createConstraint("EMAIL_F", email, email, ConstraintType.MUST));
+                      var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
+
+                      if (dataset != null && dataset.values.length > 0) {
+                      	return dataset.getValue(0, "CPF");
+                      }  
+                      else {
+                      	return null;
+                      }  	
+                }
+              
+            }            
 }
 
-function emailSolicitante(){
-	 var user = getValue("WKUser");	
-	 var constraintUser   = new Array();
-	 constraintUser.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST));
-	 var datasetFuncionario = DatasetFactory.getDataset("colleague", null, constraintUser, null);
-	 			 			 			 	 
-	 var emailFuncionario = datasetFuncionario.getValue(0, "mail"); 
-	 
-	 return emailFuncionario;
-}
