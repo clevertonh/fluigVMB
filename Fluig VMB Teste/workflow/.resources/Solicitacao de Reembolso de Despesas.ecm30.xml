@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Reembolso de Despesas</processId>
-      <version>1</version>
+      <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>1631</formId>
+    <formId>0</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -494,7 +494,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -506,11 +506,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>28</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -518,7 +518,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
         <expressionOrder>3</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
@@ -530,7 +530,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>23</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -542,11 +542,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>23</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>29</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -822,7 +822,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
-        <version>1</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -833,7 +833,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsodeDespesas</processId>
-        <version>1</version>
+        <version>5</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

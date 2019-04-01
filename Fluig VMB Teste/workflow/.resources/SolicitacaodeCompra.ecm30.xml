@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compra</processId>
-      <version>7</version>
+      <version>8</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1633</formId>
@@ -562,7 +562,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <expressionOrder>1</expressionOrder>
-        <version>7</version>
+        <version>8</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -574,7 +574,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <expressionOrder>2</expressionOrder>
-        <version>7</version>
+        <version>8</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -586,7 +586,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <expressionOrder>3</expressionOrder>
-        <version>7</version>
+        <version>8</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -776,7 +776,33 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function servicetask22(attempt, message) {
+	//RECUPERA NUMERO DA ATIVIDADE
+	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		
+	//RECUPERA CODIGO DA SOLICITAÇÃO
+	var codSolicitacao 	 = getValue(&quot;WKNumProces&quot;);
+	//VERIFICA QUAL A PROXIMA ATIVIDADE
+	var nextAtv  		 = getValue(&quot;WKNextState&quot;);
+	//RECUPERA NUMERO DO DOCUMENTO
+	var idDocumento = getValue(&quot;WKCardId&quot;);
+	var idFormulario = getValue(&quot;WKFormId&quot;)
+	var empresa = getValue(&quot;WKCompany&quot;);
 	
+	
+	var constraint = new Array();		  			
+	//constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));
+	constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));
+	
+	 var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);
+	    
+	    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){
+	    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);
+	    }
+	    else {
+	    	return &quot;Integrado com sucesso!&quot;;
+	    }
+	    
+	    
+	    
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -943,7 +969,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
-        <version>7</version>
+        <version>8</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -954,7 +980,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
-        <version>7</version>
+        <version>8</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -965,7 +991,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
-        <version>7</version>
+        <version>8</version>
         <linkSequence>40</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

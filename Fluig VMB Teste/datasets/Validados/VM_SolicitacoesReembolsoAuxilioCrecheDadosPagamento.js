@@ -19,7 +19,7 @@ function createDataset(fields, constraints, sortFields) {
     //dataset interno
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
-    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, constraintsActive, null);
+    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsActive, null);
     
     if(constraints!==null && constraints.length){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
@@ -51,7 +51,7 @@ function createDataset(fields, constraints, sortFields) {
                     var constraintsFilhos = new Array(c1, c2, c3);
 
                     //Busca o dataset
-                    var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, constraintsFilhos, null);
+                    var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsFilhos, null);
                     for (var j = 0; j < datasetFilhos.rowsCount; j++) {
                 	//	log.info("-------RETORNO FILHO----- 21:08");
                    	 	
@@ -101,7 +101,7 @@ function createDataset(fields, constraints, sortFields) {
             var constraintsFilhos = new Array(c1, c2, c3);
 
             //Busca o dataset
-            var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, constraintsFilhos, null);
+            var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsFilhos, null);
             for (var j = 0; j < datasetFilhos.rowsCount; j++) {
            	 	
              	//Adiciona os valores nas colunas respectivamente.

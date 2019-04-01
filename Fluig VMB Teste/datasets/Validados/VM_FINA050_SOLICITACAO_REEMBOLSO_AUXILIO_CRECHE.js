@@ -12,7 +12,7 @@ function createDataset(fields, constraints, sortFields) {
 			// log.info("entrando aqui 1");
 	    		var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, new Array(c0,c1), null);
+	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");

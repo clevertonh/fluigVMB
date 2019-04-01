@@ -318,6 +318,7 @@ function validateForm(form) {
          validaLinhasPreenchidas();
          validaLinhasRepetidas();
          validaPercentualRateio();
+         validaAtividades();
          
     } else if (activity == APROVACAO && nextAtv ==GATEWAYVERIFICARAPROVACAO) {
         	
@@ -342,7 +343,7 @@ function validateForm(form) {
             validaLinhasPreenchidas();
             validaLinhasRepetidas();
             validaPercentualRateio();
-            
+            validaAtividades();
     }
 
     else if (activity == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA ) {  	
@@ -488,6 +489,30 @@ function validateForm(form) {
                    
                    if (atividade == null || atividade == "") {
                        throw "Existem linhas no rateio de pagamento cujo campo atividade não foi informado";
+
+                   }
+              
+                  }
+           }
+     }
+     
+     
+   //VALIDA SE FOI INFORMADO ATIVIDADE ESTRUTURAL OU FOLHA E PROIBE USO
+     function validaAtividades(){
+    	   var indexes = form.getChildrenIndexes("tableItens");            
+    	   
+           for (var i = 0; i < indexes.length; i++) {
+               var atividade = form.getValue("txtatividade___" + indexes[i]);
+            
+         if (ccusto == "99990") {             
+                   if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
+                       throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma viagem.";
+
+                   }
+               } 
+               else {                	
+            	   if (atividade == "E010101" || atividade == "E020201") {
+                	   throw "Você não pode usar uma atividade de folha ou estutural para custear uma viagem.";
 
                    }
               
