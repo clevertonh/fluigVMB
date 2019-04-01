@@ -40,6 +40,37 @@ $(document).ready(function() {
 });
 
 
+function retornaImagemFuncionario(){
+	// metodo GET  /profile/image/{genericId}/{type}
+	    var loading = FLUIGC.loading("body", {
+	        textMessage: "Carregando foto de perfil do funcionário..."
+	    });
+	    loading.show();
+	    $.ajax({
+	        type: 'GET',
+	        dataType: 'json',
+	        contentType: 'aplication/json',
+	        url: 'http://visaomundial3806.fluig.cloudtotvs.com.br/social/api/rest/social/image/profile/[wasley_santoswvi.org]/SMALL_PICTURE',
+	        success: function(data, status, xhr) {
+	            if (data != null) {
+	                console.log("Usuario Obtido");
+	                console.log(data);
+	                infoUser = data;
+	                infoUser = infoUser[0];
+
+	                //aqui seta o comando para adicionar a imagem no campo
+	                loading.hide();
+	            }
+	        },
+	        error: function(xhr, status, error) {
+	            FLUIGC.toast({
+	                message: "Não foi possível carregar a foto de perfil do funcionário. Mas isso não impedirá você de fazer a solicitação!",
+	                type: "danger"
+	            });
+	            loading.hide();
+	        }
+	    });
+}
 
 function adicionaItem(itens) {
     for (var i in itens) {
