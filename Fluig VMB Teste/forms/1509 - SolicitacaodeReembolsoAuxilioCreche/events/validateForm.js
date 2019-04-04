@@ -69,7 +69,7 @@ function validateForm(form){
 		else if (form.getValue("emailSolicitante") ==  emailSolicitante() ){
 			 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		}
-		else if (form.getValue("cpfpassageiro") == retornaCPFAprovador()){
+		else if (form.getValue("cpfbeneficiario") == retornaCPFAprovador()){
         	 throw "Você não pode aprovar uma solicitação onde você é o beneficiário.";
         }
 		
@@ -172,6 +172,7 @@ function validateForm(form){
            	   var indexes = form.getChildrenIndexes("tableItens");            
            	   
                   for (var i = 0; i < indexes.length; i++) {
+                	  var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
                       var atividade = form.getValue("txtatividade___" + indexes[i]);
                    
                 if (ccusto == "99990") {             

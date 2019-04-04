@@ -40,10 +40,10 @@ function displayFields(form,customHTML){
 	   
     if (activity == ABERTURA  || activity == SOLICITARVIAGEM) {
     	//campos aba aprovador e hospitalidade
-       	form.setVisibleById("2b", false);
+       	//form.setVisibleById("2b", false);
     	form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);
-    	//form.setVisibleById("divCotacao", false);
+    	form.setVisibleById("divCotacao", false);
     	
     	//campos aba dados gerais
     	form.setVisibleById("selecaodeviagens", false);

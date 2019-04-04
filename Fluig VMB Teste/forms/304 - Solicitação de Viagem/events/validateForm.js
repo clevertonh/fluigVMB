@@ -502,6 +502,7 @@ function validateForm(form) {
     	   var indexes = form.getChildrenIndexes("tableItens");            
     	   
            for (var i = 0; i < indexes.length; i++) {
+        	   var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
                var atividade = form.getValue("txtatividade___" + indexes[i]);
             
          if (ccusto == "99990") {             

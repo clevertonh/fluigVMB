@@ -145,15 +145,19 @@ function beforeStateEntry(sequenceId){
 			        var codproduto = campos.get("codigoProduto___" + seq[1]);
 			        var valor = campos.get("valores___" + seq[1]);
 			        var dataviagem = campos.get("dtViagem___" + seq[1]);
+			        var geraSC = campos.get("geraSolicCompra___" + seq[1]);
+			        if (geraSC == "SIM"){
+			            var itemServico = { 
+								produto: ''+codproduto +'', 
+								quantidade: 1, 				
+								valor: '' + valor + '',
+								dtviagem: ''+ dataviagem +''
+									};	
+						
+					   aItemServico.push(itemServico);	
+			        }
 			        
-			        var itemServico = { 
-							produto: ''+codproduto +'', 
-							quantidade: 1, 				
-							valor: '' + valor + '',
-							dtviagem: ''+ dataviagem +''
-								};	
-					
-				   aItemServico.push(itemServico);
+			  
         
 			    }
 			}

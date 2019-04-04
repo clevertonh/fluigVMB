@@ -1277,7 +1277,8 @@
                                                             <th class="tableColumn">Serviço</th>                                                      
                                                             <th class="tableColumn">Valor</th>                                                                                                                       
                                                             <th class="tableColumn">Data do voo</th>
-                                                            <th class="tableColumn">Codigo Prod.</th>                                                                  
+                                                            <th class="tableColumn">Codigo Prod.</th>
+                                                            <th class="tableColumn">Gera Solic. Compra</th>                                                                  
                                                          </tr>
                                                       </thead>
                                                       <tbody id="tbodyViagem">
@@ -1297,7 +1298,8 @@
                                                                                     'placeholder':'Selecione um serviço',
                                                                                     'fields':[
                                                                                     {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}]
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                                    {'field':'GERA_SC', 'label':'GERA_SC'}]
                                                                                     }" />
                                                                               </div>                                                            
                                                             </td>
@@ -1314,7 +1316,10 @@
                                                             </td>       
                                                             <td>
                                                             	<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                                            </td>                                                                                                                     
+                                                            </td> 
+                                                            <td>
+                                                            	<input class="form-control" name="geraSolicCompra" id="geraSolicCompra" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                            </td>                                                                                                                                                                                 
                                                          </tr>
                                                       </tbody>
                                                    </table>

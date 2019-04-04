@@ -913,7 +913,7 @@ function setSelectedZoomItem(selectedItem) {
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
     var SERVICO = "txtservico";
-    var PRODUTO = "codigoProduto"
+  
    
 
     //Recebe o nome do campo zoom
@@ -1093,7 +1093,8 @@ function setSelectedZoomItem(selectedItem) {
 
     if (linhaPagamento[0] == SERVICO) {
     	console.log("---ENTROU AQUI 12 ----");    	
-    	$('#' + PRODUTO + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
     }
     
 }
@@ -1301,8 +1302,10 @@ function removedZoomItem(removedItem) {
     
     }
 
-    if (linhaPagamento[0] == SERVICO) {   	
-    	var codServico =  document.getElementById(PRODUTO + "___" + linhaPagamento[1]).value = "";
+    if (linhaPagamento[0] == SERVICO) {   	    	 
+      	 $('#codigoProduto' + "___" + linhaPagamento[1]).val('');
+      	 $('#geraSolicCompra' + "___" + linhaPagamento[1]).val('');
+    	 
     }
 
 
@@ -1576,6 +1579,12 @@ function AprovadorEmbaixador() {
          $('#matriculaApr').val(dataset.values[0]["colleaguePK.colleagueId"]);
          $('#aprovador').val(dataset.values[0]["colleagueName"]);        
         
+         
+         FLUIGC.toast({
+ 	        title: 'Atenção: ',
+ 	        message: 'Sua solicitação será aprovada por: ' + dataset.values[0]["colleagueName"] ,
+ 	        type: 'info'
+ 	    }); 
 
 }
 
@@ -1596,6 +1605,13 @@ function carregaAprovador() {
 	        //$('solicitanteFuncionario').val(dataset.values[0]["FUNCIONARIO_VMB"]);
 
 
+	        FLUIGC.toast({
+	 	        title: 'Atenção: ',
+	 	        message: 'Sua solicitação será aprovada por: ' + dataset.values[0]["DIRETOR"] ,
+	 	        type: 'info'
+	 	    }); 
+	        
+	        
 	    }
 	 
 	
