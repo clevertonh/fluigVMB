@@ -211,11 +211,13 @@ function removedZoomItem(removedItem) {
     	 $("#dtNascimento").val("");
      	 $("#idade").val("");
      	 //window[DEPENDENTE].disable(false);
+     	$('#idade').css('background-color', '#FFFFFF');
     }
     
     else if (campoZOOM == DEPENDENTE){
     	$("#dtNascimento").val("");
     	$("#idade").val("");
+    	$('#idade').css('background-color', '#FFFFFF');
     }
         
   
@@ -343,8 +345,8 @@ function setSelectedZoomItem(selectedItem) {
 	  
 	  	 
 	  	 //enviar email do funcionario para recuperar login fluig
-	  	 var dataset = UsuarioLogado(selectedItem["EMAIL_F"]);	  	
-	  	 var login =  dataset.getValue(0, "login");
+	  	 //var dataset = UsuarioLogado(selectedItem["EMAIL_F"]);	  	
+	  	// var login =  dataset.getValue(0, "login");
 	  	 ///social/api/rest/social/image/profile/login/SMALL_PICTURE;
 			
 	  }
@@ -359,6 +361,11 @@ function setSelectedZoomItem(selectedItem) {
 	
 		$('#idade').val(idade(datanasc.getFullYear(), datanasc.getMonth()+1, datanasc.getDate()));
 		
+		
+		//6 anos 11 meses 29 dias
+		
+		
+	
 		
 		
   }
@@ -424,6 +431,19 @@ function idade(calyear,calmon,calday)
 			 - Date.UTC(calyear,calmon,calday,0,0,0);
 
 		var dife = datediff(curd,cald);
+		
+		
+		if (dife[0] >= 7) {			
+			$('#idade').css('background-color', '#FF6347');			
+			
+		}	
+		else {
+			$('#idade').css('background-color', '#FFFFFF');
+			//$('#idade').css('background', 'White');
+			
+		}
+
+		
 		
 		return dife[0]+" anos, "+dife[1]+" meses e "+dife[2]+" dias";
 

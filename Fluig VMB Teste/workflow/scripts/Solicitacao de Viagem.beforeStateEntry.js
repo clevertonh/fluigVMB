@@ -115,10 +115,10 @@ function beforeStateEntry(sequenceId){
  		  		*/
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-		   else if ( ativAtual == PAGARDIARIAS && nextAtv == GATEWAYPASSAGEMCOMPRADA && recebeDiarias == "sim") {		   
+     			else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	
 			   var constraint = new Array();		  			
 //	  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
-	  			constraint.push(DatasetFactory.createConstraint("documentid", idDocunento, idDocunento, ConstraintType.MUST)); 		  		
+	  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
 	  			constraint.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 	  			constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	  			
