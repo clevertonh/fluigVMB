@@ -136,18 +136,22 @@ function validateForm(form){
     	   
            for (var i = 0; i < indexes.length; i++) {
                var produto = form.getValue("txtproduto___" + indexes[i]);
-               var valor = form.getValue("vrUnit___" + indexes[i]);
-               var dataViagem = form.getValue("dtNecessidade___" + indexes[i]);               
+               var valor = form.getValue("vrEmpUnit___" + indexes[i]);
+               var dataViagem = form.getValue("dtNecessidade___" + indexes[i]);      
+               var quantidade = form.getValue("id_quantidade___" + indexes[i]);      
         
                if (produto == "" || produto === null){
                	throw "O produto não foi informado!";
                }
-               else if (valor == "" || valor === null){
-               	throw "O valor empenhado para o produto não foi informado!";
+               else if (valor == "" || valor === null || valor == 0){
+               	throw "O valor empenhado para o produto não foi informado ou deve ser maior que zero!";
                }
                else if (dataViagem == "" || dataViagem === null){
                	throw "A data de necessidade  não foi informada!";
                }
+               else if (quantidade == "" || quantidade === null || quantidade == 0){
+                  	throw "A quantidade não foi informado ou deve ser maior que zero!";
+                  }
                
            }        
      }

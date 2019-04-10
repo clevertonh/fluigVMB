@@ -38,37 +38,46 @@ function displayFields(form,customHTML){
      
     
 	   
-    if (activity == ABERTURA  || activity == SOLICITARVIAGEM) {
+    if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
        	//form.setVisibleById("2b", false);
     	form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);
     	form.setVisibleById("divCotacao", false);
     	
-    	//campos aba dados gerais
-    	form.setVisibleById("selecaodeviagens", false);
-      	form.setVisibleById("div_justificativaremarcacao", false);    
-      	form.setVisibleById("divJustificativaCancelamento", false);
-      
-  
-      	
-    	//campos aba passageiro
-    	form.setVisibleById("divdadospassageiro", false);
-    	form.setVisibleById("divOutroFun", false);
-        form.setVisibleById("div_embaixador", false);
-        form.setVisibleById("div_funcionario", false);
+     	
+    		//campos aba dados gerais
+        	form.setVisibleById("selecaodeviagens", false);
+          	form.setVisibleById("div_justificativaremarcacao", false);    
+          	form.setVisibleById("divJustificativaCancelamento", false);
+    
+        	
+
+      	//campos aba passageiro
+        	form.setVisibleById("divdadospassageiro", false);
+        	form.setVisibleById("divOutroFun", false);
+            form.setVisibleById("div_embaixador", false);
+            form.setVisibleById("div_funcionario", false);
+      		
+
+    	
         
         
     	//campos aba agenda
     	//retirar depois do teste
     	form.setVisibleById("divDataSetAgenda", false);
     	
-    	//campos aba voo
-    	 form.setVisibleById("trecho1", false);
-         form.setVisibleById("trecho2", false);
-         form.setVisibleById("trecho3", false);
-         form.setVisibleById("observacaoVoo", false);
-         form.setVisibleById("div_tipoVoo", false);
+    	
+
+    		//campos aba voo
+    		form.setVisibleById("trecho1", false);
+            form.setVisibleById("trecho2", false);
+            form.setVisibleById("trecho3", false);
+            form.setVisibleById("observacaoVoo", false);
+            form.setVisibleById("div_tipoVoo", false);
+
+    	
+    	
     	 
        	//campos hospedagem
      	form.setVisibleById("divDatasHotel1", false);
@@ -87,6 +96,158 @@ function displayFields(form,customHTML){
         
     }
 
+    else if (activity == SOLICITARVIAGEM){
+    	//campos aba aprovador e hospitalidade
+       	//form.setVisibleById("2b", false);
+    	form.setVisibleById("3b", false);
+    	form.setVisibleById("4b", false);
+    	form.setVisibleById("divCotacao", false);
+    	
+    	//campos aba dados gerais    
+    	form.setVisibleById("divJustificativaCancelamento", false);
+    	
+    	
+    	if (form.getValue("remarcacao") == "" || form.getValue("remarcacao") == null ){
+    		//campos aba dados gerais
+        	form.setVisibleById("selecaodeviagens", false);
+          	form.setVisibleById("div_justificativaremarcacao", false);    
+          	
+    	}
+    	else if (form.getValue("remarcacao") == "nao" ){    	
+    		//campos aba dados gerais
+        	form.setVisibleById("selecaodeviagens", false);          
+    		form.setVisibleById("div_justificativaremarcacao", false); 
+    	}
+    	
+    	
+    	
+      
+  
+      	
+      	if (form.getValue("solicitanteFuncionario") == "" || form.getValue("solicitanteFuncionario") === null ){
+      	//campos aba passageiro
+        	form.setVisibleById("divdadospassageiro", false);
+        	form.setVisibleById("divOutroFun", false);
+            form.setVisibleById("div_embaixador", false);
+            form.setVisibleById("div_funcionario", false);
+      		
+      	}
+  
+    	else if ( form.getValue("solicitanteFuncionario") == "sim"){
+      		//campos aba passageiro
+      		form.setVisibleById("div_funcionario", false);
+      		
+      		      		
+      		if (form.getValue("solicitantepassageiro") == "nao"){
+      			
+      			if (form.getValue("passageirofuncionario") == "nao"){
+      				form.setVisibleById("divOutroFun", false);
+      			}
+      			
+      			else if (form.getValue("passageirofuncionario") == "sim"){
+      				form.setVisibleById("div_embaixador", false);
+      			}
+      			
+      		}
+      		else if (form.getValue("solicitantepassageiro") == "sim"){
+      				form.setVisibleById("div_embaixador", false);
+      				form.setVisibleById("divOutroFun", false);
+      		}
+      		
+      	}
+      	
+   
+  
+    	
+        
+        
+    	//campos aba agenda
+    	//retirar depois do teste
+    	form.setVisibleById("divDataSetAgenda", false);
+    	
+    	
+    	if (form.getValue("pedirPassagem") == "" || form.getValue("pedirPassagem") === null ){
+    		//campos aba voo
+    		form.setVisibleById("trecho1", false);
+            form.setVisibleById("trecho2", false);
+            form.setVisibleById("trecho3", false);
+            form.setVisibleById("observacaoVoo", false);
+            form.setVisibleById("div_tipoVoo", false);
+    	}
+    	else {
+    		if (form.getValue("tipovoo") == "" ||  form.getValue("tipovoo") == null){
+    			form.setVisibleById("trecho1", false);
+                form.setVisibleById("trecho2", false);
+                form.setVisibleById("trecho3", false);
+                form.setVisibleById("observacaoVoo", false);
+                form.setVisibleById("div_tipoVoo", false);
+        	}
+    		else if (form.getValue("tipovoo") == "idavolta" ){
+    			form.setVisibleById("trecho2", false);
+                form.setVisibleById("trecho3", false);
+                
+                if (form.getValue("tipoviagem") == "nacional" ){
+                	form.setVisibleById("div_internacional1", false);
+     				form.setVisibleById("div_internacional2", false);
+     				form.setVisibleById("div_internacional3", false);
+                }
+             
+               
+    			           		
+    		}
+    		else if (form.getValue("tipovoo") == "ida" ){
+    			 form.setVisibleById("trecho2", false);
+                 form.setVisibleById("trecho3", false);          
+                 form.setVisibleById("div_datadestino1", false);
+                 
+                 
+ 				
+ 			     if (form.getValue("tipoviagem") == "nacional" ){
+                 	form.setVisibleById("div_internacional1", false);
+      				form.setVisibleById("div_internacional2", false);
+      				form.setVisibleById("div_internacional3", false);
+                 }
+ 				
+ 				
+                 
+    		}
+    		else if (form.getValue("tipovoo") == "varios"){
+    			  form.setVisibleById("div_datadestino1", false);
+    		}
+    		
+		
+    		
+    	}
+    	
+    	
+    	if (form.getValue("pedirHotel") == "" || form.getValue("pedirHotel") == null){
+    		//campos hospedagem
+         	form.setVisibleById("divDatasHotel1", false);
+         	form.setVisibleById("divDatasHotel2", false);
+         	form.setVisibleById("divDatasHotel3", false);
+            form.setVisibleById("observacaoHotel", false);
+            form.setVisibleById("div_tipohotel1", false);
+            form.setVisibleById("div_tipohotel2", false);
+            form.setVisibleById("div_tipohotel3", false);
+            form.setVisibleById("div_tipoHotel", false);
+    	}
+    	else {    		    	
+    		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null) {
+    			form.setVisibleById("divDatasHotel1", false);
+             	form.setVisibleById("divDatasHotel2", false);
+             	form.setVisibleById("divDatasHotel3", false);
+                form.setVisibleById("observacaoHotel", false);
+
+    		}
+
+    		
+    	}
+    	 
+       	
+    	
+        //campos aba final      
+        form.setVisibleById("divJustificativa", false);
+    }
    
   
     else {

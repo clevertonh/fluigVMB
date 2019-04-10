@@ -60,7 +60,7 @@ function enableFields(form){
 	     	        form.setEnabled("txtproduto___"+ indexes[i], false);	
 	     	         form.setEnabled("id_quantidade___"+ indexes[i], false);	
 	     	      	 form.setEnabled("vrEmpUnit___"+ indexes[i], false);	
-	     	     	
+	     	      	 form.setEnabled("dtNecessidade___"+ indexes[i], false);
     	        
 	    	    } 
    
