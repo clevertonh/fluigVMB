@@ -52,6 +52,9 @@ function validateForm(form){
 		else if (form.getValue("idade")==""){
 			throw "A idade atual do dependente não foi calculada pelo sistema. Entre em contato com o setor de TI.";
 		}
+		else if (form.getValue("foraIdade")=="fora"){
+			throw "Você não pode solicitar um reembolso auxilio creche para uma criança que já ultrapassou a idade!";
+		}
 		
 		//validações tabela de pagamento
         validaLinhasPreenchidas();

@@ -16,6 +16,8 @@ function displayFields(form,customHTML){
 	
     
     form.setVisibleById("aprPrazo", false);
+    //form.setVisibleById("foraIdade", false);
+    
     //form.setVisibleById("cpfbeneficiario", false);    
     form.setVisibleById("divPrazoApr", false);
     //form.setVisibleById("divMatricualApr", false);
@@ -26,7 +28,8 @@ function displayFields(form,customHTML){
     
     if (activity == ABERTURA || activity == SOLICITAR){
    	 form.setVisibleById("3b", false);
-	 form.setVisibleById("4b", false);	 
+	 form.setVisibleById("4b", false);
+	 form.setVisibleById("5b", false);	 
 	
     
     }
@@ -34,16 +37,18 @@ function displayFields(form,customHTML){
     else if (activity == APROVACAO_GESTOR){
     	form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);    
-    	
+    	form.setVisibleById("5b", false);	 
     }
 
 	else if (activity == VALIDACAO){
-		 form.setVisibleById("4b", false);	 
-		 form.setVisibleById("justificativaReprovacaoV", false);	 
+		 form.setVisibleById("4b", false);	 		 
+		 form.setVisibleById("justificativaReprovacaoV", false);
+		 form.setVisibleById("5b", false);		 
 	}
 	
 	else if (activity == APROVACAO_RH){
-		 form.setVisibleById("justificativaR", false);	
+		 form.setVisibleById("justificativaR", false);
+		 form.setVisibleById("5b", false);		 
 	}
 	
 	

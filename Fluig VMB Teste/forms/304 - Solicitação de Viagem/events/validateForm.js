@@ -589,9 +589,9 @@ function validateForm(form) {
       function validaProdutos(){
      	   var indexes = form.getChildrenIndexes("tableViagem");            
      	   
-     	  if (form.getValue("vooComprado") =="sim" ){
+     	  if (form.getValue("vooComprado") =="sim" || form.getValue("hotelComprado") =="sim" ){
      		  if (indexes.length < 0 ){
-     			 throw "É obrigatório informar o bilhete aéreo!";
+     			 throw "É obrigatório informar pelo menos um item de serviço!";
      		  }
      		  else {
      	         for (var i = 0; i < indexes.length; i++) {

@@ -433,14 +433,22 @@ function idade(calyear,calmon,calday)
 		var dife = datediff(curd,cald);
 		
 		
-		if (dife[0] >= 7) {			
-			$('#idade').css('background-color', '#FF6347');			
+		if (dife[0] >= 7 && dife[1] > 1) {			
+			$('#idade').css('background-color', '#FF6347');		
 			
+			//criar campo para salvar limite de idade ultrassada
+			$('#foraIdade').val('fora');
+			
+		}
+		if (dife[0] >= 7 && dife[1] == 1) {			
+			$('#idade').css('background-color', '#FF8C00');			
+			$('#foraIdade').val('');
 		}	
+		
 		else {
 			$('#idade').css('background-color', '#FFFFFF');
 			//$('#idade').css('background', 'White');
-			
+			$('#foraIdade').val('');
 		}
 
 		

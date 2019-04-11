@@ -35,8 +35,9 @@
                               <ul class="nav nav-pills nav-justified">
                                  <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
                                  <li><a href="#2b" data-toggle="tab">Gestor imediato</a></li>
-                                 <li><a href="#3b" data-toggle="tab">Assistente de Pessoas e Cultura</a></li>
+                                 <li><a href="#3b" data-toggle="tab">Departamento Pessoal</a></li>
                                  <li><a href="#4b" data-toggle="tab">Gerência de Pessoas e Cultura</a></li>
+                                 <li><a href="#5b" data-toggle="tab">Tesouraria</a></li>
                               </ul>
                               <div class="tab-content clearfix">
                                  <!-- Aba Solicitante -->                                                              
@@ -143,8 +144,11 @@
                                        <div class="form-group col-md-3">
                                        	<label>Idade atual</label>
                                        	<input type="text" class="form-control" name="idade" id="idade" readonly>
+                                       	
                                        </div>
-                                   
+                                   		<div>
+                                   		<input type="text" class="form-control" name="foraIdade" id="foraIdade" readonly>
+                                   		</div>
                                        	  </div> 
                                        </div> 
                                        
@@ -372,8 +376,8 @@
                                           <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
                                        </div>
                                        <div class="form-group col-md-3">
-                                          <label for="dtPagamento">Data de pagamento</label>
-                                          <div class="input-group date" id="calendariodtPgto">
+                                          <label for="dtPagamento">Data para pagamento</label>
+                                          <div class="input-group date">
                                              <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
@@ -390,6 +394,10 @@
                                        <div class="form-group col-md-4">
                                           <Label for ="negado">Negado</Label>					
                                           <input type="radio" id ="negado" name="validacao" value ="negado" onclick="justificativaValidacao()"/>
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for ="invalido">Documento não aceito</Label>					
+                                          <input type="radio" id ="negado" name="validacao" value ="invalido" onclick="justificativaValidacao()"/>
                                        </div>
                                     </div>
                                     <div class="row">
@@ -435,6 +443,17 @@
                                           </div>
                                        </div>
                                     </div>
+                                 </div>
+                                 <div class="tab-pane" id="5b">
+                                 	 <div class="row">
+                                 	 	<Label>Data de pagamento</Label>
+                                 	 	 <div class="input-group date">
+                                             <input type="text" class="form-control" id="dtBaixa" name="dtBaixa"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                 	 </div>
                                  </div>
                               </div>
                            </div>
