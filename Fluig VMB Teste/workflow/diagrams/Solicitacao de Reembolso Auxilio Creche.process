@@ -257,7 +257,7 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="106" height="70" x="970" y="806"/>
       <link businessObjects="servicetask88"/>
-      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.12" incomingConnections="/0/@connections.11 /0/@connections.15 /0/@connections.14"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.12" incomingConnections="/0/@connections.15 /0/@connections.14 /0/@connections.11"/>
       <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.11/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
@@ -296,7 +296,7 @@
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="30" height="30" x="970" y="850">
+      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="30" height="30" x="970" y="841">
         <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="1" transparency="0.0" width="30" height="30" style="/0/@styles.294"/>
       </graphicsAlgorithm>
       <link businessObjects="intermediateerror92"/>
@@ -10664,7 +10664,7 @@
   <bpmn2:BpmnTask id="task85" name="Corrigir documento" incoming="flow86" outgoing="flow87" type="80" managerMechanism="Executor Atividade" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>&#xA;  &lt;idNode>startevent4&lt;/idNode>&#xA;  &lt;returns>1&lt;/returns>&#xA;  &lt;mechanismName>Executor Atividade&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:SequenceFlow id="flow86" name="" sourceRef="exclusivegateway21" targetRef="task85" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow87" name="" sourceRef="task85" targetRef="task48" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
-  <bpmn2:BpmnTask id="servicetask88" name="Confirmar pagamento" incoming="flow89 flow95 flow96" outgoing="flow91" type="82" managerMechanism="" loopType="0" authNotify="true" serviceName="" scriptFileName="Solicitacao de Reembolso Auxilio Creche.servicetask88.js" expediente="" selecionaColaboradores="1" emAtrasoNotificarResponsavel="false" emAtrasoNotificarResponsavelTolerancia="0.0" emAtrasoNotificarResponsavelFrequencia="0.0" esforcoCalculo="0" attachedEvents="intermediateerror92" executionType="1" executionAttempts="7" executionSucessfulMessage="Pagamento confirmado" frequency="0" frequencyType="2"/>
+  <bpmn2:BpmnTask id="servicetask88" name="Confirmar pagamento" incoming="flow89 flow95 flow96" outgoing="flow91" type="82" loopType="0" authNotify="true" serviceName="" scriptFileName="Solicitacao de Reembolso Auxilio Creche.servicetask88.js" expediente="" selecionaColaboradores="1" emAtrasoNotificarResponsavel="false" emAtrasoNotificarResponsavelTolerancia="0.0" emAtrasoNotificarResponsavelFrequencia="0.0" esforcoCalculo="0" attachedEvents="intermediateerror92" executionType="1" executionAttempts="7" executionSucessfulMessage="Pagamento confirmado" frequencyType="2"/>
   <bpmn2:SequenceFlow id="flow89" name="" sourceRef="task67" targetRef="servicetask88" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnEndEvent id="endevent90" name="Fim" incoming="flow91" type="60" signalId="0" notificaRequisitante="true"/>
   <bpmn2:SequenceFlow id="flow91" name="" sourceRef="servicetask88" targetRef="endevent90" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
