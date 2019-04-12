@@ -21,7 +21,7 @@ function createDataset(fields, constraints, sortFields) {
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
     var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsActive, null);
     
-    if(constraints!==null && constraints.length){ //se tiver constraint filtra
+    if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit'){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");

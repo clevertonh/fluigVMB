@@ -49,10 +49,10 @@ function createDataset(fields, constraints, sortFields) {
 	        	throw new Exception("Retorno está vazio");
 	        }
    
-   else{
-//       log.info(vo.getResult());        
-       dados = vo.getResult();
-   }
+	        else{
+	        	//log.info(vo.getResult());        
+	        	dados = vo.getResult();
+	        	}
    
    } catch(err) {
    	throw new Exception(err);

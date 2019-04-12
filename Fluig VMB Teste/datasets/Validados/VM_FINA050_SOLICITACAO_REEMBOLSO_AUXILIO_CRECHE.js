@@ -21,9 +21,11 @@ function createDataset(fields, constraints, sortFields) {
 	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCrecheDadosPagamento", null, new Array(c2), null);    				  
 
+	    	    log.info("log itens solicitacao");
+	    	    log.dir(itensSolicitacao);
 
 				 try {
-					//chama função que monta array de objetos dos itens do rateio
+					//chama função que monta array de objetos dos itens do rateio					 
 					 aRateio = preencheRateio(itensSolicitacao);
 				 }
 				 catch (erro){
@@ -110,6 +112,10 @@ function createDataset(fields, constraints, sortFields) {
 					 
 					 
 	    	}
+		 else {
+			 //log.info("NÃO ESTA RETORNANDO DATASET");
+			 dataset.addRow(["DATASET VAZIO"]);
+		 }
 	 
 	 }
 	
@@ -162,8 +168,8 @@ function preencheRateio(solicitacao){
 			
 			rateio[i] = obj;	
 			
-			//log.info("--retorno rateio--");
-			//log.dir(rateio[i]);
+			log.info("--retorno rateio--");
+			log.dir(rateio[i]);
 	   }
 	 			   
 	   return rateio;

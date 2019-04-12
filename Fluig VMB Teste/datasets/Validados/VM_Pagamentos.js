@@ -5,7 +5,7 @@ function createDataset(fields, constraints, sortFields) {
 	    dataset.addColumn("DATA_PAGAMENTO");
 	    
 	    var dados;
-	    //var solicitacao ='1683';
+	   // var solicitacao ='1678';
 	   
 	    //constraints[0].fieldName == "documentid"
 	    
@@ -15,11 +15,14 @@ function createDataset(fields, constraints, sortFields) {
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
 	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
 	    		
+	    		log.info("VM PAGAMENTOS");
+	    		log.dir(solicitacao);
+	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
 	        		        	
-	        	var webservice = '/PAGAMENTOS?CODIGO='+codSolicitacao;	        	
+	        	var webservice = '/PAGAMENTOS/'+codSolicitacao;	        	
 	        	
 	        	 try {
 	            	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -32,32 +35,24 @@ function createDataset(fields, constraints, sortFields) {
 	         	            timeoutService: '100' // segundos	            	  
 	         	        }
 	            
-	            var vo = clientService.invoke(JSON.stringify(data));
-	            
-	         	        if(vo.getResult()== null || vo.getResult().isEmpty()){
-	         	        	//realiza tentativa de conexão com link secundario
-	         	            var data = {
-	         	    	            companyId : getValue("WKCompany") + '',
-	         	    	            serviceCode : 'REST FLUIG 2',
-	         	    	            endpoint :  webservice,
-	         	    	            method : 'get',// 'delete', 'patch', 'put', 'get'     
-	         	    	            timeoutService: '100' // segundos	            	  
-	         	    	        }   	
-	         	            vo = clientService.invoke(JSON.stringify(data));
-	         	            
-	         	        }
-	         	        else if (vo.getResult()== null || vo.getResult().isEmpty()){
-	         	        
-	         	        	throw new Exception("Retorno está vazio");
-	         	        }
-	            
-	            else{    
-	                dados = vo.getResult();
-	            }
-	            
-	            } catch(err) {
-	            	throw new Exception(err);
-	            }
+	         	       var vo = clientService.invoke(JSON.stringify(data));
+				        
+				        if(vo.getResult()== null || vo.getResult().isEmpty()){
+				            //throw "Retorno está vazio";
+				        	log.info("RETORNO ESTA VAZIO");
+				        	dataset.addRow(new Array("RETORNO VAZIO"));
+				        }
+			   
+				        else{
+				        	//log.info(vo.getResult());        
+				        	dados = vo.getResult();
+				        	}
+				    } 
+					catch(err) {
+				        //throw err;
+						//log.info(err);
+						dataset.addRow([err.message]);
+				    }
 	        	 
 	        	 
 	        }
@@ -88,4 +83,16 @@ function createDataset(fields, constraints, sortFields) {
 	 	}
 	 	
 	 	return null;
+	 }
+	 
+	//recebe como parametro:metadata#card_index_id, metadate#id, companyid
+	 function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
+	 	  var constraintsHistorico  = new Array();	    	 
+	 		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
+	 		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
+	 		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+	 		 
+	    var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
+
+	    return historicoFormulario;
 	 }

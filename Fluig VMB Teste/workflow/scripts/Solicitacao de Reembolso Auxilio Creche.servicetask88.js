@@ -17,13 +17,17 @@ function servicetask88(attempt, message) {
     
      var resultDataset = DatasetFactory.getDataset("ds_get_Pagamentos", null, constraint, null);
        
-     log.info("SCRIPT DE INTEGRAÇÃO");
+     log.info("SCRIPT DE INTEGRAÇÃO 14:02");
      log.dir(resultDataset);
      
-        if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-           throw resultDataset.getValue(0,"RETORNO");
-        }
-        else {
-           return "Integrado com sucesso!";
-        }
+     
+     	if (resultDataset !== null && resultDataset.rowsCount >0 && resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){
+     		//preenche data de pagamento
+        	hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  
+     		
+     	}
+     	else {
+     		 throw 'Pagamento ainda não efetuado!';
+     	}
+
 }

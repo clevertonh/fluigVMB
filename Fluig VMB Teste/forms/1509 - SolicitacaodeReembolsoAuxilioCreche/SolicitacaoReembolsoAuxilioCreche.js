@@ -39,6 +39,7 @@ $(document).ready(function() {
 	
 });
 
+/*
 
 function retornaImagemFuncionario(){
 	// metodo GET  /profile/image/{genericId}/{type}
@@ -71,6 +72,8 @@ function retornaImagemFuncionario(){
 	        }
 	    });
 }
+
+*/
 
 function adicionaItem(itens) {
     for (var i in itens) {
@@ -530,9 +533,19 @@ function justificativaValidacao(){
 	if (document.getElementById("validacao").checked == true){
 		document.getElementById("justificativaReprovacaoV").style.display = "none";
 	}
-	else {
-		document.getElementById("justificativaReprovacaoV").style.display = "block";	
+	
+	else if (document.getElementById("negado").checked == true){
+		document.getElementById("justificativaReprovacaoV").style.display = "block";
 	}
+	
+	else if (document.getElementById("invalido").checked == true){
+		document.getElementById("justificativaReprovacaoV").style.display = "none";
+		
+		
+		
+	}
+	
+	
 	
 }
 

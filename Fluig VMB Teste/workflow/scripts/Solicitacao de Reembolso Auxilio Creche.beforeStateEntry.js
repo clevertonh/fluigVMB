@@ -40,10 +40,15 @@ function beforeStateEntry(sequenceId){
 				
 			
 			var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE", null, constraint, null);
-			     
-		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-		    	throw resultDateset.getValue(0,"RETORNO");
-		    } 
+			
+			log.info("DATASET VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE");
+			log.dir(resultDateset);
+			
+			  if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
+			    	throw resultDateset.getValue(0,"RETORNO");
+			    } 
+			
+		  
 	
 	}
 	

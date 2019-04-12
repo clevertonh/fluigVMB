@@ -376,7 +376,7 @@
                                           <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
                                        </div>
                                        <div class="form-group col-md-3">
-                                          <label for="dtPagamento">Data para pagamento</label>
+                                          <label for="dtPagamento">Data prevista de pagamento</label>
                                           <div class="input-group date">
                                              <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
                                              <span class="input-group-addon">
@@ -397,14 +397,14 @@
                                        </div>
                                        <div class="form-group col-md-4">
                                           <Label for ="invalido">Documento não aceito</Label>					
-                                          <input type="radio" id ="negado" name="validacao" value ="invalido" onclick="justificativaValidacao()"/>
+                                          <input type="radio" id ="invalido" name="validacao" value ="invalido" onclick="justificativaValidacao()"/>
                                        </div>
                                     </div>
                                     <div class="row">
                                        <div class="form-group col-md-12">
                                           <div class="form-group" >
                                              <label for="justificativaReprovacaoV">Justificativa</label>
-                                             <textarea class="form-control" rows="3" id="justificativaReprovacaoV" name="justificativaReprovacaoV" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                             <textarea class="form-control" rows="3" id="justificativaReprovacaoV" name="justificativaReprovacaoV" placeholder="Por favor, informar o motivo pela reprovação ou devolução"></textarea>
                                           </div>
                                        </div>
                                     </div>
@@ -446,13 +446,15 @@
                                  </div>
                                  <div class="tab-pane" id="5b">
                                  	 <div class="row">
-                                 	 	<Label>Data de pagamento</Label>
-                                 	 	 <div class="input-group date">
-                                             <input type="text" class="form-control" id="dtBaixa" name="dtBaixa"  readonly>
-                                             <span class="input-group-addon">
-                                             <span class="fluigicon fluigicon-calendar"></span>
-                                             </span>
+                                 	 	<div class="form-group col-md-3">
+											<Label>Data efetiva de pagamento</Label>                                 	 	
+                                 	 		<div class="input-group date">
+                                            	 <input type="text" class="form-control" id="dtBaixa" name="dtBaixa"  readonly>
+                                             	<span class="input-group-addon">
+                                             	<span class="fluigicon fluigicon-calendar"></span>
+                                             	</span>
                                           </div>
+                                 	 	</div>                                 	 	                                 	 	 
                                  	 </div>
                                  </div>
                               </div>
