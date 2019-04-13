@@ -492,7 +492,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>840</positionX>
-      <positionY>710</positionY>
+      <positionY>700</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -572,14 +572,13 @@
         <version>1</version>
         <sequence>156</sequence>
       </processStatePK>
-      <stateName>Efetuar pagamento</stateName>
-      <stateDescription>Efetuar pagamento</stateDescription>
+      <stateName>Verificar pagamento</stateName>
+      <stateDescription>Verificar pagamento</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>false</notifyAuthorityDelay>
@@ -594,8 +593,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1040</positionX>
-      <positionY>700</positionY>
+      <positionX>1230</positionX>
+      <positionY>690</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -623,13 +622,14 @@
         <version>1</version>
         <sequence>159</sequence>
       </processStatePK>
-      <stateName>Avaliar erro</stateName>
-      <stateDescription>Avaliar erro</stateDescription>
-      <instruction></instruction>
+      <stateName>Avaliar pagamento não realizado</stateName>
+      <stateDescription>Avaliar pagamento não realizado</stateDescription>
+      <instruction>Use essa tarefa para avaliar o motivo do pagamento não ter sido realizado. É recomendado que seja acrescentado no campo complemento uma observação para que o solicitante fique ciente do ocorrido.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -644,8 +644,60 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1040</positionX>
-      <positionY>810</positionY>
+      <positionX>1230</positionX>
+      <positionY>790</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>1</version>
+        <sequence>165</sequence>
+      </processStatePK>
+      <stateName>Realizar pagamento</stateName>
+      <stateDescription>Realizar pagamento</stateDescription>
+      <instruction>Essa tarefa será executada automaticamente na data de vencimento informado na solicitação. Não há a necessidade de executa-la manualmente. </instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName>dtPgto</deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1010</positionX>
+      <positionY>690</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -695,8 +747,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1110</positionX>
-      <positionY>735</positionY>
+      <positionX>1310</positionX>
+      <positionY>740</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1554,23 +1606,6 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <version>1</version>
-        <linkSequence>157</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>129</initialStateSequence>
-      <finalStateSequence>156</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeViagem</processId>
-        <version>1</version>
         <linkSequence>160</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1611,6 +1646,57 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <returnPermited>false</returnPermited>
       <initialStateSequence>156</initialStateSequence>
       <finalStateSequence>116</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>1</version>
+        <linkSequence>166</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>165</initialStateSequence>
+      <finalStateSequence>156</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>1</version>
+        <linkSequence>167</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>165</initialStateSequence>
+      <finalStateSequence>156</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>1</version>
+        <linkSequence>168</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>129</initialStateSequence>
+      <finalStateSequence>165</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1965,6 +2051,58 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function servicetask156(attempt, message) {
+	  //RECUPERA NUMERO DA ATIVIDADE
+    var ativAtual = getValue(&quot;WKNumState&quot;);        
+    //RECUPERA CODIGO DA SOLICITAÇÃO
+    var codSolicitacao = getValue(&quot;WKNumProces&quot;);
+    //VERIFICA QUAL A PROXIMA ATIVIDADE
+    var nextAtv = getValue(&quot;WKNextState&quot;);
+    //RECUPERA NUMERO DO DOCUMENTO
+    var idDocumento = getValue(&quot;WKCardId&quot;);
+    var idFormulario = getValue(&quot;WKFormId&quot;)
+    var empresa = getValue(&quot;WKCompany&quot;);
+    
+    //recupera data de vencimento e converte para formato data
+    //var dtVencimento = convertStringToData(hAPI.getCardValue(&quot;dtPagamento&quot;));
+    var dtAtual = new Date();
+    
+    
+    var constraint = new Array();                                 
+    //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));
+    constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));
+    
+     var resultDataset = DatasetFactory.getDataset(&quot;ds_get_Pagamentos&quot;, null, constraint, null);
+       
+     //log.info(&quot;SCRIPT DE INTEGRAÇÃO 14:02&quot;);
+     //log.dir(resultDataset);
+     
+     
+     	if (resultDataset !== null &amp;&amp; resultDataset.rowsCount &gt;0 ){
+     		if (resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;) != &apos;&apos;){
+     			//preenche data de pagamento
+            	//hAPI.setCardValue(&quot;dtBaixa&quot;,resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;));  	
+     		}
+     		//retornar data de vencimento e verificar se ja passou
+     	/*	
+     		else if (dtVencimento &lt;= dtAtual){
+     			throw &apos;Pagamento ainda não efetuado!&apos;;
+     		}
+     		*/
+     		else {
+     			 throw &apos;Pagamento atrasado!&apos;;
+     		}     		     	
+     	}
+     	else {
+     		 throw &apos;Pagamento não localizado!&apos;;
+     	}
+
+}
+
+//recebe data do Fluig e convert para data normal
+function convertStringToData(StringToData) {
+    var data = StringToData.split(&apos;/&apos;);
+
+    return new Date(data[1] + &quot;/&quot; + data[0] + &quot;/&quot; + data[2]);
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -2081,11 +2219,66 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaodeViagem</processId>
         <version>33</version>
+        <linkSequence>163</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1179</positionX>
+      <positionY>816</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>33</version>
+        <linkSequence>163</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>1164</positionX>
+      <positionY>795</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>33</version>
+        <linkSequence>163</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>1164</positionX>
+      <positionY>762</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>33</version>
+        <linkSequence>163</linkSequence>
+        <bendSequence>4</bendSequence>
+      </processLinkBendPK>
+      <positionX>1190</positionX>
+      <positionY>736</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>33</version>
         <linkSequence>164</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>1548</positionX>
       <positionY>733</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeViagem</processId>
+        <version>33</version>
+        <linkSequence>167</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1164</positionX>
+      <positionY>688</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

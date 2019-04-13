@@ -10,9 +10,9 @@ var ativAtual = getValue("WKNumState");
 	
 	log.info("Processo beforeCancel - atividade: " + ativAtual);
 	
-	if (ativAtual == APROVACAO_RH || ativAtual == ALTERACAO_DATA){
+	if (ativAtual != ABERTURA && ativAtual != APROVACAO_GESTOR && ativAtual != VALIDACAO){
 		
-		 throw "Você não pode excluir essa solicitação pois sua solicitação já está em processo de pagamento.";
+		 throw "Você não pode excluir essa solicitação pois ela já está em processo de pagamento.";
 		
 	}
 	

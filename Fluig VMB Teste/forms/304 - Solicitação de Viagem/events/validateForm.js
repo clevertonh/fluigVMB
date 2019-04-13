@@ -36,6 +36,29 @@ function validateForm(form) {
     var usuarioLogado = getValue('WKUser');
 	var emailSolicitante;
 
+	//consulta situação atual do solicitante
+	var statusUsuario = consultaAfastamento();
+	
+	if (statusUsuario != false){
+		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+	}
+	
+	
+    function consultaAfastamento(){
+   	 var email = retornaEmailAprovador(usuarioLogado);
+   	
+   	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_Afastado", null, constraints, null);
+		 
+		 if (dataset != null && dataset.values.length > 0) {
+	        	return true;
+	        }  
+	        else {
+	        	return false;
+	        }	 
+   }
+	
     if ((activity == SOLICITARVIAGEM || activity == CORRIGIRSOLICITACAO ) && (nextAtv == GATEWAYREMARCACAO))  {
 
       	if (form.getValue("solicitante") == "" || form.getValue("solicitante") == null
@@ -121,7 +144,7 @@ function validateForm(form) {
         }
 
         if (form.getValue("emailGestor") == "" || form.getValue("emailGestor") == null) {
-        	throw "Houve algum problema e não possível identificar seu aprovador. Tente novamente mais tarde!";	  
+        	throw "Houve algum problema e não possível identificar seu aprovador. Tente novamente mais tarde! Se o erro persistir, entre em contato com o setor de Pessaos e Cultura.";	  
         }
         
         
@@ -659,7 +682,7 @@ function validateForm(form) {
 	        }	    
     }
 
-    
+
     
 }
 

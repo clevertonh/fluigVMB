@@ -6,6 +6,8 @@ function enableFields(form){
 	var VALIDACAO = 48;
 	var APROVACAO_RH = 27;
 	var ALTERACAO_DATA = 67;
+	var REALIZAR_PAGAMENTO = 97;
+	var AVALIAR_PAGAMENTO = 93;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -82,8 +84,11 @@ function enableFields(form){
 		form.setEnabled('validacao', false);
 		form.setEnabled('vl_rmb', false);
 		form.setEnabled('justificativaReprovacaoV', false);
-		 form.setEnabled('Funcionario', false);
-		 form.setEnabled('dependente', false);
+		form.setEnabled('Funcionario', false);
+		form.setEnabled('dependente', false);
+	}
+	else if (activity == REALIZAR_PAGAMENTO || activity == AVALIAR_PAGAMENTO){
+			//bloquear todos os campos
 	}
  
 

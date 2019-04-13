@@ -1,7 +1,37 @@
 function validateForm(form){
+	//recupera usuario logado
+    var usuarioLogado = getValue('WKUser');
 	
+
+	//consulta situação atual do solicitante
+	var statusUsuario = consultaAfastamento();
+	
+	if (statusUsuario != false){
+		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+	}
+	
+	
+    function consultaAfastamento(){
+   	 var email = retornaEmailAprovador(usuarioLogado);
+   	
+   	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_Afastado", null, constraints, null);
+		 
+		 if (dataset != null && dataset.values.length > 0) {
+	        	return true;
+	        }  
+	        else {
+	        	return false;
+	        }	 
+   }
+	
+    
+    
+    
+    
 	 //variaveis usadas para validação de linhas repetidas no rateio
-	 var aCentroCusto = new Array();
+	var aCentroCusto = new Array();
     var aProjeto	  = new Array();    
     var aAtividade	  = new Array();
     var aCategoria	  = new Array();

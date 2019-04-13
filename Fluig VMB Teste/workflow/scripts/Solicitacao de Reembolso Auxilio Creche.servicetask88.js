@@ -10,6 +10,10 @@ function servicetask88(attempt, message) {
     var idFormulario = getValue("WKFormId")
     var empresa = getValue("WKCompany");
     
+    //recupera data de vencimento e converte para formato data
+    var dtVencimento = convertStringToData(hAPI.getCardValue("dtPagamento"));
+    var dtAtual = new Date();
+    
     
     var constraint = new Array();                                 
     //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
@@ -17,17 +21,35 @@ function servicetask88(attempt, message) {
     
      var resultDataset = DatasetFactory.getDataset("ds_get_Pagamentos", null, constraint, null);
        
-     log.info("SCRIPT DE INTEGRAÇÃO 14:02");
-     log.dir(resultDataset);
+     //log.info("SCRIPT DE INTEGRAÇÃO 14:02");
+     //log.dir(resultDataset);
      
      
-     	if (resultDataset !== null && resultDataset.rowsCount >0 && resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){
-     		//preenche data de pagamento
-        	hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  
-     		
+     	if (resultDataset !== null && resultDataset.rowsCount >0 ){
+     		if (resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){
+     			//preenche data de pagamento
+            	hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  	
+     		}
+     		//retornar data de vencimento e verificar se ja passou
+     	/*	
+     		else if (dtVencimento <= dtAtual){
+     			throw 'Pagamento ainda não efetuado!';
+     		}
+     		*/
+     		else {
+     			 throw 'Pagamento atrasado!';
+     		}     		     	
      	}
      	else {
-     		 throw 'Pagamento ainda não efetuado!';
+     		 throw 'Pagamento não localizado!';
      	}
 
 }
+
+//recebe data do Fluig e convert para data normal
+function convertStringToData(StringToData) {
+    var data = StringToData.split('/');
+
+    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+}
+

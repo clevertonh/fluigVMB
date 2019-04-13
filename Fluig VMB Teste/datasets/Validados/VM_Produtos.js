@@ -7,6 +7,7 @@ function defineStructure() {
 	addColumn("TERMO_REFERENCIA");
 	addColumn("FLUIG");
 	addColumn("GERA_SC");
+	addColumn("ULTIMO_VALOR");
 	
 	setKey(["CODIGO"]);
 	addIndex(["CODIGO"]);
@@ -23,6 +24,7 @@ function createDataset(fields, constraints, sortFields) {
 	 dataset.addColumn("TERMO_REFERENCIA");
 	 dataset.addColumn("FLUIG");
 	 dataset.addColumn("GERA_SC");
+	 dataset.addColumn("ULTIMO_VALOR");
 	 
     var dados;
     var webservice = '/PRODUTO';
@@ -72,7 +74,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CUNIDADE, objdata[i].CULTIMAC,objdata[i].CTERMOREF, objdata[i].CFLUIG, objdata[i].CGERASC]);					
+			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CUNIDADE, objdata[i].CULTIMAC,objdata[i].CTERMOREF, objdata[i].CFLUIG, objdata[i].CGERASC, objdata[i].CULTIMOV]);					
 //			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG , "UN"]);
 		}
 	}

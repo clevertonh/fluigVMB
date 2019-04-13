@@ -61,14 +61,6 @@
                                                       </span>
                                                       </a>
                                                    </li>                                                   
-                                                   <li role="presentation" class="disabled"><a
-                                                      href="#complete" data-toggle="tab"
-                                                      aria-controls="complete" role="tab" title="Concluido">
-                                                      <span class="round-tab"> <i
-                                                         class="fluigicon fluigicon-verified"></i>
-                                                      </span>
-                                                      </a>
-                                                   </li>
                                                 </ul>
                                              </div>
                                              <div class="tab-content">
@@ -318,11 +310,11 @@
                                                    <!-- Linha 7 -->
                                                    <ul class="list-inline pull-right">
                                                       <li><button type="button"
-                                                         class="btn btn-primary next-step">Próximo</button></li>
+                                                         class="btn btn-primary next-step">Selecionar produtos</button></li>
                                                    </ul>
                                                 </div>
                                                 <div class="tab-pane" role="tabpanel" id="step2">
-<div class="panel-body">
+													<div class="panel-body">
                                                          <div class="form-group row">
                                                             <div class="col-md-12 fs-txt-right">
                                                                <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
@@ -338,10 +330,10 @@
                                                          <tr class="tableHeadRow">
                                                             <th></th>
                                                             <th class="tableColumn">Descrição do Produto</th> 
-                                                            <th class="tableColumn">Unid. Med.</th>
+                                                            <th class="tableColumn">Unid. Medida</th>
                                                             <th class="tableColumn">Qtd</th>             
                                                             <th class="tableColumn">Valor da ultima compra</th>                                         
-                                                            <th class="tableColumn">Valor empenhado</th>                                                                                                                       
+                                                            <th class="tableColumn">Valor orçado</th>                                                                                                                       
                                                             <th class="tableColumn">Data de necessidade</th>
                                                             <th class="tableColumn" id="div_codProduto">Codigo Prod.</th>                                                                  
                                                          </tr>
@@ -363,7 +355,10 @@
                                                                                     'placeholder':'Selecione um produto',
                                                                                     'fields':[
                                                                                     {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}]
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },
+                                                                                    {'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA','visible':'false'},
+                                                                                    {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
+                                                                                    {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]
                                                                                     }" />
                                                                               </div>                                                            
                                                             </td>

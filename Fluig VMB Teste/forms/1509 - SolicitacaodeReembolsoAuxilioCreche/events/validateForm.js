@@ -22,9 +22,24 @@ function validateForm(form){
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
 	
+	//consulta situação atual do solicitante
+	var statusUsuario = consultaAfastamento();
 	
+	if (statusUsuario != false){
+		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+	}
 	
-	if (activity == ABERTURA && nextAtv == APROVACAO_GESTOR){
+
+	
+  //validações tabela de pagamento
+    validaLinhasPreenchidas();
+    validaLinhasRepetidas();
+    validaPercentualRateio();
+    validaAtividades();
+    
+    
+	if (activity == ABERTURA && nextAtv == APROVACAO_GESTOR) {
+		
 		
 		if (form.getValue("vl_rmb") == "" ){
 			throw "Você precisa informar o valor a ser reembolsado.";
@@ -55,12 +70,11 @@ function validateForm(form){
 		else if (form.getValue("foraIdade")=="fora"){
 			throw "Você não pode solicitar um reembolso auxilio creche para uma criança que já ultrapassou a idade!";
 		}
+		else if (form.getValue("matriculaApr")==""){
+			throw "Não foi possível identificar seu aprovador. Caso seja um funcionário ou estagiário, entre em contato com o setor de Pessoas e Cultura.";
+		}
 		
-		//validações tabela de pagamento
-        validaLinhasPreenchidas();
-        validaLinhasRepetidas();
-        validaPercentualRateio();
-        validaAtividades();
+	
 		
 	}
 	
@@ -77,11 +91,7 @@ function validateForm(form){
         }
 		
 		
-		//validações tabela de pagamento
-        validaLinhasPreenchidas();
-        validaLinhasRepetidas();
-        validaPercentualRateio();
-        validaAtividades();
+		
 	}
 	
 	else if (activity == VALIDACAO && nextAtv == GATEWAYVALIDARDOCUMENTO){
@@ -114,11 +124,6 @@ function validateForm(form){
 			
 		}
 		
-		//validações tabela de pagamento
-        validaLinhasPreenchidas();
-        validaLinhasRepetidas();
-        validaPercentualRateio();
-        validaAtividades();
 		
 		
 	}
@@ -137,7 +142,21 @@ function validateForm(form){
 		
 	}
 	
-		
+	
+    function consultaAfastamento(){
+   	 var email = emailSolicitante();
+   	
+   	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_Afastado", null, constraints, null);
+		 
+		 if (dataset != null && dataset.values.length > 0) {
+	        	return true;
+	        }  
+	        else {
+	        	return false;
+	        }	 
+   }
         
 
             function emailSolicitante(){

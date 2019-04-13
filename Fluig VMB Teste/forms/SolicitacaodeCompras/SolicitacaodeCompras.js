@@ -172,13 +172,6 @@ function setSelectedZoomItem(selectedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---ENTROU AQUI 4 ----");
-        console.log("------PROJETO--------");
-        console.log(selectedItem["CODIGO"]);
-
-        console.log("------CAMPO ATIVIDADE--------");
-        console.log(ATIVIDADE + "___" + linhaPagamento[1]);
-
         //LIMPA TODOS AS COLUNAS POSTERIORES
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -229,6 +222,9 @@ function setSelectedZoomItem(selectedItem) {
     	console.log("---ENTROU AQUI 12 ----");    	
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
+    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
+    	
+    	
     }
     
 }
@@ -287,17 +283,14 @@ function removedZoomItem(removedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+        $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
+        $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
+        
         //limpa filtro
         console.log("---LIMPANDO FILTROS ZOOM----");
         //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
 
 
         window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
@@ -314,17 +307,17 @@ function removedZoomItem(removedItem) {
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
-
+        $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
+        $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
     	console.log("---REMOVEU AQUI 3----");
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+//      var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
 
+        $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
+        $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     }
 
@@ -345,7 +338,11 @@ function removedZoomItem(removedItem) {
 
 
     if (linhaPagamento[0] == SERVICO) {   	
-    	var codServico =  document.getElementById(PRODUTO + "___" + linhaPagamento[1]).value = "";
+     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");
+    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem[""]);
+    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem[""]);
+    	//$('#dtNecessidade' + "___" + linhaPagamento[1]).val(selectedItem[""]);
+    	
     }
 
 
