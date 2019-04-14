@@ -8,6 +8,7 @@ function enableFields(form){
 	var ALTERACAO_DATA = 67;
 	var REALIZAR_PAGAMENTO = 97;
 	var AVALIAR_PAGAMENTO = 93;
+	var CORRIGIR_DOCUMENTO = 85;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -16,8 +17,7 @@ function enableFields(form){
 	
 	var nomeSolicitante;
 	var emailSolicitante;
-	
-	
+		
 	if (activity == ABERTURA || activity == SOLICITAR){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 		 
 		 nomeSolicitante = dataset.getValue(0, "colleagueName");
@@ -53,16 +53,12 @@ function enableFields(form){
 		 form.setValue("assistente",dataset.getValue(0, "colleagueName"));
 		 form.setValue("emailAssistente",dataset.getValue(0, "mail"));		 
 		 form.setValue("aprovacao","");
-		 form.setEnabled('Funcionario', false);
-		 form.setEnabled('dependente', false);
-		
+		 
 	}
 	
 	else if (activity == APROVACAO_RH){
 		form.setEnabled('validacao', false);
 		form.setEnabled('justificativaReprovacaoV', false);
-		 form.setEnabled('Funcionario', false);
-		 form.setEnabled('dependente', false);
 		 
 		//recupera data de pagamento do Fluig
 		var dtPagamento = form.getValue("dtPagamento");
@@ -84,39 +80,35 @@ function enableFields(form){
 		form.setEnabled('validacao', false);
 		form.setEnabled('vl_rmb', false);
 		form.setEnabled('justificativaReprovacaoV', false);
-		form.setEnabled('Funcionario', false);
-		form.setEnabled('dependente', false);
+		
 	}
+	else if (activity == CORRIGIR_DOCUMENTO){
+		form.setEnabled('aprovacao', false);
+		form.setEnabled('justificativaR', false);
+		form.setEnabled('validacao', false);
+		form.setEnabled('vl_rmb', false);
+		form.setEnabled('dtPagamento', false);
+		form.setEnabled('justificativaReprovacaoV', false);
+		
+	}
+	
 	else if (activity == REALIZAR_PAGAMENTO || activity == AVALIAR_PAGAMENTO){
 			//bloquear todos os campos
+		form.setEnabled('aprovacao', false);
+		form.setEnabled('justificativaR', false);
+		form.setEnabled('validacao', false);
+		form.setEnabled('dtPagamento', false);
+		form.setEnabled('vl_rmb', false);
+		form.setEnabled('justificativaReprovacaoV', false);
+		
 	}
  
-
-	function UsuarioLogado(solicitante){
-		 var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
-		 log.info("---RECUPERA DADOS DO USUARIO LOGADO---");
-		 return dataset;
-	}
-
-	function usuarioAprovador(){
-		log.info("---GERENTE FUNCIONARIO----"); 
-		log.info(emailSolicitante);
-		
-		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
-		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
+	 if (activity != ABERTURA &&  activity != APROVACAO_GESTOR && activity != SOLICITAR){
+		 form.setEnabled('Funcionario', false);
+		 form.setEnabled('dependente', false);
+		 form.setEnabled('rateioconfigurado', false);
 		 
-		  
-		 log.info(dataset.getValue(0, "EMAIL_G"));
-		 return dataset;
-	}
-
-
-
-
-	 if (activity != ABERTURA &&  activity != APROVACAO_GESTOR){
-			//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
+		 //BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
 		    	 var indexes = form.getChildrenIndexes("tableItens");	    	    	    	   
 		    	    for (var i = 0; i < indexes.length; i++) {
 		     	        form.setEnabled("txtcentrocusto___"+ indexes[i], false);	
@@ -135,6 +127,28 @@ function enableFields(form){
 		  
 	 }
 	
+		function UsuarioLogado(solicitante){
+			 var constraints   = new Array();
+			 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
+			 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+			 log.info("---RECUPERA DADOS DO USUARIO LOGADO---");
+			 return dataset;
+		}
+
+		function usuarioAprovador(){
+			log.info("---GERENTE FUNCIONARIO----"); 
+			log.info(emailSolicitante);
+			
+			var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
+			var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
+			 
+			  
+			 log.info(dataset.getValue(0, "EMAIL_G"));
+			 return dataset;
+		}
+
+
+	 
 }
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {

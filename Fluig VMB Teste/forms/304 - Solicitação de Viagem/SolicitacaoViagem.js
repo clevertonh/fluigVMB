@@ -48,16 +48,19 @@ dataViagem = FLUIGC.calendar('#calendardtViagem',{
 
 */
 $(document).ready(function() {
-	
-	//set valor da atividade atual enviada pelo displayField para variavel global
-	//AtividadeAtual = ATIVIDADE;
-	//console.log("----ATIVIDADE ATUAL----- "+AtividadeAtual);
-
 	if (ATIVIDADE == SOLICITACANCELAMENTO) {
         document.getElementById("cancelarpassagem").checked = false;
 
     }
     
+	if (ATIVIDADE == COMPRARPASSAGEM){
+		document.getElementById("btn_add_itemS").style.display = "none";
+		
+	}
+	
+	if (ATIVIDADE != ABERTURA && ATIVIDADE != CORRIGIRSOLICITACAO && ATIVIDADE != SOLICITARVIAGEM && ATIVIDADE != APROVACAO){
+		document.getElementById("btn_add_item").style.display = "none";
+	}
     if (ATIVIDADE == CONFIRMARREEMBOLSO) {
     		dataReembolso = FLUIGC.calendar('#datareembolso', {
     	    pickDate: true,
@@ -1374,27 +1377,28 @@ function addAnos(data, anos) {
 function vooatendido() {
     var checkBoxHotel = document.getElementById("hotelComprado");
     var checkBoxVoo = document.getElementById("vooComprado");
-
-    if (checkBoxVoo.checked == true && checkBoxHotel.checked == true) {
-
+	document.getElementById("btn_add_itemS").style.display = "block";        
+    
+    if (checkBoxVoo.checked == true && checkBoxHotel.checked == true) {	   
         document.getElementById("div_valores").style.display = "block";
         document.getElementById("div_valorp").style.display = "block";
         document.getElementById("div_valorh").style.display = "block";
         document.getElementById("div_valortx").style.display = "none";
-    } else if (checkBoxVoo.checked == true) {
-        document.getElementById("div_valores").style.display = "block";
+    } else if (checkBoxVoo.checked == true) {    	    	          
+    	document.getElementById("div_valores").style.display = "block";
         document.getElementById("div_valorp").style.display = "block";
         document.getElementById("div_valorh").style.display = "none";
         document.getElementById("div_valortx").style.display = "none";
     } else if (checkBoxVoo.checked == false) {
         document.getElementById("div_valorp").style.display = "none";
+        
     }
 
 
 }
 
 function hotelatendido() {
-
+	document.getElementById("btn_add_itemS").style.display = "block";    
     var checkBoxHotel = document.getElementById("hotelComprado");
     var checkBoxVoo = document.getElementById("vooComprado");
     if (checkBoxHotel.checked == true && checkBoxVoo.checked == true) {

@@ -16,7 +16,7 @@ function displayFields(form,customHTML){
 	
     
     form.setVisibleById("aprPrazo", false);
-    //form.setVisibleById("foraIdade", false);
+    form.setVisibleById("foraIdade", false);
     
     //form.setVisibleById("cpfbeneficiario", false);    
     form.setVisibleById("divPrazoApr", false);

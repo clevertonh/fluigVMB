@@ -613,7 +613,7 @@ function validateForm(form) {
      	   var indexes = form.getChildrenIndexes("tableViagem");            
      	   
      	  if (form.getValue("vooComprado") =="sim" || form.getValue("hotelComprado") =="sim" ){
-     		  if (indexes.length < 0 ){
+     		  if (indexes.length == 0 ){
      			 throw "É obrigatório informar pelo menos um item de serviço!";
      		  }
      		  else {

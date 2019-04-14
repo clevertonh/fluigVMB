@@ -34,6 +34,12 @@ $(document).ready(function() {
 		    minDate: new Date().toLocaleString()
 		    
 		});		
+	
+		
+	
+	}
+	if (ATIVIDADE != ABERTURA && ATIVIDADE != SOLICITAR && ATIVIDADE != APROVACAO_GESTOR){
+		 document.getElementById("btn_add_item").style.display = "none";
 	}
 
 	
@@ -438,12 +444,12 @@ function idade(calyear,calmon,calday)
 		
 		if (dife[0] >= 7 && dife[1] > 1) {			
 			$('#idade').css('background-color', '#FF6347');		
-			
+			console.log("colore idade acima do permitido");
 			//criar campo para salvar limite de idade ultrassada
 			$('#foraIdade').val('fora');
 			
 		}
-		if (dife[0] >= 7 && dife[1] == 1) {			
+		else if (dife[0] >= 7 && dife[1] == 1) {			
 			$('#idade').css('background-color', '#FF8C00');			
 			$('#foraIdade').val('');
 		}	

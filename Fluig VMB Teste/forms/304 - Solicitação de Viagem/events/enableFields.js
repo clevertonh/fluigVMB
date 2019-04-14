@@ -11,6 +11,8 @@ function enableFields(form) {
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
+	var REALIZAR_PAGAMENTO = 165;
+	var AVALIAR_ATRASO = 159;
 	
 	
 	var nomeSolicitante;
@@ -173,7 +175,8 @@ function enableFields(form) {
 			 form.setEnabled('vooComprado', false);
 			 form.setEnabled('hotelComprado', false);
 			 form.setEnabled('aprovacao', true);
-			
+			 form.setEnabled('rateioconfigurado', true);
+			 
 			 //set numero da solicitação
 			 form.setValue("solicitacao",getValue('WKNumProces'));
 			 
@@ -218,7 +221,9 @@ function enableFields(form) {
 						 
 		   // form.setValue("solicitacao",getValue('WKNumProces'));
 		 
-				if (form.getValue("tipoviagem") == "nacional"){			
+				if (form.getValue("tipoviagem") == "nacional"){	
+					form.setValue("recebediarias","sim");
+					/*
 					if (form.getValue("remarcacao") == "nao" ){					
 						if (form.getValue("solicitanteFuncionario") == "sim" &&
 								form.getValue("solicitantepassageiro") == "sim" &&
@@ -267,12 +272,9 @@ function enableFields(form) {
 						else {
 							form.setValue("recebediarias","nao");
 							
-						}
-						
-						
-					
-					
+						}					
 					}
+					*/
 				}	
 				//solicitacao do tipo internacional
 				else {
@@ -310,7 +312,8 @@ function enableFields(form) {
 			 form.setEnabled('dtSaida', false);	
 			 form.setEnabled('dtRetorno', false);	
 			 form.setEnabled('vl_diarias', false);	
-			 form.setEnabled('recebediarias', true);
+			 form.setEnabled('recebediarias', false);
+			 form.setEnabled('dtPgto', false);
 			 
 			 
 			 
@@ -335,7 +338,7 @@ function enableFields(form) {
 			 
 			 
 		 }
-		 else if (activityEnable == PAGARDIARIAS){
+		 else if (activityEnable == PAGARDIARIAS || activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO){
 			//CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
@@ -355,9 +358,14 @@ function enableFields(form) {
 			 form.setEnabled('tipormb', false);
 			 form.setEnabled('valorTx', false);	
 			 
-			 
+			 if (activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO){
+				 form.setEnabled('dtPgto', false);
+				 form.setEnabled('recebediarias', false);
+				 form.setEnabled('vl_diarias', false);
+			 }	 
 			 
 		 }
+		 
 		 
 		 else if (activityEnable == COTARREMARCACAO){
 			 
@@ -419,7 +427,7 @@ function enableFields(form) {
 				     	       	form.setEnabled("dtViagem___"+ indexes[i], false);
 				     	        form.setEnabled("valores___"+ indexes[i], false);	
 				     	      	form.setEnabled("codigoProduto___"+ indexes[i], false);	
-				     	     	
+				     	      	form.setEnabled("txtfornecedor___"+ indexes[i], false);	
 			     	        
 				    	    } 
 			    

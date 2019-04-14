@@ -49,17 +49,23 @@ function beforeStateEntry(sequenceId){
      var temAnexo = false;
 	
 	
-     	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA &&
-     			( vooComprado == '' && hotelComprado == '') || ( vooComprado == null && hotelComprado == null) ){
-     	     if (anexos.size() > 0) {
-     	          temAnexo = true;
-     	      }
-
-     	      if (temAnexo) {
-     	          throw "Você anexou um bilhete e/ou voucher então é necessário indicar qual serviço foi comprado!";
-     	      }
-
+     	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA){
+     		if ((vooComprado == '' && hotelComprado == '' ) || ( vooComprado == null && hotelComprado == null) ){
+     			if (anexos.size() > 0) {
+       	          //temAnexo = true;
+     				throw "Você anexou um bilhete e/ou voucher então é necessário indicar qual serviço foi comprado!";
+       	      	}     			
+     		}     		
+     		else if (vooComprado == 'sim' || hotelComprado == 'sim' ){
+     			if (anexos.size() <= 0) {
+     				throw "Você indicou que uma passagem ou hospedagem foi comprada mas não anexou o bilhete e/ou voucher!";
+         	    }     			
+     		}
+     		
+     		
      	}
+     
+
      
      	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
  	 		  	//EXECUTA FUNÇÃO QUE RETORNA PRODUTOS A SEREM GERADOS PARA SOLICITAÇÃO DE COMPRA 		  	

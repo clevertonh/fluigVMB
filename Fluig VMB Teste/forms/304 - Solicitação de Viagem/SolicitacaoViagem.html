@@ -1278,7 +1278,8 @@
                                                             <th class="tableColumn">Valor</th>                                                                                                                       
                                                             <th class="tableColumn">Data do voo</th>
                                                             <th class="tableColumn">Codigo Prod.</th>
-                                                            <th class="tableColumn">Gera Solic. Compra</th>                                                                  
+                                                            <th class="tableColumn">Gera Solic. Compra</th> 
+                                                            <th class="tableColumn">Fornecedor</th>                                                                 
                                                          </tr>
                                                       </thead>
                                                       <tbody id="tbodyViagem">
@@ -1319,7 +1320,24 @@
                                                             </td> 
                                                             <td>
                                                             	<input class="form-control" name="geraSolicCompra" id="geraSolicCompra" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                                            </td>                                                                                                                                                                                 
+                                                            </td> 
+                                                            <td>
+                                                            <div class="form-group">
+                                                                                 <input type="hidden" name="fornecedor"
+                                                                                    id="servico" /> <input type="zoom"
+                                                                                    name="txtfornecedor"
+                                                                                    data-zoom="{
+                                                                                    'displayKey':'CODIGO',
+                                                                                    'datasetId':'VM_Fornecedores',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione um fornecedor',
+                                                                                    'fields':[
+                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                                    {'field':'CNPJ', 'label':'CNPJ'}]
+                                                                                    }" />
+                                                                              </div>  
+                                                            </td>                                                                                                                                                                                
                                                          </tr>
                                                       </tbody>
                                                    </table>
@@ -1362,13 +1380,22 @@
                                        </div>    
                                        <div class="form-group col-md-3" id="div_dtPgto">
                                           <label for="dtPgto">Data de pagamento</label>
-                                          <div class="input-group date" id="calendariodtPgto">
+                                          <div class="input-group date" >
                                              <input type="text" class="form-control" id="dtPgto" name="dtPgto" mask="00/00/0000" > <span
                                                 class="input-group-addon"> <span
                                                 class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>                                                                          
+                                       </div>  
+                       	 				<div class="form-group col-md-3">
+											<Label>Data efetiva do pagamento</Label>                                 	 	
+                                 	 		<div class="input-group date">
+                                            	 <input type="text" class="form-control" id="dtBaixa" name="dtBaixa"  readonly>
+                                             	<span class="input-group-addon">
+                                             	<span class="fluigicon fluigicon-calendar"></span>
+                                             	</span>
+                                          </div>
+                                 	 	</div>                                                                                         
                                     </div>
                                  </div>
                               </div>

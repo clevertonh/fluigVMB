@@ -385,7 +385,6 @@ function displayFields(form,customHTML){
 	} 
 	
 	else if (activity == COMPRARPASSAGEM ) {
-    	form.setVisibleById("2b", false);  
 		form.setVisibleById("4b", false);
 		form.setVisibleById("div_valores", false);
         form.setVisibleById("divRessarcimento", false);
@@ -401,7 +400,7 @@ function displayFields(form,customHTML){
     } 		
 	
 	else if (activity == OBTERPASSAGEM  ) {
-    		form.setVisibleById("2b", false);  
+    		//form.setVisibleById("2b", false);  
     		//form.setVisibleById("3b", false); 
 			//form.setVisibleById("4b", false);
 	        form.setVisibleById("divJustificativaCancelamento", true);
@@ -414,8 +413,8 @@ function displayFields(form,customHTML){
     		form.setVisibleById("divJustificativaReprovacaoViagem", false);
             form.setVisibleById("div_tipohotel1", true);
             form.setVisibleById("divTipormb", false);
-            form.setVisibleById("div_aptodiarias", false);
-            form.setVisibleById("div_dtPgto", false);
+            //form.setVisibleById("div_aptodiarias", false);
+            //form.setVisibleById("div_dtPgto", false);
             
         	//form.setVisibleById("removeitem", false);
           	//form.setVisibleById("removeServico", false);
@@ -430,7 +429,7 @@ function displayFields(form,customHTML){
             
 	}
 	else if (activity == REGISTRARCANCELAMENTO ){
-		form.setVisibleById("2b", false);
+		//form.setVisibleById("2b", false);
     	form.setVisibleById("4b", false);
 		form.setVisibleById("divReembolso", false);
 		form.setVisibleById("divJustificativaReprovacaoViagem", false);
