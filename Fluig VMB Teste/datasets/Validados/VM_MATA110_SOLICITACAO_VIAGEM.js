@@ -159,7 +159,8 @@ function addItemViagem(produto,codigo,qtde, tipoV,id_form,nValor,dataviagem){
 				localizacao :'',
 				tipoviagem : '' + tipoV +'', 
 				idDocumento: '' + id_form +'',
-				valor: '' + nValor + ''
+				valor: '' + nValor + '',
+				dtViagem :''+ dataviagem +''
 					};	
 		
 		return itemServico;

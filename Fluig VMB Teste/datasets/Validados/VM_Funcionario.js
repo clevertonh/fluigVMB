@@ -9,6 +9,7 @@ function defineStructure() {
 	addColumn("EMAIL_F");
 	addColumn("ID_GERENTE");
 	addColumn("NOME_GERENTE");
+	addColumn("DEPARTAMENTO");
 	
 	setKey(["EMAIL_F"]);
 	addIndex(["EMAIL_F"]);
@@ -30,6 +31,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("EMAIL_F");
     dataset.addColumn("ID_GERENTE");
     dataset.addColumn("NOME_GERENTE");
+    dataset.addColumn("DEPARTAMENTO");
            
     var dados;
     var webservice = '/FUNCIONARIO';
@@ -91,10 +93,10 @@ function createDataset(fields, constraints, sortFields) {
 		
 			if (datasetAprovador.rowsCount > 0){
 				//dataset.addRow([objdata[i].CNOME, objdata[i].CEMAILFUN, objdata[i].CEMAILG, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName")]);	
-				dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName")]);
+				dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName"),objdata[i].CDEPART]);
 			}
 			else {
-				dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, null,null]);
+				dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, null,null,objdata[i].CDEPART]);
 			}
 			
 			//dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN]);

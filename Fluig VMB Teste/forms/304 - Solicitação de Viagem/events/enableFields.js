@@ -14,22 +14,11 @@ function enableFields(form) {
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
 	
-	
-	var nomeSolicitante;
-	var emailSolicitante;
-	
-    /*
-     * Evento usado para desabilitar campos
-    */
-		//apenas teste
 	 //form.setEnabled('viagemplanejada', false);		
 	 form.setEnabled('cotacaoVoo', false);
 	 form.setEnabled('cotacaoHotel', false);
 	 form.setEnabled('aprovacao', false);
-	
-		
-	 
-	 
+ 
 	var activityEnable = getValue('WKNumState');
 	log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
@@ -46,14 +35,9 @@ function enableFields(form) {
 		 form.setEnabled('ressarcimento', false);
 		 form.setEnabled('justificativaReprovacao', false);		 
 		 form.setEnabled('cobranca', false);	
-		 form.setEnabled('tipormb', false);
-		 
+		 form.setEnabled('tipormb', false);		 
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
-		 
-		 
-		 
-		 
 		 
 		 
 		 if (activityEnable == ABERTURA){
@@ -63,14 +47,13 @@ function enableFields(form) {
 			 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
 			 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
 			
-			 nomeSolicitante = dataset.getValue(0, "colleagueName");
-			 emailSolicitante = dataset.getValue(0, "mail");
+			 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+			 var emailSolicitante = dataset.getValue(0, "mail");
 			 
 			 form.setValue("solicitante",nomeSolicitante);
 			 form.setValue("emailSolicitante",emailSolicitante);
-			
-	
-			 var aprovador = usuarioAprovador();
+				
+			 var aprovador = usuarioAprovador(emailSolicitante);
 	
 			 if (aprovador!= null && aprovador != ""){
 				 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
@@ -88,11 +71,7 @@ function enableFields(form) {
 	
 	
 	
-	else {
-		  
-		
-		 
-		 
+	else {		 
 		 //CAMPOS ABA INICIAL
 		 form.setEnabled('tipoviagem', false);
 		 form.setEnabled('remarcacao', false);
@@ -123,9 +102,7 @@ function enableFields(form) {
 		 form.setEnabled('viagemplanejada', false);
 		 form.setEnabled('agenda', false);
 		 
-		 
-		 
-		 
+	 
 		 //CAMPOS ABA VOO		 
 		 form.setEnabled('pedirPassagem', false);
 		 form.setEnabled('tipovoo', false);
@@ -208,79 +185,22 @@ function enableFields(form) {
 				 }
 				 
 			 }
-			 
-			 
-			 
+	
 		   		if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
-		   		 form.setEnabled('vooComprado', false);
+		   			 form.setEnabled('vooComprado', false);
 	    		}
 
 		   		if (form.getValue("tipoquarto") == "" || form.getValue("tipoquarto") == null){
 			   		 form.setEnabled('hotelComprado', false);
 		    		}
-						 
-		   // form.setValue("solicitacao",getValue('WKNumProces'));
 		 
 				if (form.getValue("tipoviagem") == "nacional"){	
 					form.setValue("recebediarias","sim");
-					/*
-					if (form.getValue("remarcacao") == "nao" ){					
-						if (form.getValue("solicitanteFuncionario") == "sim" &&
-								form.getValue("solicitantepassageiro") == "sim" &&
-								form.getValue("tipovoo") != "ida" ){
-					
-							//PROPRIO SOLICITANTE PEDINDO PASSAGEM
-							form.setValue("recebediarias","sim");
-						} 
-						else if (form.getValue("solicitanteFuncionario") == "sim" &&
-								form.getValue("solicitantepassageiro") == "nao" &&
-								form.getValue("passageirofuncionario") == "sim" &&
-								form.getValue("tipovoo") != "ida"){
-							
-							//nesse momento é não ate ver uma forma de fazer o protheus gravar 
-							//o fornecedor pelo passageiro não pelo solicitante
-							form.setValue("recebediarias","nao");
-							
-						}
-						else if (form.getValue("solicitanteFuncionario") == "nao" &&
-								form.getValue("solicitantepassageiro") == "sim" &&
-								form.getValue("passageirofuncionario") == "nao" &&
-								form.getValue("tipovoo") != "ida"){
-							
-							//solicitante nao é funcionario: verificar com finanças/p&c/adm como saber se tem direito a diarias
-							form.setValue("recebediarias","nao");
-							
-						}			
-					}
-					//solicitacao do tipo remarcacao					
-					else {
-						if (form.getValue("solicitanteFuncionario") == "sim" &&
-								form.getValue("solicitantepassageiro") == "sim" ){
-					
-							form.setValue("recebediarias","sim");
-						} 
-						else if (form.getValue("solicitanteFuncionario") == "sim" &&
-								form.getValue("solicitantepassageiro") == "nao" &&
-								form.getValue("passageirofuncionario") == "sim" ){
-							
-							//nesse momento é não ate ver uma forma de fazer o protheus gravar 
-							//o fornecedor pelo passageiro não pelo solicitante							
-								form.setValue("recebediarias","nao");
-							
-						}
-						//remarcao sendo feita por terceiros ou para terceiros
-						else {
-							form.setValue("recebediarias","nao");
-							
-						}					
-					}
-					*/
 				}	
 				//solicitacao do tipo internacional
 				else {
 					form.setValue("recebediarias","nao");
-				}
-		 
+				} 
 		 }
 		 
 		 //PROCESSO SOLICITAR CANCELAMENTO
@@ -293,8 +213,7 @@ function enableFields(form) {
 			 form.setEnabled('hotelComprado', false);
 			 form.setEnabled('cobranca', false);
 			 form.setEnabled('tipormb', false);
-			 
-			 
+			 			 
 			 form.setValue("cancelarpassagem","");
 			 form.setValue("justificativacancelamento",""); 
 			 form.setValue("ressarcimento","");
@@ -314,9 +233,6 @@ function enableFields(form) {
 			 form.setEnabled('vl_diarias', false);	
 			 form.setEnabled('recebediarias', false);
 			 form.setEnabled('dtPgto', false);
-			 
-			 
-			 
 			 
 		 }
 		 
@@ -365,11 +281,8 @@ function enableFields(form) {
 			 }	 
 			 
 		 }
-		 
-		 
+		 		 
 		 else if (activityEnable == COTARREMARCACAO){
-			 
-
 			 form.setValue("cotacaoVoo","");
 			 form.setValue("cotacaoHotel","");
 			 
@@ -377,8 +290,6 @@ function enableFields(form) {
 			 form.setEnabled('justificativaReprovacao', false);
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
-			
-			
 			 
 		   		if (form.getValue("tipovoo") == "" || form.getValue("tipovoo") == null){
 			   		 form.setEnabled('vooComprado', false);
@@ -394,18 +305,10 @@ function enableFields(form) {
 			    	}
 			   		else {
 			   			form.setEnabled('cotacaoHotel', true);
-			   		}
-		   		
-		   	 
-						 
+			   		}						 
 		 }
-		 
-		  
 
-
-		 if (activityEnable != ABERTURA &&  
-				 activityEnable != APROVACAO && 				 
-				 activityEnable != CORRIGIRSOLICITACAO){
+		 if (activityEnable != ABERTURA && activityEnable != APROVACAO && activityEnable != CORRIGIRSOLICITACAO){
 				//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS
 			    	 var indexes = form.getChildrenIndexes("tableItens");	    	    	    	   
 			    	    for (var i = 0; i < indexes.length; i++) {
@@ -429,29 +332,21 @@ function enableFields(form) {
 				     	      	form.setEnabled("codigoProduto___"+ indexes[i], false);	
 				     	      	form.setEnabled("txtfornecedor___"+ indexes[i], false);	
 			     	        
-				    	    } 
-			    
-			  
-		 }
-	 
-	 
-		
-		 
-		 
-	 
+				    	    }   
+		 }	 
 	 }	 
 	
 	
 
-	function usuarioAprovador(){
+	function usuarioAprovador(emailLogado){
 		log.info("---APROVADOR VIAGEM----"); 
-		log.info(emailSolicitante);
+		log.info(emailLogado);
 		
-		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
+		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailLogado,emailLogado, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
 		 
 		  
-		  log.info(dataset.getValue(0, "EMAIL_APROVADOR"));
+		 log.info(dataset.getValue(0, "EMAIL_APROVADOR"));
 		 return dataset;
 	}
 					

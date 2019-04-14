@@ -34,8 +34,7 @@ function validateForm(form) {
 
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
-	var emailSolicitante;
-
+	
 	//consulta situação atual do solicitante
 	var statusUsuario = consultaAfastamento();
 	
