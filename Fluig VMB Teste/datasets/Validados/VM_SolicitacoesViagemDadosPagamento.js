@@ -86,7 +86,9 @@ function createDataset(fields, constraints, sortFields) {
             	
             }
         }
-    } else { // se não tiver constraint adiciona todas as linhas
+    } 
+    /*
+    else { // se não tiver constraint adiciona todas as linhas
     	for(var a=0;a< datasetPrincipal.rowsCount;a++){
     		
         	var documentId = datasetPrincipal.getValue(a, "metadata#id");
@@ -136,7 +138,7 @@ function createDataset(fields, constraints, sortFields) {
     }
 
  
-    
+    */
     return dataset;
 }
 

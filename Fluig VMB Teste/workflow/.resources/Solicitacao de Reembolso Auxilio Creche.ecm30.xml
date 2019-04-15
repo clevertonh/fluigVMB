@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <version>13</version>
+      <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1509</formId>
@@ -756,7 +756,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -768,11 +768,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>102</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -780,7 +780,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;invalido&quot;</condition>
@@ -792,7 +792,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;&quot;</condition>
@@ -804,7 +804,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;nao&quot;</condition>
@@ -816,11 +816,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>101</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -828,7 +828,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>4</expressionOrder>
-        <version>13</version>
+        <version>17</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -1313,8 +1313,7 @@ function convertStringToData(StringToData) {
 	var VALIDACAO = 48;&#xd;
 	var APROVACAO_RH = 27;&#xd;
 	var ALTERACAO_DATA = 67;&#xd;
-	&#xd;
-	var GATEWAYVALIDARDOCUMENTO = 21;&#xd;
+&#xd;
 	&#xd;
 	//RECUPERAR O ID DO PROCESSO&#xd;
 	var PROCESSO_ID = 3;&#xd;
@@ -1469,7 +1468,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>13</version>
+        <version>17</version>
         <linkSequence>74</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1480,7 +1479,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>13</version>
+        <version>17</version>
         <linkSequence>74</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1491,7 +1490,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>13</version>
+        <version>17</version>
         <linkSequence>74</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1502,7 +1501,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>13</version>
+        <version>17</version>
         <linkSequence>89</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1513,7 +1512,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>13</version>
+        <version>17</version>
         <linkSequence>95</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1524,7 +1523,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>13</version>
+        <version>17</version>
         <linkSequence>100</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1554,7 +1553,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1564,7 +1563,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1574,7 +1573,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1584,7 +1583,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1594,7 +1593,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1604,7 +1603,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1614,7 +1613,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1624,7 +1623,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1634,7 +1633,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1644,7 +1643,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1656,9 +1655,9 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>4</stateSequence>
-      <operator>4</operator>
+      <operator>1</operator>
       <amount>1</amount>
       <name></name>
       <message>Você deve anexar a nota fiscal ou recibo</message>
@@ -1667,18 +1666,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
-      <stateSequence>85</stateSequence>
-      <operator>6</operator>
-      <amount>0</amount>
-      <name></name>
-      <message>Você deve adicionar uma nota fiscal ou recibo</message>
-    </ProcessAttachmentRules>
-    <ProcessAttachmentRules>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>13</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>85</stateSequence>
       <operator>1</operator>
       <amount>1</amount>
