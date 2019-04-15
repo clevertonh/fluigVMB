@@ -60,12 +60,33 @@ function createDataset(fields, constraints, sortFields) {
                     
                     //Busca o dataset para buscar os produtos comprados e somar o valor
                     var datasetServicos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsServicos, null);
-                    var valorPassagem = 0;
-                    var hospedagem = 0;
-                    for (var j = 0; j < datasetServicos.rowsCount; j++) {
-                    	valorPassagem = valorPassagem + datasetServicos.getValue(j, "valores");
-                    }                	
-                   	
+                    var valorPassagem;
+                    var hospedagem;
+                    
+                    if (datasetServicos != null && datasetServicos.rowsCount > 0){
+                        for (var j = 0; j < datasetServicos.rowsCount; j++) {
+                        	if (datasetServicos.getValue(j, "codigoProduto") == "DVPSG001" ){
+                        		valorPassagem = valorPassagem + datasetServicos.getValue(j, "valores");
+                        	}
+                        	else if (datasetServicos.getValue(j, "codigoProduto") == "DVPSG002" ){
+                        		valorPassagem = hospedagem + datasetServicos.getValue(j, "valores");
+                        	}
+                        	else if (datasetServicos.getValue(j, "codigoProduto") == "DVHOS001" ){
+                        		hospedagem = hospedagem + datasetServicos.getValue(j, "valores");
+                        	}
+                        	else if (datasetServicos.getValue(j, "codigoProduto") == "DVHOS002" ){
+                        		hospedagem = hospedagem + datasetServicos.getValue(j, "valores");
+                        	}
+                        	
+                        	
+                        }                	
+                       		
+                    }
+                    else {
+                    	valorPassagem = datasetPrincipal.getValue(a, "valorVoo") ;
+                    	hospedagem = datasetPrincipal.getValue(a, "valorHotel") ;
+                    }
+      
                     
                     
                     //Busca o dataset
