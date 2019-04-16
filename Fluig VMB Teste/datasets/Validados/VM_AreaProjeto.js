@@ -32,7 +32,10 @@ function createDataset(fields, constraints, sortFields) {
         if(dados != null){
         	objdata = JSON.parse(dados);
     		for(var i in objdata){
-    			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPROJETO]);    			    			
+    			if (objdata[i].CCODIGO.substring(0,1) =='S' ){
+    				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPROJETO]);	
+    			}
+    			    			    			
     		}
     	}
          

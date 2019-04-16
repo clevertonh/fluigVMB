@@ -19,6 +19,10 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("NOMEPASSAGEIRO");
     dataset.addColumn("TIPOVIAGEM");
     dataset.addColumn("VALORPASSAGEM");
+    dataset.addColumn("VOOCOMPRADO");
+    dataset.addColumn("HOTELCOMPRADO");
+    dataset.addColumn("ATENDIDA");
+    dataset.addColumn("CANCELADO");
    
     
     
@@ -38,9 +42,14 @@ function createDataset(fields, constraints, sortFields) {
             	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
             	
             	 var solicitacao;
+            	 var dataSolicitacao;
+            	 var atendida = datasetPrincipal.getValue(a, "atendida");	
+            	 var vooComprado = datasetPrincipal.getValue(a, "vooComprado");	
+            	 var hotelComprado = datasetPrincipal.getValue(a, "hotelComprado");	
                     
             	 if (historicoFormulario.rowsCount > 0){
-                	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+                	  solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
+                	  dataSolicitacao = historicoFormulario.getValue(0,"startDateProcess");
                  }
                  
             	 
@@ -71,13 +80,6 @@ function createDataset(fields, constraints, sortFields) {
                         	else if (datasetServicos.getValue(j, "codigoProduto") == "DVPSG002" ){
                         		valorPassagem = hospedagem + datasetServicos.getValue(j, "valores");
                         	}
-                        	else if (datasetServicos.getValue(j, "codigoProduto") == "DVHOS001" ){
-                        		hospedagem = hospedagem + datasetServicos.getValue(j, "valores");
-                        	}
-                        	else if (datasetServicos.getValue(j, "codigoProduto") == "DVHOS002" ){
-                        		hospedagem = hospedagem + datasetServicos.getValue(j, "valores");
-                        	}
-                        	
                         	
                         }                	
                        		
@@ -107,11 +109,15 @@ function createDataset(fields, constraints, sortFields) {
                                 datasetFilhos.getValue(j, "contacontabil"),
                                 datasetFilhos.getValue(j, "percentual"),
                                 solicitacao,
-                                null,
+                                dataSolicitacao.toString(),
                                 datasetPrincipal.getValue(a,"solicitante"),
                                 datasetPrincipal.getValue(a,"nomepassageiro"),
                                 datasetPrincipal.getValue(a,"tipoviagem"),
-                                valorPassagem
+                                valorPassagem,
+                                vooComprado,
+                                hotelComprado,
+                                atendida,
+                                datasetPrincipal.getValue(a,"cancelado")
                         ));
                     }
                 
