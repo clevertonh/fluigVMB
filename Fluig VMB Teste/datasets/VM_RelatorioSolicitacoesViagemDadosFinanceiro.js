@@ -117,7 +117,7 @@ function createDataset(fields, constraints, sortFields) {
                                 vooComprado,
                                 hotelComprado,
                                 atendida,
-                                datasetPrincipal.getValue(a,"cancelado")
+                                datasetPrincipal.getValue(a,"cancelarpassagem")
                         ));
                     }
                 
