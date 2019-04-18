@@ -126,8 +126,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>260</positionX>
-      <positionY>200</positionY>
+      <positionX>250</positionX>
+      <positionY>360</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -178,8 +178,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>410</positionX>
-      <positionY>28</positionY>
+      <positionX>430</positionX>
+      <positionY>120</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -229,8 +229,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>410</positionX>
-      <positionY>339</positionY>
+      <positionX>430</positionX>
+      <positionY>560</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -281,7 +281,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>440</positionX>
-      <positionY>485</positionY>
+      <positionY>680</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -331,8 +331,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>480</positionX>
-      <positionY>374</positionY>
+      <positionX>500</positionX>
+      <positionY>595</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -379,7 +379,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>330</positionX>
-      <positionY>49</positionY>
+      <positionY>141</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -425,8 +425,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>600</positionX>
-      <positionY>502</positionY>
+      <positionX>590</positionX>
+      <positionY>700</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -458,8 +458,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>430</positionX>
-      <positionY>190</positionY>
+      <positionX>450</positionX>
+      <positionY>350</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -497,8 +497,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>600</positionX>
-      <positionY>220</positionY>
+      <positionX>630</positionX>
+      <positionY>368</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -544,8 +544,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>610</positionX>
-      <positionY>356</positionY>
+      <positionX>620</positionX>
+      <positionY>580</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -794,7 +794,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <version>1</version>
-        <linkSequence>34</linkSequence>
+        <linkSequence>38</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -808,6 +808,32 @@
   </list>
   <list/>
   <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	var ABERTURA = 4;&#xd;
+	var APROVACAO_GESTOR = 5;&#xd;
+	var CORRIGIR_SOLICITACAO = 15;&#xd;
+	var AVALIAR_ERRO = 22;&#xd;
+	&#xd;
+	&#xd;
+var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
+	&#xd;
+	log.info(&quot;Processo beforeCancel - atividade: &quot; + ativAtual);&#xd;
+	&#xd;
+	if (ativAtual != ABERTURA &amp;&amp; ativAtual != APROVACAO_GESTOR &amp;&amp; ativAtual != CORRIGIR_SOLICITACAO &amp;&amp; ativAtual != AVALIAR_ERRO){&#xd;
+		&#xd;
+		 throw &quot;Você não pode excluir essa solicitação pois sua solicitação já foi integrada com o sistema financeiro.&quot;;&#xd;
+		&#xd;
+	}&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
@@ -900,7 +926,7 @@
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>581</height>
+      <height>781</height>
       <width>831</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
@@ -916,7 +942,7 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>145</height>
+      <height>260</height>
       <width>801</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
@@ -932,10 +958,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>145</height>
+      <height>260</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>155</positionY>
+      <positionY>270</positionY>
       <stateName>Aprovador</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -947,12 +973,12 @@
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>82b0b7</color>
-      <height>145</height>
+      <color>adc9ac</color>
+      <height>261</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>300</positionY>
-      <stateName>Sistema</stateName>
+      <positionY>530</positionY>
+      <stateName>Administração</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
@@ -962,25 +988,55 @@
         <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
-    <SwimLane>
-      <color>adc9ac</color>
-      <height>146</height>
-      <width>801</width>
-      <positionX>40</positionX>
-      <positionY>445</positionY>
-      <stateName>Administração</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>140</positionX>
+      <positionY>540</positionY>
+      <processComponGrafPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <version>1</version>
-        <sequence>5</sequence>
-      </swimLanePK>
-    </SwimLane>
+        <componGrafSequence>34</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>A integração com Protreus irá gerar uma solicitação de compra</stateName>
+    </ProcessComponGraf>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>240</positionX>
+      <positionY>40</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>1</version>
+        <componGrafSequence>36</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Preencher formulário</stateName>
+    </ProcessComponGraf>
   </list>
-  <list/>
-  <list/>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>1</version>
+        <linkSequence>35</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>19</finalStateSequence>
+    </ProcessLinkAssoc>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>1</version>
+        <linkSequence>37</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>36</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
   <list>
     <ProcessLinkBend>
       <processLinkBendPK>
@@ -998,11 +1054,22 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <version>24</version>
+        <linkSequence>6</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>167</positionX>
+      <positionY>394</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>24</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>309</positionX>
-      <positionY>520</positionY>
+      <positionX>330</positionX>
+      <positionY>714</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
@@ -1012,8 +1079,30 @@
         <linkSequence>33</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>309</positionX>
-      <positionY>372</positionY>
+      <positionX>330</positionX>
+      <positionY>626</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>24</version>
+        <linkSequence>33</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>330</positionX>
+      <positionY>594</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeCompra</processId>
+        <version>24</version>
+        <linkSequence>35</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>336</positionX>
+      <positionY>557</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
