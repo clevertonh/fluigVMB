@@ -4,7 +4,7 @@ function beforeStateEntry(sequenceId){
        var APROVACAO =5;
        
        //GATEWAY
-       var GATEWAYAPROVADO = 7;
+       var GATEWAYAPROVADO = 14;
        
        //RECUPERA NUMERO DA ATIVIDADE
        var ativAtual               = getValue("WKNumState");        
@@ -26,7 +26,7 @@ function beforeStateEntry(sequenceId){
                      //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
                      constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
                      
-                      var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);
+                      var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);
                         
                          if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
                             throw resultDateset.getValue(0,"RETORNO");

@@ -37,6 +37,7 @@ function beforeStateEntry(sequenceId){
 	var valorDiarias 	 = hAPI.getCardValue("vl_diarias");
 	var recebeDiarias 	 = hAPI.getCardValue("recebediarias");
 	var dataVencimento 	 = hAPI.getCardValue("dtPgto");
+		
 	
 	//VARIAVEIS SIMPLES
 	var aItemServico = new Array();
@@ -84,21 +85,22 @@ function beforeStateEntry(sequenceId){
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
  		  		if (aItemServico.length >0){ 		    					     	    		     	   
  		
- 		  		  //var constraintsHistorico  = new Array();	    	 
- 				 //constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
- 				 //constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
- 				 //constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));
- 				 //constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.processInstanceId", codSolicitacao , codSolicitacao, ConstraintType.MUST));
- 				 //workflowProcessPK.processInstanceId
- 				 
- 				 //var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
- 				 //var idDocumento = historicoFormulario.getValue(0,"cardDocumentId");
+ 		  			 var codigoComprador = getValue("WKUser");
+ 		  			 		  			
+ 		  			 var constraintsUsuario   = new Array();
+ 		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
+ 					 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
+ 					 					
+ 					 			
  		  			
+ 		  			 var constraint = new Array();		  			 		  			
+ 		  			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
  		  			
- 		  			
- 		  			var constraint = new Array();		  			
- 		  			//constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
- 		  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+ 		  			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
+	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
+	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
+	  				}
+ 		  			 
  		  			 
  		  			//Cria constraints para enviar produtos e valores
  		  			for (var a=0; a<aItemServico.length; a++){
@@ -106,7 +108,11 @@ function beforeStateEntry(sequenceId){
  		  				constraint.push(DatasetFactory.createConstraint("quantidade", aItemServico[a].quantidade, aItemServico[a].quantidade, ConstraintType.MUST));
  		  				constraint.push(DatasetFactory.createConstraint("valor", aItemServico[a].valor, aItemServico[a].valor, ConstraintType.MUST));
  		  				constraint.push(DatasetFactory.createConstraint("dataViagem", aItemServico[a].dtviagem, aItemServico[a].dtviagem, ConstraintType.MUST));
+ 		  			
+ 		  			
  		  			}
+ 		
+ 	  				
  		  			
  		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
  		  		    

@@ -6,6 +6,7 @@ function createDataset(fields, constraints, sortFields) {
 	var aItemServico = new Array();
 	var aRateio;
 	var itens = new Array();
+	var emailcomprador;
 
 	
 	//log.info("LOG CONSTRAINTS 1");
@@ -14,30 +15,36 @@ function createDataset(fields, constraints, sortFields) {
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
-     		
+    		
+    			
+    		
     			//var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-        		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, new Array(c0,c1), null);
+        		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
         		
         		
-        		log.info("LOG SOLICITACAO");
-        		log.dir(solicitacao);
+        		//log.info("LOG SOLICITACAO");
+        		//log.dir(solicitacao);
         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		
-        		log.info("---RETORNO METADATA");
-        		log.info(codSolicitacao);
-    
-        	
-        		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		
-//        		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);
-            	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompraDadosPagamento", null, new Array(c2), null);    				  
+        		if (constraints[1].fieldName == "comprador"){
+        			emailcomprador = constraints[1].initialValue;
+        		}
+        		
+        		
+        		//log.info("---RETORNO METADATA");
+        		//log.info(codSolicitacao);
+        		
+        		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+        		//var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+        		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
         		
         		
-        	    log.info("--RETORNO DE CONTRAINTS 21:43---")
+        	   log.info("--RETORNO DE CONTRAINTS ITENS PAGAMENTO---")
         	    log.dir(itensSolicitacao);
         	    
         					 try {
@@ -51,23 +58,33 @@ function createDataset(fields, constraints, sortFields) {
         					 
         					 try {
         						 
-        						  var c1 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-        						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoCompraProdutos", null, new Array(c1), null);
-        						  
-        						  log.info("DATASET PRODUTOS");
-        						  log.dir(datasetProdutos);
-        						  
-        						 for (var a=0; a<datasetProdutos.rowsCount;a++){
-        							 aItemServico.push(addItemCompra(
-        									 datasetProdutos.getValue(a,"COD_PRODUTO"),
-        									 datasetProdutos.getValue(a,"SOLICITACAO"),
-        									 datasetProdutos.getValue(a,"QUANTIDADE"),								
-        									 datasetProdutos.getValue(a,"DT_NECESSIDADE"),
-        									 datasetProdutos.getValue(a,"metadata#id")        									
-        									 ));       						        							
+        						 
+        						 for (var a=0; a<constraints.length;a++){
+        							 var codproduto;
+        							 var vpassagem;
+        							 var qtde;
+        							 var dataviagem;        							 
+        								 
+        							 if (constraints[a].fieldName == "produto" ){
+        								 codproduto = constraints[a].initialValue;
+        								// log.info(constraints[a].initialValue);
+        								 
+        							 }
+        							 else if (constraints[a].fieldName == "quantidade" ){
+        								 qtde = constraints[a].initialValue;
+        							 }
+        							 else if (constraints[a].fieldName == "valor" ){
+        								 vpassagem = constraints[a].initialValue;        								    						 
+        							 }
+        							 else if (constraints[a].fieldName == "dataViagem" ){
+        								 dataviagem = constraints[a].initialValue;       
+        								//chama função que monta array de objetos dos itens da viagem   
+        								 aItemServico.push(addItemViagem(codproduto,codSolicitacao,qtde,solicitacao.getValue(0,"tipoviagem"),solicitacao.getValue(0,"documentid"),vpassagem,dataviagem));        								 
+        							 
+        								 log.info("items de servico 1");
+        								 log.dir(aItemServico);
+        							 }       						
          						 }
-        						 
-        						 
         					 }
         					 catch (erro){
         						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
@@ -84,13 +101,15 @@ function createDataset(fields, constraints, sortFields) {
         					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
         					            timeoutService: '100', // segundos
         					            params : {
-        					            	processo : '' + 2 + '' ,
+        					            	processo : '' + 1 + '' ,
         					            	solicitacao : '' + codSolicitacao + '' ,
         					            	solicitante : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	emailsolicitante : '' + solicitacao.getValue(0,"emailsolicitante") +'', 
-        					                datasolicitacao :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
+        					                datasolicitacao :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
+        					                passageiro : '' + solicitacao.getValue(0,"nomepassageiro") +'',
         					                itens: aItemServico ,
-        					        		rateioDigitado: aRateio 
+        					        		rateioDigitado: aRateio,
+        					        		comprador: '' + emailcomprador +''
         					            },
         					          options : {
         					             encoding : 'UTF-8',
@@ -132,13 +151,15 @@ function createDataset(fields, constraints, sortFields) {
 
 
 //FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA
-function addItemCompra(produto,codigo,quantidade,dtnecessidade,id_form){
+function addItemViagem(produto,codigo,qtde, tipoV,id_form,nValor,dataviagem){
 	   var itemServico = { 
 				produto: ''+produto +'', 
-				codSolicitacao: '' + codigo +'',
-				quantidade: ''+ quantidade +'',
-				dtNecessidade: '' + dtnecessidade +'',											
-				idDocumento: '' + id_form +''
+				quantidade: ''+ qtde +'',
+				codSolicitacao: '' + codigo +'',	
+				tipoviagem : '' + tipoV +'', 
+				idDocumento: '' + id_form +'',
+				valor: '' + nValor + '',
+				dtViagem :''+ dataviagem +''
 					};	
 		
 		return itemServico;
