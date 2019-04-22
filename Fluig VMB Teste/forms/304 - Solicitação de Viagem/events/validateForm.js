@@ -35,28 +35,18 @@ function validateForm(form) {
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
 	
-	//consulta situação atual do solicitante
-	var statusUsuario = consultaAfastamento();
+    //retorna email usuario logado
+    var email = retornaEmailUsuario(usuarioLogado);
 	
-	if (statusUsuario != false){
+	var statusUsuario = false;
+		
+	//consulta situação atual do solicitante
+	statusUsuario = consultaAfastamento(email);
+	
+	if (statusUsuario == true ){
 		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
 	}
 	
-	
-    function consultaAfastamento(){
-   	 var email = retornaEmailAprovador(usuarioLogado);
-   	
-   	 var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("ds_get_Afastado", null, constraints, null);
-		 
-		 if (dataset != null && dataset.values.length > 0) {
-	        	return true;
-	        }  
-	        else {
-	        	return false;
-	        }	 
-   }
 	
     if ((activity == SOLICITARVIAGEM || activity == CORRIGIRSOLICITACAO ) && (nextAtv == GATEWAYREMARCACAO))  {
 
@@ -654,7 +644,7 @@ function validateForm(form) {
 
     
     function retornaCPFAprovador(){
-        var email = retornaEmailAprovador(usuarioLogado);
+        var email = retornaEmailUsuario(usuarioLogado);
 
         var constraints = new Array();
         constraints.push(DatasetFactory.createConstraint("EMAIL_F", email, email, ConstraintType.MUST));
@@ -667,9 +657,10 @@ function validateForm(form) {
         	return null;
         }
     }
+
     
-    function retornaEmailAprovador(userId){
-    	 var constraints   = new Array();
+    function retornaEmailUsuario(userId){
+   	 var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", userId, userId, ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
 			
@@ -679,8 +670,27 @@ function validateForm(form) {
 	        else {
 	        	return null;
 	        }	    
-    }
+   }
 
+	
+    function consultaAfastamento(email){   	    	
+   	 	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
+		 
+		 log.info("usuario afastado");
+		 log.dir(dataset);
+		 
+		 if (dataset.length >0 ) {
+			 log.info("Usuario afastado");
+			 return true;
+	        	
+	        }  
+	        else {
+	        	log.info("Usuario não afastado");
+	        	return false;
+	        }	 
+   }
 
     
 }

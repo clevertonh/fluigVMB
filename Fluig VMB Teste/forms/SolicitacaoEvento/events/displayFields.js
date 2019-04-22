@@ -1,8 +1,10 @@
 function displayFields(form,customHTML){ 
 	
-	var ABERTURA = 0;
-	var SOLICITAR = 4;
-	var APROVACAO_GESTOR = 5;
+	var INICIO =0;
+	var ABERTURA = 4;
+	var APROVACAO = 5;
+	var CORRIGIR = 45;
+	var AVALIAR = 40;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);

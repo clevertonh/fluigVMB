@@ -1,6 +1,8 @@
-var ABERTURA = 0;
-var SOLICITAR = 4;
-var APROVACAO_GESTOR = 5;
+var INICIO =0;
+var ABERTURA = 4;
+var APROVACAO = 5;
+var CORRIGIR = 45;
+var AVALIAR = 40;
 
 
 var dtSolicitacao;
@@ -53,7 +55,7 @@ var visibilidade = true;
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR){
+	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
 		    pickDate: true,
 		    pickTime: false,
@@ -80,7 +82,7 @@ $(document).ready(function() {
 		
 	}
 
-	if (ATIVIDADE != ABERTURA && ATIVIDADE != SOLICITAR && ATIVIDADE != APROVACAO_GESTOR){
+	if (ATIVIDADE != ABERTURA && ATIVIDADE != APROVACAO){
 		 //document.getElementById("btn_add_item").style.display = "none";
 	}
 
