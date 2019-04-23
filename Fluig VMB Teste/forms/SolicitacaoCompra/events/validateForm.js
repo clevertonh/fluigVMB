@@ -1,35 +1,15 @@
 function validateForm(form){
-	//recupera usuario logado
-    var usuarioLogado = getValue('WKUser');
+	var ABERTURA = 0;
+	var APROVACAO =5;
+	var CORRIGIR = 15;
+	var AVALIAR_ERRO = 22;
 	
-
-	//consulta situação atual do solicitante
-	var statusUsuario = consultaAfastamento();
+	//recupera atividade do processo
+    var activity = getValue('WKNumState');
+	var nextAtv  = getValue("WKNextState");	
 	
-	if (statusUsuario != false){
-		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
-	}
+	var userId = getValue("WKUser");  
 	
-	
-    function consultaAfastamento(){
-   	 var email = retornaEmailAprovador(usuarioLogado);
-   	
-   	 var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("ds_get_Afastado", null, constraints, null);
-		 
-		 if (dataset != null && dataset.values.length > 0) {
-	        	return true;
-	        }  
-	        else {
-	        	return false;
-	        }	 
-   }
-	
-    
-    
-    
-    
 	 //variaveis usadas para validação de linhas repetidas no rateio
 	var aCentroCusto = new Array();
     var aProjeto	  = new Array();    
@@ -39,10 +19,95 @@ function validateForm(form){
     var aArea	  = new Array();
     
     
-	validaLinhasPreenchidas();
-	validaLinhasRepetidas();
-	validaPercentualRateio();
-	validaProdutos();
+    
+
+	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR || activity == AVALIAR_ERRO){
+	
+		 //retorna email usuario logado
+	    var email = retornaEmailUsuario(userId);
+		
+		var statusUsuario = false;
+			
+		//consulta situação atual do solicitante
+		statusUsuario = consultaAfastamento(email);
+		
+		if (statusUsuario == true ){
+			 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+		}
+		
+		
+		//funções para validar informações financeiras
+		validaLinhasPreenchidas();
+		validaLinhasRepetidas();
+		validaPercentualRateio();
+		validaAtividades();
+		
+		//valida campos do produto
+		validaProdutos();
+		
+		
+		if (activity == APROVACAO){
+			//valida se aprovador é diferente do solicitante
+			
+		}
+		
+	}
+   
+	
+	
+    function consultaAfastamento(emailLogado){   	    	
+  	 	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
+		 
+		 log.info("usuario afastado: " + emailLogado);
+		 log.dir(dataset);
+		 
+		 if (dataset.values.length >0 ) {
+			 log.info("Usuario afastado");
+			 return true;
+	        	
+	        }  
+	        else {
+	        	log.info("Usuario não afastado");
+	        	return false;
+	        }	 
+  }
+    
+    
+    function retornaCPFAprovador(emailGestor){     
+        var constraints = new Array();
+        constraints.push(DatasetFactory.createConstraint("EMAIL_F", emailGestor, emailGestor, ConstraintType.MUST));
+        var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
+
+        if (dataset != null && dataset.values.length > 0) {
+        	return dataset.getValue(0, "CPF");
+        }  
+        else {
+        	return null;
+        }
+    }
+
+    
+    function retornaEmailUsuario(userId){
+   	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", userId, userId, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+			
+	        if (dataset != null && dataset.values.length > 0) {
+	        	return dataset.getValue(0, "mail");
+	        }  
+	        else {
+	        	return null;
+	        }	    
+   }
+	
+    
+    
+   
+	
+    
+    
 	
 	 //VALIDA SE AS LINHAS FORAM PREENCHIDAS CORRETAMENTE
     function validaLinhasPreenchidas(){
@@ -184,6 +249,31 @@ function validateForm(form){
                   }
                
            }        
+     }
+     
+     
+     //VALIDA SE FOI INFORMADO ATIVIDADE ESTRUTURAL OU FOLHA E PROIBE USO
+     function validaAtividades(){
+    	   var indexes = form.getChildrenIndexes("tableItens");            
+    	   
+           for (var i = 0; i < indexes.length; i++) {
+        	   var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
+               var atividade = form.getValue("txtatividade___" + indexes[i]);
+            
+         if (ccusto == "99990") {             
+                   if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
+                       throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma compra.";
+
+                   }
+               } 
+               else {                	
+            	   if (atividade == "E010101" ) {
+                	   throw "Você não pode usar uma atividade de folha  para custear uma compra.";
+
+                   }
+              
+                  }
+           }
      }
 	
 	

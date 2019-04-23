@@ -1,5 +1,8 @@
 var infoUser;
 var ABERTURA = 0;
+var APROVACAO =5;
+var CORRIGIR = 15;
+var AVALIAR_ERRO = 22;
 
 
 var dataAprovacao = FLUIGC.calendar('#dtNecessidade', {
@@ -32,6 +35,11 @@ $(document).ready(function() {
     
     }
 
+    else if (ATIVIDADE == AVALIAR_ERRO){
+		document.getElementById("btn_add_item").style.display = "none";
+		document.getElementById("btn_add_itemS").style.display = "none";
+		
+	}
 
 });
 

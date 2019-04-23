@@ -681,7 +681,7 @@ function validateForm(form) {
 		 log.info("usuario afastado");
 		 log.dir(dataset);
 		 
-		 if (dataset.length >0 ) {
+		 if (dataset.values.length >0 ) {
 			 log.info("Usuario afastado");
 			 return true;
 	        	

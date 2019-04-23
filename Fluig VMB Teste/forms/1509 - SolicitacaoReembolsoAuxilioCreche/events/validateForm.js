@@ -22,10 +22,15 @@ function validateForm(form){
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
 	
-	//consulta situação atual do solicitante
-	var statusUsuario = consultaAfastamento();
+	 //retorna email usuario logado
+    var email = retornaEmailUsuario(usuarioLogado);
 	
-	if (statusUsuario != false){
+	var statusUsuario = false;
+		
+	//consulta situação atual do solicitante
+	statusUsuario = consultaAfastamento(email);
+	
+	if (statusUsuario == true ){
 		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
 	}
 	
@@ -83,7 +88,7 @@ function validateForm(form){
 			throw "Você precisa informar o valor a ser reembolsado.";
 		}	
 		
-		else if (form.getValue("emailSolicitante") ==  emailSolicitante() ){
+		else if (form.getValue("emailSolicitante") ==  email ){
 			 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		}
 		else if (form.getValue("cpfbeneficiario") == retornaCPFAprovador()){
@@ -143,36 +148,29 @@ function validateForm(form){
 	}
 	
 	
-    function consultaAfastamento(){
-   	 var email = emailSolicitante();
-   	
-   	 var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("ds_get_Afastado", null, constraints, null);
+    function consultaAfastamento(emailLogado){   	    	
+ 	 	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
 		 
-		 if (dataset != null && dataset.values.length > 0) {
-	        	return true;
+		 log.info("usuario afastado: " + emailLogado);
+		 log.dir(dataset);
+		 
+		 if (dataset.values.length >0 ) {
+			 log.info("Usuario afastado");
+			 return true;
+	        	
 	        }  
 	        else {
+	        	log.info("Usuario não afastado");
 	        	return false;
 	        }	 
-   }
+ }
+   
         
-
-            function emailSolicitante(){
-	           	 var user = getValue("WKUser");	
-	           	 var constraintUser   = new Array();
-	           	 constraintUser.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", user, user, ConstraintType.MUST));
-	           	 var datasetFuncionario = DatasetFactory.getDataset("colleague", null, constraintUser, null);
-	           	 			 			 			 	 
-	           	 var emailFuncionario = datasetFuncionario.getValue(0, "mail"); 
-	           	 
-	           	 return emailFuncionario;
-            }
             
             
-            function retornaCPFAprovador(){
-                var email = emailSolicitante();
+            function retornaCPFAprovador(email){
 
                 if (email != null && email.length>0){
                 	  var constraints = new Array();
@@ -331,6 +329,22 @@ function validateForm(form){
                           }
                    }
              }
+             
+             
+             
+             function retornaEmailUsuario(userId){
+            	 var constraints   = new Array();
+         		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", userId, userId, ConstraintType.MUST));
+         		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+         			
+         	        if (dataset != null && dataset.values.length > 0) {
+         	        	return dataset.getValue(0, "mail");
+         	        }  
+         	        else {
+         	        	return null;
+         	        }	    
+            }
+         	
              
 }
 

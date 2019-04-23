@@ -1,36 +1,50 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
 	var APROVACAO =5;
-	
+	var CORRIGIR = 15;
+	var AVALIAR_ERRO = 22;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
 	
 	var solicitante = getValue("WKUser");  
-	var nomeSolicitante;
-	var emailSolicitante;
 	
-	if (activity == ABERTURA){
+	
+	if (activity == ABERTURA || activity == CORRIGIR){
+		 form.setEnabled("aprovacao", false);	
+		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
-		 nomeSolicitante = dataset.getValue(0, "colleagueName");
-		 emailSolicitante = dataset.getValue(0, "mail");
+		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+		 var emailSolicitante = dataset.getValue(0, "mail");
 		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
 		 
-		 var aprovador = usuarioAprovador();
+		 var aprovador = usuarioAprovador(emailSolicitante);
 		 if (aprovador!= null && aprovador != ""){
 			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
 			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
 			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
 			 	 
 		 }
+		 
+		 //reseta campo de corrigir marcado pelo aprovador
+		 if (activity == CORRIGIR){
+			 form.setValue("aprovacao","");			 
+		 }
+
 			 
 	}
-	else if (activity == APROVACAO){
-		bloqueiaDadosFinanceiro();
-		bloqueiaDadosProduto();
+	else if (activity == AVALIAR_ERRO){		
+		 form.setEnabled("aprovacao", false);	
+		 form.setEnabled("rateioconfigurado", false);
+		 form.setEnabled("finalidade", false);
+		 
+		 bloqueiaDadosFinanceiro();
+		 bloqueiaDadosProduto();
+		 
+		
 	}
 
 
@@ -75,7 +89,8 @@ function enableFields(form){
 		 return dataset;
 	}
 
-	function usuarioAprovador(){
+	
+	function usuarioAprovador(emailSolicitante){
 		log.info("---GERENTE FUNCIONARIO----"); 
 		log.info(emailSolicitante);
 		

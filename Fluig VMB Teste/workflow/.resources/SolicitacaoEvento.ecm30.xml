@@ -229,7 +229,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>500</positionX>
-      <positionY>520</positionY>
+      <positionY>510</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -305,6 +305,56 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
         <version>1</version>
+        <sequence>54</sequence>
+      </processStatePK>
+      <stateName>Organizar evento</stateName>
+      <stateDescription>Organizar evento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>690</positionX>
+      <positionY>420</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeEvento</processId>
+        <version>1</version>
         <sequence>39</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -329,8 +379,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>570</positionX>
-      <positionY>460</positionY>
+      <positionX>490</positionX>
+      <positionY>470</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -377,7 +427,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>650</positionX>
-      <positionY>540</positionY>
+      <positionY>530</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -518,7 +568,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
         <version>1</version>
-        <sequence>42</sequence>
+        <sequence>56</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -542,7 +592,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>680</positionX>
+      <positionX>860</positionX>
       <positionY>440</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -678,23 +728,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
         <version>1</version>
-        <linkSequence>43</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>38</initialStateSequence>
-      <finalStateSequence>42</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeEvento</processId>
-        <version>1</version>
         <linkSequence>44</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -780,7 +813,41 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
         <version>1</version>
-        <linkSequence>54</linkSequence>
+        <linkSequence>55</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>38</initialStateSequence>
+      <finalStateSequence>54</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeEvento</processId>
+        <version>1</version>
+        <linkSequence>57</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>54</initialStateSequence>
+      <finalStateSequence>56</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaodeEvento</processId>
+        <version>1</version>
+        <linkSequence>58</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -887,7 +954,7 @@
     <SwimLane>
       <color>FFFFFF</color>
       <height>591</height>
-      <width>891</width>
+      <width>1191</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Solicitação de eventos</stateName>
@@ -903,7 +970,7 @@
     <SwimLane>
       <color>9F9F9F</color>
       <height>197</height>
-      <width>861</width>
+      <width>1161</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -919,7 +986,7 @@
     <SwimLane>
       <color>C0C0C0</color>
       <height>197</height>
-      <width>861</width>
+      <width>1161</width>
       <positionX>40</positionX>
       <positionY>207</positionY>
       <stateName>Aprovador</stateName>
@@ -935,7 +1002,7 @@
     <SwimLane>
       <color>adc9ac</color>
       <height>197</height>
-      <width>861</width>
+      <width>1161</width>
       <positionX>40</positionX>
       <positionY>404</positionY>
       <stateName>Hospitalidade</stateName>
@@ -964,8 +1031,8 @@
     </ProcessComponGraf>
     <ProcessComponGraf>
       <componType>1</componType>
-      <positionX>170</positionX>
-      <positionY>420</positionY>
+      <positionX>140</positionX>
+      <positionY>410</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
@@ -1039,8 +1106,8 @@
         <linkSequence>44</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>403</positionX>
-      <positionY>554</positionY>
+      <positionX>338</positionX>
+      <positionY>544</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
@@ -1050,30 +1117,8 @@
         <linkSequence>44</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>403</positionX>
-      <positionY>495</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeEvento</processId>
-        <version>6</version>
-        <linkSequence>44</linkSequence>
-        <bendSequence>3</bendSequence>
-      </processLinkBendPK>
-      <positionX>403</positionX>
-      <positionY>454</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeEvento</processId>
-        <version>6</version>
-        <linkSequence>53</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>392</positionX>
-      <positionY>429</positionY>
+      <positionX>338</positionX>
+      <positionY>455</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
