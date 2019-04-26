@@ -95,7 +95,7 @@ function createDataset(fields, constraints, sortFields) {
 					        	return dataset;
 					        }
 					        else {	            
-					        	log.info(vo.getResult());	           
+					        	//log.info(vo.getResult());	           
 					            //dataset.addRow([vo.getResult()]);
 					            dataset.addRow(new Array("SUCESSO"));
 					        }

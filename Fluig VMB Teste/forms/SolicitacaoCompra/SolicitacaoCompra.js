@@ -32,7 +32,7 @@ $(document).ready(function() {
         });
         
     	dtSolicitacao.setDate(new Date().toLocaleString());
-    
+       	
     }
 
     else if (ATIVIDADE == AVALIAR_ERRO){
@@ -128,7 +128,7 @@ function setSelectedZoomItem(selectedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var SERVICO = "txtproduto";
-    
+      
    
 
     //Recebe o nome do campo zoom
@@ -257,6 +257,23 @@ function adicionaLinhaProduto() {
 		reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
 	
 		//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
+		
+		var qtde = document.getElementById("id_quantidade" + "___" + row);
+		/*
+		qtde.addEventListener("focus", function( event ) {
+			  event.target.style.background = "pink";    
+			}, true);
+	*/	
+		qtde.addEventListener("blur", function( event ) {
+			
+			  event.target.style.background = "pink";
+			  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
+			  var qtde = $('#id_quantidade' + "___" + row).val();
+			  
+			  $('#vrEmpUnit'+ row).val( vl_ultimaCompra * qtde  );			  
+			  
+			  
+			}, true);
 
 }
 
