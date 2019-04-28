@@ -55,8 +55,8 @@ var visibilidade = true;
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
-	if (ATIVIDADE == ABERTURA){
-		dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIO){
+		dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
 		    pickDate: true,
 		    pickTime: false,
 		    useCurrent: true,
@@ -228,6 +228,23 @@ function adicionaLinhaProduto() {
 
 	//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 
+	var qtde = document.getElementById("id_quantidade" + "___" + row);
+	
+	/*
+	qtde.addEventListener("focus", function( event ) {
+		  event.target.style.background = "pink";    
+		}, true);
+*/	
+	qtde.addEventListener("blur", function( event ) {			
+		  //event.target.style.background = "pink";
+		  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
+		  var qtde = $('#id_quantidade' + "___" + row).val()			  
+		  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
+		  
+		  
+		}, true);
+	
+	
 }
 
 function adicionaLinha() {

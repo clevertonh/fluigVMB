@@ -264,13 +264,11 @@ function adicionaLinhaProduto() {
 			  event.target.style.background = "pink";    
 			}, true);
 	*/	
-		qtde.addEventListener("blur", function( event ) {
-			
-			  event.target.style.background = "pink";
+		qtde.addEventListener("blur", function( event ) {			
+			  //event.target.style.background = "pink";
 			  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-			  var qtde = $('#id_quantidade' + "___" + row).val();
-			  
-			  $('#vrEmpUnit'+ row).val( vl_ultimaCompra * qtde  );			  
+			  var qtde = $('#id_quantidade' + "___" + row).val()			  
+			  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
 			  
 			  
 			}, true);

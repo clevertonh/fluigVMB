@@ -87,7 +87,7 @@
                                                                     <div class="form-group col-md-3">
                                                                         <label for="only-date">Data da solicitação</label>
                                                                         <div class="input-group date" id="calendariodataSolicitacao">
-                                                                            <input type="text" class="form-control" id="dataSolicitacao" name="dataSolicitacao" readonly>
+                                                                            <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao" readonly>
                                                                             <span class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                                             </span>
@@ -96,6 +96,32 @@
                                                                     <div class="from-group col-md-1">
                                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                                                     </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                	<div class="form-group col-md-3">                                                                		
+                                                                		<label>Alteração em evento</label><br> <label
+                                                            			for="altEvento">Sim</label> 
+                                                            			<input type="checkbox" id="altEvento" name="altEvento" value="sim">                                                         		
+                                                                	</div>
+                                                                	<div class="form-group col-md-9">
+                                                                		<label>Selecione o evento que deseja modificar/complementar</label>
+                                                                		<input name="selecEventos" class="form-control" type="zoom" id="selecEventos" data-zoom="{'displayKey':'txNomeEvento',
+                                                            'datasetId':'VM_SolicitacoesEventos',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um evento',
+                                                            'fields':[
+                                                            {
+                                                            'field':'Solicitacao',
+                                                            'label':'Solicitacao'
+                                                            },                                                              
+                                                            {
+                                                            'field':'txNomeEvento',
+                                                            'label':'txNomeEvento',
+                                                            'standard':'true'
+                                                            }						  					
+                                                            ]
+                                                            }">
+                                                                	</div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
@@ -184,7 +210,7 @@
                                                                 </div>
                                                                 <ul class="list-inline pull-right">
                                                                     <li>
-                                                                        <button type="button" class="btn btn-primary next-step">Próximo</button>
+                                                                        <button type="button" class="btn btn-primary next-step">Informações financeiras</button>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -359,7 +385,7 @@
                                                                         <button type="button" class="btn btn-default prev-step">Voltar</button>
                                                                     </li>
                                                                     <li>
-                                                                        <button type="button" class="btn btn-primary next-step">Próximo</button>
+                                                                        <button type="button" class="btn btn-primary next-step">Selecionar produtos/serviços</button>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -388,7 +414,7 @@
                                                                                                 <th class="tableColumn">Unid. Medida</th>
                                                                                                 <th class="tableColumn">Qtd</th>
                                                                                                 <th class="tableColumn">Valor da ultima compra</th>
-                                                                                                <th class="tableColumn">Valor orçado</th>
+                                                                                                <th class="tableColumn">Valor total</th>
                                                                                                 <th class="tableColumn">Data de necessidade</th>
                                                                                                 <th class="tableColumn" id="div_codProduto">Codigo Prod.</th>
                                                                                             </tr>
@@ -425,7 +451,7 @@
                                                                                                     <input class="form-control money" name="vrUltima" id="vrUltima" type="number" style="width:200px;" readonly/>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <input class="form-control money" name="vrEmpUnit" id="vrEmpUnit" type="number" style="width:200px;" />
+                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:200px;" />
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div class="input-group date" style="width:150px;">

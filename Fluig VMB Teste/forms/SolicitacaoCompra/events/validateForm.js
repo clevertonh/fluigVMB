@@ -231,7 +231,7 @@ function validateForm(form){
     	   
            for (var i = 0; i < indexes.length; i++) {
                var produto = form.getValue("txtproduto___" + indexes[i]);
-               var valor = form.getValue("vrEmpUnit___" + indexes[i]);
+               var valor = form.getValue("vrTotUnit___" + indexes[i]);
                var dataViagem = form.getValue("dtNecessidade___" + indexes[i]);      
                var quantidade = form.getValue("id_quantidade___" + indexes[i]);      
         
