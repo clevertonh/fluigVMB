@@ -19,7 +19,7 @@ function beforeStateEntry(sequenceId){
        
        var aprovado = hAPI.getCardValue("aprovacao");
        
-       /*
+     
        
        if (ativAtual == APROVACAO && nextAtv == GATEWAYAPROVADO){
               if (aprovado == "sim"){
@@ -36,6 +36,6 @@ function beforeStateEntry(sequenceId){
               
        }
                  
-       */
+     
        
 }

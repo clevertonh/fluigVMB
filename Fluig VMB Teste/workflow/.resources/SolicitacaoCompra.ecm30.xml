@@ -205,249 +205,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <version>1</version>
-        <sequence>19</sequence>
-      </processStatePK>
-      <stateName>Integrar com Protheus</stateName>
-      <stateDescription>Integrar com Protheus</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>false</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>0</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>430</positionX>
-      <positionY>560</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>82</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>1</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <sequence>22</sequence>
-      </processStatePK>
-      <stateName>Avaliar erro de integração</stateName>
-      <stateDescription>Avaliar erro de integração</stateDescription>
-      <instruction>User essa tarefa para avaliar o erro de integração e direcionar para correção do solicitante ou realizar novamente a integração</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Compradores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>440</positionX>
-      <positionY>680</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <sequence>21</sequence>
-      </processStatePK>
-      <stateName>Intermediário</stateName>
-      <stateDescription>Intermediário</stateDescription>
-      <instruction>Evento intermediário do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>1</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>420</positionX>
-      <positionY>600</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>43</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <parentSequence>19</parentSequence>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <sequence>28</sequence>
-      </processStatePK>
-      <stateName>Intermediário</stateName>
-      <stateDescription>Intermediário</stateDescription>
-      <instruction>Evento intermediário do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>1</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>330</positionX>
-      <positionY>141</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>42</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <parentSequence>0</parentSequence>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <sequence>31</sequence>
-      </processStatePK>
-      <stateName>Solicitar correção por parte do solicitante</stateName>
-      <stateDescription>Solicitar correção por parte do solicitante</stateDescription>
-      <instruction>Evento intermediário do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>1</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>590</positionX>
-      <positionY>700</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>36</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <parentSequence>0</parentSequence>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
       <stateName>Aprovado?</stateName>
@@ -497,8 +254,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>630</positionX>
-      <positionY>368</positionY>
+      <positionX>600</positionX>
+      <positionY>280</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -520,10 +277,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <version>1</version>
-        <sequence>24</sequence>
+        <sequence>38</sequence>
       </processStatePK>
-      <stateName>Integrada com sucesso</stateName>
-      <stateDescription>Integrada com sucesso</stateDescription>
+      <stateName>Aprovado</stateName>
+      <stateDescription>Aprovado</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -544,8 +301,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>610</positionX>
-      <positionY>580</positionY>
+      <positionX>600</positionX>
+      <positionY>400</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -573,7 +330,7 @@
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
-      <destinationSequenceId>19</destinationSequenceId>
+      <destinationSequenceId>38</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -692,115 +449,14 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <version>1</version>
-        <linkSequence>20</linkSequence>
+        <linkSequence>39</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>9</initialStateSequence>
-      <finalStateSequence>19</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>Aprovado</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>23</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>21</initialStateSequence>
-      <finalStateSequence>22</finalStateSequence>
+      <finalStateSequence>38</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>25</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>19</initialStateSequence>
-      <finalStateSequence>24</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>30</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>28</initialStateSequence>
-      <finalStateSequence>15</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>32</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>22</initialStateSequence>
-      <finalStateSequence>31</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>33</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>22</initialStateSequence>
-      <finalStateSequence>19</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>38</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>31</initialStateSequence>
-      <finalStateSequence>28</finalStateSequence>
-      <returnLabel></returnLabel>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -862,7 +518,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
        &#xd;
        var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
        &#xd;
-       /*&#xd;
+     &#xd;
        &#xd;
        if (ativAtual == APROVACAO &amp;&amp; nextAtv == GATEWAYAPROVADO){&#xd;
               if (aprovado == &quot;sim&quot;){&#xd;
@@ -879,47 +535,8 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
               &#xd;
        }&#xd;
                  &#xd;
-       */&#xd;
+     &#xd;
        &#xd;
-}</eventDescription>
-    </WorkflowProcessEvent>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>servicetask19</eventId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function servicetask19(attempt, message) {
-	
-	   //RECUPERA NUMERO DA ATIVIDADE
-    var ativAtual = getValue(&quot;WKNumState&quot;);        
-    //RECUPERA CODIGO DA SOLICITAÇÃO
-    var codSolicitacao = getValue(&quot;WKNumProces&quot;);
-    //VERIFICA QUAL A PROXIMA ATIVIDADE
-    var nextAtv = getValue(&quot;WKNextState&quot;);
-    //RECUPERA NUMERO DO DOCUMENTO
-    var idDocumento = getValue(&quot;WKCardId&quot;);
-    var idFormulario = getValue(&quot;WKFormId&quot;)
-    var empresa = getValue(&quot;WKCompany&quot;);
-    
-    
-    var constraint = new Array();                                 
-    //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));
-    constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));
-    
-     var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRAS&quot;, null, constraint, null);
-       
-     log.info(&quot;SCRIPT DE INTEGRAÇÃO&quot;);
-     log.dir(resultDataset);
-     
-        if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){
-           throw resultDataset.getValue(0,&quot;RETORNO&quot;);
-        }
-        else {
-           return &quot;Integrado com sucesso!&quot;;
-        }
-        
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -927,7 +544,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>781</height>
+      <height>471</height>
       <width>831</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
@@ -943,7 +560,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>260</height>
+      <height>235</height>
       <width>801</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
@@ -959,10 +576,10 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>260</height>
+      <height>236</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>270</positionY>
+      <positionY>245</positionY>
       <stateName>Aprovador</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -973,36 +590,8 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
         <sequence>3</sequence>
       </swimLanePK>
     </SwimLane>
-    <SwimLane>
-      <color>adc9ac</color>
-      <height>261</height>
-      <width>801</width>
-      <positionX>40</positionX>
-      <positionY>530</positionY>
-      <stateName>Administração</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <sequence>4</sequence>
-      </swimLanePK>
-    </SwimLane>
   </list>
   <list>
-    <ProcessComponGraf>
-      <componType>1</componType>
-      <positionX>140</positionX>
-      <positionY>540</positionY>
-      <processComponGrafPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <componGrafSequence>34</componGrafSequence>
-      </processComponGrafPK>
-      <stateName>A integração com Protreus irá gerar uma solicitação de compra</stateName>
-    </ProcessComponGraf>
     <ProcessComponGraf>
       <componType>1</componType>
       <positionX>240</positionX>
@@ -1017,16 +606,6 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
     </ProcessComponGraf>
   </list>
   <list>
-    <ProcessLinkAssoc>
-      <processLinkAssocPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>1</version>
-        <linkSequence>35</linkSequence>
-      </processLinkAssocPK>
-      <initialStateSequence>34</initialStateSequence>
-      <finalStateSequence>19</finalStateSequence>
-    </ProcessLinkAssoc>
     <ProcessLinkAssoc>
       <processLinkAssocPK>
         <companyId>1</companyId>
@@ -1061,67 +640,11 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <positionX>167</positionX>
       <positionY>394</positionY>
     </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>25</version>
-        <linkSequence>33</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>330</positionX>
-      <positionY>714</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>25</version>
-        <linkSequence>33</linkSequence>
-        <bendSequence>2</bendSequence>
-      </processLinkBendPK>
-      <positionX>330</positionX>
-      <positionY>626</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>25</version>
-        <linkSequence>33</linkSequence>
-        <bendSequence>3</bendSequence>
-      </processLinkBendPK>
-      <positionX>330</positionX>
-      <positionY>594</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeCompra</processId>
-        <version>25</version>
-        <linkSequence>35</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>336</positionX>
-      <positionY>557</positionY>
-    </ProcessLinkBend>
   </list>
   <list/>
   <list/>
   <list/>
-  <list>
-    <ProcessStateService>
-      <companyId>1</companyId>
-      <processId>SolicitacaodeCompra</processId>
-      <version>1</version>
-      <sequence>19</sequence>
-      <attempts>3</attempts>
-      <sucessFullMessage>Integração executada com sucesso</sucessFullMessage>
-      <serviceName></serviceName>
-      <frequency>5</frequency>
-      <frequencyType>0</frequencyType>
-    </ProcessStateService>
-  </list>
+  <list/>
   <list/>
   <list/>
   <list/>
