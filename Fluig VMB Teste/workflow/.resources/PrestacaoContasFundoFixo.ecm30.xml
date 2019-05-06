@@ -110,6 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -126,56 +128,6 @@
       <automatic>false</automatic>
       <positionX>260</positionX>
       <positionY>200</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <version>1</version>
-        <sequence>15</sequence>
-      </processStatePK>
-      <stateName>Corrigir lançamento</stateName>
-      <stateDescription>Corrigir lançamento</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>410</positionX>
-      <positionY>20</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -250,8 +202,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>560</positionX>
-      <positionY>180</positionY>
+      <positionX>610</positionX>
+      <positionY>170</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -297,7 +249,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>560</positionX>
+      <positionX>630</positionX>
       <positionY>240</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -325,8 +277,20 @@
         <version>1</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
-      <condition>teste</condition>
+      <condition>hAPI.getCardValue(&quot;validacao) == &quot;validado&quot;</condition>
       <destinationSequenceId>11</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>9</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;validacao) == &quot;negado&quot;</condition>
+      <destinationSequenceId>13</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -377,7 +341,7 @@
       <initialStateSequence>9</initialStateSequence>
       <finalStateSequence>11</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
+      <name>Aprovado</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -394,41 +358,7 @@
       <initialStateSequence>9</initialStateSequence>
       <finalStateSequence>13</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <version>1</version>
-        <linkSequence>16</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>9</initialStateSequence>
-      <finalStateSequence>15</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <version>1</version>
-        <linkSequence>17</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>15</initialStateSequence>
-      <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
+      <name>Reprovado</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>

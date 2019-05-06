@@ -55,8 +55,8 @@
                                           <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
                                        </div>
                                        <div class="form-group col-md-3">
-                                          <label for="dtSolicitacao">Data da solicitação</label>
-                                          <div class="input-group date" id="calendariodtSolicitacao">
+                                          <label for="dtSolicitacao">Data de inclusão</label>
+                                          <div class="input-group date" >
                                              <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
@@ -66,17 +66,51 @@
                                     </div>
                                     <div class="row">
                                        <div class="form-group col-md-2">
-                                          <label for="vl_rmb">Valor</label>
+                                          <label for="vl_rmb">Valor nota fiscal</label>
                                           <input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
                                        </div>
-                                        <div class="form-group col-md-6">
-                                        	<label>Nome beneficiário</label>
-                                        	<input type="text" class="form-control" name="tx_beneficiario" id="tx_beneficiario">
-                                        </div>              
-                                    	<div class="form-group col-md-3">
-                                    		<label>CNPJ/CPF beneficiário</label>
-                                    		<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario">
-                                    	</div> 
+    									<div class="form-group col-md-2">
+                                          <label for="dtPagamento">Data da nota</label>
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>                                                                               
+ 											<div class="form-group col-md-5">
+                                                         <label>Responsável pelo fundo fixo</label> 
+                                                         <input name="responsavel"
+                                                            class="form-control" type="zoom"
+                                                            id="responsavel"
+                                                            data-zoom="{'displayKey':'NOME',
+                                                            'datasetId':'VM_Funcionario',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o funcionário',
+                                                            'fields':[
+                                                            {'field':'NOME','label':'NOME','standard':'true'},
+                                                            {'field':'CPF','label':'CPF'},
+                                                            {'field':'DTNASC','label':'DTNASC', 'visible':'false'},
+                                                            {'field':'PASSAPORTE','label':'PASSAPORTE', 'visible':'false'},
+                                                            {'field':'MAE','label':'MAE', 'visible':'false'},
+                                                            {'field':'EMAIL_F','label':'EMAIL_F', 'visible':'false'},
+                                                            {'field':'RG','label':'RG', 'visible':'false'}					  					
+                                                            ]
+                                                            }">
+                                                      </div>
+                                         <div class="form-group col-md-3" id="div_cpf">
+                                         	<label>CPF Responsável</label>
+                                         	<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
+                                         </div>                                                    
+  											<div class="form-group col-md-4">
+                                                         <label>Tipo de Fundo Fixo</label><br> <label
+                                                            for="ffxAdm">Administrativo</label> <input
+                                                            type="radio" id="ffxAdm" name="tipoffx"
+                                                            value="administrativo" >
+                                                         <label for="ffxOp">Operacional</label> <input
+                                                            type="radio" id="ffxOp" name="tipoffx"
+                                                            value="operacional" >
+                                             </div>                                    	
                                     </div>                            
                                     <div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">
@@ -278,16 +312,7 @@
                                        <div class="form-group col-md-4">
                                           <label for="emailAssistente">Email do assistente</label>
                                           <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
-                                       </div>
-                                       <div class="form-group col-md-3">
-                                          <label for="dtPagamento">Data do registro</label>
-                                          <div class="input-group date" id="calendariodtPgto">
-                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
-                                             <span class="input-group-addon">
-                                             <span class="fluigicon fluigicon-calendar"></span>
-                                             </span>
-                                          </div>
-                                       </div>
+                                       </div>                                   
                                     </div>
                                     <div class="row">
                                        <h3>Para validar marque a opção desejada:</h3>
