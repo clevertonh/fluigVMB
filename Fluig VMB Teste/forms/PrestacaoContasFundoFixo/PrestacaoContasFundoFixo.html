@@ -66,13 +66,13 @@
                                     </div>
                                     <div class="row">
                                        <div class="form-group col-md-2">
-                                          <label for="vl_rmb">Valor nota fiscal</label>
-                                          <input type="number" class="form-control" name="vl_rmb" id ="vl_rmb">
+                                          <label for="vl_nota">Valor nota fiscal</label>
+                                          <input type="number" class="form-control" name="vl_nota" id ="vl_nota">
                                        </div>
     									<div class="form-group col-md-2">
-                                          <label for="dtPagamento">Data da nota</label>
+                                          <label for="dtNota">Data da nota</label>
                                           <div class="input-group date" >
-                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagamento" name="dtPagamento">
+                                             <input type="text" class="form-control" placeholder="Data da nota" id="dtNota" name="dtNota">
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
@@ -98,7 +98,7 @@
                                                             ]
                                                             }">
                                                       </div>
-                                         <div class="form-group col-md-3" id="div_cpf">
+                                         <div class="form-group col-md-3">
                                          	<label>CPF Responsável</label>
                                          	<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
                                          </div>                                                    
@@ -288,8 +288,23 @@
                                                             <td >
                                                                <input class="form-control" name="localizacao" id="localizacao" type="text" maxlength="3" style="width:70px;" readonly/>
                                                             </td>
-                                                            <td >
-                                                               <input class="form-control" name="contacontabil" id="contacontabil" type="text" maxlength="10" style="width:100px;" readonly/>
+                                                            <td >                                                               
+                                                            <div class="form-group">
+                                                                  <input type="hidden" name="contacontabil" id="contacontabil" /> 																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="txtcontacontabil" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'ds_get_ContaContabil',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione uma conta',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                     {'field':'TIPO', 'label':'TIPO', 'visible':'false'}]
+                                                                     }" />
+                                                               </div>
                                                             </td>
                                                             <td>
                                                             	<input class="form-control" name="rateio" id="rateio" type="text" maxlength="10" style="width: 100px;" readonly /></td>
@@ -312,7 +327,16 @@
                                        <div class="form-group col-md-4">
                                           <label for="emailAssistente">Email do assistente</label>
                                           <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
-                                       </div>                                   
+                                       </div> 
+                                         <div class="form-group col-md-3">
+                                          <label for="dtAprovacao">Data Aprovação</label>
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" id="dtAprovacao" name="dtAprovacao"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>                                  
                                     </div>
                                     <div class="row">
                                        <h3>Para validar marque a opção desejada:</h3>
@@ -328,8 +352,8 @@
                                     <div class="row">
                                        <div class="form-group col-md-12">
                                           <div class="form-group" >
-                                             <label for="justificativaReprovacaoV">Justificativa</label>
-                                             <textarea class="form-control" rows="3" id="justificativaReprovacaoV" name="justificativaReprovacaoV" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                             <label for="justificativaReprovacao">Justificativa</label>
+                                             <textarea class="form-control" rows="3" id="justificativaReprovacao" name="justificativaReprovacao" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
                                           </div>
                                        </div>
                                     </div>

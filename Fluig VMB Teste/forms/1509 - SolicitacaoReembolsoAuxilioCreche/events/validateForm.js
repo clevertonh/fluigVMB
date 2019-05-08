@@ -54,7 +54,7 @@ function validateForm(form){
 			throw "Seus dados de usuário não foram carregados, por favor tente novamente mais tarde.";
 		}
 		
-		else if (form.getValue("emailSolicitante")==""){
+		else if (form.getValue("emailLider")==""){
 			throw "Seu aprovador não foi carregado automaticamente. Tente novamente mais tarde, se o problema persisti, entre em contato com o setor de TI.";
 		}
 		else if (form.getValue("Funcionario")==""){
@@ -91,7 +91,7 @@ function validateForm(form){
 		else if (form.getValue("emailSolicitante") ==  email ){
 			 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		}
-		else if (form.getValue("cpfbeneficiario") == retornaCPFAprovador()){
+		else if (form.getValue("cpfbeneficiario") == retornaCPFAprovador(email)){
         	 throw "Você não pode aprovar uma solicitação onde você é o beneficiário.";
         }
 		
