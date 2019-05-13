@@ -68,6 +68,7 @@ function createDataset(fields, constraints, sortFields) {
 					            	DATAAPROV  : '' + solicitacao.getValue(0,"dtAprovacao") + '',
 					            	SOLICITACAO  : '' + codSolicitacao + '' ,
 					            	HISTORICO  : '' + "DESPESA FUNDO FIXO" + '' ,
+					            	PRODUTO : '' + solicitacao.getValue(0,"codigoProduto") + '' ,
 					            	RATEIO: aRateio 
 					            },
 					          options : {

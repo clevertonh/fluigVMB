@@ -34,7 +34,7 @@
                            <div id="exTab3" class="container-fluid">
                               <ul class="nav nav-pills nav-justified">
                                  <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
-                                 <li><a href="#2b" data-toggle="tab">Tesouraria</a></li>                                                                 
+                                 <li><a href="#2b" data-toggle="tab">Tesouraria</a></li>
                               </ul>
                               <div class="tab-content clearfix">
                                  <!-- Aba Solicitante -->                                                              
@@ -69,7 +69,7 @@
                                           <label for="vl_nota">Valor nota fiscal</label>
                                           <input type="number" class="form-control" name="vl_nota" id ="vl_nota">
                                        </div>
-    									<div class="form-group col-md-2">
+                                       <div class="form-group col-md-2">
                                           <label for="dtNota">Data da nota</label>
                                           <div class="input-group date" >
                                              <input type="text" class="form-control" placeholder="Data da nota" id="dtNota" name="dtNota">
@@ -77,41 +77,59 @@
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>                                                                               
- 											<div class="form-group col-md-5">
-                                                         <label>Responsável pelo fundo fixo</label> 
-                                                         <input name="responsavel"
-                                                            class="form-control" type="zoom"
-                                                            id="responsavel"
-                                                            data-zoom="{'displayKey':'NOME',
-                                                            'datasetId':'VM_Funcionario',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione o funcionário',
-                                                            'fields':[
-                                                            {'field':'NOME','label':'NOME','standard':'true'},
-                                                            {'field':'CPF','label':'CPF'},
-                                                            {'field':'DTNASC','label':'DTNASC', 'visible':'false'},
-                                                            {'field':'PASSAPORTE','label':'PASSAPORTE', 'visible':'false'},
-                                                            {'field':'MAE','label':'MAE', 'visible':'false'},
-                                                            {'field':'EMAIL_F','label':'EMAIL_F', 'visible':'false'},
-                                                            {'field':'RG','label':'RG', 'visible':'false'}					  					
-                                                            ]
-                                                            }">
-                                                      </div>
-                                         <div class="form-group col-md-3">
-                                         	<label>CPF Responsável</label>
-                                         	<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
-                                         </div>                                                    
-  											<div class="form-group col-md-4">
-                                                         <label>Tipo de Fundo Fixo</label><br> <label
-                                                            for="ffxAdm">Administrativo</label> <input
-                                                            type="radio" id="ffxAdm" name="tipoffx"
-                                                            value="administrativo" >
-                                                         <label for="ffxOp">Operacional</label> <input
-                                                            type="radio" id="ffxOp" name="tipoffx"
-                                                            value="operacional" >
-                                             </div>                                    	
-                                    </div>                            
+                                       </div>
+                                       <div class="form-group col-md-5">
+                                          <label>Responsável pelo fundo fixo</label> 
+                                          <input name="responsavel"
+                                             class="form-control" type="zoom"
+                                             id="responsavel"
+                                             data-zoom="{'displayKey':'NOME',
+                                             'datasetId':'VM_Funcionario',
+                                             'maximumSelectionLength':'1',
+                                             'placeholder':'Selecione o funcionário',
+                                             'fields':[
+                                             {'field':'NOME','label':'NOME','standard':'true'},
+                                             {'field':'CPF','label':'CPF'},
+                                             {'field':'DTNASC','label':'DTNASC', 'visible':'false'},
+                                             {'field':'PASSAPORTE','label':'PASSAPORTE', 'visible':'false'},
+                                             {'field':'MAE','label':'MAE', 'visible':'false'},
+                                             {'field':'EMAIL_F','label':'EMAIL_F', 'visible':'false'},
+                                             {'field':'RG','label':'RG', 'visible':'false'}					  					
+                                             ]
+                                             }">
+                                       </div>
+                                       <div class="form-group col-md-3">
+                                          <label>CPF Responsável</label>
+                                          <input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-3">
+                                          <label>Tipo de Fundo Fixo</label><br> <label
+                                             for="ffxAdm">Administrativo</label> <input
+                                             type="radio" id="ffxAdm" name="tipoffx"
+                                             value="administrativo" >
+                                          <label for="ffxOp">Operacional</label> <input
+                                             type="radio" id="ffxOp" name="tipoffx"
+                                             value="operacional" >
+                                       </div>                                       
+                                       <div class="form-group col-md-5">
+                                         <label>Produto/Serviço</label>                                           
+                                          <input type="zoom" name="produto" id ="produto" data-zoom="{
+                                             'displayKey':'DESCRICAO',
+                                             'datasetId':'ds_get_Produtos',
+                                             'maximumSelectionLength':'1',
+                                             'placeholder':'Selecione um produto',
+                                             'fields':[
+                                             {'field':'CODIGO', 'label':'CODIGO'},
+                                             {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+                                             ]
+                                             }" />
+                                       </div>
+                                       <div class="form-group col-md-3">                                       		
+                                       		<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                       </div>
+                                    </div>
                                     <div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">
                                           <h3 class="panel-title">
@@ -120,27 +138,27 @@
                                        </div>
                                        <div class="panel-body">
                                           <div class="form-group row">
-                                                      <div class="form-group col-md-6" id="selecaorateio">
-                                                         <label>Carregar base rateio pré-configurado</label> <input
-                                                            name="rateioconfigurado" class="form-control"
-                                                            type="zoom" id="rateioconfigurado"
-                                                            data-zoom="{'displayKey':'DESCRICAO',
-                                                            'datasetId':'VM_RateioConfigurado',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione um rateio',
-                                                            'fields':[
-                                                            {
-                                                            'field':'CODIGO',
-                                                            'label':'CODIGO'
-                                                            },                                                              
-                                                            {
-                                                            'field':'DESCRICAO',
-                                                            'label':'DESCRICAO',
-                                                            'standard':'true'
-                                                            }						  					
-                                                            ]
-                                                            }">
-                                                      </div>                                          
+                                             <div class="form-group col-md-6" id="selecaorateio">
+                                                <label>Carregar base rateio pré-configurado</label> <input
+                                                   name="rateioconfigurado" class="form-control"
+                                                   type="zoom" id="rateioconfigurado"
+                                                   data-zoom="{'displayKey':'DESCRICAO',
+                                                   'datasetId':'VM_RateioConfigurado',
+                                                   'maximumSelectionLength':'1',
+                                                   'placeholder':'Selecione um rateio',
+                                                   'fields':[
+                                                   {
+                                                   'field':'CODIGO',
+                                                   'label':'CODIGO'
+                                                   },                                                              
+                                                   {
+                                                   'field':'DESCRICAO',
+                                                   'label':'DESCRICAO',
+                                                   'standard':'true'
+                                                   }						  					
+                                                   ]
+                                                   }">
+                                             </div>
                                              <div class="col-md-12 fs-txt-right">
                                                 <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
                                                 <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
@@ -288,26 +306,12 @@
                                                             <td >
                                                                <input class="form-control" name="localizacao" id="localizacao" type="text" maxlength="3" style="width:70px;" readonly/>
                                                             </td>
-                                                            <td >                                                               
-                                                            <div class="form-group">
-                                                                  <input type="hidden" name="contacontabil" id="contacontabil" /> 																						
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="txtcontacontabil" 
-                                                                     data-zoom="{
-                                                                     'displayKey':'CODIGO',
-                                                                     'datasetId':'ds_get_ContaContabil',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione uma conta',
-                                                                     'fields':[
-                                                                     {'field':'CODIGO', 'label':'CODIGO'},
-                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
-                                                                     {'field':'TIPO', 'label':'TIPO', 'visible':'false'}]
-                                                                     }" />
-                                                               </div>
+                                                            <td >
+			                                                   <input class="form-control" name="contacontabil" id="contacontabil" type="text" maxlength="10" style="width: 120px;" readonly />			
                                                             </td>
                                                             <td>
-                                                            	<input class="form-control" name="rateio" id="rateio" type="text" maxlength="10" style="width: 100px;" readonly /></td>
+                                                               <input class="form-control" name="rateio" id="rateio" type="text" maxlength="10" style="width: 100px;" readonly />
+                                                            </td>
                                                          </tr>
                                                       </tbody>
                                                    </table>
@@ -316,7 +320,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                 </div>                                
+                                 </div>
                                  <!-- Aba Assistente -->
                                  <div class="tab-pane" id="2b">
                                     <div class="row">
@@ -327,8 +331,8 @@
                                        <div class="form-group col-md-4">
                                           <label for="emailAssistente">Email do assistente</label>
                                           <input type="email" class="form-control" id="emailAssistente" name="emailAssistente" readonly>
-                                       </div> 
-                                         <div class="form-group col-md-3">
+                                       </div>
+                                       <div class="form-group col-md-3">
                                           <label for="dtAprovacao">Data Aprovação</label>
                                           <div class="input-group date" >
                                              <input type="text" class="form-control" id="dtAprovacao" name="dtAprovacao"  readonly>
@@ -336,7 +340,7 @@
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>                                  
+                                       </div>
                                     </div>
                                     <div class="row">
                                        <h3>Para validar marque a opção desejada:</h3>

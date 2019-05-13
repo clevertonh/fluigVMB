@@ -1,7 +1,7 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("solicitacao", "1579", "1579", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("documentid", "1638", "1638", ConstraintType.MUST));     
 	 
 	
 	

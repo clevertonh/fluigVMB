@@ -28,13 +28,13 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Prestacao de Contas Fundo Fixo</processId>
-      <version>12</version>
+      <version>13</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1753</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
-    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
     <active>true</active>
     <blockedVersion>false</blockedVersion>
     <counterSign>false</counterSign>
@@ -476,7 +476,7 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>12</version>
+        <version>13</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -488,7 +488,7 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>12</version>
+        <version>13</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -651,7 +651,44 @@
       <type>0</type>
     </ProcessLink>
   </list>
-  <list/>
+  <list>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PMOED</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitacaoViagem&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PR</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PME</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+  </list>
   <list>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -764,7 +801,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>12</version>
+        <version>13</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -775,7 +812,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>12</version>
+        <version>13</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -786,7 +823,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>12</version>
+        <version>13</version>
         <linkSequence>27</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -797,7 +834,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>12</version>
+        <version>13</version>
         <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -808,7 +845,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>12</version>
+        <version>13</version>
         <linkSequence>28</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -819,7 +856,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>12</version>
+        <version>13</version>
         <linkSequence>28</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -845,6 +882,18 @@
   </list>
   <list/>
   <list/>
-  <list/>
+  <list>
+    <ProcessAttachmentRules>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>PrestacaoContasFundoFixo</processId>
+      <processVersion>13</processVersion>
+      <stateSequence>4</stateSequence>
+      <operator>1</operator>
+      <amount>1</amount>
+      <name></name>
+      <message>Você deve anexar uma nota fiscal/recibo</message>
+    </ProcessAttachmentRules>
+  </list>
   <list/>
 </list>

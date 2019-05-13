@@ -110,9 +110,9 @@ function setSelectedZoomItem(selectedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
-    var SERVICO = "txtproduto";
-    var PRODUTO ="codigoProduto";
+    var PRODUTO = "produto";   
     var RESPONSAVEL ="responsavel"
+    	 
   
    
 
@@ -202,17 +202,16 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
-    }
-
-
-    if (campoZOOM == RATEIO) {    
+    } else if (campoZOOM == RATEIO) {    
     	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
-    }
-    
-    if (campoZOOM == RESPONSAVEL){
+    } else if (campoZOOM == RESPONSAVEL){
     	 $("#cpfbeneficiario").val(selectedItem["CPF"]);
+    
+    } else if (campoZOOM == PRODUTO) {	
+    	 $('#codigoProduto').val(selectedItem["CODIGO"]);
+    	    
     }
     
 }
@@ -245,8 +244,8 @@ function removedZoomItem(removedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
-    var SERVICO = "txtproduto";
-    var PRODUTO ="codigoProduto";
+    var PRODUTO = "produto";   
+    var RESPONSAVEL ="responsavel";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -320,7 +319,10 @@ function removedZoomItem(removedItem) {
 	    }
     }
 
-
+    if (campoZOOM == PRODUTO) {	
+    	$('#codigoProduto').val("");
+    	    	
+    }
 
 
 

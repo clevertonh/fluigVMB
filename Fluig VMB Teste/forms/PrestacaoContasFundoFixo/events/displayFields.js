@@ -16,8 +16,12 @@ function displayFields(form,customHTML){
     
     
 	 form.setVisibleById("matriculasolicitante", false); 
+	 form.setVisibleById("codigoProduto", false);
 	 
 	 
+	 if (activity == INICIO || activity == ABERTURA){
+		 form.setVisibleById("2b", false);
+	 }
 	 
 	 
 }
