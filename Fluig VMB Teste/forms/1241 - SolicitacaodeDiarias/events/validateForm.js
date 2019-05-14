@@ -135,7 +135,8 @@ function validateForm(form){
              var total = 0;
 
              for (var i = 0; i < indexes.length; i++) {
-                 var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
+                 //var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
+                 var fieldValue = parseFloat(form.getValue("percentual___" + indexes[i]));                   
                  if (isNaN(fieldValue)) {
                      throw "Existem linhas sem percentual informado no rateio de pagamento.";
 
@@ -143,7 +144,9 @@ function validateForm(form){
 
                  total = total + fieldValue;	        
              }
-             if ((total < 100) || total > 100) {
+             
+             //if ((total < 100) || total > 100) {
+             if ((total.toFixed(2) < 100) || total.toFixed(2) > 100) {
                  throw "Percentual Total do rateio não pode ser inferior ou superior a 100";
              }
          

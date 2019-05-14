@@ -1712,7 +1712,7 @@ function adicionaItensRateio(itens) {
         }
         
         //precisa trocar o ponto por virgula
-        //$("#percentual___" + indice).val(itens[i].Percentual);
+        $("#percentual___" + indice).val(itens[i].PERCENTUAL);
         
         $("#rateio___" + indice).val(itens[i].RATEIO);
 

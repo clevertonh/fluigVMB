@@ -208,17 +208,21 @@ function validateForm(form){
              function validaPercentualRateio(){
                      var indexes = form.getChildrenIndexes("tableItens");
                      var total = 0;
-
-                     for (var i = 0; i < indexes.length; i++) {
-                         var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
-                         if (isNaN(fieldValue)) {
+                     
+                     for (var i = 0; i < indexes.length; i++) {                    
+                    	 var fieldValue = parseFloat(form.getValue("percentual___" + indexes[i]));                    	 
+                    	 if (isNaN(fieldValue)) {
                              throw "Existem linhas sem percentual informado no rateio de pagamento.";
 
                          }
 
-                         total = total + fieldValue;	        
+                    	 total = total + fieldValue;	        
                      }
-                     if ((total < 100) || total > 100) {
+                     
+//                     log.info('TOTAL RATEIO 3');
+//                     log.info(total.toFixed(2));
+                     
+                     if ((total.toFixed(2) < 100) || total.toFixed(2) > 100) {
                          throw "Percentual Total do rateio não pode ser inferior ou superior a 100";
                      }
                  

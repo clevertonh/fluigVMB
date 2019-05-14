@@ -1,6 +1,6 @@
 function displayFields(form,customHTML){
 	
-	var INICIO =0;
+	//var INICIO =0;
 	var ABERTURA = 4;
 	var APROVACAO = 5;
 	var AVALIAR_ERRO = 18;
@@ -19,7 +19,7 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("codigoProduto", false);
 	 
 	 
-	 if (activity == INICIO || activity == ABERTURA){
+	 if (activity == ABERTURA){
 		 form.setVisibleById("2b", false);
 	 }
 	 
