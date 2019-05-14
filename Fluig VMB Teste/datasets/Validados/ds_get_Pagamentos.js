@@ -2,8 +2,8 @@ function createDataset(fields, constraints, sortFields) {
 	var getSolicitacao =  getConstraints(constraints, 'documentid');
 	//var getSolicitacao = "1678";
 	
-	log.info("----RETORNO VM_PAGAMENTOS---");
-	log.dir(getSolicitacao);
+	//log.info("----RETORNO VM_PAGAMENTOS---");
+	//log.dir(getSolicitacao);
 
 	     
     var c1 = DatasetFactory.createConstraint("documentid", getSolicitacao, getSolicitacao, ConstraintType.MUST); 

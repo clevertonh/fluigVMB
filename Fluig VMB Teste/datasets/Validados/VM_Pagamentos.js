@@ -13,10 +13,14 @@ function createDataset(fields, constraints, sortFields) {
 	        if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") { // implementação somente para o MUST
 	        	var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
+	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
 	    		
-	    		log.info("VM PAGAMENTOS");
-	    		log.dir(solicitacao);
+	    		//if (solicitacao.rowsCount <=0){
+	    		//	solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
+	    		//}
+	    		
+	    		//log.info("VM PAGAMENTOS");
+	    		//log.dir(solicitacao);
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");

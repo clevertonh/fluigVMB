@@ -18,10 +18,11 @@ function servicetask156(attempt, message) {
     var constraint = new Array();                                 
     //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+    //constraint.push(DatasetFactory.createConstraint("nomeDataset", "VM_SolicitacoesViagens", "VM_SolicitacoesViagens", ConstraintType.MUST));
     
      var resultDataset = DatasetFactory.getDataset("ds_get_Pagamentos", null, constraint, null);
        
-     //log.info("SCRIPT DE INTEGRAÇÃO 14:02");
+     //log.info("SCRIPT DE INTEGRAÇÃO");
      //log.dir(resultDataset);
      
      
