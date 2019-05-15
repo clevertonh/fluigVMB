@@ -111,7 +111,7 @@ function setSelectedZoomItem(selectedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var PRODUTO = "produto";   
-    var RESPONSAVEL ="responsavel"
+    var RESPONSAVEL ="responsavel";
     	 
   
    

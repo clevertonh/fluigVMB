@@ -4,12 +4,12 @@
       <companyId>1</companyId>
       <processId>ReposicaoFundoFixo</processId>
     </processDefinitionPK>
-    <processDescription>ReposicaoFundoFixo</processDescription>
+    <processDescription>Reposicao de Fundo Fixo</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>Fundo Fixo</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -27,11 +27,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>ReposicaoFundoFixo</processId>
-      <version>1</version>
+      <processId>Reposicao de Fundo Fixo</processId>
+      <version>3</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>1806</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -380,7 +380,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>ReposicaoFundoFixo</processId>
-        <version>1</version>
+        <version>3</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -391,7 +391,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>ReposicaoFundoFixo</processId>
-        <version>1</version>
+        <version>3</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -404,7 +404,58 @@
   <list/>
   <list/>
   <list/>
-  <list/>
+  <list>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>ReposicaoFundoFixo</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description>Reposição Fundo Fixo</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>ReposicaoFundoFixo</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description>Aprovação reposição fundo fixo @[form:responsavel]	</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>ReposicaoFundoFixo</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description>@[form:vl_reposicao]</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>ReposicaoFundoFixo</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description>9</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>ReposicaoFundoFixo</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description>11</description>
+    </ProcessAppConfiguration>
+  </list>
   <list/>
   <list/>
 </list>
