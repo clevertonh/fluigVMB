@@ -921,22 +921,13 @@ function setSelectedZoomItem(selectedItem) {
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
-    console.log("--CAMPO SELECIONADO----");
-    console.log(selectedItem.inputId);
-
-    //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
     //separa string
     var linhaPagamento = campoZOOM.split('___');
 
 
-    console.log("---IDENTIFICANDO CAMPO ZOOM FILHOS-------");
-    console.log(linhaPagamento[0]);
-    console.log(linhaPagamento[1]);
-
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---ENTROU AQUI 1 ----");
-        //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
+         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -953,10 +944,6 @@ function setSelectedZoomItem(selectedItem) {
             reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
         } else {
-        	console.log("---ENTROU AQUI 3 ----");
-            //desabilita zoom que não devem ser preenchidos
-        	console.log("---desabilita zoom que não devem ser preenchidos---");
-            console.log(selectedItem["CODIGO"]);
             window[PROJETO + "___" + linhaPagamento[1]].disable(false);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -968,14 +955,7 @@ function setSelectedZoomItem(selectedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---ENTROU AQUI 4 ----");
-        console.log("------PROJETO--------");
-        console.log(selectedItem["CODIGO"]);
-
-        console.log("------CAMPO ATIVIDADE--------");
-        console.log(ATIVIDADE + "___" + linhaPagamento[1]);
-
-        //LIMPA TODOS AS COLUNAS POSTERIORES
+         //LIMPA TODOS AS COLUNAS POSTERIORES
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
@@ -994,21 +974,21 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-        $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
-
-    } else if (linhaPagamento[0] == ATIVIDADE) {
-    	//POR CAUSA DA EDIÇÃO
-    	//PRIMEIRO PRECISO RECUPERAR O QUE ESTÁ NO CAMPO DO PROJETO
-    	//reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         
+        //$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+
+    } else if (linhaPagamento[0] == ATIVIDADE) {      
     	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
         $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
 
+    else if (linhaPagamento[0] == FONTE){
+    	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+    }
 
-    if (campoZOOM == REMARCACAO) {
+    else if (campoZOOM == REMARCACAO) {
     	console.log("---ENTROU AQUI 6 ----");
         console.log("-----REMARCACAO: PREENCHENDO CAMPOS AUTOMATICAMENTE--------");
 
@@ -1041,14 +1021,14 @@ function setSelectedZoomItem(selectedItem) {
 
     }
 
-    if (campoZOOM == RATEIO) {    
+    else if (campoZOOM == RATEIO) {    
     	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
 
     //preenche dados do funcionario
-    if (campoZOOM == FUNCIONARIO) {
+    else if (campoZOOM == FUNCIONARIO) {
     	console.log("---ENTROU AQUI 10 ----");
         $('#nomepassageiro').val(selectedItem["NOME"]);
         $('#nomemae').val(selectedItem["MAE"]);
@@ -1088,13 +1068,13 @@ function setSelectedZoomItem(selectedItem) {
 
 
 
-    if (linhaPagamento[0] == AGENDA) {
+    else if (linhaPagamento[0] == AGENDA) {
     	console.log("---ENTROU AQUI 11 ----");
         buscaAtividades(selectedItem);
     }   
     
 
-    if (linhaPagamento[0] == SERVICO) {
+    else if (linhaPagamento[0] == SERVICO) {
     	console.log("---ENTROU AQUI 12 ----");    	
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
@@ -1198,37 +1178,35 @@ function removedZoomItem(removedItem) {
     var FUNCIONARIO = "outroFuncionario";
     var SERVICO = "txtservico";
     var PRODUTO ="codigoProduto";
+    var CONTA = "contacontabil";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
     //separa string para campos filho
     var linhaPagamento = campoZOOM.split('___');
-    console.log("Retornando resultado removedZoomItem");
-    console.log(removedItem);
+ //   console.log("Retornando resultado removedZoomItem");
+//    console.log(removedItem);
 
 
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---REMOVEU AQUI 1----");
+ //   	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
-
-        //limpa filtro
-        console.log("---LIMPANDO FILTROS ZOOM----");
-        //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-
-
+        //var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
+        //var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
+        //var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+        
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+        
+ 
         window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
         window[PROJETO + "___" + linhaPagamento[1]].disable(true);
         window[CATEGORIA + "___" + linhaPagamento[1]].disable(true);
@@ -1239,28 +1217,37 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---REMOVEU AQUI 2----");
+  //  	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+//        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
+//        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
+//        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+        
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-    	console.log("---REMOVEU AQUI 3----");
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+  //  	console.log("---REMOVEU AQUI 3----");
+ //       var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
+  //      var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
+ //       var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
 
 
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        
     }
 
     //REMOVE INFORMAÇÕES DE REMARCAÇÃO
     else if (campoZOOM == REMARCACAO) {
-    	console.log("---REMOVEU AQUI 4----");
-        console.log("-----REMOVE INFORMAÇÕES DE REMARCAÇÃO AUTOMATICAMENTE--------");
+   // 	console.log("---REMOVEU AQUI 4----");
+  //      console.log("-----REMOVE INFORMAÇÕES DE REMARCAÇÃO AUTOMATICAMENTE--------");
         document.getElementById("nacional").checked = false;
         $("#internacional").attr('checked', false);
         $("#solicitanteNpassageiro").attr('checked', false);
@@ -1274,13 +1261,13 @@ function removedZoomItem(removedItem) {
         removeItens();
     }
 
-    if (campoZOOM == AGENDA) {
+    else if (campoZOOM == AGENDA) {
     	console.log("---REMOVEU AQUI 5----");
         removeItensAgenda();
 
     }
 
-    if (campoZOOM == RATEIO) {
+    else if (campoZOOM == RATEIO) {
         //removeItensRateio();
     	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
@@ -1293,8 +1280,8 @@ function removedZoomItem(removedItem) {
     }
 
 
-    if (campoZOOM == FUNCIONARIO) {
-    	console.log("---REMOVEU AQUI 7----");
+    else if (campoZOOM == FUNCIONARIO) {
+  //  	console.log("---REMOVEU AQUI 7----");
         $('#nomepassageiro').val('');
         $('#nomemae').val('');
         $('#cpfpassageiro').val('');
@@ -1305,12 +1292,15 @@ function removedZoomItem(removedItem) {
     
     }
 
-    if (linhaPagamento[0] == SERVICO) {   	    	 
+    else if (linhaPagamento[0] == SERVICO) {   	    	 
       	 $('#codigoProduto' + "___" + linhaPagamento[1]).val('');
       	 $('#geraSolicCompra' + "___" + linhaPagamento[1]).val('');
     	 
     }
 
+    else if (linhaPagamento[0] == FONTE) {
+ 	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+    }
 
 }
 

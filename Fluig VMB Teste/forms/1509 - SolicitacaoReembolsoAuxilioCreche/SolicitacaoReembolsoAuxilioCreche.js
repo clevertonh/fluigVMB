@@ -144,7 +144,8 @@ function removedZoomItem(removedItem) {
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
     var FUNCIONARIO = "Funcionario";
-    var DEPENDENTE ="dependente"
+    var DEPENDENTE ="dependente";
+    var CONTA = "contacontabil";
     
 
 
@@ -164,9 +165,12 @@ function removedZoomItem(removedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+   	 
+        
         //limpa filtro
         //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
         //reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
@@ -189,15 +193,17 @@ function removedZoomItem(removedItem) {
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
 
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+    	  $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+          $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+          $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+
 
     }
 
@@ -227,6 +233,10 @@ function removedZoomItem(removedItem) {
     	$("#dtNascimento").val("");
     	$("#idade").val("");
     	$('#idade').css('background-color', '#FFFFFF');
+    }
+    
+    else if (linhaPagamento[0] == FONTE) {
+    	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
     }
         
   
@@ -334,7 +344,7 @@ function setSelectedZoomItem(selectedItem) {
       reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
       reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
       reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-      $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+     // $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
   } 
   else if (linhaPagamento[0] == ATIVIDADE) {
@@ -372,14 +382,12 @@ function setSelectedZoomItem(selectedItem) {
 		
 		
 		//6 anos 11 meses 29 dias
-		
-		
 	
-		
-		
   }
   
-
+  else if (linhaPagamento[0] == FONTE){
+	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+  }
 
  
   else if (campoZOOM == RATEIO) {    

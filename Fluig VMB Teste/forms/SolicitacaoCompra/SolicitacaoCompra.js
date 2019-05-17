@@ -199,7 +199,7 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-        $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+       // $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
     	//POR CAUSA DA EDIÇÃO
@@ -215,18 +215,21 @@ function setSelectedZoomItem(selectedItem) {
 
   
 
-    if (campoZOOM == RATEIO) {    
+    else if (campoZOOM == RATEIO) {    
     	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
 
 
-
+    else if (linhaPagamento[0] == FONTE){
+  	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+  	  
+    }
 
     
 
-    if (linhaPagamento[0] == SERVICO) {
+    else if (linhaPagamento[0] == SERVICO) {
     	console.log("---ENTROU AQUI 12 ----");    	
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
@@ -288,6 +291,7 @@ function removedZoomItem(removedItem) {
     var ITEMRATEIO ="rateio";
     var SERVICO = "txtproduto";
     var PRODUTO ="codigoProduto";
+    var CONTA = "contacontabil";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -346,7 +350,7 @@ function removedZoomItem(removedItem) {
 
 
 
-    if (campoZOOM == RATEIO) {
+    else if (campoZOOM == RATEIO) {
         //removeItensRateio();
     	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
@@ -360,13 +364,17 @@ function removedZoomItem(removedItem) {
 
 
 
-    if (linhaPagamento[0] == SERVICO) {   	
+    else if (linhaPagamento[0] == SERVICO) {   	
      	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");
     	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem[""]);
     	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem[""]);
     	//$('#dtNecessidade' + "___" + linhaPagamento[1]).val(selectedItem[""]);
     	
     }
+    
+    else if (linhaPagamento[0] == FONTE) {
+  	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+     }
 
 
 }

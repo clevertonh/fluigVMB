@@ -2,6 +2,7 @@ function defineStructure() {
 	addColumn("PROJETO");
 	addColumn("CODIGO");
 	addColumn("DESCRICAO");
+	addColumn("CONTA");
 	
 	setKey(["CODIGO"]);
 	addIndex(["CODIGO"]);
@@ -13,6 +14,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("PROJETO");
 	dataset.addColumn("CODIGO");
     dataset.addColumn("DESCRICAO");
+    dataset.addColumn("CONTA");
     
     var dados;
     var webservice = '/FONTE_FINANCIAMENTO';
@@ -64,7 +66,7 @@ function createDataset(fields, constraints, sortFields) {
         if(dados != null){
         	objdata = JSON.parse(dados);
     		for(var i in objdata){
-    			dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO]);	
+    			dataset.addRow([objdata[i].CPROJETO, objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CCONTA]);	
     			
     		}
     	}

@@ -191,7 +191,7 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-        $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+        //$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
     	//POR CAUSA DA EDIÇÃO
@@ -212,6 +212,9 @@ function setSelectedZoomItem(selectedItem) {
     } else if (campoZOOM == PRODUTO) {	
     	 $('#codigoProduto').val(selectedItem["CODIGO"]);
     	    
+    }
+    else if (linhaPagamento[0] == FONTE){
+  	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
     }
     
 }
@@ -246,6 +249,7 @@ function removedZoomItem(removedItem) {
     var ITEMRATEIO ="rateio";
     var PRODUTO = "produto";   
     var RESPONSAVEL ="responsavel";
+    var CONTA = "contacontabil";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -264,17 +268,11 @@ function removedZoomItem(removedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
-
-        //limpa filtro
-        console.log("---LIMPANDO FILTROS ZOOM----");
-        //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(PROJETO + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(CATEGORIA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-        //reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
+    
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
 
         window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
@@ -286,28 +284,33 @@ function removedZoomItem(removedItem) {
 
 
 
-    } else if (linhaPagamento[0] == PROJETO) {
+    } 
+    else if (linhaPagamento[0] == PROJETO) {
     	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
 
-    } else if (linhaPagamento[0] == ATIVIDADE) {
+    } 
+    else if (linhaPagamento[0] == ATIVIDADE) {
     	console.log("---REMOVEU AQUI 3----");
-        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
+    	  $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+          $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+          $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+          
 
 
-    } else if (campoZOOM == RESPONSAVEL){
+    } 
+    else if (campoZOOM == RESPONSAVEL){
    	 	$("#cpfbeneficiario").val("");
     }
     
-    if (campoZOOM == RATEIO) {
+    else if (campoZOOM == RATEIO) {
         //removeItensRateio();
     	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
@@ -319,11 +322,14 @@ function removedZoomItem(removedItem) {
 	    }
     }
 
-    if (campoZOOM == PRODUTO) {	
+    else if (campoZOOM == PRODUTO) {	
     	$('#codigoProduto').val("");
     	    	
     }
 
+    else if (linhaPagamento[0] == FONTE) {
+ 	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+    }
 
 
 }
@@ -380,13 +386,18 @@ function adicionaItensRateio(itens) {
 
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
+       
         
-        
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
+       
+       
+        /*
         if (itens[i].CENTROCUSTO == '99990'){
        	 $("#contacontabil___" + indice).val(itens[i].CONTA);
         }
         
-        //precisa trocar o ponto por virgula
+       */ 
+        
         $("#percentual___" + indice).val(itens[i].PERCENTUAL);
         
         $("#rateio___" + indice).val(itens[i].RATEIO);

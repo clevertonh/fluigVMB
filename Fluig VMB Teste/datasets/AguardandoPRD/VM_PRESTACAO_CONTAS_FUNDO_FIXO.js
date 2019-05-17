@@ -67,7 +67,7 @@ function createDataset(fields, constraints, sortFields) {
 					            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAssistente") +'',
 					            	DATAAPROV  : '' + solicitacao.getValue(0,"dtAprovacao") + '',
 					            	SOLICITACAO  : '' + codSolicitacao + '' ,
-					            	HISTORICO  : '' + "DESPESA FUNDO FIXO" + '' ,
+					            	HISTORICO  : '' + solicitacao.getValue(0,"historico") + '' ,
 					            	PRODUTO : '' + solicitacao.getValue(0,"codigoProduto") + '' ,
 					            	RATEIO: aRateio 
 					            },
