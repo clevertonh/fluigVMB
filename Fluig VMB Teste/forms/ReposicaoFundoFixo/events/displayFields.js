@@ -14,7 +14,8 @@ function displayFields(form,customHTML){
 	
     
     
-	 form.setVisibleById("matriculasolicitante", false); 
+	 form.setVisibleById("matriculasolicitante", false);
+	 form.setVisibleById("divMatrApr", false); 
 	 
 	 
 	 if (activity == ABERTURA){

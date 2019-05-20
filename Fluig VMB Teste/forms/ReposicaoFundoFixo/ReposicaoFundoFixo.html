@@ -25,7 +25,7 @@
                <div class='panel panel-primary'>
                   <div class="panel-heading">
                      <div class="container text-center">
-                        <h4>Reposição de Contas Fundo Fixo</h4>
+                        <h4>Reposição de Fundo Fixo</h4>
                      </div>
                   </div>
                   <div class="panel-body">
@@ -85,14 +85,10 @@
                                              ]
                                              }">
                                        </div>
-                                       <div class="form-group col-md-3">
+                                       <div class="form-group col-md-4">
                                           <label>CPF Responsável</label>
                                           <input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
-                                       </div>
-                                       <div class="form-group col-md-2">
-                                          <label for="vl_nota">Valor da reposição</label>
-                                          <input type="number" class="form-control" name="vl_reposicao" id ="vl_reposicao">
-                                       </div>                                       
+                                       </div>                                                                     
                                            <div class="form-group col-md-3">
                                           <label>Tipo de Fundo Fixo</label><br> <label
                                              for="ffxAdm">Administrativo</label> <input
@@ -103,7 +99,21 @@
                                              value="operacional" >
                                        </div>  
                                     </div>
-                                  
+                                  	<div class="row">
+                                  	<div class="form-group col-md-2">
+                                          <label for="vl_nota">Valor da reposição</label>
+                                          <input type="number" class="form-control" name="vl_reposicao" id ="vl_reposicao">
+                                       </div> 
+                                    <div class="form-group col-md-3">
+                                          <label for="dtDeposito">Data para deposito</label>
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" placeholder="Data para deposito" id="dtDeposito" name="dtDeposito">
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>             
+                                  	</div>
                                  </div>
  									<!-- Aba Gestor -->
                                  <div class="tab-pane" id="2b">
@@ -116,10 +126,19 @@
                                           <label for="emailLider">Email do Aprovador</label>
                                           <input type="email" class="form-control" id="emailAprovador" name="emailAprovador" readonly>
                                        </div>	
-                                          <div class="form-group col-md-4" id="divMatricualApr">
+                                          <div class="form-group col-md-4" id="divMatrApr">
                                           	<label for="matriculaApr">ID Aprovador</label>
                                           	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
-                                          </div>                                        								
+                                          </div>  
+                                                <div class="form-group col-md-3">
+                                          <label for="dtDeposito">Data aprovação</label>
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" id="dtAprovacao" name="dtAprovacao" readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>                                            								
 									</div>
          							 <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>

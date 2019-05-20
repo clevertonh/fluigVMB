@@ -13,8 +13,7 @@ function enableFields(form) {
 	var PAGARDIARIAS = 129;
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
-	var GERARTARIFA = 173;
-	
+		
 	 //form.setEnabled('viagemplanejada', false);		
 	 form.setEnabled('cotacaoVoo', false);
 	 form.setEnabled('cotacaoHotel', false);
@@ -263,7 +262,7 @@ function enableFields(form) {
 			 
 			 
 		 }
-		 else if (activityEnable == PAGARDIARIAS || activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO || activityEnable == GERARTARIFA){
+		 else if (activityEnable == PAGARDIARIAS || activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO ){
 			//CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
@@ -283,7 +282,7 @@ function enableFields(form) {
 			 form.setEnabled('tipormb', false);
 			 form.setEnabled('valorTx', false);	
 			 
-				 if (activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO || activityEnable == GERARTARIFA){
+				 if (activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO){
 				 form.setEnabled('dtPgto', false);
 				 form.setEnabled('recebediarias', false);
 				 form.setEnabled('vl_diarias', false);

@@ -5,6 +5,7 @@ var APROVACAO = 5;
 
 var dtSolicitacao;
 var dtAprovacao;
+var dtDeposito;
 
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
@@ -61,6 +62,16 @@ $(document).ready(function() {
 		});
 		
 		dtSolicitacao.setDate(new Date().toLocaleString());
+		
+		dtDeposito = FLUIGC.calendar('#dtDeposito', {
+		    pickDate: true,
+		    pickTime: false,
+		    useCurrent: true,
+		    minDate: new Date().toLocaleString()
+		});
+		
+		
+		
 		
 	}
 

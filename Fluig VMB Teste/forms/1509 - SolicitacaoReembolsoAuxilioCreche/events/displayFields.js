@@ -20,7 +20,7 @@ function displayFields(form,customHTML){
     
     //form.setVisibleById("cpfbeneficiario", false);    
     form.setVisibleById("divPrazoApr", false);
-    //form.setVisibleById("divMatricualApr", false);
+    form.setVisibleById("divMatrApr", false);
     
     form.setVisibleById("div_photo", false);
     

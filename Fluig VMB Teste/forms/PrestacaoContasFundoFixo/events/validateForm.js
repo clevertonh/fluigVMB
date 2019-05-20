@@ -59,6 +59,9 @@ function validateForm(form){
 		else if (form.getValue("tipoffx")==""){
 			throw "O tipo de fundo fixo não foi selecionado.";
 		}
+		else if (form.getValue("historico")==""){
+			throw "O campo histórico é obrigatório e não foi preenchido.";
+		}
 	
 		
 	}
@@ -150,8 +153,8 @@ function validateForm(form){
                       var atividade = form.getValue("txtatividade___" + indexes[i]);
                    
                 if (ccusto == "99990") {             
-                          if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
-                              throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma viagem.";
+                          if (atividade == "P952101" || atividade == "P953101" ) {
+                              throw "Você não pode usar uma atividade do tipo CAM.";
 
                           }
                       }                    

@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Reposicao de Fundo Fixo</processId>
-      <version>3</version>
+      <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1806</formId>
@@ -110,7 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matriculaApr&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -154,6 +155,31 @@
         <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
+      <stateName>Verificar aprovação</stateName>
+      <stateDescription>Verificar aprovação</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>420</positionX>
+      <positionY>178</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ReposicaoFundoFixo</processId>
+        <version>1</version>
+        <sequence>11</sequence>
+      </processStatePK>
       <stateName>Aprovado</stateName>
       <stateDescription>Aprovado</stateDescription>
       <instruction>Atividade final do processo</instruction>
@@ -176,8 +202,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>480</positionX>
-      <positionY>180</positionY>
+      <positionX>565</positionX>
+      <positionY>176</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -199,7 +225,7 @@
         <companyId>1</companyId>
         <processId>ReposicaoFundoFixo</processId>
         <version>1</version>
-        <sequence>11</sequence>
+        <sequence>13</sequence>
       </processStatePK>
       <stateName>Reprovado</stateName>
       <stateDescription>Reprovado</stateDescription>
@@ -223,8 +249,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>480</positionX>
-      <positionY>240</positionY>
+      <positionX>560</positionX>
+      <positionY>250</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -242,7 +268,32 @@
       <digitalSignature>false</digitalSignature>
     </ProcessState>
   </list>
-  <list/>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>ReposicaoFundoFixo</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>7</version>
+        <sequence>9</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
+      <destinationSequenceId>11</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>ReposicaoFundoFixo</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>7</version>
+        <sequence>9</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
+      <destinationSequenceId>13</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
   <list>
     <ProcessLink>
       <processLinkPK>
@@ -287,8 +338,25 @@
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>5</initialStateSequence>
+      <initialStateSequence>9</initialStateSequence>
       <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ReposicaoFundoFixo</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -297,7 +365,61 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>ReposicaoFundoFixo</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+	&#xd;
+	var INICIO =0;&#xd;
+	var ABERTURA = 4;&#xd;
+	var APROVACAO = 5;&#xd;
+	&#xd;
+	&#xd;
+	//recupera atividade&#xd;
+	var ativAtual 		= getValue(&quot;WKNumState&quot;);	&#xd;
+	var nextAtv  		= getValue(&quot;WKNextState&quot;);&#xd;
+	var codSolicitacao  = getValue(&quot;WKNumProces&quot;);&#xd;
+&#xd;
+	//RECUPERA NUMERO DO DOCUMENTO&#xd;
+	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
+	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
+	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+&#xd;
+	&#xd;
+	var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+	&#xd;
+	var dtAprovacao = hAPI.getCardValue(&quot;dtAprovacao&quot;);&#xd;
+	&#xd;
+	if (ativAtual == APROVACAO &amp;&amp; aprovado == &quot;aprovado&quot; ){&#xd;
+		var constraint = new Array();		  			&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+					  &#xd;
+		&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;dtAprovacao&quot;, dtAprovacao, dtAprovacao, ConstraintType.MUST));  &#xd;
+//		constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));&#xd;
+//		constraint.push(DatasetFactory.createConstraint(&quot;tipoffx&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));	&#xd;
+		&#xd;
+		var resultDateset = DatasetFactory.getDataset(&quot;VM_REPOSICAO_FUNDO_FIXO&quot;, null, constraint, null);&#xd;
+		&#xd;
+//		log.info(&quot;DATASET VM_REPOSICAO_FUNDO_FIXO&quot;);&#xd;
+//		log.dir(resultDateset);&#xd;
+		&#xd;
+		  if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		    } &#xd;
+		&#xd;
+	  &#xd;
+&#xd;
+}&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
@@ -380,7 +502,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>ReposicaoFundoFixo</processId>
-        <version>3</version>
+        <version>7</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -391,7 +513,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>ReposicaoFundoFixo</processId>
-        <version>3</version>
+        <version>7</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -409,7 +531,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>ReposicaoFundoFixo</processId>
-      <processVersion>3</processVersion>
+      <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -419,7 +541,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>ReposicaoFundoFixo</processId>
-      <processVersion>3</processVersion>
+      <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -429,7 +551,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>ReposicaoFundoFixo</processId>
-      <processVersion>3</processVersion>
+      <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -439,7 +561,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>ReposicaoFundoFixo</processId>
-      <processVersion>3</processVersion>
+      <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -449,7 +571,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>ReposicaoFundoFixo</processId>
-      <processVersion>3</processVersion>
+      <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

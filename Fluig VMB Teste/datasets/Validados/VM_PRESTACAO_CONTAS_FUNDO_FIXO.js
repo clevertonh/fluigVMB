@@ -64,9 +64,11 @@ function createDataset(fields, constraints, sortFields) {
 					            	VALOR : '' + solicitacao.getValue(0,"vl_nota") + '' ,
 					            	CPF_FORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
 					            	ANO_FISCAL : '' + "" +"2019"+'',
-					            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAssistente") +'',
+					            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAprovador") +'',
+					            	EMAIL_SOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
 					            	DATAAPROV  : '' + solicitacao.getValue(0,"dtAprovacao") + '',
 					            	SOLICITACAO  : '' + codSolicitacao + '' ,
+					            	OPERACAO:'' + "4" + '',
 					            	HISTORICO  : '' + solicitacao.getValue(0,"historico") + '' ,
 					            	PRODUTO : '' + solicitacao.getValue(0,"codigoProduto") + '' ,
 					            	RATEIO: aRateio 
@@ -92,10 +94,13 @@ function createDataset(fields, constraints, sortFields) {
 					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 					        	return dataset;
 					        }
-					        else {	            
+					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+					        	dataset.addRow([vo.getResult()]);
+					        }
+					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	            
 					        	//log.info(vo.getResult());	           
-					            //dataset.addRow([vo.getResult()]);
-					            dataset.addRow(new Array("SUCESSO"));
+					            dataset.addRow(new Array("SUCESSO"));					           
+					            
 					        }
 					        
 				    	}  catch(err) {

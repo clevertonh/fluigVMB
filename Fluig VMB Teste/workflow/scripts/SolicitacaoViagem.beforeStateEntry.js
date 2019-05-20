@@ -13,7 +13,7 @@ function beforeStateEntry(sequenceId){
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
-	var GERARTARIFA = 173;
+	
 	
 	//GATEWAY
 	var GATEWAYPASSAGEMCOMPRADA = 143;
@@ -41,7 +41,7 @@ function beforeStateEntry(sequenceId){
 	var geraTarifa 	 	 = hAPI.getCardValue("tarifa");
 	var valorTarifa 	 = hAPI.getCardValue("vl_tarifa");
 	var dtTarifa 	 	 = hAPI.getCardValue("dtTarifa");
-	var fornecedorT	 	 = hAPI.getCardValue("tarifaFornecedor");
+	var fornecedorT	 	 = hAPI.getCardValue("fornecedorTarifa");
 	
 	
 	//VARIAVEIS SIMPLES
@@ -82,11 +82,7 @@ function beforeStateEntry(sequenceId){
  		  			throw "FALHA AO RECUPERAR ITENS COMPRADOS NA SOLICITAÇÃO DE VIAGEM.";
  		  		}
      			
- 		  		/*
- 		  		if (vooComprado == 'sim' && aItemServico.length <=0){
- 		  			throw "ATENÇÃO: BILHETE DE PASSAGEM AEREA NAO INFORMADO.";
- 		  		}
- 		  		*/
+ 		  		
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
  		  		if (aItemServico.length >0){ 		    					     	    		     	   
  		
@@ -125,19 +121,22 @@ function beforeStateEntry(sequenceId){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
  		  		}
- 		  		/*
- 		  		else if (vooComprado == 'sim' && aItemServico.length <=0){
- 		  			throw "ATENÇÃO: BILHETE DE PASSAGEM AEREA NAO INFORMADO.";
- 		  		}
- 		  		*/
+ 		  		
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
      	else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	
 			   var constraint = new Array();		  			
-//	  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
 	  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
 	  			constraint.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 	  			constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
+	  			
+	  			if (geraTarifa == "sim"){
+	  				constraint.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
+		  			constraint.push(DatasetFactory.createConstraint("fornecedorTarifa", fornecedorT, fornecedorT, ConstraintType.MUST));
+		  			constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
+		  				
+	  			}
+	  			
 	  			
 	  			
 	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraint, null);
@@ -148,20 +147,7 @@ function beforeStateEntry(sequenceId){
 			  								
 		   	    
      	}
-     	else if (ativAtual == GERARTARIFA && geraTarifa == "sim"){
-     		var constraint = new Array();		  			     
-  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
-  			constraint.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
-  			constraint.push(DatasetFactory.createConstraint("tarifaFornecedor", fornecedorT, fornecedorT, ConstraintType.MUST));
-  			constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
-  			
-  			var resultDateset = DatasetFactory.getDataset("VM_FINA050_TARIFA_DIARIA", null, constraint, null);
-	  		    
-	  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-	  		    	throw resultDateset.getValue(0,"RETORNO");
-	  		    } 
-		  							
-     	}
+
 	   
 		function itensServico(){
 			var processo = getValue("WKNumProces");

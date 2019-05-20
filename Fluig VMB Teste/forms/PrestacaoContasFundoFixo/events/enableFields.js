@@ -28,8 +28,8 @@ function enableFields(form){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
-		 form.setValue("assistente",dataset.getValue(0, "colleagueName"));
-		 form.setValue("emailAssistente",dataset.getValue(0, "mail"));		
+		 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));
+		 form.setValue("emailAprovador",dataset.getValue(0, "mail"));		
 		  
 		 
 	}	

@@ -9,7 +9,6 @@ var CONFIRMARREEMBOLSO = 79;
 var CORRIGIRSOLICITACAO = 98;
 var COTARREMARCACAO = 135;
 var PAGARDIARIAS = 129;
-var GERARTARIFA = 173;
 var dadosGestor;
 var site;
 var AtividadeAtual;

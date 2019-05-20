@@ -13,7 +13,7 @@ function displayFields(form,customHTML){
 	var PAGARDIARIAS = 129;
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
-	var GERARTARIFA = 173;
+	
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -28,6 +28,7 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoCancelamento", false);
 	 form.setVisibleById("prazoaprovacao", false); 
 	 form.setVisibleById("matriculasolicitante", false); 
+	 form.setVisibleById("divMatrApr", false); 
 	 form.setVisibleById("cpfaprovador", false); 
 	 form.setVisibleById("prazoreembolso", false);
 	 //apenas teste, tem que ficar oculto

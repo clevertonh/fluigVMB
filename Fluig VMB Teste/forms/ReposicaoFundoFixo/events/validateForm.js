@@ -26,7 +26,7 @@ function validateForm(form){
 		
 		
 		if (form.getValue("vl_reposicao") == "" ){
-			throw "Você precisa informar o valor da nota fiscal.";
+			throw "Você precisa informar o valor da reposição.";
 		}				
 		else if (form.getValue("emailSolicitante")==""){
 			throw "Seus dados de usuário não foram carregados, por favor tente novamente mais tarde.";
@@ -55,11 +55,11 @@ function validateForm(form){
 		else if (form.getValue("cpfbeneficiario")==""){
 			throw "O CPF do beneficiário não foi preenchido. Selecione novamente o responsável pelo fundo fixo.";
 		}
-			else if (form.getValue("tipoffx")==""){
+		else if (form.getValue("tipoffx")==""){
 			throw "O tipo de fundo fixo não foi selecionado.";
 		}		
 		else if (form.getValue("aprovacao") == "" || form.getValue("aprovacao") == null){
-		//	throw "Você precisa escolher entre as opções de validado ou negado.";
+			throw "Você precisa escolher entre as opções de aprovado ou reprovado.";
 		}
 		
 		else if (form.getValue("emailAprovador") == "" ){

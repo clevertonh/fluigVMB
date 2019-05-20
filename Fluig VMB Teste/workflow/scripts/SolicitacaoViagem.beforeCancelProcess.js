@@ -9,7 +9,7 @@ function beforeCancelProcess(colleagueId,processId){
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
-	var GERARTARIFA = 173;
+
 	
 	//recupera atividade
 	var ativAtual = getValue("WKNumState");
@@ -39,12 +39,7 @@ function beforeCancelProcess(colleagueId,processId){
 		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
 			
 	}
-	
-	if (ativAtual == GERARTARIFA || atv1 == GERARTARIFA || atv2 == GERARTARIFA){
-		log.info("Processo beforeCancel - GERARTARIFA");
-		 throw "Você não pode excluir essa solicitação pois a diaria já foi paga.";
-			
-	}
+
 	
 	if (ativAtual == COMPRARPASSAGEM || atv1 == COMPRARPASSAGEM || atv2 == COMPRARPASSAGEM){
 		log.info("Processo beforeCancel - COMPRAR PASSAGEM");

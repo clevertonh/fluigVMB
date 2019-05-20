@@ -4,7 +4,11 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var valorDiarias;
 	var dataVencimento;
+	var vl_tarifa;
+	var fornecedor_tarifa;
+	var dt_tarifa;
 	var aRateio = new Array();
+
 	 
 	 if(constraints !== null && constraints.length){
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
@@ -44,9 +48,22 @@ function createDataset(fields, constraints, sortFields) {
 						 }
 						 else if (constraints[a].fieldName == "dataVencimento" ){
 							 dataVencimento = constraints[a].initialValue;
-							 
+							 							 
+						 }
+						 
+						 else if (constraints[a].fieldName == "vl_tarifa" ){
+							 vl_tarifa = constraints[a].initialValue;					 
 							 
 						 }
+						 else if (constraints[a].fieldName == "fornecedorTarifa" ){
+							 fornecedor_tarifa = constraints[a].initialValue;
+													 
+						 }
+						 else if (constraints[a].fieldName == "dtTarifa" ){
+							 dt_tarifa = constraints[a].initialValue;
+							 									
+						 }						 						
+						 
 					 }
 					 //log.info("entrando aqui 2");
 					// log.dir(constraints);
@@ -68,7 +85,10 @@ function createDataset(fields, constraints, sortFields) {
 					                emailsolicitante : '' + solicitacao.getValue(0,"emailsolicitante") +'',
 					                cpf				: '' + solicitacao.getValue(0,"cpfpassageiro") +'',
 					                dataVencimento  : '' + dataVencimento + '',
-					        		rateioDigitado: aRateio 
+					        		rateioDigitado: aRateio ,
+					        		valorTarifa: '' + vl_tarifa +'',
+					        		dataTarifa: '' + dt_tarifa +'',
+					        		fornecedorTarifa: '' + fornecedor_tarifa +''
 					            },
 					      
 					            
@@ -92,10 +112,13 @@ function createDataset(fields, constraints, sortFields) {
 					        	//log.info(JSON.parse(vo.getResult()).errorMessage);
 					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 					        }
-					        else {	            
-					        	log.info(vo.getResult());	           
-					            //dataset.addRow([vo.getResult()]);
-					            dataset.addRow(new Array("SUCESSO"));
+					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+					        	dataset.addRow([vo.getResult()]);
+					        }
+					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	            
+					        	//log.info(vo.getResult());	           
+					            dataset.addRow(new Array("SUCESSO"));					           
+					            
 					        }
 					        
 				    	}  catch(err) {
