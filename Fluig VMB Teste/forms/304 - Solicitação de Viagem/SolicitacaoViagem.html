@@ -1,4 +1,4 @@
- <html>
+<html>
    <head>
       <meta charset="utf-8">
       <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
@@ -67,16 +67,16 @@
                                                       </span>
                                                       </a>
                                                    </li>
-                                                    <!-- 
-                                                   <li role="presentation" class="disabled"><a
-                                                      href="#step3" data-toggle="tab" aria-controls="step3"
-                                                      role="tab" title="Agenda de viagem"> <span
-                                                      class="round-tab"> <i
-                                                      class="fluigicon fluigicon-calendar"></i>
-                                                      </span>
-                                                      </a>
-                                                   </li>
-                                                     -->
+                                                   <!-- 
+                                                      <li role="presentation" class="disabled"><a
+                                                         href="#step3" data-toggle="tab" aria-controls="step3"
+                                                         role="tab" title="Agenda de viagem"> <span
+                                                         class="round-tab"> <i
+                                                         class="fluigicon fluigicon-calendar"></i>
+                                                         </span>
+                                                         </a>
+                                                      </li>
+                                                        -->
                                                    <li role="presentation" class="disabled"><a
                                                       href="#step4" data-toggle="tab" aria-controls="step4"
                                                       role="tab" title="Voo"> <span class="round-tab">
@@ -211,6 +211,40 @@
                                                             name="matricula" readonly>
                                                       </div>
                                                    </div>
+                                                   
+   												  <div class="row">
+                                                      <div class="form-group col-md-8" id="selecaodeevento">
+                                                         <label>Solicitação de Evento</label> <input
+                                                            name="dataset_solicitacaoevento" class="form-control"
+                                                            type="zoom" id="dataset_solicitacaoevento"
+                                                            data-zoom="{
+                                                            'displayKey':'solicitacao',
+                                                            'datasetId':'VM_SolicitacaoViagemComprada',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um evento',
+                                                            'fields':[
+                                                            {'field':'solicitacao','label':'solicitacao'},                                                            
+                                                            {'field':'solicitante','label':'solicitante','standard':'true'},
+                                                            {'field':'nomepassageiro','label':'nomepassageiro'},
+                                                            {'field':'dataSolicitacao','label':'dataSolicitacao'}                                                           						  					
+                                                            ]
+                                                            }">
+                                                      </div>
+                                                      <div class="form-group col-md-4">
+                                                         <label>Carregar informações financeiras do evento</label><br> <label
+                                                            for="carregaFinan">Sim</label> <input
+                                                            type="radio" id="carregaFinan" name="FinanEvento"
+                                                            value="nao" onclick="clickFinanceiroEvento();">
+                                                         <label for="NcarregaFinan">Não</label> <input
+                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+                                                            value="sim" onclick="clickFinanceiroEvento();">
+                                                      </div>                                                      
+                                                   </div>                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
                                                    <!-- Segunda Linha -->
                                                    <div class="row">
                                                       <div class="form-group col-md-6">
@@ -242,28 +276,28 @@
                                                          </h3>
                                                       </div>
                                                       <div class="panel-body">
-                                                         <div class="form-group row">                                                                                                       
-                                                      <div class="form-group col-md-6" id="selecaorateio">
-                                                         <label>Carregar base rateio pré-configurado</label> <input
-                                                            name="rateioconfigurado" class="form-control"
-                                                            type="zoom" id="rateioconfigurado"
-                                                            data-zoom="{'displayKey':'DESCRICAO',
-                                                            'datasetId':'VM_RateioConfigurado',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione um rateio',
-                                                            'fields':[
-                                                            {
-                                                            'field':'CODIGO',
-                                                            'label':'CODIGO'
-                                                            },                                                              
-                                                            {
-                                                            'field':'DESCRICAO',
-                                                            'label':'DESCRICAO',
-                                                            'standard':'true'
-                                                            }						  					
-                                                            ]
-                                                            }">
-                                                      </div>                                                                                                          
+                                                         <div class="form-group row">
+                                                            <div class="form-group col-md-6" id="selecaorateio">
+                                                               <label>Carregar base rateio pré-configurado</label> <input
+                                                                  name="rateioconfigurado" class="form-control"
+                                                                  type="zoom" id="rateioconfigurado"
+                                                                  data-zoom="{'displayKey':'DESCRICAO',
+                                                                  'datasetId':'VM_RateioConfigurado',
+                                                                  'maximumSelectionLength':'1',
+                                                                  'placeholder':'Selecione um rateio',
+                                                                  'fields':[
+                                                                  {
+                                                                  'field':'CODIGO',
+                                                                  'label':'CODIGO'
+                                                                  },                                                              
+                                                                  {
+                                                                  'field':'DESCRICAO',
+                                                                  'label':'DESCRICAO',
+                                                                  'standard':'true'
+                                                                  }						  					
+                                                                  ]
+                                                                  }">
+                                                            </div>
                                                             <div class="col-md-6 fs-txt-right">
                                                                <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
                                                                <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
@@ -415,10 +449,10 @@
                                                                               name="contacontabil" id="contacontabil"
                                                                               type="text" maxlength="10"
                                                                               style="width: 120px;" readonly /></td>
-                                                                            <td><input class="form-control"
+                                                                           <td><input class="form-control"
                                                                               name="rateio" id="rateio"
                                                                               type="text" maxlength="10"
-                                                                              style="width: 100px;" readonly /></td>   
+                                                                              style="width: 100px;" readonly /></td>
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>
@@ -481,21 +515,21 @@
                                                          <label for="passageiroestrangeironao">Não</label> <input
                                                             type="radio" id="passageiroestrangeironao"
                                                             name="passageiroestrangeiro" value="nao"
-                                                             /> <label
+                                                            /> <label
                                                             for="passageiroestrangeiro">Sim</label> <input
                                                             type="radio" id="passageiroestrangeiro"
                                                             name="passageiroestrangeiro" value="sim"
-                                                             />
-                                                      </div>                                                      
+                                                            />
+                                                      </div>
                                                    </div>
                                                    <div class="row">
-                                                   	  <div class="form-group col-md-3" id="div_embaixador">
-                                                   	  	<label>O passageiro é um Embaixador da Visão</label><br>
-                                                   	  	<label for="embaixadorS">Sim</label>
-                                                   	  	<input type="radio" id="embaixadorS" name="embaixador" value="sim" onclick="AprovadorEmbaixador()"/>
-                                                   	  	<label for="embaixadorN">Não</label>
-                                                   	  	<input type="radio" id="embaixadorN" name="embaixador" value="nao" onclick="carregaAprovador()"/>
-                                                   	  </div>
+                                                      <div class="form-group col-md-3" id="div_embaixador">
+                                                         <label>O passageiro é um Embaixador da Visão</label><br>
+                                                         <label for="embaixadorS">Sim</label>
+                                                         <input type="radio" id="embaixadorS" name="embaixador" value="sim" onclick="AprovadorEmbaixador()"/>
+                                                         <label for="embaixadorN">Não</label>
+                                                         <input type="radio" id="embaixadorN" name="embaixador" value="nao" onclick="carregaAprovador()"/>
+                                                      </div>
                                                       <div class="form-group col-md-6" id="divOutroFun">
                                                          <label for="outroFuncionario">Nome do
                                                          funcionário</label> <input name="outroFuncionario"
@@ -561,7 +595,7 @@
                                                                name="passaporte" placeholder="Informe o passaporte">
                                                          </div>
                                                       </div>
-                                          				 <input type="email" class="form-control" id="emailPassageiro" name="emailPassageiro" readonly>
+                                                      <input type="email" class="form-control" id="emailPassageiro" name="emailPassageiro" readonly>
                                                    </div>
                                                    <ul class="list-inline pull-right">
                                                       <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
@@ -1093,7 +1127,7 @@
                                                       <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
                                                       <li><button type="button" class="btn btn-primary btn-info-full next-step">Finalizar</button></li>
                                                    </ul>
-                                                </div>                                                
+                                                </div>
                                                 <div class="tab-pane" role="tabpanel" id="complete">
                                                    <div class="container text-center">
                                                       <h2>Solicitação preenchida</h2>
@@ -1211,7 +1245,7 @@
                                        <div class="form-group col-md-3" id="divRessarcimento">
                                           <label>Indique a forma de ressarcimento</label><br> 
                                           <label for="reembolso">Reembolso</label> 
-                                            <input type="radio" id="reembolso" name="ressarcimento" value="reembolso" onclick="prazoReembolso()" /> 
+                                          <input type="radio" id="reembolso" name="ressarcimento" value="reembolso" onclick="prazoReembolso()" /> 
                                           <label for="credito">Crédito</label>
                                           <input type="radio" id="credito" name="ressarcimento" value="credito" onclick="prazoReembolso()" />
                                        </div>
@@ -1235,15 +1269,16 @@
                                           </div>
                                        </div>
                                        <div class="row" id="divTipormb">
-                                       	<div class="form-group col-md-3">
-                                       		 <label>Tipo de reembolso</label><br> 
-                                       		 <label for="tipormb">cartao</label> 
+                                          <div class="form-group col-md-3">
+                                             <label>Tipo de reembolso</label><br> 
+                                             <label for="tipormb">cartao</label> 
                                              <input type="radio" id="tipormb" name="tipormb" value="cartao" /> 
                                              <label for="tipormbn">conta</label>
-                                          	 <input type="radio" id="tipormbn" name="tipormb" value="conta"  />
-                                       	</div>
+                                             <input type="radio" id="tipormbn" name="tipormb" value="conta"  />
+                                          </div>
                                        </div>
                                     </div>
+                             
                                     <div class="row" id="div_valores">
                                        <div class="form-group col-md-3" id="div_valorp">
                                           <Label for="valorVoo"> Valor total do voo</Label> <input
@@ -1258,93 +1293,92 @@
                                              type="number" name="valorTx">
                                        </div>
                                     </div>
-                                    		<div class="panel-body">
-                                                         <div class="form-group row">
-                                                            <div class="col-md-12 fs-txt-right">
-                                                               <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaServico()">
-                                                               <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar Serviço
-                                                               </button>
-                                                            </div>
-                                                         </div>
-										<div class="form-group row">
-										 <div class="col-md-12">
-   										<div class="form-field table-responsive">
-                                                   <table tablename="tableViagem" id="tableViagem" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true >
-                                                      <thead>
-                                                         <tr class="tableHeadRow">
-                                                            <th></th>
-                                                            <th class="tableColumn">Serviço</th>                                                      
-                                                            <th class="tableColumn">Valor</th>                                                                                                                       
-                                                            <th class="tableColumn">Data do voo</th>
-                                                            <th class="tableColumn">Codigo Prod.</th>
-                                                            <th class="tableColumn">Gera Solic. Compra</th> 
-                                                            <th class="tableColumn">Fornecedor</th>                                                                 
-                                                         </tr>
-                                                      </thead>
-                                                      <tbody id="tbodyViagem">
-                                                         <tr>
-                                                            <td>
-                                                               <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeServico" onclick="fnWdkRemoveChild(this)"></span>
-                                                            </td>
-                                                            <td>
-                                                                              <div class="form-group">
-                                                                                 <input type="hidden" name="servico"
-                                                                                    id="servico" /> <input type="zoom"
-                                                                                    name="txtservico"
-                                                                                    data-zoom="{
-                                                                                    'displayKey':'DESCRICAO',
-                                                                                    'datasetId':'ds_get_Produtos',
-                                                                                    'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione um serviço',
-                                                                                    'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
-                                                                                    {'field':'GERA_SC', 'label':'GERA_SC'}]
-                                                                                    }" />
-                                                                              </div>                                                            
-                                                            </td>
-                                                            <td >
-                                                               <input class="form-control money" name="valores" id="valores" type="number" style="width:200px;" />
-                                                            </td>                                                                                                                                                                             
-                                                            <td>                                 
-                                                                  <div class="input-group date" style="width:150px;">
-                                                        		 <input type="text" class="form-control" id="dtViagem" name="dtViagem" >
-                                                        		 <span class="input-group-addon">
-                                                       		  <span class="fluigicon fluigicon-calendar"></span>
-                                                       		  </span>
-                                                    		  </div>                                                                              
-                                                            </td>       
-                                                            <td>
-                                                            	<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                                            </td> 
-                                                            <td>
-                                                            	<input class="form-control" name="geraSolicCompra" id="geraSolicCompra" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                                            </td> 
-                                                            <td>
+                                    <div class="panel-body">
+                                       <div class="form-group row">
+                                          <div class="col-md-12 fs-txt-right">
+                                             <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaServico()">
+                                             <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar Serviço
+                                             </button>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <div class="col-md-12">
+                                             <div class="form-field table-responsive">
+                                                <table tablename="tableViagem" id="tableViagem" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true >
+                                                   <thead>
+                                                      <tr class="tableHeadRow">
+                                                         <th></th>
+                                                         <th class="tableColumn">Serviço</th>
+                                                         <th class="tableColumn">Valor</th>
+                                                         <th class="tableColumn">Data do voo</th>
+                                                         <th class="tableColumn">Codigo Prod.</th>
+                                                         <th class="tableColumn">Gera Solic. Compra</th>
+                                                         <th class="tableColumn">Fornecedor</th>
+                                                      </tr>
+                                                   </thead>
+                                                   <tbody id="tbodyViagem">
+                                                      <tr>
+                                                         <td>
+                                                            <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeServico" onclick="fnWdkRemoveChild(this)"></span>
+                                                         </td>
+                                                         <td>
                                                             <div class="form-group">
-                                                                                 <input type="hidden" name="fornecedor"
-                                                                                    id="servico" /> <input type="zoom"
-                                                                                    name="txtfornecedor"
-                                                                                    data-zoom="{
-                                                                                    'displayKey':'CODIGO',
-                                                                                    'datasetId':'VM_Fornecedores',
-                                                                                    'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione um fornecedor',
-                                                                                    'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
-                                                                                    {'field':'CNPJ', 'label':'CNPJ'}]
-                                                                                    }" />
-                                                                              </div>  
-                                                            </td>                                                                                                                                                                                
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </div>  									
-									</div>  
-									</div>                                                         
-                                                     </div>    
-									
+                                                               <input type="hidden" name="servico"
+                                                                  id="servico" /> <input type="zoom"
+                                                                  name="txtservico"
+                                                                  data-zoom="{
+                                                                  'displayKey':'DESCRICAO',
+                                                                  'datasetId':'ds_get_Produtos',
+                                                                  'maximumSelectionLength':'1',
+                                                                  'placeholder':'Selecione um serviço',
+                                                                  'fields':[
+                                                                  {'field':'CODIGO', 'label':'CODIGO'},
+                                                                  {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                  {'field':'GERA_SC', 'label':'GERA_SC'}]
+                                                                  }" />
+                                                            </div>
+                                                         </td>
+                                                         <td >
+                                                            <input class="form-control money" name="valores" id="valores" type="number" style="width:200px;" />
+                                                         </td>
+                                                         <td>
+                                                            <div class="input-group date" style="width:150px;">
+                                                               <input type="text" class="form-control" id="dtViagem" name="dtViagem" >
+                                                               <span class="input-group-addon">
+                                                               <span class="fluigicon fluigicon-calendar"></span>
+                                                               </span>
+                                                            </div>
+                                                         </td>
+                                                         <td>
+                                                            <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                         </td>
+                                                         <td>
+                                                            <input class="form-control" name="geraSolicCompra" id="geraSolicCompra" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                         </td>
+                                                         <td>
+                                                            <div class="form-group">
+                                                               <input type="hidden" name="fornecedor"
+                                                                  id="servico" /> <input type="zoom"
+                                                                  name="txtfornecedor"
+                                                                  data-zoom="{
+                                                                  'displayKey':'CODIGO',
+                                                                  'datasetId':'VM_Fornecedores',
+                                                                  'maximumSelectionLength':'1',
+                                                                  'placeholder':'Selecione um fornecedor',
+                                                                  'fields':[
+                                                                  {'field':'CODIGO', 'label':'CODIGO'},
+                                                                  {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                  {'field':'CNPJ', 'label':'CNPJ'}]
+                                                                  }" />
+                                                            </div>
+                                                         </td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
                                     <div class="row">
                                        <div class="form-group col-md-3"></div>
                                     </div>
@@ -1369,32 +1403,71 @@
                                           <label for="vl_diarias">Valor total das diárias</label> <input
                                              type="number" class="form-control" name="vl_diarias"
                                              id="vl_diarias">
-                                       </div>                                       
+                                       </div>
                                        <div class="form-group col-md-3" id="div_aptodiarias">
-                                       		<label>Apto a receber diarias</label><br>
-                                       		<label for="recebediarias">Sim</label>
-                                       		<input type="radio" id ="recebediarias" name="recebediarias" value="sim">
-                                       		<label for="recebediariasN">Não</label>
-                                       		<input type="radio" id ="recebediariasN" name="recebediarias" value="nao">
-                                       </div>    
-                                       <div class="form-group col-md-3" id="div_dtPgto">
-                                          <label for="dtPgto">Data de pagamento</label>
+                                          <label>Apto a receber diarias</label><br>
+                                          <label for="recebediarias">Sim</label>
+                                          <input type="radio" id ="recebediarias" name="recebediarias" value="sim">
+                                          <label for="recebediariasN">Não</label>
+                                          <input type="radio" id ="recebediariasN" name="recebediarias" value="nao">
+                                       </div>
+                                       <div class="form-group col-md-2" id="div_dtPgto">
+                                          <label for="dtPgto">Data vencimento</label>
                                           <div class="input-group date" >
                                              <input type="text" class="form-control" id="dtPgto" name="dtPgto" mask="00/00/0000" > <span
                                                 class="input-group-addon"> <span
                                                 class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>  
-                       	 				<div class="form-group col-md-3">
-											<Label>Data efetiva do pagamento</Label>                                 	 	
-                                 	 		<div class="input-group date">
-                                            	 <input type="text" class="form-control" id="dtBaixa" name="dtBaixa"  readonly>
-                                             	<span class="input-group-addon">
-                                             	<span class="fluigicon fluigicon-calendar"></span>
-                                             	</span>
+                                       </div>
+                                       <div class="form-group col-md-2">
+                                          <Label>Data pagamento</Label>                                 	 	
+                                          <div class="input-group date">
+                                             <input type="text" class="form-control" id="dtBaixa" name="dtBaixa"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
                                           </div>
-                                 	 	</div>                                                                                         
+                                       </div>
+                                    </div>
+                                    <div class="row" id="div_tarifa">
+                                       <div class="form-group col-md-3">
+                                          <label>Possui tarifa</label><br>
+                                          <label for="tarifaSim">Sim</label>
+                                          <input type="radio" id ="tarifaSim" name="tarifa" value="sim">
+                                          <label for="tarifaNao">Não</label>
+                                          <input type="radio" id ="tarifaNao" name="tarifa" value="nao">
+                                       </div>
+                                       <div class="form-group col-md-2">
+                                          <label for="vl_tarifa">Valor tarifa</label> <input
+                                             type="number" class="form-control" name="vl_tarifa"
+                                             id="vl_tarifa">
+                                       </div>
+                                       <div class="form-group col-md-2">
+                                          <label for="dtTarifa">Data tarifa</label>
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" id="dtTarifa" name="dtTarifa" mask="00/00/0000" > <span
+                                                class="input-group-addon"> <span
+                                                class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group col-md-5">
+                                          <label>Fornecedor da tarifa</label>
+                                          <input type="hidden" name="tarifaFornecedor"
+                                             id="tarifaFornecedor" /> <input type="zoom"
+                                             name="txfornecedor"
+                                             data-zoom="{
+                                             'displayKey':'CODIGO',
+                                             'datasetId':'VM_Fornecedores',
+                                             'maximumSelectionLength':'1',
+                                             'placeholder':'Selecione um fornecedor',
+                                             'fields':[
+                                             {'field':'CODIGO', 'label':'CODIGO'},
+                                             {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                             {'field':'CNPJ', 'label':'CNPJ'}]
+                                             }" />
+                                       </div>
                                     </div>
                                  </div>
                               </div>

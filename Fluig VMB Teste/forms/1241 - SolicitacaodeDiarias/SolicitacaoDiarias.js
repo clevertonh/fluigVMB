@@ -243,12 +243,6 @@ function setSelectedZoomItem(selectedItem) {
   } 
   else if (linhaPagamento[0] == PROJETO) {
 
-      console.log("------PROJETO--------");
-      console.log(selectedItem["CODIGO"]);
-
-      console.log("------CAMPO ATIVIDADE--------");
-      console.log(ATIVIDADE + "___" + linhaPagamento[1]);
-
       //LIMPA TODOS AS COLUNAS POSTERIORES
       window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
       window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -340,11 +334,8 @@ function adicionaItensRateio(itens) {
 
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
-        $("#contacontabil___" + indice).val(itens[i].CONTA);
-        
-        //precisa trocar o ponto por virgula
-        //$("#percentual___" + indice).val(itens[i].Percentual);
-        
+        $("#contacontabil___" + indice).val(itens[i].CONTA);        
+        $("#percentual___" + indice).val(itens[i].Percentual);        
         $("#rateio___" + indice).val(itens[i].RATEIO);
 
     }

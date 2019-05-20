@@ -11,6 +11,9 @@ function displayFields(form,customHTML){
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
+	var REALIZAR_PAGAMENTO = 165;
+	var AVALIAR_ATRASO = 159;
+	var GERARTARIFA = 173;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -34,9 +37,9 @@ function displayFields(form,customHTML){
     
      form.setVisibleById("div_valorp", false);
      form.setVisibleById("div_valorh", false);
+     form.setVisibleById("selecaodeevento", false);
      
-     
-    
+         
 	   
     if (activity == ABERTURA ) {
     	//campos aba aprovador e hospitalidade
@@ -395,7 +398,7 @@ function displayFields(form,customHTML){
 		form.setVisibleById("divTipormb", false);
 		form.setVisibleById("btn_add_itemS", true);
 		
-
+	
 		
     } 		
 	
@@ -413,6 +416,7 @@ function displayFields(form,customHTML){
     		form.setVisibleById("divJustificativaReprovacaoViagem", false);
             form.setVisibleById("div_tipohotel1", true);
             form.setVisibleById("divTipormb", false);
+            form.setVisibleById("div_tarifa", false); 
             //form.setVisibleById("div_aptodiarias", false);
             //form.setVisibleById("div_dtPgto", false);
             
@@ -502,12 +506,15 @@ function displayFields(form,customHTML){
 	}
 	else if (activity == PAGARDIARIAS){
 		//form.setVisibleById("2b", false);  
-		//form.setVisibleById("3b", false);  
+		//form.setVisibleById("3b", false); 
+		form.setVisibleById("div_tarifa", false); 
 	}
     
 	else if (activity == CONFIRMARREEMBOLSO){
 		 form.setVisibleById("4b", false); 
 	}
-    
+	else if (activity == REALIZAR_PAGAMENTO){
+		 form.setVisibleById("div_tarifa", false); 
+	}
     
 }

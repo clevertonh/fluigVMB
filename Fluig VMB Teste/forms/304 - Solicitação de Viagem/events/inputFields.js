@@ -9,6 +9,7 @@ function inputFields(form){
 	var CONFIRMARREEMBOLSO = 79;
     var PEDIUREEMBOLSO = 80;
 	var CORRIGIRSOLICITACAO = 98;
+	var GERARTARIFA = 173;
 	
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");

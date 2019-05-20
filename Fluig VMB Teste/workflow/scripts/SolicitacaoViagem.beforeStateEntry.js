@@ -13,6 +13,7 @@ function beforeStateEntry(sequenceId){
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
+	var GERARTARIFA = 173;
 	
 	//GATEWAY
 	var GATEWAYPASSAGEMCOMPRADA = 143;
@@ -37,7 +38,11 @@ function beforeStateEntry(sequenceId){
 	var valorDiarias 	 = hAPI.getCardValue("vl_diarias");
 	var recebeDiarias 	 = hAPI.getCardValue("recebediarias");
 	var dataVencimento 	 = hAPI.getCardValue("dtPgto");
-		
+	var geraTarifa 	 	 = hAPI.getCardValue("tarifa");
+	var valorTarifa 	 = hAPI.getCardValue("vl_tarifa");
+	var dtTarifa 	 	 = hAPI.getCardValue("dtTarifa");
+	var fornecedorT	 	 = hAPI.getCardValue("tarifaFornecedor");
+	
 	
 	//VARIAVEIS SIMPLES
 	var aItemServico = new Array();
@@ -127,7 +132,7 @@ function beforeStateEntry(sequenceId){
  		  		*/
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-     			else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	
+     	else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	
 			   var constraint = new Array();		  			
 //	  			constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
 	  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
@@ -142,7 +147,21 @@ function beforeStateEntry(sequenceId){
 		  		    } 
 			  								
 		   	    
-	}
+     	}
+     	else if (ativAtual == GERARTARIFA && geraTarifa == "sim"){
+     		var constraint = new Array();		  			     
+  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
+  			constraint.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
+  			constraint.push(DatasetFactory.createConstraint("tarifaFornecedor", fornecedorT, fornecedorT, ConstraintType.MUST));
+  			constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
+  			
+  			var resultDateset = DatasetFactory.getDataset("VM_FINA050_TARIFA_DIARIA", null, constraint, null);
+	  		    
+	  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
+	  		    	throw resultDateset.getValue(0,"RETORNO");
+	  		    } 
+		  							
+     	}
 	   
 		function itensServico(){
 			var processo = getValue("WKNumProces");

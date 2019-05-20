@@ -15,9 +15,9 @@ function createDataset(fields, constraints, sortFields) {
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
 	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
 	    		
-	    		//if (solicitacao.rowsCount <=0){
-	    		//	solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
-	    		//}
+	    		if (solicitacao.rowsCount == 0){
+	    			solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
+	    		}
 	    		
 	    		//log.info("VM PAGAMENTOS");
 	    		//log.dir(solicitacao);

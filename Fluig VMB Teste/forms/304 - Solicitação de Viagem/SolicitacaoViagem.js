@@ -9,6 +9,7 @@ var CONFIRMARREEMBOLSO = 79;
 var CORRIGIRSOLICITACAO = 98;
 var COTARREMARCACAO = 135;
 var PAGARDIARIAS = 129;
+var GERARTARIFA = 173;
 var dadosGestor;
 var site;
 var AtividadeAtual;
@@ -1082,6 +1083,21 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
+
+function clickFinanceiroEvento(){
+	
+	if (document.getElementById("nacional").checked == true){
+		
+	}
+	else {
+		
+	}
+	
+
+
+}
+
+
 //preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
 //Preciso criar um dataset customizado para retornar essa informação pois o campo solicitacao pode nao ter sido salvo
 function buscaRemarcacao(item) {
@@ -1185,22 +1201,15 @@ function removedZoomItem(removedItem) {
 
     //separa string para campos filho
     var linhaPagamento = campoZOOM.split('___');
- //   console.log("Retornando resultado removedZoomItem");
-//    console.log(removedItem);
-
-
+ 
     if (linhaPagamento[0] == CCUSTO) {
- //   	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        //var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-        //var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-        //var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
-        
+          
         $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
@@ -1695,15 +1704,8 @@ function adicionaItensRateio(itens) {
 
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
-        
-        
-        if (itens[i].CENTROCUSTO == '99990'){
-       	 $("#contacontabil___" + indice).val(itens[i].CONTA);
-        }
-        
-        //precisa trocar o ponto por virgula
-        $("#percentual___" + indice).val(itens[i].PERCENTUAL);
-        
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
+        $("#percentual___" + indice).val(itens[i].PERCENTUAL);        
         $("#rateio___" + indice).val(itens[i].RATEIO);
 
         

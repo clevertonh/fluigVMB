@@ -133,17 +133,11 @@ function setSelectedZoomItem(selectedItem) {
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
-    console.log("--CAMPO SELECIONADO----");
-    console.log(selectedItem.inputId);
 
     //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
     //separa string
     var linhaPagamento = campoZOOM.split('___');
 
-
-    console.log("---IDENTIFICANDO CAMPO ZOOM FILHOS-------");
-    console.log(linhaPagamento[0]);
-    console.log(linhaPagamento[1]);
 
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
@@ -298,10 +292,7 @@ function removedZoomItem(removedItem) {
 
     //separa string para campos filho
     var linhaPagamento = campoZOOM.split('___');
-    console.log("Retornando resultado removedZoomItem");
-    console.log(removedItem);
-
-
+ 
     if (linhaPagamento[0] == CCUSTO) {
     	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
@@ -310,15 +301,12 @@ function removedZoomItem(removedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
-        $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
-        $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
-        
-        //limpa filtro
-        console.log("---LIMPANDO FILTROS ZOOM----");
-        //reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + null);
-
+ 
 
         window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
         window[PROJETO + "___" + linhaPagamento[1]].disable(true);
@@ -537,14 +525,8 @@ function adicionaItensRateio(itens) {
 
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
-        
-        
-        if (itens[i].CENTROCUSTO == '99990'){
-       	 $("#contacontabil___" + indice).val(itens[i].CONTA);
-        }
-                
-        $("#percentual___" + indice).val(itens[i].PERCENTUAL);
-        
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
+        $("#percentual___" + indice).val(itens[i].PERCENTUAL);      
         $("#rateio___" + indice).val(itens[i].RATEIO);
 
         

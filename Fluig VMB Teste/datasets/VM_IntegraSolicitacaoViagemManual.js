@@ -5,8 +5,17 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("valor");
 	dataset.addColumn("dataViagem");
 	
+
+		var codSolicitacao = "1822";
+		
+		var c0 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
+		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
+		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
+		
+		
+		var idDocumento = solicitacao.getValue(0,"metadata#id");
 	
-		var idDocumento = 6090;
+		
 		var codigoComprador = "wasley_santoswvi.org";
 	
 	
@@ -72,3 +81,5 @@ function createDataset(fields, constraints, sortFields) {
 		 	return dataset;
 	    
 }
+
+

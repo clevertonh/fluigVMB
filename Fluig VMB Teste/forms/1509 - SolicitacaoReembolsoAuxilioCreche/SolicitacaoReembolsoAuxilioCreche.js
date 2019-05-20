@@ -273,15 +273,7 @@ function setSelectedZoomItem(selectedItem) {
   var linhaPagamento = campoZOOM.split('___');
 
 
-  console.log("---IDENTIFICANDO CAMPO ZOOM FILHOS-------");
-  console.log(linhaPagamento[0]);
-  console.log(linhaPagamento[1]);
-  
-  console.log("Retornando resultado selectedItem");  
-  console.log(selectedItem);
-
-  
-
+ 
   
   //compara para verificar se o zoom é o campo centro de custo
   if (linhaPagamento[0] == CCUSTO) {
@@ -318,12 +310,6 @@ function setSelectedZoomItem(selectedItem) {
 
   } 
   else if (linhaPagamento[0] == PROJETO) {
-
-      console.log("------PROJETO--------");
-      console.log(selectedItem["CODIGO"]);
-
-      console.log("------CAMPO ATIVIDADE--------");
-      console.log(ATIVIDADE + "___" + linhaPagamento[1]);
 
       //LIMPA TODOS AS COLUNAS POSTERIORES
       window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -373,10 +359,6 @@ function setSelectedZoomItem(selectedItem) {
 		$('#dtNascimento').val(selectedItem["DTNASC"]);
 				
 		var datanasc = convertStringToData($('#dtNascimento').val());
-
-		console.log(datanasc.getFullYear());
-		console.log(datanasc.getMonth());
-		console.log(datanasc.getDate());
 	
 		$('#idade').val(idade(datanasc.getFullYear(), datanasc.getMonth()+1, datanasc.getDate()));
 		
@@ -391,8 +373,7 @@ function setSelectedZoomItem(selectedItem) {
 
  
   else if (campoZOOM == RATEIO) {    
-  	console.log("---ENTROU AQUI 9 ----");
-  	buscaItensRateio(selectedItem["CODIGO"]);
+   	buscaItensRateio(selectedItem["CODIGO"]);
   	
   }
 
@@ -529,15 +510,8 @@ function adicionaItensRateio(itens) {
 
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
-        
-        if (itens[i].CENTROCUSTO == '99990'){
-        	 $("#contacontabil___" + indice).val(itens[i].CONTA);
-        }
-       
-        
-        //precisa trocar o ponto por virgula
-        $("#percentual___" + indice).val(itens[i].PERCENTUAL);
-        
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
+        $("#percentual___" + indice).val(itens[i].PERCENTUAL);        
         $("#rateio___" + indice).val(itens[i].RATEIO);
 
     }
