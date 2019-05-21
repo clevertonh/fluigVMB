@@ -508,7 +508,7 @@ function displayFields(form,customHTML){
 	else if (activity == PAGARDIARIAS){
 		//form.setVisibleById("2b", false);  
 		//form.setVisibleById("3b", false); 
-		form.setVisibleById("div_tarifa", false); 
+		//form.setVisibleById("div_tarifa", false); 
 	}
     
 	else if (activity == CONFIRMARREEMBOLSO){

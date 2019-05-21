@@ -54,7 +54,8 @@ function createDataset(fields, constraints, sortFields) {
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	OPERACAO:'' + "2" + '',
 						            	HISTORICO  : '' + "REPOSICAO FUNDO FIXO" + '',
-						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") + ''
+						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") + '',
+						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
 						            },
 						          options : {
 						             encoding : 'UTF-8',

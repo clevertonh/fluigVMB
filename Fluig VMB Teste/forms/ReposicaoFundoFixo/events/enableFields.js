@@ -38,6 +38,10 @@ function enableFields(form){
 		 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));
 		 form.setValue("emailAprovador",dataset.getValue(0, "mail"));		
 		  
+		 form.setEnabled('responsavel', false);
+		 form.setEnabled('tipoffx', false);
+		 form.setEnabled('vl_reposicao', false);
+		 form.setEnabled('dtDeposito', false);
 		 
 	}	
 

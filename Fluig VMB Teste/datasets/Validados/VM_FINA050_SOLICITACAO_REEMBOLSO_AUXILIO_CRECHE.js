@@ -21,8 +21,8 @@ function createDataset(fields, constraints, sortFields) {
 	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCrecheDadosPagamento", null, new Array(c2), null);    				  
 
-	    	    log.info("log itens solicitacao");
-	    	    log.dir(itensSolicitacao);
+	    	   // log.info("log itens solicitacao");
+	    	   // log.dir(itensSolicitacao);
 
 				 try {
 					//chama função que monta array de objetos dos itens do rateio					 
@@ -53,6 +53,8 @@ function createDataset(fields, constraints, sortFields) {
 					 //log.info("entrando aqui 2");
 					// log.dir(constraints);
 				
+					 //posteriormente trocar o campo emailLider pelo campo de aprovação P&C
+					 
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
 					        var data = {
@@ -62,16 +64,18 @@ function createDataset(fields, constraints, sortFields) {
 					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 					            timeoutService: '100', // segundos
 					            params : {
-					            	processo : '' + 3 + '' ,
-					            	solicitacao : '' + codSolicitacao + '' ,
-					                solicitante : '' + solicitacao.getValue(0,"solicitante") +'',
-					                valorTotal : '' + valorTotal + '' ,
-					                datasolicitacao :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
-					                emailsolicitante : '' + solicitacao.getValue(0,"emailSolicitante") +'',
-					                cpf				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
-					                dataEmissao  : '' + solicitacao.getValue(0,"dtSolicitacao") + '',
-					                dataVencimento  : '' + dataVencimento + '',
-					        		rateioDigitado: aRateio 
+					            	PROCESSO : '' + 3 + '' ,
+					            	SOLICITACAO : '' + codSolicitacao + '' ,
+					                SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
+					                VALORTOTAL : '' + valorTotal + '' ,
+					                DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
+					                EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailSolicitante") +'',
+					                EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailLider") +'',
+					                CPF				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
+					                DATAEMISSAO  : '' + solicitacao.getValue(0,"dtSolicitacao") + '',
+					                DATAVENCIMENTO  : '' + dataVencimento + '',
+					        		RATEIODIGITADO: aRateio ,
+					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
 					            },
 					          options : {
 					             encoding : 'UTF-8',
@@ -85,7 +89,7 @@ function createDataset(fields, constraints, sortFields) {
 					        var vo = clientService.invoke(JSON.stringify(data));
 				         
 					        if(vo.getResult()== null || vo.getResult().isEmpty()){
-					        	log.info("RETORNO ESTA VAZIO");
+					        	//log.info("RETORNO ESTA VAZIO");
 					        	dataset.addRow(new Array("RETORNO VAZIO"));
 					        	return dataset;
 					        }
@@ -94,10 +98,12 @@ function createDataset(fields, constraints, sortFields) {
 					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 					        	return dataset;
 					        }
-					        else {	            
-					        	//log.info(vo.getResult());	           
-					            //dataset.addRow([vo.getResult()]);
-					            dataset.addRow(new Array("SUCESSO"));
+					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+					        	dataset.addRow([vo.getResult()]);
+					        }
+					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                       
+					            dataset.addRow(new Array("SUCESSO"));					           
+					            
 					        }
 					        
 				    	}  catch(err) {
@@ -168,8 +174,8 @@ function preencheRateio(solicitacao){
 			
 			rateio[i] = obj;	
 			
-			log.info("--retorno rateio--");
-			log.dir(rateio[i]);
+	//		log.info("--retorno rateio--");
+	//		log.dir(rateio[i]);
 	   }
 	 			   
 	   return rateio;

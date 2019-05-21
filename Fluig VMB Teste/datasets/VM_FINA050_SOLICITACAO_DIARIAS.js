@@ -65,7 +65,8 @@ function createDataset(fields, constraints, sortFields) {
 					                cpf				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
 					                dataEmissao  : '' + solicitacao.getValue(0,"dtSolicitacao") + '',
 					                dataVencimento  : '' + dataVencimento + '',
-					        		rateioDigitado: aRateio 
+					        		rateioDigitado: aRateio ,
+					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
 					            },
 					          options : {
 					             encoding : 'UTF-8',

@@ -65,9 +65,7 @@ function createDataset(fields, constraints, sortFields) {
 						 }						 						
 						 
 					 }
-					 //log.info("entrando aqui 2");
-					// log.dir(constraints);
-				
+
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
 					        var data = {
@@ -83,49 +81,39 @@ function createDataset(fields, constraints, sortFields) {
 					                valorTotal : '' + valorDiarias + '' ,
 					                datasolicitacao :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
 					                emailsolicitante : '' + solicitacao.getValue(0,"emailsolicitante") +'',
+					                emailaprovador : '' + solicitacao.getValue(0,"emailGestor") +'',
 					                cpf				: '' + solicitacao.getValue(0,"cpfpassageiro") +'',
 					                dataVencimento  : '' + dataVencimento + '',
 					        		rateioDigitado: aRateio ,
-					        		valorTarifa: '' + vl_tarifa +'',
-					        		dataTarifa: '' + dt_tarifa +'',
-					        		fornecedorTarifa: '' + fornecedor_tarifa +''
-					            },
-					      
-					            
-					            
+					        		VALORTARIFA: '' + vl_tarifa +'',
+					        		DATATARIFA: '' + dt_tarifa +'',
+					        		FORNECEDORTARIFA: '' + fornecedor_tarifa +'',
+					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
+					            },						            
 					          options : {
 					             encoding : 'UTF-8',
 					             mediaType: 'application/json'
 					          }
 					        }
-				         
-					        //log.info("---RETORNO PARAMETROS---");
-					        //log.dir(params);
-					        
+						        
 					        var vo = clientService.invoke(JSON.stringify(data));
 				         
 					        if(vo.getResult()== null || vo.getResult().isEmpty()){
-					        	log.info("RETORNO ESTA VAZIO");
 					        	dataset.addRow(new Array("RETORNO VAZIO"));
 					        }
 					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){					        	
-					        	//log.info(JSON.parse(vo.getResult()).errorMessage);
 					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 					        }
 					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
 					        	dataset.addRow([vo.getResult()]);
 					        }
-					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	            
-					        	//log.info(vo.getResult());	           
+					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                       
 					            dataset.addRow(new Array("SUCESSO"));					           
 					            
 					        }
 					        
 				    	}  catch(err) {
-				    		   //throw err;
-							//log.info(err);
 							dataset.addRow([err.message]);
-				    		//dataset.addRow(new Array("entrando aqui"));
 							
 				        }	 
 				    	
