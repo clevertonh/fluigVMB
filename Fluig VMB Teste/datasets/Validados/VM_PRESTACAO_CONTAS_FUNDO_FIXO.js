@@ -65,7 +65,7 @@ function createDataset(fields, constraints, sortFields) {
 					            	CPF_FORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
 					            	ANO_FISCAL : '' + "" +"2019"+'',
 					            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAprovador") +'',
-					            	EMAIL_SOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
+					            	EMAIL_SOLICITANTE: ''+ solicitacao.getValue(0,"emailSolicitante") +'',
 					            	DATAAPROV  : '' + solicitacao.getValue(0,"dtAprovacao") + '',
 					            	SOLICITACAO  : '' + codSolicitacao + '' ,
 					            	OPERACAO:'' + "4" + '',
