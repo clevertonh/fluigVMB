@@ -30,9 +30,12 @@ function createDataset(fields, constraints, sortFields) {
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		
-        		if (constraints[1].fieldName == "comprador"){
-        			emailcomprador = constraints[1].initialValue;
+        		for (var a=0; a<constraints.length; a++){
+        			if (constraints[a].fieldName == "comprador"){
+            			emailcomprador = constraints[a].initialValue;
+            		}
         		}
+        	
         		
         		
         		//log.info("---RETORNO METADATA");
