@@ -3,7 +3,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("RETORNO");
 	
 
-		var codSolicitacao = "1840";
+		var codSolicitacao = "1843";
 		
 		var c0 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
@@ -12,28 +12,17 @@ function createDataset(fields, constraints, sortFields) {
 		
 		var idDocumento = solicitacao.getValue(0,"metadata#id");
 	
-		
-		var codigoComprador = "candido_juniorr@wvi.org";
-	
+			
 			 var constraint = new Array();		  			 		  			
 			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
 		
-			 var constraintsUsuario   = new Array();
-			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
-			 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
-			
-			 
-			 if (datasetComprador!= null && datasetComprador.rowsCount > 0){
-				var emailComprador = datasetComprador.getValue(0, "mail");	  
-				constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
-			 }
-	
-				
+			 					
 			    constraint.push(DatasetFactory.createConstraint("produto", "DVPSG001", "DVPSG001", ConstraintType.MUST));  
 				constraint.push(DatasetFactory.createConstraint("quantidade", 1, 1, ConstraintType.MUST));
 				constraint.push(DatasetFactory.createConstraint("valor", 0, 0, ConstraintType.MUST));
 				constraint.push(DatasetFactory.createConstraint("dataViagem", "08/05/2019", "08/05/2019", ConstraintType.MUST));
-				
+				constraint.push(DatasetFactory.createConstraint("comprador", "candido_juniorr@wvi.org", "candido_juniorr@wvi.org", ConstraintType.MUST));	
+					
 				
 			 var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
 			    

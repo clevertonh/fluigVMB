@@ -10,6 +10,10 @@ function createDataset(fields, constraints, sortFields) {
 	var tipoViagem;
 	var documentId;
 	
+	
+	log.info("CONTRAINTS INTEGRACAO");
+	log.dir(constraints)
+	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -98,28 +102,36 @@ function createDataset(fields, constraints, sortFields) {
         					             mediaType: 'application/json'
         					          }
         					        }
-        					              						        
-        					        var vo = clientService.invoke(JSON.stringify(data));
+        					             
+        					      
+        					       
         					        
+        					        var vo = clientService.invoke(JSON.stringify(data));
+        			//		        log.info("retorno compras 51");
+        			//		        log.dir(vo.getResult());
+        			//		        log.dir(JSON.parse(vo.getResult()));
+        					        
+        					        var obj = JSON.parse(vo.getResult());
+        					         					        
         					        if(vo.getResult()== null || vo.getResult().isEmpty()){
          					        	dataset.addRow(new Array("RETORNO VAZIO"));
-        					        }
+        					        }        					                					       
         					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
         					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
         					        }
-        					        else if (JSON.parse(vo.getResult()).CODIGO != "200"){
-        					        	dataset.addRow([vo.getResult()]);
+        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+        					        	dataset.addRow(new Array(obj.MSG));
         					        }
-        					        else if (JSON.parse(vo.getResult()).CODIGO == "200"){	                    
+        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
         					            dataset.addRow(new Array("SUCESSO"));					           
         					            
         					        }
-        					        else {
-        					        	dataset.addRow(new Array("ENTRE EM CONTATO COM O SETOR DE TI"));	
-        					        }
-        					    } 
+        					      
+        					    
+        					
+        					 } 
         						catch(err) {
-        							dataset.addRow([err.message]);
+        							dataset.addRow([err.message]);        							
         					    }
 
     		}

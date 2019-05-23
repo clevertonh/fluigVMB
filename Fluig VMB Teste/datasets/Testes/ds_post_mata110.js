@@ -5,7 +5,7 @@ function createDataset(fields, constraints, sortFields) {
 	 
 	 var itemServico = new Array();
 	 
-	 constraint.push(DatasetFactory.createConstraint("comprador", "candido_junior@wvi.org", "candido_junior@wvi.org", ConstraintType.MUST));
+	 constraint.push(DatasetFactory.createConstraint("comprador", "candido_juniorr@wvi.org", "candido_juniorr@wvi.org", ConstraintType.MUST));
 	 
 	 itemServico.push({ 
 			produto: ''+"DVPSG001" +'', 

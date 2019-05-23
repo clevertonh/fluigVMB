@@ -101,6 +101,7 @@ function beforeStateEntry(sequenceId){
 	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
 	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
 	  				}
+ 		  			
  		  			 
  		  			 
  		  			//Cria constraints para enviar produtos e valores
@@ -117,6 +118,8 @@ function beforeStateEntry(sequenceId){
  		  			
  		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
  		  		    
+ 		  		    log.info("retorno solicitacao viagem");
+ 		  		    log.dir(resultDateset);
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 

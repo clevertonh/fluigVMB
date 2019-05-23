@@ -66,24 +66,26 @@ function createDataset(fields, constraints, sortFields) {
 					      //  log.info("---RETORNO PARAMETROS---");
 					     //   log.dir(data);
 					        
-					        var vo = clientService.invoke(JSON.stringify(data));
-				         
-					        if(vo.getResult()== null || vo.getResult().isEmpty()){
- 					        	dataset.addRow(new Array("RETORNO VAZIO"));
-					        }
-					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
-					        }
-					        else if (JSON.parse(vo.getResult()).CODIGO != "200"){
-					        	dataset.addRow([vo.getResult()]);
-					        }
-					        else if (JSON.parse(vo.getResult()).CODIGO == "200"){	                    
-					            dataset.addRow(new Array("SUCESSO"));					           
-					            
-					        }
-					        else {
-					        	dataset.addRow(new Array("ENTRE EM CONTATO COM O SETOR DE TI"));	
-					        }
+ 					        var vo = clientService.invoke(JSON.stringify(data));
+		        			//		        log.info("retorno compras 51");
+		        			//		        log.dir(vo.getResult());
+		        			//		        log.dir(JSON.parse(vo.getResult()));
+		        					        
+		        					        var obj = JSON.parse(vo.getResult());
+		        					         					        
+		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
+		         					        	dataset.addRow(new Array("RETORNO VAZIO"));
+		        					        }        					                					       
+		        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+		        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
+		        					        }
+		        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+		        					        	dataset.addRow(new Array(obj.MSG));
+		        					        }
+		        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
+		        					            dataset.addRow(new Array("SUCESSO"));					           
+		        					            
+		        					        }
 					        
 				    	}  catch(err) {
 				    		   //throw err;
