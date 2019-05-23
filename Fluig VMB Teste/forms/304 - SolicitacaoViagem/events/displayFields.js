@@ -31,15 +31,13 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("divMatrApr", false); 
 	 form.setVisibleById("cpfaprovador", false); 
 	 form.setVisibleById("prazoreembolso", false);
-	 //apenas teste, tem que ficar oculto
      //form.setVisibleById("divDataSetAgenda", false);
      form.setVisibleById("emailPassageiro", false);
      form.setVisibleById("btn_add_itemS", false);
     
      form.setVisibleById("div_valorp", false);
      form.setVisibleById("div_valorh", false);
-     form.setVisibleById("selecaodeevento", false);
-     
+     form.setVisibleById("divEventos", false);
          
 	   
     if (activity == ABERTURA ) {

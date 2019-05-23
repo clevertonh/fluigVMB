@@ -101,19 +101,20 @@ function createDataset(fields, constraints, sortFields) {
         					        var vo = clientService.invoke(JSON.stringify(data));
         					        
         					        if(vo.getResult()== null || vo.getResult().isEmpty()){
-        					            //throw "Retorno está vazio";
-        					        	log.info("RETORNO ESTA VAZIO");
-        					        	dataset.addRow(new Array("RETORNO VAZIO"));
+         					        	dataset.addRow(new Array("RETORNO VAZIO"));
         					        }
         					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-        					        	//throw JSON.parse(vo.getResult()).errorMessage;
-        					        	log.info(JSON.parse(vo.getResult()).errorMessage);
         					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
         					        }
+        					        else if (JSON.parse(vo.getResult()).CODIGO != "200"){
+        					        	dataset.addRow([vo.getResult()]);
+        					        }
+        					        else if (JSON.parse(vo.getResult()).CODIGO == "200"){	                    
+        					            dataset.addRow(new Array("SUCESSO"));					           
+        					            
+        					        }
         					        else {
-        					            log.info(vo.getResult());	           
-        					            //dataset.addRow([vo.getResult()]);
-        					            dataset.addRow(new Array("SUCESSO"));
+        					        	dataset.addRow(new Array("ENTRE EM CONTATO COM O SETOR DE TI"));	
         					        }
         					    } 
         						catch(err) {

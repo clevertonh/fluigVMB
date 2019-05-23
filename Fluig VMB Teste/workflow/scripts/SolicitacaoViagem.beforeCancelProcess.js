@@ -9,7 +9,11 @@ function beforeCancelProcess(colleagueId,processId){
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
+	var CANCELARSOLICITACAO = 93;
 
+	var split1;
+	var atv1;
+	var atv2;
 	
 	//recupera atividade
 	var ativAtual = getValue("WKNumState");
@@ -20,9 +24,17 @@ function beforeCancelProcess(colleagueId,processId){
 //----LOG CANCELAMENTO---129	
 	
 	log.info("----LOG CANCELAMENTO---");
-	var split1 = ativAtual.split(',');
-	var atv1 = split1[0];
-	var atv2 = split1[1];
+	
+	if (ativAtual != ABERTURA && ativAtual != SOLICITARVIAGEM 
+			&& ativAtual != APROVACAO
+			&& ativAtual != CANCELARSOLICITACAO){
+		
+		split1 = ativAtual.split(',');
+		atv1 = split1[0];
+		atv2 = split1[1];
+	}
+	
+	
 	
 	//log.info("----LOG CANCELAMENTO---"+atvObterPassagem);
 	//log.info("----LOG CANCELAMENTO---"+atvPagarDiarias);

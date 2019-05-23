@@ -85,18 +85,18 @@ function beforeStateEntry(sequenceId){
  		  		
  		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
  		  		if (aItemServico.length >0){ 		    					     	    		     	   
- 		
- 		  			 var codigoComprador = getValue("WKUser");
- 		  			 		  			
- 		  			 var constraintsUsuario   = new Array();
- 		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
- 					 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
- 					 					
- 					 			
  		  			
  		  			 var constraint = new Array();		  			 		  			
  		  			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
- 		  			
+ 		
+ 		  			 var codigoComprador = getValue("WKUser");
+	 		  			
+ 		  			 var constraintsUsuario   = new Array();
+ 		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
+ 					 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
+ 				
+ 		  			 
+ 		  			 
  		  			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
 	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
 	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	

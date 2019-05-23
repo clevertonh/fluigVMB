@@ -1,12 +1,9 @@
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("produto");
-	dataset.addColumn("quantidade");
-	dataset.addColumn("valor");
-	dataset.addColumn("dataViagem");
+	dataset.addColumn("RETORNO");
 	
 
-		var codSolicitacao = "1822";
+		var codSolicitacao = "1840";
 		
 		var c0 = DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
@@ -16,19 +13,16 @@ function createDataset(fields, constraints, sortFields) {
 		var idDocumento = solicitacao.getValue(0,"metadata#id");
 	
 		
-		var codigoComprador = "wasley_santoswvi.org";
+		var codigoComprador = "candido_juniorr@wvi.org";
 	
-	
-			
+			 var constraint = new Array();		  			 		  			
+			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+		
 			 var constraintsUsuario   = new Array();
 			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
 			 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
-			 					
-			 			
 			
-			 var constraint = new Array();		  			 		  			
-			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-			
+			 
 			 if (datasetComprador!= null && datasetComprador.rowsCount > 0){
 				var emailComprador = datasetComprador.getValue(0, "mail");	  
 				constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
@@ -37,15 +31,15 @@ function createDataset(fields, constraints, sortFields) {
 				
 			    constraint.push(DatasetFactory.createConstraint("produto", "DVPSG001", "DVPSG001", ConstraintType.MUST));  
 				constraint.push(DatasetFactory.createConstraint("quantidade", 1, 1, ConstraintType.MUST));
-				constraint.push(DatasetFactory.createConstraint("valor", "0", "0", ConstraintType.MUST));
+				constraint.push(DatasetFactory.createConstraint("valor", 0, 0, ConstraintType.MUST));
 				constraint.push(DatasetFactory.createConstraint("dataViagem", "08/05/2019", "08/05/2019", ConstraintType.MUST));
 				
 				
 			 var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
 			    
 		     if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-		    	 //dataset.addRow(new Array(resultDateset.getValue(0,"RETORNO")));
-		    	 dataset.addRow(new Array("Erro na inclusão!"));
+		    	 dataset.addRow(new Array(resultDateset.getValue(0,"RETORNO")));
+		    	 //dataset.addRow(new Array("Erro na inclusão!"));
 		    	 
 		     }
 		     else {
