@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Viagem</processId>
-      <version>3</version>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>304</formId>
@@ -771,6 +771,100 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
+        <sequence>183</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>532</positionX>
+      <positionY>592</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>36</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>0</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <sequence>185</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>302</positionX>
+      <positionY>106</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>42</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>0</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
       <stateName>Verificar aprovação?</stateName>
@@ -1064,7 +1158,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -1076,7 +1170,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -1088,7 +1182,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>3</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;devolvido&quot;</condition>
@@ -1100,7 +1194,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
@@ -1112,7 +1206,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
@@ -1124,7 +1218,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -1136,7 +1230,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; &amp;&amp; &#xd;
@@ -1149,7 +1243,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;sim&quot;</condition>
@@ -1161,7 +1255,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;remarcacao&quot;) == &quot;nao&quot;</condition>
@@ -1173,7 +1267,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>143</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;&quot;</condition>
@@ -1185,7 +1279,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>4</version>
         <sequence>143</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -1700,6 +1794,73 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <finalStateSequence>116</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>184</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>13</initialStateSequence>
+      <finalStateSequence>183</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>186</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>185</initialStateSequence>
+      <finalStateSequence>98</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>187</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>159</initialStateSequence>
+      <finalStateSequence>116</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>188</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>183</initialStateSequence>
+      <finalStateSequence>185</finalStateSequence>
+      <returnLabel></returnLabel>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -2270,7 +2431,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>73</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2281,7 +2442,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>127</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2292,7 +2453,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>163</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2303,7 +2464,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>163</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2314,7 +2475,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>163</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -2325,7 +2486,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>163</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -2336,7 +2497,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>167</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2347,12 +2508,12 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
-        <version>3</version>
-        <linkSequence>182</linkSequence>
+        <version>4</version>
+        <linkSequence>187</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>1549</positionX>
-      <positionY>724</positionY>
+      <positionY>831</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
@@ -2377,7 +2538,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2387,7 +2548,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2397,7 +2558,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2407,7 +2568,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2417,7 +2578,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>13</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2427,7 +2588,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2437,7 +2598,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2447,7 +2608,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2457,7 +2618,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2467,7 +2628,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>97</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2477,7 +2638,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2487,7 +2648,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2497,7 +2658,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2507,7 +2668,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2517,7 +2678,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoViagem</processId>
-      <processVersion>3</processVersion>
+      <processVersion>4</processVersion>
       <stateSequence>129</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
