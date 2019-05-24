@@ -54,6 +54,7 @@ function createDataset(fields, constraints, sortFields) {
                     //Busca o dataset
                     var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
                     for (var j = 0; j < datasetFilhos.rowsCount; j++) {
+                    	//
                    	 	
                      	//Adiciona os valores nas colunas respectivamente.
                         dataset.addRow(new Array(
