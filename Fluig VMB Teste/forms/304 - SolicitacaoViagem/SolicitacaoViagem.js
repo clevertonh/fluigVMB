@@ -40,6 +40,7 @@ var datacheckin3;
 var dataReembolso;
 var dataPagamento;
 var dataViagem;
+var evento;
 /*
 dataViagem = FLUIGC.calendar('#calendardtViagem',{
 	pickDate: true,
@@ -916,6 +917,7 @@ function setSelectedZoomItem(selectedItem) {
     var AGENDA = "agenda";
     var FUNCIONARIO = "outroFuncionario";
     var SERVICO = "txtservico";
+    var EVENTO ="dataset_solicitacaoevento";
   
    
 
@@ -989,20 +991,14 @@ function setSelectedZoomItem(selectedItem) {
     }
 
     else if (campoZOOM == REMARCACAO) {
-    	console.log("---ENTROU AQUI 6 ----");
-        console.log("-----REMARCACAO: PREENCHENDO CAMPOS AUTOMATICAMENTE--------");
-
-        if (selectedItem["tipoviagem"] == "nacional") {
-        	console.log("---ENTROU AQUI 7 ----");
+         if (selectedItem["tipoviagem"] == "nacional") {
             document.getElementById("nacional").checked = true;
 
             document.getElementById("nacional").click();
         } else {
-        	console.log("---ENTROU AQUI 8 ----");
-            $("#internacional").attr('checked', 'checked');
-            //document.getElementById("internacional").checked = true;			 
+            $("#internacional").attr('checked', 'checked');	 
             document.getElementById("internacional").click();
-            //falta bloquear o campo tipo de viagem
+
         }
 
         //document.getElementById("solicitanteNpassageiro").click();
@@ -1022,7 +1018,6 @@ function setSelectedZoomItem(selectedItem) {
     }
 
     else if (campoZOOM == RATEIO) {    
-    	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
@@ -1045,9 +1040,7 @@ function setSelectedZoomItem(selectedItem) {
         }
         else{
         	document.getElementById("passageiroestrangeironao").click();
-        } 
-        
-        
+        }      
         //mostra campos do passageiro
         var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
 
@@ -1057,11 +1050,6 @@ function setSelectedZoomItem(selectedItem) {
 
             var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
 
-            /*
-            if (emailFuncionarioPassageiro != null && emailFuncionarioPassageiro != "") {
-                //  AprovadorViagem(emailFuncionarioPassageiro);
-            }
-            */
         }
 
     }
@@ -1069,36 +1057,38 @@ function setSelectedZoomItem(selectedItem) {
 
 
     else if (linhaPagamento[0] == AGENDA) {
-    	console.log("---ENTROU AQUI 11 ----");
-        buscaAtividades(selectedItem);
+          buscaAtividades(selectedItem);
     }   
     
 
     else if (linhaPagamento[0] == SERVICO) {
-    	console.log("---ENTROU AQUI 12 ----");    	
-    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
+    }
+    
+    else if (campoZOOM = EVENTO){    	
+    	console.log(selectedItem["FINANEVENTO"]);
+    	if (selectedItem["FINANEVENTO"] =="sim"){
+    		evento = selectedItem["SOLICITACAO"];    		
+    		document.getElementById("carregaFinan").click();  
+    		
+    	}
+    	else {
+    		evento = selectedItem["SOLICITACAO"];  
+    	}
     }
     
 }
 
 
-function clickFinanceiroEvento(){
-	
-	if (document.getElementById("nacional").checked == true){
-		
-	}
-	else {
-		
+function clickFinanceiroEvento(){	
+	if (document.getElementById("carregaFinan").checked == true){
+		buscaDadosFinanceiroEvento(evento);	
 	}
 	
-
-
+	
 }
 
-
-//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
-//Preciso criar um dataset customizado para retornar essa informação pois o campo solicitacao pode nao ter sido salvo
 function buscaRemarcacao(item) {
     var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("solicitacao", item.solicitacao, item.solicitacao, ConstraintType.MUST));
@@ -1115,7 +1105,24 @@ function buscaRemarcacao(item) {
     }
 }
 
+function buscaDadosFinanceiroEvento(item){
+	   var constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", item, item, ConstraintType.MUST));
+	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
+
+	    constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
+
+	    if (dataset != null && dataset.values.length > 0) {
+	        adicionaItem(dataset.values);
+	    }
+}
+
 function adicionaItem(itens) {
+	console.log(itens);
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
@@ -1194,6 +1201,7 @@ function removedZoomItem(removedItem) {
     var SERVICO = "txtservico";
     var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
+    var EVENTO ="dataset_solicitacaoevento";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -1308,6 +1316,14 @@ function removedZoomItem(removedItem) {
 
     else if (linhaPagamento[0] == FONTE) {
  	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+    }
+    else if (campoZOOM == EVENTO){
+    	$("#carregaFinan").attr('checked', false);
+    	$("#NcarregaFinan").attr('checked', false);
+    	
+    	//remove linhas de pagamento
+        removeItens();
+
     }
 
 }
@@ -1664,6 +1680,7 @@ function buscaItensRateio(rateio) {
 	adicionaItensRateio(dataset.values) ;
 
 }
+
 
 function adicionaItensRateio(itens) {
     for (var i in itens) {

@@ -4,7 +4,7 @@
       <companyId>1</companyId>
       <processId>SolicitacaoViagem</processId>
     </processDefinitionPK>
-    <processDescription>Solicitacao de Viagem</processDescription>
+    <processDescription>Solicitação de Viagem</processDescription>
     <instruction>Preencha todos os campos do formulário para solicitar a compra de passagens aeréas e/ou reservadas de hospedagem. </instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
@@ -28,7 +28,7 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Solicitacao de Viagem</processId>
+      <processId>Solicitação de Viagem</processId>
       <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
@@ -106,7 +106,8 @@
       </processStatePK>
       <stateName>Comprar passagem</stateName>
       <stateDescription>Comprar passagem</stateDescription>
-      <instruction>Confirmar se a passagem foi comprada marcando a opção disponível na aba de Assistente de hospitalidade.</instruction>
+      <instruction>Confirmar se a passagem foi comprada marcando a opção disponível na aba de Assistente de hospitalidade.&#xd;
+Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName>prazoaprovacao</deadlineFieldName>
       <joint>false</joint>
@@ -470,7 +471,7 @@
       </processStatePK>
       <stateName>Calcular diárias</stateName>
       <stateDescription>Calcular diárias</stateDescription>
-      <instruction>Use essa tarefa para gerar o título no contas a pagar</instruction>
+      <instruction>Use essa tarefa para gerar o título no contas a pagar referente ao valor das diárias</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -773,8 +774,8 @@
         <version>1</version>
         <sequence>183</sequence>
       </processStatePK>
-      <stateName>Intermediário</stateName>
-      <stateDescription>Intermediário</stateDescription>
+      <stateName>Corrigir solicitação</stateName>
+      <stateDescription>Corrigir solicitação</stateDescription>
       <instruction>Evento intermediário do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -820,8 +821,8 @@
         <version>1</version>
         <sequence>185</sequence>
       </processStatePK>
-      <stateName>Intermediário</stateName>
-      <stateDescription>Intermediário</stateDescription>
+      <stateName>Corrigir solicitação</stateName>
+      <stateDescription>Corrigir solicitação</stateDescription>
       <instruction>Evento intermediário do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -942,8 +943,8 @@
         <version>1</version>
         <sequence>116</sequence>
       </processStatePK>
-      <stateName>Finalizar solicitação</stateName>
-      <stateDescription>Finalizar solicitação</stateDescription>
+      <stateName>Join</stateName>
+      <stateDescription>Join</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
@@ -951,7 +952,7 @@
       <formFolder>0</formFolder>
       <automatic>false</automatic>
       <positionX>1520</positionX>
-      <positionY>490</positionY>
+      <positionY>510</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>4</stateType>
       <bpmnType>127</bpmnType>
@@ -2378,54 +2379,8 @@ function convertStringToData(StringToData) {
       </swimLanePK>
     </SwimLane>
   </list>
-  <list>
-    <ProcessComponGraf>
-      <componType>1</componType>
-      <positionX>280</positionX>
-      <positionY>590</positionY>
-      <processComponGrafPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <componGrafSequence>169</componGrafSequence>
-      </processComponGrafPK>
-      <stateName>A compra da passagem irá gerar uma solicitação de compra no Protheus</stateName>
-    </ProcessComponGraf>
-    <ProcessComponGraf>
-      <componType>1</componType>
-      <positionX>680</positionX>
-      <positionY>760</positionY>
-      <processComponGrafPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <componGrafSequence>171</componGrafSequence>
-      </processComponGrafPK>
-      <stateName>O calculo da diária irá gerar um título no contas a pagar</stateName>
-    </ProcessComponGraf>
-  </list>
-  <list>
-    <ProcessLinkAssoc>
-      <processLinkAssocPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <linkSequence>170</linkSequence>
-      </processLinkAssocPK>
-      <initialStateSequence>169</initialStateSequence>
-      <finalStateSequence>13</finalStateSequence>
-    </ProcessLinkAssoc>
-    <ProcessLinkAssoc>
-      <processLinkAssocPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <linkSequence>172</linkSequence>
-      </processLinkAssocPK>
-      <initialStateSequence>171</initialStateSequence>
-      <finalStateSequence>129</finalStateSequence>
-    </ProcessLinkAssoc>
-  </list>
+  <list/>
+  <list/>
   <list>
     <ProcessLinkBend>
       <processLinkBendPK>

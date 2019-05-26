@@ -90,7 +90,7 @@ function validateForm(form){
 		else if (form.getValue("validacao") == "negado" &&  form.getValue("justificativaReprovacao") == ""){
 			throw "Você precisa justificar o motivo de ter reprovado o pagamento.";
 		}
-		else if (form.getValue("emailAssistente") == "" ){
+		else if (form.getValue("emailAprovador") == "" ){
 			throw "Seu email não foi carregado, tente novamente mais tarde!";
 		}	
 		
@@ -99,7 +99,7 @@ function validateForm(form){
 		}
 		else if (form.getValue("cpfbeneficiario") == retornaCPFAprovador(email)){
        	 //throw "Você não pode aprovar uma solicitação onde você é o beneficiário.";
-       }
+        }
 		
 		
 	}

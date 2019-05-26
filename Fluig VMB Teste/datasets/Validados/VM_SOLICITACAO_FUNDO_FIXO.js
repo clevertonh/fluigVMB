@@ -8,6 +8,9 @@ function createDataset(fields, constraints, sortFields) {
 	var fornecedor_tarifa;
 	var dt_tarifa;
 	var aRateio = new Array();
+	var tipoFFX;
+	var tipoLAN;
+	var historico;
 
 	 
 	 if(constraints !== null && constraints.length){
@@ -20,7 +23,7 @@ function createDataset(fields, constraints, sortFields) {
 			 
 			 	var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    		var solicitacao = DatasetFactory.getDataset("VM_ReposicoesFundoFixo", null, new Array(c0,c1), null);
+	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesFundoFixo", null, new Array(c0,c1), null);
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
@@ -32,6 +35,16 @@ function createDataset(fields, constraints, sortFields) {
         		else {
         			tipoFFX =1;
         		}
+
+        		if (solicitacao.getValue(0,"tipolan") == "abertura"){
+        			tipoLAN =1;
+        			historico ="ABERTURA FUNDO FIXO";
+        		}
+        		else {
+        			tipoLAN =2;
+        			historico ="REPOSICAO FUNDO FIXO";
+        		}
+        		
         		
 				
 					 try {
@@ -52,8 +65,8 @@ function createDataset(fields, constraints, sortFields) {
 						            	EMAIL_SOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
 						            	DATAAPROV  : '' + dtAprovacao + '',
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
-						            	OPERACAO:'' + "2" + '',
-						            	HISTORICO  : '' + "REPOSICAO FUNDO FIXO" + '',
+						            	OPERACAO:'' + tipoLAN + '',
+						            	HISTORICO  : '' + historico + '',
 						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") + '',
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
 						            },

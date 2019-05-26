@@ -39,6 +39,11 @@ function enableFields(form){
 	 
 	 
 	 }
+	 else if (activityEnable == APROVACAO){
+		 //set numero da solicitação
+		 form.setValue("solicitacao",getValue('WKNumProces'));
+	 }
+	 
 	 
 		function usuarioAprovador(emailLogado){
 			log.info("---APROVADOR EVENTO----"); 

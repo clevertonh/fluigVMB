@@ -218,29 +218,31 @@
                                                             name="dataset_solicitacaoevento" class="form-control"
                                                             type="zoom" id="dataset_solicitacaoevento"
                                                             data-zoom="{
-                                                            'displayKey':'solicitacao',
-                                                            'datasetId':'VM_SolicitacaoViagemComprada',
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesEventos',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione um evento',
                                                             'fields':[
-                                                            {'field':'solicitacao','label':'solicitacao'},                                                            
-                                                            {'field':'solicitante','label':'solicitante','standard':'true'},
-                                                            {'field':'nomepassageiro','label':'nomepassageiro'},
-                                                            {'field':'dataSolicitacao','label':'dataSolicitacao'}                                                           						  					
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
                                                             ]
                                                             }">
-                                                      </div>
-                                                      <div class="form-group col-md-4">
-                                                         <label>Carregar informações financeiras do evento</label><br> <label
-                                                            for="carregaFinan">Sim</label> <input
-                                                            type="radio" id="carregaFinan" name="FinanEvento"
-                                                            value="nao" onclick="clickFinanceiroEvento();">
-                                                         <label for="NcarregaFinan">Não</label> <input
-                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
-                                                            value="sim" onclick="clickFinanceiroEvento();">
-                                                      </div>                                                      
-                                                   </div>                                                   
+                                                      </div>                                                                                                          
                                                    
+                                                   <div class="form-group col-md-4">
+                                                         			<label>Carregar informações financeiras do evento</label><br> <label
+			                                                            for="carregaFinan">Sim</label> <input
+			                                                            type="radio" id="carregaFinan" name="FinanEvento"
+			                                                            value="sim" onclick="clickFinanceiroEvento()">
+			                                                         <label for="NcarregaFinan">Não</label> <input
+			                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+			                                                            value="nao" onclick="clickFinanceiroEvento()">
+                                                      			</div>
+                                                   
+                                                   
+                                                   </div>                                                   
                                                    
                                                    
                                                    

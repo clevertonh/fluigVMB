@@ -40,7 +40,7 @@ function enableFields(form){
 		  
 		 form.setEnabled('responsavel', false);
 		 form.setEnabled('tipoffx', false);
-		 form.setEnabled('vl_reposicao', false);
+		 form.setEnabled('vl_solicitacao', false);
 		 form.setEnabled('dtDeposito', false);
 		 
 	}	

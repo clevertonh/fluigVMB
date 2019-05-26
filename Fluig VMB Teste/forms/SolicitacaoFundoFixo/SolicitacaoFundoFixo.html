@@ -7,7 +7,7 @@
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
       <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-      <link type="text/css" rel="stylesheet" href="ReposicaoFundoFixo.css"/>
+      <link type="text/css" rel="stylesheet" href="SolicitacaoFundoFixo.css"/>
    </head>
    <body>
       <div class="container">
@@ -25,7 +25,7 @@
                <div class='panel panel-primary'>
                   <div class="panel-heading">
                      <div class="container text-center">
-                        <h4>Reposição de Fundo Fixo</h4>
+                        <h4>Abertura e Reposição de Fundo Fixo</h4>
                      </div>
                   </div>
                   <div class="panel-body">
@@ -104,9 +104,20 @@
                                           <label for="vl_base">Valor Base</label>
                                           <input type="number" class="form-control" name="vl_base" id ="vl_base">
                                        </div>
+                                       
+                                       <div class="form-group col-md-3">
+                                          <label>Tipo de Solicitação</label><br> <label
+                                             for="abertura">Abertura</label> <input
+                                             type="radio" id="abertura" name="tipolan"
+                                             value="abertura" >
+                                          <label for="reposicao">Reposição</label> <input
+                                             type="radio" id="reposicao" name="tipolan"
+                                             value="=reposicao" >
+                                       </div>
+                                       
                                   	<div class="form-group col-md-2">
                                           <label for="vl_nota">Valor da reposição</label>
-                                          <input type="number" class="form-control" name="vl_reposicao" id ="vl_reposicao">
+                                          <input type="number" class="form-control" name="vl_solicitacao" id ="vl_solicitacao">
                                        </div> 
                                     <div class="form-group col-md-3">
                                           <label for="dtDeposito">Data para deposito</label>
@@ -178,6 +189,6 @@
             </form>
          </div>
       </div>
-      <script src="ReposicaoFundoFixo.js"></script>
+      <script src="SolicitacaoFundoFixo.js"></script>
    </body>
 </html>

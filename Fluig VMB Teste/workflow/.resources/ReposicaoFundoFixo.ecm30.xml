@@ -2,9 +2,9 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>ReposicaoFundoFixo</processId>
+      <processId>AberturaReposicaoFundoFixo</processId>
     </processDefinitionPK>
-    <processDescription>Reposicao de Fundo Fixo</processDescription>
+    <processDescription>Abertura e Reposicao de Fundo Fixo</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
@@ -27,7 +27,7 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Reposicao de Fundo Fixo</processId>
+      <processId>Abertura e Reposicao de Fundo Fixo</processId>
       <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
@@ -49,7 +49,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -99,12 +99,12 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
-      <stateName>Aprovar reposição</stateName>
-      <stateDescription>Aprovar reposição</stateDescription>
+      <stateName>Aprovar solicitação</stateName>
+      <stateDescription>Aprovar solicitação</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -151,7 +151,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
@@ -176,7 +176,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>11</sequence>
       </processStatePK>
@@ -223,7 +223,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>13</sequence>
       </processStatePK>
@@ -272,7 +272,7 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <expressionOrder>1</expressionOrder>
         <version>7</version>
         <sequence>9</sequence>
@@ -284,7 +284,7 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <expressionOrder>2</expressionOrder>
         <version>7</version>
         <sequence>9</sequence>
@@ -298,7 +298,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
@@ -315,7 +315,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <linkSequence>10</linkSequence>
       </processLinkPK>
@@ -332,7 +332,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <linkSequence>12</linkSequence>
       </processLinkPK>
@@ -349,7 +349,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <linkSequence>14</linkSequence>
       </processLinkPK>
@@ -370,7 +370,7 @@
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>beforeStateEntry</eventId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
@@ -428,12 +428,12 @@
       <width>831</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
-      <stateName>Reposição de Fundo Fixo</stateName>
+      <stateName>Abertura e Reposição de Fundo Fixo</stateName>
       <type>1</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -449,7 +449,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -465,7 +465,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -478,7 +478,7 @@
       <positionY>20</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <componGrafSequence>7</componGrafSequence>
       </processComponGrafPK>
@@ -489,7 +489,7 @@
     <ProcessLinkAssoc>
       <processLinkAssocPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>1</version>
         <linkSequence>8</linkSequence>
       </processLinkAssocPK>
@@ -501,7 +501,7 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>7</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
@@ -512,7 +512,7 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>ReposicaoFundoFixo</processId>
+        <processId>AberturaReposicaoFundoFixo</processId>
         <version>7</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
@@ -530,7 +530,7 @@
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>ReposicaoFundoFixo</processId>
+      <processId>AberturaReposicaoFundoFixo</processId>
       <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
@@ -540,7 +540,7 @@
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>ReposicaoFundoFixo</processId>
+      <processId>AberturaReposicaoFundoFixo</processId>
       <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
@@ -550,7 +550,7 @@
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>ReposicaoFundoFixo</processId>
+      <processId>AberturaReposicaoFundoFixo</processId>
       <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
@@ -560,7 +560,7 @@
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>ReposicaoFundoFixo</processId>
+      <processId>AberturaReposicaoFundoFixo</processId>
       <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
@@ -570,7 +570,7 @@
     <ProcessAppConfiguration>
       <id>0</id>
       <tenantId>0</tenantId>
-      <processId>ReposicaoFundoFixo</processId>
+      <processId>AberturaReposicaoFundoFixo</processId>
       <processVersion>7</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>

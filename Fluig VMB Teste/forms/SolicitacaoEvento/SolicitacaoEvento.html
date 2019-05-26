@@ -26,7 +26,7 @@
                 <div class='panel panel-primary'>
                     <div class="panel-heading">
                         <div class="container text-center">
-                            <h4>Solicitação de Eventos</h4>
+                            <h4>Solicitação de Evento</h4>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -215,6 +215,18 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step2">
+                                                                <div class="row">
+                                                                	<h2>Informe se toda e qualquer solicitação (viagem, compra, etc) deverá usar os mesmos dados financeiros do evento.</h2>
+                                                                 <div class="form-group col-md-4">
+                                                         			<label>Mesmos dados financeiros</label><br> <label
+			                                                            for="carregaFinan">Sim</label> <input
+			                                                            type="radio" id="carregaFinan" name="FinanEvento"
+			                                                            value="sim">
+			                                                         <label for="NcarregaFinan">Não</label> <input
+			                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+			                                                            value="nao">
+                                                      			</div>
+                                                                </div>
                                                                 <div class="panel panel-default" id="panelItens">
                                                                     <div class="panel-heading ">
                                                                         <h3 class="panel-title"><b>Informa&ccedil;&otilde;es do Pagamento</b></h3>
@@ -270,7 +282,7 @@
                                                                                             <tr>
                                                                                                 <td><span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeitem" onclick="fnWdkRemoveChild(this)"></span></td>
                                                                                                 <td>
-                                                                                                    <input class="form-control money" name="percentual" id="percentual" type="text" style="width: 100px;" />
+                                                                                                    <input class="form-control money" name="percentual" id="percentual" type="number" style="width: 100px;" />
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div class="form-group">
@@ -445,7 +457,7 @@
                                                                                                     <input class="form-control" name="id_um" id="id_um" type="text" maxlength="2" style="width:100px;" readonly/>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <input class="form-control money" name="id_quantidade" type="text" maxlength="6" style="width:100px;" />
+                                                                                                    <input class="form-control money" name="id_quantidade" type="number" maxlength="6" style="width:100px;" />
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <input class="form-control money" name="vrUltima" id="vrUltima" type="number" style="width:200px;" readonly/>

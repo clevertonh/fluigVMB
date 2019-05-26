@@ -37,7 +37,7 @@ function displayFields(form,customHTML){
     
      form.setVisibleById("div_valorp", false);
      form.setVisibleById("div_valorh", false);
-     form.setVisibleById("divEventos", false);
+    // form.setVisibleById("divEventos", false);
          
 	   
     if (activity == ABERTURA ) {
@@ -52,10 +52,8 @@ function displayFields(form,customHTML){
         	form.setVisibleById("selecaodeviagens", false);
           	form.setVisibleById("div_justificativaremarcacao", false);    
           	form.setVisibleById("divJustificativaCancelamento", false);
-    
-        	
-
-      	//campos aba passageiro
+            
+          	//campos aba passageiro
         	form.setVisibleById("divdadospassageiro", false);
         	form.setVisibleById("divOutroFun", false);
             form.setVisibleById("div_embaixador", false);

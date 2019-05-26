@@ -31,13 +31,12 @@ function enableFields(form){
 		 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));
 		 form.setValue("emailAprovador",dataset.getValue(0, "mail"));		
 		  
-		 
+		 form.setValue("validacao","validado");
 	}	
 	else if (activity == AVALIAR_ERRO){
 		 form.setEnabled('validacao', false);
 		 form.setEnabled('justificativaReprovacao', false);
-		 		 
-		 
+	 
 	}
 	
 	
