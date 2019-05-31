@@ -15,6 +15,16 @@ function inputFields(form){
 	var nextAtv  = getValue("WKNextState");
 	log.info("----ATIVIDADE inputFields: " + activity);
 	
+	
+	
+	if (activity == REGISTRARCANCELAMENTO && nextAtv == OBTERPASSAGEM){
+		 form.setValue("cancelarpassagem","");
+	}
+	
+	if (activity == OBTERPASSAGEM){
+		form.setValue("cancelarpassagem","");
+	}
+	
 	/*
 	if (activity == ABERTURA || activity == CORRIGIRSOLICITACAO){
 		var embaixador = getValue('embaixador');

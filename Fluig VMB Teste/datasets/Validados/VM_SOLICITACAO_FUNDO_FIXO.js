@@ -58,7 +58,7 @@ function createDataset(fields, constraints, sortFields) {
 						            params : {
 						            	DATAPAGTO : '' + solicitacao.getValue(0,"dtDeposito") + '',
 						            	TIPOFFX : '' + tipoFFX +'',
-						            	VALOR : '' + solicitacao.getValue(0,"vl_reposicao") + '' ,
+						            	VALOR : '' + solicitacao.getValue(0,"vl_solicitacao") + '' ,
 						            	CPF_FORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
 						            	ANO_FISCAL : '' + "" +"2019"+'',
 						            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAprovador") +'',
@@ -76,26 +76,28 @@ function createDataset(fields, constraints, sortFields) {
 						          }
 						        }
 				         
-					      //  log.info("---RETORNO PARAMETROS---");
+					     //   log.info("---RETORNO PARAMETROS---");
 					     //   log.dir(data);
 					        
  					        var vo = clientService.invoke(JSON.stringify(data));
-		        			//		        log.info("retorno compras 51");
-		        			//		        log.dir(vo.getResult());
-		        			//		        log.dir(JSON.parse(vo.getResult()));
+		        					        log.info("retorno compras 51");
+		        					        log.dir(vo.getResult());
+		        					        
 		        					        
 		        					        var obj = JSON.parse(vo.getResult());
-		        					         					        
+		        					         
+		        					        log.dir(obj);
+		        					        
 		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
 		         					        	dataset.addRow(new Array("RETORNO VAZIO"));
 		        					        }        					                					       
 		        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
 		        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+		        					        else if (obj.CODIGO != "100"){
 		        					        	dataset.addRow(new Array(obj.MSG));
 		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
+		        					        else if (obj.CODIGO == "100"){	                    
 		        					            dataset.addRow(new Array("SUCESSO"));					           
 		        					            
 		        					        }

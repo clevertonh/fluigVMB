@@ -5,6 +5,10 @@ function createDataset(fields, constraints, sortFields) {
 	var aRateio = new Array();
 	var tipoFFX;
 	 
+	//var constraints = new Array();
+	//constraints.push(DatasetFactory.createConstraint("documentid", "6726", "6726", ConstraintType.MUST));     
+
+	
 	 if(constraints !== null && constraints.length){
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO documentId NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -82,9 +86,9 @@ function createDataset(fields, constraints, sortFields) {
 					        //log.info("---RETORNO PARAMETROS---");
 					        //log.dir(params);
  					        var vo = clientService.invoke(JSON.stringify(data));
-		        			//		        log.info("retorno compras 51");
-		        			//		        log.dir(vo.getResult());
-		        			//		        log.dir(JSON.parse(vo.getResult()));
+		        					    //    log.info("retorno compras 51");
+		        					 //       log.dir(vo.getResult());
+		        					 //       log.dir(JSON.parse(vo.getResult()));
 		        					        
 		        					        var obj = JSON.parse(vo.getResult());
 		        					         					        
@@ -94,12 +98,11 @@ function createDataset(fields, constraints, sortFields) {
 		        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
 		        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
-		        					        	dataset.addRow(new Array(obj.MSG));
+		        					        else if (obj.CODIGO != "100"){
+		        					        	dataset.addRow([obj.MSG]);
 		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
-		        					            dataset.addRow(new Array("SUCESSO"));					           
-		        					            
+		        					        else if (obj.CODIGO == "100"){	                    
+		        					            dataset.addRow(new Array("SUCESSO"));					           		        					            
 		        					        }
 					        
 				    	}  catch(err) {

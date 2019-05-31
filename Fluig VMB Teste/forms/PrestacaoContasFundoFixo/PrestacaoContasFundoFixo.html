@@ -36,16 +36,39 @@
                                  <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
                                  <li><a href="#2b" data-toggle="tab">Tesouraria</a></li>
                               </ul>
-                              <div class="tab-content clearfix">
+                              <div class="tab-content clearfix">                              
                                  <!-- Aba Solicitante -->                                                              
                                  <div class="tab-pane active" id="1b">
-                                    <div class="row">
-                                       <div class="form-group col-md-2">
-                                          <label for="id" class="required">Cód. solicitação</label>
-                                          <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
-                                       </div>
-                                    </div>
-                                    <div class="row">
+                                 	<div class="row">
+                                 	  <section>
+                                 	  	<div class="wizard">
+                                 	  		<div class="wizard-inner">
+                                                            <div class="connecting-line"></div>
+                                                            <ul class="nav nav-tabs" role="tablist">
+                                                                <li role="presentation" class="active">
+                                                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Dados do responsavel"> <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-folder-open"></i>
+                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li role="presentation" class="disabled">
+                                                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Produtos e Serviços"> <span class="round-tab"> <i
+                                                      class="fluigicon fluigicon-user"></i>
+                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                     
+                                                            </ul>
+                                                </div>
+												<div class="tab-content">
+													<div class="tab-pane active" role="tabpanel" id="step1">
+		<div class="row">
+    <div class="form-group col-md-2">
+		<label for="id" class="required">Cód. solicitação</label>
+		<input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
+    </div>
+    </div>                              
+		<div class="row">
                                        <div class="form-group col-md-5">
                                           <label for="solicitante" class="required">Solicitante</label>
                                           <input type="text" class="form-control" id="solicitante" name="solicitante" readonly >
@@ -63,8 +86,8 @@
                                              </span>
                                           </div>
                                        </div>
-                                    </div>
-                                    <div class="row">
+                                    </div>                                 
+		<div class="row">
                                        <div class="form-group col-md-2">
                                           <label for="vl_nota">Valor nota fiscal</label>
                                           <input type="number" class="form-control" name="vl_nota" id ="vl_nota">
@@ -103,7 +126,7 @@
                                           <input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
                                        </div>
                                     </div>
-                                    <div class="row">
+		<div class="row">
                                        <div class="form-group col-md-3">
                                           <label>Tipo de Fundo Fixo</label><br> <label
                                              for="ffxAdm">Administrativo</label> <input
@@ -113,28 +136,13 @@
                                              type="radio" id="ffxOp" name="tipoffx"
                                              value="operacional" >
                                        </div>                                       
-                                       <div class="form-group col-md-5">
-                                         <label>Produto/Serviço</label>                                           
-                                          <input type="zoom" name="produto" id ="produto" data-zoom="{
-                                             'displayKey':'DESCRICAO',
-                                             'datasetId':'ds_get_Produtos',
-                                             'maximumSelectionLength':'1',
-                                             'placeholder':'Selecione um produto',
-                                             'fields':[
-                                             {'field':'CODIGO', 'label':'CODIGO'},
-                                             {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
-                                             ]
-                                             }" />
-                                       </div>
                                        <div class="form-group col-md-4">
                                        		<label>Histórico</label>
                                        		<input class="form-control" name="historico" id="historico" type="text" maxlength="40" />
-                                       </div>
-                                        <div class="form-group col-md-1">                                       		
-                                       		<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                       </div>                                    
+                                       </div>                                   
                                     </div>
-                                    <div class="panel panel-default" id="panelItens">
+                                   
+		<div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">
                                           <h3 class="panel-title">
                                              <b>Informações do Pagamento</b>
@@ -323,7 +331,86 @@
                                              </div>
                                           </div>
                                        </div>
-                                    </div>
+        </div>
+	     <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                        <button type="button" class="btn btn-primary next-step">Produtos e/ou serviços</button>
+                                                                    </li>
+                                                                </ul>
+	</div> 
+													<div class="tab-pane" role="tabpanel" id="step2">
+<div class="panel panel-default" id="painel_produtos">
+<h2>Utilize essa aba para informar os produtos da nota fiscal/recibo</h2>
+<div class="panel-heading ">
+                                                                        <h3 class="panel-title"><b>Informa&ccedil;&otilde;es de Produtos e Serviços</b></h3>
+                                                                    </div>
+<div class="panel-body">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-md-12 fs-txt-right">
+                                                                                <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
+                                                                                    <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar produto
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-field table-responsive">
+                                                                                    <table tablename="tableCompras" id="tableCompras" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true>
+                                                                                        <thead>
+                                                                                            <tr class="tableHeadRow">
+                                                                                                <th></th>
+                                                                                                <th class="tableColumn">Descrição do Produto</th>                                                                                             
+                                                                                                <th class="tableColumn">Valor</th>
+                                                                                                <th class="tableColumn">Codigo Prod.</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody id="tbodyCompras">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeProduto" onclick="fnWdkRemoveChild(this)"></span>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <div class="form-group">
+                                                                                                        <input type="hidden" name="produto" id="produto" />
+                                                                                                        <input type="zoom" name="txtproduto" data-zoom="{
+                                                                                    'displayKey':'DESCRICAO',
+                                                                                    'datasetId':'ds_get_Produtos',
+                                                                                    'maximumSelectionLength':'1',
+                                                                                    'placeholder':'Selecione um produto',
+                                                                                    'fields':[
+                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },                                                                                                                                                                      
+                                                                                    ]
+                                                                                    }" />
+                                                                                                    </div>
+                                                                                                </td>                                                                                                                                                                                                                                                                                       
+                                                                                                <td>
+                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:200px;" />
+                                                                                                </td>                                                                                            
+                                                                                                <td>
+                                                                                                    <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                       <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                        <button type="button" class="btn btn-primary prev-step">Voltar</button>
+                                                                    </li>                                                                    
+                                                                </ul>
+</div>
+													</div>   															
+													<div class="clearfix"></div> 	
+												</div>                               				
+                             			</div>
+                           			 </section>
+                         </div>
+                                          
+                                
                                  </div>
                                  <!-- Aba Assistente -->
                                  <div class="tab-pane" id="2b">
@@ -366,6 +453,7 @@
                                        </div>
                                     </div>
                                  </div>
+                                                                                      
                               </div>
                            </div>
                         </div>

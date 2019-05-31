@@ -232,6 +232,7 @@ function setSelectedZoomItem(selectedItem) {
     	
     }
     
+    
 }
 
 function adicionaLinha() {

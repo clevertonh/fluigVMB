@@ -20,6 +20,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("rateioconfigurado");
 	dataset.addColumn("codigorateio");
 	dataset.addColumn("NumeroDocumento");
+	dataset.addColumn("cancelarpassagem");
 	
 	var user = getValue("WKUser");	
 
@@ -28,6 +29,8 @@ function createDataset(fields, constraints, sortFields) {
 	constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado" , "aprovado", ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("cancelarpassagem", "" , "", ConstraintType.MUST));
+	
+	//constraints.push(DatasetFactory.createConstraint("solicitacao", "1614" , "1614", ConstraintType.MUST));
 	
     var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
     
@@ -77,7 +80,8 @@ function createDataset(fields, constraints, sortFields) {
 	     	     		                retornoDataset.getValue(x,"tipoPagamento"),
 	     	     		                retornoDataset.getValue(x,"rateioconfigurado"),
 	     	     		                retornoDataset.getValue(x,"codigorateio"),
-	     	     		                retornoDataset.getValue(x, "documentid")
+	     	     		                retornoDataset.getValue(x, "documentid"),
+	     	     		                retornoDataset.getValue(x, "cancelarpassagem"),
 	     	     		                ]);
 	    			 }
 	    		 }
@@ -98,7 +102,8 @@ function createDataset(fields, constraints, sortFields) {
 	    	     		                retornoDataset.getValue(x,"tipoPagamento"),
 	    	     		                retornoDataset.getValue(x,"rateioconfigurado"),
 	    	     		                retornoDataset.getValue(x,"codigorateio"),
-	    	     		                retornoDataset.getValue(x, "documentid")
+	    	     		                retornoDataset.getValue(x, "documentid"),
+	    	     		               retornoDataset.getValue(x, "cancelarpassagem"),
 	    	     		                ]);	 
 	    		 }
 	    		 

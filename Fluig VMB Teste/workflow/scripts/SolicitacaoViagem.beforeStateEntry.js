@@ -118,8 +118,8 @@ function beforeStateEntry(sequenceId){
  		  			
  		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
  		  		    
- 		  		    log.info("retorno solicitacao viagem");
- 		  		    log.dir(resultDateset);
+ 		  		//    log.info("retorno solicitacao viagem");
+ 		  		//    log.dir(resultDateset);
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
@@ -150,7 +150,7 @@ function beforeStateEntry(sequenceId){
 			  								
 		   	    
      	}
-
+    
 	   
 		function itensServico(){
 			var processo = getValue("WKNumProces");

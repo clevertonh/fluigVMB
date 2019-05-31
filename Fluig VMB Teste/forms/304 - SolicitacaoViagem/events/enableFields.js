@@ -239,9 +239,7 @@ function enableFields(form) {
 			 form.setEnabled('tarifaFornecedor', false);
 			 form.setEnabled('vl_tarifa', false);
 			 
-
-			 
-			 
+		 
 		 }
 		 
 		 //PROCESSO DE REGISTRAR CANCELAMENTO DA VIAGEM

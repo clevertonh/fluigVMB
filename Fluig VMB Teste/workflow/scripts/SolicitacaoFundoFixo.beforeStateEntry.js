@@ -29,13 +29,13 @@ function beforeStateEntry(sequenceId){
 //		constraint.push(DatasetFactory.createConstraint("valor", dtVencimento, dtVencimento, ConstraintType.MUST));
 //		constraint.push(DatasetFactory.createConstraint("tipoffx", dtVencimento, dtVencimento, ConstraintType.MUST));	
 		
-		var resultDateset = DatasetFactory.getDataset("VM_SOLICITACAO_FUNDO_FIXO", null, constraint, null);
+		var resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_FUNDO_FIXO", null, constraint, null);
 		
 //		log.info("DATASET VM_REPOSICAO_FUNDO_FIXO");
-//		log.dir(resultDateset);
+//		log.dir(resultDataset);
 		
-		  if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-		    	throw resultDateset.getValue(0,"RETORNO");
+		  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		    	throw resultDataset.getValue(0,"RETORNO");
 		    } 
 		
 	  
