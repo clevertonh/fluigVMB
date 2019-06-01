@@ -1033,7 +1033,7 @@ function setSelectedZoomItem(selectedItem) {
         $('#datanasc').val(selectedItem["DTNASC"]);
         $('#emailPassageiro').val(selectedItem["EMAIL_F"]);
 
-        console.log(selectedItem["EMAIL_F"]);
+        //console.log(selectedItem["EMAIL_F"]);
         
         if (selectedItem["EXTRANGEIRO"] == 'SIM'){        
         	document.getElementById("passageiroestrangeiro").click();
@@ -1069,12 +1069,14 @@ function setSelectedZoomItem(selectedItem) {
     else if (campoZOOM = EVENTO){    	
     	console.log(selectedItem["FINANEVENTO"]);
     	if (selectedItem["FINANEVENTO"] =="sim"){
-    		evento = selectedItem["SOLICITACAO"];    		
+    		evento = selectedItem;    		
     		document.getElementById("carregaFinan").click();  
+    		console.log("evento 1");
+    		console.log(evento);
     		
     	}
     	else {
-    		evento = selectedItem["SOLICITACAO"];  
+    		evento = selectedItem;  
     	}
     }
     
@@ -1107,15 +1109,22 @@ function buscaRemarcacao(item) {
 
 function buscaDadosFinanceiroEvento(item){
 	   var constraints = new Array();
-	    constraints.push(DatasetFactory.createConstraint("solicitacao", item, item, ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", item.solicitacao, item.solicitacao, ConstraintType.MUST));
 	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
+	    console.log("evento 2");
+	    console.log(dataset);
+	    
 	    constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
 	    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
 	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
 	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
+	    
+	    console.log("evento 3");
+	    console.log(dataset);
+	    
 	    if (dataset != null && dataset.values.length > 0) {
 	        adicionaItem(dataset.values);
 	    }
