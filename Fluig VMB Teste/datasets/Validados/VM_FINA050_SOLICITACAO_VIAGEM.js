@@ -97,6 +97,7 @@ function createDataset(fields, constraints, sortFields) {
 					        }
 						        
 					        var vo = clientService.invoke(JSON.stringify(data));
+					        var obj = JSON.parse(vo.getResult());
 				         
 					        if(vo.getResult()== null || vo.getResult().isEmpty()){
  					        	dataset.addRow(new Array("RETORNO VAZIO"));
@@ -104,10 +105,10 @@ function createDataset(fields, constraints, sortFields) {
 					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
 					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 					        }
-					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+					        else if (obj.CODIGO != "100"){
 					        	dataset.addRow(new Array(obj.MSG));
 					        }
-					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
+					        else if (obj.CODIGO == "100"){	                    
 					            dataset.addRow(new Array("SUCESSO"));					           
 					            
 					        }
