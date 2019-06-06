@@ -112,7 +112,7 @@ function setSelectedZoomItem(selectedItem) {
     var RATEIO = "rateioconfigurado";   
     var PRODUTO ="txtproduto";
     var RESPONSAVEL ="responsavel";
-    	 
+    var EVENTO ="dataset_solicitacaoevento";
   
    
 
@@ -191,9 +191,20 @@ function setSelectedZoomItem(selectedItem) {
     else if (linhaPagamento[0] == FONTE){
   	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
     }
+    else if (campoZOOM = EVENTO){    	
+    	if (selectedItem["FINANEVENTO"] == "sim"){
+    		evento = selectedItem["SOLICITACAO"];    		
+    		document.getElementById("carregaFinan").click();  
+    		$("#carregaFinan").prop("disabled", true);
+    		$("#NcarregaFinan").prop("disabled", true);
+    	}
+    	else {
+    		$("#carregaFinan").prop("disabled", false);
+    		$("#NcarregaFinan").prop("disabled", false);
+    	}
+    }
         
 }
-
 
 function adicionaLinhaProduto() {
 	
@@ -212,7 +223,6 @@ function adicionaLinha() {
     window["txtareaestrategica___" + indice].disable(true);
 }
 
-
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
     var CCUSTO = "txtcentrocusto";
@@ -227,7 +237,8 @@ function removedZoomItem(removedItem) {
     var PRODUTO = "txtproduto";   
     var RESPONSAVEL ="responsavel";
     var CONTA = "contacontabil";
-
+    var EVENTO ="dataset_solicitacaoevento";
+    
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
@@ -275,7 +286,9 @@ function removedZoomItem(removedItem) {
    	 	$("#cpfbeneficiario").val("");
     }    
     else if (campoZOOM == RATEIO) {
-        //removeItensRateio();
+    	//remove linhas de pagamento
+        removeItens();
+        /*
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -283,6 +296,7 @@ function removedZoomItem(removedItem) {
 	        fnWdkRemoveChild(span);	
 	        
 	    }
+	    */
     }
     else if (campoZOOM == PRODUTO) {	
     	$('#codigoProduto').val("");
@@ -291,10 +305,31 @@ function removedZoomItem(removedItem) {
     else if (linhaPagamento[0] == FONTE) {
  	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
     }
+    
+    else if (campoZOOM == EVENTO){
+    	$("#carregaFinan").attr('checked', false);
+    	$("#NcarregaFinan").attr('checked', false);
+    	
+    	$("#carregaFinan").prop("disabled", false);
+		$("#NcarregaFinan").prop("disabled", false);
+		
+    	//remove linhas de pagamento
+        removeItens();
 
 
+    }
 }
 
+function removeItens() {
+    var linhas = $("#tbodyItens tr");
+    for (var i = 1; i < linhas.length; i++) {
+        var td = $(linhas[i]).children()[0];
+        var span = $(td).children()[0];
+        fnWdkRemoveChild(span);
+    }
+
+}
+    
 function setZoomData(instance, value) {
     window[instance].setValue(value);
 }
@@ -309,13 +344,46 @@ function buscaItensRateio(rateio) {
 
 }
 
+function clickFinanceiroEvento(){	
+	if (document.getElementById("carregaFinan").checked == true){
+		buscaDadosFinanceiroEvento(evento);	
+	}
+	else {
+		removeItens();
+	}
+	
+	
+}
+
+function buscaDadosFinanceiroEvento(evento){
+	   var constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));
+	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
+
+	    console.log("evento 2");
+	    console.log(dataset);
+	    
+	    constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
+
+	 
+	    
+	    console.log("evento 3");
+	    console.log(dataset);
+	    
+	    if (dataset != null && dataset.values.length > 0) {
+	    	adicionaItensRateio(dataset.values);
+	    }
+}
+
 function adicionaItensRateio(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
         
-        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);   
-        
-       
+        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);       
         
         if (itens[i].PROJETO == null || itens[i].PROJETO == "") {
             window["txtprojeto___" + indice].disable(true);
@@ -353,12 +421,13 @@ function adicionaItensRateio(itens) {
 
         
     }
-    
-    function justificativaValidacao(){
-    	
-    }
+
     
 }
 
+
+function justificativaValidacao(){
+	
+}
 
 

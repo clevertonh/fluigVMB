@@ -1067,16 +1067,15 @@ function setSelectedZoomItem(selectedItem) {
     }
     
     else if (campoZOOM = EVENTO){    	
-    	console.log(selectedItem["FINANEVENTO"]);
-    	if (selectedItem["FINANEVENTO"] =="sim"){
-    		evento = selectedItem;    		
+    	if (selectedItem["FINANEVENTO"] == "sim"){
+    		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
-    		console.log("evento 1");
-    		console.log(evento);
-    		
+    		$("#carregaFinan").prop("disabled", true);
+    		$("#NcarregaFinan").prop("disabled", true);
     	}
     	else {
-    		evento = selectedItem;  
+    		$("#carregaFinan").prop("disabled", false);
+    		$("#NcarregaFinan").prop("disabled", false);
     	}
     }
     
@@ -1086,6 +1085,9 @@ function setSelectedZoomItem(selectedItem) {
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
 		buscaDadosFinanceiroEvento(evento);	
+	}
+	else {
+		removeItens();
 	}
 	
 	
@@ -1107,9 +1109,10 @@ function buscaRemarcacao(item) {
     }
 }
 
-function buscaDadosFinanceiroEvento(item){
+
+function buscaDadosFinanceiroEvento(evento){
 	   var constraints = new Array();
-	    constraints.push(DatasetFactory.createConstraint("solicitacao", item.solicitacao, item.solicitacao, ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));
 	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
 	    console.log("evento 2");
@@ -1121,6 +1124,7 @@ function buscaDadosFinanceiroEvento(item){
 	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
 	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
+	 
 	    
 	    console.log("evento 3");
 	    console.log(dataset);
@@ -1293,8 +1297,10 @@ function removedZoomItem(removedItem) {
     }
 
     else if (campoZOOM == RATEIO) {
-        //removeItensRateio();
+    	//remove linhas de pagamento
     	console.log("---REMOVEU AQUI 6----");
+        removeItens();    	
+    	/*
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -1302,6 +1308,8 @@ function removedZoomItem(removedItem) {
 	        fnWdkRemoveChild(span);	
 	        
 	    }
+	    
+	    */
     }
 
 
@@ -1330,6 +1338,9 @@ function removedZoomItem(removedItem) {
     	$("#carregaFinan").attr('checked', false);
     	$("#NcarregaFinan").attr('checked', false);
     	
+    	$("#carregaFinan").prop("disabled", false);
+		$("#NcarregaFinan").prop("disabled", false);
+		
     	//remove linhas de pagamento
         removeItens();
 

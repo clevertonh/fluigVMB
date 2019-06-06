@@ -374,7 +374,9 @@ function adicionaItensRateio(itens) {
         $("#alocacao___" + indice).val(itens[i].ALOCACAO);
         $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
         $("#contacontabil___" + indice).val(itens[i].CONTA);
+        $("#percentual___" + indice).val(itens[i].PERCENTUAL);        
         $("#rateio___" + indice).val(itens[i].RATEIO);
+      
 
         
     }

@@ -141,6 +141,38 @@
                                        		<input class="form-control" name="historico" id="historico" type="text" maxlength="40" />
                                        </div>                                   
                                     </div>
+                                  <div class="row" id="divEventos">
+                                                      <div class="form-group col-md-8" id="selecaodeevento">
+                                                         <label>Solicitação de Evento</label> <input
+                                                            name="dataset_solicitacaoevento" class="form-control"
+                                                            type="zoom" id="dataset_solicitacaoevento"
+                                                            data-zoom="{
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesEventos',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um evento',
+                                                            'fields':[
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+                                                            ]
+                                                            }">
+                                                      </div>                                                                                                          
+                                                   
+                                                   <div class="form-group col-md-4">
+                                                         			<label>Carregar informações financeiras do evento</label><br> <label
+			                                                            for="carregaFinan">Sim</label> <input
+			                                                            type="radio" id="carregaFinan" name="FinanEvento"
+			                                                            value="sim" onclick="clickFinanceiroEvento()">
+			                                                         <label for="NcarregaFinan">Não</label> <input
+			                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+			                                                            value="nao" onclick="clickFinanceiroEvento()">
+                                                      			</div>
+                                                   
+                                                   
+                                                   </div>                                                   
+                                                   
                                    
 		<div class="panel panel-default" id="panelItens">
                                        <div class="panel-heading ">
@@ -339,12 +371,12 @@
                                                                 </ul>
 	</div> 
 													<div class="tab-pane" role="tabpanel" id="step2">
-<div class="panel panel-default" id="painel_produtos">
-<h2>Utilize essa aba para informar os produtos da nota fiscal/recibo</h2>
-<div class="panel-heading ">
-                                                                        <h3 class="panel-title"><b>Informa&ccedil;&otilde;es de Produtos e Serviços</b></h3>
+														<div class="panel panel-default" id="painel_produtos">
+															<h2>Utilize essa aba para informar os produtos da nota fiscal/recibo</h2>
+																<div class="panel-heading ">
+                                                                    <h3 class="panel-title"><b>Informa&ccedil;&otilde;es de Produtos e Serviços</b></h3>
                                                                     </div>
-<div class="panel-body">
+																		<div class="panel-body">
                                                                         <div class="form-group row">
                                                                             <div class="col-md-12 fs-txt-right">
                                                                                 <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
@@ -373,22 +405,22 @@
                                                                                                     <div class="form-group">
                                                                                                         <input type="hidden" name="produto" id="produto" />
                                                                                                         <input type="zoom" name="txtproduto" data-zoom="{
-                                                                                    'displayKey':'DESCRICAO',
-                                                                                    'datasetId':'ds_get_Produtos',
-                                                                                    'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione um produto',
-                                                                                    'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },                                                                                                                                                                      
-                                                                                    ]
-                                                                                    }" />
+						                                                                                    'displayKey':'DESCRICAO',
+						                                                                                    'datasetId':'ds_get_Produtos',
+						                                                                                    'maximumSelectionLength':'1',
+						                                                                                    'placeholder':'Selecione um produto',
+						                                                                                    'fields':[
+						                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+						                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                                                                      
+						                                                                                    ]
+						                                                                                    }" />
                                                                                                     </div>
                                                                                                 </td>                                                                                                                                                                                                                                                                                       
                                                                                                 <td>
                                                                                                     <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:200px;" />
                                                                                                 </td>                                                                                            
                                                                                                 <td>
-                                                                                                    <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                                                                                    <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readonly />
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tbody>
@@ -397,15 +429,15 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                       <ul class="list-inline pull-right">
-                                                                    <li>
-                                                                        <button type="button" class="btn btn-primary prev-step">Voltar</button>
-                                                                    </li>                                                                    
-                                                                </ul>
-</div>
+                                                                      <ul class="list-inline pull-right">
+                                                                    	<li>
+                                                                        	<button type="button" class="btn btn-primary prev-step">Voltar</button>
+                                                                    	</li>                                                                    
+                                                                	  </ul>
+														</div>
 													</div>   															
 													<div class="clearfix"></div> 	
-												</div>                               				
+													</div>                               				
                              			</div>
                            			 </section>
                          </div>

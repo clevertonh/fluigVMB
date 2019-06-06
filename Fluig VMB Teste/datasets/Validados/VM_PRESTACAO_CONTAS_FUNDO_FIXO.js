@@ -3,6 +3,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("RETORNO");
 	
 	var aRateio = new Array();
+	var aProdutos = new Array();
 	var tipoFFX;
 	 
 	//var constraints = new Array();
@@ -19,10 +20,7 @@ function createDataset(fields, constraints, sortFields) {
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
-        	
-        		
-        		
-        		
+        	        		
         		if (solicitacao.getValue(0,"tipoffx") == "administrativo"){
         			tipoFFX =2;
         		}
@@ -30,9 +28,7 @@ function createDataset(fields, constraints, sortFields) {
         			tipoFFX =1;
         		}
 
-        		
-        		
-	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
+        		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_PrestacaoContasFundoFixoDadosPagamento", null, new Array(c2), null);    				  
 
 	    	    //log.info("log itens solicitacao");
@@ -53,6 +49,20 @@ function createDataset(fields, constraints, sortFields) {
 					 //return dataset;
 					 
 				 }
+				 
+				 	if (solicitacao.getValue(0,"codigoProduto") != null && solicitacao.getValue(0,"codigoProduto") != null){
+				 		//RETORNA PRODUTOS NOTA
+						var s0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+			    		aProdutos = DatasetFactory.getDataset("VM_ProdutosPrestacaoContasFundoFixo", null, new Array(s0), null);
+			    			
+				 	}
+				 	else {
+				 		aProdutos = [solicitacao.getValue(0,"codigoProduto")];
+				 	}
+				 
+		    		
+		    		
+		    		
 				
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
@@ -74,7 +84,8 @@ function createDataset(fields, constraints, sortFields) {
 					            	SOLICITACAO  : '' + codSolicitacao + '' ,
 					            	OPERACAO:'' + "4" + '',
 					            	HISTORICO  : '' + solicitacao.getValue(0,"historico") + '' ,
-					            	PRODUTO : '' + solicitacao.getValue(0,"codigoProduto") + '' ,
+					            	//PRODUTO : '' + solicitacao.getValue(0,"codigoProduto") + '' ,
+					            	PRODUTOS :'' + aProdutos + '',
 					            	RATEIO: aRateio 
 					            },
 					          options : {
