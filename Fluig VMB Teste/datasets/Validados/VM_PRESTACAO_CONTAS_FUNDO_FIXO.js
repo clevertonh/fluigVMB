@@ -5,6 +5,7 @@ function createDataset(fields, constraints, sortFields) {
 	var aRateio = new Array();
 	var aProdutos = new Array();
 	var tipoFFX;
+	var produto ="";
 	 
 	//var constraints = new Array();
 	//constraints.push(DatasetFactory.createConstraint("documentid", "6726", "6726", ConstraintType.MUST));     
@@ -50,19 +51,23 @@ function createDataset(fields, constraints, sortFields) {
 					 
 				 }
 				 
-				 	if (solicitacao.getValue(0,"codigoProduto") != null && solicitacao.getValue(0,"codigoProduto") != null){
+				 	if (solicitacao.getValue(0,"codigoProduto") == null || solicitacao.getValue(0,"codigoProduto") == ""){				 	
+				 		
 				 		//RETORNA PRODUTOS NOTA
 						var s0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-			    		aProdutos = DatasetFactory.getDataset("VM_ProdutosPrestacaoContasFundoFixo", null, new Array(s0), null);
-			    			
+						var itensNota = DatasetFactory.getDataset("VM_ProdutosPrestacaoContasFundoFixo", null, new Array(s0), null);
+			    		
+						aProdutos = preencheArrayProdutos(itensNota);
+						
+						log.info("array de produtos 1");
+						log.dir(aProdutos);
+				 						 					    		
 				 	}
 				 	else {
-				 		aProdutos = [solicitacao.getValue(0,"codigoProduto")];
+				 		produto = solicitacao.getValue(0,"codigoProduto");
+				 		//produto = "DVPSG001";
 				 	}
-				 
-		    		
-		    		
-		    		
+					
 				
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
@@ -84,8 +89,8 @@ function createDataset(fields, constraints, sortFields) {
 					            	SOLICITACAO  : '' + codSolicitacao + '' ,
 					            	OPERACAO:'' + "4" + '',
 					            	HISTORICO  : '' + solicitacao.getValue(0,"historico") + '' ,
-					            	//PRODUTO : '' + solicitacao.getValue(0,"codigoProduto") + '' ,
-					            	PRODUTOS :'' + aProdutos + '',
+					            	PRODUTO : '' + produto + '' ,
+					            	PRODUTOS : aProdutos ,
 					            	RATEIO: aRateio 
 					            },
 					          options : {
@@ -143,6 +148,23 @@ function createDataset(fields, constraints, sortFields) {
 
 }
 
+function preencheArrayProdutos(produtos){
+	var listaProdutos = new Array();
+	
+	   for (var i=0; i < produtos.rowsCount ; i++){
+			var obj = {
+					CODIGO : '' + produtos.getValue(i, "COD_PRODUTO") +''	,
+					VALOR_P : '' + produtos.getValue(i, "VALOR") +''	
+			};		
+						
+			listaProdutos[i] = obj;	
+			
+			
+			
+}
+	   return listaProdutos;
+}
+
 function preencheRateio(solicitacao){
 	   var rateio = new Array();
 	   
@@ -186,8 +208,7 @@ function preencheRateio(solicitacao){
 			
 			rateio[i] = obj;	
 			
-			log.info("--retorno rateio--");
-			log.dir(rateio[i]);
+
 	   }
 	 			   
 	   return rateio;
