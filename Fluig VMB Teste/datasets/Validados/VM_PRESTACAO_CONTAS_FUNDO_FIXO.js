@@ -59,8 +59,8 @@ function createDataset(fields, constraints, sortFields) {
 			    		
 						aProdutos = preencheArrayProdutos(itensNota);
 						
-						log.info("array de produtos 1");
-						log.dir(aProdutos);
+					//	log.info("array de produtos 1");
+					//	log.dir(aProdutos);
 				 						 					    		
 				 	}
 				 	else {

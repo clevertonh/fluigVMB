@@ -36,6 +36,10 @@ function enableFields(form){
 	else if (activity == AVALIAR_ERRO){
 		 form.setEnabled('validacao', false);
 		 form.setEnabled('justificativaReprovacao', false);
+		 
+		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
+		 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));
+		 form.setValue("emailAprovador",dataset.getValue(0, "mail"));		
 	 
 	}
 	

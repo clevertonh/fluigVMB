@@ -209,8 +209,8 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <version>1</version>
         <sequence>64</sequence>
       </processStatePK>
-      <stateName>Registrar cancelamento</stateName>
-      <stateDescription>Registrar cancelamento</stateDescription>
+      <stateName>Cancelar e Registrar Viagem</stateName>
+      <stateDescription>Cancelar e Registrar Viagem</stateDescription>
       <instruction>Use essa tarefa para informar se a passagem e/ou reserva cancelada será reembolsada ou colocada como crédito para uma viagem posterior. Atenção: Esse tarefa só poderá ser realizada uma única vez.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -233,7 +233,7 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
       <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1020</positionX>
-      <positionY>520</positionY>
+      <positionY>510</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>true</notifyManagerFollowUp>
@@ -891,31 +891,6 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <sequence>60</sequence>
-      </processStatePK>
-      <stateName>Pediu cancelamento?</stateName>
-      <stateDescription>Pediu cancelamento?</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>1030</positionX>
-      <positionY>73</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
         <sequence>115</sequence>
       </processStatePK>
       <stateName>Inclusivo</stateName>
@@ -943,8 +918,8 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <version>1</version>
         <sequence>116</sequence>
       </processStatePK>
-      <stateName>Join</stateName>
-      <stateDescription>Join</stateDescription>
+      <stateName>Finalizar solicitação</stateName>
+      <stateDescription>Finalizar solicitação</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
@@ -952,7 +927,7 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
       <formFolder>0</formFolder>
       <automatic>false</automatic>
       <positionX>1520</positionX>
-      <positionY>510</positionY>
+      <positionY>490</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>4</stateType>
       <bpmnType>127</bpmnType>
@@ -1196,30 +1171,6 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <processId>SolicitacaoViagem</processId>
         <expressionOrder>1</expressionOrder>
         <version>4</version>
-        <sequence>60</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;sim&quot;</condition>
-      <destinationSequenceId>64</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>4</version>
-        <sequence>60</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;cancelarpassagem&quot;) == &quot;&quot;</condition>
-      <destinationSequenceId>116</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>4</version>
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; || hAPI.getCardValue(&quot;hotelComprado&quot;) == &quot;sim&quot;</condition>
@@ -1345,57 +1296,6 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <linkSequence>65</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>60</initialStateSequence>
-      <finalStateSequence>64</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <linkSequence>69</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>60</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <linkSequence>73</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>60</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>true</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
         <linkSequence>88</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1452,23 +1352,6 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>79</initialStateSequence>
-      <finalStateSequence>116</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <linkSequence>127</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>60</initialStateSequence>
       <finalStateSequence>116</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -1859,6 +1742,40 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
+      <initialStateSequence>33</initialStateSequence>
+      <finalStateSequence>64</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>189</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>33</initialStateSequence>
+      <finalStateSequence>116</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>190</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
       <initialStateSequence>183</initialStateSequence>
       <finalStateSequence>185</finalStateSequence>
       <returnLabel></returnLabel>
@@ -2146,8 +2063,8 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
  		  			&#xd;
  		  		    var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_VIAGEM&quot;, null, constraint, null);&#xd;
  		  		    &#xd;
- 		  		    log.info(&quot;retorno solicitacao viagem&quot;);&#xd;
- 		  		    log.dir(resultDateset);&#xd;
+ 		  		//    log.info(&quot;retorno solicitacao viagem&quot;);&#xd;
+ 		  		//    log.dir(resultDateset);&#xd;
  		  		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
  		  		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
  		  		    } &#xd;
@@ -2178,7 +2095,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
 			  								&#xd;
 		   	    &#xd;
      	}&#xd;
-&#xd;
+    &#xd;
 	   &#xd;
 		function itensServico(){&#xd;
 			var processo = getValue(&quot;WKNumProces&quot;);&#xd;
@@ -2387,28 +2304,6 @@ function convertStringToData(StringToData) {
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>4</version>
-        <linkSequence>73</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>982</positionX>
-      <positionY>68</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>4</version>
-        <linkSequence>127</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>1548</positionX>
-      <positionY>129</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>4</version>
         <linkSequence>163</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2469,6 +2364,28 @@ function convertStringToData(StringToData) {
       </processLinkBendPK>
       <positionX>1549</positionX>
       <positionY>831</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>4</version>
+        <linkSequence>188</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1073</positionX>
+      <positionY>129</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>4</version>
+        <linkSequence>189</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1549</positionX>
+      <positionY>129</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
