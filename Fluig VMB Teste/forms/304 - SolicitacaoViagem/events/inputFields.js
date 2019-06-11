@@ -21,9 +21,7 @@ function inputFields(form){
 		 form.setValue("cancelarpassagem","");
 	}
 	
-	if (activity == OBTERPASSAGEM){
-		form.setValue("cancelarpassagem","");
-	}
+
 	
 	/*
 	if (activity == ABERTURA || activity == CORRIGIRSOLICITACAO){

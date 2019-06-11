@@ -215,8 +215,8 @@ function enableFields(form) {
 			 form.setEnabled('cobranca', false);
 			 form.setEnabled('tipormb', false);
 			 			 
-			// form.setValue("cancelarpassagem","");
-			// form.setValue("justificativacancelamento",""); 
+			 form.setValue("cancelarpassagem","");
+			 form.setValue("justificativacancelamento",""); 
 			 form.setValue("ressarcimento","");
 			 form.setValue("cobranca","");
 			 
