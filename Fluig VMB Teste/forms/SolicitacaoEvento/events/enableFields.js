@@ -36,7 +36,8 @@ function enableFields(form){
 			
 		 }
 	 
-	 
+		 form.setEnabled('aprovacao', false);
+		 form.setEnabled('justificativaReprovacao', false);		 
 	 
 	 }
 	 else if (activityEnable == APROVACAO){

@@ -1115,23 +1115,25 @@ function buscaDadosFinanceiroEvento(evento){
 	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));
 	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
-	    console.log("evento 2");
-	    console.log(dataset);
+	    
+	    if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+	    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+	    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+	    }
+
 	    
 	    constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
 	    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
 	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
 	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
-
-	 
-	    
-	    console.log("evento 3");
-	    console.log(dataset);
 	    
 	    if (dataset != null && dataset.values.length > 0) {
 	        adicionaItem(dataset.values);
 	    }
+	    
+	    	    
+
 }
 
 function adicionaItem(itens) {
@@ -1340,7 +1342,7 @@ function removedZoomItem(removedItem) {
     	
     	$("#carregaFinan").prop("disabled", false);
 		$("#NcarregaFinan").prop("disabled", false);
-		
+		 window['rateioconfigurado'].clear();
     	//remove linhas de pagamento
         removeItens();
 

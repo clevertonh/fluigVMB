@@ -183,9 +183,10 @@ function setSelectedZoomItem(selectedItem) {
     
     } 
     else if (linhaPagamento[0] == PRODUTO) {
-    	console.log("---ENTROU AQUI 12 ----"); 
-    	console.log(selectedItem["CODIGO"]);
-    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);       
+    	//console.log("---ENTROU AQUI 12 ----"); 
+    	//console.log(selectedItem["CODIGO"]);
+    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);   
+    	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
     	    	    
     }
     else if (linhaPagamento[0] == FONTE){
@@ -313,6 +314,8 @@ function removedZoomItem(removedItem) {
     	$("#carregaFinan").prop("disabled", false);
 		$("#NcarregaFinan").prop("disabled", false);
 		
+		 window['rateioconfigurado'].clear();
+		
     	//remove linhas de pagamento
         removeItens();
 
@@ -360,8 +363,10 @@ function buscaDadosFinanceiroEvento(evento){
 	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));
 	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
-	    console.log("evento 2");
-	    console.log(dataset);
+	    if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+	    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+	    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+	    }
 	    
 	    constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
@@ -369,14 +374,54 @@ function buscaDadosFinanceiroEvento(evento){
 	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
 	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
-	 
-	    
-	    console.log("evento 3");
-	    console.log(dataset);
 	    
 	    if (dataset != null && dataset.values.length > 0) {
-	    	adicionaItensRateio(dataset.values);
+	        adicionaItem(dataset.values);
 	    }
+}
+
+
+function adicionaItem(itens) {
+	console.log(itens);
+    for (var i in itens) {
+        var indice = wdkAddChild("tableItens");
+
+        window["txtcentrocusto___" + indice].setValue(itens[i].txtcentrocusto);
+
+        if (itens[i].txtprojeto == null || itens[i].txtprojeto == "") {
+            window["txtprojeto___" + indice].disable(true);
+        } else {
+            window["txtprojeto___" + indice].setValue(itens[i].txtprojeto);
+        }
+
+        window["txtatividade___" + indice].setValue(itens[i].txtatividade);
+
+        if (itens[i].txtcategoria == null || itens[i].txtcategoria == "") {
+            window["txtcategoria___" + indice].disable(true);
+        } else {
+            window["txtcategoria___" + indice].setValue(itens[i].txtcategoria);
+        }
+
+        if (itens[i].txtfontefinanciamento == null || itens[i].txtfontefinanciamento == "") {
+            window["txtfontefinanciamento___" + indice].disable(true);
+        } else {
+            window["txtfontefinanciamento___" + indice].setValue(itens[i].txtfontefinanciamento);
+        }
+
+        if (itens[i].txtareaestrategica == null || itens[i].txtareaestrategica == "") {
+            window["txtareaestrategica___" + indice].disable(true);
+        } else {
+            window["txtareaestrategica___" + indice].setValue(itens[i].txtareaestrategica);
+        }
+
+        $("#alocacao___" + indice).val(itens[i].alocacao);
+        $("#localizacao___" + indice).val(itens[i].localizacao);
+        $("#contacontabil___" + indice).val(itens[i].contacontabil);
+        $("#percentual___" + indice).val(itens[i].percentual);
+        $("#rateio___" + indice).val(itens[i].rateio);
+
+
+    }
 }
 
 function adicionaItensRateio(itens) {

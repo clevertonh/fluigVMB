@@ -83,35 +83,25 @@ function createDataset(fields, constraints, sortFields) {
 					          }
 					        }
 				         
-					        //log.info("---RETORNO PARAMETROS---");
-					        //log.dir(params);
-					        
- 					        var vo = clientService.invoke(JSON.stringify(data));
-		        			//		        log.info("retorno compras 51");
-		        			//		        log.dir(vo.getResult());
-		        			//		        log.dir(JSON.parse(vo.getResult()));
-		        					        
-		        					        var obj = JSON.parse(vo.getResult());
-		        					         					        
-		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
-		         					        	dataset.addRow(new Array("RETORNO VAZIO"));
-		        					        }        					                					       
-		        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-		        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
-		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
-		        					        	dataset.addRow(new Array(obj.MSG));
-		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
-		        					            dataset.addRow(new Array("SUCESSO"));					           
-		        					            
-		        					        }
+ 					        var vo = clientService.invoke(JSON.stringify(data));		        					        
+					        var obj = JSON.parse(vo.getResult());
+ 					        
+					        if(vo.getResult()== null || vo.getResult().isEmpty()){
+ 					        	dataset.addRow(new Array("RETORNO VAZIO"));
+					        }        					                					       
+					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
+					        }
+					        else if (obj.CODIGO != "100"){
+					        	dataset.addRow(new Array(obj.MSG));
+					        }
+					        else if (obj.CODIGO == "100"){
+					        	log.info("INCLUIDO COM SUCESSO");
+					            dataset.addRow(new Array("SUCESSO"));					           		        					            
+					        }
 					        
 				    	}  catch(err) {
-				    		   //throw err;
-							//log.info(err);
-							dataset.addRow([err.message]);
-				    		//dataset.addRow(new Array("entrando aqui"));
+							dataset.addRow([err.message]);				    	
 							
 				        }	 
 				    	

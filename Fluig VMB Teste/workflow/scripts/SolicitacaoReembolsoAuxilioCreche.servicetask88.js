@@ -16,33 +16,26 @@ function servicetask88(attempt, message) {
     
     
     var constraint = new Array();                                 
-    //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
     
-     var resultDataset = DatasetFactory.getDataset("ds_get_Pagamentos", null, constraint, null);
+    var resultDataset = DatasetFactory.getDataset("ds_get_Pagamentos", null, constraint, null);
        
-     //log.info("SCRIPT DE INTEGRAÇÃO 14:02");
-     //log.dir(resultDataset);
+     log.info("SCRIPT DE INTEGRAÇÃO 15:33");
+     log.dir(resultDataset);
      
      
-     	if (resultDataset !== null && resultDataset.rowsCount >0 ){
-     		if (resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){
-     			//preenche data de pagamento
-            	hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  	
-     		}
-     		//retornar data de vencimento e verificar se ja passou
-     	/*	
-     		else if (dtVencimento <= dtAtual){
-     			throw 'Pagamento ainda não efetuado!';
-     		}
-     		*/
-     		else {
-     			 throw 'Pagamento atrasado!';
-     		}     		     	
-     	}
-     	else {
-     		 throw 'Pagamento não localizado!';
-     	}
+  	if (resultDataset !== null && resultDataset.rowsCount >0 ){
+ 		if (resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){
+ 			//preenche data de pagamento
+        	hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  	
+ 		}
+ 		else {
+ 			 throw 'Pagamento atrasado!';
+ 		}     		     	
+ 	}
+ 	else {
+ 		 throw 'Pagamento não localizado!';
+ 	}
 
 }
 

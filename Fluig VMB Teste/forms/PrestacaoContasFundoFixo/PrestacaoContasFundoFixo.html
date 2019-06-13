@@ -92,7 +92,7 @@
                                           <label for="vl_nota">Valor nota fiscal</label>
                                           <input type="number" class="form-control" name="vl_nota" id ="vl_nota">
                                        </div>
-                                       <div class="form-group col-md-2">
+                                       <div class="form-group col-md-3">
                                           <label for="dtNota">Data relatório</label>
                                           <div class="input-group date" >
                                              <input type="text" class="form-control" placeholder="Data relatorio" id="dtNota" name="dtNota">
@@ -101,7 +101,7 @@
                                              </span>
                                           </div>
                                        </div>
-                                       <div class="form-group col-md-5">
+                                       <div class="form-group col-md-4">
                                           <label>Responsável pelo fundo fixo</label> 
                                           <input name="responsavel"
                                              class="form-control" type="zoom"
@@ -135,11 +135,7 @@
                                           <label for="ffxOp">Operacional</label> <input
                                              type="radio" id="ffxOp" name="tipoffx"
                                              value="operacional" >
-                                       </div>                                       
-                                       <div class="form-group col-md-4">
-                                       		<label>Histórico</label>
-                                       		<input class="form-control" name="historico" id="historico" type="text" maxlength="40" />
-                                       </div>                                   
+                                       </div>                                                                       
                                     </div>
                                   <div class="row" id="divEventos">
                                                       <div class="form-group col-md-8" id="selecaodeevento">
@@ -393,6 +389,7 @@
                                                                                                 <th></th>
                                                                                                 <th class="tableColumn">Descrição do Produto</th>                                                                                             
                                                                                                 <th class="tableColumn">Valor</th>
+                                                                                                <th class="tableColumn">Histórico</th>
                                                                                                 <th class="tableColumn">Codigo Prod.</th>
                                                                                             </tr>
                                                                                         </thead>
@@ -417,8 +414,11 @@
                                                                                                     </div>
                                                                                                 </td>                                                                                                                                                                                                                                                                                       
                                                                                                 <td>
-                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:200px;" />
-                                                                                                </td>                                                                                            
+                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:100px;" />
+                                                                                                </td>     
+                                                                                                <td>
+                                                                                                    <input class="form-control" name="historico" id="historico" type="text" maxlength="40" style="width:300px;"/>
+                                                                                                </td>                                                                                       
                                                                                                 <td>
                                                                                                     <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readonly />
                                                                                                 </td>

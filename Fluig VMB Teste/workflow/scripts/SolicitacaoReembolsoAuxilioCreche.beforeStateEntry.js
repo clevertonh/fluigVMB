@@ -28,23 +28,19 @@ function beforeStateEntry(sequenceId){
  	
 	
 	if ((ativAtual == APROVACAO_RH && autorizado == "aprovado" && aprovadoNoPrazo == "" ) || ativAtual == ALTERACAO_DATA){
-			var constraint = new Array();		  			
-			//constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));     
-			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-			//constraint.push(DatasetFactory.createConstraint("companyid", empresa, empresa, ConstraintType.MUST));
-	  					  
-			
+			var constraint = new Array();		  						     
+			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
 			constraint.push(DatasetFactory.createConstraint("valor", valorTotal, valorTotal, ConstraintType.MUST));  
 			constraint.push(DatasetFactory.createConstraint("dataVencimento", dtVencimento, dtVencimento, ConstraintType.MUST));
 				
 			
-			var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE", null, constraint, null);
+			var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE", null, constraint, null);
 			
 			log.info("DATASET VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE");
-			log.dir(resultDateset);
+			log.dir(resultDataset);
 			
-			  if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-			    	throw resultDateset.getValue(0,"RETORNO");
+			  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+			    	throw resultDataset.getValue(0,"RETORNO");
 			    } 
 			
 		  

@@ -13,14 +13,7 @@ function createDataset(fields, constraints, sortFields) {
 	   
 	    
 	    if(constraints!==null && constraints.length){ //se tiver constraint filtra
-	        if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") { // implementação somente para o MUST
-	        //	var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-	    	//	var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    	//	var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
-	    			    		
-	    		//var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
-        		//var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
-        	
+	        if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") { // implementação somente para o MUST      	
 	        	var documentoId = constraints[0].initialValue;
 	        	
 	        	//var webservice = '/PAGAMENTOS/'+codSolicitacao;	
@@ -40,21 +33,13 @@ function createDataset(fields, constraints, sortFields) {
 	         	       var vo = clientService.invoke(JSON.stringify(data));
 				        
 				        if(vo.getResult()== null || vo.getResult().isEmpty()){
-				            //throw "Retorno está vazio";
-				        	//log.info("RETORNO ESTA VAZIO");
 				        	dataset.addRow(new Array("RETORNO VAZIO"));
-				        }
-				        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){					        	
-				        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
 				        }				      				      		   
-				        else{
-				        	//log.info(vo.getResult());        
+				        else{      
 				        	dados = vo.getResult();
 				        	}
 				    } 
 					catch(err) {
-				        //throw err;
-						//log.info(err);
 						dataset.addRow([err.message]);
 				    }
 	        	 

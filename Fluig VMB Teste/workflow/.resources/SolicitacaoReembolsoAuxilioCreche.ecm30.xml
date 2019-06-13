@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitacao de Reembolso Auxilio Creche</processId>
-      <version>17</version>
+      <version>21</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1509</formId>
@@ -897,7 +897,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -909,7 +909,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -921,7 +921,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;invalido&quot;</condition>
@@ -933,7 +933,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;&quot;</condition>
@@ -945,7 +945,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;aprPrazo&quot;) == &quot;nao&quot;</condition>
@@ -957,7 +957,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>3</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -969,7 +969,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
         <expressionOrder>4</expressionOrder>
-        <version>17</version>
+        <version>21</version>
         <sequence>60</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -1451,33 +1451,26 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
     
     
     var constraint = new Array();                                 
-    //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));
     constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));
     
-     var resultDataset = DatasetFactory.getDataset(&quot;ds_get_Pagamentos&quot;, null, constraint, null);
+    var resultDataset = DatasetFactory.getDataset(&quot;ds_get_Pagamentos&quot;, null, constraint, null);
        
-     //log.info(&quot;SCRIPT DE INTEGRAÇÃO 14:02&quot;);
-     //log.dir(resultDataset);
+     log.info(&quot;SCRIPT DE INTEGRAÇÃO 15:33&quot;);
+     log.dir(resultDataset);
      
      
-     	if (resultDataset !== null &amp;&amp; resultDataset.rowsCount &gt;0 ){
-     		if (resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;) != &apos;&apos;){
-     			//preenche data de pagamento
-            	hAPI.setCardValue(&quot;dtBaixa&quot;,resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;));  	
-     		}
-     		//retornar data de vencimento e verificar se ja passou
-     	/*	
-     		else if (dtVencimento &lt;= dtAtual){
-     			throw &apos;Pagamento ainda não efetuado!&apos;;
-     		}
-     		*/
-     		else {
-     			 throw &apos;Pagamento atrasado!&apos;;
-     		}     		     	
-     	}
-     	else {
-     		 throw &apos;Pagamento não localizado!&apos;;
-     	}
+  	if (resultDataset !== null &amp;&amp; resultDataset.rowsCount &gt;0 ){
+ 		if (resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;) != &apos;&apos;){
+ 			//preenche data de pagamento
+        	hAPI.setCardValue(&quot;dtBaixa&quot;,resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;));  	
+ 		}
+ 		else {
+ 			 throw &apos;Pagamento atrasado!&apos;;
+ 		}     		     	
+ 	}
+ 	else {
+ 		 throw &apos;Pagamento não localizado!&apos;;
+ 	}
 
 }
 
@@ -1527,23 +1520,19 @@ function convertStringToData(StringToData) {
  	&#xd;
 	&#xd;
 	if ((ativAtual == APROVACAO_RH &amp;&amp; autorizado == &quot;aprovado&quot; &amp;&amp; aprovadoNoPrazo == &quot;&quot; ) || ativAtual == ALTERACAO_DATA){&#xd;
-			var constraint = new Array();		  			&#xd;
-			//constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));     &#xd;
-			constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-			//constraint.push(DatasetFactory.createConstraint(&quot;companyid&quot;, empresa, empresa, ConstraintType.MUST));&#xd;
-	  					  &#xd;
-			&#xd;
+			var constraint = new Array();		  						     &#xd;
+			constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valorTotal, valorTotal, ConstraintType.MUST));  &#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;dataVencimento&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));&#xd;
 				&#xd;
 			&#xd;
-			var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE&quot;, null, constraint, null);&#xd;
+			var resultDataset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE&quot;, null, constraint, null);&#xd;
 			&#xd;
 			log.info(&quot;DATASET VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE&quot;);&#xd;
-			log.dir(resultDateset);&#xd;
+			log.dir(resultDataset);&#xd;
 			&#xd;
-			  if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-			    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+			  if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+			    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 			    } &#xd;
 			&#xd;
 		  &#xd;
@@ -1659,7 +1648,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>17</version>
+        <version>21</version>
         <linkSequence>74</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1670,7 +1659,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>17</version>
+        <version>21</version>
         <linkSequence>74</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1681,7 +1670,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>17</version>
+        <version>21</version>
         <linkSequence>74</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1692,7 +1681,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>17</version>
+        <version>21</version>
         <linkSequence>95</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1703,7 +1692,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>17</version>
+        <version>21</version>
         <linkSequence>95</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1714,7 +1703,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-        <version>17</version>
+        <version>21</version>
         <linkSequence>100</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1744,7 +1733,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1754,7 +1743,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1764,7 +1753,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1774,7 +1763,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1784,7 +1773,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1794,7 +1783,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1804,7 +1793,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1814,7 +1803,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1824,7 +1813,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1834,7 +1823,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>27</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -1846,7 +1835,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>4</stateSequence>
       <operator>1</operator>
       <amount>1</amount>
@@ -1857,7 +1846,7 @@ function convertStringToData(StringToData) {
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaodeReembolsoAuxilioCreche</processId>
-      <processVersion>17</processVersion>
+      <processVersion>21</processVersion>
       <stateSequence>85</stateSequence>
       <operator>1</operator>
       <amount>1</amount>
