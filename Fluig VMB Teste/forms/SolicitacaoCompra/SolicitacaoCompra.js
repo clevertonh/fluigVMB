@@ -128,6 +128,7 @@ function setSelectedZoomItem(selectedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var SERVICO = "txtproduto";
+    var EVENTO ="dataset_solicitacaoevento";
       
    
 
@@ -220,16 +221,27 @@ function setSelectedZoomItem(selectedItem) {
   	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
   	  
     }
-
-    
+ 
 
     else if (linhaPagamento[0] == SERVICO) {
-    	console.log("---ENTROU AQUI 12 ----");    	
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
     	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
     	
     	
+    }
+    
+    else if (campoZOOM = EVENTO){    	
+    	if (selectedItem["FINANEVENTO"] == "sim"){
+    		evento = selectedItem["SOLICITACAO"];    		
+    		document.getElementById("carregaFinan").click();  
+    		$("#carregaFinan").prop("disabled", true);
+    		$("#NcarregaFinan").prop("disabled", true);
+    	}
+    	else {
+    		$("#carregaFinan").prop("disabled", false);
+    		$("#NcarregaFinan").prop("disabled", false);
+    	}
     }
     
     
@@ -287,6 +299,7 @@ function removedZoomItem(removedItem) {
     var SERVICO = "txtproduto";
     var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
+    var EVENTO ="dataset_solicitacaoevento";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -364,6 +377,21 @@ function removedZoomItem(removedItem) {
     else if (linhaPagamento[0] == FONTE) {
   	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
      }
+    
+    else if (campoZOOM == EVENTO){
+    	$("#carregaFinan").attr('checked', false);
+    	$("#NcarregaFinan").attr('checked', false);
+    	
+    	$("#carregaFinan").prop("disabled", false);
+		$("#NcarregaFinan").prop("disabled", false);
+		
+		 window['rateioconfigurado'].clear();
+		
+    	//remove linhas de pagamento
+        removeItens();
+
+
+    }
 
 
 }
@@ -371,6 +399,85 @@ function removedZoomItem(removedItem) {
 function setZoomData(instance, value) {
     window[instance].setValue(value);
 }
+
+
+function clickFinanceiroEvento(){	
+	if (document.getElementById("carregaFinan").checked == true){
+		buscaDadosFinanceiroEvento(evento);	
+	}
+	else {
+		removeItens();
+	}
+	
+	
+}
+
+function buscaDadosFinanceiroEvento(evento){
+	   var constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));
+	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
+
+	    if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+	    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+	    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+	    }
+	    
+	    constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+	    dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
+
+	    
+	    if (dataset != null && dataset.values.length > 0) {
+	        adicionaItem(dataset.values);
+	    }
+}
+
+function adicionaItem(itens) {
+	console.log(itens);
+    for (var i in itens) {
+        var indice = wdkAddChild("tableItens");
+
+        window["txtcentrocusto___" + indice].setValue(itens[i].txtcentrocusto);
+
+        if (itens[i].txtprojeto == null || itens[i].txtprojeto == "") {
+            window["txtprojeto___" + indice].disable(true);
+        } else {
+            window["txtprojeto___" + indice].setValue(itens[i].txtprojeto);
+        }
+
+        window["txtatividade___" + indice].setValue(itens[i].txtatividade);
+
+        if (itens[i].txtcategoria == null || itens[i].txtcategoria == "") {
+            window["txtcategoria___" + indice].disable(true);
+        } else {
+            window["txtcategoria___" + indice].setValue(itens[i].txtcategoria);
+        }
+
+        if (itens[i].txtfontefinanciamento == null || itens[i].txtfontefinanciamento == "") {
+            window["txtfontefinanciamento___" + indice].disable(true);
+        } else {
+            window["txtfontefinanciamento___" + indice].setValue(itens[i].txtfontefinanciamento);
+        }
+
+        if (itens[i].txtareaestrategica == null || itens[i].txtareaestrategica == "") {
+            window["txtareaestrategica___" + indice].disable(true);
+        } else {
+            window["txtareaestrategica___" + indice].setValue(itens[i].txtareaestrategica);
+        }
+
+        $("#alocacao___" + indice).val(itens[i].alocacao);
+        $("#localizacao___" + indice).val(itens[i].localizacao);
+        $("#contacontabil___" + indice).val(itens[i].contacontabil);
+        $("#percentual___" + indice).val(itens[i].percentual);
+        $("#rateio___" + indice).val(itens[i].rateio);
+
+
+    }
+}
+
+
 
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
