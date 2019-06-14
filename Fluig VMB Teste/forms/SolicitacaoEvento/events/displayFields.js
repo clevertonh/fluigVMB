@@ -4,7 +4,7 @@ function displayFields(form,customHTML){
 	var ABERTURA = 4;
 	var APROVACAO = 5;
 	var CORRIGIR = 45;
-	var AVALIAR = 40;
+	
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -17,5 +17,7 @@ function displayFields(form,customHTML){
     
 	 form.setVisibleById("matriculasolicitante", false); 
 	 form.setVisibleById("divMatrApr", false); 
+	 form.setVisibleById("matricula", false);
+	 form.setVisibleById("prazoaprovacao", false); 
 	 
 }

@@ -6,7 +6,7 @@ function createDataset(fields, constraints, sortFields) {
 	var aItemServico = new Array();
 	var aRateio;
 	var itens = new Array();
-
+	var documentId;
 	
 	//log.info("LOG CONSTRAINTS 1");
 	//log.dir(constraints);
@@ -20,6 +20,7 @@ function createDataset(fields, constraints, sortFields) {
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, new Array(c0,c1), null);
         		
+        		documentId = solicitacao.getValue(0,"documentid");
         		
         		log.info("LOG SOLICITACAO");
         		log.dir(solicitacao);
@@ -31,8 +32,7 @@ function createDataset(fields, constraints, sortFields) {
         		log.info(codSolicitacao);
     
         	
-        		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		
-//        		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);
+        		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesEventosDadosPagamento", null, new Array(c2), null);    				  
 
         		
@@ -84,13 +84,14 @@ function createDataset(fields, constraints, sortFields) {
         					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
         					            timeoutService: '100', // segundos
         					            params : {
-        					            	processo : '' + 2 + '' ,
-        					            	solicitacao : '' + codSolicitacao + '' ,
-        					            	solicitante : '' + solicitacao.getValue(0,"solicitante") +'',
-        					            	emailsolicitante : '' + solicitacao.getValue(0,"emailsolicitante") +'', 
-        					                datasolicitacao :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
-        					                itens: aItemServico ,
-        					        		rateioDigitado: aRateio 
+        					            	PROCESSO : '' + 3 + '' ,
+        					            	SOLICITACAO : '' + codSolicitacao + '' ,
+        					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
+        					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 
+        					            	DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
+        					            	ITENS: aItemServico ,
+        					            	RATEIODIGITADO: aRateio ,
+        					            	DOCUMENTID:''+ documentId +''
         					            },
         					          options : {
         					             encoding : 'UTF-8',
@@ -98,26 +99,23 @@ function createDataset(fields, constraints, sortFields) {
         					          }
         					        }
         					              						        
-         					        var vo = clientService.invoke(JSON.stringify(data));
-        		        			//		        log.info("retorno compras 51");
-        		        			//		        log.dir(vo.getResult());
-        		        			//		        log.dir(JSON.parse(vo.getResult()));
-        		        					        
-        		        					        var obj = JSON.parse(vo.getResult());
-        		        					         					        
-        		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
-        		         					        	dataset.addRow(new Array("RETORNO VAZIO"));
-        		        					        }        					                					       
-        		        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-        		        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
-        		        					        }
-        		        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
-        		        					        	dataset.addRow(new Array(obj.MSG));
-        		        					        }
-        		        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
-        		        					            dataset.addRow(new Array("SUCESSO"));					           
-        		        					            
-        		        					        }
+        					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
+        					        var obj = JSON.parse(vo.getResult());
+        					         					        
+        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
+         					        	dataset.addRow(new Array("RETORNO VAZIO"));
+        					        }        					                					       
+        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
+        					        }
+        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
+        					        	dataset.addRow(new Array(obj.MSG));
+        					        }
+        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
+        					            dataset.addRow(new Array("SUCESSO"));					           
+        					            
+        					        }
+        					        
         					    } 
         						catch(err) {
         					        //throw err;

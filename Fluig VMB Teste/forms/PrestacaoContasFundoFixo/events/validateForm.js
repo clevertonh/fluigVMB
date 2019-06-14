@@ -37,6 +37,9 @@ function validateForm(form){
     validaPercentualRateio();
     validaAtividades();
     
+  //valida campos do produto
+	validaProdutos();
+    
     
 	if (activity == ABERTURA) {
 		
@@ -59,9 +62,7 @@ function validateForm(form){
 		else if (form.getValue("tipoffx")==""){
 			throw "O tipo de fundo fixo não foi selecionado.";
 		}
-		else if (form.getValue("historico")==""){
-			throw "O campo histórico é obrigatório e não foi preenchido.";
-		}
+	
 	
 		
 	}
@@ -110,11 +111,8 @@ function validateForm(form){
 		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
 		 
-		 log.info("usuario afastado: " + emailLogado);
-		 log.dir(dataset);
 		 
 		 if (dataset.values.length >0 ) {
-			 log.info("Usuario afastado");
 			 return true;
 	        	
 	        }  
@@ -298,6 +296,30 @@ function validateForm(form){
          	        	return null;
          	        }	    
             }
+             
+             
+             //VALIDA SE FOI INFORMADO PELO MENOS 1 SERVIÇO E SE TODOS OS CAMPOS FORAM PREENCHIDOS
+             function validaProdutos(){
+            	   var indexes = form.getChildrenIndexes("tableCompras");            
+            	   
+                   for (var i = 0; i < indexes.length; i++) {
+                       var produto = form.getValue("txtproduto___" + indexes[i]);
+                       var valor = form.getValue("vrTotUnit___" + indexes[i]);                    
+                       var historico = form.getValue("historico___" + indexes[i]);       
+                
+                       if (produto == "" || produto === null){
+                       	throw "O produto não foi informado!";
+                       }
+                       else if (valor == "" || valor === null || valor == 0){
+                       	throw "O valor não foi informado ou deve ser maior que zero!";
+                       }
+                       else if (historico == "" || historico === null ){
+                          	throw "O historico não foi informado";
+                          }
+                       
+                       
+                   }        
+             }
          	
              
 }

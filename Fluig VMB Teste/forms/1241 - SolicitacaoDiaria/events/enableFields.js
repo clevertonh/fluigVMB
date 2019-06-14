@@ -27,8 +27,7 @@ function enableFields(form){
 			 	 
 		 }
 		 
-		 
-		 form.setEnabled('vl_diarias', false);
+		 form.setEnabled("aprovacao", false);			
 		 //form.setEnabled('dtRetorno', false);
 		 //form.setEnabled('dtSaida', false);
 		 

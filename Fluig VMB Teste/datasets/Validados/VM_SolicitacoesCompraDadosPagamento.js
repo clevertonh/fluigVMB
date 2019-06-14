@@ -42,8 +42,8 @@ function createDataset(fields, constraints, sortFields) {
             	
            	
             	
-            	//log.info("-----RETORNO CONTRAINT 20:45------");
-            	//log.dir(constraints);
+            	log.info("-----RETORNO CONTRAINT 20:45------");
+            	log.dir(constraints);
             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
             		//log.info("-----RETORNO CONTRAINT 21:08------");
             		
@@ -74,7 +74,6 @@ function createDataset(fields, constraints, sortFields) {
                                 solicitacao
                         ));
                     }
-                //retorna dataset 
                  return dataset;
             	}
           

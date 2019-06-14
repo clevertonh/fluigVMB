@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Evento</processId>
-      <version>7</version>
+      <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1172</formId>
@@ -252,8 +252,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>690</positionX>
-      <positionY>272</positionY>
+      <positionX>540</positionX>
+      <positionY>360</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -299,8 +299,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>680</positionX>
-      <positionY>340</positionY>
+      <positionX>660</positionX>
+      <positionY>260</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -324,7 +324,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
         <expressionOrder>1</expressionOrder>
-        <version>7</version>
+        <version>5</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -336,7 +336,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
         <expressionOrder>2</expressionOrder>
-        <version>7</version>
+        <version>5</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -460,7 +460,7 @@
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
        //VARIAVEIS DEFAULT&#xd;
        var ABERTURA = 0;&#xd;
-       var APROVACAO =5;&#xd;
+       var APROVACAO = 5;&#xd;
        &#xd;
        //GATEWAY&#xd;
        var GATEWAYAPROVADO = 14;&#xd;
@@ -479,17 +479,24 @@
        var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
        &#xd;
        &#xd;
-       if (ativAtual == APROVACAO &amp;&amp; nextAtv == GATEWAYAPROVADO){&#xd;
-              if (aprovado == &quot;sim&quot;){&#xd;
+       if (ativAtual == APROVACAO ){&#xd;
+    	   log.info(&quot;retorno integração eventos&quot;);&#xd;
+    	   log.info(aprovado);&#xd;
+    	   &#xd;
+              if (aprovado == &quot;aprovado&quot;){&#xd;
                      var constraint = new Array();                                 &#xd;
                      //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));&#xd;
                      constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
                      &#xd;
-                      var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_EVENTO&quot;, null, constraint, null);&#xd;
-                        &#xd;
-                         if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                            throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+                      var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_EVENTO&quot;, null, constraint, null);                                                                    &#xd;
+                       &#xd;
+                      log.info(&quot;retorno solitação de eventos&quot;);&#xd;
+                      log.dir(resultDataset);&#xd;
+                      &#xd;
+                      if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
                          }&#xd;
+                         &#xd;
               }&#xd;
               &#xd;
        }&#xd;
@@ -581,7 +588,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
-        <version>7</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -592,7 +599,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
-        <version>7</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -603,12 +610,12 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeEvento</processId>
-        <version>7</version>
+        <version>5</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>167</positionX>
-      <positionY>48</positionY>
+      <positionX>261</positionX>
+      <positionY>99</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

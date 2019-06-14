@@ -7,7 +7,7 @@
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
       <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-      <link type="text/css" rel="stylesheet" href="SolicitacaoDiarias.css"/>
+      <link type="text/css" rel="stylesheet" href="SolicitacaoDiaria.css"/>
    </head>
    <body>
       <div class="container">
@@ -64,6 +64,39 @@
                                           </div>
                                        </div>
                                     </div>
+                                    
+                                                      <div class="row" id="divEventos">
+                                                      <div class="form-group col-md-8" id="selecaodeevento">
+                                                         <label>Solicitação de Evento</label> <input
+                                                            name="dataset_solicitacaoevento" class="form-control"
+                                                            type="zoom" id="dataset_solicitacaoevento"
+                                                            data-zoom="{
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesEventos',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um evento',
+                                                            'fields':[
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+                                                            ]
+                                                            }">
+                                                      </div>                                                                                                          
+                                                   
+                                                   <div class="form-group col-md-4">
+                                                         			<label>Carregar informações financeiras do evento</label><br> <label
+			                                                            for="carregaFinan">Sim</label> <input
+			                                                            type="radio" id="carregaFinan" name="FinanEvento"
+			                                                            value="sim" onclick="clickFinanceiroEvento()">
+			                                                         <label for="NcarregaFinan">Não</label> <input
+			                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+			                                                            value="nao" onclick="clickFinanceiroEvento()">
+                                                      			</div>
+                                                   
+                                                   
+                                                   </div> 
+                                    
                                     <div class="row" >                                        	                                    	                                    	
                                        <div class="form-group col-md-2" id="div_diarias">
                                           <label for="vl_diarias">Valor total das diárias</label>
@@ -310,6 +343,6 @@
             </form>
          </div>
       </div>
-      <script src="SolicitacaoDiarias.js"></script>
+      <script src="SolicitacaoDiaria.js"></script>
    </body>
 </html>

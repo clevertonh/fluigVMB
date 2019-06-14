@@ -36,6 +36,15 @@ function enableFields(form){
 
 			 
 	}
+	else if (activity == APROVACAO){
+		 //set numero da solicitação
+		 form.setValue("solicitacao",getValue('WKNumProces'));
+		 form.setEnabled("rateioconfigurado", false);		 
+		 form.setEnabled("dataset_solicitacaoevento", false);
+		 form.setEnabled("FinanEvento", false);
+		 bloqueiaDadosFinanceiro();
+		 bloqueiaDadosProduto();
+	}
 	else if (activity == AVALIAR_ERRO){		
 		 form.setEnabled("aprovacao", false);	
 		 form.setEnabled("rateioconfigurado", false);

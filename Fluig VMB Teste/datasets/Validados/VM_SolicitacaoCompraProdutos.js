@@ -15,14 +15,13 @@ function createDataset(fields, constraints, sortFields) {
     
     //dataset interno
     var constraintsActive = new Array();
-    constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
+    constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));    
     var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, constraintsActive, null);
     
     if(constraints!==null && constraints.length){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");
-            	//var solicitacao = datasetPrincipal.getValue(a, "solicitacao");
                 var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
             	var empresa = datasetPrincipal.getValue(a, "companyid");            	
             	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
@@ -72,52 +71,9 @@ function createDataset(fields, constraints, sortFields) {
             	
             }
         }
-    } else { // se não tiver constraint adiciona todas as linhas
-    	for(var a=0;a< datasetPrincipal.rowsCount;a++){
-    		
-        	var documentId = datasetPrincipal.getValue(a, "metadata#id");
-            var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
-        	var empresa = datasetPrincipal.getValue(a, "companyid");            	
-        	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
-        	
-        	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
-         	
-        	 var solicitacao;
-                
-        	 if (historicoFormulario.rowsCount > 0){
-            	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-             }
-        	
-       		
-        	//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-            var c1 = DatasetFactory.createConstraint("tablename", "tableCompras" , "tableCompras", ConstraintType.MUST);
-            var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-            var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-            var constraintsFilhos = new Array(c1, c2, c3);
-
-            //Busca o dataset
-            var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, constraintsFilhos, null);
-            for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-           	 	
-             	//Adiciona os valores nas colunas respectivamente.
-                dataset.addRow(new Array(
-                        documentId,
-                        datasetFilhos.getValue(j, "txtproduto"),
-                        datasetFilhos.getValue(j, "id_um"),
-                        datasetFilhos.getValue(j, "id_quantidade"),
-                        datasetFilhos.getValue(j, "vrEmpUnit"),
-                        datasetFilhos.getValue(j, "dtNecessidade"),
-                        datasetFilhos.getValue(j, "codigoProduto"),
-                        solicitacao
-                ));
-            }
-        	
-    		//itensPagamento(documentId,documentVersion);    
-    		//dataset.addRow(new Array(documentId));
-        }
-    }
-
- 
+    } 
+    
+    
     
     return dataset;
 }

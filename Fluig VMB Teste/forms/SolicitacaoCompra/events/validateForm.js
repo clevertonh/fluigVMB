@@ -47,8 +47,20 @@ function validateForm(form){
 		
 		
 		if (activity == APROVACAO){
-			//valida se aprovador é diferente do solicitante
 			
+	 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+            if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
+                throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+            }
+
+            if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
+                throw "Você precisa informar o motivo para reprovação da solicitação.";
+            }
+            
+			//valida se aprovador é diferente do solicitante
+			if (form.getValue("matriculasolicitante") == userId  && form.getValue("aprovacao")  == "aprovado" ){
+	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+	            }    
 		}
 		
 	}

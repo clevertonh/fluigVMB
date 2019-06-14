@@ -12,10 +12,14 @@ function createDataset(fields, constraints, sortFields) {
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
+    		  		
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, new Array(c0,c1), null);
         	
+        		log.info("CONSTRAINT SOLICITACAO");
+           	    log.dir(solicitacao);
+        		
         		documentId = solicitacao.getValue(0,"documentid");
                         	
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
@@ -24,6 +28,8 @@ function createDataset(fields, constraints, sortFields) {
         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		
         		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompraDadosPagamento", null, new Array(c2), null);    				  
 
+        	 
+        		
       					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -76,12 +82,10 @@ function createDataset(fields, constraints, sortFields) {
         					             mediaType: 'application/json'
         					          }
         					        }
-        					              						        
-         					        var vo = clientService.invoke(JSON.stringify(data));
-        		        			//		        log.info("retorno compras 51");
-        		        			//		        log.dir(vo.getResult());
-        		        			//		        log.dir(JSON.parse(vo.getResult()));
-        		        					        
+        					              	
+        					        
+        					       
+         					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
         		        					        var obj = JSON.parse(vo.getResult());
         		        					         					        
         		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){

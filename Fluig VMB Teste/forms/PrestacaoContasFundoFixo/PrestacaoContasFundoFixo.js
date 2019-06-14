@@ -313,12 +313,11 @@ function removedZoomItem(removedItem) {
     	
     	$("#carregaFinan").prop("disabled", false);
 		$("#NcarregaFinan").prop("disabled", false);
+		window['rateioconfigurado'].clear();
+        window['rateioconfigurado'].disable(false);
 		
-		 window['rateioconfigurado'].clear();
-		
-    	//remove linhas de pagamento
+		//remove linhas de pagamento
         removeItens();
-
 
     }
 }
@@ -352,7 +351,10 @@ function clickFinanceiroEvento(){
 		buscaDadosFinanceiroEvento(evento);	
 	}
 	else {
+		window['rateioconfigurado'].clear();
+		window['rateioconfigurado'].disable(false);
 		removeItens();
+	
 	}
 	
 	
@@ -420,7 +422,17 @@ function adicionaItem(itens) {
         $("#percentual___" + indice).val(itens[i].percentual);
         $("#rateio___" + indice).val(itens[i].rateio);
 
-
+        
+   	 //bloqueia campos
+       window["rateioconfigurado"].disable(true); 
+       window["txtcentrocusto___" + indice].disable(true);       
+       window["txtprojeto___" + indice].disable(true);
+       window["txtatividade___" + indice].disable(true); 
+       window["txtcategoria___" + indice].disable(true); 
+       window["txtfontefinanciamento___" + indice].disable(true); 
+       window["txtareaestrategica___" + indice].disable(true); 
+       $("#percentual___"+ indice).prop("disabled", true);
+ 
     }
 }
 

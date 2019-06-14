@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compra</processId>
-      <version>25</version>
+      <version>29</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1633</formId>
@@ -326,7 +326,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <expressionOrder>1</expressionOrder>
-        <version>25</version>
+        <version>29</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -338,7 +338,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <expressionOrder>2</expressionOrder>
-        <version>25</version>
+        <version>29</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -350,7 +350,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
         <expressionOrder>3</expressionOrder>
-        <version>25</version>
+        <version>29</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -520,18 +520,18 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
        &#xd;
      &#xd;
        &#xd;
-       if (ativAtual == APROVACAO &amp;&amp; nextAtv == GATEWAYAPROVADO){&#xd;
-              if (aprovado == &quot;sim&quot;){&#xd;
+       if (ativAtual == APROVACAO &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
+         &#xd;
                      var constraint = new Array();                                 &#xd;
-                     //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));&#xd;
                      constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
                      &#xd;
-                      var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);&#xd;
+                      var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRAS&quot;, null, constraint, null);&#xd;
                         &#xd;
+                      &#xd;
                          if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
                             throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
                          }&#xd;
-              }&#xd;
+          &#xd;
               &#xd;
        }&#xd;
                  &#xd;
@@ -622,7 +622,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
-        <version>25</version>
+        <version>29</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -633,7 +633,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaodeCompra</processId>
-        <version>25</version>
+        <version>29</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>

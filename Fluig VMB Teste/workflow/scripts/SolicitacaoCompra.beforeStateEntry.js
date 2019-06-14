@@ -21,18 +21,18 @@ function beforeStateEntry(sequenceId){
        
      
        
-       if (ativAtual == APROVACAO && nextAtv == GATEWAYAPROVADO){
-              if (aprovado == "sim"){
+       if (ativAtual == APROVACAO && aprovado == "aprovado"){
+         
                      var constraint = new Array();                                 
-                     //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
                      constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
                      
-                      var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);
+                      var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRAS", null, constraint, null);
                         
+                      
                          if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
                             throw resultDateset.getValue(0,"RETORNO");
                          }
-              }
+          
               
        }
                  

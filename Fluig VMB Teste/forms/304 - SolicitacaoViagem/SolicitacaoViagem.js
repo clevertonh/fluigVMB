@@ -1086,7 +1086,9 @@ function clickFinanceiroEvento(){
 	if (document.getElementById("carregaFinan").checked == true){
 		buscaDadosFinanceiroEvento(evento);	
 	}
-	else {
+	else {		
+		window['rateioconfigurado'].clear();
+		window['rateioconfigurado'].disable(false);
 		removeItens();
 	}
 	
@@ -1136,15 +1138,14 @@ function buscaDadosFinanceiroEvento(evento){
 
 }
 
-function adicionaItem(itens) {
-	console.log(itens);
+function adicionaItem(itens) {	
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
         window["txtcentrocusto___" + indice].setValue(itens[i].txtcentrocusto);
-
+                
         if (itens[i].txtprojeto == null || itens[i].txtprojeto == "") {
-            window["txtprojeto___" + indice].disable(true);
+            window["txtprojeto___" + indice].disable(true);            
         } else {
             window["txtprojeto___" + indice].setValue(itens[i].txtprojeto);
         }
@@ -1175,6 +1176,21 @@ function adicionaItem(itens) {
         $("#percentual___" + indice).val(itens[i].percentual);
         $("#rateio___" + indice).val(itens[i].rateio);
 
+       
+        	 //bloqueia campos
+            window["rateioconfigurado"].disable(true); 
+            window["txtcentrocusto___" + indice].disable(true);       
+            window["txtprojeto___" + indice].disable(true);
+            window["txtatividade___" + indice].disable(true); 
+            window["txtcategoria___" + indice].disable(true); 
+            window["txtfontefinanciamento___" + indice].disable(true); 
+            window["txtareaestrategica___" + indice].disable(true); 
+            $("#percentual___"+ indice).prop("disabled", true);
+      
+       
+        
+        
+        
 
     }
 }
@@ -1248,13 +1264,9 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-  //  	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-//        var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-//        var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
-//        var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
         
         $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
@@ -1263,12 +1275,6 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-  //  	console.log("---REMOVEU AQUI 3----");
- //       var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-  //      var aloc = document.getElementById(ALOCACAO + "___" + linhaPagamento[1]).value = "";
- //       var rat =  document.getElementById(ITEMRATEIO + "___" + linhaPagamento[1]).value = "";
-
-
         $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#' + ITEMRATEIO + "___" + linhaPagamento[1]).val("");
@@ -1277,8 +1283,6 @@ function removedZoomItem(removedItem) {
 
     //REMOVE INFORMAÇÕES DE REMARCAÇÃO
     else if (campoZOOM == REMARCACAO) {
-   // 	console.log("---REMOVEU AQUI 4----");
-  //      console.log("-----REMOVE INFORMAÇÕES DE REMARCAÇÃO AUTOMATICAMENTE--------");
         document.getElementById("nacional").checked = false;
         $("#internacional").attr('checked', false);
         $("#solicitanteNpassageiro").attr('checked', false);
@@ -1316,7 +1320,6 @@ function removedZoomItem(removedItem) {
 
 
     else if (campoZOOM == FUNCIONARIO) {
-  //  	console.log("---REMOVEU AQUI 7----");
         $('#nomepassageiro').val('');
         $('#nomemae').val('');
         $('#cpfpassageiro').val('');
@@ -1342,13 +1345,17 @@ function removedZoomItem(removedItem) {
     	
     	$("#carregaFinan").prop("disabled", false);
 		$("#NcarregaFinan").prop("disabled", false);
-		 window['rateioconfigurado'].clear();
-    	//remove linhas de pagamento
+		window['rateioconfigurado'].clear();
+        window['rateioconfigurado'].disable(false);
+		
+		//remove linhas de pagamento
         removeItens();
 
     }
 
 }
+
+
 
 function setZoomData(instance, value) {
     window[instance].setValue(value);

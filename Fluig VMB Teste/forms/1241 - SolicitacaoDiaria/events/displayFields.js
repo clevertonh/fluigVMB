@@ -9,8 +9,9 @@ function displayFields(form,customHTML){
     customHTML.append("</script>");
 	
     
-    form.setVisibleById("matriculasolicitante", false); 
-   // form.setVisibleById("vl_diarias", false); 
+    form.setVisibleById("matriculasolicitante", false);
+	 form.setVisibleById("matricula", false);
+	 form.setVisibleById("prazoaprovacao", false); 
     
     
     
