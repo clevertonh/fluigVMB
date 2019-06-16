@@ -43,17 +43,23 @@ var dtPagamento = FLUIGC.calendar('#dtPgto', {
 
 function removedZoomItem(removedItem) {
     var CCUSTO = "centrocusto";
-    var PROJETO = "projeto"
-
+    var PROJETO = "projeto";
+    var FONTE = "fontefinanciamento";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
     if (campoZOOM == CCUSTO) {
         window[PROJETO].clear();
-        reloadZoomFilterValues(PROJETO, "centro_custo," + null);
+        window[FONTE].clear();
+        //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null);
         window[PROJETO].disable(true);
+        window[FONTE].disable(true);
        
    } 
+    else if (campoZOOM == PROJETO){
+    	 window[FONTE].clear();
+    	 window[FONTE].disable(true);
+    }
 
 }
 
@@ -64,26 +70,38 @@ function setZoomData(instance, value) {
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
   var CCUSTO = "centrocusto";
-  var PROJETO = "projeto"
+  var PROJETO = "projeto";
+  var FONTE = "fontefinanciamento";
   
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
 
+  console.log("campo zoom "+campoZOOM); 
   //compara para verificar se o zoom é o campo centro de custo
   if (campoZOOM == CCUSTO) {
+	  console.log("campo zoom "+CCUSTO);
       //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
       window[PROJETO].clear();
+      window[FONTE].clear();
+      window[FONTE].disable(true);
       
-	  	if (selectedItem["Codigo"] == '99990'){
-	  	    window[PROJETO].disable(false);
-	  	    reloadZoomFilterValues(PROJETO, "centro_custo," + selectedItem["Codigo"] );
+	  	if (selectedItem["CODIGO"] == '99990'){
+	  	    window[PROJETO].disable(false);	  
+	  	    window[FONTE].disable(true);
+	  	    //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + selectedItem["CODIGO"] );
 	  	}
 	  	else {
-	  	  window[PROJETO].disable(true);
-	    	reloadZoomFilterValues(PROJETO, "centro_custo," + null )
+	  		window[PROJETO].disable(true);
+	  		window[FONTE].disable(true);
+	    	//reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null )
 	  	}
 
   } 
+  else if (campoZOOM == PROJETO){
+	  window[FONTE].clear();
+	  window[FONTE].disable(false);
+	  reloadZoomFilterValues(FONTE, "PROJETO," + selectedItem["CODIGO"]);
+  }
 
 }
 

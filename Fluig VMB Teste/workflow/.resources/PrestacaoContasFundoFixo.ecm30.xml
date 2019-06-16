@@ -564,6 +564,53 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
     </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>36</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>801</positionX>
+      <positionY>281</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
   </list>
   <list>
     <ConditionProcessState>
@@ -588,18 +635,6 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
       <destinationSequenceId>13</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <expressionOrder>3</expressionOrder>
-        <version>15</version>
-        <sequence>9</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;corrigir&quot;</condition>
-      <destinationSequenceId>25</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -762,23 +797,6 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <version>1</version>
-        <linkSequence>29</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>9</initialStateSequence>
-      <finalStateSequence>25</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <version>1</version>
         <linkSequence>31</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -813,7 +831,24 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <version>1</version>
-        <linkSequence>34</linkSequence>
+        <linkSequence>35</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>18</initialStateSequence>
+      <finalStateSequence>36</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <linkSequence>37</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
