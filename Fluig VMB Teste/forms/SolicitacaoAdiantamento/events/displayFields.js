@@ -1,4 +1,6 @@
 function displayFields(form,customHTML){
+	
+	
 	var ABERTURA = 0;
 	var APROVACAO_GESTOR = 5;
 
@@ -13,4 +15,6 @@ function displayFields(form,customHTML){
 		//form.setVisibleById("vl_aprovado", false);
 		
 	}
+	
+	
 }

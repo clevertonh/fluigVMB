@@ -10,7 +10,8 @@
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Fundo Fixo</categoryId>
-    <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationId>Grupo</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -404,13 +405,13 @@
 //		constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));&#xd;
 //		constraint.push(DatasetFactory.createConstraint(&quot;tipoffx&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));	&#xd;
 		&#xd;
-		var resultDateset = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_FUNDO_FIXO&quot;, null, constraint, null);&#xd;
+		var resultDataset = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_FUNDO_FIXO&quot;, null, constraint, null);&#xd;
 		&#xd;
 //		log.info(&quot;DATASET VM_REPOSICAO_FUNDO_FIXO&quot;);&#xd;
-//		log.dir(resultDateset);&#xd;
+//		log.dir(resultDataset);&#xd;
 		&#xd;
-		  if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		  if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		    } &#xd;
 		&#xd;
 	  &#xd;

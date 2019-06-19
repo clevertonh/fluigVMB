@@ -2,7 +2,7 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>SolicitacaodeAdiantamento</processId>
+      <processId>SolicitacaoAdiantamento</processId>
     </processDefinitionPK>
     <processDescription>Solicitação de Adiantamento</processDescription>
     <instruction></instruction>
@@ -17,7 +17,7 @@
     <periodId>Default</periodId>
     <uniqueCardVersion>false</uniqueCardVersion>
     <keyWord></keyWord>
-    <complementsLevel>1</complementsLevel>
+    <complementsLevel>2</complementsLevel>
     <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
     <notifyManagerComplements>false</notifyManagerComplements>
     <deadlineTime>0</deadlineTime>
@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Adiantamento</processId>
-      <version>7</version>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1306</formId>
@@ -49,7 +49,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -76,7 +76,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>150</positionX>
-      <positionY>101</positionY>
+      <positionY>82</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -99,7 +99,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
@@ -110,7 +110,6 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -125,8 +124,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>120</positionX>
-      <positionY>260</positionY>
+      <positionX>260</positionX>
+      <positionY>194</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -150,20 +149,20 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
-        <sequence>10</sequence>
+        <sequence>9</sequence>
       </processStatePK>
-      <stateName>Verificar aprovação</stateName>
-      <stateDescription>Verificar aprovação</stateDescription>
+      <stateName>Verificar aprovação?</stateName>
+      <stateDescription>Verificar aprovação?</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>320</positionX>
-      <positionY>240</positionY>
+      <positionX>420</positionX>
+      <positionY>171</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -175,56 +174,9 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
-        <sequence>48</sequence>
-      </processStatePK>
-      <stateName>Reprovado</stateName>
-      <stateDescription>Reprovado</stateDescription>
-      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>false</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>460</positionX>
-      <positionY>230</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>68</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>1</version>
-        <sequence>51</sequence>
+        <sequence>11</sequence>
       </processStatePK>
       <stateName>Aprovado</stateName>
       <stateDescription>Aprovado</stateDescription>
@@ -248,8 +200,55 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>460</positionX>
-      <positionY>330</positionY>
+      <positionX>536</positionX>
+      <positionY>174</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoAdiantamento</processId>
+        <version>1</version>
+        <sequence>13</sequence>
+      </processStatePK>
+      <stateName>Reprovado</stateName>
+      <stateDescription>Reprovado</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>540</positionX>
+      <positionY>250</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -271,25 +270,25 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <expressionOrder>1</expressionOrder>
-        <version>7</version>
-        <sequence>10</sequence>
+        <version>1</version>
+        <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
-      <destinationSequenceId>51</destinationSequenceId>
+      <destinationSequenceId>11</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <expressionOrder>2</expressionOrder>
-        <version>7</version>
-        <sequence>10</sequence>
+        <version>1</version>
+        <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
-      <destinationSequenceId>48</destinationSequenceId>
+      <destinationSequenceId>13</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -297,7 +296,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
@@ -314,14 +313,14 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
-        <linkSequence>11</linkSequence>
+        <linkSequence>10</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>5</initialStateSequence>
-      <finalStateSequence>10</finalStateSequence>
+      <finalStateSequence>9</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -331,14 +330,14 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
-        <linkSequence>15</linkSequence>
+        <linkSequence>12</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>10</initialStateSequence>
-      <finalStateSequence>48</finalStateSequence>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -348,14 +347,14 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
-        <linkSequence>52</linkSequence>
+        <linkSequence>14</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>10</initialStateSequence>
-      <finalStateSequence>51</finalStateSequence>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -369,48 +368,48 @@
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>381</height>
-      <width>811</width>
+      <height>290</height>
+      <width>831</width>
       <positionX>10</positionX>
-      <positionY>20</positionY>
-      <stateName>Solicitação de adiantamento</stateName>
+      <positionY>10</positionY>
+      <stateName>Solicitação de Adiantamento</stateName>
       <type>1</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>190</height>
-      <width>781</width>
+      <height>145</height>
+      <width>801</width>
       <positionX>40</positionX>
-      <positionY>20</positionY>
+      <positionY>10</positionY>
       <stateName>Solicitante</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>191</height>
-      <width>781</width>
+      <height>145</height>
+      <width>801</width>
       <positionX>40</positionX>
-      <positionY>210</positionY>
-      <stateName>Gerente</stateName>
+      <positionY>155</positionY>
+      <stateName>Aprovador</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -419,22 +418,22 @@
   <list>
     <ProcessComponGraf>
       <componType>1</componType>
-      <positionX>230</positionX>
-      <positionY>50</positionY>
+      <positionX>210</positionX>
+      <positionY>20</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <componGrafSequence>7</componGrafSequence>
       </processComponGrafPK>
-      <stateName>Informar valor necessário</stateName>
+      <stateName>Preencher formulário</stateName>
     </ProcessComponGraf>
   </list>
   <list>
     <ProcessLinkAssoc>
       <processLinkAssocPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
+        <processId>SolicitacaoAdiantamento</processId>
         <version>1</version>
         <linkSequence>8</linkSequence>
       </processLinkAssocPK>
@@ -446,13 +445,24 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>SolicitacaodeAdiantamento</processId>
-        <version>7</version>
+        <processId>SolicitacaoAdiantamento</processId>
+        <version>1</version>
+        <linkSequence>6</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>167</positionX>
+      <positionY>235</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoAdiantamento</processId>
+        <version>1</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>165</positionX>
-      <positionY>73</positionY>
+      <positionX>167</positionX>
+      <positionY>48</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
@@ -460,58 +470,7 @@
   <list/>
   <list/>
   <list/>
-  <list>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaodeAdiantamento</processId>
-      <processVersion>7</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>title</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaodeAdiantamento</processId>
-      <processVersion>7</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>description</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaodeAdiantamento</processId>
-      <processVersion>7</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>highlight</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaodeAdiantamento</processId>
-      <processVersion>7</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>approve</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaodeAdiantamento</processId>
-      <processVersion>7</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>reject</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-  </list>
+  <list/>
   <list/>
   <list/>
 </list>

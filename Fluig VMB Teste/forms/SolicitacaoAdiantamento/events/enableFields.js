@@ -1,4 +1,5 @@
 function enableFields(form){ 
+	
 	var ABERTURA = 0;
 	var APROVACAO_GESTOR = 5;
 
@@ -33,23 +34,24 @@ function enableFields(form){
 	}
 	
 
+	function UsuarioLogado(solicitante){
+		 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+		 
+		 return dataset;
+	}
+
+	function usuarioAprovador(){	
+		 var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
+		 
+		 return dataset;
+	}
 	
 }
 
 
-function UsuarioLogado(solicitante){
-	 var constraints   = new Array();
-	 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
-	 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
-	 
-	 return dataset;
-}
 
-function usuarioAprovador(){	
-	 var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
-	 
-	 return dataset;
-}
 
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
