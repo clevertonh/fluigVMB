@@ -154,7 +154,8 @@ function preencheArrayProdutos(produtos){
 	   for (var i=0; i < produtos.rowsCount ; i++){
 			var obj = {
 					CODIGO : '' + produtos.getValue(i, "COD_PRODUTO") +''	,
-					VALOR_P : '' + produtos.getValue(i, "VALOR") +''	
+					VALOR_P : '' + produtos.getValue(i, "VALOR") +'',
+					HISTORICO : '' + produtos.getValue(i, "HISTORICO") +''
 			};		
 						
 			listaProdutos[i] = obj;	

@@ -5,6 +5,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("metadata#id");
     dataset.addColumn("DESC_PRODUTO");    
     dataset.addColumn("VALOR");
+    dataset.addColumn("HISTORICO");
     dataset.addColumn("COD_PRODUTO");
     dataset.addColumn("SOLICITACAO");
    
@@ -53,6 +54,7 @@ function createDataset(fields, constraints, sortFields) {
                                 documentId,
                                 datasetFilhos.getValue(j, "txtproduto"),
                                 datasetFilhos.getValue(j, "vrTotUnit"),
+                                datasetFilhos.getValue(j, "historico"),
                                 datasetFilhos.getValue(j, "codigoProduto"),
                                 solicitacao
                         ));
