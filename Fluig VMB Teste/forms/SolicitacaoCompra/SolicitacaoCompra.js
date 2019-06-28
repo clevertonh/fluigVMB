@@ -547,54 +547,6 @@ function addAnos(data, anos) {
 }
 
 
-function carregaAprovador() {		
-	var email = parent.WCMAPI.userEmail.toUpperCase();
-		
-	var constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("EMAIL_USUARIO", email, email, ConstraintType.MUST));
-	
-	    var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, constraints, null);
-	    if (dataset != null && dataset.values.length > 0) {
-
-	    	//SET CAMPOS DO APROVADOR
-	        $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
-	        $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
-	        $('#aprovador').val(dataset.values[0]["DIRETOR"]);
-	        //$('solicitanteFuncionario').val(dataset.values[0]["FUNCIONARIO_VMB"]);
-
-
-	    }
-	 
-	
-}
-
-function dadosFuncionarioDataSet() {
-    var email = parent.WCMAPI.userEmail.toUpperCase();
-
-    var constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("EMAIL_F", email, email, ConstraintType.MUST));
-    var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
-
-    if (dataset != null && dataset.values.length > 0) {
-
-        $('#nomepassageiro').val(dataset.values[0]["NOME"]);
-        $('#nomemae').val(dataset.values[0]["MAE"]);
-        $('#rgpassageiro').val(dataset.values[0]["RG"]);
-        $('#cpfpassageiro').val(dataset.values[0]["CPF"]);
-        $('#passaporte').val(dataset.values[0]["PASSAPORTE"]);
-        dataNasc.setDate(dataset.values[0]["DTNASC"]);
-        
-        if (dataset.values[0]["EXTRANGEIRO"] == 'SIM'){        
-        	document.getElementById("passageiroestrangeiro").click();
-        }
-        else{
-        	document.getElementById("passageiroestrangeironao").click();
-        } 
-
-    }
-
-}
-
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
 

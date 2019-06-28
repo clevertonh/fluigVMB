@@ -5,7 +5,7 @@ function enableFields(form){
 	var AVALIAR_ERRO = 22;
 	
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
+	log.info("----ATIVIDADE enableFields: " + activity);
 	
 	var solicitante = getValue("WKUser");  
 	
