@@ -15,6 +15,7 @@ function getConstraints(constraints, field){
 		return null;
 	
 	for(var i=0;i<constraints.length;i++){
+		//ajuste
 		if(constraints[i].fieldName == field){
 			return constraints[i].initialValue;
 		}
