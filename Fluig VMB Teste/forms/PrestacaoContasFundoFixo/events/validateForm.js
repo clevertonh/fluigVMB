@@ -64,6 +64,7 @@ function validateForm(form){
 		}
 	
 	
+
 		
 	}
 	
@@ -302,23 +303,30 @@ function validateForm(form){
              function validaProdutos(){
             	   var indexes = form.getChildrenIndexes("tableCompras");            
             	   
-                   for (var i = 0; i < indexes.length; i++) {
-                       var produto = form.getValue("txtproduto___" + indexes[i]);
-                       var valor = form.getValue("vrTotUnit___" + indexes[i]);                    
-                       var historico = form.getValue("historico___" + indexes[i]);       
-                
-                       if (produto == "" || produto === null){
-                       	throw "O produto não foi informado!";
-                       }
-                       else if (valor == "" || valor === null || valor == 0){
-                       	throw "O valor não foi informado ou deve ser maior que zero!";
-                       }
-                       else if (historico == "" || historico === null ){
-                          	throw "O historico não foi informado";
+            	   if (indexes.length == 0 ){
+           			 throw "É obrigatório informar pelo menos um item da nota fiscal";
+           		  }
+           		  else {
+           	 	   
+                      for (var i = 0; i < indexes.length; i++) {
+                          var produto = form.getValue("txtproduto___" + indexes[i]);
+                          var valor = form.getValue("vrTotUnit___" + indexes[i]);                    
+                          var historico = form.getValue("historico___" + indexes[i]);       
+                   
+                          if (produto == "" || produto === null){
+                          	throw "O produto não foi informado!";
                           }
-                       
-                       
-                   }        
+                          else if (valor == "" || valor === null || valor == 0){
+                          	throw "O valor não foi informado ou deve ser maior que zero!";
+                          }
+                          else if (historico == "" || historico === null ){
+                             	throw "O historico não foi informado";
+                             }
+                          
+                          
+                      }   
+           		  }
+                 
              }
          	
              

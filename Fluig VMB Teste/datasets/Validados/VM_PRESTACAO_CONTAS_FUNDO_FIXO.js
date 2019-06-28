@@ -47,25 +47,19 @@ function createDataset(fields, constraints, sortFields) {
 				 
 				 if(aRateio === null || aRateio == ""){
 					 dataset.addRow(new Array("NÃO FOI POSSÍVEL MONTAR AS INFORMAÇÕES DE PAGAMENTO"));
-					 //return dataset;
 					 
 				 }
 				 
-				 	if (solicitacao.getValue(0,"codigoProduto") == null || solicitacao.getValue(0,"codigoProduto") == ""){				 	
-				 		
+				 	if (solicitacao.getValue(0,"codigoProduto") == null || solicitacao.getValue(0,"codigoProduto") == ""){				 					 		
 				 		//RETORNA PRODUTOS NOTA
 						var s0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 						var itensNota = DatasetFactory.getDataset("VM_ProdutosPrestacaoContasFundoFixo", null, new Array(s0), null);
 			    		
 						aProdutos = preencheArrayProdutos(itensNota);
-						
-					//	log.info("array de produtos 1");
-					//	log.dir(aProdutos);
 				 						 					    		
 				 	}
 				 	else {
 				 		produto = solicitacao.getValue(0,"codigoProduto");
-				 		//produto = "DVPSG001";
 				 	}
 					
 				
@@ -99,13 +93,7 @@ function createDataset(fields, constraints, sortFields) {
 					          }
 					        }
 				         
-					        //log.info("---RETORNO PARAMETROS---");
-					        //log.dir(params);
- 					        var vo = clientService.invoke(JSON.stringify(data));
-		        					    //    log.info("retorno compras 51");
-		        					 //       log.dir(vo.getResult());
-		        					 //       log.dir(JSON.parse(vo.getResult()));
-		        					        
+ 					        var vo = clientService.invoke(JSON.stringify(data));		        					        
 		        					        var obj = JSON.parse(vo.getResult());
 		        					         					        
 		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
