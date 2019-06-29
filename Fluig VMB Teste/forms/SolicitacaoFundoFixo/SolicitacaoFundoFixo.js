@@ -101,8 +101,25 @@ function setSelectedZoomItem(selectedItem) {
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
     if (campoZOOM == RESPONSAVEL){
+    	// $("#ffxAdm").prop("disabled", true);
+ 		// $("#ffxOp").prop("disabled", true);
+    	
+ 	
     	 $("#cpfbeneficiario").val(selectedItem["CPF"]);
-    
+    	 $("#vl_base").val(selectedItem["LIMITE"]);
+    	 if (selectedItem["CODIGOTIPO"] == '2'){ 
+    		 document.getElementById("ffxOp").checked = false;
+    		 document.getElementById("ffxAdm").click();  
+     		
+     		 
+    	 }
+    	 else {
+    		 document.getElementById("ffxAdm").checked = false;	
+    		 document.getElementById("ffxOp").click();  
+    		 
+    	 }
+    	 
+    	 
     } 
     
 }
@@ -115,6 +132,11 @@ function removedZoomItem(removedItem) {
 
     if (campoZOOM == RESPONSAVEL){
    	 	$("#cpfbeneficiario").val("");
+   	 	$("#vl_base").val("");
+   	 	document.getElementById("ffxAdm").checked = false;	
+   	 	document.getElementById("ffxOp").checked = false;	 
+   	 
+		
     }
   
 }

@@ -179,7 +179,21 @@ function setSelectedZoomItem(selectedItem) {
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     } else if (campoZOOM == RESPONSAVEL){
+    	
     	 $("#cpfbeneficiario").val(selectedItem["CPF"]);
+     	 if (selectedItem["CODIGOTIPO"] == '2'){ 
+    		 document.getElementById("ffxOp").checked = false;
+    		 document.getElementById("ffxAdm").click();  
+     		
+     		 
+    	 }
+    	 else {
+    		 document.getElementById("ffxAdm").checked = false;	
+    		 document.getElementById("ffxOp").click();  
+    		 
+    	 }
+     	// $("#ffxAdm").prop("disabled", true);
+ 		// $("#ffxOp").prop("disabled", true);
     
     } 
     else if (linhaPagamento[0] == PRODUTO) {
@@ -284,7 +298,9 @@ function removedZoomItem(removedItem) {
 
     } 
     else if (campoZOOM == RESPONSAVEL){
-   	 	$("#cpfbeneficiario").val("");
+    	$("#cpfbeneficiario").val("");
+   	 	document.getElementById("ffxAdm").checked = false;	
+   	 	document.getElementById("ffxOp").checked = false;
     }    
     else if (campoZOOM == RATEIO) {
     	//remove linhas de pagamento

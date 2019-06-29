@@ -305,8 +305,8 @@ function validateForm(form){
             	   
             	   if (indexes.length == 0 ){
            			 throw "É obrigatório informar pelo menos um item da nota fiscal";
-           		  }
-           		  else {
+           		  	}
+            	   	else {
            	 	   
                       for (var i = 0; i < indexes.length; i++) {
                           var produto = form.getValue("txtproduto___" + indexes[i]);

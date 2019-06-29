@@ -8,6 +8,7 @@ function enableFields(form){
 	log.info("----ATIVIDADE enableFields: " + activity);
 	
 	var solicitante = getValue("WKUser");  
+	//form.setEnabled('tipoffx', false);
 			
 	if (activity == INICIO || activity == ABERTURA){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 		 

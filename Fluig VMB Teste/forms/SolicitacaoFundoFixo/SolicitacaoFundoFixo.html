@@ -65,44 +65,45 @@
                                        </div>
                                     </div>
                                     <div class="row">
-                                       <div class="form-group col-md-4">
+                                       <div class="form-group col-md-7">
                                           <label>Responsável pelo fundo fixo</label> 
                                           <input name="responsavel"
                                              class="form-control" type="zoom"
                                              id="responsavel"
                                              data-zoom="{'displayKey':'NOME',
-                                             'datasetId':'VM_Funcionario',
+                                             'datasetId':'VM_ResponsaveisFundoFixo',
                                              'maximumSelectionLength':'1',
                                              'placeholder':'Selecione o funcionário',
                                              'fields':[
                                              {'field':'NOME','label':'NOME','standard':'true'},
-                                             {'field':'CPF','label':'CPF'},
-                                             {'field':'DTNASC','label':'DTNASC', 'visible':'false'},
-                                             {'field':'PASSAPORTE','label':'PASSAPORTE', 'visible':'false'},
-                                             {'field':'MAE','label':'MAE', 'visible':'false'},
-                                             {'field':'EMAIL_F','label':'EMAIL_F', 'visible':'false'},
-                                             {'field':'RG','label':'RG', 'visible':'false'}					  					
+                                             {'field':'CPF','label':'CPF','visible':'false'},    
+                                             {'field':'CODIGOTIPO','label':'CODIGOTIPO','visible':'false'},                                         
+                                             {'field':'TIPO','label':'TIPO'},
+                                             {'field':'LIMITE','label':'VLR_LIMITE'},                                           
+                                             {'field':'QUANTIDADE','label':'QTDE_LIMITE'}					  					
                                              ]
                                              }">
                                        </div>
-                                       <div class="form-group col-md-4">
+                                       <div class="form-group col-md-3">
                                           <label>CPF Responsável</label>
                                           <input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
                                        </div>                                                                     
-                                           <div class="form-group col-md-3">
-                                          <label>Tipo de Fundo Fixo</label><br> <label
-                                             for="ffxAdm">Administrativo</label> <input
-                                             type="radio" id="ffxAdm" name="tipoffx"
-                                             value="administrativo" >
-                                          <label for="ffxOp">Operacional</label> <input
-                                             type="radio" id="ffxOp" name="tipoffx"
-                                             value="operacional" >
-                                       </div>  
+                                             
                                     </div>
                                   	<div class="row">
+                                  	<div class="form-group col-md-3">
+                                          <label>Tipo de Fundo Fixo</label><br> <label
+                                             for="ffxAdm">Administrativo</label> <input
+                                             type="radio" id="ffxAdm" name="tipoffx" 
+                                             value="administrativo" >
+                                          <label for="ffxOp">Operacional</label> <input
+                                             type="radio" id="ffxOp" name="tipoffx" 
+                                             value="operacional" >
+                                       </div>
+                                       
                                   		<div class="form-group col-md-2">
                                           <label for="vl_base">Valor Base</label>
-                                          <input type="number" class="form-control" name="vl_base" id ="vl_base">
+                                          <input type="number" class="form-control" name="vl_base" id ="vl_base" readonly>
                                        </div>
                                        
                                        <div class="form-group col-md-3">
