@@ -15,7 +15,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("PERCENTUAL");
     dataset.addColumn("SOLICITACAO");
     
-    //dataset interno
+    //dataset interno de consulta
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
     var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculo", null, constraintsActive, null);
