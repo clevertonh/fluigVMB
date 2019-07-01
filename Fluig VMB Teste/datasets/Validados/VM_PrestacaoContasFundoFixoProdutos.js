@@ -1,4 +1,13 @@
+function defineStructure() {
+
+}
+function onSync(lastSyncDate) {
+
+}
 function createDataset(fields, constraints, sortFields) {
+}function onMobileSync(user) {
+
+}function createDataset(fields, constraints, sortFields) {
      
     //Cria as colunas
     var dataset = DatasetBuilder.newDataset();
@@ -69,7 +78,6 @@ function createDataset(fields, constraints, sortFields) {
     
     return dataset;
 }
-
 function getConstraints(constraints, field){
 	if(constraints == null)
 		return null;

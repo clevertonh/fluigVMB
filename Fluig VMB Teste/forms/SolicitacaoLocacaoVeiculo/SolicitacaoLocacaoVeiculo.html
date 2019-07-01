@@ -89,6 +89,31 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
+                                                                    	<div class="form-group col-md-4">                                                                    		
+                                                                   			<label>Renovação</label><br> <label for="renovacaoS">Sim</label> 
+                                                                   			<input type="radio" id="renovacaoS" name="renovacao" value="sim" onclick="clickRenovacao()">
+				                                                         	<label for="renovacaoN">Não</label>
+				                                                         	<input type="radio" id="renovacaoN" name="renovacao" value="nao" onclick="clickRenovacao()" >                                                                    	                                                                    	
+                                                                    	</div>
+			                                                       <div class="form-group col-md-8">
+			                                                         <label>Solicitação de Locação anterior</label> <input
+			                                                            name="dataset_solicitacaolocacao" class="form-control"
+			                                                            type="zoom" id="dataset_solicitacaolocacao"
+			                                                            data-zoom="{
+			                                                            'displayKey':'SOLICITACAO',
+			                                                            'datasetId':'VM_SolicitacoesLocacaoVeiculo',
+			                                                            'maximumSelectionLength':'1',
+			                                                            'placeholder':'Selecione um solicitação',
+			                                                            'fields':[
+			                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+			                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+			                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+			                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+			                                                            ]
+			                                                            }">
+			                                                      </div>                                                                                                                                                                                                                		  	
+                                                                    </div>                                                                    
+                                                                    <div class="row">
                                                                     	<div class="form-group col-md-6">
                                                                     		<label>Local de retirada</label>
                                                                     		<textarea rows="5" cols="60" name="localRetirada" class="form-control"></textarea>
@@ -102,7 +127,7 @@
                                                                     	  <div class="form-group col-md-3">
                                                                         <label for="dtRetirada">Data retirada</label>
                                                                         <div class="input-group date">
-                                                                            <input type="text" class="form-control" id="dtRetirada" placeholder="Selecione uma data " name="dtRetirada">
+                                                                            <input type="text" class="form-control" id="dtRetirada" placeholder="Selecione uma data" name="dtRetirada">
                                                                             <span class="input-group-addon">
                              												<span class="fluigicon fluigicon-calendar"></span>
                                                                             </span>
@@ -111,7 +136,7 @@
                                                                     <div class="form-group col-md-3">
                                                                         <label for="dtDevolucao">Data devolução</label>
                                                                         <div class="input-group date">
-                                                                            <input type="text" class="form-control" id="dtDevolucao" placeholder="Selecione uma data " name="dtDevolucao">
+                                                                            <input type="text" class="form-control" id="dtDevolucao" placeholder="Selecione uma data" name="dtDevolucao">
                                                                             <span class="input-group-addon">
                               												<span class="fluigicon fluigicon-calendar"></span>
                                                                             </span>
@@ -175,7 +200,7 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step2">
-     <div class="row" id="divEventos">
+    												 <div class="row" id="divEventos">
                                                       <div class="form-group col-md-8" id="selecaodeevento">
                                                          <label>Solicitação de Evento</label> <input
                                                             name="dataset_solicitacaoevento" class="form-control"
@@ -403,7 +428,7 @@
                                              name="matriculaApr" readonly>
                                        </div>
                                     </div>
-                                             <div class="row">
+                                     <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
                                        <div class="form-group col-md-2">
                                           <Label for="aprovacao">Aprovado</Label> <input type="radio"
@@ -419,16 +444,10 @@
                                           <Label for="devolver">Devolver para correção</Label> <input
                                              type="radio" id="devolver" name="aprovacao"
                                              value="devolvido" onclick="clickAprovado();" />
-                                       </div>
-                                       <!--                                      
-                                          <div class="form-group col-md-1">                                          
-                                             <input type="text" id ="cpfaprovador" name="cpfaprovador"/>
-                                          </div>
-                                           -->
+                                       </div>                                      
                                        <div class="form-group col-md-4">
                                           <div class="input-group date">
-                                             <input type="text" class="form-control"
-                                                id="prazoaprovacao" name="prazoaprovacao" readonly>
+                                             <input type="text" class="form-control" id="prazoaprovacao" name="prazoaprovacao" readonly>
                                           </div>
                                        </div>
                                     </div>

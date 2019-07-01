@@ -23,9 +23,9 @@ function enableFields(form){
 		 
 		 var aprovador = usuarioAprovador(emailSolicitante);
 		 if (aprovador!= null && aprovador != ""){
-			 form.setValue("aprovador",aprovador.getValue(0, "NOME_GERENTE"));
-			 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_G"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
+			 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
+			 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
+			 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
 			 	 
 		 }
 		 
@@ -38,12 +38,31 @@ function enableFields(form){
 	}
 	else if (activity == APROVACAO){
 		 //set numero da solicitação
-		 form.setValue("solicitacao",getValue('WKNumProces'));
-		 form.setEnabled("rateioconfigurado", false);		 
-		 form.setEnabled("dataset_solicitacaoevento", false);
-		 form.setEnabled("FinanEvento", false);
-		 bloqueiaDadosFinanceiro();
-		 bloqueiaDadosProduto();
+		// form.setValue("solicitacao",getValue('WKNumProces'));
+		// form.setEnabled("rateioconfigurado", false);		 
+		// form.setEnabled("dataset_solicitacaoevento", false);
+		// form.setEnabled("FinanEvento", false);
+		// bloqueiaDadosFinanceiro();
+		 
+		 
+		 
+		 	var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("aprovacao", true);		 
+			form.setEnabled("justificativaReprovacao", true);
+		
+		    
+		 
+		 
+		 
 	}
 
 
@@ -79,14 +98,14 @@ function enableFields(form){
 
 	
 	function usuarioAprovador(emailSolicitante){
-		log.info("---GERENTE FUNCIONARIO----"); 
-		log.info(emailSolicitante);
+		//log.info("---GERENTE FUNCIONARIO----"); 
+	//	log.info(emailSolicitante);
 		
-		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
-		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
+		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
+		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
 		 
 		  
-		 log.info(dataset.getValue(0, "EMAIL_G"));
+		// log.info(dataset.getValue(0, "EMAIL_G"));
 		 return dataset;
 	}
 

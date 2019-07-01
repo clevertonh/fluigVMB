@@ -98,6 +98,16 @@ function removeItens() {
 
 }
 
+function clickRenovacao(){
+	if (document.getElementById("renovacaoN").checked == true){
+		window['dataset_solicitacaolocacao'].clear();
+		window['dataset_solicitacaolocacao'].disable(true);
+	}
+	else {		
+		window['dataset_solicitacaolocacao'].disable(false);		
+	}
+}
+
 
 
 //preenche campos ZOOM
@@ -240,8 +250,6 @@ function adicionaLinha() {
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
 }
-
-
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -446,8 +454,6 @@ function adicionaItem(itens) {
     }
 }
 
-
-
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
     //variavel para armazenar a data limite para aprovação   
@@ -504,7 +510,6 @@ function addAnos(data, anos) {
 
 }
 
-
 function carregaAprovador() {		
 	var email = parent.WCMAPI.userEmail.toUpperCase();
 		
@@ -525,8 +530,6 @@ function carregaAprovador() {
 	 
 	
 }
-
-
 
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {

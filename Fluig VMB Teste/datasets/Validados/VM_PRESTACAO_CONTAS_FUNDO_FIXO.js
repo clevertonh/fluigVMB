@@ -53,7 +53,7 @@ function createDataset(fields, constraints, sortFields) {
 				 	if (solicitacao.getValue(0,"codigoProduto") == null || solicitacao.getValue(0,"codigoProduto") == ""){				 					 		
 				 		//RETORNA PRODUTOS NOTA
 						var s0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-						var itensNota = DatasetFactory.getDataset("VM_ProdutosPrestacaoContasFundoFixo", null, new Array(s0), null);
+						var itensNota = DatasetFactory.getDataset("VM_PrestacaoContasFundoFixoProdutos", null, new Array(s0), null);
 			    		
 						aProdutos = preencheArrayProdutos(itensNota);
 				 						 					    		

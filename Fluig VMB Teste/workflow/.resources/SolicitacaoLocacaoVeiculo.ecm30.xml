@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Locação de Veiculo</processId>
-      <version>1</version>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1919</formId>
@@ -110,6 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matriculaApr&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -322,7 +324,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>4</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -334,7 +336,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>4</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -346,7 +348,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>1</version>
+        <version>4</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -542,7 +544,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>1</version>
+        <version>4</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -553,7 +555,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>1</version>
+        <version>4</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -564,7 +566,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>1</version>
+        <version>4</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -578,6 +580,18 @@
   <list/>
   <list/>
   <list/>
-  <list/>
+  <list>
+    <ProcessAttachmentRules>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>SolicitacaoLocacaoVeiculo</processId>
+      <processVersion>4</processVersion>
+      <stateSequence>4</stateSequence>
+      <operator>1</operator>
+      <amount>1</amount>
+      <name></name>
+      <message>Você precisa anexar uma cópia da CNH do condutor</message>
+    </ProcessAttachmentRules>
+  </list>
   <list/>
 </list>

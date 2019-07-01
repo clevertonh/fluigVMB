@@ -1,5 +1,6 @@
 function validateForm(form){
-	var ABERTURA = 0;
+	var INICIO =0;
+	var ABERTURA = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
 	
@@ -7,7 +8,6 @@ function validateForm(form){
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");	
-	
 	var userId = getValue("WKUser");  
 	
 	 //variaveis usadas para validação de linhas repetidas no rateio
@@ -19,22 +19,75 @@ function validateForm(form){
     var aArea	  = new Array();
     
     
-    
-
-	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR ){
 	
+
+	if (activity == INICIO ||  activity == ABERTURA || activity == CORRIGIR ){
 		 //retorna email usuario logado
 	    var email = retornaEmailUsuario(userId);
-		
 		var statusUsuario = false;
 			
 		//consulta situação atual do solicitante
 		statusUsuario = consultaAfastamento(email);
 		
-		if (statusUsuario == true ){
-			 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
-		}
+		  if (statusUsuario == true ){
+		      throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+		  }	
+		  if (form.getValue("localRetirada") == null || form.getValue("localRetirada") == "") {
+              throw "É obrigatório informar o local para retirada.";
+          }
+		  if (form.getValue("localDevolucao") == null || form.getValue("localDevolucao") == "") {
+              throw "É obrigatório informar o local para devolução.";
+          }
+		  if (form.getValue("dtRetirada") == null || form.getValue("dtRetirada") == "") {
+              throw "É obrigatório informar a data de retirada.";
+          }
+		  if (form.getValue("dtDevolucao") == null || form.getValue("dtDevolucao") == "") {
+              throw "É obrigatório informar a data de devolução.";
+          }
+		  if (form.getValue("capacidade") == null || form.getValue("capacidade") == "" ) {
+              throw "É obrigatório informar a capacidade para o veículo";
+          }
+		  if (form.getValue("nomeCondutor") == null || form.getValue("nomeCondutor") == "") {
+              throw "É obrigatório informar o nome do condutor.";
+          }
+		  if (form.getValue("CNH") == null || form.getValue("CNH") == "") {
+              throw "O número da CNH é obrigatório.";
+          }
+		  if (form.getValue("kmlivre") == false || form.getValue("kmlivre") == "") {
+              throw "Você deve indicar se a KM será livre ou não.";
+          }
+		  if (form.getValue("seguroCompleto") == false || form.getValue("seguroCompleto") == "") {
+              throw "Você deve indicar se o seguro será completo ou não.";
+          }
+		  if (form.getValue("renovacao") == false || form.getValue("renovacao") == "") {
+              throw "Você deve indicar se a solicitação é uma renovação de locação de veículo ou não.";
+          }
+				
+
+		//funções para validar informações financeiras
+			validaLinhasPreenchidas();
+			validaLinhasRepetidas();
+			validaPercentualRateio();
+			validaAtividades();		
+
 		
+	}
+   
+	if (activity == APROVACAO){
+		
+ 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
+            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+        }
+
+        if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
+            throw "Você precisa informar o motivo para reprovação da solicitação.";
+        }
+        
+		//valida se aprovador é diferente do solicitante
+		if (form.getValue("matriculasolicitante") == userId  && form.getValue("aprovacao")  == "aprovado" ){
+          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+        }    
 		
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
@@ -42,46 +95,18 @@ function validateForm(form){
 		validaPercentualRateio();
 		validaAtividades();
 		
-		//valida campos do produto
-		validaProdutos();
-		
-		
-		if (activity == APROVACAO){
-			
-	 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
-            if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-                throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
-            }
-
-            if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
-                throw "Você precisa informar o motivo para reprovação da solicitação.";
-            }
-            
-			//valida se aprovador é diferente do solicitante
-			if (form.getValue("matriculasolicitante") == userId  && form.getValue("aprovacao")  == "aprovado" ){
-	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-	            }    
-		}
-		
 	}
-   
-	
 	
     function consultaAfastamento(emailLogado){   	    	
   	 	 var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
-		 
-		 log.info("usuario afastado: " + emailLogado);
-		 log.dir(dataset);
-		 
-		 if (dataset.values.length >0 ) {
-			 log.info("Usuario afastado");
+			 
+		 if (dataset.values.length >0 ) {		
 			 return true;
 	        	
 	        }  
 	        else {
-	        	log.info("Usuario não afastado");
 	        	return false;
 	        }	 
   }

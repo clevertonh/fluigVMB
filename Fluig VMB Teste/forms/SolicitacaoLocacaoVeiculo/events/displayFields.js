@@ -6,11 +6,14 @@ function displayFields(form,customHTML){
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
-    var ABERTURA = 0;
+   // var ABERTURA = 0;
     
-  //campos sempre ocultos
+    //campos sempre ocultos
 	 form.setVisibleById("matriculasolicitante", false);
 	 form.setVisibleById("matricula", false);
+	 
+	 form.setVisibleById("divMatrApr", false);
+	 
 	 form.setVisibleById("prazoaprovacao", false);
 	 
 }
