@@ -11,6 +11,10 @@ function displayFields(form,customHTML){
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
+	 form.setVisibleById("prazoaprovacao", false); 
+	 form.setVisibleById("divMatrApr", false); 
+	// form.setVisibleById("dtPagto", false); 
+	 
 	if (activity == ABERTURA){
 		//form.setVisibleById("vl_aprovado", false);
 		

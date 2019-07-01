@@ -363,7 +363,48 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>SolicitacaoAdiantamento</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+	&#xd;
+	var ABERTURA = 0;&#xd;
+	var APROVACAO = 5;&#xd;
+	&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
+	//RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
+	var codSolicitacao 	 = getValue(&quot;WKNumProces&quot;);&#xd;
+	//VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
+	var nextAtv  		 = getValue(&quot;WKNextState&quot;);&#xd;
+	//RECUPERA NUMERO DO DOCUMENTO&#xd;
+	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
+	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
+	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	&#xd;
+	var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+	&#xd;
+	&#xd;
+	if (APROVACAO == 5 &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
+		 var constraint = new Array();		  			 		  			&#xd;
+			 constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+	/*&#xd;
+	     var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_ADIANTAMENTO&quot;, null, constraint, null);&#xd;
+	  		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	  		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	  		    }&#xd;
+	  		    &#xd;
+	*/&#xd;
+	}&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>

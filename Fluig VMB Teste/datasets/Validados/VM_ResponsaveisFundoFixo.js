@@ -1,18 +1,26 @@
 function defineStructure() {
-	addColumn("CODIGO");
-	addColumn("DESCRICAO");
+	addColumn("FORNECEDOR");
+	addColumn("CPF");
+	addColumn("NOME");
+	addColumn("LIMITE");
+	addColumn("QUANTIDADE");
+	addColumn("CODIGOTIPO");
 	addColumn("TIPO");
-
 	
-	setKey(["CODIGO"]);
-	addIndex(["CODIGO"]);
+	setKey(["FORNECEDOR"]);
+	addIndex(["FORNECEDOR"]);
+	addIndex(["CPF"]);
 }
 
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("CODIGO");
-    dataset.addColumn("DESCRICAO");
+	dataset.addColumn("FORNECEDOR");
+	dataset.addColumn("CPF");
+	dataset.addColumn("NOME");
+	dataset.addColumn("LIMITE");
+	dataset.addColumn("QUANTIDADE");   
+	dataset.addColumn("CODIGOTIPO");
     dataset.addColumn("TIPO");
          
     var objdata;
@@ -24,7 +32,7 @@ function createDataset(fields, constraints, sortFields) {
     	 var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'REST FLUIG',
-	            endpoint : '/CENTRO_CUSTO',
+	            endpoint : '/RESPONSAVEIS_FFX',
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
 	        }
@@ -36,7 +44,7 @@ function createDataset(fields, constraints, sortFields) {
         var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'REST FLUIG 2',
-	            endpoint : '/CENTRO_CUSTO',
+	            endpoint : '/RESPONSAVEIS_FFX',
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
 	        }   	
@@ -63,12 +71,12 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			if(filtro != null && (objdata[i].CDESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CTIPO]);
+			if(filtro != null && (objdata[i].CNOME.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
+				dataset.addRow([objdata[i].CCODIGO, objdata[i].CCPF, objdata[i].CNOME, objdata[i].CLIMITE, objdata[i].CQTDE, objdata[i].CCODTIPO, objdata[i].CTIPO]);
 			
 			}
 			if(filtro == null){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CTIPO]);			
+				dataset.addRow([objdata[i].CCODIGO, objdata[i].CCPF, objdata[i].CNOME, objdata[i].CLIMITE, objdata[i].CQTDE, objdata[i].CCODTIPO, objdata[i].CTIPO]);		
 			}		
 		}
 	}
@@ -87,7 +95,7 @@ function getConstraints(constraints, field, field2){
 	
 	for(var i=0;i<constraints.length;i++){
 		if(constraints[i].fieldName == field || constraints[i].fieldName == field2 ){		
-			log.info("--------------DATASET CENTRO DE CUSTO-------------");
+			log.info("--------------DATASET CONTA CONTABIL-------------");
 			log.info("CAMPO: "+field);
 			log.info("CONSTRAINTS: "+constraints[i]);
 			log.info("INFORMACAO DIGITADA: "+constraints[i].initialValue);

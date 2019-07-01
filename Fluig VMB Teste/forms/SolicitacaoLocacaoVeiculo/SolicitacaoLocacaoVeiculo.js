@@ -378,6 +378,10 @@ function clickFinanceiroEvento(){
 	
 }
 
+function renovacaoVeiculo(){
+	
+}
+
 function buscaDadosFinanceiroEvento(evento){
 	   var constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));

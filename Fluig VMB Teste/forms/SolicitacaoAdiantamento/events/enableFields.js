@@ -8,6 +8,9 @@ function enableFields(form){
 	
 	var solicitante = getValue("WKUser");  
 	
+	//form.setEnabled("projeto", false);
+	//form.setEnabled("fontefinanciamento", false);
+	
 	if (activity == ABERTURA){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
@@ -21,7 +24,7 @@ function enableFields(form){
 			 	 
 		 }
 		 
-		 //form.setEnabled("projeto", false);
+		 form.setEnabled("vl_aprovado", false);
 		 
 	}
 	
