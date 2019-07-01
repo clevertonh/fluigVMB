@@ -81,23 +81,27 @@
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>                                                                                                                    
+                                       </div>   
+                                       <!--                                                                                                               
                                     <div class="form-group col-md-3">
-                                          <label for="dtPgto">Data de Pagamento</label>
+                                          <label for="dtPagto">Data de pgto</label>
                                           <div class="input-group date">
                                              <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagto" name="dtPgto">
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
-                                       </div>   
+                                       </div>  
+                                     -->     
                                     </div>
 									                                   
                                     <div class="row">                                    		
                         				  <div class="form-group col-md-3">
-                        				  	<label>Centro de custo</label>        				  	                                                                  																					
+                        				  	<label>Centro de custo</label>  
+                        				  	      				  	                                                                  																					
                                                                   <input 
                                                                      type="zoom" 
+                                                                     id="centrocusto"
                                                                      name="centrocusto" 
                                                                      data-zoom="{
                                                                      'displayKey':'CODIGO',
@@ -115,6 +119,7 @@
                                                                   <input
                                                                      type="zoom" 
                                                                      name="projeto" 
+                                                                     id="projeto"
                                                                      data-zoom="{
                                                                      'displayKey':'CODIGO',
                                                                      'datasetId':'VM_projeto',
@@ -132,6 +137,7 @@
                                                                   <input
                                                                      type="zoom" 
                                                                      name="fontefinanciamento" 
+                                                                     id="fontefinanciamento"
                                                                      data-zoom="{
                                                                      'displayKey':'CODIGO',
                                                                      'datasetId':'ds_get_FonteFinanciamento',
@@ -174,11 +180,13 @@
                                              type="radio" id="aprovacaon" name="aprovacao"
                                              value="reprovado" onclick="clickReprovado();" />
                                        </div>
+                                       <!-- 
                                        <div class="form-group col-md-4">
                                           <Label for="devolver">Devolver para correção</Label> <input
                                              type="radio" id="devolver" name="aprovacao"
                                              value="devolvido" onclick="clickAprovado();" />
-                                       </div>           
+                                       </div>  
+                                       -->    
                                        <div class="form-group col-md-4">
                                           <div class="input-group date">
                                              <input type="text" class="form-control"

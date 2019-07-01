@@ -18,6 +18,7 @@ $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
+		 
 		
 	}
 
@@ -51,7 +52,6 @@ function removedZoomItem(removedItem) {
     if (campoZOOM == CCUSTO) {
         window[PROJETO].clear();
         window[FONTE].clear();
-        //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null);
         window[PROJETO].disable(true);
         window[FONTE].disable(true);
        
@@ -75,11 +75,11 @@ function setSelectedZoomItem(selectedItem) {
   
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
-
-  console.log("campo zoom "+campoZOOM); 
+  console.log("campo zomm "+campoZOOM);
+  
   //compara para verificar se o zoom é o campo centro de custo
   if (campoZOOM == CCUSTO) {
-	  console.log("campo zoom "+CCUSTO);
+	  console.log("campo zoom " + CCUSTO);
       //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
       window[PROJETO].clear();
       window[FONTE].clear();
