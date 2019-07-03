@@ -15,7 +15,6 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("matriculasolicitante", false); 
 	 
 	 form.setVisibleById("divMatrApr", false); 
-	 form.setVisibleById("div_cpf", false); 
 	 form.setVisibleById("_matriculasolicitante", false); 
 	 form.setVisibleById("_prazoaprovacao", false); 
 	 

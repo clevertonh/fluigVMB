@@ -33,7 +33,7 @@ var dtNecessidade = FLUIGC.calendar('#dtNecessidade', {
     
 });
 
-var dtPagamento = FLUIGC.calendar('#dtPgto', {
+var dtRetorno = FLUIGC.calendar('#dtRetorno', {
     pickDate: true,
     pickTime: false,
     useCurrent: true, 

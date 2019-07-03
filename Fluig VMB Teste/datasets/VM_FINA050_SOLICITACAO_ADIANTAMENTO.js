@@ -25,14 +25,16 @@ function createDataset(fields, constraints, sortFields) {
 						            params : {
 						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
 						            	DATAVENCIMENTO :'' + solicitacao.getValue(0,"dtNecessidade") + '',
+						            	DATARETORNO :'' + solicitacao.getValue(0,"dtNecessidade") + '',						            	
 						            	VALORSOLICITADO : '' + solicitacao.getValue(0,"vl_solicitado") + '' ,
 						            	VALORAPROVADO : '' + solicitacao.getValue(0,"vl_aprovado") + '' ,
 						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
 						            	EMAILSOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
 						            	EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailLider") +'',
+						            	CCUSTO	: '' + solicitacao.getValue(0,"centrocusto") +'',
+						            	PROJETO	: '' + solicitacao.getValue(0,"projeto") +'',	
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
-						            	OPERACAO:'' + tipoLAN + '',
-						            	HISTORICO  : '' + historico + '',
+						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
 						            },
 						          options : {
