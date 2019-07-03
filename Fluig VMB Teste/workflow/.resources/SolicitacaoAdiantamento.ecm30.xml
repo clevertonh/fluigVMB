@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Adiantamento</processId>
-      <version>1</version>
+      <version>3</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>1306</formId>
+    <formId>1942</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -107,9 +107,11 @@
       <stateDescription>Aprovar adiantamento</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
+      <deadlineFieldName>dtNecessidade</deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matriculaApr&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -272,7 +274,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>3</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -284,7 +286,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>3</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -393,13 +395,13 @@
 	if (APROVACAO == 5 &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
 		 var constraint = new Array();		  			 		  			&#xd;
 			 constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-	/*&#xd;
+	&#xd;
 	     var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_ADIANTAMENTO&quot;, null, constraint, null);&#xd;
 	  		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 	  		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
 	  		    }&#xd;
 	  		    &#xd;
-	*/&#xd;
+	&#xd;
 	}&#xd;
 	&#xd;
 }</eventDescription>
@@ -487,7 +489,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
-        <version>1</version>
+        <version>3</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -498,7 +500,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
-        <version>1</version>
+        <version>3</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

@@ -63,38 +63,52 @@
                                              </span>
                                           </div>
                                        </div>
+                                       <div class="from-group col-md-1">
+                                         	<input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
+                                         </div>
                                     </div>
                                     <div class="row">
                                        <div class="form-group col-md-2">
                                           <label for="vl_solicitado">Valor solicitado</label>
                                           <input type="number" class="form-control" name="vl_solicitado" id ="vl_solicitado">
                                        </div>                                       
-                                       <div class="form-group col-md-2">
+                                       <div class="form-group col-md-2" id="div_vlapr">
                                           <label for="vl_aprovado">Valor Aprovado</label>
                                           <input type="number" class="form-control" name="vl_aprovado" id ="vl_aprovado">
                                        </div> 
                                        <div class="form-group col-md-3">
                                           <label for="dtNecessidade">Data de Necessidade</label>
-                                          <div class="input-group date" id="calendariodtNeces">
+                                          <div class="input-group date" >
                                              <input type="text" class="form-control" placeholder="Data de necessidade" id="dtNecessidade" name="dtNecessidade">
                                              <span class="input-group-addon">
                                              <span class="fluigicon fluigicon-calendar"></span>
                                              </span>
                                           </div>
                                        </div>   
-                                       <!--                                                                                                               
-                                    <div class="form-group col-md-3">
-                                          <label for="dtPagto">Data de pgto</label>
-                                          <div class="input-group date">
-                                             <input type="text" class="form-control" placeholder="Data de pagamento" id="dtPagto" name="dtPgto">
-                                             <span class="input-group-addon">
-                                             <span class="fluigicon fluigicon-calendar"></span>
-                                             </span>
-                                          </div>
-                                       </div>  
-                                     -->     
+                                        <div class="form-group col-md-5">
+                                                         <label for="Funcionario">Nome do beneficiário</label> 
+                                                           <input name="Funcionario"
+                                                            class="form-control" type="zoom"
+                                                            id="Funcionario"
+                                                            data-zoom="{'displayKey':'NOME',
+                                                            'datasetId':'VM_Funcionario',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o funcionário',
+                                                            'fields':[
+                                                            {'field':'NOME','label':'NOME','standard':'true'},
+                                                            {'field':'CPF','label':'CPF'},
+                                                            {'field':'RG','label':'RG'},
+                                                            {'field':'EMAIL_F','label':'EMAIL_F'}						  					
+                                                            ]
+                                                            }">
+                                                      </div>
                                     </div>
-									                                   
+                                 	<div class="row" id="div_cpf">
+                                 		 <div class="form-group col-md-2">
+                                                      	<label>CPF Beneficiário</label>
+                                                      		<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
+                                                      </div> 
+                                 	</div>                                    
                                     <div class="row">                                    		
                         				  <div class="form-group col-md-3">
                         				  	<label>Centro de custo</label>  
@@ -113,7 +127,7 @@
                                                                      {'field':'DESCRICAO', 'label':'DESCRICAO'}]
                                                                      }" />
                                                                </div>
-															<div class="form-group col-md-3">
+															<div class="form-group col-md-3" id="div_projeto">
 																<label>Projeto</label> 
 									                                                               																					
                                                                   <input
@@ -131,7 +145,7 @@
                                                                      ]
                                                                      }" />
                                                                </div> 
-                                                                <div class="form-group col-md-3">
+                                                                <div class="form-group col-md-3" id="div_fonte">
                                                                 <label>Fonte de Financiamento</label> 
                                                                                          																						
                                                                   <input
@@ -173,20 +187,14 @@
                                        <div class="form-group col-md-2">
                                           <Label for="aprovacao">Aprovado</Label> <input type="radio"
                                              id="aprovacao" name="aprovacao" value="aprovado"
-                                             onclick="clickAprovado();" />
+                                              />
                                        </div>
                                        <div class="form-group col-md-4">
                                           <Label for="aprovacaon">Reprovado</Label> <input
                                              type="radio" id="aprovacaon" name="aprovacao"
-                                             value="reprovado" onclick="clickReprovado();" />
+                                             value="reprovado"  />
                                        </div>
-                                       <!-- 
-                                       <div class="form-group col-md-4">
-                                          <Label for="devolver">Devolver para correção</Label> <input
-                                             type="radio" id="devolver" name="aprovacao"
-                                             value="devolvido" onclick="clickAprovado();" />
-                                       </div>  
-                                       -->    
+                                       
                                        <div class="form-group col-md-4">
                                           <div class="input-group date">
                                              <input type="text" class="form-control"

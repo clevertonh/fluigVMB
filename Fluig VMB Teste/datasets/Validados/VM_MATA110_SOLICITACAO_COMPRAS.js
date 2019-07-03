@@ -15,7 +15,7 @@ function createDataset(fields, constraints, sortFields) {
     		  		
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-        		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, new Array(c0,c1), null);
+        		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompra", null, new Array(c0,c1), null);
         	
         		log.info("CONSTRAINT SOLICITACAO");
            	    log.dir(solicitacao);

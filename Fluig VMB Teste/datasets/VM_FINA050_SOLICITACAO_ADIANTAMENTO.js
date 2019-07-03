@@ -1,17 +1,6 @@
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
-	
-	var valorDiarias;
-	var dataVencimento;
-	var vl_tarifa;
-	var fornecedor_tarifa;
-	var dt_tarifa;
-	var aRateio = new Array();
-	var tipoFFX;
-	var tipoLAN;
-	var historico;
-
 	 
 	 if(constraints !== null && constraints.length){
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -34,18 +23,16 @@ function createDataset(fields, constraints, sortFields) {
 						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 						            timeoutService: '100', // segundos
 						            params : {
-						            	DATAPAGTO : '' + solicitacao.getValue(0,"dtDeposito") + '',
-						            	TIPOFFX : '' + tipoFFX +'',
-						            	VALOR : '' + solicitacao.getValue(0,"vl_solicitacao") + '' ,
-						            	CPF_FORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
-						            	ANO_FISCAL : '' + "" +"2019"+'',
-						            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAprovador") +'',
-						            	EMAIL_SOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
-						            	DATAAPROV  : '' + dtAprovacao + '',
+						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
+						            	DATAVENCIMENTO :'' + solicitacao.getValue(0,"dtNecessidade") + '',
+						            	VALORSOLICITADO : '' + solicitacao.getValue(0,"vl_solicitado") + '' ,
+						            	VALORAPROVADO : '' + solicitacao.getValue(0,"vl_aprovado") + '' ,
+						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
+						            	EMAILSOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
+						            	EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailLider") +'',
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	OPERACAO:'' + tipoLAN + '',
 						            	HISTORICO  : '' + historico + '',
-						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") + '',
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
 						            },
 						          options : {

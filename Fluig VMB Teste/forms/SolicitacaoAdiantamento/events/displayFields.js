@@ -12,11 +12,22 @@ function displayFields(form,customHTML){
     customHTML.append("</script>");
 	
 	 form.setVisibleById("prazoaprovacao", false); 
-	 form.setVisibleById("divMatrApr", false); 
-	// form.setVisibleById("dtPagto", false); 
+	 form.setVisibleById("matriculasolicitante", false); 
 	 
+	 form.setVisibleById("divMatrApr", false); 
+	 form.setVisibleById("div_cpf", false); 
+	 form.setVisibleById("_matriculasolicitante", false); 
+	 form.setVisibleById("_prazoaprovacao", false); 
+	 
+	 
+	
+	
+		
 	if (activity == ABERTURA){
-		//form.setVisibleById("vl_aprovado", false);
+		 form.setVisibleById("div_projeto", false);
+		 form.setVisibleById("div_fonte", false);
+		 form.setVisibleById("div_vlapr", false);
+		 
 		
 	}
 	

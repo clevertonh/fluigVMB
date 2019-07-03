@@ -18,7 +18,7 @@ $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
-		 
+		
 		
 	}
 
@@ -46,7 +46,8 @@ function removedZoomItem(removedItem) {
     var CCUSTO = "centrocusto";
     var PROJETO = "projeto";
     var FONTE = "fontefinanciamento";
-
+    var FUNCIONARIO ="Funcionario";
+    
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
     if (campoZOOM == CCUSTO) {
@@ -60,6 +61,10 @@ function removedZoomItem(removedItem) {
     	 window[FONTE].clear();
     	 window[FONTE].disable(true);
     }
+    else if (campoZOOM == FUNCIONARIO){
+    	 $("#cpfbeneficiario").val("");
+    	 
+    }
 
 }
 
@@ -72,6 +77,7 @@ function setSelectedZoomItem(selectedItem) {
   var CCUSTO = "centrocusto";
   var PROJETO = "projeto";
   var FONTE = "fontefinanciamento";
+  var FUNCIONARIO ="Funcionario";
   
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
@@ -89,8 +95,11 @@ function setSelectedZoomItem(selectedItem) {
 	  	    window[PROJETO].disable(false);	  
 	  	    window[FONTE].disable(true);
 	  	    //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + selectedItem["CODIGO"] );
+	  	     document.getElementById("div_projeto").style.display = "block";
+	  		 document.getElementById("div_fonte").style.display = "block";
 	  	}
 	  	else {
+	  		
 	  		window[PROJETO].disable(true);
 	  		window[FONTE].disable(true);
 	    	//reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null )
@@ -101,6 +110,9 @@ function setSelectedZoomItem(selectedItem) {
 	  window[FONTE].clear();
 	  window[FONTE].disable(false);
 	  reloadZoomFilterValues(FONTE, "PROJETO," + selectedItem["CODIGO"]);
+  }
+  else if (campoZOOM == FUNCIONARIO){
+	  $("#cpfbeneficiario").val(selectedItem["CPF"]);
   }
 
 }

@@ -1,26 +1,30 @@
 function enableFields(form){ 
 	
 	var ABERTURA = 0;
+	var SOLICITAR = 4;
 	var APROVACAO_GESTOR = 5;
 
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
-	
 	var solicitante = getValue("WKUser");  
 	
-	//form.setEnabled("projeto", false);
-	//form.setEnabled("fontefinanciamento", false);
+	
 	
 	if (activity == ABERTURA){
-		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
-		 form.setValue("solicitante",dataset.getValue(0, "colleagueName"));
-		 form.setValue("emailSolicitante",dataset.getValue(0, "mail"));
+		form.setEnabled("aprovacao", false);	
 		 
-		 var aprovador = usuarioAprovador();
+		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
+		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+		 var emailSolicitante = dataset.getValue(0, "mail");
+		 
+		 form.setValue("solicitante",nomeSolicitante);
+		 form.setValue("emailSolicitante",emailSolicitante);
+		 
+		 
+		 var aprovador = usuarioAprovador(emailSolicitante);
 		 if (aprovador!= null && aprovador != ""){
-			 form.setValue("gestor",aprovador.getValue(0, "GERENTE"));
-			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_APROVADOR"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
+			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
+			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
+			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
 			 	 
 		 }
 		 
@@ -32,7 +36,20 @@ function enableFields(form){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 
-		
+		 	var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("aprovacao", true);		 
+			form.setEnabled("justificativaReprovacao", true);
+			form.setEnabled("vl_aprovado", true);
+			
 		
 	}
 	
@@ -45,9 +62,15 @@ function enableFields(form){
 		 return dataset;
 	}
 
-	function usuarioAprovador(){	
-		 var dataset = DatasetFactory.getDataset("VM_Aprovador", null, null, null);
+	function usuarioAprovador(emailSolicitante){
+		log.info("---GERENTE FUNCIONARIO----"); 
+		log.info(emailSolicitante);
+		
+		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
+		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
+		  
+		 log.info(dataset.getValue(0, "EMAIL_G"));
 		 return dataset;
 	}
 	

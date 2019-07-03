@@ -22,7 +22,7 @@ function createDataset(fields, constraints, sortFields) {
     //dataset interno
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
-    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, constraintsActive, null);
+    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesCompra", null, constraintsActive, null);
     
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
@@ -54,7 +54,7 @@ function createDataset(fields, constraints, sortFields) {
                     var constraintsFilhos = new Array(c1, c2, c3);
 
                     //Busca o dataset
-                    var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, constraintsFilhos, null);
+                    var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesCompra", null, constraintsFilhos, null);
                     for (var j = 0; j < datasetFilhos.rowsCount; j++) {
                 	//	log.info("-------RETORNO FILHO----- 21:08");
                    	 	
