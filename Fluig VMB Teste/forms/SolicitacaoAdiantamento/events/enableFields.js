@@ -11,6 +11,7 @@ function enableFields(form){
 	
 	if (activity == ABERTURA){
 		form.setEnabled("aprovacao", false);	
+		form.setEnabled("justificativaReprovacao", false);
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
