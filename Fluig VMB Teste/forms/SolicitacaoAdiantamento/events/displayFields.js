@@ -5,7 +5,7 @@ function displayFields(form,customHTML){
 	var APROVACAO_GESTOR = 5;
 
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
+	//log.info("----ATIVIDADE displayFields: " + activity);
 	
   	customHTML.append("<script>");
     customHTML.append("var ATIVIDADE = " + activity + ";");

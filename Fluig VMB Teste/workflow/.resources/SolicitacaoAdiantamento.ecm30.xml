@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Adiantamento</processId>
-      <version>3</version>
+      <version>10</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1942</formId>
@@ -274,7 +274,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>10</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -286,7 +286,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>10</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -390,17 +390,18 @@
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
 	&#xd;
 	var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+	//var dtAprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
 	&#xd;
-	&#xd;
-	if (APROVACAO == 5 &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
+	if (ativAtual == APROVACAO &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
 		 var constraint = new Array();		  			 		  			&#xd;
 			 constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-	&#xd;
-	     var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_ADIANTAMENTO&quot;, null, constraint, null);&#xd;
-	  		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-	  		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+			 //constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+			 &#xd;
+	     var resultDataset = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_ADIANTAMENTO&quot;, null, constraint, null);&#xd;
+	  		    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	  		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 	  		    }&#xd;
-	  		    &#xd;
+	  			  		    &#xd;
 	&#xd;
 	}&#xd;
 	&#xd;
@@ -489,7 +490,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
-        <version>3</version>
+        <version>10</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -500,7 +501,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
-        <version>3</version>
+        <version>10</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

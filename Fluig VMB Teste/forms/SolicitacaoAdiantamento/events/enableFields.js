@@ -64,14 +64,14 @@ function enableFields(form){
 	}
 
 	function usuarioAprovador(emailSolicitante){
-		log.info("---GERENTE FUNCIONARIO----"); 
-		log.info(emailSolicitante);
+	//	log.info("---GERENTE FUNCIONARIO----"); 
+	//	log.info(emailSolicitante);
 		
 		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
 		  
-		 log.info(dataset.getValue(0, "EMAIL_G"));
+	//	 log.info(dataset.getValue(0, "EMAIL_G"));
 		 return dataset;
 	}
 	

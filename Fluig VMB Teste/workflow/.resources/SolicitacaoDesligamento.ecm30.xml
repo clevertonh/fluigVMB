@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>SolicitacaoDesligamento</processId>
-      <version>1</version>
+      <version>11</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>1951</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -76,7 +76,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>100</positionX>
-      <positionY>47</positionY>
+      <positionY>48</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -101,65 +101,17 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>5</sequence>
+        <sequence>77</sequence>
       </processStatePK>
-      <stateName>Calculo de rescisão</stateName>
-      <stateDescription>Calculo de rescisão</stateDescription>
+      <stateName>Recolher bens e equipamentos</stateName>
+      <stateDescription>Recolher bens e equipamentos</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>140</positionX>
-      <positionY>920</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <sequence>16</sequence>
-      </processStatePK>
-      <stateName>Bloquear acessos</stateName>
-      <stateDescription>Bloquear acessos</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Hospitalidade&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -175,7 +127,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>320</positionX>
-      <positionY>334</positionY>
+      <positionY>610</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -201,117 +153,17 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>20</sequence>
+        <sequence>83</sequence>
       </processStatePK>
-      <stateName>Serviços</stateName>
-      <stateDescription>Serviços</stateDescription>
-      <instruction>Cancelar serviços de transporte, telefonia</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>570</positionX>
-      <positionY>520</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <sequence>23</sequence>
-      </processStatePK>
-      <stateName>Hospitalidade</stateName>
-      <stateDescription>Hospitalidade</stateDescription>
-      <instruction>Verificar bilhtes e hospedagens já emitidas</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>570</positionX>
-      <positionY>455</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <sequence>40</sequence>
-      </processStatePK>
-      <stateName>Autorizar BKP</stateName>
-      <stateDescription>Autorizar BKP</stateDescription>
+      <stateName>Bloquear acessos</stateName>
+      <stateDescription>Bloquear acessos</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;TI&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -326,8 +178,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>400</positionX>
-      <positionY>190</positionY>
+      <positionX>460</positionX>
+      <positionY>310</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -353,15 +205,17 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>51</sequence>
+        <sequence>86</sequence>
       </processStatePK>
-      <stateName>Realizar BKP</stateName>
-      <stateDescription>Realizar BKP</stateDescription>
+      <stateName>Cancelar serviços de transporte</stateName>
+      <stateDescription>Cancelar serviços de transporte</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Hospitalidade&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -376,8 +230,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>750</positionX>
-      <positionY>336</positionY>
+      <positionX>430</positionX>
+      <positionY>460</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -403,15 +257,17 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>73</sequence>
+        <sequence>89</sequence>
       </processStatePK>
-      <stateName>Recolher bens e equipamentos</stateName>
-      <stateDescription>Recolher bens e equipamentos</stateDescription>
+      <stateName>Autorizar bkp</stateName>
+      <stateDescription>Autorizar bkp</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;GERENCIA_RH&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -426,8 +282,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>220</positionX>
-      <positionY>613</positionY>
+      <positionX>540</positionX>
+      <positionY>180</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -453,15 +309,17 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>78</sequence>
+        <sequence>93</sequence>
       </processStatePK>
-      <stateName>Enviar LDR manual</stateName>
-      <stateDescription>Enviar LDR manual</stateDescription>
+      <stateName>Realizar bkp</stateName>
+      <stateDescription>Realizar bkp</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;TI&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -476,8 +334,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>220</positionX>
-      <positionY>760</positionY>
+      <positionX>620</positionX>
+      <positionY>330</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -503,15 +361,17 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>79</sequence>
+        <sequence>97</sequence>
       </processStatePK>
-      <stateName>Cancelar beneficiíos</stateName>
-      <stateDescription>Cancelar beneficiíos</stateDescription>
+      <stateName> Calcular rescisão</stateName>
+      <stateDescription> Calcular rescisão</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;RH&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -526,8 +386,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>370</positionX>
-      <positionY>871</positionY>
+      <positionX>170</positionX>
+      <positionY>930</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -553,25 +413,104 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>36</sequence>
+        <sequence>100</sequence>
       </processStatePK>
-      <stateName>Paralelo</stateName>
-      <stateDescription>Paralelo</stateDescription>
+      <stateName>Cancelar beneficios</stateName>
+      <stateDescription>Cancelar beneficios</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;RH&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
       <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>180</positionX>
-      <positionY>39</positionY>
+      <positionX>330</positionX>
+      <positionY>880</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
-      <stateType>3</stateType>
-      <bpmnType>124</bpmnType>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
       <signalId>0</signalId>
+      <counterSign>false</counterSign>
       <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <sequence>103</sequence>
+      </processStatePK>
+      <stateName>Realizar entrevista de desligamento</stateName>
+      <stateDescription>Realizar entrevista de desligamento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;RH&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>480</positionX>
+      <positionY>756</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -588,8 +527,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>false</automatic>
-      <positionX>1040</positionX>
-      <positionY>38</positionY>
+      <positionX>1060</positionX>
+      <positionY>170</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>4</stateType>
       <bpmnType>127</bpmnType>
@@ -603,7 +542,32 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <sequence>56</sequence>
+        <sequence>76</sequence>
+      </processStatePK>
+      <stateName>Paralelo</stateName>
+      <stateDescription>Paralelo</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>false</automatic>
+      <positionX>210</positionX>
+      <positionY>30</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>3</stateType>
+      <bpmnType>124</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <sequence>80</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -627,8 +591,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1140</positionX>
-      <positionY>60</positionY>
+      <positionX>1240</positionX>
+      <positionY>200</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -645,52 +609,6 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
     </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <sequence>80</sequence>
-      </processStatePK>
-      <stateName>Inicio_80</stateName>
-      <stateDescription>Inicio</stateDescription>
-      <instruction>Atividade inicial do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>true</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>1</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>0</positionX>
-      <positionY>0</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>10</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
   </list>
   <list/>
   <list>
@@ -699,12 +617,12 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <linkSequence>17</linkSequence>
+        <linkSequence>78</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>4</initialStateSequence>
-      <finalStateSequence>16</finalStateSequence>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>77</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -716,284 +634,12 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
         <version>1</version>
-        <linkSequence>22</linkSequence>
+        <linkSequence>79</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>20</initialStateSequence>
-      <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>37</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>16</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>57</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>55</initialStateSequence>
-      <finalStateSequence>56</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>60</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>51</initialStateSequence>
+      <initialStateSequence>77</initialStateSequence>
       <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>62</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>5</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>63</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>40</initialStateSequence>
-      <finalStateSequence>51</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>64</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>40</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>65</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>40</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>68</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>16</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>69</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>23</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>70</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>20</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>71</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>20</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>72</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>23</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>75</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>73</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>76</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>77</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>73</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>80</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>36</initialStateSequence>
-      <finalStateSequence>79</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1009,8 +655,8 @@
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>79</initialStateSequence>
-      <finalStateSequence>55</finalStateSequence>
+      <initialStateSequence>55</initialStateSequence>
+      <finalStateSequence>80</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1026,9 +672,248 @@
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>80</initialStateSequence>
-      <finalStateSequence>36</finalStateSequence>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>76</finalStateSequence>
       <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>84</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>83</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>85</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>83</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>87</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>86</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>88</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>86</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>90</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>89</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>94</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>89</initialStateSequence>
+      <finalStateSequence>93</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>95</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>93</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>96</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>89</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>98</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>97</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>99</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>97</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>101</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>100</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>102</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>100</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>104</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>103</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>1</version>
+        <linkSequence>105</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>103</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -1081,7 +966,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>FFFFFF</color>
       <height>1001</height>
-      <width>1191</width>
+      <width>1331</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Pool</stateName>
@@ -1097,7 +982,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>9F9F9F</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Gestor</stateName>
@@ -1113,7 +998,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>C0C0C0</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>868</positionY>
       <stateName>DP</stateName>
@@ -1129,7 +1014,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>82b0b7</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>296</positionY>
       <stateName>TI</stateName>
@@ -1145,7 +1030,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>d0daae</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>725</positionY>
       <stateName>RH</stateName>
@@ -1161,7 +1046,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>c9c3ac</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>439</positionY>
       <stateName>Administração</stateName>
@@ -1177,7 +1062,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>adc9ac</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>153</positionY>
       <stateName>Gerência de P&amp;C</stateName>
@@ -1193,7 +1078,7 @@ process.instructions=&#xd;
     <SwimLane>
       <color>d6e0d0</color>
       <height>143</height>
-      <width>1161</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>582</positionY>
       <stateName>Patrimonio</stateName>
@@ -1214,78 +1099,155 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>62</linkSequence>
+        <version>11</version>
+        <linkSequence>78</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>1069</positionX>
-      <positionY>959</positionY>
+      <positionX>330</positionX>
+      <positionY>503</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>69</linkSequence>
+        <version>11</version>
+        <linkSequence>79</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>247</positionX>
-      <positionY>491</positionY>
+      <positionX>848</positionX>
+      <positionY>652</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>70</linkSequence>
+        <version>11</version>
+        <linkSequence>85</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>209</positionX>
-      <positionY>537</positionY>
+      <positionX>533</positionX>
+      <positionY>423</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>71</linkSequence>
-        <bendSequence>1</bendSequence>
+        <version>11</version>
+        <linkSequence>85</linkSequence>
+        <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>1093</positionX>
-      <positionY>537</positionY>
+      <positionX>662</positionX>
+      <positionY>424</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>72</linkSequence>
-        <bendSequence>1</bendSequence>
+        <version>11</version>
+        <linkSequence>85</linkSequence>
+        <bendSequence>3</bendSequence>
       </processLinkBendPK>
-      <positionX>1015</positionX>
-      <positionY>468</positionY>
+      <positionX>810</positionX>
+      <positionY>424</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>75</linkSequence>
+        <version>11</version>
+        <linkSequence>88</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>937</positionX>
-      <positionY>655</positionY>
+      <positionX>842</positionX>
+      <positionY>500</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDesligamento</processId>
-        <version>1</version>
-        <linkSequence>81</linkSequence>
+        <version>11</version>
+        <linkSequence>98</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>979</positionX>
-      <positionY>920</positionY>
+      <positionX>130</positionX>
+      <positionY>685</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>98</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>97</positionX>
+      <positionY>965</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>99</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1090</positionX>
+      <positionY>965</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>101</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>178</positionX>
+      <positionY>571</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>101</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>151</positionX>
+      <positionY>912</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>102</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1087</positionX>
+      <positionY>915</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>104</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>237</positionX>
+      <positionY>796</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDesligamento</processId>
+        <version>11</version>
+        <linkSequence>105</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1090</positionX>
+      <positionY>796</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

@@ -5,7 +5,7 @@ function createDataset(fields, constraints, sortFields) {
 	 if(constraints !== null && constraints.length){
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			 	var documentId = constraints[0].initialValue;
-			 	var dtAprovacao = constraints[1].initialValue;
+			// 	var dtAprovacao = constraints[1].initialValue;
 			 
 			 	var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
@@ -19,7 +19,7 @@ function createDataset(fields, constraints, sortFields) {
 					        var data = {
 						        	companyId : 1 + '',
 						        	serviceCode : 'REST FLUIG',
-						            endpoint : '/F_FINA050',
+						            endpoint : '/F_CADFN001',
 						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 						            timeoutService: '100', // segundos
 						            params : {
@@ -35,7 +35,8 @@ function createDataset(fields, constraints, sortFields) {
 						            	PROJETO	: '' + solicitacao.getValue(0,"projeto") +'',	
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
-						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
+						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
+						            	PROCESSO: ''+"8" +''
 						            },
 						          options : {
 						             encoding : 'UTF-8',

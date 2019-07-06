@@ -15,17 +15,18 @@ function beforeStateEntry(sequenceId){
 	var empresa = getValue("WKCompany");
 	
 	var aprovado = hAPI.getCardValue("aprovacao");
+	//var dtAprovacao = hAPI.getCardValue("aprovacao");
 	
-	
-	if (APROVACAO == 5 && aprovado == "aprovado"){
+	if (ativAtual == APROVACAO && aprovado == "aprovado"){
 		 var constraint = new Array();		  			 		  			
 			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-	
-	     var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_ADIANTAMENTO", null, constraint, null);
-	  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-	  		    	throw resultDateset.getValue(0,"RETORNO");
+			 //constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+			 
+	     var resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_ADIANTAMENTO", null, constraint, null);
+	  		    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+	  		    	throw resultDataset.getValue(0,"RETORNO");
 	  		    }
-	  		    
+	  			  		    
 	
 	}
 	

@@ -361,8 +361,8 @@ function validateForm(form) {
     else if (activity == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA ) {  	
 //    else if (activity == COMPRARPASSAGEM) {    	
     	
-    	log.info("PROXIMA ATIVIDADE");
-    	log.info(nextAtv);
+    	//log.info("PROXIMA ATIVIDADE");
+    	//log.info(nextAtv);
     	
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
@@ -681,16 +681,16 @@ function validateForm(form) {
 		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
 		 
-		 log.info("usuario afastado");
-		 log.dir(dataset);
+		// log.info("usuario afastado");
+		// log.dir(dataset);
 		 
 		 if (dataset.values.length >0 ) {
-			 log.info("Usuario afastado");
+		//	 log.info("Usuario afastado");
 			 return true;
 	        	
 	        }  
 	        else {
-	        	log.info("Usuario não afastado");
+	       // 	log.info("Usuario não afastado");
 	        	return false;
 	        }	 
    }

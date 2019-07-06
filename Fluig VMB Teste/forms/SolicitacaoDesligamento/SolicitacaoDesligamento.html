@@ -24,11 +24,11 @@
                   <input type="text" class="form-control" id="solicitante" name="solicitante" readonly >
                </div>
                <div class="form-group col-md-4">
-                  <label for="exampleInputEmail1">Email</label>
+                  <label for="emailSolicitante">Email</label>
                   <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
                </div>
                <div class="form-group col-md-3">
-                  <label for="dtSolicitacao">Data da solicitação</label>
+                  <label for="dtSolicitacao">Data do registro</label>
                   <div class="input-group date" >
                      <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
                      <span class="input-group-addon">
@@ -64,7 +64,7 @@
                </div>
             </div>
    <div class="row">
-                                       <div class="form-group col-md-5">
+                                       <div class="form-group col-md-6">
                                                          <label for="Funcionario">Nome do Funcionário</label> 
                                                            <input name="Funcionario"
                                                             class="form-control" type="zoom"
@@ -84,16 +84,20 @@
                                       	<div class="row" id="div_cpf">
                                  		 <div class="form-group col-md-2">
                                                       	<label>CPF Funcionário</label>
-                                                      		<input type="text" id ="cpfbeneficiario" class="form-control" name="cpfbeneficiario" readonly>
+                                                      		<input type="text" id ="cpffuncionario" class="form-control" name="cpffuncionario" readonly>
                                                       </div> 
                                          <div class="form-group col-md-1">
-                                                      	<label>Filial-Matricula</label>
-                                                      		<input type="text" id ="filialMatricula" class="form-control" name="filialMatricula" readonly>
-                                                      </div>              
+                                                      	<label>Filial</label>
+                                                      		<input type="text" id ="filial" class="form-control" name="filial" readonly>
+                                                      </div>
+                                          <div class="form-group col-md-1">
+                                                      	<label>Matricula</label>
+                                                      		<input type="text" id ="matricula" class="form-control" name="matricula" readonly>
+                                                      </div>                           
                                  	</div>                 
                                     </div>     
 	    <div class="row">
-                                       <div class="form-group col-md-5">
+                                       <div class="form-group col-md-12">
                                           <div class="form-group">
                                              <label for="justificativa">Justificativa</label>
                                              <textarea class="form-control" rows="5"
@@ -105,5 +109,6 @@
                                     </div>	                                          
          </form>
       </div>
+    <script src="SolicitacaoDesligamento.js"></script>  
    </body>
 </html>
