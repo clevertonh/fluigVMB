@@ -21,6 +21,12 @@ function validateForm(form){
     
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
+    var usuariosubstituto = getValue('WKReplacement');
+    
+    if (usuariosubstituto != null){
+    	usuarioLogado = usuariosubstituto;
+    }
+    
 	
 	 //retorna email usuario logado
     var email = retornaEmailUsuario(usuarioLogado);

@@ -8,7 +8,13 @@ function validateForm(form){
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");	
-	var userId = getValue("WKUser");  
+    //recupera usuario logado
+    var usuarioLogado = getValue('WKUser');
+    var usuariosubstituto = getValue('WKReplacement');
+    
+    if (usuariosubstituto != null){
+    	usuarioLogado = usuariosubstituto;
+    }
 	
 	 //variaveis usadas para validação de linhas repetidas no rateio
 	var aCentroCusto = new Array();
@@ -23,7 +29,7 @@ function validateForm(form){
 
 	if (activity == INICIO ||  activity == ABERTURA || activity == CORRIGIR ){
 		 //retorna email usuario logado
-	    var email = retornaEmailUsuario(userId);
+	    var email = retornaEmailUsuario(usuarioLogado);
 		var statusUsuario = false;
 			
 		//consulta situação atual do solicitante

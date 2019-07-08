@@ -7,12 +7,17 @@ function validateForm(form){
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");
 	
-	 //recupera usuario logado
+    //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
+    var usuariosubstituto = getValue('WKReplacement');
+    
+    if (usuariosubstituto != null){
+    	usuarioLogado = usuariosubstituto;
+    }
 	
 	 //retorna email usuario logado
     var email = retornaEmailUsuario(usuarioLogado);
-	
+    	
 	var statusUsuario = false;
 		
 	//consulta situação atual do solicitante
@@ -21,6 +26,24 @@ function validateForm(form){
 	if (statusUsuario == true ){
 		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
 	}
+	
+	
+	var pendenciaAdiantamento = consultaPendenciaAdiantamento();
+	
+	function 	consultaPendenciaAdiantamento(){
+		var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
+
+		 if (dataset.values.length >0 ) {
+			 return true;
+	        	
+	        }  
+	        else {
+	        	return false;
+	        }	 
+	}
+	
 	
 	if (activity == ABERTURA){
 		if (form.getValue("vl_solicitado") == "" ){
