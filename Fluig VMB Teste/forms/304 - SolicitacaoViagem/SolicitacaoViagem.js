@@ -40,6 +40,7 @@ var datacheckin3;
 var dataReembolso;
 var dataPagamento;
 var dataViagem;
+var dataNecessidade;
 var evento;
 /*
 dataViagem = FLUIGC.calendar('#calendardtViagem',{
@@ -202,6 +203,12 @@ $(document).ready(function() {
             pickTime: false,
             minDate: new Date().toLocaleString()
         });
+        
+        dataNecessidade = FLUIGC.calendar('#dtNecessidade', {
+            pickDate: true,
+            pickTime: false,
+            minDate: new Date().toLocaleString()
+        });
 
     }
 
@@ -251,6 +258,20 @@ function prevTab(elem) {
 }
 
 var visibilidade = true;
+
+
+function clickAdiantamento(){
+    if (document.getElementById("adtoNao").checked == true) {
+        //bloquear campos
+    	$('#vl_solicitado').val("0");
+        dataNecessidade.setDate(null);
+    }
+    if (document.getElementById("adtoSim").checked == true) {
+    	//liberar campos
+    }
+    
+}
+
 
 function solicitanteFunc() {
     $('#solicitantepassageiro').attr("checked", false);
@@ -784,13 +805,13 @@ function prazoMinino() {
 	            //verifica se a data de voo é menor que a data de hospedagem ja que nao sao null/vazio
 	            if (dataVoo <= dataHotel) {
 	                menorDataInformada = dataVoo;
-	                console.log("Retorno data Voo 1: " + menorDataInformada);
+	               // console.log("Retorno data Voo 1: " + menorDataInformada);
 
 	            }
 	            //retorna a data de hospedagem porque é menor que de voo
 	            else {
 	                menorDataInformada = dataHotel;
-	                console.log("Retorno data Hotel 1: " + menorDataInformada);
+	               // console.log("Retorno data Hotel 1: " + menorDataInformada);
 
 	            }
 	        }
@@ -798,12 +819,12 @@ function prazoMinino() {
 	        //retorna a data do voo porque hotel é null
 	        else if (dataVoo.length > 0 && dataHotel.length == 0) {
 	            menorDataInformada = dataVoo;
-	            console.log("Retorno data Voo 2: " + menorDataInformada);
+	          //  console.log("Retorno data Voo 2: " + menorDataInformada);
 
 
 	        } else if (dataHotel.length > 0 && dataVoo.length == 0) {
 	            menorDataInformada = dataHotel;
-	            console.log("Retorno data Hotel 2: " + menorDataInformada);
+	           // console.log("Retorno data Hotel 2: " + menorDataInformada);
 
 
 	        }
@@ -940,8 +961,8 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
         if (selectedItem["CODIGO"] != '99990') {
-        	console.log("---ENTROU AQUI 2 ----");
-            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
+        //	console.log("---ENTROU AQUI 2 ----");
+        //    console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
             reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
@@ -1024,7 +1045,7 @@ function setSelectedZoomItem(selectedItem) {
 
     //preenche dados do funcionario
     else if (campoZOOM == FUNCIONARIO) {
-    	console.log("---ENTROU AQUI 10 ----");
+    //	console.log("---ENTROU AQUI 10 ----");
         $('#nomepassageiro').val(selectedItem["NOME"]);
         $('#nomemae').val(selectedItem["MAE"]);
         $('#cpfpassageiro').val(selectedItem["CPF"]);
@@ -1297,14 +1318,14 @@ function removedZoomItem(removedItem) {
     }
 
     else if (campoZOOM == AGENDA) {
-    	console.log("---REMOVEU AQUI 5----");
+    //	console.log("---REMOVEU AQUI 5----");
         removeItensAgenda();
 
     }
 
     else if (campoZOOM == RATEIO) {
     	//remove linhas de pagamento
-    	console.log("---REMOVEU AQUI 6----");
+    	//console.log("---REMOVEU AQUI 6----");
         removeItens();    	
     	/*
 	    var linhas = $("#tbodyItens tr");
@@ -1501,15 +1522,15 @@ function maiorDataInformadaViagem() {
 
             if (dataHotel3 == null || dataHotel3 == '' || dataHotel3 > 0) {
                 dataHotel = dataHotel2;
-                console.log("DT Final 5: " + dataHotel);
+               // console.log("DT Final 5: " + dataHotel);
             } else {
                 dataHotel = dataHotel3;
-                console.log("DT Final 6: " + dataHotel);
+               // console.log("DT Final 6: " + dataHotel);
             }
 
         } else {
             dataHotel = document.getElementById("datacheckout").value;
-            console.log("DT Final 7: " + dataHotel);
+            //console.log("DT Final 7: " + dataHotel);
         }
     }
 

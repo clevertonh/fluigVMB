@@ -646,8 +646,8 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1230</positionX>
-      <positionY>790</positionY>
+      <positionX>1340</positionX>
+      <positionY>774</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1233,7 +1233,7 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <sequence>115</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vooComprado&quot;) == &quot;sim&quot; &amp;&amp; &#xd;
-hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;</condition>
+hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoviagem&quot;) ==&quot;nacional&quot;</condition>
       <destinationSequenceId>129</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -2387,7 +2387,7 @@ function convertStringToData(StringToData) {
         <linkSequence>163</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>1179</positionX>
+      <positionX>1285</positionX>
       <positionY>816</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
@@ -2398,8 +2398,8 @@ function convertStringToData(StringToData) {
         <linkSequence>163</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>1164</positionX>
-      <positionY>795</positionY>
+      <positionX>1285</positionX>
+      <positionY>792</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
@@ -2409,19 +2409,8 @@ function convertStringToData(StringToData) {
         <linkSequence>163</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
-      <positionX>1164</positionX>
-      <positionY>762</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
-        <linkSequence>163</linkSequence>
-        <bendSequence>4</bendSequence>
-      </processLinkBendPK>
-      <positionX>1190</positionX>
-      <positionY>736</positionY>
+      <positionX>1286</positionX>
+      <positionY>780</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
@@ -2443,7 +2432,7 @@ function convertStringToData(StringToData) {
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>1549</positionX>
-      <positionY>831</positionY>
+      <positionY>816</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>

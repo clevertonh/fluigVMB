@@ -24,7 +24,11 @@ function enableFields(form) {
 	log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
 	var solicitante = getValue("WKUser");  
-	
+	 form.setEnabled('adiantamento', false);
+	 form.setEnabled('vl_solicitado', false);	
+	 form.setEnabled('vl_aprovado', false);	
+	 form.setEnabled('dtNecessidade', false);	
+	 
 	 log.info("numero da atividade "+activityEnable);
 	
 	if (activityEnable == ABERTURA || activityEnable == CORRIGIRSOLICITACAO || activityEnable == SOLICITARVIAGEM){
@@ -36,7 +40,7 @@ function enableFields(form) {
 		 form.setEnabled('ressarcimento', false);
 		 form.setEnabled('justificativaReprovacao', false);		 
 		 form.setEnabled('cobranca', false);	
-		 form.setEnabled('tipormb', false);		 
+		 form.setEnabled('tipormb', false);		
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
 		 

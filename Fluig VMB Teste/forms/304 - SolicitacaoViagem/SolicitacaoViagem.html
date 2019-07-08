@@ -92,7 +92,7 @@
                                                       </span>
                                                       </a>
                                                    </li>
-                                                  <!-- 
+                                                 
                                                    <li role="presentation" class="disabled"><a
                                                       href="#step6" data-toggle="tab" aria-controls="step6"
                                                       role="tab" title="Adiantamento"> <span
@@ -101,7 +101,7 @@
                                                       </span>
                                                       </a>
                                                    </li>
-                                                    -->
+                                                    
                                                    <li role="presentation" class="disabled"><a
                                                       href="#complete" data-toggle="tab"
                                                       aria-controls="complete" role="tab" title="Concluido">
@@ -1136,23 +1136,59 @@
                                                       </div>
                                                    </div>
                                                    <ul class="list-inline pull-right">
-                                                      <li><button type="button" class="btn btn-default prev-step">Hospedagem</button></li>
-                                                      <li><button type="button" class="btn btn-primary btn-info-full next-step">Finalizar</button></li>
+                                                      <li><button type="button" class="btn btn-default prev-step">Passagem áerea</button></li>
+                                                      <li><button type="button" class="btn btn-primary next-step">Adiantamento</button></li>
                                                    </ul>
                                                 </div>
-                                               <!-- 
+                                                
                                                 <div class="tab-pane" role="tabpanel" id="step6"> 
-	                                                <div class="container text-center">
-	                                                   
+	                                                <div class="row">
+                                                      <div class="form-gorup col-md-7">
+                                                         <h3>Preencha os dados para solicitar adiantamento
+                                                            
+                                                         </h3>
+                                                      </div>
+                                                  		 </div>
+	                                                   <div class="row">
+	                                                   	<div class="form-group col-md-5">
+                                                         <label>Deseja solicitar adiantamento</label><br> <label
+                                                            for="adtoSim">Sim</label> <input type="radio"
+                                                            id="adtoSim" name="adiantamento" value="sim"
+                                                            onclick="clickAdiantamento()"> <label
+                                                            for="adtoNao">Não</label> <input
+                                                            type="radio" id="adtoNao" name="adiantamento"
+                                                            value="nao" onclick="clickAdiantamento()">
+                                                      </div>
+                                                      <div class="form-group col-md-2">
+				                                          <label for="vl_solicitado">Valor solicitado</label>
+				                                          <input type="number" class="form-control" name="vl_solicitado" id ="vl_solicitado">
+				                                       </div>                                       
+				                                       <div class="form-group col-md-2" id="div_vlapr">
+				                                          <label for="vl_aprovado">Valor Aprovado</label>
+				                                          <input type="number" class="form-control" name="vl_aprovado" id ="vl_aprovado">
+				                                       </div> 
+				                                       <div class="form-group col-md-3">
+				                                          <label for="dtNecessidade">Data de Necessidade</label>
+				                                          <div class="input-group date" >
+				                                             <input type="text" class="form-control" placeholder="Data de necessidade" id="dtNecessidade" name="dtNecessidade">
+				                                             <span class="input-group-addon">
+				                                             <span class="fluigicon fluigicon-calendar"></span>
+				                                             </span>
+				                                          </div>
+				                                       </div>
+				                                       
+				                                       
+	                                                   </div>
 	                                                    <ul class="list-inline pull-right">
 	                                                      <li><button type="button" class="btn btn-default prev-step">Hospedagem</button></li>
 	                                                      <li><button type="button" class="btn btn-primary btn-info-full next-step">Finalizar</button></li>
 	                                                   </ul>
 	                                                 
 	                                              
-	                                                   <h4>Para finalizar clique em Enviar.</h4>
-	                                                </div></div>
-                                                  -->
+	                                                   
+	                                               
+	                                            </div>
+                                                  
                                                 <div class="tab-pane" role="tabpanel" id="complete">
                                                    <div class="container text-center">
                                                       <h2>Solicitação preenchida</h2>
@@ -1162,8 +1198,8 @@
                                                          name="aceitenorma" value="sim" onclick="prazoMinino()" />  
 	                                                   <h4>Para finalizar clique em Enviar.</h4>
                                                   <ul class="list-inline pull-right">
-	                                                      <li><button type="button" class="btn btn-default prev-step">Hospedagem</button></li>
-	                                                      <li><button type="button" class="btn btn-primary btn-info-full next-step">Finalizar</button></li>
+	                                                      <li><button type="button" class="btn btn-default prev-step">Adiantamento</button></li>
+	                                                      
 	                                                   </ul>
                                                    </div>
                                                    <div class="row" id="divJustificativa">
@@ -1183,7 +1219,7 @@
                                                          </div>
                                                       </div>
                                                    </div>
-                                                   
+                                                  
                                                 </div>
                                                 <div class="clearfix"></div>
                                              </div>

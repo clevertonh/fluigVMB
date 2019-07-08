@@ -2,6 +2,46 @@ var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
 
 
+//Initialize tooltips
+$('.nav-tabs > li a[title]').tooltip();
+
+//Wizard
+$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+
+  var $target = $(e.target);
+
+  if ($target.parent().hasClass('disabled')) {
+      return false;
+  }
+});
+
+$(".next-step").click(function(e) {
+
+  var $active = $('.wizard .nav-tabs li.active');
+  $active.next().removeClass('disabled');
+  nextTab($active);
+
+});
+$(".prev-step").click(function(e) {
+
+      var $active = $('.wizard .nav-tabs li.active');
+      prevTab($active);
+
+  }
+
+);
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+
+var visibilidade = true;
+
+
 var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     pickDate: true,
     pickTime: false,
@@ -24,11 +64,32 @@ $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
+	
+		/*
+		var dtPeriodoDe = FLUIGC.calendar('#dtPeriodoDe', {
+			pickDate: true,
+			pickTime: false,
+			useCurrent: true,
+		    minDate: new Date(),
+		}).setDate($('#dtPeriodoDe :input').attr('value') != null ? $("#dtPeriodoDe :input").attr('value') : new Date());
+
+			
+
+		var dtPeriodoAte = FLUIGC.calendar('#dtPeriodoAte', {
+			pickDate: true,
+			pickTime: false,
+			useCurrent: true,
+		    minDate: new Date(),
+		}).setDate($('#dtPeriodoAte :input').attr('value') != null ? $("#dtPeriodoAte :input").attr('value') : new Date());
+
+*/
 		
 	}
 
 	
 });
+
+
 
 
 //preenche campos ZOOM
@@ -45,7 +106,7 @@ function setSelectedZoomItem(selectedItem) {
     var RATEIO = "rateioconfigurado";
     var SERVICO = "txtproduto";
     var EVENTO ="dataset_solicitacaoevento";
-      
+    var BENEFICIARIO ="beneficiario";
    
 
     //Recebe o nome do campo zoom
@@ -159,6 +220,9 @@ function setSelectedZoomItem(selectedItem) {
     		$("#NcarregaFinan").prop("disabled", false);
     	}
     }
+    else if (campoZOOM == BENEFICIARIO){
+    		$("#cpfbeneficiario").val(selectedItem["CPF"]);
+    } 
     
     
 }
@@ -170,6 +234,22 @@ function adicionaLinha() {
     window["txtcategoria___" + indice].disable(true);
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
+}
+
+function adicionaAgenda() {
+	var row = wdkAddChild('tbAgendaViagem');
+	FLUIGC.calendar("#dtPeriodoDe___" + row, {
+		minDate : new Date(),
+	});
+	
+	FLUIGC.calendar("#dtPeriodoAte___" + row, {
+		minDate : new Date(),
+	});
+	
+
+
+	
+	
 }
 
 
@@ -188,7 +268,8 @@ function removedZoomItem(removedItem) {
     var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
-
+    var BENEFICIARIO ="beneficiario";
+    
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
@@ -279,7 +360,9 @@ function removedZoomItem(removedItem) {
         removeItens();
 
     }
-
+    else if (campoZOOM == BENEFICIARIO){
+		$("#cpfbeneficiario").val("");
+	} 
 
 }
 
@@ -435,53 +518,9 @@ function addAnos(data, anos) {
 }
 
 
-function carregaAprovador() {		
-	var email = parent.WCMAPI.userEmail.toUpperCase();
-		
-	var constraints = new Array();
-  constraints.push(DatasetFactory.createConstraint("EMAIL_USUARIO", email, email, ConstraintType.MUST));
-	
-	    var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, constraints, null);
-	    if (dataset != null && dataset.values.length > 0) {
-
-	    	//SET CAMPOS DO APROVADOR
-	        $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
-	        $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
-	        $('#aprovador').val(dataset.values[0]["DIRETOR"]);
-	        //$('solicitanteFuncionario').val(dataset.values[0]["FUNCIONARIO_VMB"]);
 
 
-	    }
-	 
-	
-}
 
-function dadosFuncionarioDataSet() {
-  var email = parent.WCMAPI.userEmail.toUpperCase();
-
-  var constraints = new Array();
-  constraints.push(DatasetFactory.createConstraint("EMAIL_F", email, email, ConstraintType.MUST));
-  var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
-
-  if (dataset != null && dataset.values.length > 0) {
-
-      $('#nomepassageiro').val(dataset.values[0]["NOME"]);
-      $('#nomemae').val(dataset.values[0]["MAE"]);
-      $('#rgpassageiro').val(dataset.values[0]["RG"]);
-      $('#cpfpassageiro').val(dataset.values[0]["CPF"]);
-      $('#passaporte').val(dataset.values[0]["PASSAPORTE"]);
-      dataNasc.setDate(dataset.values[0]["DTNASC"]);
-      
-      if (dataset.values[0]["EXTRANGEIRO"] == 'SIM'){        
-      	document.getElementById("passageiroestrangeiro").click();
-      }
-      else{
-      	document.getElementById("passageiroestrangeironao").click();
-      } 
-
-  }
-
-}
 
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
@@ -544,7 +583,7 @@ function adicionaItensRateio(itens) {
 
 function removeItens() {
 	
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO || ATIVIDADE == COMPRARPASSAGEM){
+	if (ATIVIDADE == ABERTURA ){
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
