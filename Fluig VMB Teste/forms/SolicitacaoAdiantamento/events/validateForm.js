@@ -31,17 +31,16 @@ function validateForm(form){
 	var pendenciaAdiantamento = consultaPendenciaAdiantamento();
 	
 	function 	consultaPendenciaAdiantamento(){
-		var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
+		 var dataset = DatasetFactory.getDataset("VM_PendenciaAdiantamento", null, null, null);
 
-		 if (dataset.values.length >0 ) {
-			 return true;
-	        	
-	        }  
-	        else {
-	        	return false;
-	        }	 
+		 for (var a=0; a<dataset.rowsCount; a++ ){
+			 if (form.getValue("cpfbeneficiario") == dataset.getValue(a,"CPF")){
+				 if (dataset.getValue(a,"QUANTIDADE") > 0){
+					 throw "Você possui uma pendência de adiantamento."; 
+				 }				 
+			 };
+		 }
+		 	 
 	}
 	
 	

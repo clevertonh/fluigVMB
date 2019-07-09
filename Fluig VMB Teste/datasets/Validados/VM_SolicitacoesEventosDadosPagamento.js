@@ -16,9 +16,6 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("SOLICITACAO");
    
     
-    log.info("CONSTRAINT INICIAL");
-    log.dir(constraints);
-    
     //dataset interno
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
