@@ -337,6 +337,11 @@ function validateForm(form) {
          validaPercentualRateio();
          validaAtividades();
          
+         if (form.getValue("adiantamento")=="sim"){
+        	 consultaPendenciaAdiantamento();	 
+         }
+         
+         
     } else if (activity == APROVACAO && nextAtv ==GATEWAYVERIFICARAPROVACAO) {
         	
         		//valida se o aprovador marcou o campo de aprovacao ou reprovação
@@ -361,14 +366,16 @@ function validateForm(form) {
             validaLinhasRepetidas();
             validaPercentualRateio();
             validaAtividades();
+            
+        	if (form.getValue("aprovacao") == "aprovado" && form.getValue("adiantamento")=="sim"){
+    			consultaPendenciaAdiantamento();
+    		}
+            
+            
     }
 
     else if (activity == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA ) {  	
-//    else if (activity == COMPRARPASSAGEM) {    	
-    	
-    	//log.info("PROXIMA ATIVIDADE");
-    	//log.info(nextAtv);
-    	
+
         //valida se existe pedido de voo o campo valor da compra deve ser informado
         if ((form.getValue("vooComprado") != "" &&  form.getValue("vooComprado") != null ) || form.getValue("vooComprado") =='sim'){
         	/*
@@ -459,7 +466,18 @@ function validateForm(form) {
 	   	
     }
     
-    
+	function 	consultaPendenciaAdiantamento(){
+		 var dataset = DatasetFactory.getDataset("VM_PendenciaAdiantamento", null, null, null);
+
+		 for (var a=0; a<dataset.rowsCount; a++ ){
+			 if (form.getValue("cpfpassageiro") == dataset.getValue(a,"CPF")){
+				 if (dataset.getValue(a,"QUANTIDADE") > 0){
+					 throw "O beneficiário possui um adiantamento pendente.";					 
+				 }				 
+			 };
+		 }
+		 	 
+	}
     
     //VALIDA SE AS LINHAS FORAM PREENCHIDAS CORRETAMENTE
      function validaLinhasPreenchidas(){

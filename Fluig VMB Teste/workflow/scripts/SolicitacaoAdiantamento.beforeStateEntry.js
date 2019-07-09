@@ -20,7 +20,6 @@ function beforeStateEntry(sequenceId){
 	if (ativAtual == APROVACAO && aprovado == "aprovado"){
 		 var constraint = new Array();		  			 		  			
 			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-			 //constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
 			 
 	     var resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_ADIANTAMENTO", null, constraint, null);
 	  		    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){

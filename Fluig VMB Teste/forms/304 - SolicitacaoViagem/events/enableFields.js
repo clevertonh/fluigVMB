@@ -21,15 +21,12 @@ function enableFields(form) {
 	 
  
 	var activityEnable = getValue('WKNumState');
-	log.info("----ATIVIDADE enableFields: " + activityEnable);
+	//log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
 	var solicitante = getValue("WKUser");  
-	 form.setEnabled('adiantamento', false);
-	 form.setEnabled('vl_solicitado', false);	
-	 form.setEnabled('vl_aprovado', false);	
-	 form.setEnabled('dtNecessidade', false);	
+	// form.setEnabled('adiantamento', false);
 	 
-	 log.info("numero da atividade "+activityEnable);
+	// log.info("numero da atividade "+activityEnable);
 	
 	if (activityEnable == ABERTURA || activityEnable == CORRIGIRSOLICITACAO || activityEnable == SOLICITARVIAGEM){
 		//CAMPOS DO APROVADOR
@@ -43,7 +40,10 @@ function enableFields(form) {
 		 form.setEnabled('tipormb', false);		
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
-		 
+		 form.setEnabled('vl_aprovado', false);
+		// form.setEnabled('vl_solicitado', false);		
+		// form.setEnabled('dtNecessidade', false);	
+			
 		 
 		 if (activityEnable == ABERTURA){
 			 form.setValue("matriculasolicitante",solicitante); 	

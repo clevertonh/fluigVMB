@@ -42,6 +42,9 @@ function beforeStateEntry(sequenceId){
 	var valorTarifa 	 = hAPI.getCardValue("vl_tarifa");
 	var dtTarifa 	 	 = hAPI.getCardValue("dtTarifa");
 	var fornecedorT	 	 = hAPI.getCardValue("fornecedorTarifa");
+	var adiantamento	 = hAPI.getCardValue("adiantamento");
+	var vlAdiantamento	 = hAPI.getCardValue("vl_aprovado");
+
 	
 	
 	//VARIAVEIS SIMPLES
@@ -115,16 +118,28 @@ function beforeStateEntry(sequenceId){
  		  			}
  		
  	  				
- 		  			
  		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
  		  		    
- 		  		//    log.info("retorno solicitacao viagem");
- 		  		//    log.dir(resultDateset);
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
+ 		  		    else {
+ 		  		 		if (adiantamento == "sim" && vlAdiantamento > 0){
+	 		   		  		 var constraint2 = new Array();		  			 		  			
+	 		   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+	 		   				 
+	 		   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
+	 		   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
+	 		   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
+	 		   		  		    }
+ 		   		  		}
+ 		  		    }
  		  		}
  		  		
+     	
+ 		 
+     	
+     	
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
      	else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	

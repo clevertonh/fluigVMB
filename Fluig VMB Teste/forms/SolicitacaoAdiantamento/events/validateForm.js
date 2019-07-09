@@ -28,22 +28,7 @@ function validateForm(form){
 	}
 	
 	
-	var pendenciaAdiantamento = consultaPendenciaAdiantamento();
-	
-	function 	consultaPendenciaAdiantamento(){
-		 var dataset = DatasetFactory.getDataset("VM_PendenciaAdiantamento", null, null, null);
-
-		 for (var a=0; a<dataset.rowsCount; a++ ){
-			 if (form.getValue("cpfbeneficiario") == dataset.getValue(a,"CPF")){
-				 if (dataset.getValue(a,"QUANTIDADE") > 0){
-					 throw "Você possui uma pendência de adiantamento."; 
-				 }				 
-			 };
-		 }
-		 	 
-	}
-	
-	
+		
 	if (activity == ABERTURA){
 		if (form.getValue("vl_solicitado") == "" ){
 			throw "Você precisa informar o valor desejado.";
@@ -67,7 +52,7 @@ function validateForm(form){
 			
 		}
 		
-		
+		consultaPendenciaAdiantamento();
 		
 	}
 	else if (activity == APROVACAO){
@@ -90,7 +75,29 @@ function validateForm(form){
 		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
             }
+	
+	
+		if (form.getValue("aprovacao") == "aprovado"){
+			consultaPendenciaAdiantamento();
+		}
+	
+	
 	}
+	
+	function 	consultaPendenciaAdiantamento(){
+		 var dataset = DatasetFactory.getDataset("VM_PendenciaAdiantamento", null, null, null);
+
+		 for (var a=0; a<dataset.rowsCount; a++ ){
+			 if (form.getValue("cpfbeneficiario") == dataset.getValue(a,"CPF")){
+				 if (dataset.getValue(a,"QUANTIDADE") > 0){
+					 throw "O beneficiário possui um adiantamento pendente.";					 
+				 }				 
+			 };
+		 }
+		 	 
+	}
+	
+	
 	
 	 function consultaAfastamento(emailLogado){   	    	
  	 	 var constraints   = new Array();

@@ -211,7 +211,10 @@ $(document).ready(function() {
         });
 
     }
-
+    $("#vl_solicitado").prop("disabled", true);
+    $("#dtNecessidade").prop("disabled", true);
+    $("#adtoSim").prop("disabled", true);            
+    $("#adtoNao").prop("disabled", true);
 
 
 });
@@ -265,9 +268,14 @@ function clickAdiantamento(){
         //bloquear campos
     	$('#vl_solicitado').val("0");
         dataNecessidade.setDate(null);
+        $("#vl_solicitado").prop("disabled", true);
+        $("#dtNecessidade").prop("disabled", true);
     }
     if (document.getElementById("adtoSim").checked == true) {
     	//liberar campos
+        $("#vl_solicitado").prop("disabled", false);
+        $("#dtNecessidade").prop("disabled", false);
+
     }
     
 }
@@ -532,6 +540,23 @@ function clickTipoViagem() {
     document.getElementById("trecho3").style.display = "none";
 
   
+    if (document.getElementById("internacional").checked == true){
+    	  $("#adtoSim").prop("disabled", false);            
+    	  $("#adtoNao").prop("disabled", false);
+    }
+    
+    if (document.getElementById("nacional").checked == true){
+    	  $("#adtoSim").prop("disabled", true);            
+    	  $("#adtoNao").prop("disabled", true);
+    	  $('#vl_solicitado').val("0");
+    	  $('#adtoSim').attr("checked", false);
+    	  $('#adtoNao').attr("checked", true);
+          dataNecessidade.setDate(null);
+          $("#vl_solicitado").prop("disabled", true);
+          $("#dtNecessidade").prop("disabled", true);
+    	  
+    }
+    
     
 }
 
@@ -637,9 +662,11 @@ function clickTipoVoo0() {
             ocultaCamposVooNacional();
             document.getElementById("div_internacional1").style.display = "block";
 
+
         } else {
             document.getElementById("div_Nacional1").style.display = "block";
             ocultaCamposVooInternacional();
+
         }
 
         document.getElementById("observacaoVoo").style.display = "block";
@@ -1491,12 +1518,12 @@ function maiorDataInformadaViagem() {
     //VERIFICA SE EXISTE VOO
     if (document.getElementById("tipovoo0").checked == true) {
         dataVoo = document.getElementById("dataretorno1").value;
-        console.log("DT Final 1: " + dataVoo);
-        console.log("tamanho data final: " + dataVoo.length);
+     //   console.log("DT Final 1: " + dataVoo);
+     //   console.log("tamanho data final: " + dataVoo.length);
 
     } else if (document.getElementById("tipovoo1").checked == true) {
         dataVoo = document.getElementById("datapartida1").value;
-        console.log("DT Final 2: " + dataVoo);
+     //   console.log("DT Final 2: " + dataVoo);
 
     } else if (document.getElementById("tipovoo2").checked == true) {
         var dataVoo2 = document.getElementById("datapartida2").value;
@@ -1504,10 +1531,10 @@ function maiorDataInformadaViagem() {
 
         if (dataVoo3 == null || dataVoo3 == '' || dataVoo3 > 0) {
             dataVoo = dataVoo2;
-            console.log("DT Final 3: " + dataVoo);
+         //   console.log("DT Final 3: " + dataVoo);
         } else {
             dataVoo = dataVoo3;
-            console.log("DT Final 4: " + dataVoo);
+          //  console.log("DT Final 4: " + dataVoo);
 
         }
     }
@@ -1560,7 +1587,7 @@ function maiorDataInformadaViagem() {
 
     }
 
-    console.log("MAIOR DATA INFORMADA: " + maiorDataInformada);
+   // console.log("MAIOR DATA INFORMADA: " + maiorDataInformada);
     //recebe maior data string do Fluig e converte para tipo Data MM/DD/YYYY
     var maiorDataConvertida = convertStringToData(maiorDataInformada);
 
