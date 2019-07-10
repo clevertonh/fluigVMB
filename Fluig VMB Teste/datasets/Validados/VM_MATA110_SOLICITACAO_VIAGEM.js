@@ -11,9 +11,6 @@ function createDataset(fields, constraints, sortFields) {
 	var documentId;
 	
 	
-	log.info("CONTRAINTS INTEGRACAO");
-	log.dir(constraints)
-	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -106,11 +103,7 @@ function createDataset(fields, constraints, sortFields) {
         					      
         					       
         					        
-        					        var vo = clientService.invoke(JSON.stringify(data));
-        			//		        log.info("retorno compras 51");
-        			//		        log.dir(vo.getResult());
-        			//		        log.dir(JSON.parse(vo.getResult()));
-        					        
+        					        var vo = clientService.invoke(JSON.stringify(data));  					        
         					        var obj = JSON.parse(vo.getResult());
         					         					        
         					        if(vo.getResult()== null || vo.getResult().isEmpty()){

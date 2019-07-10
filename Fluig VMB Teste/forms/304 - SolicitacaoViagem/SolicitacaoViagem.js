@@ -271,13 +271,14 @@ function clickAdiantamento(){
         $("#vl_solicitado").prop("disabled", true);
         $("#dtNecessidade").prop("disabled", true);
     }
+   /*
     if (document.getElementById("adtoSim").checked == true) {
     	//liberar campos
         $("#vl_solicitado").prop("disabled", false);
         $("#dtNecessidade").prop("disabled", false);
 
     }
-    
+    */
 }
 
 
@@ -539,26 +540,30 @@ function clickTipoViagem() {
     document.getElementById("trecho2").style.display = "none";
     document.getElementById("trecho3").style.display = "none";
 
-  
-    if (document.getElementById("internacional").checked == true){
+  /*
+    if (document.getElementById("internacional").checked == true && 
+    		document.getElementById("novasolicitacao").checked == true){
     	  $("#adtoSim").prop("disabled", false);            
     	  $("#adtoNao").prop("disabled", false);
     }
-    
-    if (document.getElementById("nacional").checked == true){
-    	  $("#adtoSim").prop("disabled", true);            
-    	  $("#adtoNao").prop("disabled", true);
-    	  $('#vl_solicitado').val("0");
-    	  $('#adtoSim').attr("checked", false);
-    	  $('#adtoNao').attr("checked", true);
-          dataNecessidade.setDate(null);
-          $("#vl_solicitado").prop("disabled", true);
-          $("#dtNecessidade").prop("disabled", true);
-    	  
+    else {
+    	bloqueaAdto();
     }
-    
+    */
     
 }
+
+function bloqueaAdto(){
+	 $("#adtoSim").prop("disabled", true);            
+	  $("#adtoNao").prop("disabled", true);
+	  $('#vl_solicitado').val("0");
+	  $('#adtoSim').attr("checked", false);
+	  $('#adtoNao').attr("checked", true);
+     dataNecessidade.setDate(null);
+     $("#vl_solicitado").prop("disabled", true);
+     $("#dtNecessidade").prop("disabled", true);
+}
+
 
 function tipoViagem() {
     if (document.getElementById("internacional").checked == true || document.getElementById("nacional").checked == true) {
@@ -765,6 +770,8 @@ function clickRemarcacao() {
 
 
     }
+    
+    bloqueaAdto();
 
 }
 
@@ -774,6 +781,13 @@ function clickNovaSolicitacao() {
         document.getElementById("selecaodeviagens").style.display = "none";
         document.getElementById("div_justificativaremarcacao").style.display = "none";
 
+        /*
+        if (document.getElementById("internacional").checked == true){
+        	 $("#adtoSim").prop("disabled", false);            
+       	     $("#adtoNao").prop("disabled", false);	
+        }
+        */
+       
 
     }
 }

@@ -339,6 +339,11 @@ function validateForm(form) {
          
          if (form.getValue("adiantamento")=="sim"){
         	 consultaPendenciaAdiantamento();	 
+        	 
+        	 if (form.getValue("cpfpassageiro") == '' || form.getValue("cpfpassageiro") == null){
+        		 throw "O campo CPF na aba de passageiro é obrigatório para pagamento do adiantamento";
+        	 }
+        	 
          }
          
          
