@@ -112,6 +112,10 @@ function setSelectedZoomItem(selectedItem) {
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
 
+    console.log("CAMPO ZOOM");
+    console.log(campoZOOM);
+   // console.log(selectedItem["CODIGO"]);
+  //  console.log(selectedItem["CPF"]);
     //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
     //separa string
     var linhaPagamento = campoZOOM.split('___');
@@ -131,16 +135,10 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
         if (selectedItem["CODIGO"] != '99990') {
-        	console.log("---ENTROU AQUI 2 ----");
-            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
             reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
         } else {
-        	console.log("---ENTROU AQUI 3 ----");
-            //desabilita zoom que não devem ser preenchidos
-        	console.log("---desabilita zoom que não devem ser preenchidos---");
-            console.log(selectedItem["CODIGO"]);
             window[PROJETO + "___" + linhaPagamento[1]].disable(false);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -171,44 +169,36 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-       // $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
-
+   
     } else if (linhaPagamento[0] == ATIVIDADE) {
-    	//POR CAUSA DA EDIÇÃO
-    	//PRIMEIRO PRECISO RECUPERAR O QUE ESTÁ NO CAMPO DO PROJETO
-    	//reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
-        
-    	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
-        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
-        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
+	        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
+	        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
 
 
-  
-
-    else if (campoZOOM == RATEIO) {    
-    	console.log("---ENTROU AQUI 9 ----");
-    	buscaItensRateio(selectedItem["CODIGO"]);
-    	
-    }
 
 
     else if (linhaPagamento[0] == FONTE){
-  	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+    		$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
   	  
     }
  
 
     else if (linhaPagamento[0] == SERVICO) {
-    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
+	    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+	    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
+	    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
     	
     	
     }
     
-    else if (campoZOOM = EVENTO){    	
+    else if (campoZOOM == RATEIO) {    
+		buscaItensRateio(selectedItem["CODIGO"]);
+	
+    }
+    
+    else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
@@ -220,7 +210,10 @@ function setSelectedZoomItem(selectedItem) {
     		$("#NcarregaFinan").prop("disabled", false);
     	}
     }
+    
     else if (campoZOOM == BENEFICIARIO){
+    		console.log("CPF BENEFICIARIO");
+    		console.log(selectedItem["CPF"]);
     		$("#cpfbeneficiario").val(selectedItem["CPF"]);
     } 
     
@@ -238,13 +231,22 @@ function adicionaLinha() {
 
 function adicionaAgenda() {
 	var row = wdkAddChild('tbAgendaViagem');
-	FLUIGC.calendar("#dtPeriodoDe___" + row, {
+	FLUIGC.calendar("#dtAtividade___" + row, {
 		minDate : new Date(),
 	});
 	
-	FLUIGC.calendar("#dtPeriodoAte___" + row, {
-		minDate : new Date(),
+	FLUIGC.calendar("#tempoestimado___" + row, {
+		pickDate: false,
+        pickTime: true,
+        defaultDate: "08:00"
 	});
+	
+	FLUIGC.calendar("#temporefeicao___" + row, {
+		pickDate: false,
+        pickTime: true,
+        defaultDate: "01:00"
+	});
+	
 	
 
 
@@ -458,7 +460,6 @@ function adicionaItem(itens) {
 
     }
 }
-
 
 
 //recebe data do Fluig e convert para data normal

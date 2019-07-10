@@ -206,7 +206,7 @@ function setSelectedZoomItem(selectedItem) {
     else if (linhaPagamento[0] == FONTE){
   	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
     }
-    else if (campoZOOM = EVENTO){    	
+    else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  

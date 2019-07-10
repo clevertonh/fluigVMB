@@ -1128,7 +1128,7 @@ function setSelectedZoomItem(selectedItem) {
     	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
     }
     
-    else if (campoZOOM = EVENTO){    	
+    else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  

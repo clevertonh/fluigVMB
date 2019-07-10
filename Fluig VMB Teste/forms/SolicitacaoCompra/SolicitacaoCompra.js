@@ -231,7 +231,7 @@ function setSelectedZoomItem(selectedItem) {
     	
     }
     
-    else if (campoZOOM = EVENTO){    	
+    else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  

@@ -349,35 +349,53 @@
                                                                      <thead>
                                                                         <tr class="tableHeadRow">
                                                                            <th></th>
-                                                                           <th>Período de:</th>
-                                                                           <th>Período até:</th>
+                                                                           <th>Data atividade</th>
+                                                                           <th>Tempo Estimado</th>
+                                                                            <th>Tempo refeição</th>
                                                                            <th>Atividade</th>
+                                                                           <th>Finalidade</th>
+                                                                           <th>Local</th>
+                                                                           <th>Custo diario</th>
+                                                                         
                                                                         </tr>
                                                                      </thead>
-                                                                     <tbody id="tbodyItens">
+                                                                     <tbody id="tbodyItensAgenda">
                                                                         <tr>
                                                                            <td>
                                                                               <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id ="removeitem" onclick="fnWdkRemoveChild(this)"></span>
                                                                            </td>
                                                                            <td>
                                                                               <div class="input-group date"  style="width:200px;">                                         
-                                                                                 <input type="text" class="form-control" id="dtPeriodoDe" name="dtPeriodoDe"  >
+                                                                                 <input type="text" class="form-control" id="dtAtividade" name="dtAtividade"  >
                                                                                  <span class="input-group-addon">
                                                                                  <span class="fluigicon fluigicon-calendar"></span>
                                                                                  </span>
                                                                               </div>
                                                                            </td>
                                                                            <td>
-                                                                              <div class="input-group date"  style="width:200px;">
-                                                                                 <input type="text" class="form-control" id="dtPeriodoAte" name="dtPeriodoAte" >
-                                                                                 <span class="input-group-addon">
-                                                                                 <span class="fluigicon fluigicon-calendar"></span>
-                                                                                 </span>
-                                                                              </div>
+                                                                             <div class="form-group col-md-1" style="width:100px;">
+                                                                             	<input type="text" class="form-control" id="tempoestimado" name="tempoestimado">
+                                                                             </div>
+                                                                           </td>
+                                                                            <td >
+                                                                            <div class="form-group col-md-1" style="width:100px;">
+                                                                            	<input type="text"  class="form-control" id="temporefeicao" name="temporefeicao">
+                                                                            </div>
+                                                                       	    
                                                                            </td>
                                                                            <td>                                                    
                                                                               <textArea class="form-control" name="acao" id="acao" maxlength="250" style="width:300px;" placeholder="Descreva os detalhes da atividade"></textArea>
                                                                            </td>
+                                                                           <td>
+                                                                           		<textArea class="form-control" name="itemFinalidade" id="itemFinalidade" maxlength="250" style="width:300px;" placeholder="Finalidade"></textArea>
+                                                                           </td>
+                                                                           <td>
+                                                                           		<textArea class="form-control" name="localAcao" id="localAcao" maxlength="250" style="width:300px;" placeholder="Local de execução da atividade"></textArea>
+                                                                           </td>
+                                                                           <td>
+                                                                           		<input type="number" id="custo" name="custo">
+                                                                           </td>
+                                                                          
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>

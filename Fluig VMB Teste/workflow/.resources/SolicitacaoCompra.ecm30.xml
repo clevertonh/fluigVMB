@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compra</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1950</formId>
@@ -326,7 +326,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompra</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -338,11 +338,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompra</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
-      <destinationSequenceId>0</destinationSequenceId>
+      <destinationSequenceId>40</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -350,7 +350,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompra</processId>
         <expressionOrder>3</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -622,7 +622,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompra</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -633,7 +633,7 @@ var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompra</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
