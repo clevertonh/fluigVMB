@@ -30,7 +30,7 @@ function enableFields(form){
 		 form.setEnabled("aprovacao", false);			
 		 //form.setEnabled('dtRetorno', false);
 		 //form.setEnabled('dtSaida', false);
-		 
+		// form.setEnabled('vl_diarias', false);
 		 
 	}
 	else if (activity == APROVACAO){

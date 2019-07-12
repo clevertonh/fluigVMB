@@ -84,6 +84,8 @@ $(document).ready(function() {
 
 */
 		
+		
+		
 	}
 
 	
@@ -247,13 +249,22 @@ function adicionaAgenda() {
         defaultDate: "01:00"
 	});
 	
-	
-
-
-	
-	
+	//somaDiarias();
+	 
 }
 
+
+function somaDiarias(){
+	var soma = 0;
+    // dessa forma irá funcionar
+    $(document).on("blur", "input[id^='custo___']", function(e){
+        soma = soma + parseFloat($(this).val());
+    });
+
+    // alimenta o campo Total com a soma dos valores dos produtos
+    $("#vl_diarias").val(soma);
+	
+};
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -408,7 +419,7 @@ function buscaDadosFinanceiroEvento(evento){
 }
 
 function adicionaItem(itens) {
-	console.log(itens);
+	//console.log(itens);
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
@@ -455,7 +466,7 @@ function adicionaItem(itens) {
        window["txtcategoria___" + indice].disable(true); 
        window["txtfontefinanciamento___" + indice].disable(true); 
        window["txtareaestrategica___" + indice].disable(true); 
-       $("#percentual___"+ indice).prop("disabled", true);
+      // $("#percentual___"+ indice).prop("disabled", true);
  
 
     }

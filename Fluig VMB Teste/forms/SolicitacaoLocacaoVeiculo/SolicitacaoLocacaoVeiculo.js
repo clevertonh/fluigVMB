@@ -405,7 +405,7 @@ function buscaDadosFinanceiroEvento(evento){
 }
 
 function adicionaItem(itens) {
-	console.log(itens);
+	//nsole.log(itens);
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
@@ -452,7 +452,7 @@ function adicionaItem(itens) {
        window["txtcategoria___" + indice].disable(true); 
        window["txtfontefinanciamento___" + indice].disable(true); 
        window["txtareaestrategica___" + indice].disable(true); 
-       $("#percentual___"+ indice).prop("disabled", true);
+     //  $("#percentual___"+ indice).prop("disabled", true);
  
 
     }

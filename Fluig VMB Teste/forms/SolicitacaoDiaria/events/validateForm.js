@@ -138,7 +138,7 @@ function validateForm(form){
                  //var fieldValue = parseInt(form.getValue("percentual___" + indexes[i]));
                  var fieldValue = parseFloat(form.getValue("percentual___" + indexes[i]));                   
                  if (isNaN(fieldValue)) {
-                     throw "Existem linhas sem percentual informado no rateio de pagamento.";
+                     throw "A linha " + indexes[i] + " está sem percentual informado no rateio de pagamento.";
 
                  }
 
