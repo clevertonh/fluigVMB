@@ -1,33 +1,28 @@
 <html>
 <head>
-      <meta charset="utf-8">
-      <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
-      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
-      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
-      <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
-      <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
-      <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+      <meta charset="utf-8">     
 	  <link type="text/css" rel="stylesheet" href="Contador.css" />  
 </head>
 <body>
-<div class="fluig-style-guide">
+<div class="meucronometro">
 <form name="form" role="form">
 	<div class="row">
-		<div class="form-group col-md-6">
-			<label>Cronometro</label><br>
-			<input type="text" size="7" name="cronometro" id="cronometro">
-		</div>		
+		<img src="logomarca.jpg" id="logomarca"/>
 	</div>
 	<div class="row">
-			<button type="button" id="iniciar" name="iniciar" onclick="Iniciar()">Iniciar</button>
-	</div>
+		<div class="form-group col-md-6">			
+			<input type="text" name="cronometro" id="cronometro" readonly>
+		</div>		
+	</div>	
 	<div class="row">
 		<div class="form-group col-md-3">
-			<input type="number" id="mortalidade" name="mortalidade" readonly>	
+			<input type="text" id="mortalidade" name="mortalidade" readonly>	
 		</div>
+	</div>	
+	<div class="row">			
+		<button type="button" id="iniciar" name="iniciar" onclick="Iniciar()">Iniciar</button>
+		<button type="button" id="parar" name="parar" onclick="Parar()">Parar</button>
 	</div>
-	
-	
 	
 	
 </form>

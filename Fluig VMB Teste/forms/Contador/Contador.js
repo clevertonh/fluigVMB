@@ -5,16 +5,23 @@ var seg = 0;
 var startTime; 
 var start;
 var nCriancas;
+var tempo;
 
 function Iniciar(){
 	nCriancas = 0;
+	seg = 0;
+	min = 0;
+	hor = 0;
 	document.form.mortalidade.value = nCriancas;
 	startTime = new Date(); 
 	StartCrono();	
 }
 
+function Parar(){
+	clearTimeout(tempo);
+}
+
 function StartCrono() {
-	//seg = 0;
 	start = startTime.getSeconds();
 
 	if (seg == 10){
@@ -48,7 +55,7 @@ function StartCrono() {
 		min = 0;
 		hor+= 1;
 	}
-var time = new Date(); 
+	var time = new Date(); 
 	if (time.getSeconds() >= start) {
 		seg = time.getSeconds() - start;
 	} 
@@ -61,7 +68,8 @@ var time = new Date();
 	timeCrono+= ((seg < 10) ? ":0" : ":") + seg;
 	document.form.cronometro.value = timeCrono;
 
-	setTimeout("StartCrono()",1000);
+	tempo = setTimeout("StartCrono()",1000);
+		
 } 
 
 
