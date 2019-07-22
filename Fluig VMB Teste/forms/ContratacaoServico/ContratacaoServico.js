@@ -42,7 +42,7 @@ function prevTab(elem) {
 var visibilidade = true;
 
 
-var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
+var dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
     pickDate: true,
     pickTime: false,
     useCurrent: true,
@@ -50,14 +50,7 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
-/*
-var dtVencimento = FLUIGC.calendar('#dtVencimento', {
-    pickDate: true,
-    pickTime: true,
-    minDate: new Date().toLocaleString(),
-});
 
-*/
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
@@ -65,25 +58,17 @@ $(document).ready(function() {
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
 	
-		/*
-		var dtPeriodoDe = FLUIGC.calendar('#dtPeriodoDe', {
-			pickDate: true,
-			pickTime: false,
-			useCurrent: true,
-		    minDate: new Date(),
-		}).setDate($('#dtPeriodoDe :input').attr('value') != null ? $("#dtPeriodoDe :input").attr('value') : new Date());
-
-			
-
-		var dtPeriodoAte = FLUIGC.calendar('#dtPeriodoAte', {
-			pickDate: true,
-			pickTime: false,
-			useCurrent: true,
-		    minDate: new Date(),
-		}).setDate($('#dtPeriodoAte :input').attr('value') != null ? $("#dtPeriodoAte :input").attr('value') : new Date());
-
-*/
+		var dtInicio = FLUIGC.calendar('#dtInicio', {
+		    pickDate: true,
+		    pickTime: false,
+		    minDate: new Date().toLocaleString(),
+		});
 		
+		var dtFim = FLUIGC.calendar('#dtFim', {
+		    pickDate: true,
+		    pickTime: false,
+		    minDate: new Date().toLocaleString(),
+		});
 		
 		
 	}

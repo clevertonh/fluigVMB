@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
     <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
     <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-    <link type="text/css" rel="stylesheet" href="ContratacaoServico.js.css" />
+    <link type="text/css" rel="stylesheet" href="ContratacaoServico.css" />
 </head>
 
 <body>
@@ -50,13 +50,25 @@
                                                             <ul class="nav nav-tabs" role="tablist">
                                                                 <li role="presentation" class="active">
                                                                     <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Dados financeiro"> <span class="round-tab">
-                                                      <i class="fluigicon fluigicon-folder-open"></i>
+                                                      <i class="fluigicon fluigicon-money"></i>
                                                       </span>
                                                                     </a>
                                                                 </li>
                                                                 <li role="presentation" class="disabled">
-                                                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Dados da compra"> <span class="round-tab"> <i
-                                                      class="fluigicon fluigicon-user"></i>
+                                                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Termo de referência"> <span class="round-tab"> <i
+                                                      class="fluigicon fluigicon-document-square"></i>
+                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li role="presentation" class="disabled">
+                                                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Forma de pagamento"> <span class="round-tab"> <i
+                                                      class="fluigicon fluigicon-money"></i>
+                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li role="presentation" class="disabled">
+                                                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Prazo"> <span class="round-tab"> <i
+                                                      class="fluigicon fluigicon-calendar"></i>
                                                       </span>
                                                                     </a>
                                                                 </li>
@@ -298,21 +310,22 @@
                                                                 <!-- Linha 7 -->
                                                                 <ul class="list-inline pull-right">
                                                                     <li>
-                                                                        <button type="button" class="btn btn-primary next-step">Termo de referencia</button>
+                                                                        <button type="button" class="btn btn-primary next-step">Avançar</button>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step2">
                                                                 <div class="panel-body">
                                                                 	 <div class="row">
+                                                                	 <div class="form-group col-md-6">
+                                                                    		<label>Objetivos</label>
+                                                                    		<textarea class="form-control" rows="5" id="objetivos" name="objetivos"></textarea>
+                                                                    	</div>  
                                                                     	<div class="form-group col-md-6">
                                                                     		<label>Justificativa</label>
                                                                     		<textarea class="form-control" rows="5" id="justificativa" name="justificativa"></textarea>
                                                                     	</div>
-                                                                    	<div class="form-group col-md-6">
-                                                                    		<label>Objetivos</label>
-                                                                    		<textarea class="form-control" rows="5" id="objetivos" name="objetivos"></textarea>
-                                                                    	</div>                                                                    
+                                                                    	                                                                  
                                                                     </div>
                                                                 	<div class="row">
                                                                 	    <div class="form-group col-md-6">
@@ -340,62 +353,95 @@
                                                                     		<textarea class="form-control" rows="5" id="perfil" name="perfil"></textarea>
                                                                     	</div>
                                                                     	<div class="form-group col-md-6">
-                                                                    		<label>Supervisão das atividades</label>
-                                                                    		<textarea class="form-control" rows="5" id="supervisao" name="supervisao"></textarea>
+                                                                    		<label>Supervisor das atividades</label>
+                                                                    		<input type="text" class="form-control" id="supervisao" name="supervisao">
                                                                     	</div>
-                                                                    </div>  
+                                                                    </div>                                                                                                                                                                                                                                  
+                                                                </div>
+																 <ul class="list-inline pull-left">		
+																	<li>
+																	
+																		
+																	</li>
+ 																</ul>
+                                                                <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                     	<button type="button" class="btn btn-primary prev-step">Voltar</button>
+                                                                    	<button type="button" class="btn btn-primary next-step">Avançar</button>
+                                                                       
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                             <div class="tab-pane" role="tabpanel" id="step3">
+                                                                <div class="panel-body">                                                                	
                                                                     <div class="row">
 	                                                                     <div class="form-group col-md-3">
 	                                                         				<label>Forma de pagamento</label><br> 
 	                                                         				<label for="mensal">Mensal</label> 
 				                                                            	<input type="radio" id="mensal" name="formapgto" value="mensal" >
-					                                                        <label for="unica">Única</label> 
-					                                                        	<input type="radio" id="unica" name="formapgto" value="unica" >
+					                                                        <label for="unico">Pagamento único</label> 
+					                                                        	<input type="radio" id="unico" name="formapgto" value="unico" >
 	                                                      				</div>
 	                                                      				<div class="form-group col-md-3">
 	                                                         				<label>Definição do valor</label><br> 
 	                                                         				<label for="fixo">Valor fixo</label> 
 				                                                            	<input type="radio" id="fixo" name="definicaoValor" value="fixo" >
-					                                                        <label for="demanda">Por demanda</label> 
+					                                                        <label for="demanda">Valor por demanda</label> 
 					                                                        	<input type="radio" id="demanda" name="definicaoValor" value="demanda" >
 	                                                      				</div>
+                                                                	</div>                                                                                                                                                                                            
+                                                                </div>
+                                                                <ul class="list-inline pull-left">
+                                                                	<li>
+                                                                		 
+                                                                	</li>
+                                                                </ul>
+
+                                                                <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                    	<button type="button" class="btn btn-primary prev-step">Voltar</button>
+                                                                        <button type="button" class="btn btn-primary next-step">Avançar</button>                                                                       
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                             <div class="tab-pane" role="tabpanel" id="step4">
+                                                                <div class="panel-body">                                                                	
+                                                                    <div class="row">	                                                             
 	                                                      				<div class="form-group col-md-3">
 	                                                         				<label>Prazo de finalização</label><br> 
 	                                                         				<label for="indeterminado">Indeterminado</label> 
 				                                                            	<input type="radio" id="indeterminado" name="prazo" value="indeterminado" >
-					                                                        <label for="definido">Definido</label> 
+					                                                        <label for="definido">Prazo definido</label> 
 					                                                        	<input type="radio" id="definido" name="prazo" value="definido" >
-	                                                      				</div>
+	                                                      				</div>	                                                      				
+	                                                      				<div class="form-group col-md-2">
+	                                                                        <label for="dtInicio">Data de Início</label>
+	                                                                        <div class="input-group date">
+	                                                                            <input type="text" class="form-control" id="dtInicio" name="dtInicio" >
+	                                                                            <span class="input-group-addon"> <span
+	                                                             				  class="fluigicon fluigicon-calendar"></span>
+	                                                                            </span>
+	                                                                        </div>
+                                                                    </div>
+	                                                                    <div class="form-group col-md-2">
+	                                                                        <label for="dtFim">Data final</label>
+	                                                                        <div class="input-group date">
+	                                                                            <input type="text" class="form-control" id="dtFim" name="dtFim" >
+	                                                                            <span class="input-group-addon"> <span
+	                                                               					class="fluigicon fluigicon-calendar"></span>
+	                                                                            </span>
+	                                                                        </div>
+	                                                                    </div>
                                                                 	
-                                                                	</div> 
-                                                                	<div class="row">
-                                                                		<div class="form-group col-md-3">
-                                                                        <label for="dtInicio">Data de Início</label>
-                                                                        <div class="input-group date">
-                                                                            <input type="text" class="form-control" id="dtInicio" name="dtInicio" >
-                                                                            <span class="input-group-addon"> <span
-                                                             				  class="fluigicon fluigicon-calendar"></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group col-md-3">
-                                                                        <label for="dtFim">Data final</label>
-                                                                        <div class="input-group date">
-                                                                            <input type="text" class="form-control" id="dtFim" name="dtFim" >
-                                                                            <span class="input-group-addon"> <span
-                                                               					class="fluigicon fluigicon-calendar"></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                	</div>                                                                                                                               
+                                                                	</div>                                                                                                                                                                                             
                                                                 </div>
-
-                                                                <ul class="list-inline pull-right">
-                                                                    <li>
-                                                                        <button type="button" class="btn btn-default prev-step">Informações financeira</button>
-                                                                    </li>
-                                                                </ul>
+                                                                    <ul class="list-inline pull-right">
+                                                                	<li>
+                                                                		<button type="button" class="btn btn-primary prev-step">Voltar</button>
+                                                                	</li>
+                                                                </ul>                                                                                                                        
                                                             </div>
+                                                            
                                                             <div class="clearfix"></div>
                                                         </div>
                                                     </div>
