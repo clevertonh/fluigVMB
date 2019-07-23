@@ -378,9 +378,7 @@ function clickFinanceiroEvento(){
 	
 }
 
-function renovacaoVeiculo(){
-	
-}
+
 
 function buscaDadosFinanceiroEvento(evento){
 	   var constraints = new Array();

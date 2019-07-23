@@ -91,7 +91,7 @@ function validateForm(form){
         }
         
 		//valida se aprovador é diferente do solicitante
-		if (form.getValue("matriculasolicitante") == userId  && form.getValue("aprovacao")  == "aprovado" ){
+		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
         }    
 		
