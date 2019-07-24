@@ -2,16 +2,19 @@ function enableFields(form){
 	var ABERTURA = 0;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
+	var CONTRATAR = 47;
 
 	
-	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE enableFields: " + activity);
-	
+	var activity = getValue('WKNumState');	
 	var solicitante = getValue("WKUser");  
 	
 	
 	if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
+		 form.setEnabled("valor", false);
+		 form.setEnabled("justificativaReprovacao", false);
+		 
+		 
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
@@ -36,16 +39,7 @@ function enableFields(form){
 
 			 
 	}
-	else if (activity == APROVACAO){
-		 //set numero da solicitação
-		// form.setValue("solicitacao",getValue('WKNumProces'));
-		// form.setEnabled("rateioconfigurado", false);		 
-		// form.setEnabled("dataset_solicitacaoevento", false);
-		// form.setEnabled("FinanEvento", false);
-		// bloqueiaDadosFinanceiro();
-		 
-		 
-		 
+	else if (activity == APROVACAO){	 
 		 	var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -58,12 +52,17 @@ function enableFields(form){
 		    
 		    form.setEnabled("aprovacao", true);		 
 			form.setEnabled("justificativaReprovacao", true);
+			form.setEnabled("valor", true);
+			
 		
-		    
+			 //set numero da solicitação
+			 form.setValue("solicitacao",getValue('WKNumProces'));
 		 
 		 
 		 
 	}
+
+	
 
 
 
@@ -97,15 +96,10 @@ function enableFields(form){
 	}
 
 	
-	function usuarioAprovador(emailSolicitante){
-		//log.info("---GERENTE FUNCIONARIO----"); 
-	//	log.info(emailSolicitante);
-		
+	function usuarioAprovador(emailSolicitante){		
 		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
-		 
-		  
-		// log.info(dataset.getValue(0, "EMAIL_G"));
+		 		 
 		 return dataset;
 	}
 

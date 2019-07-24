@@ -17,13 +17,6 @@ function beforeCancelProcess(colleagueId,processId){
 	
 	//recupera atividade
 	var ativAtual = getValue("WKNumState");
-	log.info("Processo beforeCancel - atividade: " + ativAtual);
-	
-	//Processo beforeCancel - atividade: 33,129
-//----LOG CANCELAMENTO---33
-//----LOG CANCELAMENTO---129	
-	
-	log.info("----LOG CANCELAMENTO---");
 	
 	if (ativAtual != ABERTURA && ativAtual != SOLICITARVIAGEM 
 			&& ativAtual != APROVACAO
@@ -35,40 +28,30 @@ function beforeCancelProcess(colleagueId,processId){
 	}
 	
 	
-	
-	//log.info("----LOG CANCELAMENTO---"+atvObterPassagem);
-	//log.info("----LOG CANCELAMENTO---"+atvPagarDiarias);
-
-	
 	if (ativAtual == OBTERPASSAGEM || atv1 == OBTERPASSAGEM || atv2 == OBTERPASSAGEM ){		
-		log.info("Processo beforeCancel - OBTERPASSAGEM");
 		 throw "Você não pode excluir essa solicitação pois ela já foi atendida. Se você é o solicitante acesse a solicitação e marque a opção de cancelamento de viagem.";
 		
 	}
 	
 	if (ativAtual == PAGARDIARIAS || atv1 == PAGARDIARIAS || atv2 == PAGARDIARIAS){
-		log.info("Processo beforeCancel - PAGARDIARIAS");
 		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
 			
 	}
 
 	
 	if (ativAtual == COMPRARPASSAGEM || atv1 == COMPRARPASSAGEM || atv2 == COMPRARPASSAGEM){
-		log.info("Processo beforeCancel - COMPRAR PASSAGEM");
 		 throw "Você não pode excluir essa solicitação pois ela está em processo de compra. Por favor, entre em contato com o departamento de Hospitalidade.";
 			
 	}
 	
 	
 	if (ativAtual == REGISTRARCANCELAMENTO ||  atv1 == REGISTRARCANCELAMENTO ||  atv2 == REGISTRARCANCELAMENTO){
-		log.info("Processo beforeCancel - REGISTRAR CANCELAMENTO");
 		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
 			
 	}
 	
 
 	if (ativAtual == CONFIRMARREEMBOLSO || atv1 == CONFIRMARREEMBOLSO ||  atv2 == CONFIRMARREEMBOLSO){
-		log.info("Processo beforeCancel - CONFIRMAR REEMBOLSO");
 		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
 			
 	}

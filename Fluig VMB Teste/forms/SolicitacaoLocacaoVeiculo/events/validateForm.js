@@ -3,6 +3,7 @@ function validateForm(form){
 	var ABERTURA = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
+	var CONTRATAR = 47;
 	
 	
 	//recupera atividade do processo
@@ -79,7 +80,7 @@ function validateForm(form){
 		
 	}
    
-	if (activity == APROVACAO){
+	else if (activity == APROVACAO){
 		
  		//valida se o aprovador marcou o campo de aprovacao ou reprovação
         if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
@@ -101,6 +102,11 @@ function validateForm(form){
 		validaPercentualRateio();
 		validaAtividades();
 		
+	}
+	else if (activity == CONTRATAR){
+		if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
+         	 throw "Você precisa informar o custo da locação do veículo.";
+       }
 	}
 	
     function consultaAfastamento(emailLogado){   	    	

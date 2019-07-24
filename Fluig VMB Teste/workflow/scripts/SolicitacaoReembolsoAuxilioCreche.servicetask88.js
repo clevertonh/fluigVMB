@@ -19,10 +19,7 @@ function servicetask88(attempt, message) {
     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
     
     var resultDataset = DatasetFactory.getDataset("ds_get_Pagamentos", null, constraint, null);
-       
-     log.info("SCRIPT DE INTEGRAÇÃO 15:33");
-     log.dir(resultDataset);
-     
+          
      
   	if (resultDataset !== null && resultDataset.rowsCount >0 ){
  		if (resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){

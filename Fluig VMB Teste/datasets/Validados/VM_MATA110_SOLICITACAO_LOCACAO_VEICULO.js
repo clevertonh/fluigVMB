@@ -7,6 +7,8 @@ function createDataset(fields, constraints, sortFields) {
 	var aRateio;
 	var itens = new Array();
 	var documentId;
+	var valor;
+	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -17,7 +19,15 @@ function createDataset(fields, constraints, sortFields) {
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculo", null, new Array(c0,c1), null);
         		
         		documentId = solicitacao.getValue(0,"documentid");
-         		
+        		
+        		for (var a=0; a<constraints.length; a++){
+        			if (constraints[a].fieldName == "valor"){
+        				valor = constraints[a].initialValue;
+            		}        			
+        		}
+        		
+        		
+        		         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		
@@ -33,10 +43,11 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         				  				 
         					 //criação do item da solicitação de compra
-        					 aItemServico.push(addItemCompra("SVTRP007",codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid")));    
-        					 
-				            	//solicitacao : '' + solicitacao.getValue(0,"solicitacao") + '' ,
-        					        							
+        					 aItemServico.push(addItemCompra("SVTRP007",codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor));    
+        					        
+        					 log.info("INTEGRAÇÃO LOCAÇÃO DE VEICULO");
+        					 log.dir(aItemServico);
+        				
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
         					        var data = {
@@ -53,7 +64,7 @@ function createDataset(fields, constraints, sortFields) {
         					            	DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
         					            	ITENS: aItemServico ,
         					            	RATEIODIGITADO: aRateio ,
-        					            	DOCUMENTID:''+ documentId +''
+        					            	DOCUMENTID:''+ documentId +''        					            	
         					            },
         					          options : {
         					             encoding : 'UTF-8',
@@ -95,13 +106,14 @@ function createDataset(fields, constraints, sortFields) {
 
 
 //FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA
-function addItemCompra(produto,codigo,quantidade,dtnecessidade,id_form){
+function addItemCompra(produto,codigo,quantidade,dtnecessidade,id_form, nValor){
 	   var itemServico = { 
 				produto: ''+produto +'', 
 				codSolicitacao: '' + codigo +'',
 				quantidade: ''+ quantidade +'',
 				dtNecessidade: '' + dtnecessidade +'',											
-				idDocumento: '' + id_form +''
+				idDocumento: '' + id_form +'',
+				valor: '' + nValor + ''								
 					};	
 		
 		return itemServico;
