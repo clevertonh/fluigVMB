@@ -1,6 +1,8 @@
 var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
 
+var codigoEvento;
+
 
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
@@ -202,7 +204,7 @@ function setSelectedZoomItem(selectedItem) {
     
     else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
-    		evento = selectedItem["SOLICITACAO"];    		
+    		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
     		$("#carregaFinan").prop("disabled", true);
     		$("#NcarregaFinan").prop("disabled", true);
@@ -385,7 +387,7 @@ function setZoomData(instance, value) {
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
-		buscaDadosFinanceiroEvento(evento);	
+		buscaDadosFinanceiroEvento(codigoEvento);	
 	}
 	else {
 		window['rateioconfigurado'].clear();

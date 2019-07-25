@@ -18,18 +18,17 @@ function beforeStateEntry(sequenceId){
 	
     var aprovado = hAPI.getCardValue("aprovacao");
     var valor = hAPI.getCardValue("valor");
+    var produto = hAPI.getCardValue("codigoProduto");
     
     
     if (ativAtual == CONTRATAR ){ 	   
                   var constraint = new Array();                                 
                   constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
                   constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
+                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
                   
                    var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_LOCACAO_VEICULO", null, constraint, null);                                                                    
                       
-                   log.info("INTEGRAÇÃO COMPRAS");
-                   log.dir(resultDataset);
-                   
                    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
                          throw resultDataset.getValue(0,"RETORNO");
                       }

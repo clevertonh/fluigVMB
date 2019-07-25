@@ -106,7 +106,12 @@ function validateForm(form){
 	else if (activity == CONTRATAR){
 		if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
          	 throw "Você precisa informar o custo da locação do veículo.";
+        }
+		if (form.getValue("txtproduto") == ""  || form.getValue("txtproduto")  == null){
+        	 throw "Você precisa informar o tipo de veículo para gerar a solicitaçao de compra.";
        }
+		
+		
 	}
 	
     function consultaAfastamento(emailLogado){   	    	

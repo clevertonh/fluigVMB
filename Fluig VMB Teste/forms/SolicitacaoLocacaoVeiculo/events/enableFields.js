@@ -12,9 +12,10 @@ function enableFields(form){
 	if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
 		 form.setEnabled("valor", false);
+		 //form.setEnabled("txtproduto", false);
 		 form.setEnabled("justificativaReprovacao", false);
 		 
-		 
+		
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
@@ -40,7 +41,12 @@ function enableFields(form){
 			 
 	}
 	else if (activity == APROVACAO){	 
-		 	var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+
+		//set numero da solicitação
+		form.setValue("solicitacao",getValue('WKNumProces'));
+
+		
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
 		    var it = mapaForm.keySet().iterator();
@@ -53,10 +59,8 @@ function enableFields(form){
 		    form.setEnabled("aprovacao", true);		 
 			form.setEnabled("justificativaReprovacao", true);
 			form.setEnabled("valor", true);
-			
+			form.setEnabled("txtproduto", true);	
 		
-			 //set numero da solicitação
-			 form.setValue("solicitacao",getValue('WKNumProces'));
 		 
 		 
 		 

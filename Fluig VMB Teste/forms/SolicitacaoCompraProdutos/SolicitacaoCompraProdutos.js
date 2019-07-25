@@ -14,6 +14,7 @@ var dataAprovacao = FLUIGC.calendar('#dtNecessidade', {
 });
 
 var dtSolicitacao;
+var codigoEvento;
 
 /*
 dataViagem = FLUIGC.calendar('#calendardtViagem',{
@@ -233,7 +234,7 @@ function setSelectedZoomItem(selectedItem) {
     
     else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
-    		evento = selectedItem["SOLICITACAO"];    		
+    		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
     		$("#carregaFinan").prop("disabled", true);
     		$("#NcarregaFinan").prop("disabled", true);
@@ -401,7 +402,7 @@ function setZoomData(instance, value) {
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
-		buscaDadosFinanceiroEvento(evento);	
+		buscaDadosFinanceiroEvento(codigoEvento);	
 	}
 	else {
 		window['rateioconfigurado'].clear();

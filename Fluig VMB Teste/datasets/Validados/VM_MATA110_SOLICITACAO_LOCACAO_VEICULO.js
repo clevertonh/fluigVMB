@@ -8,6 +8,7 @@ function createDataset(fields, constraints, sortFields) {
 	var itens = new Array();
 	var documentId;
 	var valor;
+	var produto;
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -23,7 +24,10 @@ function createDataset(fields, constraints, sortFields) {
         		for (var a=0; a<constraints.length; a++){
         			if (constraints[a].fieldName == "valor"){
         				valor = constraints[a].initialValue;
-            		}        			
+            		}
+        			else if (constraints[a].fieldName == "produto"){
+        				produto = constraints[a].initialValue;
+        			}
         		}
         		
         		
@@ -43,10 +47,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         				  				 
         					 //criação do item da solicitação de compra
-        					 aItemServico.push(addItemCompra("SVTRP007",codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor));    
-        					        
-        					 log.info("INTEGRAÇÃO LOCAÇÃO DE VEICULO");
-        					 log.dir(aItemServico);
+        					 aItemServico.push(addItemCompra(produto,codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor));    
         				
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();

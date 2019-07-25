@@ -3,15 +3,18 @@ var ABERTURA = 0;
 var SOLICITAR = 4;
 var APROVACAO =5;
 var CORRIGIR = 39;
+var CONTRATAR = 47;
 
 var dtSolicitacao;
 var dtRetirada;
 var dtDevolucao;
+var dtValidade;
+var codigoEvento;
 
 
 $(document).ready(function() {
 	
-    if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR) {        
+    if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == CORRIGIR) {        
     	dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
             pickDate: true,
             pickTime: false,
@@ -22,15 +25,25 @@ $(document).ready(function() {
      
     	dtRetirada = FLUIGC.calendar('#dtRetirada', {
             pickDate: true,
-            pickTime: false,
-            useCurrent: true
+            pickTime: true,
+            useCurrent: true,
+            minDate: new Date().toLocaleString()
         });
     	
     	dtDevolucao = FLUIGC.calendar('#dtDevolucao', {
             pickDate: true,
-            pickTime: false,
-            useCurrent: true
+            pickTime: true,
+            useCurrent: true,
+            minDate: new Date().toLocaleString()
         });
+
+    	dtValidade = FLUIGC.calendar('#dtValidade', {
+            pickDate: true,
+            pickTime: false,
+            useCurrent: true,
+            minDate: new Date().toLocaleString()
+        });
+    	
     }
 
     else if (ATIVIDADE == APROVACAO){
@@ -101,10 +114,13 @@ function removeItens() {
 function clickRenovacao(){
 	if (document.getElementById("renovacaoN").checked == true){
 		window['dataset_solicitacaolocacao'].clear();
-		window['dataset_solicitacaolocacao'].disable(true);
+		//window['dataset_solicitacaolocacao'].disable(true);
+        document.getElementById("div_solicitacaoAnterior").style.display = "none";
 	}
 	else {		
-		window['dataset_solicitacaolocacao'].disable(false);		
+		window['dataset_solicitacaolocacao'].disable(false);
+		document.getElementById("dataset_solicitacaolocacao").style.display = "block";
+        document.getElementById("div_solicitacaoAnterior").style.display = "block";
 	}
 }
 
@@ -191,7 +207,8 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
        // $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
 
-    } else if (linhaPagamento[0] == ATIVIDADE) {
+    } 
+    else if (linhaPagamento[0] == ATIVIDADE) {
     	//POR CAUSA DA EDIÇÃO
     	//PRIMEIRO PRECISO RECUPERAR O QUE ESTÁ NO CAMPO DO PROJETO
     	//reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
@@ -201,34 +218,22 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
-
-
-  
-
     else if (campoZOOM == RATEIO) {    
     	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
-
-
     else if (linhaPagamento[0] == FONTE){
   	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
   	  
     }
- 
-
-    else if (linhaPagamento[0] == SERVICO) {
-    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
-    	
-    	
-    }
-    
+     else if (campoZOOM == SERVICO) {
+    	$('#codigoProduto').val(selectedItem["CODIGO"]);
+    		
+    }   
     else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
-    		evento = selectedItem["SOLICITACAO"];    		
+    		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
     		$("#carregaFinan").prop("disabled", true);
     		$("#NcarregaFinan").prop("disabled", true);
@@ -367,7 +372,7 @@ function setZoomData(instance, value) {
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
-		buscaDadosFinanceiroEvento(evento);	
+		buscaDadosFinanceiroEvento(codigoEvento);	
 	}
 	else {
 		window['rateioconfigurado'].clear();

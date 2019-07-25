@@ -10,7 +10,8 @@
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Compras</categoryId>
-    <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationId>Grupo</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Hospitalidade&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -28,13 +29,13 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Locação de Veiculo</processId>
-      <version>8</version>
+      <version>10</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1919</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
-    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
     <active>true</active>
     <blockedVersion>false</blockedVersion>
     <counterSign>false</counterSign>
@@ -376,7 +377,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>10</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -388,7 +389,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>10</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -400,7 +401,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>8</version>
+        <version>10</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -529,7 +530,44 @@
       <type>0</type>
     </ProcessLink>
   </list>
-  <list/>
+  <list>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoLocacaoVeiculo</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Hospitalidade&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PRMOED</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoLocacaoVeiculo</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>PRME</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoLocacaoVeiculo</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;5&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <accessLevel>R</accessLevel>
+      <editionMode>true</editionMode>
+    </ProcessAttachmentSecurity>
+  </list>
   <list>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -558,18 +596,17 @@
 	&#xd;
     var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
     var valor = hAPI.getCardValue(&quot;valor&quot;);&#xd;
+    var produto = hAPI.getCardValue(&quot;codigoProduto&quot;);&#xd;
     &#xd;
     &#xd;
     if (ativAtual == CONTRATAR ){ 	   &#xd;
                   var constraint = new Array();                                 &#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valor, valor, ConstraintType.MUST));&#xd;
+                  constraint.push(DatasetFactory.createConstraint(&quot;produto&quot;, produto, produto, ConstraintType.MUST));&#xd;
                   &#xd;
                    var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_LOCACAO_VEICULO&quot;, null, constraint, null);                                                                    &#xd;
                       &#xd;
-                   log.info(&quot;INTEGRAÇÃO COMPRAS&quot;);&#xd;
-                   log.dir(resultDataset);&#xd;
-                   &#xd;
                    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
                          throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
                       }&#xd;
@@ -678,7 +715,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>8</version>
+        <version>10</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -689,7 +726,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>8</version>
+        <version>10</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -700,7 +737,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>8</version>
+        <version>10</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -719,12 +756,12 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoLocacaoVeiculo</processId>
-      <processVersion>8</processVersion>
+      <processVersion>10</processVersion>
       <stateSequence>4</stateSequence>
       <operator>1</operator>
       <amount>1</amount>
-      <name></name>
-      <message>Você precisa anexar uma cópia da CNH do condutor</message>
+      <name>CNH.*</name>
+      <message>Você precisa anexar uma cópia da CNH do condutor com a nomenclatura CNH</message>
     </ProcessAttachmentRules>
   </list>
   <list/>

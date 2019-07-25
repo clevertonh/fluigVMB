@@ -1,6 +1,12 @@
 function displayFields(form,customHTML){
+	var ABERTURA = 0;
+	var APROVACAO =5;
+	var CORRIGIR = 39;
+	var CONTRATAR = 47;
+
+	
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
+//	log.info("----ATIVIDADE displayFields: " + activity);
 	
   	customHTML.append("<script>");
     customHTML.append("var ATIVIDADE = " + activity + ";");
@@ -16,4 +22,8 @@ function displayFields(form,customHTML){
 	 
 	 form.setVisibleById("prazoaprovacao", false);
 	 
+	 if (activity == ABERTURA || activity == CORRIGIR){
+		 form.setVisibleById("div_solicitacaoAnterior", false);
+		 
+	 }
 }
