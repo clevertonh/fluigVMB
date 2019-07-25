@@ -313,10 +313,10 @@ function buscaDadosFinanceiroLocacaoAnterior(item){
     }
     
     
-    $("#localRetirada").val(dataset.values[0]["localRetirada"]);
-    $("#dtRetirada").val(dataset.values[0]["dtRetirada"]);
+   // $("#localRetirada").val(dataset.values[0]["localRetirada"]);
+   // $("#dtRetirada").val(dataset.values[0]["dtRetirada"]);
     $("#localDevolucao").val(dataset.values[0]["localDevolucao"]);
-    $("#dtRetirada").val(dataset.values[0]["dtDevolucao"]);   
+    $("#dtDevolucao").val(dataset.values[0]["dtDevolucao"]);   
     $("#marca").val(dataset.values[0]["marca"]);
     $("#modelo").val(dataset.values[0]["modelo"]);
     $("#capacidade").val(dataset.values[0]["capacidade"]);
