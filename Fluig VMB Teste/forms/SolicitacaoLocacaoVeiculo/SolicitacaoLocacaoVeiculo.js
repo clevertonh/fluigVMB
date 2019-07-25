@@ -138,9 +138,9 @@ function setSelectedZoomItem(selectedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
-    var SERVICO = "txtproduto";
-    var EVENTO ="dataset_solicitacaoevento";
-      
+    var TIPO_VEICULO = "txtproduto";
+    var EVENTO = "dataset_solicitacaoevento";
+    var LOCACAO_ANTERIOR ="dataset_solicitacaolocacao"; 
    
 
     //Recebe o nome do campo zoom
@@ -164,28 +164,30 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
-        if (selectedItem["CODIGO"] != '99990') {
-        	console.log("---ENTROU AQUI 2 ----");
-            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
-            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
-            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
-
-        } else {
-        	console.log("---ENTROU AQUI 3 ----");
-            //desabilita zoom que não devem ser preenchidos
-        	console.log("---desabilita zoom que não devem ser preenchidos---");
-            console.log(selectedItem["CODIGO"]);
-            window[PROJETO + "___" + linhaPagamento[1]].disable(false);
-            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
-
-        }
+	        if (selectedItem["CODIGO"] != '99990') {
+	        	console.log("---ENTROU AQUI 2 ----");
+	            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
+	            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
+	            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+	
+	        } 
+	        else {
+	        	console.log("---ENTROU AQUI 3 ----");
+	            //desabilita zoom que não devem ser preenchidos
+	        	console.log("---desabilita zoom que não devem ser preenchidos---");
+	            console.log(selectedItem["CODIGO"]);
+	            window[PROJETO + "___" + linhaPagamento[1]].disable(false);
+	            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
+	
+	        }
 
         window[CATEGORIA + "___" + linhaPagamento[1]].disable(true);
         window[FONTE + "___" + linhaPagamento[1]].disable(true);
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(true);
 
 
-    } else if (linhaPagamento[0] == PROJETO) {
+    } 
+    else if (linhaPagamento[0] == PROJETO) {
         //LIMPA TODOS AS COLUNAS POSTERIORES
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -218,7 +220,8 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
-    else if (campoZOOM == RATEIO) {    
+    else if (campoZOOM == RATEIO) {
+    	apagaRateio();
     	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
@@ -227,24 +230,139 @@ function setSelectedZoomItem(selectedItem) {
   	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
   	  
     }
-     else if (campoZOOM == SERVICO) {
+     else if (campoZOOM == TIPO_VEICULO) {
+    	 console.log(TIPO_VEICULO);
     	$('#codigoProduto').val(selectedItem["CODIGO"]);
     		
     }   
     else if (campoZOOM == EVENTO){    	
-    	if (selectedItem["FINANEVENTO"] == "sim"){
-    		codigoEvento = selectedItem["SOLICITACAO"];    		
-    		document.getElementById("carregaFinan").click();  
-    		$("#carregaFinan").prop("disabled", true);
-    		$("#NcarregaFinan").prop("disabled", true);
-    	}
-    	else {
-    		$("#carregaFinan").prop("disabled", false);
-    		$("#NcarregaFinan").prop("disabled", false);
-    	}
+    
+    		
+    	if (selectedItem["FINANEVENTO"] == "sim"){    		
+    		apagaRateio();   	    
+	    	codigoEvento = selectedItem["SOLICITACAO"];    		    		    		
+	    	document.getElementById("carregaFinan").click();  	    		
+	    	$("#carregaFinan").attr('checked', 'checked');	 
+
+	    }
+	    else {
+	    	$("#NcarregaFinan").attr('checked', 'checked');	
+	    	$("#carregaFinan").prop("disabled", false);
+	    	$("#NcarregaFinan").prop("disabled", false);
+	    }
+    }
+    else if (campoZOOM == LOCACAO_ANTERIOR){	
+    		apagaRateio();
+    		
+    		if (selectedItem["FINANEVENTO"] == "sim"){    		
+        		apagaRateio();   	    
+    	    	codigoEvento = selectedItem["SOLICITACAO"];    		    		    		
+    	    	document.getElementById("carregaFinan").click();  	    		
+    	    	$("#carregaFinan").attr('checked', 'checked');	 
+    	    	
+    	    
+
+    	    }
+    	    else {
+    	    	$("#NcarregaFinan").attr('checked', 'checked');	
+    	    	$("#carregaFinan").prop("disabled", false);
+    	    	$("#NcarregaFinan").prop("disabled", false);
+    	    
+    	    
+    	    	
+    	    
+    	    }
+    		
+    		//preenche informações de pagamento
+    		buscaDadosFinanceiroLocacaoAnterior(selectedItem);
+	    	
     }
     
     
+}
+
+function apagaRateio(){
+    var linhas = $("#tbodyItens tr");
+    for (var i = 1; i < linhas.length; i++) {
+        var td = $(linhas[i]).children()[0];
+        var span = $(td).children()[0];
+        fnWdkRemoveChild(span);	
+        
+    }
+}
+
+
+
+
+function buscaDadosFinanceiroLocacaoAnterior(item){
+    var constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("solicitacao", item.SOLICITACAO, item.SOLICITACAO, ConstraintType.MUST));
+    var dataset = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculo", null, constraints, null);
+   
+    
+    if (dataset.values[0]["dataset_solicitacaoevento"] != null && dataset.values[0]["dataset_solicitacaoevento"] != '') {
+    	//set codigo do evento no campo zoom. Isso preencherá automaticamente as informações
+    	window["dataset_solicitacaoevento"].setValue(dataset.values[0]["dataset_solicitacaoevento"]);
+    	
+    }
+    
+    
+    if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+    }
+    
+    
+    $("#localRetirada").val(dataset.values[0]["localRetirada"]);
+    $("#dtRetirada").val(dataset.values[0]["dtRetirada"]);
+    $("#localDevolucao").val(dataset.values[0]["localDevolucao"]);
+    $("#dtRetirada").val(dataset.values[0]["dtDevolucao"]);   
+    $("#marca").val(dataset.values[0]["marca"]);
+    $("#modelo").val(dataset.values[0]["modelo"]);
+    $("#capacidade").val(dataset.values[0]["capacidade"]);
+    $("#nomeCondutor").val(dataset.values[0]["nomeCondutor"]);
+    
+    //NAO ESTA SALVANDO ESSE CAMPO NAO SEI PORQUE. ELE MOSTRA NO BROWSE COMO SE FOSSE CARTAO DE CREDITO
+    $("#cnh").val(dataset.values[0]["cnh"]);
+    
+    $("#dtValidade").val(dataset.values[0]["dtValidade"]);
+    
+    
+    
+    if (dataset.values[0]["kmlivre"] == "sim"){
+    	$('#kmlivreS').attr("checked", 'checked');
+    }
+    
+    else {
+    	$('#kmlivreN').attr("checked", 'checked');
+    }
+    
+    
+    if (dataset.values[0]["seguroCompleto"] == "sim"){
+    	$('#seguroS').attr("checked", 'checked');
+    }
+    
+    else {
+    	$('#seguroN').attr("checked", 'checked');
+    }
+    
+    
+  
+    
+    
+    constraints = new Array();
+    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+    dataset = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculo", null, constraints, null);
+
+    
+    if (dataset != null && dataset.values.length > 0) {
+        adicionaItem(dataset.values);
+    }
+    
+  
+	
 }
 
 function adicionaLinha() {
@@ -382,8 +500,6 @@ function clickFinanceiroEvento(){
 	
 	
 }
-
-
 
 function buscaDadosFinanceiroEvento(evento){
 	   var constraints = new Array();

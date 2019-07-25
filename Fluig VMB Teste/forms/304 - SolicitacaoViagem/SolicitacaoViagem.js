@@ -1080,6 +1080,7 @@ function setSelectedZoomItem(selectedItem) {
     }
 
     else if (campoZOOM == RATEIO) {    
+    	apagaRateio();
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
@@ -1128,12 +1129,13 @@ function setSelectedZoomItem(selectedItem) {
     	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
     }
     
-    else if (campoZOOM == EVENTO){    	
+    else if (campoZOOM == EVENTO){   
+    	apagaRateio();
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
-    		$("#carregaFinan").prop("disabled", true);
-    		$("#NcarregaFinan").prop("disabled", true);
+    		//$("#carregaFinan").prop("disabled", true);
+    		//$("#NcarregaFinan").prop("disabled", true);
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
@@ -1141,6 +1143,17 @@ function setSelectedZoomItem(selectedItem) {
     	}
     }
     
+}
+
+
+function apagaRateio(){
+    var linhas = $("#tbodyItens tr");
+    for (var i = 1; i < linhas.length; i++) {
+        var td = $(linhas[i]).children()[0];
+        var span = $(td).children()[0];
+        fnWdkRemoveChild(span);	
+        
+    }
 }
 
 

@@ -107,7 +107,8 @@
 			                                                            'placeholder':'Selecione um solicitação',
 			                                                            'fields':[
 			                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
-			                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'}                                                          						  					
+			                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+			                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
 			                                                            ]
 			                                                            }">
 			                                                      </div>                                                                                                                                                                                                                		  	
@@ -115,11 +116,11 @@
                                                                     <div class="row">
                                                                     	<div class="form-group col-md-6">
                                                                     		<label>Local de retirada</label>
-                                                                    		<textarea rows="3" cols="60" name="localRetirada" class="form-control"></textarea>
+                                                                    		<textarea rows="3" cols="60" name="localRetirada" id ="localRetirada" class="form-control"></textarea>
                                                                     	</div>
                                                                     <div class="form-group col-md-6">
                                                                     		<label>Local de devolução</label>
-                                                                    		<textarea rows="3" cols="60" name="localDevolucao" class="form-control"></textarea>
+                                                                    		<textarea rows="3" cols="60" name="localDevolucao" id="localDevolucao"  class="form-control"></textarea>
                                                                     	</div>
                                                                     </div>
                                                                     <div class="row">                                                                   
@@ -163,7 +164,7 @@
                                                                     </div>
                                                                     <div class="form-group col-md-3">
                                                                     	<label>Número da CNH</label>
-                                                                    	<input type="number" class="form-control" name="CNH" id="CNH">
+                                                                    	<input type="number" class="form-control" name="cnh" id="cnh">
                                                                     </div>
                                                                      <div class="form-group col-md-3">
                                                                         <label for="dtValidade">Data validade CNH</label>
@@ -231,10 +232,10 @@
                                                    <div class="form-group col-md-4">
                                                          			<label>Carregar informações financeiras do evento</label><br> <label
 			                                                            for="carregaFinan">Sim</label> <input
-			                                                            type="radio" id="carregaFinan" name="FinanEvento"
+			                                                            type="radio" id="carregaFinan" name="finanEvento"
 			                                                            value="sim" onclick="clickFinanceiroEvento()">
 			                                                         <label for="NcarregaFinan">Não</label> <input
-			                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+			                                                            type="radio" id="NcarregaFinan" name="finanEvento"
 			                                                            value="nao" onclick="clickFinanceiroEvento()">
                                                       			</div>
                                                    
@@ -481,7 +482,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                          <label>Tipo de veículo</label>                                                        
-                                                         <input type="zoom" name="txtproduto" data-zoom="{
+                                                         <input type="zoom" name="txtproduto" id="txtproduto" data-zoom="{
 	                                                                               'displayKey':'DESCRICAO',
                                                                                     'datasetId':'ds_get_Produtos',
                                                                                     'maximumSelectionLength':'1',
