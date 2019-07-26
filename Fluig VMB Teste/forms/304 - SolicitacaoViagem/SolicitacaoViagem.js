@@ -555,10 +555,10 @@ function clickTipoViagem() {
 
 function bloqueaAdto(){
 	 $("#adtoSim").prop("disabled", true);            
-	  $("#adtoNao").prop("disabled", true);
-	  $('#vl_solicitado').val("0");
-	  $('#adtoSim').attr("checked", false);
-	  $('#adtoNao').attr("checked", true);
+	 $("#adtoNao").prop("disabled", true);
+	 $('#vl_solicitado').val("0");
+	 $('#adtoSim').attr("checked", false);
+	 $('#adtoNao').attr("checked", true);
      dataNecessidade.setDate(null);
      $("#vl_solicitado").prop("disabled", true);
      $("#dtNecessidade").prop("disabled", true);

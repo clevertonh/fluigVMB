@@ -199,7 +199,7 @@ function adicionaLinhaProduto() {
 		pickTime: false
 	});
 	
-	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
+	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
 
 	//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 

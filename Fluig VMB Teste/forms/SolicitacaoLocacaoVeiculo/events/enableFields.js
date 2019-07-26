@@ -13,9 +13,7 @@ function enableFields(form){
 		 form.setEnabled("aprovacao", false);	
 		 form.setEnabled("valor", false);
 		 //form.setEnabled("txtproduto", false);
-		 form.setEnabled("justificativaReprovacao", false);
-		 
-		
+		 form.setEnabled("justificativaReprovacao", false);		 
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 var nomeSolicitante = dataset.getValue(0, "colleagueName");

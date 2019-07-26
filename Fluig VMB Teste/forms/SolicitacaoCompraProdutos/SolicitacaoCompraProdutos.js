@@ -102,8 +102,6 @@ function removeItens() {
 }
 
 function removeProduto() {
-	console.log("------TENTANDO REMOVER SERVIÇO---------");
-	console.log("----ATIVIDADE ATUAL----- "+AtividadeAtual);
 	if (AtividadeAtual == COMPRARPASSAGEM){
 	    var linhas = $("#tbodyViagem tr");
 	    for (var i = 1; i < linhas.length; i++) {
@@ -265,16 +263,17 @@ function adicionaLinhaProduto() {
 			pickTime: false
 		});
 		
-		reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
+		reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
 	
 		//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 		
 		var qtde = document.getElementById("id_quantidade" + "___" + row);
+
 		/*
 		qtde.addEventListener("focus", function( event ) {
 			  event.target.style.background = "pink";    
 			}, true);
-	*/	
+		 */	
 		qtde.addEventListener("blur", function( event ) {			
 			  //event.target.style.background = "pink";
 			  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
@@ -488,8 +487,6 @@ function adicionaItem(itens) {
 
     }
 }
-
-
 
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {

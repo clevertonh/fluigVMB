@@ -12,8 +12,10 @@ var dtValidade;
 var codigoEvento;
 
 
-$(document).ready(function() {
-	
+$(document).ready(function() {	
+	//filtrar apenas produtos marcados para locação de veículo - não esta funcionando
+	//var intervalo = setInterval(function(){	clearInterval(intervalo); reloadZoomFilterValues("txtproduto", "FLUIG," + "6"); },1000);
+			
     if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == CORRIGIR) {        
     	dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
             pickDate: true,
@@ -51,6 +53,7 @@ $(document).ready(function() {
 	
 		
 	}
+    
 
 });
 
@@ -231,13 +234,10 @@ function setSelectedZoomItem(selectedItem) {
   	  
     }
      else if (campoZOOM == TIPO_VEICULO) {
-    	 console.log(TIPO_VEICULO);
-    	$('#codigoProduto').val(selectedItem["CODIGO"]);
-    		
+		    	$('#codigoProduto').val(selectedItem["CODIGO"]);
+		    	    		
     }   
-    else if (campoZOOM == EVENTO){    	
-    
-    		
+    else if (campoZOOM == EVENTO){    	    		
     	if (selectedItem["FINANEVENTO"] == "sim"){    		
     		apagaRateio();   	    
 	    	codigoEvento = selectedItem["SOLICITACAO"];    		    		    		
@@ -290,9 +290,6 @@ function apagaRateio(){
         
     }
 }
-
-
-
 
 function buscaDadosFinanceiroLocacaoAnterior(item){
     var constraints = new Array();
