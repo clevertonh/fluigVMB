@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Evento</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1172</formId>
@@ -325,7 +325,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -337,7 +337,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -480,29 +480,30 @@
        var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
        &#xd;
        &#xd;
-       if (ativAtual == APROVACAO ){&#xd;
-    	   log.info(&quot;retorno integração eventos&quot;);&#xd;
-    	   log.info(aprovado);&#xd;
-    	   &#xd;
+       if (ativAtual == APROVACAO ){	   &#xd;
               if (aprovado == &quot;aprovado&quot;){&#xd;
-                     var constraint = new Array();                                 &#xd;
-                     //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));&#xd;
-                     constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+                    var constraint = new Array();                                 &#xd;
+                    constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));      &#xd;
+                  	  &#xd;
+					  var c1 = DatasetFactory.createConstraint(&quot;metadata#id&quot;, idDocumento, idDocumento, ConstraintType.MUST);    &#xd;
+					  var datasetProdutos = DatasetFactory.getDataset(&quot;VM_SolicitacaoEventosProdutos&quot;, null, new Array(c1), null);&#xd;
+						  &#xd;
+					  if (datasetProdutos.rowsCount &gt; 0){&#xd;
+						  var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_EVENTO&quot;, null, constraint, null);                                                                    &#xd;
+		                     if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		                            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		                         }  &#xd;
+					  }&#xd;
+					  &#xd;
                      &#xd;
-                      var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_EVENTO&quot;, null, constraint, null);                                                                    &#xd;
-                       &#xd;
-                      log.info(&quot;retorno solitação de eventos&quot;);&#xd;
-                      log.dir(resultDataset);&#xd;
-                      &#xd;
-                      if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                         }&#xd;
+                     &#xd;
+                    &#xd;
                          &#xd;
               }&#xd;
               &#xd;
        }&#xd;
                  &#xd;
-       &#xd;
+&#xd;
        &#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
@@ -589,7 +590,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -600,7 +601,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -611,7 +612,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

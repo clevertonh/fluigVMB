@@ -81,7 +81,7 @@ function createDataset(fields, constraints, sortFields) {
 	     	     		                retornoDataset.getValue(x,"rateioconfigurado"),
 	     	     		                retornoDataset.getValue(x,"codigorateio"),
 	     	     		                retornoDataset.getValue(x, "documentid"),
-	     	     		                retornoDataset.getValue(x, "cancelarpassagem"),
+	     	     		                retornoDataset.getValue(x, "cancelarpassagem")
 	     	     		                ]);
 	    			 }
 	    		 }
@@ -103,7 +103,7 @@ function createDataset(fields, constraints, sortFields) {
 	    	     		                retornoDataset.getValue(x,"rateioconfigurado"),
 	    	     		                retornoDataset.getValue(x,"codigorateio"),
 	    	     		                retornoDataset.getValue(x, "documentid"),
-	    	     		               retornoDataset.getValue(x, "cancelarpassagem"),
+	    	     		               retornoDataset.getValue(x, "cancelarpassagem")
 	    	     		                ]);	 
 	    		 }
 	    		 

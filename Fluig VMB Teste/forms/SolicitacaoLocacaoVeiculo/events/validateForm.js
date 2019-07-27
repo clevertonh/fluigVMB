@@ -43,9 +43,12 @@ function validateForm(form){
 		  if (form.getValue("renovacao") == false || form.getValue("renovacao") == "") {
               throw "Você deve indicar se a solicitação é uma renovação de locação de veículo ou não.";
           }		 
-		  if (form.getValue("localRetirada") == null || form.getValue("localRetirada") == "") {
-              throw "É obrigatório informar o local para retirada.";
-          }
+		  if (form.getValue("renovacao") =="nao"){
+			  if (form.getValue("localRetirada") == null || form.getValue("localRetirada") == "") {
+	              throw "É obrigatório informar o local para retirada.";
+	          }
+		  }
+		
 		  if (form.getValue("localDevolucao") == null || form.getValue("localDevolucao") == "") {
               throw "É obrigatório informar o local para devolução.";
           }		  
@@ -64,12 +67,7 @@ function validateForm(form){
 		  if (form.getValue("cnh") == null || form.getValue("cnh") == "") {
               throw "O número da CNH é obrigatório.";
           }
-		  if (form.getValue("kmlivre") == false || form.getValue("kmlivre") == "") {
-              throw "Você deve indicar se a KM será livre ou não.";
-          }
-		  if (form.getValue("seguroCompleto") == false || form.getValue("seguroCompleto") == "") {
-              throw "Você deve indicar se o seguro será completo ou não.";
-          }
+		 
 		
 				
 
@@ -106,6 +104,9 @@ function validateForm(form){
 		
 	}
 	else if (activity == CONTRATAR){
+		log.info("valor locacao");
+		log.info(form.getValue("valor"));
+		
 		if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
          	 throw "Você precisa informar o custo da locação do veículo.";
         }

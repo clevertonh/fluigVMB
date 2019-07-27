@@ -5,7 +5,7 @@
       <processId>SolicitacaoAdiantamento</processId>
     </processDefinitionPK>
     <processDescription>Solicitação de Adiantamento</processDescription>
-    <instruction></instruction>
+    <instruction>Preencha o formulário para solicitar um adiantamento de viagem</instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
@@ -395,7 +395,6 @@
 	if (ativAtual == APROVACAO &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
 		 var constraint = new Array();		  			 		  			&#xd;
 			 constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-			 //constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
 			 &#xd;
 	     var resultDataset = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_ADIANTAMENTO&quot;, null, constraint, null);&#xd;
 	  		    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;

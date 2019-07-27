@@ -36,6 +36,8 @@ function createDataset(fields, constraints, sortFields) {
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
+						            	ITINERARIO  : '' + solicitacao.getValue(0,"itinerario") +'',
+						            	TIPOADIANTAMENTO: ''+"1" +'',
 						            	PROCESSO: ''+"8" +''
 						            },
 						          options : {

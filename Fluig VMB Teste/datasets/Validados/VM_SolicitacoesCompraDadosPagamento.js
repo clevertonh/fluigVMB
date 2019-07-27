@@ -15,10 +15,6 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("PERCENTUAL");
     dataset.addColumn("SOLICITACAO");
    
-    
-    log.info("CONSTRAINT INICIAL");
-    log.dir(constraints);
-    
     //dataset interno
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
@@ -40,11 +36,7 @@ function createDataset(fields, constraints, sortFields) {
                 	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
                  }
             	
-           	
-            	
-            	log.info("-----RETORNO CONTRAINT 20:45------");
-            	log.dir(constraints);
-            	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
+             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
             		//log.info("-----RETORNO CONTRAINT 21:08------");
             		
             		//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão

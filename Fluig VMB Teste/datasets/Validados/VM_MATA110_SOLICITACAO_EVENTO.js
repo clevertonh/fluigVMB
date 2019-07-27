@@ -8,38 +8,23 @@ function createDataset(fields, constraints, sortFields) {
 	var itens = new Array();
 	var documentId;
 	
-	//log.info("LOG CONSTRAINTS 1");
-	//log.dir(constraints);
-	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
      		
-    			//var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, new Array(c0,c1), null);
         		
         		documentId = solicitacao.getValue(0,"documentid");
-        		
-        		log.info("LOG SOLICITACAO");
-        		log.dir(solicitacao);
-        		
+       		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		
-        		log.info("---RETORNO METADATA");
-        		log.info(codSolicitacao);
-    
-        	
-        		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		        	
+         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesEventosDadosPagamento", null, new Array(c2), null);    				  
 
-        		
-        		
-        	    log.info("--RETORNO DE CONTRAINTS 21:43---")
-        	    log.dir(itensSolicitacao);
-        	    
+      	    
         					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -53,10 +38,7 @@ function createDataset(fields, constraints, sortFields) {
         						 
         						  var c1 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
         						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoEventosProdutos", null, new Array(c1), null);
-        						  
-        						  log.info("DATASET PRODUTOS");
-        						  log.dir(datasetProdutos);
-        						  
+          						  
         						 for (var a=0; a<datasetProdutos.rowsCount;a++){
         							 aItemServico.push(addItemCompra(
         									 datasetProdutos.getValue(a,"COD_PRODUTO"),

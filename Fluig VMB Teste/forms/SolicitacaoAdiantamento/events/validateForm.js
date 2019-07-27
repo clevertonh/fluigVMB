@@ -39,6 +39,12 @@ function validateForm(form){
 		if (form.getValue("Funcionario") == "" || form.getValue("Funcionario") == null){
 			throw "Você precisa informar o beneficiário que receberá o adiantamento.";
 		}
+		if (form.getValue("itinerario") == "" || form.getValue("itinerario") == null ){
+			throw "Você precisa informar o itinerário da viagem (país/cidade de origem e país/cidade de destino";
+		}
+		if (form.getValue("dtViagem") == "" || form.getValue("dtViagem") == null ){
+			throw "Você precisa informar a data da viagem.";
+		}
 		if (form.getValue("centrocusto") == "" || form.getValue("centrocusto") == null ){
 			throw "Você precisa informar o centro de custo.";
 		}

@@ -41,6 +41,14 @@ var dtRetorno = FLUIGC.calendar('#dtRetorno', {
     
 });
 
+var dtViagem = FLUIGC.calendar('#dtViagem', {
+    pickDate: true,
+    pickTime: false,
+    useCurrent: true, 
+    minDate: new Date().toLocaleString()
+    
+});
+
 
 function removedZoomItem(removedItem) {
     var CCUSTO = "centrocusto";

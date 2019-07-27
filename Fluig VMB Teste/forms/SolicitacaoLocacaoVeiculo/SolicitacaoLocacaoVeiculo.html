@@ -102,13 +102,15 @@
 			                                                            type="zoom" id="dataset_solicitacaolocacao"
 			                                                            data-zoom="{
 			                                                            'displayKey':'SOLICITACAO',
-			                                                            'datasetId':'VM_SolicitacoesLocacaoVeiculo',
+			                                                            'datasetId':'VM_SolicitacoesLocacoesVeiculosAnteriores',
 			                                                            'maximumSelectionLength':'1',
 			                                                            'placeholder':'Selecione um solicitação',
 			                                                            'fields':[
 			                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
 			                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
-			                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+			                                                            {'field':'DATA_RETIRADA','label':'DATA_RETIRADA'} ,
+			                                                            {'field':'DATA_DEVOLUCAO','label':'DATA_DEVOLUCAO'}  ,    
+			                                                              {'field':'FINANEVENTO','label':'FINANEVENTO', 'visible' : 'false'}                                                     						  					
 			                                                            ]
 			                                                            }">
 			                                                      </div>                                                                                                                                                                                                                		  	
@@ -177,28 +179,6 @@
                                                                     </div>
                                                                     
                                                                   	</div>
-                                                                    <div class="row">
-	                                                                      <div class="form-group col-md-3">
-	                                                                    	<label>KM Livre</label><br> <label
-				                                                            for="kmlivreS">Sim</label> <input
-				                                                            type="radio" id="kmlivreS" name="kmlivre"
-				                                                            value="sim">
-				                                                         <label for="kmlivreN">Não</label> <input
-				                                                            type="radio" id="kmlivreN" name="kmlivre"
-				                                                            value="nao">
-	                                                                    </div>
-	                                                                    <div class="form-group col-md-3">
-	                                                                    	<label>Seguro completo</label><br> <label
-				                                                            for="seguroS">Sim</label> <input
-				                                                            type="radio" id="seguroS" name="seguroCompleto"
-				                                                            value="sim">
-				                                                         <label for="seguroN">Não</label> <input
-				                                                            type="radio" id="seguroN" name="seguroCompleto"
-				                                                            value="nao">
-	                                                                    </div>                                                                    	
-                                                                    </div>
-                                                                    
-                                                                    
                                                                     <div class="from-group col-md-1">
                                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                                                     </div>

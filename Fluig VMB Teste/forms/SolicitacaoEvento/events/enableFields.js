@@ -6,11 +6,8 @@ function enableFields(form){
 
 	
 	var activityEnable = getValue('WKNumState');
-	log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
 	var solicitante = getValue("WKUser");  
-	
-	 log.info("numero da atividade "+activityEnable);
 	 
 	 if (activityEnable == INICIO ){
 		 form.setValue("matriculasolicitante",solicitante); 	
@@ -28,9 +25,9 @@ function enableFields(form){
 		 var aprovador = usuarioAprovador(emailSolicitante);
 			
 		 if (aprovador!= null && aprovador != ""){
-			 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_G"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
-			 form.setValue("aprovador",aprovador.getValue(0, "NOME_GERENTE"));
+			 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
+			 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
+			 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
 			 //form.setValue("solicitanteFuncionario",aprovador.getValue(0, "FUNCIONARIO_VMB"));
 			 
 			
@@ -65,17 +62,12 @@ function enableFields(form){
 		 
 	 }
 	 
-	 
-		function usuarioAprovador(emailLogado){
-			log.info("---APROVADOR EVENTO----"); 
-			log.info(emailLogado);
-			
-			var email = DatasetFactory.createConstraint("EMAIL_F",emailLogado,emailLogado, ConstraintType.MUST);		
-			var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
-			 
-			  
-			 log.info(dataset.getValue(0, "EMAIL_G"));
+	
+		function usuarioAprovador(emailSolicitante){		
+			var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
+			var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
+			 		 
 			 return dataset;
-		} 
+		}
 	 
 }

@@ -20,28 +20,29 @@ function beforeStateEntry(sequenceId){
        var aprovado = hAPI.getCardValue("aprovacao");
        
        
-       if (ativAtual == APROVACAO ){
-    	   log.info("retorno integração eventos");
-    	   log.info(aprovado);
-    	   
+       if (ativAtual == APROVACAO ){	   
               if (aprovado == "aprovado"){
-                     var constraint = new Array();                                 
-                     //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
-                     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+                    var constraint = new Array();                                 
+                    constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));      
+                  	  
+					  var c1 = DatasetFactory.createConstraint("metadata#id", idDocumento, idDocumento, ConstraintType.MUST);    
+					  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoEventosProdutos", null, new Array(c1), null);
+						  
+					  if (datasetProdutos.rowsCount > 0){
+						  var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);                                                                    
+		                     if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		                            throw resultDataset.getValue(0,"RETORNO");
+		                         }  
+					  }
+					  
                      
-                      var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);                                                                    
-                       
-                      log.info("retorno solitação de eventos");
-                      log.dir(resultDataset);
-                      
-                      if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-                            throw resultDataset.getValue(0,"RETORNO");
-                         }
+                     
+                    
                          
               }
               
        }
                  
-       
+
        
 }
