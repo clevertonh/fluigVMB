@@ -40,6 +40,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         					 catch (erro){
         						 dataset.addRow(["ERRO AO RECUPERAR RATEIO"]);
+        						 return dataset;
         					 }
         				  				 
         					 
@@ -71,6 +72,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         					 catch (erro){
         						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
+        						 return dataset;
         					 }
        					        							
         					 try{
@@ -124,7 +126,8 @@ function createDataset(fields, constraints, sortFields) {
         					
         					 } 
         						catch(err) {
-        							dataset.addRow([err.message]);        							
+        							dataset.addRow([err.message]);     
+        							 return dataset;
         					    }
 
     		}

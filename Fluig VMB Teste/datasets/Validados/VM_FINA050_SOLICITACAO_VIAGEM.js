@@ -38,7 +38,7 @@ function createDataset(fields, constraints, sortFields) {
 				 
 				 if(aRateio === null || aRateio == ""){
 					 dataset.addRow(new Array("NÃO FOI POSSÍVEL MONTAR AS INFORMAÇÕES DE PAGAMENTO"));
-					 //return dataset;
+					 return dataset;
 					 
 				 }
 					 //atribui constraints recebida de valor e datavencimento a variaveis

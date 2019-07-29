@@ -2,13 +2,18 @@ function enableFields(form){
 	var ABERTURA = 0;
 	var APROVACAO = 5;
 	var REGISTRAR_PGTO = 16; 
+	var REALIZAR_PGTO = 21;
+	var AVALIAR_PGTO = 28;
+	
 	
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
+
 	
 	var solicitante = getValue("WKUser");  
 	var nomeSolicitante;
 	var emailSolicitante;
+	
+	 form.setEnabled('vl_diarias', false);
 	
 	if (activity == ABERTURA){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
@@ -27,16 +32,26 @@ function enableFields(form){
 			 	 
 		 }
 		 
-		 form.setEnabled("aprovacao", false);			
-		 //form.setEnabled('dtRetorno', false);
-		 //form.setEnabled('dtSaida', false);
-		// form.setEnabled('vl_diarias', false);
+		 form.setEnabled("aprovacao", false);		
+		 form.setEnabled('recebediarias', false);
+		 form.setEnabled('dtPgto', false);
 		 
 	}
 	else if (activity == APROVACAO){
-		 form.setEnabled('vl_diarias', false);
-		 
-	       
+		 form.setEnabled('recebediarias', false);
+		 form.setEnabled('dtPgto', false);
+		 form.setEnabled('beneficiario', false);
+	}
+
+	else if (activity == REGISTRAR_PGTO){
+		 form.setEnabled("aprovacao", false);	
+		 form.setEnabled('beneficiario', false);
+	}
+	else if (activity == REALIZAR_PGTO){
+		
+	}
+	else if (activity == AVALIAR_PGTO){
+		
 	}
 	
 
@@ -49,14 +64,13 @@ function enableFields(form){
 	}
 
 	function usuarioAprovador(){
-		log.info("---GERENTE FUNCIONARIO----"); 
-		log.info(emailSolicitante);
+		
 		
 		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
 		  
-		 log.info(dataset.getValue(0, "EMAIL_G"));
+		
 		 return dataset;
 	}
 

@@ -20,116 +20,67 @@ function createDataset(fields, constraints, sortFields) {
     //dataset interno
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
-    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesDiarias", null, constraintsActive, null);
+    var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesDiaria", null, constraintsActive, null);
     
-    if(constraints!==null && constraints.length){ //se tiver constraint filtra
+    if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");
-            	//var solicitacao = datasetPrincipal.getValue(a, "solicitacao");
                 var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
             	var empresa = datasetPrincipal.getValue(a, "companyid");            	
             	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
             	
-            	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
+            	log.info("codigo solicitação diaria");
+            	log.dir(constraints);
             	
-            	 var solicitacao;
-                    
-            	 if (historicoFormulario.rowsCount > 0){
-                	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-                 }
-                 
-            	
-          
-            	
-            	//log.info("-----RETORNO CONTRAINT 20:45------");
-            	//log.dir(constraints);
             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
-            		//log.info("-----RETORNO CONTRAINT 21:08------");
             		
-            		//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-                    var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
-                    var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-                    var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-                    var constraintsFilhos = new Array(c1, c2, c3);
-
-                    //Busca o dataset
-                    var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesDiarias", null, constraintsFilhos, null);
-                    for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-                	//	log.info("-------RETORNO FILHO----- 21:08");
-                   	 	
-                     	//Adiciona os valores nas colunas respectivamente.
-                        dataset.addRow(new Array(
-                                documentId,
-                                datasetFilhos.getValue(j, "txtcentrocusto"),
-                                datasetFilhos.getValue(j, "txtprojeto"),
-                                datasetFilhos.getValue(j, "txtcategoria"),
-                                datasetFilhos.getValue(j, "txtfontefinanciamento"),
-                                datasetFilhos.getValue(j, "txtatividade"),
-                                datasetFilhos.getValue(j, "txtareaestrategica"),
-                                datasetFilhos.getValue(j, "alocacao"),
-                                datasetFilhos.getValue(j, "localizacao"),
-                                datasetFilhos.getValue(j, "contacontabil"),
-                                datasetFilhos.getValue(j, "percentual"),
-                                solicitacao
-                        ));
+           		 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
+                	
+               	 var solicitacao;
+                       
+               	 	if (historicoFormulario.rowsCount > 0){
+               	 		solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
                     }
-                
+                    
+               	 
+               	 
+           		//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
+                   var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
+                   var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
+                   var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
+                   var constraintsFilhos = new Array(c1, c2, c3);
+
+                   //Busca o dataset
+                   var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesDiaria", null, constraintsFilhos, null);
+                   for (var j = 0; j < datasetFilhos.rowsCount; j++) {
+                   	//
+                  	 	
+                    	//Adiciona os valores nas colunas respectivamente.
+                       dataset.addRow(new Array(
+                               documentId,
+                               datasetFilhos.getValue(j, "txtcentrocusto"),
+                               datasetFilhos.getValue(j, "txtprojeto"),
+                               datasetFilhos.getValue(j, "txtcategoria"),
+                               datasetFilhos.getValue(j, "txtfontefinanciamento"),
+                               datasetFilhos.getValue(j, "txtatividade"),
+                               datasetFilhos.getValue(j, "txtareaestrategica"),
+                               datasetFilhos.getValue(j, "alocacao"),
+                               datasetFilhos.getValue(j, "localizacao"),
+                               datasetFilhos.getValue(j, "contacontabil"),
+                               datasetFilhos.getValue(j, "percentual"),
+                               solicitacao
+                       ));
+                   }
+               
+                   //encontrou preenche e sai
+                   return dataset;
             	}
           
             	
             }
         }
-    } else { // se não tiver constraint adiciona todas as linhas
-    	for(var a=0;a< datasetPrincipal.rowsCount;a++){
-    		
-        	var documentId = datasetPrincipal.getValue(a, "metadata#id");
-            var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
-        	var empresa = datasetPrincipal.getValue(a, "companyid");            	
-        	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
-        	
-        	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
-         	
-        	 var solicitacao;
-                
-        	 if (historicoFormulario.rowsCount > 0){
-            	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-             }
-        	
-       		
-        	//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-            var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
-            var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-            var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-            var constraintsFilhos = new Array(c1, c2, c3);
-
-            //Busca o dataset
-            var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraintsFilhos, null);
-            for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-           	 	
-             	//Adiciona os valores nas colunas respectivamente.
-                dataset.addRow(new Array(
-                        documentId,
-                        datasetFilhos.getValue(j, "txtcentrocusto"),
-                        datasetFilhos.getValue(j, "txtprojeto"),
-                        datasetFilhos.getValue(j, "txtcategoria"),
-                        datasetFilhos.getValue(j, "txtfontefinanciamento"),
-                        datasetFilhos.getValue(j, "txtatividade"),
-                        datasetFilhos.getValue(j, "txtareaestrategica"),
-                        datasetFilhos.getValue(j, "alocacao"),
-                        datasetFilhos.getValue(j, "localizacao"),
-                        datasetFilhos.getValue(j, "contacontabil"),
-                        datasetFilhos.getValue(j, "percentual"),
-                        solicitacao
-                ));
-            }
-        	
-    		//itensPagamento(documentId,documentVersion);    
-    		//dataset.addRow(new Array(documentId));
-        }
-    }
-
- 
+    }  
     
     return dataset;
 }

@@ -1,5 +1,8 @@
 var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
+var REGISTRAR_PGTO = 16; 
+var REALIZAR_PGTO = 21;
+var AVALIAR_PGTO = 28;
 
 var codigoEvento;
 var soma = 0;
@@ -52,15 +55,27 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
+var dataPagamento;
+
+
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		}
+		
+	if (ATIVIDADE == REGISTRAR_PGTO) {
+		dataPagamento = FLUIGC.calendar('#dtPgto', {
+		     pickDate: true,
+		     pickTime: false
+		     });		
+		}
 
 	
 });
+
+
 
 
 
@@ -210,17 +225,19 @@ function adicionaAgenda() {
         defaultDate: "01:00"
 	});
 	
+	/*
 	  $(document).on("blur", "input[id^='custo___"+ row +"']", function(e){
 	       soma = soma + parseFloat($(this).val());
 	  });
 
 	    // alimenta o campo Total com a soma dos valores dos produtos
 	  $("#vl_diarias").val(soma);
-	 
+	 */
 }
 
+/* 
 function deleta_filho(linha){
-	/* 
+	
 	var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -228,7 +245,7 @@ function deleta_filho(linha){
 	        fnWdkRemoveChild(span);	
 	        
 	    }
-	    */
+	   
 	  
 	soma - $('#'+"custo___"+linha).val();
 	$("#vl_diarias").val(soma);
@@ -237,7 +254,7 @@ function deleta_filho(linha){
 		
 }
 
-
+ */
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";

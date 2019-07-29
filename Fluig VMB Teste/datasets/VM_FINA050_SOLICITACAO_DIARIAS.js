@@ -5,18 +5,27 @@ function createDataset(fields, constraints, sortFields) {
 	var valorTotal;
 	var dataVencimento;
 	var aRateio = new Array();
+	
+
 	 
-	 if(constraints !== null && constraints.length){
+    if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
-		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "solicitacao") {
+		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			// log.info("entrando aqui 1");
-	    		var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+	    		var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesDiarias", null, new Array(c0,c1), null);
+	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesDiaria", null, new Array(c0,c1), null);
 	    		
-	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
+        		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
+        	
+        		log.info("solicitação de diaria");
+        		log.info(codSolicitacao);
+	    		
+	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesDiariasDadosPagamento", null, new Array(c2), null);    				  
 
+	    	    
 
 				 try {
 					//chama função que monta array de objetos dos itens do rateio
@@ -30,23 +39,22 @@ function createDataset(fields, constraints, sortFields) {
 				 
 				 if(aRateio === null || aRateio == ""){
 					 dataset.addRow(new Array("NÃO FOI POSSÍVEL MONTAR AS INFORMAÇÕES DE PAGAMENTO"));
-					 //return dataset;
+					 return dataset;
 					 
 				 }
-					 //atribui constraints recebida de valor e datavencimento a variaveis
-					 for (var a=0; a<constraints.length;a++){						
-						 if (constraints[a].fieldName == "valor" ){
-							 valorTotal = constraints[a].initialValue;
-						 }
-						 else if (constraints[a].fieldName == "dataVencimento" ){
-							 dataVencimento = constraints[a].initialValue;
-							 
-							 
-						 }
+				 
+				 //atribui constraints recebida de valor e datavencimento a variaveis
+				 for (var a=0; a<constraints.length;a++){						
+					 if (constraints[a].fieldName == "vl_diarias" ){
+						 valorTotal = constraints[a].initialValue;
 					 }
-					 //log.info("entrando aqui 2");
-					// log.dir(constraints);
-				
+					 else if (constraints[a].fieldName == "dtPgto" ){
+						 dataVencimento = constraints[a].initialValue;
+						 
+						 
+					 }
+				 }
+
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
 					        var data = {
@@ -56,52 +64,44 @@ function createDataset(fields, constraints, sortFields) {
 					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 					            timeoutService: '100', // segundos
 					            params : {
-					            	processo : '' + 3 + '' ,
-					            	solicitacao : '' + solicitacao.getValue(0,"solicitacao") + '' ,
-					                solicitante : '' + solicitacao.getValue(0,"solicitante") +'',
-					                valorTotal : '' + valorTotal + '' ,
-					                datasolicitacao :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
-					                emailsolicitante : '' + solicitacao.getValue(0,"emailSolicitante") +'',
-					                cpf				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
-					                dataEmissao  : '' + solicitacao.getValue(0,"dtSolicitacao") + '',
-					                dataVencimento  : '' + dataVencimento + '',
-					        		rateioDigitado: aRateio ,
+					            	PROCESSO : '' + 5 + '' ,
+					            	SOLICITACAO : '' + codSolicitacao + '' ,
+					                SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
+					                VALORTOTAL : '' + valorTotal + '' ,
+					                DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
+					                EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'',
+					                EMAILAPROVADOR : '' + solicitacao.getValue(0,"emailGestor") +'',
+					                CPF				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
+					                DATAVENCIMENTO  : '' + dataVencimento + '',
+					        		RATEIODIGITADO: aRateio ,
 					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + ''
-					            },
+					            },						            
 					          options : {
 					             encoding : 'UTF-8',
 					             mediaType: 'application/json'
 					          }
 					        }
+						        
+					        var vo = clientService.invoke(JSON.stringify(data));
+					        var obj = JSON.parse(vo.getResult());
 				         
-					        //log.info("---RETORNO PARAMETROS---");
-					        //log.dir(params);
- 					        var vo = clientService.invoke(JSON.stringify(data));
-		        			//		        log.info("retorno compras 51");
-		        			//		        log.dir(vo.getResult());
-		        			//		        log.dir(JSON.parse(vo.getResult()));
-		        					        
-		        					        var obj = JSON.parse(vo.getResult());
-		        					         					        
-		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){
-		         					        	dataset.addRow(new Array("RETORNO VAZIO"));
-		        					        }        					                					       
-		        					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-		        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
-		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
-		        					        	dataset.addRow(new Array(obj.MSG));
-		        					        }
-		        					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
-		        					            dataset.addRow(new Array("SUCESSO"));					           
-		        					            
-		        					        }
+					        if(vo.getResult()== null || vo.getResult().isEmpty()){
+ 					        	dataset.addRow(new Array("RETORNO VAZIO"));
+					        }        					                					       
+					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
+					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
+					        }
+					        else if (obj.CODIGO != "100"){
+					        	dataset.addRow(new Array(obj.MSG));
+					        }
+					        else if (obj.CODIGO == "100"){	                    
+					            dataset.addRow(new Array("SUCESSO"));					           
+					            
+					        }
+					       
 					        
 				    	}  catch(err) {
-				    		   //throw err;
-							//log.info(err);
 							dataset.addRow([err.message]);
-				    		//dataset.addRow(new Array("entrando aqui"));
 							
 				        }	 
 				    	
@@ -161,12 +161,22 @@ function preencheRateio(solicitacao){
 			
 			rateio[i] = obj;	
 			
-			//log.info("--retorno rateio--");
-			//log.dir(rateio[i]);
+			log.info("--retorno rateio--");
+			log.dir(rateio[i]);
 	   }
 	 			   
 	   return rateio;
 }
 
 
+//recebe como parametro:metadata#card_index_id, metadate#id, companyid
+function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
+	  var constraintsHistorico  = new Array();	    	 
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardIndexDocumentId", cardindexdocumentid , cardindexdocumentid, ConstraintType.MUST));
+		 constraintsHistorico.push(DatasetFactory.createConstraint("cardDocumentId", carddocumentid , carddocumentid, ConstraintType.MUST));	    	
+		 constraintsHistorico.push(DatasetFactory.createConstraint("workflowProcessPK.companyId", empresa , empresa, ConstraintType.MUST));	    	
+		 
+   var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
 
+   return historicoFormulario;
+}
