@@ -2,7 +2,7 @@ var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
 
 var codigoEvento;
-
+var soma = 0;
 
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
@@ -52,43 +52,12 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
-/*
-var dtVencimento = FLUIGC.calendar('#dtVencimento', {
-    pickDate: true,
-    pickTime: true,
-    minDate: new Date().toLocaleString(),
-});
-
-*/
-
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
-	
-		/*
-		var dtPeriodoDe = FLUIGC.calendar('#dtPeriodoDe', {
-			pickDate: true,
-			pickTime: false,
-			useCurrent: true,
-		    minDate: new Date(),
-		}).setDate($('#dtPeriodoDe :input').attr('value') != null ? $("#dtPeriodoDe :input").attr('value') : new Date());
-
-			
-
-		var dtPeriodoAte = FLUIGC.calendar('#dtPeriodoAte', {
-			pickDate: true,
-			pickTime: false,
-			useCurrent: true,
-		    minDate: new Date(),
-		}).setDate($('#dtPeriodoAte :input').attr('value') != null ? $("#dtPeriodoAte :input").attr('value') : new Date());
-
-*/
-		
-		
-		
-	}
+		}
 
 	
 });
@@ -115,12 +84,6 @@ function setSelectedZoomItem(selectedItem) {
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
-
-    console.log("CAMPO ZOOM");
-    console.log(campoZOOM);
-   // console.log(selectedItem["CODIGO"]);
-  //  console.log(selectedItem["CPF"]);
-    //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
     //separa string
     var linhaPagamento = campoZOOM.split('___');
 
@@ -206,8 +169,6 @@ function setSelectedZoomItem(selectedItem) {
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
-    		//$("#carregaFinan").prop("disabled", true);
-    		//$("#NcarregaFinan").prop("disabled", true);
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
@@ -216,8 +177,6 @@ function setSelectedZoomItem(selectedItem) {
     }
     
     else if (campoZOOM == BENEFICIARIO){
-    		console.log("CPF BENEFICIARIO");
-    		console.log(selectedItem["CPF"]);
     		$("#cpfbeneficiario").val(selectedItem["CPF"]);
     } 
     
@@ -251,22 +210,34 @@ function adicionaAgenda() {
         defaultDate: "01:00"
 	});
 	
-	//somaDiarias();
+	  $(document).on("blur", "input[id^='custo___"+ row +"']", function(e){
+	       soma = soma + parseFloat($(this).val());
+	  });
+
+	    // alimenta o campo Total com a soma dos valores dos produtos
+	  $("#vl_diarias").val(soma);
 	 
 }
 
-
-function somaDiarias(){
-	var soma = 0;
-    // dessa forma irá funcionar
-    $(document).on("blur", "input[id^='custo___']", function(e){
-        soma = soma + parseFloat($(this).val());
-    });
-
-    // alimenta o campo Total com a soma dos valores dos produtos
-    $("#vl_diarias").val(soma);
+function deleta_filho(linha){
+	/* 
+	var linhas = $("#tbodyItens tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);	
+	        
+	    }
+	    */
+	  
+	soma - $('#'+"custo___"+linha).val();
+	$("#vl_diarias").val(soma);
 	
-};
+	fnWdkRemoveChild(linha)
+		
+}
+
+
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -338,7 +309,6 @@ function removedZoomItem(removedItem) {
 
     else if (campoZOOM == RATEIO) {
         //removeItensRateio();
-    	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -474,7 +444,6 @@ function adicionaItem(itens) {
     }
 }
 
-
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
   //variavel para armazenar a data limite para aprovação   
@@ -530,7 +499,6 @@ function addAnos(data, anos) {
   return new Date(data.setYear(data.getFullYear() + anos));
 
 }
-
 
 
 

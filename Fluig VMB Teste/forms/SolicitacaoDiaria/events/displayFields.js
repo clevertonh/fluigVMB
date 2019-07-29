@@ -14,6 +14,6 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoaprovacao", false); 
     
     
-    
+	
     
 }
