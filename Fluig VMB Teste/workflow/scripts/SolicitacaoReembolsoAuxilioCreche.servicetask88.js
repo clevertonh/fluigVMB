@@ -11,7 +11,7 @@ function servicetask88(attempt, message) {
     var empresa = getValue("WKCompany");
     
     //recupera data de vencimento e converte para formato data
-    var dtVencimento = convertStringToData(hAPI.getCardValue("dtPagamento"));
+   // var dtVencimento = convertStringToData(hAPI.getCardValue("dtPagamento"));
     var dtAtual = new Date();
     
     

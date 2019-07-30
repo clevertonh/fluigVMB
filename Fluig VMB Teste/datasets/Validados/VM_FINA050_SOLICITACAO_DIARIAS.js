@@ -19,10 +19,7 @@ function createDataset(fields, constraints, sortFields) {
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
-        		log.info("solicitação de diaria");
-        		log.info(codSolicitacao);
-	    		
-	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
+           		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesDiariasDadosPagamento", null, new Array(c2), null);    				  
 
 	    	    
@@ -48,7 +45,7 @@ function createDataset(fields, constraints, sortFields) {
 					 if (constraints[a].fieldName == "vl_diarias" ){
 						 valorTotal = constraints[a].initialValue;
 					 }
-					 else if (constraints[a].fieldName == "dtPgto" ){
+					 else if (constraints[a].fieldName == "dtVencimento" ){
 						 dataVencimento = constraints[a].initialValue;
 						 
 						 
@@ -70,7 +67,7 @@ function createDataset(fields, constraints, sortFields) {
 					                VALORTOTAL : '' + valorTotal + '' ,
 					                DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
 					                EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'',
-					                EMAILAPROVADOR : '' + solicitacao.getValue(0,"emailGestor") +'',
+					                EMAILAPROVADOR : '' + solicitacao.getValue(0,"emailLider") +'',
 					                CPF				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
 					                DATAVENCIMENTO  : '' + dataVencimento + '',
 					        		RATEIODIGITADO: aRateio ,

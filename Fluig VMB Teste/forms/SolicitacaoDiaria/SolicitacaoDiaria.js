@@ -1,11 +1,12 @@
 var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
-var REGISTRAR_PGTO = 16; 
+var CALCULAR_DIARIAS = 16;
 var REALIZAR_PGTO = 21;
 var AVALIAR_PGTO = 28;
+var CORRIGIR = 41;
 
 var codigoEvento;
-var soma = 0;
+
 
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
@@ -55,7 +56,7 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     maxDate: new Date().toLocaleString()
 });
 
-var dataPagamento;
+var dtVencimento;
 
 
 //preenche data da solicitação no momento que abre a solicitação
@@ -63,20 +64,46 @@ $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
+		
 		}
 		
-	if (ATIVIDADE == REGISTRAR_PGTO) {
-		dataPagamento = FLUIGC.calendar('#dtPgto', {
+	else if (ATIVIDADE == CALCULAR_DIARIAS) {
+		document.getElementById("btn_add_item").style.display = "none";
+		document.getElementById("btn_add_agenda").style.display = "none";
+		
+		dtVencimento = FLUIGC.calendar('#dtVencimento', {
 		     pickDate: true,
 		     pickTime: false
 		     });		
-		}
+
+		/*
+	
+		 $("img").each(function(index, value){		
+	            if ($(this).attr("id") != "logo") {
+	                $(this).hide();
+	            }
+	        });
+		 
+		 */
+		 
+		//removeBotaoDelete();
+		
+	}
+	else if (ATIVIDADE == REALIZAR_PGTO || ATIVIDADE == AVALIAR_PGTO){
+		document.getElementById("btn_add_item").style.display = "none";
+		document.getElementById("btn_add_agenda").style.display = "none";
+	}
 
 	
 });
 
 
-
+function removeBotaoDelete() {	  
+	  var element = $(removeitem);//convert string to JQuery element
+	  element.find("span").remove();//remove span elements
+	  
+	  
+	}
 
 
 
@@ -225,36 +252,8 @@ function adicionaAgenda() {
         defaultDate: "01:00"
 	});
 	
-	/*
-	  $(document).on("blur", "input[id^='custo___"+ row +"']", function(e){
-	       soma = soma + parseFloat($(this).val());
-	  });
 
-	    // alimenta o campo Total com a soma dos valores dos produtos
-	  $("#vl_diarias").val(soma);
-	 */
 }
-
-/* 
-function deleta_filho(linha){
-	
-	var linhas = $("#tbodyItens tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);	
-	        
-	    }
-	   
-	  
-	soma - $('#'+"custo___"+linha).val();
-	$("#vl_diarias").val(soma);
-	
-	fnWdkRemoveChild(linha)
-		
-}
-
- */
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -280,7 +279,6 @@ function removedZoomItem(removedItem) {
     var linhaPagamento = campoZOOM.split('___');
  
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
@@ -304,7 +302,6 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
@@ -313,9 +310,6 @@ function removedZoomItem(removedItem) {
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-    	console.log("---REMOVEU AQUI 3----");
-//      var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-
         $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
         $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
@@ -325,14 +319,7 @@ function removedZoomItem(removedItem) {
 
 
     else if (campoZOOM == RATEIO) {
-        //removeItensRateio();
-	    var linhas = $("#tbodyItens tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);	
-	        
-	    }
+    			removeItens();
     }
 
 
@@ -516,9 +503,6 @@ function addAnos(data, anos) {
   return new Date(data.setYear(data.getFullYear() + anos));
 
 }
-
-
-
 
 
 //carrega itens do rateio para informações de pagamento

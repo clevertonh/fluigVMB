@@ -1,19 +1,17 @@
 function displayFields(form,customHTML){ 
 	var ABERTURA = 0;
 	var APROVACAO = 5;
-	var REGISTRAR_PGTO = 16; 
+	var CALCULAR_DIARIAS = 16;
 	var REALIZAR_PGTO = 21;
 	var AVALIAR_PGTO = 28;
+	var CORRIGIR = 41;
+
 	
 	var activity = getValue('WKNumState');
 	
 	
-    log.info("evento displayFields 2");
-    log.info(activity);
-	
-	
   	customHTML.append("<script>");
-    customHTML.append("var ATIVIDADE = " + activity + ";");
+    customHTML.append("			var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
     
@@ -28,12 +26,8 @@ function displayFields(form,customHTML){
 	else if (activity == APROVACAO  ) {
 		recuperaValorAgenda();
 	}
-	
-	else if (activity == REGISTRAR_PGTO  ) {
-		//recuperaValorAgenda();
-	}
-	
-	
+
+		
 	
 	   //RECUPERA VALOR DE DIARIA DA ATIVIDADE E PREENCHE CAMPO VALOR TOTAL
     function recuperaValorAgenda(){
@@ -43,9 +37,6 @@ function displayFields(form,customHTML){
    	  	
           for (var i = 0; i < indexes.length; i++) {            
 	              var valor = parseFloat(form.getValue("custo___" + indexes[i]));   
-	                               
-	              log.info("valor unitario da diaria");
-	              log.info(valor);
 	              valortotal = valortotal + valor;
              
               

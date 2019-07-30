@@ -2,9 +2,11 @@ function validateForm(form){
 
 	var ABERTURA = 4;
 	var APROVACAO = 5;
-	var REGISTRAR_PGTO = 16; 
+	var CALCULAR_DIARIAS = 16;
 	var REALIZAR_PGTO = 21;
 	var AVALIAR_PGTO = 28;
+	var CORRIGIR = 41;
+
 	
 
 	var activity = getValue('WKNumState');
@@ -26,7 +28,7 @@ function validateForm(form){
 	 
 
      
-     if(activity == ABERTURA  ){
+     if(activity == ABERTURA  || activity == CORRIGIR){
 
     	 if (form.getValue("beneficiario") == null || form.getValue("beneficiario") == "" ) {
              throw "O nome do beneficiário que irá receber as diárias não foi selecionado.";
@@ -50,7 +52,7 @@ function validateForm(form){
      
      
      
-     else if(activity == REGISTRAR_PGTO  ){
+     else if(activity == CALCULAR_DIARIAS  ){
     	 var valorTotal = parseFloat(form.getValue("vl_diarias"));
     	 
     	  if (isNaN(valorTotal)) {
@@ -60,6 +62,11 @@ function validateForm(form){
     	  
     	  if (form.getValue("recebediarias") == null || form.getValue("recebediarias") == "" ) {
 	             throw "Você precisa indicar se o beneficiário tem direito de receber diarias ou não.";
+
+	         }
+    	  
+    	  if (form.getValue("dtVencimento") == null || form.getValue("dtVencimento") == "" ) {
+	             throw "Você precisa indicar a data de vencimento do registro.";
 
 	         }
 	       

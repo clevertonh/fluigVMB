@@ -1,12 +1,12 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("documentid", "2048", "2048", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("documentid", "2054", "2054", ConstraintType.MUST));     
 	 
 	
 	
 	 var valorDiarias="300";
-	 var dataVencimento="26/03/2019";	 	
+	 var dataVencimento="30/07/2019";	 	
 	 constraint.push(DatasetFactory.createConstraint("vl_diarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 	 constraint.push(DatasetFactory.createConstraint("dtPgto", dataVencimento, dataVencimento, ConstraintType.MUST));
 	

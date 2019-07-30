@@ -10,11 +10,8 @@ function servicetask23(attempt, message) {
     var idFormulario = getValue("WKFormId")
     var empresa = getValue("WKCompany");
     
-    //recupera data de vencimento e converte para formato data
-    var dtVencimento = convertStringToData(hAPI.getCardValue("dtPagamento"));
     var dtAtual = new Date();
-    
-    
+        
     var constraint = new Array();                                 
     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
     
