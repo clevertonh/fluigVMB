@@ -4,6 +4,9 @@ var APROVACAO_GESTOR = 5;
 var VALIDACAO = 48;
 var APROVACAO_RH = 27;
 var ALTERACAO_DATA = 67;
+var REALIZAR_PAGAMENTO = 97;
+var AVALIAR_PAGAMENTO = 93;
+var CORRIGIR_DOCUMENTO = 85;
 
 
 var dtSolicitacao;
@@ -247,6 +250,20 @@ function setZoomData(instance, value) {
 }
 
 
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR 	){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {

@@ -98,14 +98,33 @@ $(document).ready(function() {
 });
 
 
-function removeBotaoDelete() {	  
-	  var element = $(removeitem);//convert string to JQuery element
-	  element.find("span").remove();//remove span elements
-	  
-	  
+function fnCustomDeleteRateio(oElement) {	  
+		if (ATIVIDADE == CALCULAR_DIARIAS || ATIVIDADE == REALIZAR_PGTO || ATIVIDADE == AVALIAR_PGTO){						
+			FLUIGC.toast({
+                title: 'Atenção',
+                message: 'Você não pode remover um item do rateio. Se desejar, devolva a tarefa para o solicitante.',
+                type: 'warning',
+                timeout: 3000
+            });
+		}
+		else {
+			fnWdkRemoveChild(oElement);	
+		}		
 	}
 
-
+function fnCustomDeleteAgenda(oElement) {	  
+	if (ATIVIDADE == CALCULAR_DIARIAS || ATIVIDADE == REALIZAR_PGTO || ATIVIDADE == AVALIAR_PGTO){						
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover um item da agenda. Se desejar, devolva a tarefa para o solicitante.',
+            type: 'warning',
+            timeout: 3000
+        });
+	}
+	else {
+		fnWdkRemoveChild(oElement);	
+	}		
+}
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
@@ -253,6 +272,21 @@ function adicionaAgenda() {
 	});
 	
 
+}
+
+function init() {
+    $("input[id^='custo___']:last").blur(doFormTotal);
+}
+
+
+function doFormTotal() {
+    var total = 0;
+    $("input[id^='custo___']").each(function() {
+        if ($(this).val()) {
+            total += parseInt($(this).val()); 
+        }
+    });
+    $("#vl_diarias").val(total);
 }
 
 function removedZoomItem(removedItem) {

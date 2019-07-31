@@ -1858,5 +1858,32 @@ FLUIGC.message.alert({
 
 */
 
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO	){								
+		fnWdkRemoveChild(oElement);	
 
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
 
+function fnCustomDeleteServico(oElement) {	  
+	if (ATIVIDADE == COMPRARPASSAGEM 	){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha referente aos serviços comprados.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}

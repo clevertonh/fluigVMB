@@ -68,32 +68,43 @@ function enableFields(form){
 		
 	}
 	
-	else if (activity == ALTERACAO_DATA){
-		form.setEnabled('aprovacao', false);
-		form.setEnabled('justificativaR', false);
-		form.setEnabled('validacao', false);
-		form.setEnabled('vl_rmb', false);
-		form.setEnabled('justificativaReprovacaoV', false);
+	else if (activity == ALTERACAO_DATA){		
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+		
+	    form.setEnabled('dtPagamento', true);
 		
 	}
 	else if (activity == CORRIGIR_DOCUMENTO){
-		form.setEnabled('aprovacao', false);
-		form.setEnabled('justificativaR', false);
-		form.setEnabled('validacao', false);
-		form.setEnabled('vl_rmb', false);
-		form.setEnabled('dtPagamento', false);
-		form.setEnabled('justificativaReprovacaoV', false);
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
 		
 	}
 	
 	else if (activity == REALIZAR_PAGAMENTO || activity == AVALIAR_PAGAMENTO){
-			//bloquear todos os campos
-		form.setEnabled('aprovacao', false);
-		form.setEnabled('justificativaR', false);
-		form.setEnabled('validacao', false);
-		form.setEnabled('dtPagamento', false);
-		form.setEnabled('vl_rmb', false);
-		form.setEnabled('justificativaReprovacaoV', false);
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
 		
 	}
  

@@ -120,6 +120,23 @@ function removeItens() {
 
 }
 
+
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
+
+
 function clickRenovacao(){
 	 apagaLocacaoAnterior();
 	if (document.getElementById("renovacaoN").checked == true){

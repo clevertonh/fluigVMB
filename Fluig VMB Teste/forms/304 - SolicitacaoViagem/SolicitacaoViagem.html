@@ -323,10 +323,10 @@
                                                                   <table tablename="tableItens" id="tableItens"
                                                                      border="0"
                                                                      class="table table-striped table-bordered"
-                                                                     noaddbutton="true" nodeletebutton="true">
+                                                                     noaddbutton="true" customFnDelete="fnCustomDeleteRateio(this)">
                                                                      <thead>
                                                                         <tr class="tableHeadRow">
-                                                                           <th></th>
+                                                                           
                                                                            <th>Percentual</th>
                                                                            <th class="tableColumn">Centro de Custo</th>
                                                                            <th class="tableColumn">Projeto</th>
@@ -342,10 +342,7 @@
                                                                      </thead>
                                                                      <tbody id="tbodyItens">
                                                                         <tr>
-                                                                           <td><span
-                                                                              class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha"
-                                                                              id="removeitem"
-                                                                              onclick="fnWdkRemoveChild(this)"></span></td>
+                                                                           
                                                                            <td><input class="form-control money"
                                                                               name="percentual" id="percentual" type="number"
                                                                               style="width: 100px;" /></td>
@@ -651,7 +648,7 @@
                                                                <table tablename="SolicAgendaViagem"
                                                                   id="SolicAgendaViagem" border="0"
                                                                   class="table table-striped table-bordered"
-                                                                  noaddbutton="true">
+                                                                  noaddbutton="true" >
                                                                   <thead>
                                                                      <tr class="tableHeadRow">
                                                                         <th>Período de:</th>
@@ -1375,10 +1372,10 @@
                                        <div class="form-group row">
                                           <div class="col-md-12">
                                              <div class="form-field table-responsive">
-                                                <table tablename="tableViagem" id="tableViagem" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true >
+                                                <table tablename="tableViagem" id="tableViagem" border="0" class="table table-striped table-bordered" noaddbutton="true" customFnDelete="fnCustomDeleteServico(this)">
                                                    <thead>
                                                       <tr class="tableHeadRow">
-                                                         <th></th>
+                                                         
                                                          <th class="tableColumn">Serviço</th>
                                                          <th class="tableColumn">Valor</th>
                                                          <th class="tableColumn">Data do voo</th>
@@ -1389,9 +1386,7 @@
                                                    </thead>
                                                    <tbody id="tbodyViagem">
                                                       <tr>
-                                                         <td>
-                                                            <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeServico" onclick="fnWdkRemoveChild(this)"></span>
-                                                         </td>
+                                                         
                                                          <td>
                                                             <div class="form-group">
                                                                <input type="hidden" name="servico"

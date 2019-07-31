@@ -261,10 +261,10 @@
                                                                         <div class="form-group row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-field table-responsive">
-                                                                                    <table tablename="tableItens" id="tableItens" border="0" class="table table-striped table-bordered" noaddbutton="true" nodeletebutton="true">
+                                                                                    <table tablename="tableItens" id="tableItens" border="0" class="table table-striped table-bordered" noaddbutton="true" customFnDelete="fnCustomDeleteRateio(this)">
                                                                                         <thead>
                                                                                             <tr class="tableHeadRow">
-                                                                                                <th></th>
+                                                                                                
                                                                                                 <th>Percentual</th>
                                                                                                 <th class="tableColumn">Centro de Custo</th>
                                                                                                 <th class="tableColumn">Projeto</th>
@@ -280,7 +280,7 @@
                                                                                         </thead>
                                                                                         <tbody id="tbodyItens">
                                                                                             <tr>
-                                                                                                <td><span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeitem" onclick="fnWdkRemoveChild(this)"></span></td>
+                                                                                                
                                                                                                 <td>
                                                                                                     <input class="form-control money" name="percentual" id="percentual" type="number" style="width: 100px;" />
                                                                                                 </td>
@@ -416,10 +416,10 @@
                                                                         <div class="form-group row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-field table-responsive">
-                                                                                    <table tablename="tableCompras" id="tableCompras" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true>
+                                                                                    <table tablename="tableCompras" id="tableCompras" border="0" class="table table-striped table-bordered" customFnDelete="fnCustomDeleteProduto(this)" noaddbutton="true">
                                                                                         <thead>
                                                                                             <tr class="tableHeadRow">
-                                                                                                <th></th>
+                                                                                                
                                                                                                 <th class="tableColumn">Descrição do Produto</th>
                                                                                                 <th class="tableColumn">Unid. Medida</th>
                                                                                                 <th class="tableColumn">Qtd</th>
@@ -431,9 +431,7 @@
                                                                                         </thead>
                                                                                         <tbody id="tbodyCompras">
                                                                                             <tr>
-                                                                                                <td>
-                                                                                                    <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeProduto" onclick="fnWdkRemoveChild(this)"></span>
-                                                                                                </td>
+                                                                                                
                                                                                                 <td>
                                                                                                     <div class="form-group">
                                                                                                         <input type="hidden" name="produto" id="produto" />

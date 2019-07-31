@@ -89,9 +89,36 @@ $(document).ready(function() {
 	
 });
 
+//customFnDelete="fnCustomDeleteRateio(this)"
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA 	){								
+		fnWdkRemoveChild(oElement);	
 
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
 
+function fnCustomDeleteProduto(oElement) {	  
+	if (ATIVIDADE == ABERTURA 	){								
+		fnWdkRemoveChild(oElement);	
 
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
     var LOCALIZACAO = "localizacao";
