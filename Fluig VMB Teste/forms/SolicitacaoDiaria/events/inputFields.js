@@ -1,25 +1,15 @@
-function displayFields(form,customHTML){ 
-	var ABERTURA = 0;
+function inputFields(form){
+	
+	var ABERTURA = 4;
 	var APROVACAO = 5;
 	var CALCULAR_DIARIAS = 16;
 	var REALIZAR_PGTO = 21;
 	var AVALIAR_PGTO = 28;
 	var CORRIGIR = 41;
-
 	
 	var activity = getValue('WKNumState');
 	
 	
-  	customHTML.append("<script>");
-    customHTML.append("			var ATIVIDADE = " + activity + ";");
-    customHTML.append("</script>");
-	
-    
-     form.setVisibleById("matriculasolicitante", false);
-	 form.setVisibleById("matricula", false);
-	 form.setVisibleById("prazoaprovacao", false); 
-    
-    
 	if (activity == APROVACAO  ) {
 		recuperaValorAgenda();
 	}
@@ -42,5 +32,5 @@ function displayFields(form,customHTML){
           form.setValue("vl_diarias",valortotal);
           
     }
-    
+	
 }

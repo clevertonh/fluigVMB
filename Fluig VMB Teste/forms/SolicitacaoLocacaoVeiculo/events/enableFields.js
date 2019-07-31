@@ -12,7 +12,7 @@ function enableFields(form){
 	if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
 		 form.setEnabled("valor", false);
-		 //form.setEnabled("txtproduto", false);
+		 form.setEnabled("txtproduto", false);
 		 form.setEnabled("justificativaReprovacao", false);		 
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
@@ -56,12 +56,25 @@ function enableFields(form){
 		    
 		    form.setEnabled("aprovacao", true);		 
 			form.setEnabled("justificativaReprovacao", true);
-			form.setEnabled("valor", true);
-			form.setEnabled("txtproduto", true);	
+			
 		
 		 
 		 
 		 
+	}
+	else if (activity == CONTRATAR){
+		 var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("valor", true);
+			form.setEnabled("txtproduto", true);	 
+		
 	}
 
 	
@@ -107,5 +120,12 @@ function enableFields(form){
 
 
 
+	//recebe data do Fluig e convert para data normal
+	function convertStringToData(StringToData) {
+	    //variavel para armazenar a data limite para aprovação   
+	    var data = StringToData.split('/');
+
+	    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+	}   
 }
 

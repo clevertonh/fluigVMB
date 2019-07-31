@@ -28,8 +28,8 @@ $(document).ready(function() {
     	dtRetirada = FLUIGC.calendar('#dtRetirada', {
             pickDate: true,
             pickTime: true,
-            useCurrent: true,
-            minDate: new Date().toLocaleString()
+            useCurrent: true
+            , minDate: new Date().toLocaleString()
         });
     	
     	dtDevolucao = FLUIGC.calendar('#dtDevolucao', {
@@ -122,7 +122,7 @@ function removeItens() {
 
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -137,18 +137,67 @@ function fnCustomDeleteRateio(oElement) {
 }
 
 
-function clickRenovacao(){
-	 apagaLocacaoAnterior();
-	if (document.getElementById("renovacaoN").checked == true){
+function fnCustomDeleteCondutor(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover o condutor.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
+
+function clickTrocaCondutor(){
+	 
+	if (document.getElementById("trocaNao").checked == true && document.getElementById("renovacaoN").checked == true){
 		 window['dataset_solicitacaolocacao'].clear();
          document.getElementById("div_solicitacaoAnterior").style.display = "none";
-        
+         window['rateioconfigurado'].disable(false); 
+ 		 window['rateioconfigurado'].clear();
+ 		 
+ 		 $("#NcarregaFinan").val("");
+ 		 $("#carregaFinan").val("");
+ 		document.getElementById("NcarregaFinan").checked = false;
+ 		document.getElementById("carregaFinan").checked = false;
+ 		apagaLocacaoAnterior();
 	}
-	else {		
-		window['dataset_solicitacaolocacao'].disable(false);
+	if (document.getElementById("trocaSim").checked == true){
+		window['dataset_solicitacaolocacao'].disable(false);			
 		document.getElementById("dataset_solicitacaolocacao").style.display = "block";
         document.getElementById("div_solicitacaoAnterior").style.display = "block";
 	}
+	
+	
+	
+}
+
+function clickRenovacao(){
+	 
+	if (document.getElementById("renovacaoN").checked == true && document.getElementById("trocaNao").checked == true){
+		 window['dataset_solicitacaolocacao'].clear();
+         document.getElementById("div_solicitacaoAnterior").style.display = "none";
+         window['rateioconfigurado'].disable(false); 
+ 		 window['rateioconfigurado'].clear();
+ 		 
+ 		 $("#NcarregaFinan").val("");
+ 		 $("#carregaFinan").val("");
+ 		document.getElementById("NcarregaFinan").checked = false;
+ 		document.getElementById("carregaFinan").checked = false;
+ 		apagaLocacaoAnterior();
+        
+	}
+	
+	if (document.getElementById("renovacaoS").checked == true) {		
+		window['dataset_solicitacaolocacao'].disable(false);			
+		document.getElementById("dataset_solicitacaolocacao").style.display = "block";
+        document.getElementById("div_solicitacaoAnterior").style.display = "block";
+	}
+	
 }
 
 //preenche campos ZOOM
@@ -276,7 +325,7 @@ function setSelectedZoomItem(selectedItem) {
     }
     else if (campoZOOM == LOCACAO_ANTERIOR){	
     		removeItens();
-    		$("#localRetirada").prop("disabled", true);
+    		//$("#localRetirada").prop("disabled", true);
     		
     		if (selectedItem["FINANEVENTO"] == "sim"){    		 	    
     	    	codigoEvento = selectedItem["SOLICITACAO"];    		    		    		
@@ -358,6 +407,23 @@ function adicionaLinha() {
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
 }
+
+function adicionaCondutor() {
+    var indice = wdkAddChild('tableCondutor');
+        
+    //$("#qtcnh").val(indice);
+    
+/*
+    FLUIGC.calendar("#dtValidade___" + indice, {
+		pickDate: true,
+		pickTime: false
+	});
+	*/
+    
+    
+}
+
+
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";

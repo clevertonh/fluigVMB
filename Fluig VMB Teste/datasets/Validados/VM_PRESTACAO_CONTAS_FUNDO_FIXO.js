@@ -85,7 +85,8 @@ function createDataset(fields, constraints, sortFields) {
 					            	HISTORICO  : '' + solicitacao.getValue(0,"historico") + '' ,
 					            	PRODUTO : '' + produto + '' ,
 					            	PRODUTOS : aProdutos ,
-					            	RATEIO: aRateio 
+					            	RATEIO: aRateio ,
+					            	EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
 					            },
 					          options : {
 					             encoding : 'UTF-8',

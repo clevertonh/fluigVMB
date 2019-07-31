@@ -113,6 +113,20 @@ function removeProduto() {
 
 }
 
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA 	){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {

@@ -24,7 +24,8 @@ function validateForm(form){
     var aCategoria	  = new Array();
     var aFonte	  = new Array();
     var aArea	  = new Array();
-    
+    var dataRetirada;
+    var dataAtual = new Date();
     
 	
 
@@ -61,16 +62,25 @@ function validateForm(form){
 		  if (form.getValue("capacidade") == null || form.getValue("capacidade") == "" ) {
               throw "É obrigatório informar a capacidade para o veículo";
           }
-		  if (form.getValue("nomeCondutor") == null || form.getValue("nomeCondutor") == "") {
-              throw "É obrigatório informar o nome do condutor.";
-          }
-		  if (form.getValue("cnh") == null || form.getValue("cnh") == "") {
-              throw "O número da CNH é obrigatório.";
-          }
-		 
-		
-				
+	
+		  
+	  	   var indexes = form.getChildrenIndexes("tableCondutor");            
+    	   
+           for (var i = 0; i < indexes.length; i++) {
+        	   var condutor = form.getValue("nomeCondutor___" + indexes[i]);
+               
+	            if (condutor == null || condutor == "") {
+	            	 throw "É obrigatório informar o nome do condutor. ";
+	            }	                     	
+           	}
 
+           /*
+           //preenche a quantidade e condutores para validar a quantidade e anexos de cnh
+           if (indexes.length > 0){
+        	   form.setValue("qtcnh",indexes.length);		
+           }
+           */
+          
 		//funções para validar informações financeiras
 			validaLinhasPreenchidas();
 			validaLinhasRepetidas();
@@ -96,6 +106,20 @@ function validateForm(form){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
         }    
 		
+		/*
+		if (form.getValue("aprovacao") == "aprovado"){
+			//recebe data de retirada e faz conversão
+			dataRetirada = convertStringToData(form.getValue("dtRetirada"));
+			//compara se data atual é maior que data de retirada
+			if (dataAtual > dataRetirada){
+				throw "Essa solicitação não pode mais ser aprovada pois a data de retirada já se passou.";				
+			}
+		}
+
+		*/
+		//	form.setValue("justificativaReprovacao","solicitação não aprovada no tempo. Por isso foi rejeitada automaticamente pelo sistema.");
+		
+		
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
 		validaLinhasRepetidas();
@@ -103,10 +127,7 @@ function validateForm(form){
 		validaAtividades();
 		
 	}
-	else if (activity == CONTRATAR){
-		log.info("valor locacao");
-		log.info(form.getValue("valor"));
-		
+	else if (activity == CONTRATAR){	
 		if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
          	 throw "Você precisa informar o custo da locação do veículo.";
         }
@@ -130,6 +151,10 @@ function validateForm(form){
 	        	return false;
 	        }	 
   }
+    
+    function bloqueiaAprovacaoForadoPrazo(){
+    	
+    }
     
     
     function retornaCPFAprovador(emailGestor){     
@@ -312,5 +337,13 @@ function validateForm(form){
            }
      }
 	
+     
+   //recebe data do Fluig e convert para data normal
+     function convertStringToData(StringToData) {
+         //variavel para armazenar a data limite para aprovação   
+         var data = StringToData.split('/');
+
+         return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+     }  
 	
 }

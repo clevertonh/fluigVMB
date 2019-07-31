@@ -94,7 +94,8 @@ function createDataset(fields, constraints, sortFields) {
         					        		RATEIODIGITADO: aRateio,
         					        		COMPRADOR: '' + emailcomprador +'',
         					        		TIPOVIAGEM: '' + tipoViagem +'',
-        					        		DOCUMENTID: '' + documentId +'' 
+        					        		DOCUMENTID: '' + documentId +'' ,
+        					        		EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
         					            },
         					          options : {
         					             encoding : 'UTF-8',

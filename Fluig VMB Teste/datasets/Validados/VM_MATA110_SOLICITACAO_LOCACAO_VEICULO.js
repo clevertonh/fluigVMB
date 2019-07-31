@@ -65,7 +65,8 @@ function createDataset(fields, constraints, sortFields) {
         					            	DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
         					            	ITENS: aItemServico ,
         					            	RATEIODIGITADO: aRateio ,
-        					            	DOCUMENTID:''+ documentId +''        					            	
+        					            	DOCUMENTID:''+ documentId +''    ,
+        					            	EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
         					            },
         					          options : {
         					             encoding : 'UTF-8',
