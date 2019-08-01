@@ -1,5 +1,6 @@
 function beforeStateEntry(sequenceId){
-	
+	var ABERTURA = 0;
+	var SOLICITAR = 4;
 	var APROVACAO = 5;
 	var CONTRATAR = 47;
 	
@@ -20,7 +21,32 @@ function beforeStateEntry(sequenceId){
     var valor = hAPI.getCardValue("valor");
     var produto = hAPI.getCardValue("codigoProduto");
     
-    
+    if (ativAtual == ABERTURA || ativAtual == SOLICITAR){
+    	 var anexos   = hAPI.listAttachments();
+    	 var qtdAnexado = anexos.size();
+    	 	 
+			var processo = getValue("WKNumProces");
+			var campos   = hAPI.getCardData(processo);
+			var contador = campos.keySet().iterator();
+			var qtdeCNH = 0;
+			
+			while (contador.hasNext()) {
+			    var id = contador.next();
+			    if (id.match(/nomeCondutor___/)) { // qualquer campo do Filho
+			    	qtdeCNH = qtdeCNH + 1;
+			    }
+			}
+    	 
+			if (qtdAnexado < qtdeCNH){
+				 throw "Você precisa anexar uma cópia da CNH de cada condutor.";
+			}
+			
+			
+			//hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  	
+    	 
+    	 
+    	 
+    }
     if (ativAtual == CONTRATAR ){ 	   
                   var constraint = new Array();                                 
                   constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));

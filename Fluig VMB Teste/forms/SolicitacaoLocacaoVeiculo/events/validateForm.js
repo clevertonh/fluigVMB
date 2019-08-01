@@ -74,12 +74,6 @@ function validateForm(form){
 	            }	                     	
            	}
 
-           /*
-           //preenche a quantidade e condutores para validar a quantidade e anexos de cnh
-           if (indexes.length > 0){
-        	   form.setValue("qtcnh",indexes.length);		
-           }
-           */
           
 		//funções para validar informações financeiras
 			validaLinhasPreenchidas();

@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Locação de Veiculo</processId>
-      <version>12</version>
+      <version>16</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1919</formId>
@@ -377,7 +377,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>12</version>
+        <version>16</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -389,7 +389,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>12</version>
+        <version>16</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -401,7 +401,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>12</version>
+        <version>16</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -572,38 +572,13 @@
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
-        <eventId>beforeTaskSave</eventId>
-        <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
-	var INICIO = 0;&#xd;
-	var ABERTURA = 4;&#xd;
-	var APROVACAO = 5;&#xd;
-	var CORRIGIR = 39;&#xd;
-	var CONTRATAR = 47;&#xd;
-	&#xd;
-	//RECUPERA NUMERO DA ATIVIDADE&#xd;
-	var ativAtual = getValue(&quot;WKNumState&quot;);		&#xd;
-	&#xd;
-	if (ativAtual == ABERTURA || ativAtual == INICIO){&#xd;
-		var indexes = hAPI.getChildrenIndexes(&quot;tableCondutor&quot;);		&#xd;
-		&#xd;
-		hAPI.setCardValue(&quot;qtcnh&quot;,indexes.length);  	&#xd;
-		&#xd;
-	}&#xd;
-	&#xd;
-}</eventDescription>
-    </WorkflowProcessEvent>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
         <eventId>beforeStateEntry</eventId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
-	&#xd;
+	var ABERTURA = 0;&#xd;
+	var SOLICITAR = 4;&#xd;
 	var APROVACAO = 5;&#xd;
 	var CONTRATAR = 47;&#xd;
 	&#xd;
@@ -624,7 +599,32 @@
     var valor = hAPI.getCardValue(&quot;valor&quot;);&#xd;
     var produto = hAPI.getCardValue(&quot;codigoProduto&quot;);&#xd;
     &#xd;
-    &#xd;
+    if (ativAtual == ABERTURA || ativAtual == SOLICITAR){&#xd;
+    	 var anexos   = hAPI.listAttachments();&#xd;
+    	 var qtdAnexado = anexos.size();&#xd;
+    	 	 &#xd;
+			var processo = getValue(&quot;WKNumProces&quot;);&#xd;
+			var campos   = hAPI.getCardData(processo);&#xd;
+			var contador = campos.keySet().iterator();&#xd;
+			var qtdeCNH = 0;&#xd;
+			&#xd;
+			while (contador.hasNext()) {&#xd;
+			    var id = contador.next();&#xd;
+			    if (id.match(/nomeCondutor___/)) { // qualquer campo do Filho&#xd;
+			    	qtdeCNH = qtdeCNH + 1;&#xd;
+			    }&#xd;
+			}&#xd;
+    	 &#xd;
+			if (qtdAnexado &lt; qtdeCNH){&#xd;
+				 throw &quot;Você precisa anexar uma cópia da CNH de cada condutor.&quot;;&#xd;
+			}&#xd;
+			&#xd;
+			&#xd;
+			//hAPI.setCardValue(&quot;dtBaixa&quot;,resultDataset.getValue(0,&quot;DATA_PAGAMENTO&quot;));  	&#xd;
+    	 &#xd;
+    	 &#xd;
+    	 &#xd;
+    }&#xd;
     if (ativAtual == CONTRATAR ){ 	   &#xd;
                   var constraint = new Array();                                 &#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
@@ -741,7 +741,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>12</version>
+        <version>16</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -752,7 +752,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>12</version>
+        <version>16</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -763,7 +763,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>12</version>
+        <version>16</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -777,18 +777,6 @@
   <list/>
   <list/>
   <list/>
-  <list>
-    <ProcessAttachmentRules>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>SolicitacaoLocacaoVeiculo</processId>
-      <processVersion>12</processVersion>
-      <stateSequence>4</stateSequence>
-      <operator>1</operator>
-      <amount>@[form:qtcnh]	</amount>
-      <name>CNH.*</name>
-      <message>Você precisa anexar uma cópia da CNH do condutor com a nomenclatura CNH</message>
-    </ProcessAttachmentRules>
-  </list>
+  <list/>
   <list/>
 </list>

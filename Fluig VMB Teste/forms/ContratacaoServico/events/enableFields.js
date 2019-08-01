@@ -37,19 +37,29 @@ function enableFields(form){
 	else if (activity == APROVACAO){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
-		 form.setEnabled("rateioconfigurado", false);		 
-		 form.setEnabled("dataset_solicitacaoevento", false);
-		 form.setEnabled("FinanEvento", false);
-		 bloqueiaDadosFinanceiro();
-		 bloqueiaDadosProduto();
+		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("aprovacao", true);		
+		 
 	}
 	else if (activity == AVALIAR_ERRO){		
-		 form.setEnabled("aprovacao", false);	
-		 form.setEnabled("rateioconfigurado", false);
-		 form.setEnabled("finalidade", false);
-		 
-		 bloqueiaDadosFinanceiro();
-		 bloqueiaDadosProduto();
+		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
 		 
 		
 	}
@@ -74,19 +84,6 @@ function enableFields(form){
  
 }
 	
-	function bloqueiaDadosProduto(){		
-   	    //BLOQUEIA CAMPOS DE SERVIÇO
-	    	 var indexes = form.getChildrenIndexes("tableCompras");	    	    	    	   
-	    	    for (var i = 0; i < indexes.length; i++) {
-	     	        form.setEnabled("txtproduto___"+ indexes[i], false);	
-	     	         form.setEnabled("id_quantidade___"+ indexes[i], false);	
-	     	      	 form.setEnabled("vrTotUnit___"+ indexes[i], false);	
-	     	      	 form.setEnabled("dtNecessidade___"+ indexes[i], false);
-    	        
-	    	    } 
-   
-	    	    
-	}
 	
 	function UsuarioLogado(solicitante){
 		 var constraints   = new Array();
@@ -98,9 +95,7 @@ function enableFields(form){
 
 	
 	function usuarioAprovador(emailSolicitante){
-		log.info("---GERENTE FUNCIONARIO----"); 
-		log.info(emailSolicitante);
-		
+	
 		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
