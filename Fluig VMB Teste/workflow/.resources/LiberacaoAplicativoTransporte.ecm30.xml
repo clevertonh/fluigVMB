@@ -2,14 +2,14 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>Cadastro para uso de taxi</processId>
+      <processId>LiberacaoAplicativoTransporte</processId>
     </processDefinitionPK>
-    <processDescription>Cadastro para uso de taxi</processDescription>
+    <processDescription>LiberacaoAplicativoTransporte</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Solicitações</categoryId>
+    <categoryId></categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -27,8 +27,8 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Cadastro para uso de taxi</processId>
-      <version>2</version>
+      <processId>LiberacaoAplicativoTransporte</processId>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -43,19 +43,19 @@
     <processStates/>
     <favorito>false</favorito>
     <inheritFormSecurity>false</inheritFormSecurity>
-    <mobileReady>true</mobileReady>
+    <mobileReady>false</mobileReady>
   </ProcessDefinitionVersion>
   <list>
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
       <stateName>Início</stateName>
       <stateDescription>Início</stateDescription>
-      <instruction>Selecione o funcionário que deseja cadastrar nos serviços de taxi</instruction>
+      <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -75,8 +75,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>130</positionX>
-      <positionY>45</positionY>
+      <positionX>150</positionX>
+      <positionY>82</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -99,18 +99,17 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
-        <sequence>14</sequence>
+        <sequence>5</sequence>
       </processStatePK>
-      <stateName>Aprovar cadastramento</stateName>
-      <stateDescription>Aprovar cadastramento</stateDescription>
-      <instruction>Confirme se deseja liberar o cadastramento do funcionário no serviço de taxi</instruction>
+      <stateName>Act1</stateName>
+      <stateDescription>Act1</stateDescription>
+      <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -125,8 +124,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>180</positionX>
-      <positionY>157</positionY>
+      <positionX>260</positionX>
+      <positionY>208</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -150,60 +149,9 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
-        <sequence>29</sequence>
-      </processStatePK>
-      <stateName>Cadastrar e liberar</stateName>
-      <stateDescription>Cadastrar e liberar</stateDescription>
-      <instruction>Realize os procedimentos de cadastramento dos serviços de taxi nos fornecedores e em seguida finalize a tareda.</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>320</positionX>
-      <positionY>277</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
-        <version>1</version>
-        <sequence>22</sequence>
+        <sequence>9</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -227,55 +175,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>440</positionX>
-      <positionY>174</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>60</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
-        <version>1</version>
-        <sequence>26</sequence>
-      </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
-      <instruction>Atividade final do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>510</positionX>
-      <positionY>294</positionY>
+      <positionX>420</positionX>
+      <positionY>227</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -298,14 +199,14 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
-        <linkSequence>18</linkSequence>
+        <linkSequence>6</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>4</initialStateSequence>
-      <finalStateSequence>14</finalStateSequence>
+      <finalStateSequence>5</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -315,48 +216,14 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
-        <linkSequence>27</linkSequence>
+        <linkSequence>10</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>29</initialStateSequence>
-      <finalStateSequence>26</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
-        <version>1</version>
-        <linkSequence>30</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>14</initialStateSequence>
-      <finalStateSequence>22</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
-        <version>1</version>
-        <linkSequence>31</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>14</initialStateSequence>
-      <finalStateSequence>29</finalStateSequence>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -370,66 +237,50 @@
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>361</height>
+      <height>290</height>
       <width>831</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
-      <stateName>Solicitação de cadastramento para uso de táxi</stateName>
+      <stateName>Pool</stateName>
       <type>1</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>C0C0C0</color>
-      <height>120</height>
+      <color>9F9F9F</color>
+      <height>145</height>
       <width>801</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
-      <stateName>Líder</stateName>
+      <stateName>Reporter</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>82b0b7</color>
-      <height>120</height>
+      <color>C0C0C0</color>
+      <height>145</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>130</positionY>
-      <stateName>Aprovador</stateName>
+      <positionY>155</positionY>
+      <stateName>Assignee</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
         <sequence>3</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>adc9ac</color>
-      <height>121</height>
-      <width>801</width>
-      <positionX>40</positionX>
-      <positionY>250</positionY>
-      <stateName>Administração</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
-        <version>1</version>
-        <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
   </list>
@@ -440,18 +291,18 @@
       <positionY>20</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
         <componGrafSequence>7</componGrafSequence>
       </processComponGrafPK>
-      <stateName>Solicite o cadastramento de seus funcionários nos serviços de taxi</stateName>
+      <stateName>Start</stateName>
     </ProcessComponGraf>
   </list>
   <list>
     <ProcessLinkAssoc>
       <processLinkAssocPK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
+        <processId>LiberacaoAplicativoTransporte</processId>
         <version>1</version>
         <linkSequence>8</linkSequence>
       </processLinkAssocPK>
@@ -463,8 +314,19 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Cadastro para uso de taxi</processId>
-        <version>2</version>
+        <processId>LiberacaoAplicativoTransporte</processId>
+        <version>1</version>
+        <linkSequence>6</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>167</positionX>
+      <positionY>235</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>LiberacaoAplicativoTransporte</processId>
+        <version>1</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
