@@ -357,7 +357,6 @@ function setSelectedZoomItem(selectedItem) {
   }
   
   else if (campoZOOM == FUNCIONARIO ){	 	  
-		 console.log(selectedItem["CPF"]);
 	  	 $("#cpfbeneficiario").val(selectedItem["CPF"]);
 	  	 
 	  	 //window[DEPENDENTE].disable(true);
@@ -442,30 +441,41 @@ function idade(calyear,calmon,calday)
 		var curd = new Date(curyear,curmon-1,curday);
 		var cald = new Date(calyear,calmon-1,calday);
 		
-		var diff =  Date.UTC(curyear,curmon,curday,0,0,0)
-			 - Date.UTC(calyear,calmon,calday,0,0,0);
+		var diff =  Date.UTC(curyear,curmon,curday,0,0,0) - Date.UTC(calyear,calmon,calday,0,0,0);
 
 		var dife = datediff(curd,cald);
 		
+		console.dir(dife);
+		console.log(dife[0]);
+		console.log(dife[1]);
+		console.log(dife[2]);
 		
-		if (dife[0] >= 7 && dife[1] > 1) {			
-			$('#idade').css('background-color', '#FF6347');		
-			console.log("colore idade acima do permitido");
-			//criar campo para salvar limite de idade ultrassada
-			$('#foraIdade').val('fora');
+		 if (dife[0] < 7) {	
+				console.log("na idade permitida");
+				$('#idade').css('background-color', '#FFFFFF');		
+				$('#foraIdade').val('');
+		}		
+		 else if (dife[0] == 7 ) {
+				 if (dife[1] == 0 || dife[1] == 1){
+					 	console.log("acima da idade permitida mas com observação");
+						$('#idade').css('background-color', '#FF8C00');			
+						$('#foraIdade').val('');
+				 }
+				 
+				 else {
+						console.log("acima da idade permitido");
+					 	$('#idade').css('background-color', '#FF6347');								
+						$('#foraIdade').val('fora');
+				 }
+			
 			
 		}
-		else if (dife[0] >= 7 && dife[1] == 1) {			
-			$('#idade').css('background-color', '#FF8C00');			
-			$('#foraIdade').val('');
-		}	
+		 else {
+			 	console.log("acima da idade permitido");
+			 	$('#idade').css('background-color', '#FF6347');								
+				$('#foraIdade').val('fora');
+		 }
 		
-		else {
-			$('#idade').css('background-color', '#FFFFFF');
-			//$('#idade').css('background', 'White');
-			$('#foraIdade').val('');
-		}
-
 		
 		
 		return dife[0]+" anos, "+dife[1]+" meses e "+dife[2]+" dias";
