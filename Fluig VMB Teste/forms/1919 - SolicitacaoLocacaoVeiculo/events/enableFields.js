@@ -63,6 +63,8 @@ function enableFields(form){
 		 
 	}
 	else if (activity == CONTRATAR){
+		
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		 var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
 		    var it = mapaForm.keySet().iterator();
@@ -73,7 +75,8 @@ function enableFields(form){
 		    }
 		    
 		    form.setEnabled("valor", true);
-			form.setEnabled("txtproduto", true);	 
+			form.setEnabled("txtproduto", true);	
+			form.setEnabled("codigoProduto", true);
 		
 	}
 

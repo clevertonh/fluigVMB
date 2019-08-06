@@ -16,6 +16,8 @@ function displayFields(form,customHTML){
     
     //campos sempre ocultos
 	 form.setVisibleById("matriculasolicitante", false);
+	 form.setVisibleById("_matriculasolicitante", false);
+	 
 	 form.setVisibleById("matricula", false);
 	 
 	 form.setVisibleById("divMatrApr", false);

@@ -55,8 +55,9 @@ $(document).ready(function() {
 	}
     else if (ATIVIDADE == CONTRATAR){
     	 $("#valor").blur(function(){
+    		 //window['txtproduto'].disable(false); 
     		 //ALTERAR PARA NUMERO QUE CORRESPONDERÁ AOS SERVIÇOS DE LOCAÇÃO
-    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "1");
+    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "6");
          }); 
     }
     
@@ -224,6 +225,8 @@ function setSelectedZoomItem(selectedItem) {
     //separa string
     var linhaPagamento = campoZOOM.split('___');
 
+    console.log(campoZOOM);
+    console.log(selectedItem["CODIGO"]);
 
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
@@ -301,7 +304,7 @@ function setSelectedZoomItem(selectedItem) {
     	
     }
     else if (linhaPagamento[0] == FONTE){
-  	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+    			$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
   	  
     }
      else if (campoZOOM == TIPO_VEICULO) {
@@ -497,14 +500,6 @@ function removedZoomItem(removedItem) {
     }
 
 
-
-    else if (linhaPagamento[0] == SERVICO) {   	
-     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	//$('#dtNecessidade' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	
-    }
     
     else if (linhaPagamento[0] == FONTE) {
   	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
