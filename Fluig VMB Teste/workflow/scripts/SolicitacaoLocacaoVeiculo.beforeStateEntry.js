@@ -38,7 +38,7 @@ function beforeStateEntry(sequenceId){
 			}
     	 
 			if (qtdAnexado < qtdeCNH){
-				 throw "Você precisa anexar uma cópia da CNH de cada condutor.";
+				 throw "Você precisa anexar uma cópia da CNH para cada condutor cadastrado.";
 			}
 			
 			
@@ -47,11 +47,26 @@ function beforeStateEntry(sequenceId){
     	 
     	 
     }
-    if (ativAtual == CONTRATAR ){ 	   
+    else if (ativAtual == CONTRATAR ){ 	   
                   var constraint = new Array();                                 
                   constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
                   constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
                   constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
+                  
+                  
+                  var codigoComprador = getValue("WKUser");
+		  			
+		  			 var constraintsUsuario   = new Array();
+		  			 	constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
+		  			 	var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
+				
+		  			 
+		  			 
+		  			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
+	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
+	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
+	  				}
+                  
                   
                    var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_LOCACAO_VEICULO", null, constraint, null);                                                                    
                       

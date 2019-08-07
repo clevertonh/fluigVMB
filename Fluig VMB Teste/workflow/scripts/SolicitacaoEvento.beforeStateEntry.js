@@ -25,11 +25,28 @@ function beforeStateEntry(sequenceId){
                     var constraint = new Array();                                 
                     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));      
                   	  
+                          
 					  var c1 = DatasetFactory.createConstraint("metadata#id", idDocumento, idDocumento, ConstraintType.MUST);    
 					  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoEventosProdutos", null, new Array(c1), null);
 						  
+					  
 					  if (datasetProdutos.rowsCount > 0){
-						  var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);                                                                    
+						  
+						  var codigoComprador = getValue("WKUser");
+		 		  			
+		 		  			 var constraintsUsuario   = new Array();
+		 		  			 	constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
+		 		  			 	var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
+		 				
+		 		  			 
+		 		  			 
+		 		  			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
+			  					var emailComprador = datasetComprador.getValue(0, "mail");	  
+			  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
+			  				}
+		                     
+						  
+						    var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);                                                                    
 		                     if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
 		                            throw resultDataset.getValue(0,"RETORNO");
 		                         }  

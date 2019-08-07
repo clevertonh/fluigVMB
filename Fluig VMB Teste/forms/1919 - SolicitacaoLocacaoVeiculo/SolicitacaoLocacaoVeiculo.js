@@ -57,7 +57,7 @@ $(document).ready(function() {
     	 $("#valor").blur(function(){
     		 //window['txtproduto'].disable(false); 
     		 //ALTERAR PARA NUMERO QUE CORRESPONDERÁ AOS SERVIÇOS DE LOCAÇÃO
-    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "6");
+    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "2");
          }); 
     }
     

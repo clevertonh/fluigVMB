@@ -9,6 +9,7 @@ function createDataset(fields, constraints, sortFields) {
 	var documentId;
 	var valor;
 	var produto;
+	var emailcomprador;
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -28,8 +29,12 @@ function createDataset(fields, constraints, sortFields) {
         			else if (constraints[a].fieldName == "produto"){
         				produto = constraints[a].initialValue;
         			}
-        		}
+        			else if (constraints[a].fieldName == "comprador"){
+            			emailcomprador = constraints[a].initialValue;
+            		}
+        		 }
         		
+    
         		
         		         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
@@ -66,6 +71,7 @@ function createDataset(fields, constraints, sortFields) {
         					            	ITENS: aItemServico ,
         					            	RATEIODIGITADO: aRateio ,
         					            	DOCUMENTID:''+ documentId +''    ,
+        					            	COMPRADOR: '' + emailcomprador +'',
         					            	EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
         					            },
         					          options : {

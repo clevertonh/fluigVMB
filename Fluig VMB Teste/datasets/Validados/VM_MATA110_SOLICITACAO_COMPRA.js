@@ -8,6 +8,10 @@ function createDataset(fields, constraints, sortFields) {
 	var itens = new Array();
 	var tipoViagem;
 	var documentId;
+	var emailcomprador;
+	
+	
+	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -25,6 +29,12 @@ function createDataset(fields, constraints, sortFields) {
         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		
         		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesCompraDadosPagamento", null, new Array(c2), null);    				  
 
+        		
+        		for (var a=0; a<constraints.length; a++){
+        			if (constraints[a].fieldName == "comprador"){
+            			emailcomprador = constraints[a].initialValue;
+            		}        			
+        		}
         	 
         		
       					 try {
@@ -53,6 +63,7 @@ function createDataset(fields, constraints, sortFields) {
         						 
         						 
         					 }
+        					 
         					 catch (erro){
         						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
         						 return dataset;
@@ -75,6 +86,7 @@ function createDataset(fields, constraints, sortFields) {
         					                ITENS: aItemServico ,
         					        		RATEIODIGITADO: aRateio ,
         					        		DOCUMENTID:''+ documentId +'',
+        					        		COMPRADOR: '' + emailcomprador +'',
         					        		EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
         					            },
         					          options : {

@@ -17,6 +17,12 @@ function displayFields(form,customHTML){
     //campos sempre ocultos
 	 form.setVisibleById("matriculasolicitante", false);
 	 form.setVisibleById("_matriculasolicitante", false);
+	 form.setVisibleById("_prazoaprovacao", false);
+	 
+	 
+	 //esse campo será habilitado posteriormente para obrigar a justificativa pelo atraso nas datas
+	 form.setVisibleById("justificativa", false);
+	 
 	 
 	 form.setVisibleById("matricula", false);
 	 

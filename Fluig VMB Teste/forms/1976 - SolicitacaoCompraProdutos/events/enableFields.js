@@ -2,7 +2,7 @@ function enableFields(form){
 	var ABERTURA = 0;
 	var APROVACAO =5;
 	var CORRIGIR = 15;
-	var AVALIAR_ERRO = 22;
+	var GERAR_SC = 42;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
@@ -43,13 +43,16 @@ function enableFields(form){
 		 bloqueiaDadosFinanceiro();
 		 bloqueiaDadosProduto();
 	}
-	else if (activity == AVALIAR_ERRO){		
-		 form.setEnabled("aprovacao", false);	
-		 form.setEnabled("rateioconfigurado", false);
-		 form.setEnabled("finalidade", false);
-		 
-		 bloqueiaDadosFinanceiro();
-		 bloqueiaDadosProduto();
+	else if (activity == GERAR_SC){		
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
 		 
 		
 	}

@@ -63,6 +63,9 @@ function validateForm(form){
               throw "É obrigatório informar a capacidade para o veículo";
           }
 	
+		  if (form.getValue("capacidade") > 7 ) {
+              throw "A locação de veículo só pode ocorrer para capacidade inferior ou igual a 7 lugares. Para veículos como ônibus e similares ou receptivo deve ser usado a solicitação de transfer. ";
+          }
 		  
 	  	   var indexes = form.getChildrenIndexes("tableCondutor");            
     	   
