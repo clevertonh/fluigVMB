@@ -4,6 +4,8 @@ function enableFields(form){
 	var APROVACAO = 5;
 	var AVALIAR_ERRO = 18;
 	var CORRIGIR = 25;
+	var PRESTAR_CONTAS = 38;
+	var VALIDAR_NOTA = 39;
 	
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE enableFields: " + activity);

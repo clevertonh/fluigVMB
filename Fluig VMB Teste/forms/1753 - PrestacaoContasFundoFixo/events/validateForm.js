@@ -3,6 +3,8 @@ function validateForm(form){
 	var APROVACAO = 5;
 	var AVALIAR_ERRO = 18;
 	var CORRIGIR = 25;
+	var PRESTAR_CONTAS = 38;
+	var VALIDAR_NOTA = 39;
 		
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");
@@ -40,8 +42,7 @@ function validateForm(form){
   //valida campos do produto
 	validaProdutos();
     
-    
-	if (activity == ABERTURA) {
+	if (activity == VALIDAR_NOTA) {
 		
 		
 		if (form.getValue("vl_nota") == "" ){

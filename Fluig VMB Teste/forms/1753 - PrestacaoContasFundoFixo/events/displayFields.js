@@ -5,6 +5,8 @@ function displayFields(form,customHTML){
 	var APROVACAO = 5;
 	var AVALIAR_ERRO = 18;
 	var CORRIGIR = 25;
+	var PRESTAR_CONTAS = 38;
+	var VALIDAR_NOTA = 39;
 
 	var activity = getValue('WKNumState');
 	log.info("----ATIVIDADE displayFields: " + activity);
@@ -19,9 +21,14 @@ function displayFields(form,customHTML){
 	// form.setVisibleById("codigoProduto", false);
 	 
 	 
-	 if (activity == ABERTURA){
+	 if (activity == ABERTURA || activity == PRESTAR_CONTAS || activity == VALIDAR_NOTA){
 		 form.setVisibleById("2b", false);
 	 }
 	 
+	 
+	 if (activity == ABERTURA){
+		 form.setVisibleById("div_prestacao", false);
+		 
+	 }
 	 
 }

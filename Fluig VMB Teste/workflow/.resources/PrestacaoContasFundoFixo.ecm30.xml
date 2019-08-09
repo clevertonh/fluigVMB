@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Prestação de Contas Fundo Fixo</processId>
-      <version>16</version>
+      <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1753</formId>
@@ -127,8 +127,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>210</positionX>
-      <positionY>300</positionY>
+      <positionX>330</positionX>
+      <positionY>550</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -178,8 +178,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
-      <positionY>350</positionY>
+      <positionX>630</positionX>
+      <positionY>550</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -230,8 +230,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>670</positionX>
-      <positionY>350</positionY>
+      <positionX>840</positionX>
+      <positionY>525</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -282,8 +282,109 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>360</positionX>
-      <positionY>80</positionY>
+      <positionX>600</positionX>
+      <positionY>110</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>38</sequence>
+      </processStatePK>
+      <stateName>Prestar contas fundo fixo</stateName>
+      <stateDescription>Prestar contas fundo fixo</stateDescription>
+      <instruction>Use essa tarefa para prestar contas do dinheiro recebido do fundo fixo (caixinha)</instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>120</positionX>
+      <positionY>278</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>39</sequence>
+      </processStatePK>
+      <stateName>Validar despesa</stateName>
+      <stateDescription>Validar despesa</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>320</positionX>
+      <positionY>110</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -333,8 +434,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>597</positionX>
-      <positionY>348</positionY>
+      <positionX>707</positionX>
+      <positionY>548</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -380,8 +481,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>250</positionX>
-      <positionY>420</positionY>
+      <positionX>340</positionX>
+      <positionY>650</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -427,8 +528,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>280</positionX>
-      <positionY>102</positionY>
+      <positionX>510</positionX>
+      <positionY>120</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -460,8 +561,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>390</positionX>
-      <positionY>280</positionY>
+      <positionX>480</positionX>
+      <positionY>530</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -499,8 +600,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>400</positionX>
-      <positionY>430</positionY>
+      <positionX>520</positionX>
+      <positionY>660</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -546,8 +647,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>550</positionX>
-      <positionY>280</positionY>
+      <positionX>720</positionX>
+      <positionY>490</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -593,8 +694,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>801</positionX>
-      <positionY>281</positionY>
+      <positionX>1010</positionX>
+      <positionY>550</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -618,7 +719,7 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>16</version>
+        <version>17</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -630,7 +731,7 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>16</version>
+        <version>17</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -639,23 +740,6 @@
     </ConditionProcessState>
   </list>
   <list>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <version>1</version>
-        <linkSequence>6</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>4</initialStateSequence>
-      <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
@@ -848,7 +932,58 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <version>1</version>
-        <linkSequence>37</linkSequence>
+        <linkSequence>40</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>38</initialStateSequence>
+      <finalStateSequence>39</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <linkSequence>41</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>39</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <linkSequence>42</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>38</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <linkSequence>43</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -932,8 +1067,8 @@
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>501</height>
-      <width>831</width>
+      <height>701</height>
+      <width>1141</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Prestação de contas de Fundo Fixo</stateName>
@@ -948,11 +1083,11 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>250</height>
-      <width>801</width>
+      <height>233</height>
+      <width>1111</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
-      <stateName>Usuário</stateName>
+      <stateName>Responsável fundo fixo</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
@@ -964,10 +1099,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>251</height>
-      <width>801</width>
+      <height>235</height>
+      <width>1111</width>
       <positionX>40</positionX>
-      <positionY>260</positionY>
+      <positionY>476</positionY>
       <stateName>Tesouraria</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -976,6 +1111,22 @@
         <processId>PrestacaoContasFundoFixo</processId>
         <version>1</version>
         <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>233</height>
+      <width>1111</width>
+      <positionX>40</positionX>
+      <positionY>243</positionY>
+      <stateName>Solicitante</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+        <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
   </list>
@@ -1010,18 +1161,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>16</version>
-        <linkSequence>6</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>167</positionX>
-      <positionY>334</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>PrestacaoContasFundoFixo</processId>
-        <version>16</version>
+        <version>17</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1032,45 +1172,45 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>16</version>
+        <version>17</version>
         <linkSequence>27</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>722</positionX>
-      <positionY>114</positionY>
+      <positionX>892</positionX>
+      <positionY>144</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>16</version>
+        <version>17</version>
         <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>722</positionX>
-      <positionY>480</positionY>
+      <positionX>892</positionX>
+      <positionY>670</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>16</version>
+        <version>17</version>
         <linkSequence>28</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>663</positionX>
-      <positionY>480</positionY>
+      <positionX>723</positionX>
+      <positionY>670</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>16</version>
+        <version>17</version>
         <linkSequence>28</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
-      <positionX>573</positionX>
-      <positionY>480</positionY>
+      <positionX>682</positionX>
+      <positionY>670</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
@@ -1096,7 +1236,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>PrestacaoContasFundoFixo</processId>
-      <processVersion>16</processVersion>
+      <processVersion>17</processVersion>
       <stateSequence>4</stateSequence>
       <operator>1</operator>
       <amount>1</amount>

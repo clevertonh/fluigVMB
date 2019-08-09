@@ -3,6 +3,8 @@ var ABERTURA = 4;
 var APROVACAO = 5;
 var AVALIAR_ERRO = 18;
 var CORRIGIR = 25;
+var PRESTAR_CONTAS = 38;
+var VALIDAR_NOTA = 39;
 
 var dtSolicitacao;
 var dtAprovacao;
@@ -54,7 +56,7 @@ var visibilidade = true;
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIO){
+	if (ATIVIDADE == VALIDAR_NOTA || ATIVIDADE == VALIDAR_NOTA){
 		dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
 		    pickDate: true,
 		    pickTime: false,
@@ -75,7 +77,7 @@ $(document).ready(function() {
 		
 	}
 
-	if (ATIVIDADE != ABERTURA  && ATIVIDADE != INICIO){
+	if (ATIVIDADE != VALIDAR_NOTA  && ATIVIDADE != VALIDAR_NOTA){
 		 document.getElementById("btn_add_item").style.display = "none";
 	}
 
