@@ -12,7 +12,7 @@ function enableFields(form){
 	
 	var solicitante = getValue("WKUser");  
 			
-	if (activity == INICIO || activity == ABERTURA || activity == CORRIGIR){
+	if (activity == INICIO || activity == ABERTURA ){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 		 
 		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
 		 var emailSolicitante = dataset.getValue(0, "mail");
@@ -22,28 +22,40 @@ function enableFields(form){
  
 		 form.setEnabled('validacao', false);
 		 form.setEnabled('justificativaReprovacao', false);
-		 form.setValue("validacao","");
+		
+		 form.setEnabled('dtNota', false);
+		 form.setEnabled('vl_nota', false);
 		 
 	}
+	else if (activity == PRESTAR_CONTAS){
+		//set numero da solicitação
+		form.setValue("solicitacao",getValue('WKNumProces'));	
+		form.setEnabled('vl_adiantado', false);
+		form.setEnabled('dtNota', false);
+		form.setEnabled('responsavel', false);
+	}
+	else if (activity == CORRIGIR){
+		 form.setEnabled('validacao', false);
+		 form.setEnabled('justificativaReprovacao', false);
+		 form.setValue("validacao","");
+		 form.setEnabled('dtNota', false);
+	}
 	
-	else if (activity == APROVACAO ){
-		 //set numero da solicitação
-		 form.setValue("solicitacao",getValue('WKNumProces'));		 
+	else if (activity == APROVACAO ){	 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));
 		 form.setValue("emailAprovador",dataset.getValue(0, "mail"));		
-		  
+		 form.setEnabled('vl_adiantado', false);
 		 form.setValue("validacao","validado");
 	}	
 	else if (activity == AVALIAR_ERRO){
 		 form.setEnabled('validacao', false);
 		 form.setEnabled('justificativaReprovacao', false);
-		 
-		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 form.setValue("aprovador",dataset.getValue(0, "colleagueName"));
 		 form.setValue("emailAprovador",dataset.getValue(0, "mail"));		
 	 
 	}
+	
 	
 	
 	function UsuarioLogado(solicit){

@@ -32,25 +32,30 @@ function validateForm(form){
 	}
 	
 
-	
-    //validações tabela de pagamento
-    validaLinhasPreenchidas();
-    validaLinhasRepetidas();
-    validaPercentualRateio();
-    validaAtividades();
-    
-  //valida campos do produto
-	validaProdutos();
-    
-	if (activity == VALIDAR_NOTA) {
-		
-		
+	if (activity == ABERTURA){
+		if (form.getValue("emailSolicitante")==""){
+			throw "Seus dados de usuário não foram carregados, por favor tente novamente mais tarde.";
+		}
+	}
+   
+
+	else if (activity == PRESTAR_CONTAS){
 		if (form.getValue("vl_nota") == "" ){
 			throw "Você precisa informar o valor da nota fiscal.";
 		}				
-		else if (form.getValue("emailSolicitante")==""){
-			throw "Seus dados de usuário não foram carregados, por favor tente novamente mais tarde.";
-		}
+		
+		//validações tabela de pagamento
+	    validaLinhasPreenchidas();
+	    validaLinhasRepetidas();
+	    validaPercentualRateio();
+	    validaAtividades();
+	    
+	}
+	else if (activity == VALIDAR_NOTA) {	
+		if (form.getValue("vl_nota") == "" ){
+			throw "Você precisa informar o valor da nota fiscal.";
+		}				
+		
 		else if (form.getValue("responsavel")==""){
 			throw "O responsável pelo fundo fixo não foi informado.";
 		}	
@@ -64,11 +69,18 @@ function validateForm(form){
 			throw "O tipo de fundo fixo não foi selecionado.";
 		}
 	
-	
+		 //validações tabela de pagamento
+	    validaLinhasPreenchidas();
+	    validaLinhasRepetidas();
+	    validaPercentualRateio();
+	    validaAtividades();
+	    
+	    //valida campos do produto
+		validaProdutos();
+	    
 
 		
 	}
-	
 	
 	else if (activity == APROVACAO){
 		if (form.getValue("vl_nota") == "" ){
@@ -104,7 +116,15 @@ function validateForm(form){
        	 //throw "Você não pode aprovar uma solicitação onde você é o beneficiário.";
         }
 		
-		
+		 //validações tabela de pagamento
+	    validaLinhasPreenchidas();
+	    validaLinhasRepetidas();
+	    validaPercentualRateio();
+	    validaAtividades();
+	    
+	  //valida campos do produto
+		validaProdutos();
+	    
 	}
 	
 	

@@ -56,7 +56,7 @@ var visibilidade = true;
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
-	if (ATIVIDADE == VALIDAR_NOTA || ATIVIDADE == VALIDAR_NOTA){
+	if (ATIVIDADE == INICIO || ATIVIDADE == ABERTURA){
 		dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
 		    pickDate: true,
 		    pickTime: false,
@@ -66,32 +66,37 @@ $(document).ready(function() {
 		});
 		
 		dtSolicitacao.setDate(new Date().toLocaleString());
+
+
+		
+	}
+
+	else if (ATIVIDADE == APROVACAO){
+			dtAprovacao = FLUIGC.calendar('#dtAprovacao', {
+			    pickDate: true,
+			    pickTime: false,
+			    useCurrent: true,
+			    minDate: new Date().toLocaleString(),
+			    maxDate: new Date().toLocaleString()
+			});
+			
+			dtAprovacao.setDate(new Date().toLocaleString());
+		}
 	
+	else if (ATIVIDADE == VALIDAR_NOTA){
+		
 		dtNota = FLUIGC.calendar('#dtNota', {
 		    pickDate: true,
 		    pickTime: false,
 		    useCurrent: true
 		});
 		
-
-		
 	}
-
-	if (ATIVIDADE != VALIDAR_NOTA  && ATIVIDADE != VALIDAR_NOTA){
+	
+	if (ATIVIDADE != INICIO  && ATIVIDADE != ABERTURA && ATIVIDADE != PRESTAR_CONTAS && ATIVIDADE != VALIDAR_NOTA){
 		 document.getElementById("btn_add_item").style.display = "none";
 	}
 
-	if (ATIVIDADE == APROVACAO){
-		dtAprovacao = FLUIGC.calendar('#dtAprovacao', {
-		    pickDate: true,
-		    pickTime: false,
-		    useCurrent: true,
-		    minDate: new Date().toLocaleString(),
-		    maxDate: new Date().toLocaleString()
-		});
-		
-		dtAprovacao.setDate(new Date().toLocaleString());
-	}
 	
 	
 	
