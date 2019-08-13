@@ -47,7 +47,6 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
-
 var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
     pickDate: true,
     pickTime: false,
@@ -57,7 +56,6 @@ var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
 });
 
 var dtVencimento;
-
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
@@ -122,7 +120,8 @@ function fnCustomDeleteAgenda(oElement) {
         });
 	}
 	else {
-		fnWdkRemoveChild(oElement);	
+		fnWdkRemoveChild(oElement);
+		doFormTotal();
 	}		
 }
 
@@ -270,7 +269,7 @@ function adicionaAgenda() {
         pickTime: true,
         defaultDate: "01:00"
 	});
-	
+
 
 }
 
@@ -278,15 +277,19 @@ function init() {
     $("input[id^='custo___']:last").blur(doFormTotal);
 }
 
-
 function doFormTotal() {
-    var total = 0;
-    $("input[id^='custo___']").each(function() {
+    var total = 0;  
+    
+     $("input[id^='custo___']").each(function() {
         if ($(this).val()) {
-            total += parseInt($(this).val()); 
+            total += parseFloat($(this).val()); 
         }
     });
+     
+    
     $("#vl_diarias").val(total);
+    
+  
 }
 
 function removedZoomItem(removedItem) {
@@ -537,7 +540,6 @@ function addAnos(data, anos) {
 
 }
 
-
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
 
@@ -597,8 +599,7 @@ function adicionaItensRateio(itens) {
   
 }
 
-function removeItens() {
-	
+function removeItens() {	
 	if (ATIVIDADE == ABERTURA ){
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {

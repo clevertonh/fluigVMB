@@ -1,0 +1,266 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="RecrutamentoSelecao.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="fluig-style-guide">
+            <!--  Imagem  -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-6 col-md-3">
+                        <img src="https://visaomundial.org/images/logo_VMB.svg">
+                    </div>
+                </div>
+            </div>
+            <!--  Formulario  -->
+            <form role="form">
+                <div class='panel panel-primary'>
+                    <div class="panel-heading">
+                        <div class="container text-center">
+                            <h4>Recrutamento e seleção</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="exTab3" class="container-fluid">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li class="active"><a href="#1b" data-toggle="tab">Gestor</a></li>
+                                        <li><a href="#2b" data-toggle="tab">Analista de P&C</a></li>
+                                        <li><a href="#3b" data-toggle="tab">Gerência de P&C</a></li>
+
+                                    </ul>
+                                    <div class="tab-content clearfix">
+                                        <div class="tab-pane active" id="1b">
+                                            <div class="row">
+                                                <section>
+                                                    <div class="wizard">
+                                                        <div class="wizard-inner">
+                                                            <div class="connecting-line"></div>
+                                                            <ul class="nav nav-tabs" role="tablist">
+                                                                <li role="presentation" class="active">
+                                                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Dados da vaga"> <span class="round-tab">
+                                                      <i class="fluigicon fluigicon-money"></i>
+                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li role="presentation" class="disabled">
+                                                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Situação da requisição"> <span class="round-tab"> <i
+                                                      class="fluigicon fluigicon-shopping-cart"></i>
+                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-2">
+                                                                        <label for="id" class="required">Cód. requisição
+                                                                        </label>
+                                                                        <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Primeira Linha -->
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-5">
+                                                                        <label for="solicitante" class="required">Solicitante</label>
+                                                                        <input type="text" class="form-control" id="solicitante" name="solicitante" readonly>
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                        <label for="exampleInputEmail1">Email</label>
+                                                                        <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                        <label for="dataSolicitacao">Data da solicitação</label>
+                                                                        <div class="input-group date">
+                                                                            <input type="text" class="form-control" id="dataSolicitacao" name="dataSolicitacao" readonly>
+                                                                            <span class="input-group-addon"> <span
+                                                               class="fluigicon fluigicon-calendar"></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="from-group col-md-1">
+                                                                        <input type="text" class="form-control" id="matriculasolicitante" name="matriculasolicitante" readonly>
+                                                                    </div>
+                                                                </div>
+                                                              
+                                                     <div class="row">
+                                                      <div class="form-group col-md-7">
+                                                         <label>Função a contratar</label> <input
+                                                            name="funcao" class="form-control"
+                                                            type="zoom" id="funcao"
+                                                            data-zoom="{
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesEventos',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione um JOB',
+                                                            'fields':[
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+                                                            ]
+                                                            }">
+                                                      </div>    
+                                                      <div class="form-group col-md-3">
+                                                      	<label>Prioridade</label>
+                                                      	<input
+                                                            name="prioridade" class="form-control"
+                                                            type="zoom" id="prioridade"
+                                                            data-zoom="{
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesEventos',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione uma prioridade',
+                                                            'fields':[
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+                                                            ]
+                                                            }">
+                                                      </div>                                                                                                      
+                                                   </div>                            
+                                                    <div class="row">                                    		
+                        				  <div class="form-group col-md-3">
+                        				  	<label>Centro de custo</label>  
+                        				  	      				  	                                                                  																					
+                                                                  <input 
+                                                                     type="zoom" 
+                                                                     id="centrocusto"
+                                                                     name="centrocusto" 
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'VM_CentroCusto',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione um centro de custo',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO'}]
+                                                                     }" />
+                                                               </div>
+															<div class="form-group col-md-3" id="div_projeto">
+																<label>Projeto</label> 
+									                                                               																					
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="projeto" 
+                                                                     id="projeto"
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'VM_projeto',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione um projeto',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}
+                                                                     ]
+                                                                     }" />
+                                                               </div> 
+                                                                <div class="form-group col-md-3" id="div_fonte">
+                                                                <label>Fonte de Financiamento</label> 
+                                                                                         																						
+                                                                  <input
+                                                                     type="zoom" 
+                                                                     name="fontefinanciamento" 
+                                                                     id="fontefinanciamento"
+                                                                     data-zoom="{
+                                                                     'displayKey':'CODIGO',
+                                                                     'datasetId':'ds_get_FonteFinanciamento',
+                                                                     'maximumSelectionLength':'1',
+                                                                     'placeholder':'Selecione uma fonte de financ.',
+                                                                     'fields':[
+                                                                     {'field':'CODIGO', 'label':'CODIGO'},
+                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
+                                                                     {'field':'PROJETO', 'label':'PROJETO', 'visible':'false'}]
+                                                                     }" />
+                                                               </div>                                     	
+                                    						</div>
+                                                                <!-- Linha 6 -->
+                                                                <!-- Linha 7 -->
+                                                                <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                        <button type="button" class="btn btn-primary next-step">Avançar</button>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="tab-pane" role="tabpanel" id="step2">
+                                                                <div class="panel-body">
+                                                                    <div class="row">
+                                                                    	<label>Motivo</label><br>
+                                                                       <div class="form-group col-md-1">                                                                       		
+								                                          <Label for="aumento">Aumento de quadro</Label> 
+								                                          <input type="radio" id="aumento" name="motivo" value="aumento_de_quadro"/>
+								                                       </div>
+								                                       <div class="form-group col-md-1">
+								                                          <Label for="substituicao">Substituição</Label> 
+								                                          <input type="radio" id="substituicao" name="motivo" value="substituicao"  />
+								                                       </div>
+								                                       	<label>Previsto no orcamento</label><br>
+                                                                    	<div class="form-group col-md-2">
+                                                                    		<label for="sim">Sim</label>
+                                                                    		<input type="radio" id="previstoSim" name="previstoorcamento" value="sim">
+                                                                    	</div>
+                                                                    	<div class="form-group col-md-2">
+                                                                    		<label for="nao">Não</label>
+                                                                    		<input type="radio" id="previstoNao" name="previstoorcamento" value="nao">
+                                                                    	</div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    	<div class="form-group col-md-6">
+                                                                    		<label>Justificativa</label>
+                                                                    		<textArea id="justificativa" name="justificativa" rows="3" cols="60" class="form-control"></textArea>
+                                                                    	</div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    	<label>Tipo de Contratado</label><br>
+                                                                    	<div class="form-group col-md-2">
+                                                                    		<label for="efetivo">Funcionário</label>
+                                                                    		<input type="radio" id="efetivo" name="tipoContratado" value="funcionario">
+                                                                    	</div>
+                                                                    	<div class="form-group col-md-2">
+                                                                    		<label for="estagiario">Estagiário</label>
+                                                                    		<input type="radio" id="estagiario" name="tipoContratado" value="estagiario">
+                                                                    	</div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                        <button type="button" class="btn btn-default prev-step">Voltar</button>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="2b">
+                                           
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="RecrutamentoSelecao.js"></script>
+</body>
+
+</html>

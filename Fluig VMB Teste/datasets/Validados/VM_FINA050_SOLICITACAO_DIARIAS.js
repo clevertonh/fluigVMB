@@ -40,16 +40,17 @@ function createDataset(fields, constraints, sortFields) {
 					 
 				 }
 				 
-				 //atribui constraints recebida de valor e datavencimento a variaveis
+				 //atribui constraints recebida de valor e datavencimento as variaveis
 				 for (var a=0; a<constraints.length;a++){						
 					 if (constraints[a].fieldName == "vl_diarias" ){
 						 valorTotal = constraints[a].initialValue;
 					 }
+					 
 					 else if (constraints[a].fieldName == "dtVencimento" ){
 						 dataVencimento = constraints[a].initialValue;
-						 
-						 
+						 					
 					 }
+
 				 }
 
 					 try {

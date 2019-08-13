@@ -14,7 +14,7 @@ function enableFields(form){
 	var nomeSolicitante;
 	var emailSolicitante;
 	
-	 form.setEnabled('vl_diarias', false);
+	 //form.setEnabled('vl_diarias', false);
 	
 	if (activity == ABERTURA || activity ==  CORRIGIR){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 

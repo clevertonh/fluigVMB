@@ -19,12 +19,13 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("matricula", false);
 	 form.setVisibleById("prazoaprovacao", false); 
     
-    
+		/*	
+		 * 
 	if (activity == APROVACAO  ) {
 		recuperaValorAgenda();
 	}
 
-		
+
 	
 	   //RECUPERA VALOR DE DIARIA DA ATIVIDADE E PREENCHE CAMPO VALOR TOTAL
     function recuperaValorAgenda(){
@@ -43,4 +44,6 @@ function displayFields(form,customHTML){
           
     }
     
+    */
+	
 }

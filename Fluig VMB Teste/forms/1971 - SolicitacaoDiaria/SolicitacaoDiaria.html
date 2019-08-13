@@ -340,7 +340,7 @@
                                                            <div class="row" >                                        	                                    	                                    	
                                        <div class="form-group col-md-2" id="div_diarias">
                                           <label for="vl_diarias">Valor total das diárias</label>
-                                          <input type="number" class="form-control" name="vl_diarias" id ="vl_diarias">
+                                          <input type="number" class="form-control" name="vl_diarias" id ="vl_diarias" readonly>
                                        </div>
                                     </div> 
                                                          <h3><b>Detalhes da agenda</b></h3>
@@ -412,7 +412,7 @@
                                                          </div>
                                                          <div class="form-group row">
                                                             <div class="col-md-12 fs-txt-right">
-                                                               <button type="button" class="btn btn-primary" id="btn_add_agenda" name="btn_add_agenda" onclick="adicionaAgenda()">
+                                                               <button type="button" class="btn btn-primary" id="btn_add_agenda" name="btn_add_agenda" onclick="adicionaAgenda(),init()">
                                                                <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Inserir linha
                                                                </button>
                                                             </div>
@@ -483,7 +483,7 @@
                                        <div class="form-group col-md-2" id="div_dtPgto">
                                           <label for="dtVencimento">Data vencimento</label>
                                           <div class="input-group date" >
-                                             <input type="text" class="form-control" id="dtVencimento" name="dtVencimento" mask="00/00/0000" > <span
+                                             <input type="text" class="form-control" id="dtVencimento" name="dtVencimento"> <span
                                                 class="input-group-addon"> <span
                                                 class="fluigicon fluigicon-calendar"></span>
                                              </span>

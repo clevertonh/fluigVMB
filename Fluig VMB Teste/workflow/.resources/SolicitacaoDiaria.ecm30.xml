@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Diaria</processId>
-      <version>11</version>
+      <version>14</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1971</formId>
@@ -386,7 +386,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>620</positionX>
-      <positionY>36</positionY>
+      <positionY>50</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -699,7 +699,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>1</expressionOrder>
-        <version>11</version>
+        <version>14</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -711,7 +711,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>2</expressionOrder>
-        <version>11</version>
+        <version>14</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot; </condition>
@@ -722,8 +722,20 @@
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>14</version>
+        <sequence>12</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot; </condition>
+      <destinationSequenceId>41</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
         <expressionOrder>1</expressionOrder>
-        <version>11</version>
+        <version>14</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot; </condition>
@@ -735,7 +747,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>2</expressionOrder>
-        <version>11</version>
+        <version>14</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;nao&quot; </condition>
@@ -999,9 +1011,83 @@
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>12</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>16</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list/>
   <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	var ABERTURA = 4;&#xd;
+	var APROVACAO = 5;&#xd;
+	var CALCULAR_DIARIAS = 16; &#xd;
+	var REALIZAR_PGTO = 21;&#xd;
+	var AVALIAR_PGTO = 28;&#xd;
+	var CORRIGIR = 41;&#xd;
+	&#xd;
+	&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
+	//RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
+	var codSolicitacao 	 = getValue(&quot;WKNumProces&quot;);&#xd;
+	//VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
+	var nextAtv  		 = getValue(&quot;WKNextState&quot;);&#xd;
+	//RECUPERA NUMERO DO DOCUMENTO&#xd;
+	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
+	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
+	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	if (ativAtual == CALCULAR_DIARIAS || ativAtual == REALIZAR_PGTO || ativAtual == AVALIAR_PGTO ){&#xd;
+		//	log.info(&quot;Processo beforeCancel - PAGARDIARIAS&quot;);&#xd;
+			 throw &quot;Você não pode excluir essa solicitação pois ela já foi integrada com o sistema Financeiro.&quot;;&#xd;
+				&#xd;
+		}&#xd;
+&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
@@ -1209,7 +1295,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>11</version>
+        <version>14</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1220,7 +1306,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>11</version>
+        <version>14</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1231,7 +1317,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>11</version>
+        <version>14</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1242,12 +1328,34 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>11</version>
+        <version>14</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>912</positionX>
       <positionY>409</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>14</version>
+        <linkSequence>43</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>293</positionX>
+      <positionY>85</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>14</version>
+        <linkSequence>45</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>585</positionX>
+      <positionY>333</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
