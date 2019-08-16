@@ -33,6 +33,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailLider") +'',
 						            	CCUSTO	: '' + solicitacao.getValue(0,"centrocusto") +'',
 						            	PROJETO	: '' + solicitacao.getValue(0,"projeto") +'',	
+						            	FONTE	: '' + solicitacao.getValue(0,"fontefinanciamento") +'',
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',

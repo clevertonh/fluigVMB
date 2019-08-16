@@ -4,12 +4,12 @@
       <companyId>1</companyId>
       <processId>RecrutamentoSelecao</processId>
     </processDefinitionPK>
-    <processDescription>Recrutamento e Selecao</processDescription>
+    <processDescription>Recrutamento e Seleção</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>Recursos Humanos</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -27,8 +27,8 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Recrutamento e Selecao</processId>
-      <version>1</version>
+      <processId>Recrutamento e Seleção</processId>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -178,7 +178,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>780</positionX>
-      <positionY>450</positionY>
+      <positionY>600</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -206,8 +206,8 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <version>1</version>
         <sequence>29</sequence>
       </processStatePK>
-      <stateName>Criar edital</stateName>
-      <stateDescription>Criar edital</stateDescription>
+      <stateName>Aprovar contratação</stateName>
+      <stateDescription>Aprovar contratação</stateDescription>
       <instruction>Ao realizar todas as etapas do processo de recrutamento e seleção de estagiário informe se o estagiário foi contratrado.&#xd;
 Caso não tenha havia contratação informe que não houve candidato selecionado para encerrar o processo.</instruction>
       <deadlineTime>0</deadlineTime>
@@ -230,7 +230,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>300</positionX>
-      <positionY>450</positionY>
+      <positionY>440</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -280,7 +280,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>570</positionX>
-      <positionY>450</positionY>
+      <positionY>600</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -331,7 +331,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1280</positionX>
-      <positionY>450</positionY>
+      <positionY>600</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -409,8 +409,8 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <version>1</version>
         <sequence>57</sequence>
       </processStatePK>
-      <stateName>Avaliar CVs</stateName>
-      <stateDescription>Avaliar CVs</stateDescription>
+      <stateName>Avaliar CV</stateName>
+      <stateDescription>Avaliar CV</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -481,7 +481,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>970</positionX>
-      <positionY>450</positionY>
+      <positionY>600</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -531,7 +531,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1150</positionX>
-      <positionY>450</positionY>
+      <positionY>600</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -609,13 +609,14 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <version>1</version>
         <sequence>66</sequence>
       </processStatePK>
-      <stateName>Kit admissão</stateName>
-      <stateDescription>Kit admissão</stateDescription>
+      <stateName>Validar documentos</stateName>
+      <stateDescription>Validar documentos</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -631,7 +632,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1420</positionX>
-      <positionY>450</positionY>
+      <positionY>600</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -657,27 +658,27 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
         <version>1</version>
-        <sequence>52</sequence>
+        <sequence>81</sequence>
       </processStatePK>
-      <stateName>Nomeação de cargo</stateName>
-      <stateDescription>Nomeação de cargo</stateDescription>
+      <stateName>Nomeação</stateName>
+      <stateDescription>Nomeação</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
       <initialState>false</initialState>
-      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
       <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>0</frequenceAuthorityTime>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
       <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
       <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>false</transferAttachments>
-      <subProcessId>Nomeacaodecargo</subProcessId>
+      <subProcessId></subProcessId>
       <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>570</positionX>
@@ -685,22 +686,123 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>true</notifyManagerDelay>
+      <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
-      <stateType>2</stateType>
-      <bpmnType>100</bpmnType>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
       <signalId>0</signalId>
       <counterSign>false</counterSign>
       <openInstances>0</openInstances>
       <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
       <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <cancelSubProcess>false</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <sequence>86</sequence>
+      </processStatePK>
+      <stateName>Enviar documentação</stateName>
+      <stateDescription>Enviar documentação</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1280</positionX>
+      <positionY>820</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <sequence>90</sequence>
+      </processStatePK>
+      <stateName>Criar edital</stateName>
+      <stateDescription>Criar edital</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>300</positionX>
+      <positionY>600</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -757,7 +859,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>450</positionX>
-      <positionY>267</positionY>
+      <positionY>270</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -803,8 +905,8 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1520</positionX>
-      <positionY>530</positionY>
+      <positionX>1600</positionX>
+      <positionY>620</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -826,7 +928,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
         <version>1</version>
-        <sequence>78</sequence>
+        <sequence>83</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -850,8 +952,8 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>700</positionX>
-      <positionY>240</positionY>
+      <positionX>720</positionX>
+      <positionY>270</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -875,7 +977,7 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -887,10 +989,10 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
       <destinationSequenceId>15</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1003,23 +1105,6 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
         <version>1</version>
-        <linkSequence>56</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>29</initialStateSequence>
-      <finalStateSequence>39</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
         <linkSequence>58</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1094,23 +1179,6 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <returnPermited>false</returnPermited>
       <initialStateSequence>63</initialStateSequence>
       <finalStateSequence>43</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
-        <linkSequence>67</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>43</initialStateSequence>
-      <finalStateSequence>66</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1241,46 +1309,114 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
         <version>1</version>
-        <linkSequence>77</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>39</initialStateSequence>
-      <finalStateSequence>52</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
-        <linkSequence>79</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>52</initialStateSequence>
-      <finalStateSequence>78</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
         <linkSequence>80</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>4</initialStateSequence>
       <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <linkSequence>82</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>39</initialStateSequence>
+      <finalStateSequence>81</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <linkSequence>84</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>81</initialStateSequence>
+      <finalStateSequence>83</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <linkSequence>87</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
+      <finalStateSequence>86</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <linkSequence>88</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>86</initialStateSequence>
+      <finalStateSequence>66</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <linkSequence>91</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>29</initialStateSequence>
+      <finalStateSequence>90</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <linkSequence>92</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>90</initialStateSequence>
+      <finalStateSequence>39</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1294,8 +1430,8 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>581</height>
-      <width>1560</width>
+      <height>911</height>
+      <width>1740</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Recrutamento e seleção</stateName>
@@ -1310,8 +1446,8 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>193</height>
-      <width>1530</width>
+      <height>182</height>
+      <width>1710</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Gestor de Área</stateName>
@@ -1326,10 +1462,10 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>193</height>
-      <width>1530</width>
+      <height>182</height>
+      <width>1710</width>
       <positionX>40</positionX>
-      <positionY>203</positionY>
+      <positionY>192</positionY>
       <stateName>Gerência de P&amp;C</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -1342,10 +1478,10 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
     </SwimLane>
     <SwimLane>
       <color>adc9ac</color>
-      <height>195</height>
-      <width>1530</width>
+      <height>182</height>
+      <width>1710</width>
       <positionX>40</positionX>
-      <positionY>396</positionY>
+      <positionY>556</positionY>
       <stateName>Analista de R e S</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -1356,6 +1492,38 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
         <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>183</height>
+      <width>1710</width>
+      <positionX>40</positionX>
+      <positionY>738</positionY>
+      <stateName>Selecionado</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d0daae</color>
+      <height>182</height>
+      <width>1710</width>
+      <positionX>40</positionX>
+      <positionY>374</positionY>
+      <stateName>Diretoria Nacional</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </swimLanePK>
+    </SwimLane>
   </list>
   <list/>
   <list/>
@@ -1364,56 +1532,56 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>69</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>1031</positionX>
-      <positionY>553</positionY>
+      <positionX>1014</positionX>
+      <positionY>705</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>70</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>1202</positionX>
-      <positionY>566</positionY>
+      <positionY>719</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>70</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>861</positionX>
-      <positionY>566</positionY>
+      <positionX>1011</positionX>
+      <positionY>719</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>70</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
       <positionX>622</positionX>
-      <positionY>566</positionY>
+      <positionY>721</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RecrutamentoSelecao</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>72</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>833</positionX>
-      <positionY>543</positionY>
+      <positionX>807</positionX>
+      <positionY>701</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

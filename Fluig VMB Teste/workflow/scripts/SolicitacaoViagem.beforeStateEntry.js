@@ -123,8 +123,7 @@ function beforeStateEntry(sequenceId){
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
- 		  		    /*
- 		  		     * integra com adiantamento 
+ 		  		  
  		  		    else {
  		  		 		if (adiantamento == "sim" && vlAdiantamento > 0){
 	 		   		  		 var constraint2 = new Array();		  			 		  			
@@ -136,7 +135,7 @@ function beforeStateEntry(sequenceId){
 	 		   		  		    }
  		   		  		}
  		  		    }
- 		  		    */
+ 		  		    
  		  		}
  		  		
      	

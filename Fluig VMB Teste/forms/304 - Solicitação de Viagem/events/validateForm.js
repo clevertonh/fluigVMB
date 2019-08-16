@@ -347,8 +347,7 @@ function validateForm(form) {
          }
          
          
-    } else if (activity == APROVACAO && nextAtv ==GATEWAYVERIFICARAPROVACAO) {
-        	
+    } else if (activity == APROVACAO && nextAtv ==GATEWAYVERIFICARAPROVACAO) {        	
         		//valida se o aprovador marcou o campo de aprovacao ou reprovação
             if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
                 throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
@@ -372,7 +371,7 @@ function validateForm(form) {
             validaPercentualRateio();
             validaAtividades();
             
-        	if (form.getValue("aprovacao") == "aprovado" && form.getValue("adiantamento")=="sim"){
+        	if (form.getValue("aprovacao") == "aprovado" && form.getValue("adiantamento")=="sim" && parseFloat(form.getValue("vl_aprovado")) > 0 ){
     			consultaPendenciaAdiantamento();
     		}
             
@@ -471,7 +470,7 @@ function validateForm(form) {
 	   	
     }
     
-	function 	consultaPendenciaAdiantamento(){
+	function consultaPendenciaAdiantamento(){
 		 var dataset = DatasetFactory.getDataset("VM_PendenciaAdiantamento", null, null, null);
 
 		 for (var a=0; a<dataset.rowsCount; a++ ){

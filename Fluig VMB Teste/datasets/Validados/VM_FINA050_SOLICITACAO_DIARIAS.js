@@ -4,6 +4,7 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var valorTotal;
 	var dataVencimento;
+	var valorTarifa;
 	var aRateio = new Array();
 	
 
@@ -40,18 +41,27 @@ function createDataset(fields, constraints, sortFields) {
 					 
 				 }
 				 
+			//	 log.info("CONSTRAINT DIARIAS");
+			//	 log.dir(constraints);
+				 
 				 //atribui constraints recebida de valor e datavencimento as variaveis
 				 for (var a=0; a<constraints.length;a++){						
 					 if (constraints[a].fieldName == "vl_diarias" ){
 						 valorTotal = constraints[a].initialValue;
 					 }
-					 
 					 else if (constraints[a].fieldName == "dtVencimento" ){
 						 dataVencimento = constraints[a].initialValue;
-						 					
+	 					
 					 }
+					 else if (constraints[a].fieldName == "vl_tarifa" ){
+						 valorTarifa = constraints[a].initialValue;
+	 					
+					 }					 
 
 				 }
+				 
+				 //soma valor diarias mais tarifa
+				 valorTotal = valorTotal + valorTarifa;
 
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
@@ -66,7 +76,7 @@ function createDataset(fields, constraints, sortFields) {
 					            	SOLICITACAO : '' + codSolicitacao + '' ,
 					                SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
 					                VALORTOTAL : '' + valorTotal + '' ,
-					                DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
+					                DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
 					                EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'',
 					                EMAILAPROVADOR : '' + solicitacao.getValue(0,"emailLider") +'',
 					                CPF				: '' + solicitacao.getValue(0,"cpfbeneficiario") +'',
@@ -81,6 +91,9 @@ function createDataset(fields, constraints, sortFields) {
 					          }
 					        }
 						        
+					        log.info("integração diarias");
+					        log.dir(data);
+					        
 					        var vo = clientService.invoke(JSON.stringify(data));
 					        var obj = JSON.parse(vo.getResult());
 				         

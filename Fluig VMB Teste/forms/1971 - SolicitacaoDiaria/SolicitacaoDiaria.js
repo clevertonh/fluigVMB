@@ -6,6 +6,9 @@ var AVALIAR_PGTO = 28;
 var CORRIGIR = 41;
 
 var codigoEvento;
+var dtSolicitacao;
+var dtVencimento;
+var dtTarifa;
 
 
 //Initialize tooltips
@@ -47,24 +50,23 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
-var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
 
-var dtVencimento;
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
+		dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
+		    pickDate: true,
+		    pickTime: false,
+		    useCurrent: true,
+		    minDate: new Date().toLocaleString(),
+		    maxDate: new Date().toLocaleString()
+		});
+
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
-		}
-		
+	}
 	else if (ATIVIDADE == CALCULAR_DIARIAS) {
 		document.getElementById("btn_add_item").style.display = "none";
 		document.getElementById("btn_add_agenda").style.display = "none";
@@ -74,17 +76,12 @@ $(document).ready(function() {
 		     pickTime: false
 		     });		
 
-		/*
-	
-		 $("img").each(function(index, value){		
-	            if ($(this).attr("id") != "logo") {
-	                $(this).hide();
-	            }
-	        });
-		 
-		 */
-		 
-		//removeBotaoDelete();
+		dtTarifa = FLUIGC.calendar('#dtTarifa', {
+		     pickDate: true,
+		     pickTime: false
+		     });		
+
+		
 		
 	}
 	else if (ATIVIDADE == REALIZAR_PGTO || ATIVIDADE == AVALIAR_PGTO){
@@ -289,6 +286,9 @@ function doFormTotal() {
     
     $("#vl_diarias").val(total);
     
+    //tarifa bancaria
+    $("#vl_tarifa").val( total / 100);
+   
   
 }
 

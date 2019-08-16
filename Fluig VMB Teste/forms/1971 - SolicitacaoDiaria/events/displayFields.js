@@ -18,6 +18,12 @@ function displayFields(form,customHTML){
      form.setVisibleById("matriculasolicitante", false);
 	 form.setVisibleById("matricula", false);
 	 form.setVisibleById("prazoaprovacao", false); 
+	
+	 
+	 if (activity == ABERTURA || activity == APROVACAO || activity == REALIZAR_PGTO || activity == AVALIAR_PGTO || activity == CORRIGIR){
+		 form.setVisibleById("3b", false);
+		 
+	 }
     
 		/*	
 		 * 

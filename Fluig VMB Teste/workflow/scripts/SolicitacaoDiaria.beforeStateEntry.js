@@ -24,6 +24,7 @@ function beforeStateEntry(sequenceId){
 	
     var dtVencimento	 = hAPI.getCardValue("dtVencimento");
     var valorTotal		 = hAPI.getCardValue("vl_diarias");
+    var valorTarifa		 = hAPI.getCardValue("vl_tarifa");
     var recebeDiarias 	 = hAPI.getCardValue("recebediarias");
  	
 	
@@ -32,6 +33,7 @@ function beforeStateEntry(sequenceId){
 			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
 			constraint.push(DatasetFactory.createConstraint("vl_diarias", valorTotal, valorTotal, ConstraintType.MUST));  
 			constraint.push(DatasetFactory.createConstraint("dtVencimento", dtVencimento, dtVencimento, ConstraintType.MUST));
+			constraint.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
 				
 			
 			var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_DIARIAS", null, constraint, null);

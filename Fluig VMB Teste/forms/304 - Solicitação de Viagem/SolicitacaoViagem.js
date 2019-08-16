@@ -12,6 +12,7 @@ var PAGARDIARIAS = 129;
 var dadosGestor;
 var site;
 var AtividadeAtual;
+var QtdeLinhasRateio;
 
 
 
@@ -211,10 +212,7 @@ $(document).ready(function() {
         });
 
     }
-    $("#vl_solicitado").prop("disabled", true);
-    $("#dtNecessidade").prop("disabled", true);
-    $("#adtoSim").prop("disabled", true);            
-    $("#adtoNao").prop("disabled", true);
+  
 
 
 });
@@ -262,7 +260,6 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
-
 function clickAdiantamento(){
     if (document.getElementById("adtoNao").checked == true) {
         //bloquear campos
@@ -270,16 +267,38 @@ function clickAdiantamento(){
         dataNecessidade.setDate(null);
         $("#vl_solicitado").prop("disabled", true);
         $("#dtNecessidade").prop("disabled", true);
+        $("#centrocustoAdto").prop("disabled", true);
+        $("#projetoAdto").prop("disabled", true);
+        $("#fontefinanciamentoAdto").prop("disabled", true);
+        
+        
+        
     }
-   /*
-    if (document.getElementById("adtoSim").checked == true) {
-    	//liberar campos
+    
+    else if (document.getElementById("adtoSim").checked == true && document.getElementById("solicitanteFuncionario").checked == true){    	
         $("#vl_solicitado").prop("disabled", false);
         $("#dtNecessidade").prop("disabled", false);
+        
+        $("#centrocustoAdto").prop("disabled", false);
+        $("#projetoAdto").prop("disabled", false);
+        $("#fontefinanciamentoAdto").prop("disabled", false);
+        
+        document.getElementById("div_adto2").style.display = "block"; 
+        document.getElementById("div_adto3").style.display = "block";
+        
+        
+        
+        /*
+         * recuperar quantidade de itens do rateio
+         * verificar se for igual a um, preencher campo de centro de custo
+         * */
 
+        //alert('A tabela possui ' + jQuery("#tableItens tbody tr").length + ' linhas');
+  
     }
-    */
+
 }
+
 
 
 function solicitanteFunc() {
@@ -314,13 +333,14 @@ function solicitanteNFunc() {
 }
 
 function solicitantePassageiro() {
-    if (document.getElementById("solicitanteFuncionario").checked == true) {
+    if (document.getElementById("solicitanteFuncionario").checked == true) {    	
         $('#passageirofuncionarionao').attr("checked", false);
         document.getElementById("passageirofuncionario").click();
         document.getElementById("divOutroFun").style.display = "none";
         document.getElementById("divdadospassageiro").style.display = "block";
-
+          
     }
+    
 }
 
 function solicitanteNaoPass() {
@@ -364,6 +384,10 @@ function passageiroFuncionario() {
         document.getElementById("divdadospassageiro").style.display = "block";
         document.getElementById("divOutroFun").style.display = "none";
     
+        if (document.getElementById("internacional").checked == true){
+     	   document.getElementById("div_adto1").style.display = "block";   
+        }
+        
     }
 
     if (document.getElementById("solicitanteFuncionario").checked == true &&
@@ -376,6 +400,11 @@ function passageiroFuncionario() {
         document.getElementById("divOutroFun").style.display = "block";
         document.getElementById("div_embaixador").style.display = "none";
         document.getElementById("embaixadorN").click();
+        
+        
+        if (document.getElementById("internacional").checked == true){
+        	document.getElementById("div_adto1").style.display = "block";   
+         }
      
     }
 
@@ -395,6 +424,10 @@ function passageiroFuncionario() {
     
          document.getElementById("divOutroFun").style.display = "none";
          document.getElementById("divdadospassageiro").style.display = "none";
+         
+         document.getElementById("div_adto1").style.display = "none";
+         document.getElementById("div_adto2").style.display = "none"; 
+         document.getElementById("div_adto3").style.display = "none";
     }
 
 
@@ -410,6 +443,9 @@ function passageiroFuncionario() {
         document.getElementById("divdadospassageiro").style.display = "none";
         document.getElementById("div_embaixador").style.display = "none";
         document.getElementById("embaixadorN").click();
+        document.getElementById("div_adto1").style.display = "none";
+        document.getElementById("div_adto2").style.display = "none"; 
+        document.getElementById("div_adto3").style.display = "none";
 
     }
 
@@ -425,6 +461,10 @@ function alertaFuncionario(){
 }
 
 function passageiroNfuncionario() {	 
+	document.getElementById("div_adto1").style.display = "none";
+    document.getElementById("div_adto2").style.display = "none"; 
+    document.getElementById("div_adto3").style.display = "none";
+    
 	//sim, sim, sim
     if (document.getElementById("solicitanteFuncionario").checked == true &&
         document.getElementById("solicitantepassageiro").checked == true &&
@@ -540,16 +580,15 @@ function clickTipoViagem() {
     document.getElementById("trecho2").style.display = "none";
     document.getElementById("trecho3").style.display = "none";
 
-  /*
-    if (document.getElementById("internacional").checked == true && 
-    		document.getElementById("novasolicitacao").checked == true){
+ 
+    if (document.getElementById("internacional").checked == true && document.getElementById("novasolicitacao").checked == true){
     	  $("#adtoSim").prop("disabled", false);            
     	  $("#adtoNao").prop("disabled", false);
     }
     else {
     	bloqueaAdto();
     }
-    */
+   
     
 }
 
@@ -562,8 +601,11 @@ function bloqueaAdto(){
      dataNecessidade.setDate(null);
      $("#vl_solicitado").prop("disabled", true);
      $("#dtNecessidade").prop("disabled", true);
+     
+     $("#centrocustoAdto").prop("disabled", true);
+     $("#projetoAdto").prop("disabled", true);
+     $("#fontefinanciamentoAdto").prop("disabled", true);
 }
-
 
 function tipoViagem() {
     if (document.getElementById("internacional").checked == true || document.getElementById("nacional").checked == true) {
@@ -666,12 +708,11 @@ function clickTipoVoo0() {
         if (document.getElementById("internacional").checked == true) {
             ocultaCamposVooNacional();
             document.getElementById("div_internacional1").style.display = "block";
-
-
+           
         } else {
             document.getElementById("div_Nacional1").style.display = "block";
             ocultaCamposVooInternacional();
-
+                                   
         }
 
         document.getElementById("observacaoVoo").style.display = "block";
@@ -781,14 +822,7 @@ function clickNovaSolicitacao() {
         document.getElementById("selecaodeviagens").style.display = "none";
         document.getElementById("div_justificativaremarcacao").style.display = "none";
 
-        /*
-        if (document.getElementById("internacional").checked == true){
-        	 $("#adtoSim").prop("disabled", false);            
-       	     $("#adtoNao").prop("disabled", false);	
-        }
-        */
        
-
     }
 }
 
@@ -806,8 +840,7 @@ function removeItens() {
 }
 
 function removeServico() {
-	console.log("------TENTANDO REMOVER SERVIÇO---------");
-	console.log("----ATIVIDADE ATUAL----- "+AtividadeAtual);
+	
 	if (AtividadeAtual == COMPRARPASSAGEM){
 	    var linhas = $("#tbodyViagem tr");
 	    for (var i = 1; i < linhas.length; i++) {
@@ -922,6 +955,7 @@ function prazoViagem(parametro){
 	
 }
 
+
 function prazoReembolso() {	
 	if (document.getElementById("credito").checked == true) {
 		  $("#tipormb").attr('checked', false);
@@ -980,6 +1014,9 @@ function setSelectedZoomItem(selectedItem) {
     var FUNCIONARIO = "outroFuncionario";
     var SERVICO = "txtservico";
     var EVENTO ="dataset_solicitacaoevento";
+    var CCUSTO_ADTO = "centrocustoAdto";
+    var PROJETO_ADTO = "projetoAdto";
+    var FONTE_ADTO = "fontefinanciamentoAdto";
   
    
 
@@ -1002,8 +1039,6 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
         if (selectedItem["CODIGO"] != '99990') {
-        //	console.log("---ENTROU AQUI 2 ----");
-        //    console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
             reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
@@ -1143,8 +1178,41 @@ function setSelectedZoomItem(selectedItem) {
     	}
     }
     
-}
+    
+    //compara para verificar se o zoom é o campo centro de custo
+    else if (campoZOOM == CCUSTO_ADTO) {
+        //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
+        window[PROJETO_ADTO].clear();
+        window[FONTE_ADTO].clear();
+        window[FONTE_ADTO].disable(true);
+        
+  	  	if (selectedItem["CODIGO"] == '99990'){
+  	  	    window[PROJETO_ADTO].disable(false);	  
+  	  	    window[FONTE_ADTO].disable(true);
+  	  	    //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + selectedItem["CODIGO"] );
+  	  	     document.getElementById("div_projeto").style.display = "block";
+  	  		 document.getElementById("div_fonte").style.display = "block";
+  	  	}
+  	  	else {
+  	  		
+  	  		window[PROJETO_ADTO].disable(true);
+  	  		window[FONTE_ADTO].disable(true);
+  	    	//reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null )
+  	  	}
 
+    } 
+    else if (campoZOOM == PROJETO_ADTO){
+  	  window[FONTE_ADTO].clear();
+  	  window[FONTE_ADTO].disable(false);
+  	  reloadZoomFilterValues(FONTE_ADTO, "PROJETO," + selectedItem["CODIGO"]);
+    }
+    
+    
+    
+    
+    
+
+}
 
 function apagaRateio(){
     var linhas = $("#tbodyItens tr");
@@ -1155,7 +1223,6 @@ function apagaRateio(){
         
     }
 }
-
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
@@ -1185,7 +1252,6 @@ function buscaRemarcacao(item) {
         adicionaItem(dataset.values);
     }
 }
-
 
 function buscaDadosFinanceiroEvento(evento){
 	   var constraints = new Array();
@@ -1277,6 +1343,8 @@ function adicionaLinha() {
     window["txtcategoria___" + indice].disable(true);
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
+    
+   // QtdeLinhasRateio = indice;
 }
 
 function adicionaLinhaServico() {
@@ -1308,6 +1376,10 @@ function removedZoomItem(removedItem) {
     var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
+    var CCUSTO_ADTO = "centrocustoAdto";
+    var PROJETO_ADTO = "projetoAdto";
+    var FONTE_ADTO = "fontefinanciamentoAdto";
+
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -1427,10 +1499,20 @@ function removedZoomItem(removedItem) {
         removeItens();
 
     }
+    
+    else if (campoZOOM == CCUSTO_ADTO) {
+        window[PROJETO_ADTO].clear();
+        window[FONTE_ADTO].clear();
+        window[PROJETO_ADTO].disable(true);
+        window[FONTE_ADTO].disable(true);
+       
+   } 
+    else if (campoZOOM == PROJETO_ADTO){
+    	 window[FONTE_ADTO].clear();
+    	 window[FONTE_ADTO].disable(true);
+    }
 
 }
-
-
 
 function setZoomData(instance, value) {
     window[instance].setValue(value);
@@ -1645,32 +1727,6 @@ function buscaAtividades(item) {
     
 }
 
-/*
-function buscaAtividades(item) {
-    console.log("AGENDA DE VIAGEM: ");
-    console.log(item.Codigo);
-
-    var constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("CodigoAgenda", item.Codigo, item.Codigo, ConstraintType.MUST));
-    var dataset = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
-
-
-    constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
-    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
-    constraints.push(DatasetFactory.createConstraint("tablename", "tbAgendaViagem", "tbAgendaViagem", ConstraintType.MUST));
-    constraints.push(DatasetFactory.createConstraint("aprovacao", "aprovado", "aprovado", ConstraintType.MUST));
-
-    dataset = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
-
-
-    if (dataset != null && dataset.values.length > 0) {
-        analisaItem(dataset.values);
-    }
-
-}
-*/
-
 function analisaItem(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("SolicAgendaViagem");
@@ -1785,7 +1841,6 @@ function buscaItensRateio(rateio) {
 
 }
 
-
 function adicionaItensRateio(itens) {
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
@@ -1834,29 +1889,11 @@ function adicionaItensRateio(itens) {
     
 }
 
-
 function retornaDatas(){
 	var datasSolicitacao = ["datapartida1","dataretorno1","datapartida2","datapartida3","datacheckin","datacheckout","datacheckin2","datacheckout2","datacheckin3","datacheckout3"];
 
 	return datasSolicitacao;
 }
-
-
-/*
-FLUIGC.message.alert({
-    message: 'Você deve selecionar o tipo de viagem primeiro!',
-    title: 'Tipo de Viagem',
-    label: 'OK'
-}, function(el, ev) {
-    //Callback action executed by the user...
-     
-    //el: Element (button) clicked...
-    //ev: Event triggered...
-     
-    this.someFunc();
-});
-
-*/
 
 function fnCustomDeleteRateio(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO	){								

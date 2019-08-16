@@ -14,7 +14,7 @@ function enableFields(form){
 	var nomeSolicitante;
 	var emailSolicitante;
 	
-	 //form.setEnabled('vl_diarias', false);
+	
 	
 	if (activity == ABERTURA || activity ==  CORRIGIR){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
@@ -36,12 +36,18 @@ function enableFields(form){
 		 form.setEnabled("aprovacao", false);		
 		 form.setEnabled('recebediarias', false);
 		 form.setEnabled('dtVencimento', false);
+		 form.setEnabled('tarifa', false);
+		 //form.setEnabled('vl_tarifa', false);
+		 form.setEnabled('dtTarifa', false);
 		 
 	}
 	else if (activity == APROVACAO){
 		 form.setEnabled('recebediarias', false);
 		 form.setEnabled('dtVencimento', false);
 		 form.setEnabled('beneficiario', false);
+		 form.setEnabled('tarifa', false);
+		 form.setEnabled('vl_tarifa', false);
+		 form.setEnabled('dtTarifa', false);
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 	}
@@ -59,21 +65,12 @@ function enableFields(form){
 		    
 		    form.setEnabled("recebediarias", true);	
 		    form.setEnabled("dtVencimento", true);	
+		    form.setEnabled('tarifa', true);
+			form.setEnabled('vl_tarifa', true);
+			form.setEnabled('dtTarifa', true);
 		 
 	}
-	else if (activity == REALIZAR_PGTO){
-		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-	    var mapaForm = new java.util.HashMap();
-	    mapaForm = form.getCardData();
-	    var it = mapaForm.keySet().iterator();
-	     
-	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-	        var key = it.next();
-	        form.setEnabled(key, habilitar);
-	    }
-		
-	}
-	else if (activity == AVALIAR_PGTO){
+	else if (activity == REALIZAR_PGTO || activity == AVALIAR_PGTO){
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();

@@ -17,14 +17,13 @@ function enableFields(form) {
 	 //form.setEnabled('viagemplanejada', false);		
 	 form.setEnabled('cotacaoVoo', false);
 	 form.setEnabled('cotacaoHotel', false);
-	 form.setEnabled('aprovacao', false);
 	 
  
 	var activityEnable = getValue('WKNumState');
 	//log.info("----ATIVIDADE enableFields: " + activityEnable);
 	
 	var solicitante = getValue("WKUser");  
-	// form.setEnabled('adiantamento', false);
+
 	 
 	// log.info("numero da atividade "+activityEnable);
 	
@@ -41,10 +40,7 @@ function enableFields(form) {
 		 form.setValue("aceitenorma","");
 		 form.setValue("aprovacao","");
 		 form.setEnabled('vl_aprovado', false);
-		// form.setEnabled('vl_solicitado', false);		
-		// form.setEnabled('dtNecessidade', false);	
-			
-		 
+							 
 		 if (activityEnable == ABERTURA){
 			 form.setValue("matriculasolicitante",solicitante); 	
 			 
@@ -150,6 +146,16 @@ function enableFields(form) {
 		 form.setEnabled('dataAprovacao', false);
 	
 		 
+		 //CAMPOS DA ABA DE ADIANTAMENTO
+		 form.setEnabled('adiantamento', false);
+		 if (form.getValue('adiantamento') == 'nao'){
+			 form.setEnabled('vl_solicitado', false);
+			 form.setEnabled('vl_aprovado', false);
+			 form.setEnabled('dtNecessidade', false);
+			 form.setEnabled('centrocustoAdto', false);
+			 form.setEnabled('projetoAdto', false);
+			 form.setEnabled('fontefinanciamentoAdto', false);
+		 }
 		 
 		 //PROCESSO DE APROVAÇÃO
 		 if (activityEnable == APROVACAO){
@@ -168,7 +174,17 @@ function enableFields(form) {
 			 form.setEnabled('cotacaoHotel', true);
 			 form.setEnabled('cotacaoVoo', true);
 			 
-		
+			 
+			 if (form.getValue('adiantamento') == 'sim'){
+				 form.setEnabled('vl_solicitado', false);
+				 form.setEnabled('vl_aprovado', true);
+				 form.setEnabled('centrocustoAdto', true);				 				 
+				 form.setEnabled('projetoAdto', true);
+				 form.setEnabled('fontefinanciamentoAdto', true);
+				 
+			 }
+			
+			 
 			 
 		 }
 		 
@@ -349,14 +365,10 @@ function enableFields(form) {
 	
 
 	function usuarioAprovador(emailLogado){
-		log.info("---APROVADOR VIAGEM----"); 
-		log.info(emailLogado);
-		
 		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailLogado,emailLogado, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
 		 
 		  
-		 log.info(dataset.getValue(0, "EMAIL_APROVADOR"));
 		 return dataset;
 	}
 					

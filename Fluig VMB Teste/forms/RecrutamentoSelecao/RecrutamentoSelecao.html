@@ -112,7 +112,7 @@
                                                             ]
                                                             }">
                                                       </div>    
-                                                      <div class="form-group col-md-3">
+                                                      <div class="form-group col-md-2">
                                                       	<label>Prioridade</label>
                                                       	<input
                                                             name="prioridade" class="form-control"
@@ -129,7 +129,25 @@
                                                             {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
                                                             ]
                                                             }">
-                                                      </div>                                                                                                      
+                                                      </div>     
+                                                      <div class="form-group col-md-3">
+                                                      	<label>Local de Trabalho</label>
+                                                      	<input
+                                                            name="localTrabalho" class="form-control"
+                                                            type="zoom" id="localTrabalho"
+                                                            data-zoom="{
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesEventos',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione uma prioridade',
+                                                            'fields':[
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+                                                            ]
+                                                            }">
+                                                      </div>                                                                                                  
                                                    </div>                            
                                                     <div class="row">                                    		
                         				  <div class="form-group col-md-3">
@@ -195,26 +213,23 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step2">
-                                                                <div class="panel-body">
+                                                                <div class="panel panel-default" id="panelItens">                                                               
                                                                     <div class="row">
-                                                                    	<label>Motivo</label><br>
-                                                                       <div class="form-group col-md-1">                                                                       		
-								                                          <Label for="aumento">Aumento de quadro</Label> 
-								                                          <input type="radio" id="aumento" name="motivo" value="aumento_de_quadro"/>
-								                                       </div>
-								                                       <div class="form-group col-md-1">
-								                                          <Label for="substituicao">Substituição</Label> 
-								                                          <input type="radio" id="substituicao" name="motivo" value="substituicao"  />
-								                                       </div>
-								                                       	<label>Previsto no orcamento</label><br>
-                                                                    	<div class="form-group col-md-2">
-                                                                    		<label for="sim">Sim</label>
-                                                                    		<input type="radio" id="previstoSim" name="previstoorcamento" value="sim">
+                                                                    	<div class="form-group col-md-3">
+                                                                    	  <label>Motivo</label><br>                                           										                                         
+								                                          <input type="radio" id="aumento" name="motivo" class="radio-inline" value="aumento_de_quadro"/>
+								                                      	  <Label for="aumento">Aumento de quadro</Label> 
+								                                      	  <br>								                                          
+								                                          <input type="radio" id="substituicao" name="motivo" class="radio-inline" value="substituicao"  />
+								                                       	  <Label for="substituicao">Substituição</Label>
                                                                     	</div>
-                                                                    	<div class="form-group col-md-2">
-                                                                    		<label for="nao">Não</label>
-                                                                    		<input type="radio" id="previstoNao" name="previstoorcamento" value="nao">
-                                                                    	</div>
+                                                                    	<div class="form-group col-md-3">
+                                                                    		<label>Previsto no orcamento</label><br>
+                                                                    		<label for="previstoSim">Sim</label>
+                                                                    		<input type="radio" id="previstoSim" name="previstoorcamento" class="radio-inline" value="sim">                                                                    	
+                                                                    		<label for="previstoNao">Não</label>
+                                                                    		<input type="radio" id="previstoNao" name="previstoorcamento" class="radio-inline" value="nao">
+                                                                    	</div> 	
                                                                     </div>
                                                                     <div class="row">
                                                                     	<div class="form-group col-md-6">
@@ -248,7 +263,34 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="2b">
-                                           
+                                                <div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="gestor" class="required">Nome Aprovador</label>
+                                          <input type="text" class="form-control" id="gestor" name="gestor" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailLider">Email do Aprovador</label>
+                                          <input type="email" class="form-control" id="emailLider" name="emailLider" readonly>
+                                       </div>
+                                       <div class="form-group col-md-4" id="divMatricualApr">
+                                          <label for="matriculaApr">ID Aprovador</label>
+                                          <input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprovacao">Aprovado</Label> <input type="radio"
+                                             id="aprovacao" name="aprovacao" 
+                                             value="aprovado" />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprovacaon">Reprovado</Label> <input
+                                             type="radio" id="aprovacaon" name="aprovacao"
+                                             value="reprovado"  />
+                                       </div>
+                 
+                                    </div>
                                             
                                         </div>
                                     </div>

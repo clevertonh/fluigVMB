@@ -16,7 +16,7 @@ function displayFields(form,customHTML){
 	
 	
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
+//	log.info("----ATIVIDADE displayFields: " + activity);
 	
 	//var nextAtv = getValue("WKNextState");
 	
@@ -48,6 +48,10 @@ function displayFields(form,customHTML){
     	form.setVisibleById("3b", false);
     	form.setVisibleById("4b", false);
     	form.setVisibleById("divCotacao", false);
+    	form.setVisibleById("div_adto1", false);
+    	form.setVisibleById("div_adto2", false);
+    	form.setVisibleById("div_adto3", false);
+    	
     	
      	
     		//campos aba dados gerais
@@ -91,6 +95,11 @@ function displayFields(form,customHTML){
         form.setVisibleById("div_tipohotel3", false);
         form.setVisibleById("div_tipoHotel", false);
     	
+        //aba adiantamento
+        form.setVisibleById("div_projeto", false);
+		form.setVisibleById("div_fonte", false);
+		 
+		 
         //campos aba final      
         form.setVisibleById("divJustificativa", false);
                

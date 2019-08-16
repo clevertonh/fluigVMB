@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Diaria</processId>
-      <version>14</version>
+      <version>15</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1971</formId>
@@ -699,7 +699,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>15</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -711,7 +711,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>15</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot; </condition>
@@ -723,7 +723,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>3</expressionOrder>
-        <version>14</version>
+        <version>15</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot; </condition>
@@ -735,7 +735,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>15</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot; </condition>
@@ -747,7 +747,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>15</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;nao&quot; </condition>
@@ -1170,6 +1170,7 @@ function convertStringToData(StringToData) {
 	&#xd;
     var dtVencimento	 = hAPI.getCardValue(&quot;dtVencimento&quot;);&#xd;
     var valorTotal		 = hAPI.getCardValue(&quot;vl_diarias&quot;);&#xd;
+    var valorTarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
     var recebeDiarias 	 = hAPI.getCardValue(&quot;recebediarias&quot;);&#xd;
  	&#xd;
 	&#xd;
@@ -1178,6 +1179,7 @@ function convertStringToData(StringToData) {
 			constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;vl_diarias&quot;, valorTotal, valorTotal, ConstraintType.MUST));  &#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;dtVencimento&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));&#xd;
+			constraint.push(DatasetFactory.createConstraint(&quot;vl_tarifa&quot;, valorTarifa, valorTarifa, ConstraintType.MUST));&#xd;
 				&#xd;
 			&#xd;
 			var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_DIARIAS&quot;, null, constraint, null);&#xd;
@@ -1295,7 +1297,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>14</version>
+        <version>15</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1306,7 +1308,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>14</version>
+        <version>15</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1317,7 +1319,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>14</version>
+        <version>15</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1328,7 +1330,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>14</version>
+        <version>15</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1339,7 +1341,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>14</version>
+        <version>15</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1350,7 +1352,7 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>14</version>
+        <version>15</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

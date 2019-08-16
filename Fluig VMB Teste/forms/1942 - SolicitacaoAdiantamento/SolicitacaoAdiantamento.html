@@ -95,15 +95,22 @@
                                                             name="dataset_solicitacaoviagem" class="form-control"
                                                             type="zoom" id="dataset_solicitacaoviagem"
                                                             data-zoom="{
-                                                            'displayKey':'solicitacao',
-                                                            'datasetId':'VM_SolicitacoesViagens',
+                                                            'displayKey':'SOLICITACAO',
+                                                            'datasetId':'VM_SolicitacoesViagensInternacionais',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione uma viagem',
                                                             'fields':[
-                                                            {'field':'solicitacao','label':'solicitacao'},                                                            
-                                                            {'field':'solicitante','label':'solicitante','standard':'true'},
-                                                            {'field':'nomepassageiro','label':'nomepassageiro'},
-                                                            {'field':'dataSolicitacao','label':'dataSolicitacao'}                                                           						  					
+                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+                                                            {'field':'DT_SOLICITACAO','label':'DT_SOLICITACAO','standard':'true'},
+                                                            {'field':'BENEFICIARIO','label':'BENEFICIARIO'},
+                                                            {'field':'CPF_BENEFICIARIO','label':'CPF_BENEFICIARIO'},
+                                                            {'field':'DT_VIAGEM','label':'DT_VIAGEM'},
+                                                            {'field':'DT_RETORNO','label':'DT_RETORNO'},
+                                                            {'field':'ITINERARIO','label':'ITINERARIO'},
+                                                            {'field':'FINALIDADE','label':'FINALIDADE','visible':'false'},  
+                                                            {'field':'CENTRO_CUSTO','label':'CENTRO_CUSTO'}, 
+                                                            {'field':'PROJETO','label':'PROJETO'}, 
+                                                            {'field':'FONTE_FINANCIAMENTO','label':'FONTE_FINANCIAMENTO','visible':'false'}                                                          						  					
                                                             ]
                                                             }">
                                                       </div>
