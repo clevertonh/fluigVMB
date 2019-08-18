@@ -4,7 +4,7 @@ function enableFields(form) {
 	var SOLICITARVIAGEM = 4;
 	var APROVACAO = 97;
 	var COMPRARPASSAGEM = 13;
-	var OBTERPASSAGEM = 33
+	var OBTERPASSAGEM = 33;
 	var REGISTRARCANCELAMENTO = 64;
 	var CONFIRMARREEMBOLSO = 79;
 	var CANCELARSOLICITACAO = 93 ;
@@ -13,6 +13,7 @@ function enableFields(form) {
 	var PAGARDIARIAS = 129;
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
+	var GERAR_TARIFA = 196;
 		
 	 //form.setEnabled('viagemplanejada', false);		
 	 form.setEnabled('cotacaoVoo', false);
@@ -148,14 +149,13 @@ function enableFields(form) {
 		 
 		 //CAMPOS DA ABA DE ADIANTAMENTO
 		 form.setEnabled('adiantamento', false);
-		 if (form.getValue('adiantamento') == 'nao'){
-			 form.setEnabled('vl_solicitado', false);
-			 form.setEnabled('vl_aprovado', false);
-			 form.setEnabled('dtNecessidade', false);
-			 form.setEnabled('centrocustoAdto', false);
-			 form.setEnabled('projetoAdto', false);
-			 form.setEnabled('fontefinanciamentoAdto', false);
-		 }
+		 form.setEnabled('vl_solicitado', false);
+		 form.setEnabled('vl_aprovado', false);
+		 form.setEnabled('dtNecessidade', false);
+		 form.setEnabled('itinerario', false);
+		 form.setEnabled('centrocustoAdto', false);
+		 form.setEnabled('projetoAdto', false);
+		 form.setEnabled('fontefinanciamentoAdto', false);
 		 
 		 //PROCESSO DE APROVAÇÃO
 		 if (activityEnable == APROVACAO){
@@ -176,7 +176,6 @@ function enableFields(form) {
 			 
 			 
 			 if (form.getValue('adiantamento') == 'sim'){
-				 form.setEnabled('vl_solicitado', false);
 				 form.setEnabled('vl_aprovado', true);
 				 form.setEnabled('centrocustoAdto', true);				 				 
 				 form.setEnabled('projetoAdto', true);

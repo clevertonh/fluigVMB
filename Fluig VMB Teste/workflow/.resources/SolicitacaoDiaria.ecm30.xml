@@ -412,6 +412,56 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <version>1</version>
+        <sequence>46</sequence>
+      </processStatePK>
+      <stateName>Gerar tarifa</stateName>
+      <stateDescription>Gerar tarifa</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1210</positionX>
+      <positionY>420</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
         <sequence>27</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -580,7 +630,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1160</positionX>
+      <positionX>1350</positionX>
       <positionY>430</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -846,23 +896,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <version>1</version>
-        <linkSequence>26</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>23</initialStateSequence>
-      <finalStateSequence>25</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoDiaria</processId>
-        <version>1</version>
         <linkSequence>29</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1045,6 +1078,40 @@
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <linkSequence>47</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>23</initialStateSequence>
+      <finalStateSequence>46</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <linkSequence>48</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>25</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list/>
   <list>
@@ -1204,7 +1271,7 @@ function convertStringToData(StringToData) {
     <SwimLane>
       <color>FFFFFF</color>
       <height>571</height>
-      <width>1201</width>
+      <width>1480</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Solicitação de diárias</stateName>
@@ -1220,7 +1287,7 @@ function convertStringToData(StringToData) {
     <SwimLane>
       <color>9F9F9F</color>
       <height>190</height>
-      <width>1171</width>
+      <width>1450</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -1236,7 +1303,7 @@ function convertStringToData(StringToData) {
     <SwimLane>
       <color>C0C0C0</color>
       <height>190</height>
-      <width>1171</width>
+      <width>1450</width>
       <positionX>40</positionX>
       <positionY>200</positionY>
       <stateName>Gerente</stateName>
@@ -1252,7 +1319,7 @@ function convertStringToData(StringToData) {
     <SwimLane>
       <color>82b0b7</color>
       <height>191</height>
-      <width>1171</width>
+      <width>1450</width>
       <positionX>40</positionX>
       <positionY>390</positionY>
       <stateName>Tesouraria</stateName>

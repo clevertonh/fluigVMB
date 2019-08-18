@@ -270,6 +270,8 @@ function clickAdiantamento(){
         $("#centrocustoAdto").prop("disabled", true);
         $("#projetoAdto").prop("disabled", true);
         $("#fontefinanciamentoAdto").prop("disabled", true);
+        $("#itinerario").prop("disabled", true);
+        $('#itinerario').val('');
         
         
         
@@ -278,6 +280,7 @@ function clickAdiantamento(){
     else if (document.getElementById("adtoSim").checked == true && document.getElementById("solicitanteFuncionario").checked == true){    	
         $("#vl_solicitado").prop("disabled", false);
         $("#dtNecessidade").prop("disabled", false);
+        $("#itinerario").prop("disabled", false);
         
         $("#centrocustoAdto").prop("disabled", false);
         $("#projetoAdto").prop("disabled", false);
@@ -286,7 +289,29 @@ function clickAdiantamento(){
         document.getElementById("div_adto2").style.display = "block"; 
         document.getElementById("div_adto3").style.display = "block";
         
+        var passagem =  $('#pedirPassagemS').val(); 
+        var origem;
+        var destino;
         
+        if (passagem ="sim"){
+        	 origem = $('#internacionalOrigem1').val(); 
+        	 
+        	 if ($('#internacionalDestino3').val() != "" && $('#internacionalDestino3').val() != null){
+    			 destino = $('#internacionalDestino3').val();
+    		 }
+    		 else if ($('#internacionalDestino2').val() != "" && $('#internacionalDestino2').val() != null){
+    			 destino = $('#internacionalDestino2').val();
+    		 }
+    		 else if ($('#internacionalDestino1').val() != "" && $('#internacionalDestino1').val() != null){
+    			 destino = $('#internacionalDestino1').val();
+    		 }
+            
+            //preenche campo itinerario
+            $('#itinerario').val(origem + '/' + destino);
+        }
+        else {
+        	$('#itinerario').val('');
+        }
         
         /*
          * recuperar quantidade de itens do rateio

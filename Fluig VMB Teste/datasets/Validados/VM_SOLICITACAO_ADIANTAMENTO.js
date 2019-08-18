@@ -25,7 +25,7 @@ function createDataset(fields, constraints, sortFields) {
 						            params : {
 						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
 						            	DATAVENCIMENTO :'' + solicitacao.getValue(0,"dtNecessidade") + '',
-						            	DATARETORNO :'' + solicitacao.getValue(0,"dtNecessidade") + '',						            	
+						            	DATARETORNO :'' + solicitacao.getValue(0,"dtRetorno") + '',						            	
 						            	VALORSOLICITADO : '' + solicitacao.getValue(0,"vl_solicitado") + '' ,
 						            	VALORAPROVADO : '' + solicitacao.getValue(0,"vl_aprovado") + '' ,
 						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	

@@ -145,21 +145,21 @@ function beforeStateEntry(sequenceId){
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
      	else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	
-			   var constraint = new Array();		  			
-	  			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
-	  			constraint.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
-	  			constraint.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
+			   var constraintDiarias = new Array();		  			
+			   constraintDiarias.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
+			   constraintDiarias.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
+			   constraintDiarias.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	  			
 	  			if (geraTarifa == "sim"){
-	  				constraint.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
-		  			constraint.push(DatasetFactory.createConstraint("fornecedorTarifa", fornecedorT, fornecedorT, ConstraintType.MUST));
-		  			constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
+	  				constraintDiarias.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
+	  				constraintDiarias.push(DatasetFactory.createConstraint("fornecedorTarifa", fornecedorT, fornecedorT, ConstraintType.MUST));
+	  				constraintDiarias.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
 		  				
 	  			}
 	  			
 	  			
 	  			
-	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraint, null);
+	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraintDiarias, null);
 		  		    
 		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
 		  		    	throw resultDateset.getValue(0,"RETORNO");

@@ -2,6 +2,10 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
 	 
+	
+	//log.info("INTEGRAÇÃO ADIANTAMENTO");
+	//log.dir(constraints);
+	
 	 if(constraints !== null && constraints.length){
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			 	var documentId = constraints[0].initialValue;
@@ -13,6 +17,41 @@ function createDataset(fields, constraints, sortFields) {
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
+         		 var passagem = solicitacao.getValue(0,"pedirPassagem"); 
+    			 var dtRetorno;
+    			 
+    			 if (passagem == 'sim'){     				 
+     				 if (solicitacao.getValue(0,"datapartida3") != "" && solicitacao.getValue(0,"datapartida3") != null){
+    					 dtRetorno = retornoDataset.getValue(0,"datapartida3");
+	    			 }
+	    			 else if (solicitacao.getValue(0,"datapartida2") != "" && solicitacao.getValue(0,"datapartida2") != null){
+	    				 dtRetorno = retornoDataset.getValue(0,"datapartida2");
+	    			 }
+	    			 else if (solicitacao.getValue(0,"dataretorno1") != "" && solicitacao.getValue(0,"dataretorno1") != null){
+	    				 dtRetorno = solicitacao.getValue(0,"dataretorno1");
+	    			 }
+    				 
+    			 }
+    			 else {
+    				 if (solicitacao.getValue(0,"datacheckout3") != "" && solicitacao.getValue(0,"datacheckout3") != null){
+    					 dtRetorno = solicitacao.getValue(0,"datacheckout3");
+	    			 }
+	    			 else if (solicitacao.getValue(0,"datacheckout2") != "" && solicitacao.getValue(0,"datacheckout2") != null){
+	    				 dtRetorno = solicitacao.getValue(0,"datacheckout2");
+	    			 }
+	    			 else if (solicitacao.getValue(0,"datacheckout") != "" && solicitacao.getValue(0,"datacheckout") != null){
+	    				 dtRetorno = solicitacao.getValue(0,"datacheckout");
+	    			 }
+    			 }
+        		
+        		
+        		
+        		
+        		log.info("ADIANTAMENTO VIAGEM");
+        		log.dir(solicitacao);
+        		
+        		
+        		
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
 					        var data = {
@@ -24,10 +63,10 @@ function createDataset(fields, constraints, sortFields) {
 						            params : {
 						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	
 						            	DATAVENCIMENTO :'' + solicitacao.getValue(0,"dtNecessidade") + '',
-						         //   	DATARETORNO :'' + solicitacao.getValue(0,"dtNecessidade") + '',						            	
+						            	DATARETORNO :'' + dtRetorno + '',						            	
 						            	VALORSOLICITADO : '' + solicitacao.getValue(0,"vl_solicitado") + '' ,
 						            	VALORAPROVADO : '' + solicitacao.getValue(0,"vl_aprovado") + '' ,
-						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
+						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cpfpassageiro") +'',	
 						            	EMAILSOLICITANTE	: '' + solicitacao.getValue(0,"emailsolicitante") +'',
 						            	EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailGestor") +'',
 						            	CCUSTO	: '' + solicitacao.getValue(0,"centrocustoAdto") +'',
@@ -36,6 +75,8 @@ function createDataset(fields, constraints, sortFields) {
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
+						            	ITINERARIO  : '' + solicitacao.getValue(0,"itinerario")  +'',
+						            	TIPOADIANTAMENTO: ''+"1" +'',
 						            	PROCESSO: ''+"1" +''
 						            },
 						          options : {

@@ -6,6 +6,7 @@ function inputFields(form){
 	var REALIZAR_PGTO = 21;
 	var AVALIAR_PGTO = 28;
 	var CORRIGIR = 41;
+	var GERAR_TARIFA = 46;
 	
 	var activity = getValue('WKNumState');
 	

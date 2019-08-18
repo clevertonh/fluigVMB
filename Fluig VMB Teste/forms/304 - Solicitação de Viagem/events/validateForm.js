@@ -1,15 +1,19 @@
 function validateForm(form) {
     //NESSE EVENTO NÃO EXISTE A ATIVIDADE ABERTURA == 0, A TAREFA INICIAL É A 4
-    //TAREFAS
+    //TAREFAS	
 	var SOLICITARVIAGEM = 4;
 	var APROVACAO = 97;
-    var COMPRARPASSAGEM = 13;
-    var OBTERPASSAGEM = 33
-    var REGISTRARCANCELAMENTO = 64;
-    var CONFIRMARREEMBOLSO = 79;
-    var CORRIGIRSOLICITACAO = 98;
+	var COMPRARPASSAGEM = 13;
+	var OBTERPASSAGEM = 33
+	var REGISTRARCANCELAMENTO = 64;
+	var CONFIRMARREEMBOLSO = 79;
+	var CANCELARSOLICITACAO = 93 ;
+	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
-	var CALCULARDIARIAS = 129;
+	var PAGARDIARIAS = 129;
+	var REALIZAR_PAGAMENTO = 165;
+	var AVALIAR_ATRASO = 159;
+	var GERAR_TARIFA = 196;
 	
 	
 	//GATEWAY
@@ -371,9 +375,14 @@ function validateForm(form) {
             validaPercentualRateio();
             validaAtividades();
             
-        	if (form.getValue("aprovacao") == "aprovado" && form.getValue("adiantamento")=="sim" && parseFloat(form.getValue("vl_aprovado")) > 0 ){
-    			consultaPendenciaAdiantamento();
-    		}
+        	if (form.getValue("aprovacao") == "aprovado" && form.getValue("adiantamento")=="sim"  ){
+        		if (form.getValue("vl_aprovado") =='' || form.getValue("vl_aprovado") == null){
+        			 throw "Você deve informar o valor aprovado na aba de adiantamento.";
+        		}
+        		
+        		if (parseFloat(form.getValue("vl_aprovado")) > 0)
+        			consultaPendenciaAdiantamento();
+    			}
             
             
     }

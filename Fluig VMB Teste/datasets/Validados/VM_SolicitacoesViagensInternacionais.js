@@ -17,18 +17,23 @@ function createDataset(fields, constraints, sortFields) {
 
 	
 	var user = getValue("WKUser");
+	var dtRetorno;
+	var dtPartida;
 	
-
 	
 	var constraints = new Array();
 	constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
 	constraints.push(DatasetFactory.createConstraint("tipoviagem", "internacional", "internacional", ConstraintType.MUST));
+	
+	//workflowProcess fazer join com esse dataset para trazer apenas solicitações ativas
+	
 	
     var retornoDataset = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, constraints, null);
     
     for(var x = 0 ; x < retornoDataset.rowsCount; x++){
     	 var passageiro = retornoDataset.getValue(x, "emailPassageiro");
     	 var matricula = retornoDataset.getValue(x, "matriculasolicitante");
+    	 var passagem = retornoDataset.getValue(x,"pedirPassagem"); 
     	 
     	 var empresa = retornoDataset.getValue(x, "companyid");
     	 var carddocumentid =  retornoDataset.getValue(x, "metadata#id");
@@ -47,22 +52,41 @@ function createDataset(fields, constraints, sortFields) {
 	   	         var emailPass = emailPassageiro(user);
 	    		 var emailpassageiro = emailPass.toUpperCase();
 	    			
-	    		 if (passageiro == emailpassageiro || matricula == user){
-	    			 var destino;
-	    			 
-	    			 
-	    			 if (retornoDataset.getValue(x,"internacionalDestino3") != "" && retornoDataset.getValue(x,"internacionalDestino3") != null){
-	    				 destino = retornoDataset.getValue(x,"internacionalDestino3");
+	    		 if (passageiro == emailpassageiro || matricula == user){  				    			 
+	    			 if (passagem == 'sim'){
+	    				 dtPartida = retornoDataset.getValue(x,"datapartida1");
+	    				 
+	    				 if (retornoDataset.getValue(x,"datapartida3") != "" && retornoDataset.getValue(x,"datapartida3") != null){
+	    					 dtRetorno = retornoDataset.getValue(x,"datapartida3");
+		    			 }
+		    			 else if (retornoDataset.getValue(x,"datapartida2") != "" && retornoDataset.getValue(x,"datapartida2") != null){
+		    				 dtRetorno = retornoDataset.getValue(x,"datapartida2");
+		    			 }
+		    			 else if (retornoDataset.getValue(x,"dataretorno1") != "" && retornoDataset.getValue(x,"dataretorno1") != null){
+		    				 dtRetorno = retornoDataset.getValue(x,"dataretorno1");
+		    			 }
+	    				 
+	    				 
+	    				 
 	    			 }
-	    			 else if (retornoDataset.getValue(x,"internacionalDestino2") != "" && retornoDataset.getValue(x,"internacionalDestino2") != null){
-	    				 destino = retornoDataset.getValue(x,"internacionalDestino2");
+	    			 else {
+	    				
+	    				 dtPartida = retornoDataset.getValue(x,"datacheckin");
+	    				 if (retornoDataset.getValue(x,"datacheckout3") != "" && retornoDataset.getValue(x,"datacheckout3") != null){
+	    					 dtRetorno = retornoDataset.getValue(x,"datacheckout3");
+		    			 }
+		    			 else if (retornoDataset.getValue(x,"datacheckout2") != "" && retornoDataset.getValue(x,"datacheckout2") != null){
+		    				 dtRetorno = retornoDataset.getValue(x,"datacheckout2");
+		    			 }
+		    			 else if (retornoDataset.getValue(x,"datacheckout") != "" && retornoDataset.getValue(x,"datacheckout") != null){
+		    				 dtRetorno = retornoDataset.getValue(x,"datacheckout");
+		    			 }
+	    				 
+	    				
 	    			 }
-	    			 else if (retornoDataset.getValue(x,"internacionalDestino1") != "" && retornoDataset.getValue(x,"internacionalDestino1") != null){
-	    				 destino = retornoDataset.getValue(x,"internacionalDestino1");
-	    			 }
-	    			 
-	    			 
-	    			 	var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
+	        		
+	    		
+	    			  	var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
 	                    var c2 = DatasetFactory.createConstraint("metadata#id", carddocumentid, carddocumentid, ConstraintType.MUST);
 	                    var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
 	                    var constraintsFilhos = new Array(c1, c2, c3);
@@ -77,9 +101,9 @@ function createDataset(fields, constraints, sortFields) {
 	           	     		                retornoDataset.getValue(x,"dataSolicitacao"),
 	          	     		                retornoDataset.getValue(x,"nomepassageiro"),
 	          	     		                retornoDataset.getValue(x,"cpfpassageiro"),   	     		              
-	          	     		              	retornoDataset.getValue(x,"datapartida1"),
-	          	     		                retornoDataset.getValue(x,"dataretorno1"),	     		              	
-	          	     		              	retornoDataset.getValue(x,"internacionalOrigem1") + '/' + destino,     	     		              
+	          	     		              	dtPartida,
+	          	     		              	dtRetorno,	     		              	
+	          	     		              	retornoDataset.getValue(x,"itinerario"),      	     		              
 	          	     		                retornoDataset.getValue(x,"finalidade"),
 	          	     		                datasetFilhos.getValue(0, "txtcentrocusto"),
 	          	     		                datasetFilhos.getValue(0, "txtprojeto"),
@@ -92,9 +116,9 @@ function createDataset(fields, constraints, sortFields) {
 	           	     		                retornoDataset.getValue(x,"dataSolicitacao"),
 	          	     		                retornoDataset.getValue(x,"nomepassageiro"),
 	          	     		                retornoDataset.getValue(x,"cpfpassageiro"),   	     		              
-	          	     		              	retornoDataset.getValue(x,"datapartida1"),
-	          	     		                retornoDataset.getValue(x,"dataretorno1"),	     		              	
-	          	     		              	retornoDataset.getValue(x,"internacionalOrigem1") + '/' + destino,     	     		              
+	          	     		                dtPartida,
+	          	     		              	dtRetorno,	     		              	
+	          	     		              	retornoDataset.getValue(x,"itinerario"),     	     		              
 	          	     		                retornoDataset.getValue(x,"finalidade"),
 	          	     		                '',
 	          	     		                '',

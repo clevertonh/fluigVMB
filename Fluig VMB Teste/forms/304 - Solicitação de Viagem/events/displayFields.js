@@ -4,7 +4,7 @@ function displayFields(form,customHTML){
 	var SOLICITARVIAGEM = 4;
 	var APROVACAO = 97;
 	var COMPRARPASSAGEM = 13;
-	var OBTERPASSAGEM = 33
+	var OBTERPASSAGEM = 33;
 	var REGISTRARCANCELAMENTO = 64;
 	var CONFIRMARREEMBOLSO = 79;
 	var CANCELARSOLICITACAO = 93 ;
@@ -13,6 +13,7 @@ function displayFields(form,customHTML){
 	var PAGARDIARIAS = 129;
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
+	var GERAR_TARIFA = 196;
 	
 	
 	var activity = getValue('WKNumState');
@@ -51,6 +52,8 @@ function displayFields(form,customHTML){
     	form.setVisibleById("div_adto1", false);
     	form.setVisibleById("div_adto2", false);
     	form.setVisibleById("div_adto3", false);
+    	//form.setVisibleById("div_itinerario", false);
+    	
     	
     	
      	
@@ -524,5 +527,7 @@ function displayFields(form,customHTML){
 	else if (activity == REALIZAR_PAGAMENTO){
 		 form.setVisibleById("div_tarifa", false); 
 	}
+    
+
     
 }
