@@ -5,6 +5,7 @@ function beforeCancelProcess(colleagueId,processId){
 	var REALIZAR_PGTO = 21;
 	var AVALIAR_PGTO = 28;
 	var CORRIGIR = 41;
+	var GERAR_TARIFA = 46;
 	
 	
 	//RECUPERA NUMERO DA ATIVIDADE
@@ -20,7 +21,7 @@ function beforeCancelProcess(colleagueId,processId){
 	
 	
 	
-	if (ativAtual == CALCULAR_DIARIAS || ativAtual == REALIZAR_PGTO || ativAtual == AVALIAR_PGTO ){
+	if (ativAtual == REALIZAR_PGTO || ativAtual == AVALIAR_PGTO || ativAtual == GERAR_TARIFA){
 		//	log.info("Processo beforeCancel - PAGARDIARIAS");
 			 throw "Você não pode excluir essa solicitação pois ela já foi integrada com o sistema Financeiro.";
 				

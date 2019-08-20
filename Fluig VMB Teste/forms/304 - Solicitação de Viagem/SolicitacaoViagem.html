@@ -1546,45 +1546,44 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="row" id="div_tarifa">
-                                       <div class="form-group col-md-3">
-                                          <label>Possui tarifa</label><br>
-                                          <label for="tarifaSim">Sim</label>
-                                          <input type="radio" id ="tarifaSim" name="tarifa" value="sim">
-                                          <label for="tarifaNao">Não</label>
-                                          <input type="radio" id ="tarifaNao" name="tarifa" value="nao">
-                                       </div>
-                                       <div class="form-group col-md-2">
-                                          <label for="vl_tarifa">Valor tarifa</label> <input
-                                             type="number" class="form-control" name="vl_tarifa"
-                                             id="vl_tarifa">
-                                       </div>
-                                       <div class="form-group col-md-2">
-                                          <label for="dtTarifa">Data tarifa</label>
-                                          <div class="input-group date" >
-                                             <input type="text" class="form-control" id="dtTarifa" name="dtTarifa" mask="00/00/0000" > <span
-                                                class="input-group-addon"> <span
-                                                class="fluigicon fluigicon-calendar"></span>
-                                             </span>
-                                          </div>
-                                       </div>
-                                       <div class="form-group col-md-5">
-                                          <label>Fornecedor da tarifa</label>
-                                          <input type="hidden" name="fornecedorTarifa"
-                                             id="fornecedorTarifa" /> <input type="zoom"
-                                             name="txfornecedor"
-                                             data-zoom="{
-                                             'displayKey':'CODIGO',
-                                             'datasetId':'VM_Fornecedores',
-                                             'maximumSelectionLength':'1',
-                                             'placeholder':'Selecione um fornecedor',
-                                             'fields':[
-                                             {'field':'CODIGO', 'label':'CODIGO'},
-                                             {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
-                                             {'field':'CNPJ', 'label':'CNPJ'}]
-                                             }" />
-                                       </div>
-                                    </div>
+  	 									<div class="row" id="div_tarifa">
+   															   <div class="form-group col-md-3">
+						                                          <label>Possui tarifa</label><br>
+						                                          <label for="tarifaSim">Sim</label>
+						                                          <input type="radio" id ="tarifaSim" name="tarifa" value="sim">
+						                                          <label for="tarifaNao">Não</label>
+						                                          <input type="radio" id ="tarifaNao" name="tarifa" value="nao">
+						                                       </div>
+						                                       <div class="form-group col-md-2">
+						                                          <label for="vl_tarifa">Valor tarifa</label> <input
+						                                             type="number" class="form-control" name="vl_tarifa"
+						                                             id="vl_tarifa">
+						                                       </div>
+						                                         <div class="form-group col-md-2">
+						                                          <label for="dtTarifa">Data tarifa</label>
+						                                          <div class="input-group date" >
+						                                             <input type="text" class="form-control" id="dtTarifa" name="dtTarifa" mask="00/00/0000" > <span
+						                                                class="input-group-addon"> <span
+						                                                class="fluigicon fluigicon-calendar"></span>
+						                                             </span>
+						                                          </div>
+						                                       </div>
+						                                                                     	 		
+                              	 	</div>
+                              	 	<div class="row" id="div_banco">
+                              	 		<div class="form-group col-md-1">
+							                                       	<label>Banco</label>
+							                                       	<input  type="number" name="banco" id="banco" class="form-control">
+						                                       </div>
+						                                        <div class="form-group col-md-1">
+							                                       	<label>Agência</label>
+							                                       	<input  type="text" name="agencia" id="agencia" class="form-control">
+						                                       </div>
+						                                        <div class="form-group col-md-1">
+							                                       	<label>Conta</label>
+							                                       	<input  type="text" name="contabanco" id="contabanco" class="form-control">
+						                                       </div>
+                              	 	</div>           
                                  </div>
                               </div>
                            </div>

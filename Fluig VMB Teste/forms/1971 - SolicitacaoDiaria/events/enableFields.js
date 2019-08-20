@@ -83,6 +83,26 @@ function enableFields(form){
 	    }
 		
 	}
+	else if (activity == GERAR_TARIFA){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	    
+	    form.setEnabled('tarifa', true);
+		form.setEnabled('vl_tarifa', true);
+		form.setEnabled('dtTarifa', true);
+		form.setEnabled('banco', true);
+		form.setEnabled('agencia', true);		
+		form.setEnabled('contabanco', true);
+
+	    
+	}
 	
 
 	function UsuarioLogado(solicitante){

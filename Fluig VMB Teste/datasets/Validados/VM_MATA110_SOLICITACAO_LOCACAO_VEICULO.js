@@ -11,11 +11,9 @@ function createDataset(fields, constraints, sortFields) {
 	var produto;
 	var emailcomprador;
 	
-	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
+	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitação NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
-    	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
-     		
-    			//var c0 = DatasetFactory.createConstraint("solicitacao", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+    	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {     		
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculo", null, new Array(c0,c1), null);
@@ -34,13 +32,12 @@ function createDataset(fields, constraints, sortFields) {
             		}
         		 }
         		
-    
-        		
+        		       		
         		         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		
-           		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		        	
+           		var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculoDadosPagamento", null, new Array(c2), null);    				  
     	    
         					 try {
@@ -52,7 +49,11 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         				  				 
         					 //criação do item da solicitação de compra
-        					 aItemServico.push(addItemCompra(produto,codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor));    
+        					 aItemServico.push(addItemCompra(produto,codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor)); 
+        					 
+        					 
+        					 // criação do item taxa de serviço
+        					 aItemServico.push(addItemCompra("GGTXS001",codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),'0'));    
         				
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
@@ -99,8 +100,6 @@ function createDataset(fields, constraints, sortFields) {
         					        
         					    } 
         						catch(err) {
-        					        //throw err;
-        							//log.info(err);
         							dataset.addRow([err.message]);
         					    }
 

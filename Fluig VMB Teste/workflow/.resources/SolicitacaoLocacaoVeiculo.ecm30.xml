@@ -408,6 +408,18 @@
       <destinationSequenceId>39</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoLocacaoVeiculo</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>17</version>
+        <sequence>9</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
+      <destinationSequenceId>39</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
   </list>
   <list>
     <ProcessLink>
@@ -616,7 +628,7 @@
 			}&#xd;
     	 &#xd;
 			if (qtdAnexado &lt; qtdeCNH){&#xd;
-				 throw &quot;Você precisa anexar uma cópia da CNH de cada condutor.&quot;;&#xd;
+				 throw &quot;Você precisa anexar uma cópia da CNH para cada condutor cadastrado.&quot;;&#xd;
 			}&#xd;
 			&#xd;
 			&#xd;
@@ -625,7 +637,7 @@
     	 &#xd;
     	 &#xd;
     }&#xd;
-    if (ativAtual == CONTRATAR ){ 	   &#xd;
+    else if (ativAtual == CONTRATAR ){ 	   &#xd;
                   var constraint = new Array();                                 &#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valor, valor, ConstraintType.MUST));&#xd;

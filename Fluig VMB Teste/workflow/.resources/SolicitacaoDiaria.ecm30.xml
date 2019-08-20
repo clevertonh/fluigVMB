@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Diaria</processId>
-      <version>15</version>
+      <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1971</formId>
@@ -127,7 +127,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>240</positionX>
-      <positionY>240</positionY>
+      <positionY>270</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -178,8 +178,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>380</positionX>
-      <positionY>432</positionY>
+      <positionX>370</positionX>
+      <positionY>473</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -230,8 +230,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>760</positionX>
-      <positionY>418</positionY>
+      <positionX>860</positionX>
+      <positionY>460</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -281,8 +281,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>940</positionX>
-      <positionY>410</positionY>
+      <positionX>1060</positionX>
+      <positionY>460</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -333,8 +333,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1030</positionX>
-      <positionY>490</positionY>
+      <positionX>1190</positionX>
+      <positionY>540</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -385,7 +385,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>620</positionX>
+      <positionX>700</positionX>
       <positionY>50</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -421,6 +421,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -435,8 +437,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1210</positionX>
-      <positionY>420</positionY>
+      <positionX>1520</positionX>
+      <positionY>460</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -486,8 +488,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1016</positionX>
-      <positionY>450</positionY>
+      <positionX>1136</positionX>
+      <positionY>500</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -520,7 +522,7 @@
       <formFolder>0</formFolder>
       <automatic>true</automatic>
       <positionX>400</positionX>
-      <positionY>220</positionY>
+      <positionY>260</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -544,8 +546,33 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>650</positionX>
-      <positionY>400</positionY>
+      <positionX>710</positionX>
+      <positionY>440</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <sequence>49</sequence>
+      </processStatePK>
+      <stateName>possui tarifa?</stateName>
+      <stateDescription>possui tarifa?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>1390</positionX>
+      <positionY>440</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -583,8 +610,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>530</positionX>
-      <positionY>249</positionY>
+      <positionX>500</positionX>
+      <positionY>287</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -630,8 +657,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1350</positionX>
-      <positionY>430</positionY>
+      <positionX>1670</positionX>
+      <positionY>470</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -677,8 +704,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>660</positionX>
-      <positionY>520</positionY>
+      <positionX>790</positionX>
+      <positionY>570</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -724,8 +751,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1160</positionX>
-      <positionY>510</positionY>
+      <positionX>1340</positionX>
+      <positionY>550</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -742,6 +769,53 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
     </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <sequence>52</sequence>
+      </processStatePK>
+      <stateName>Pagamento efetuado</stateName>
+      <stateDescription>Pagamento efetuado</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1670</positionX>
+      <positionY>580</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
   </list>
   <list>
     <ConditionProcessState>
@@ -749,7 +823,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -761,7 +835,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot; </condition>
@@ -773,7 +847,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>3</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>12</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot; </condition>
@@ -785,7 +859,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot; </condition>
@@ -797,11 +871,35 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;nao&quot; </condition>
       <destinationSequenceId>39</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>17</version>
+        <sequence>49</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;tarifa&quot;) == &quot;sim&quot; </condition>
+      <destinationSequenceId>46</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>17</version>
+        <sequence>49</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;tarifa&quot;) == &quot;nao&quot; </condition>
+      <destinationSequenceId>52</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -1083,11 +1181,45 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <version>1</version>
-        <linkSequence>47</linkSequence>
+        <linkSequence>48</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>25</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <linkSequence>50</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>23</initialStateSequence>
+      <finalStateSequence>49</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>1</version>
+        <linkSequence>51</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>49</initialStateSequence>
       <finalStateSequence>46</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -1100,12 +1232,12 @@
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
         <version>1</version>
-        <linkSequence>48</linkSequence>
+        <linkSequence>53</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>46</initialStateSequence>
-      <finalStateSequence>25</finalStateSequence>
+      <initialStateSequence>49</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1129,6 +1261,7 @@
 	var REALIZAR_PGTO = 21;&#xd;
 	var AVALIAR_PGTO = 28;&#xd;
 	var CORRIGIR = 41;&#xd;
+	var GERAR_TARIFA = 46;&#xd;
 	&#xd;
 	&#xd;
 	//RECUPERA NUMERO DA ATIVIDADE&#xd;
@@ -1144,7 +1277,7 @@
 	&#xd;
 	&#xd;
 	&#xd;
-	if (ativAtual == CALCULAR_DIARIAS || ativAtual == REALIZAR_PGTO || ativAtual == AVALIAR_PGTO ){&#xd;
+	if (ativAtual == REALIZAR_PGTO || ativAtual == AVALIAR_PGTO || ativAtual == GERAR_TARIFA){&#xd;
 		//	log.info(&quot;Processo beforeCancel - PAGARDIARIAS&quot;);&#xd;
 			 throw &quot;Você não pode excluir essa solicitação pois ela já foi integrada com o sistema Financeiro.&quot;;&#xd;
 				&#xd;
@@ -1218,6 +1351,7 @@ function convertStringToData(StringToData) {
 	var REALIZAR_PGTO = 21;&#xd;
 	var AVALIAR_PGTO = 28;&#xd;
 	var CORRIGIR = 41;&#xd;
+	var GERAR_TARIFA = 46;&#xd;
 	&#xd;
 	&#xd;
 	//RECUPERA NUMERO DA ATIVIDADE&#xd;
@@ -1230,23 +1364,19 @@ function convertStringToData(StringToData) {
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
-	&#xd;
-	&#xd;
-	var autorizado 		 = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
-	&#xd;
-	&#xd;
-    var dtVencimento	 = hAPI.getCardValue(&quot;dtVencimento&quot;);&#xd;
-    var valorTotal		 = hAPI.getCardValue(&quot;vl_diarias&quot;);&#xd;
-    var valorTarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
-    var recebeDiarias 	 = hAPI.getCardValue(&quot;recebediarias&quot;);&#xd;
- 	&#xd;
+	  &#xd;
+    var recebeDiarias 	 = hAPI.getCardValue(&quot;recebediarias&quot;);    &#xd;
+    var temTarifa		 	 = hAPI.getCardValue(&quot;tarifa&quot;);&#xd;
+   &#xd;
 	&#xd;
 	if (ativAtual == CALCULAR_DIARIAS  &amp;&amp; recebeDiarias == &quot;sim&quot;){&#xd;
+		  	var dtVencimento	 = hAPI.getCardValue(&quot;dtVencimento&quot;);&#xd;
+		    var valorTotal		 = hAPI.getCardValue(&quot;vl_diarias&quot;);&#xd;
+		    &#xd;
 			var constraint = new Array();		  			&#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;vl_diarias&quot;, valorTotal, valorTotal, ConstraintType.MUST));  &#xd;
 			constraint.push(DatasetFactory.createConstraint(&quot;dtVencimento&quot;, dtVencimento, dtVencimento, ConstraintType.MUST));&#xd;
-			constraint.push(DatasetFactory.createConstraint(&quot;vl_tarifa&quot;, valorTarifa, valorTarifa, ConstraintType.MUST));&#xd;
 				&#xd;
 			&#xd;
 			var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_DIARIAS&quot;, null, constraint, null);&#xd;
@@ -1255,6 +1385,38 @@ function convertStringToData(StringToData) {
 		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		    } &#xd;
 	&#xd;
+	}&#xd;
+	else if (ativAtual == GERAR_TARIFA  &amp;&amp; temTarifa == &quot;sim&quot;){&#xd;
+		&#xd;
+			var vl_tarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
+		    var dtTarifa		 = hAPI.getCardValue(&quot;dtTarifa&quot;);&#xd;
+		    var banco		 	 = hAPI.getCardValue(&quot;banco&quot;);&#xd;
+		    var agencia		 	 = hAPI.getCardValue(&quot;agencia&quot;);&#xd;
+		    var agendia_dv		 = hAPI.getCardValue(&quot;dv_agencia&quot;);&#xd;
+		    var conta		 	 = hAPI.getCardValue(&quot;contabanco&quot;);&#xd;
+		    var conta_dv		 = hAPI.getCardValue(&quot;dv_conta&quot;);&#xd;
+		 	&#xd;
+		&#xd;
+		&#xd;
+		&#xd;
+		var constraint = new Array();		  			&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;vl_tarifa&quot;, vl_tarifa, vl_tarifa, ConstraintType.MUST));  &#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;dtTarifa&quot;, dtTarifa, dtTarifa, ConstraintType.MUST));&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;banco&quot;, banco, banco, ConstraintType.MUST));&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;agencia&quot;, agencia, agencia, ConstraintType.MUST));&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;dv_agencia&quot;, agendia_dv, agendia_dv, ConstraintType.MUST));&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;contabanco&quot;, conta, conta, ConstraintType.MUST));&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;dv_conta&quot;, conta_dv, conta_dv, ConstraintType.MUST));&#xd;
+&#xd;
+			&#xd;
+		&#xd;
+		var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA100_SOLICITACAO_DIARIAS&quot;, null, constraint, null);&#xd;
+		     &#xd;
+	    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	    } &#xd;
+	    &#xd;
 	}&#xd;
 	&#xd;
 	&#xd;
@@ -1270,8 +1432,8 @@ function convertStringToData(StringToData) {
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>571</height>
-      <width>1480</width>
+      <height>621</height>
+      <width>1731</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Solicitação de diárias</stateName>
@@ -1286,8 +1448,8 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>190</height>
-      <width>1450</width>
+      <height>207</height>
+      <width>1701</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -1302,10 +1464,10 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>190</height>
-      <width>1450</width>
+      <height>207</height>
+      <width>1701</width>
       <positionX>40</positionX>
-      <positionY>200</positionY>
+      <positionY>217</positionY>
       <stateName>Gerente</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -1318,10 +1480,10 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>191</height>
-      <width>1450</width>
+      <height>207</height>
+      <width>1701</width>
       <positionX>40</positionX>
-      <positionY>390</positionY>
+      <positionY>424</positionY>
       <stateName>Tesouraria</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -1364,18 +1526,18 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>15</version>
+        <version>17</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>167</positionX>
-      <positionY>279</positionY>
+      <positionY>304</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>15</version>
+        <version>17</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1386,29 +1548,51 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>15</version>
+        <version>17</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>993</positionX>
-      <positionY>531</positionY>
+      <positionX>1113</positionX>
+      <positionY>582</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>15</version>
+        <version>17</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>912</positionX>
-      <positionY>409</positionY>
+      <positionY>446</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>15</version>
+        <version>17</version>
+        <linkSequence>38</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>1012</positionX>
+      <positionY>446</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>17</version>
+        <linkSequence>38</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>1111</positionX>
+      <positionY>446</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoDiaria</processId>
+        <version>17</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1419,12 +1603,12 @@ function convertStringToData(StringToData) {
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoDiaria</processId>
-        <version>15</version>
-        <linkSequence>45</linkSequence>
+        <version>17</version>
+        <linkSequence>44</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>585</positionX>
-      <positionY>333</positionY>
+      <positionX>622</positionX>
+      <positionY>179</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
