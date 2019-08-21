@@ -9,19 +9,21 @@ function createDataset(fields, constraints, sortFields) {
 	var agencia;
 	var contabanco;
 
+
+	 
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			// log.info("entrando aqui 1");
 	    		var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesDiaria", null, new Array(c0,c1), null);
+	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
            		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
-	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesDiariasDadosPagamento", null, new Array(c2), null);    				  
+	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
 	    	   	 try {
 						//chama função que monta array de objetos dos itens do rateio
@@ -78,7 +80,7 @@ function createDataset(fields, constraints, sortFields) {
 					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 					            timeoutService: '100', // segundos
 					            params : {
-					            	PROCESSO : '' + 5 + '' ,
+					            	PROCESSO : '' + 1 + '' ,
 					            	SOLICITACAO : '' + codSolicitacao + '' ,
 					                SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
 					                VALORTARIFA : '' + valorTarifa + '' ,	

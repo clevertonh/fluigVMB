@@ -167,6 +167,32 @@ function beforeStateEntry(sequenceId){
 			  								
 		   	    
      	}
+     	else if (ativAtual == GERAR_TARIFA  && temTarifa == "sim"){
+     		var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
+    		var dtTarifa		 = hAPI.getCardValue("dtTarifa");
+    		var banco		 	 = hAPI.getCardValue("banco");
+    		var agencia		 	 = hAPI.getCardValue("agencia");		
+    		var conta		 	 = hAPI.getCardValue("contabanco");
+    		
+    		 	
+    		
+    		
+    		
+    		var constraintTarifa = new Array();		  			
+    		constraintTarifa.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
+    		constraintTarifa.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
+    		constraintTarifa.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
+    		constraintTarifa.push(DatasetFactory.createConstraint("banco", banco, banco, ConstraintType.MUST));
+    		constraintTarifa.push(DatasetFactory.createConstraint("agencia", agencia, agencia, ConstraintType.MUST));
+    		constraintTarifa.push(DatasetFactory.createConstraint("contabanco", conta, conta, ConstraintType.MUST));
+    			
+    		
+    		var resultDateset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_VIAGEM", null, constraintTarifa, null);
+    		     
+    	    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
+    	    	throw resultDateset.getValue(0,"RETORNO");
+    	    } 
+     	}
     
 	   
 		function itensServico(){

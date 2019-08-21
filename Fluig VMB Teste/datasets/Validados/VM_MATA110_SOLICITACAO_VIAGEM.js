@@ -69,6 +69,13 @@ function createDataset(fields, constraints, sortFields) {
         								 aItemServico.push(addItemViagem(codproduto,codSolicitacao,qtde,vpassagem,dataviagem));        								 
         							 }       						
          						 }
+        					
+        						 
+            					 // criação do item taxa de serviço
+            					 aItemServico.push(addItemViagem("GGTXS001",codSolicitacao,qtde,0,solicitacao.getValue(0,"dtSolicitacao")));    
+            				
+            				
+        					 
         					 }
         					 catch (erro){
         						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
