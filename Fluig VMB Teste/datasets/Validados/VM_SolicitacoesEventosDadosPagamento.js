@@ -19,6 +19,7 @@ function createDataset(fields, constraints, sortFields) {
     //dataset interno
     var constraintsActive = new Array();
     constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
+    constraintsActive.push(DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST));
     var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraintsActive, null);
     
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra

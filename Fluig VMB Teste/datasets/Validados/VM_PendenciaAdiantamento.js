@@ -48,7 +48,7 @@ function createDataset(fields, constraints, sortFields) {
 	        }
     
     else{
-        log.info(vo.getResult());        
+//        log.info(vo.getResult());        
         dados = vo.getResult();
     }
     

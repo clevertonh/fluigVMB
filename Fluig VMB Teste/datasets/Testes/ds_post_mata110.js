@@ -1,17 +1,17 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("documentid", "2124", "2124", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("documentid", "2134", "2134", ConstraintType.MUST));     
 	 
 	 var itemServico = new Array();
 	 
-	 constraint.push(DatasetFactory.createConstraint("comprador", "candido_juniorr@wvi.org", "candido_juniorr@wvi.org", ConstraintType.MUST));
+	 constraint.push(DatasetFactory.createConstraint("comprador", "candido_junior@wvi.org", "candido_junior@wvi.org", ConstraintType.MUST));
 	 
 	 itemServico.push({ 
 			produto: ''+"DVPSG001" +'', 
 			quantidade: ''+ 1 +'', 
 			valor: '' + 200 + '',
-			data: '' + "18/03/2019" + '' 
+			data: '' + "21/08/2019" + '' 
 				});
 	
 	

@@ -109,17 +109,12 @@ function validateForm(form){
  	 	 var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
-		 
-		// log.info("usuario afastado: " + emailLogado);
-		// log.dir(dataset);
-		 
+			 
 		 if (dataset.values.length >0 ) {
-		//	 log.info("Usuario afastado");
 			 return true;
 	        	
 	        }  
 	        else {
-	      //  	log.info("Usuario não afastado");
 	        	return false;
 	        }	 
  }

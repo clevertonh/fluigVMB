@@ -66,19 +66,28 @@ function createDataset(fields, constraints, sortFields) {
         							 else if (constraints[a].fieldName == "dataViagem" ){
         								 dataviagem = constraints[a].initialValue;       
         								//chama função que monta array de objetos dos itens da viagem   
-        								 aItemServico.push(addItemViagem(codproduto,codSolicitacao,qtde,vpassagem,dataviagem));        								 
+        								 aItemServico.push(addItemViagem(codproduto,codSolicitacao,qtde,vpassagem,dataviagem));       
+        								
+        								 
         							 }       						
-         						 }
-        					
-        						 
-            					 // criação do item taxa de serviço
-            					 aItemServico.push(addItemViagem("GGTXS001",codSolicitacao,qtde,0,solicitacao.getValue(0,"dtSolicitacao")));    
-            				
-            				
-        					 
+         						 }            					 
         					 }
         					 catch (erro){
         						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
+        						 return dataset;
+        					 }
+        					 
+        					 
+        					 
+        					 try{
+        						
+        						 var dataAtual = new Date();
+        						 var dataFIR = convertDataToString(dataAtual)
+        						 // criação do item taxa de serviço
+	            				 aItemServico.push(addItemViagem("GGTXS001",codSolicitacao,1,0,dataFIR));    
+        					 }
+        					 catch (erro){
+        						 dataset.addRow(["ERRO AO CRIAR TAXA FIR"]);
         						 return dataset;
         					 }
        					        							
@@ -229,4 +238,37 @@ function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
    var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
 
    return historicoFormulario;
+}
+
+//recebe data JS e convert para data FLuig
+function convertDataToString(dataToString) {
+    var dia;
+
+    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+    var mes = dataToString.getMonth() + 1;
+
+    console.log("MES: " + mes);
+
+    if (dataToString.getDate().toString().length == 1) {
+        dia = dataToString.getDate();
+        dia = "0" + dia.toString();
+
+    } else {
+        dia = dataToString.getDate();
+
+    }
+
+    console.log("TAMANHO MES: " + mes.toString().length);
+    //converte mes
+    if (mes.toString().length == 1) {
+        mes = "0" + mes.toString();
+
+    }
+    //else {mes = dataToString.getMonth() + 1;}
+
+
+    //novo formato de data: para salvar em campos data do Fluig
+    return dia + "/" + mes + "/" + dataToString.getFullYear();
+
+
 }

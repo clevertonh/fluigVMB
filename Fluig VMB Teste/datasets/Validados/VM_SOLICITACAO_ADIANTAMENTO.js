@@ -7,11 +7,11 @@ function createDataset(fields, constraints, sortFields) {
 			 	var documentId = constraints[0].initialValue;
 			// 	var dtAprovacao = constraints[1].initialValue;
 			 
-			 	var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+			 	var c0 = DatasetFactory.createConstraint("documentid", documentId, documentId, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
 	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesAdiantamento", null, new Array(c0,c1), null);
 	    		
-	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
+	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),documentId,solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
 					 try {
@@ -36,7 +36,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	FONTE	: '' + solicitacao.getValue(0,"fontefinanciamento") +'',
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
 						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
-						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
+						            	IDDOCUMENTO: '' + documentId + '',
 						            	ITINERARIO  : '' + solicitacao.getValue(0,"itinerario") +'',
 						            	TIPOADIANTAMENTO: ''+"1" +'',
 						            	PROCESSO: ''+"8" +''
