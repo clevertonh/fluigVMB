@@ -21,8 +21,20 @@ function displayFields(form,customHTML){
 		        form.setVisibleById("comentarioG___"+ indexes[i], false);	
 	        
 		    }
-    	
-    	
+		    form.setVisibleById("div_comentarioF", false);	
+		    form.setVisibleById("div_campo_10", false);	
+		    form.setVisibleById("div_comentarioG", false);	
+		    form.setVisibleById("div_progresso", false);	
+		    form.setVisibleById("div_analise", false);
+		    form.setVisibleById("campo_6", false);
+		    form.setVisibleById("campo_7", false);
+		    form.setVisibleById("campo_8", false);
+		    form.setVisibleById("campo_9", false);
+		    
+		    
+		    
+		    
+		    
 	 }
    
 	

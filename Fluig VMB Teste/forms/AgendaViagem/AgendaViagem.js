@@ -64,8 +64,6 @@ function adicionaLinha() {
 function buscaAtividades() {
 	
 	var documento = document.getElementById("documento").value;
-	console.log("documento");
-	console.log(documento);
 	
     var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));	
@@ -81,9 +79,6 @@ function buscaAtividades() {
     constraints.push(DatasetFactory.createConstraint("tablename", "tbAgendaViagem", "tbAgendaViagem", ConstraintType.MUST));
      
     dataset = DatasetFactory.getDataset("VM_AgendaViagem", null, constraints, null);
-
-    console.log("RECUPERA AGENDA");
-    console.log(dataset);
     
     if (dataset != null && dataset.values.length > 0) {
     	avaliarAtividades(dataset.values);

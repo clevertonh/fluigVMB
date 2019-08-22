@@ -6,13 +6,13 @@ function enableFields(form){
 	var activity = getValue('WKNumState');
 	
 	
-	if (activity ==  INICIAL || activity == ACORDO){
+	if (activity !=  INICIAL && activity != ACORDO){
 		//BLOQUEIA CAMPOS DE SERVIÇO
 		 var indexes = form.getChildrenIndexes("tableMetas");	    	    	    	   
 		    for (var i = 0; i < indexes.length; i++) {
-		        form.setEnabled("comentarioF___"+ indexes[i], false);	
-		       	form.setEnabled("campo_10___"+ indexes[i], false);
-		        form.setEnabled("comentarioG___"+ indexes[i], false);	
+		        form.setEnabled("acao___"+ indexes[i], false);	
+		       	form.setEnabled("porque___"+ indexes[i], false);
+		        form.setEnabled("como___"+ indexes[i], false);	
 	        
 		    }
 	}

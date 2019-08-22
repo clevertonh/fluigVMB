@@ -65,7 +65,10 @@ $(document).ready(function() {
 
 
 function fnCustomDeleteMeta(oElement) {	  
-		if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO){						
+		if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO){
+			//verificar se é campo meta esta vazio
+			//se sim, permitir excluir
+			
 			FLUIGC.toast({
                 title: 'Atenção',
                 message: 'Você não pode remover essa informação.',
@@ -97,9 +100,12 @@ function setSelectedZoomItem(selectedItem) {
 function adicionaMeta() {
     var indice = wdkAddChild('tableMetas');
 
-    
-    
-    
+    if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
+    	 $('td:nth-child(5)').hide();
+    	 $('td:nth-child(6)').hide();
+    	 $('td:nth-child(7)').hide();
+    }
+   
     
 }
 
