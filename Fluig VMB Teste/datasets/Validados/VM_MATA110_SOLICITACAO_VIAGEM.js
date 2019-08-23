@@ -28,7 +28,7 @@ function createDataset(fields, constraints, sortFields) {
         		for (var a=0; a<constraints.length; a++){
         			if (constraints[a].fieldName == "comprador"){
             			emailcomprador = constraints[a].initialValue;            			
-            			break;
+            			//break;
             		}        			
         		}
         	     		
@@ -79,19 +79,23 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         					 
         					 
-        					
-        					 try{
-        						
-        						 var dataAtual = new Date();
-        						 var dataFIR = convertDataToString(dataAtual)
-        						 // criação do item taxa de serviço
-	            				 aItemServico.push(addItemViagem("GGTXS001",codSolicitacao,1,0,dataFIR));    
-        					 }
-        					 catch (erro){
-        						 dataset.addRow(["ERRO AO CRIAR TAXA FIR"]);
-        						 return dataset;
-        					 }
-       					      
+        					if (solicitacao.getValue(0,"pedirPassagem") == "sim"){
+        			
+        						 try{
+             						
+            						 var dataAtual = new Date();
+            						 var dataFIR = convertDataToString(dataAtual)
+            						 // criação do item taxa de serviço
+    	            				 aItemServico.push(addItemViagem("GGTXS001",codSolicitacao,1,0,dataFIR));    
+            					 }
+            					 catch (erro){
+            						 dataset.addRow(["ERRO AO CRIAR TAXA FIR"]);
+            						 return dataset;
+            					 }
+           					      
+            					 
+        					}
+        			
         					
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
@@ -249,7 +253,7 @@ function convertDataToString(dataToString) {
     //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
     var mes = dataToString.getMonth() + 1;
 
-    console.log("MES: " + mes);
+   // console.log("MES: " + mes);
 
     if (dataToString.getDate().toString().length == 1) {
         dia = dataToString.getDate();
@@ -260,7 +264,7 @@ function convertDataToString(dataToString) {
 
     }
 
-    console.log("TAMANHO MES: " + mes.toString().length);
+   // console.log("TAMANHO MES: " + mes.toString().length);
     //converte mes
     if (mes.toString().length == 1) {
         mes = "0" + mes.toString();

@@ -269,7 +269,7 @@ function displayFields(form,customHTML){
     	//remove botão de excluir item da agenda
     	//tomar cuidado porque essa função oculta o botao padrão de deletar do filho. Se um outro form for adicionado
     	//irá ocultar os botões dele tambem.
-		 form.setHideDeleteButton(true);
+		// form.setHideDeleteButton(true);
 	       
 	        if (form.getValue("viagemplanejada") == "nao"){
 	        	form.setVisibleById("divDataSetAgenda", false);

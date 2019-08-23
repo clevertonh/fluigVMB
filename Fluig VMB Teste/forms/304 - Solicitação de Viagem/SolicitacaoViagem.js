@@ -1921,7 +1921,7 @@ function retornaDatas(){
 }
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == CORRIGIRSOLICITACAO || ATIVIDADE == APROVACAO	){								
 		fnWdkRemoveChild(oElement);	
 
 	}

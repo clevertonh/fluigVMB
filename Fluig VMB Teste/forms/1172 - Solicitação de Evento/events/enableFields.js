@@ -3,7 +3,7 @@ function enableFields(form){
 	var ABERTURA = 4;
 	var APROVACAO = 5;
 	var CORRIGIR = 45;
-
+	var GERENCIAR = 55;
 	
 	var activityEnable = getValue('WKNumState');
 	
@@ -40,8 +40,7 @@ function enableFields(form){
 	 else if (activityEnable == APROVACAO){
 		 	//set numero da solicitação
 		 	form.setValue("solicitacao",getValue('WKNumProces'));
-		 
-		 
+		 		 
 		 	var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -56,10 +55,19 @@ function enableFields(form){
 		    //habilita campos de aprovação
 		    form.setEnabled('aprovacao', true);
 			form.setEnabled('justificativaReprovacao', true);		 
-		    
-		 
-		 
-		 
+
+			
+	 }
+	 else if (activityEnable == GERENCIAR){
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
 	 }
 	 
 	

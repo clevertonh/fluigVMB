@@ -81,12 +81,12 @@ function validateForm(form){
 		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
 		 
 		 if (dataset.values.length >0 ) {
-			 log.info("Usuario afastado");
+			// log.info("Usuario afastado");
 			 return true;
 	        	
 	        }  
 	        else {
-	        	log.info("Usuario não afastado");
+	        	//log.info("Usuario não afastado");
 	        	return false;
 	        }	 
   }
