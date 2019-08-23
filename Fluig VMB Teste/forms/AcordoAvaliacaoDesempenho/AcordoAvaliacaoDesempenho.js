@@ -1,5 +1,6 @@
 var INICIAL = 0;
 var ACORDO = 4;
+var FEEDBACK1 = 5;
 
 var dtAcordo;
 
@@ -59,7 +60,9 @@ $(document).ready(function() {
 		dtAcordo.setDate(new Date().toLocaleString());
 		
 	}
+	
 
+	
 	
 });
 
@@ -104,9 +107,23 @@ function adicionaMeta() {
     	 $('td:nth-child(5)').hide();
     	 $('td:nth-child(6)').hide();
     	 $('td:nth-child(7)').hide();
+    	 $('td:nth-child(8)').hide();
     }
    
     
+}
+
+function clickProgresso(){
+	if (document.getElementById("verde").checked == true){
+		$('#progresso').css('background-color', '#008000');	
+	}
+	else if (document.getElementById("amarelo").checked == true){
+		$('#amarelo').css('background-color', '#FFFF00');	
+	}
+	else if (document.getElementById("vermelho").checked == true){
+		$('#vermelho').css('background-color', '#FF0000');	
+	}
+	
 }
 
 function removedZoomItem(removedItem) {   

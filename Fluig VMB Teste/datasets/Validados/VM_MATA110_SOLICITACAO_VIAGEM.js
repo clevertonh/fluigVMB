@@ -27,7 +27,8 @@ function createDataset(fields, constraints, sortFields) {
         		
         		for (var a=0; a<constraints.length; a++){
         			if (constraints[a].fieldName == "comprador"){
-            			emailcomprador = constraints[a].initialValue;
+            			emailcomprador = constraints[a].initialValue;            			
+            			break;
             		}        			
         		}
         	     		
@@ -78,7 +79,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         					 
         					 
-        					 
+        					
         					 try{
         						
         						 var dataAtual = new Date();
@@ -90,7 +91,8 @@ function createDataset(fields, constraints, sortFields) {
         						 dataset.addRow(["ERRO AO CRIAR TAXA FIR"]);
         						 return dataset;
         					 }
-       					        							
+       					      
+        					
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
         					        var data = {

@@ -10,6 +10,9 @@ function beforeCancelProcess(colleagueId,processId){
 	var COTARREMARCACAO = 135;
 	var PAGARDIARIAS = 129;
 	var CANCELARSOLICITACAO = 93;
+	var REALIZAR_PAGAMENTO = 165;
+	var AVALIAR_ATRASO = 159;
+	var GERAR_TARIFA = 196;
 
 	var split1;
 	var atv1;
@@ -56,6 +59,20 @@ function beforeCancelProcess(colleagueId,processId){
 			
 	}
 	
+	if (ativAtual == REALIZAR_PAGAMENTO || atv1 == REALIZAR_PAGAMENTO ||  atv2 == REALIZAR_PAGAMENTO){
+		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
+			
+	}
+	
+	if (ativAtual == AVALIAR_ATRASO || atv1 == AVALIAR_ATRASO ||  atv2 == AVALIAR_ATRASO){
+		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
+			
+	}
+	
+	if (ativAtual == GERAR_TARIFA || atv1 == GERAR_TARIFA ||  atv2 == GERAR_TARIFA){
+		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
+			
+	}
 
 
 	

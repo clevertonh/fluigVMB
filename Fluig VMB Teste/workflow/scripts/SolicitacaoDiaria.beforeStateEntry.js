@@ -44,23 +44,12 @@ function beforeStateEntry(sequenceId){
 		
 		var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
 		var dtTarifa		 = hAPI.getCardValue("dtTarifa");
-		var banco		 	 = hAPI.getCardValue("banco");
-		var agencia		 	 = hAPI.getCardValue("agencia");		
-		var conta		 	 = hAPI.getCardValue("contabanco");
-		
-		 	
-		
-		
-		
+			
 		var constraint = new Array();		  			
 		constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
 		constraint.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
 		constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
-		constraint.push(DatasetFactory.createConstraint("banco", banco, banco, ConstraintType.MUST));
-		constraint.push(DatasetFactory.createConstraint("agencia", agencia, agencia, ConstraintType.MUST));
-		constraint.push(DatasetFactory.createConstraint("contabanco", conta, conta, ConstraintType.MUST));
-			
-		
+	
 		var resultDateset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_DIARIAS", null, constraint, null);
 		     
 	    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){

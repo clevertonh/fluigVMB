@@ -10,7 +10,7 @@ function displayFields(form,customHTML){
 	var CANCELARSOLICITACAO = 93 ;
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
-	var PAGARDIARIAS = 129;
+	var CALCULARDIARIAS = 129;
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
 	var GERAR_TARIFA = 196;
@@ -515,7 +515,7 @@ function displayFields(form,customHTML){
         }
 
 	}
-	else if (activity == PAGARDIARIAS){
+	else if (activity == CALCULARDIARIAS){
 		//form.setVisibleById("2b", false);  
 		//form.setVisibleById("3b", false); 
 		//form.setVisibleById("div_tarifa", false); 

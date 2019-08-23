@@ -12,8 +12,10 @@ function beforeStateEntry(sequenceId){
 	var CONFIRMARREEMBOLSO = 79;
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
-	var PAGARDIARIAS = 129;
-	
+	var CALCULARDIARIAS = 129;
+	var REALIZAR_PAGAMENTO = 165;
+	var AVALIAR_ATRASO = 159;
+	var GERAR_TARIFA = 196;
 	
 	//GATEWAY
 	var GATEWAYPASSAGEMCOMPRADA = 143;
@@ -144,20 +146,11 @@ function beforeStateEntry(sequenceId){
      	
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-     	else if ( ativAtual == PAGARDIARIAS  && recebeDiarias == "sim") {	
+     	else if ( ativAtual == CALCULARDIARIAS  && recebeDiarias == "sim") {	
 			   var constraintDiarias = new Array();		  			
 			   constraintDiarias.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
 			   constraintDiarias.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 			   constraintDiarias.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
-	  			
-	  			if (geraTarifa == "sim"){
-	  				constraintDiarias.push(DatasetFactory.createConstraint("vl_tarifa", valorTarifa, valorTarifa, ConstraintType.MUST));
-	  				constraintDiarias.push(DatasetFactory.createConstraint("fornecedorTarifa", fornecedorT, fornecedorT, ConstraintType.MUST));
-	  				constraintDiarias.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
-		  				
-	  			}
-	  			
-	  			
 	  			
 	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraintDiarias, null);
 		  		    
@@ -167,24 +160,17 @@ function beforeStateEntry(sequenceId){
 			  								
 		   	    
      	}
+     	//INTEGRAÇÃO COM ROTINA DA MOVIMENTAÇÃO BANCARIA
      	else if (ativAtual == GERAR_TARIFA  && temTarifa == "sim"){
      		var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
     		var dtTarifa		 = hAPI.getCardValue("dtTarifa");
-    		var banco		 	 = hAPI.getCardValue("banco");
-    		var agencia		 	 = hAPI.getCardValue("agencia");		
-    		var conta		 	 = hAPI.getCardValue("contabanco");
-    		
-    		 	
-    		
-    		
+    			
     		
     		var constraintTarifa = new Array();		  			
     		constraintTarifa.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
     		constraintTarifa.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
     		constraintTarifa.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
-    		constraintTarifa.push(DatasetFactory.createConstraint("banco", banco, banco, ConstraintType.MUST));
-    		constraintTarifa.push(DatasetFactory.createConstraint("agencia", agencia, agencia, ConstraintType.MUST));
-    		constraintTarifa.push(DatasetFactory.createConstraint("contabanco", conta, conta, ConstraintType.MUST));
+    	
     			
     		
     		var resultDateset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_VIAGEM", null, constraintTarifa, null);

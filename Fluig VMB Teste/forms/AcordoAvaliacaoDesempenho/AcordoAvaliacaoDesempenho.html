@@ -55,13 +55,6 @@
                                              <div class="tab-content">
                                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                                    <div class="row">
-                                                      <div class="form-group col-md-2">
-                                                         <label for="id" class="required">Cód. Acordo
-                                                         </label>
-                                                         <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
-                                                      </div>
-                                                   </div>
-                                                   <div class="row">
                                                       <div class="form-group col-md-5">
                                                          <label for="Funcionario">Nome do Avaliado</label> 
                                                          <input name="Funcionario"
@@ -80,7 +73,7 @@
                                                       </div>
                                                       <div class="form-group col-md-5">
                                                          <label>Função</label>
-                                                         <input type="text" class="form-control" name="funcao" id="funcao">
+                                                         <input type="text" class="form-control" name="funcao" id="funcao" readonly>
                                                       </div>
                                                       <div class="form-group col-md-2">
                                                          <label for="dataSolicitacao">Data de elaboração</label>
@@ -109,33 +102,37 @@
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentarioF">Comentários do funcionário</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_campo_10">Como isto foi feito?</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentarioG">Comentários do Gerente</th>
-                                                                           <th class="tableColumn" id="div_progresso">Progresso</th>
+                                                                           <th class="tableColumn"  id="div_progresso">Progresso</th>
                                                                         </tr>
                                                                      </thead>
                                                                      <tbody id="tbodyItensMetas">
                                                                         <tr>
                                                                            <td>                                                    
-                                                                              <textArea class="form-control" name="acao" id="acao" maxlength="250" style="width:500px;"  ></textArea>
+                                                                              <textArea class="form-control" rows="9" name="acao" id="acao" maxlength="250" style="width:500px;"  ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" name="porque" id="porque" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="9" name="porque" id="porque" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" name="como" id="como" maxlength="250" style="width:500px;"  ></textArea>
+                                                                              <textArea class="form-control" rows="9" name="como" id="como" maxlength="250" style="width:500px;"  ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="9" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" name="campo_10" id="campo_10" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="9" name="campo_10" id="campo_10" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" name="comentarioG" id="comentarioG" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="9" name="comentarioG" id="comentarioG" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
-                                                                           <td>
-                                                                                                                                                      
-                                                                           </td>
-                                                         
+                                                                           <td >                                                                             	
+                                                                           	 	<label for="verde">Verde</label> 
+	                                                                            <input type="radio" id="verde" name="progresso" value="verde" class="form-control" onclick="clickProgresso()">
+                                                                       	  		<label for="amarelo">Amarelo</label> 
+    				                                                         	<input type="radio" id="amarelo" name="progresso" value="amarelo" class="form-control" onclick="clickProgresso()">   
+    	                                                                       	<label for="vermelho">Vermelho</label> 
+						                                                        <input type="radio" id="vermelho" name="progresso" value="vermelho" class="form-control" onclick="clickProgresso()">
+                                                                           </td>                                                                                                                                   
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>

@@ -10,11 +10,11 @@ function enableFields(form) {
 	var CANCELARSOLICITACAO = 93 ;
 	var CORRIGIRSOLICITACAO = 98;
 	var COTARREMARCACAO = 135;
-	var PAGARDIARIAS = 129;
+	var CALCULARDIARIAS = 129;
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
 	var GERAR_TARIFA = 196;
-		
+		//CALCULARDIARIAS
 	 //form.setEnabled('viagemplanejada', false);		
 	 form.setEnabled('cotacaoVoo', false);
 	 form.setEnabled('cotacaoHotel', false);
@@ -279,7 +279,7 @@ function enableFields(form) {
 			 
 			 
 		 }
-		 else if (activityEnable == PAGARDIARIAS || activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO ){
+		 else if (activityEnable == CALCULARDIARIAS || activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO ){
 			//CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);

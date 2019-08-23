@@ -6,6 +6,8 @@ function createDataset(fields, constraints, sortFields) {
 	//log.info("INTEGRAÇÃO ADIANTAMENTO");
 	//log.dir(constraints);
 	
+	
+	
 	 if(constraints !== null && constraints.length){
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			 	var documentId = constraints[0].initialValue;
