@@ -92,6 +92,7 @@ function setSelectedZoomItem(selectedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var EVENTO ="dataset_solicitacaoevento";
+    var SERVICO ="txtproduto";
    
 
     //Recebe o nome do campo zoom
@@ -182,8 +183,27 @@ function setSelectedZoomItem(selectedItem) {
     	}
     }
     
+    else if (campoZOOM == SERVICO) {
+    	$('#codigoProduto').val(selectedItem["CODIGO"]);
+       	
+    	
+    }
     
-    
+}
+
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA 	){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
 }
 
 function adicionaLinha() {

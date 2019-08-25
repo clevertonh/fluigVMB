@@ -7,8 +7,13 @@ var SOLICITACANCELAMENTO = 33
 var CANCELAMENTOPASSAGEM = 64;
 var CONFIRMARREEMBOLSO = 79;
 var CORRIGIRSOLICITACAO = 98;
-var COTARREMARCACAO = 135;
 var PAGARDIARIAS = 129;
+var COTARREMARCACAO = 135;
+var REALIZAR_PAGAMENTO = 165;
+var AVALIAR_ATRASO = 159;
+var GERAR_TARIFA = 196;
+var APROVARDIRETOR_FIN = 200;
+
 var dadosGestor;
 var site;
 var AtividadeAtual;
@@ -56,10 +61,11 @@ $(document).ready(function() {
 
     }
     
-	if (ATIVIDADE == COMPRARPASSAGEM){
+	if (ATIVIDADE != COMPRARPASSAGEM ){
 		document.getElementById("btn_add_itemS").style.display = "none";
 		
 	}
+	
 	
 	if (ATIVIDADE != ABERTURA && ATIVIDADE != CORRIGIRSOLICITACAO && ATIVIDADE != SOLICITARVIAGEM && ATIVIDADE != APROVACAO){
 		document.getElementById("btn_add_item").style.display = "none";

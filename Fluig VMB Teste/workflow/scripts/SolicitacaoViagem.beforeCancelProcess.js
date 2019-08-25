@@ -13,6 +13,7 @@ function beforeCancelProcess(colleagueId,processId){
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
 	var GERAR_TARIFA = 196;
+	var APROVARDIRETOR_FIN = 200;
 
 	var split1;
 	var atv1;
@@ -74,6 +75,10 @@ function beforeCancelProcess(colleagueId,processId){
 			
 	}
 
+	if (ativAtual == APROVARDIRETOR_FIN || atv1 == APROVARDIRETOR_FIN ||  atv2 == APROVARDIRETOR_FIN){
+		 throw "Você não pode excluir essa solicitação pois ela já foi atendida.";
+			
+	}
 
 	
 	

@@ -2,7 +2,7 @@ function validateForm(form){
 	var ABERTURA = 0;
 	var APROVACAO =5;
 	var CORRIGIR = 15;
-	var AVALIAR_ERRO = 22;
+	var GERAR_SC = 42;
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -25,7 +25,7 @@ function validateForm(form){
     }
     
 
-	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR || activity == AVALIAR_ERRO){
+	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR || activity == GERAR_SC){
 	
 		 //retorna email usuario logado
 	    var email = retornaEmailUsuario(usuarioLogado);

@@ -228,6 +228,24 @@ function setSelectedZoomItem(selectedItem) {
         
 }
 
+function fnCustomDeleteRateio(oElement) {
+	fnWdkRemoveChild(oElement);
+	/*
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == APROVACAO	|| ATIVIDADE == PRESTAR_CONTAS || ATIVIDADE == VALIDAR_NOTA || ATIVIDADE == CORRIGIR){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+*/
+}
+
 function adicionaLinhaProduto() {
 	
 	var row = wdkAddChild('tableCompras');	

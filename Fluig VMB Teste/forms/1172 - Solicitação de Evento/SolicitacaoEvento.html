@@ -100,7 +100,7 @@
                                                                             </span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="from-group col-md-1">
+                                                                    <div class="form-group col-md-1">
                                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                                                     </div>
                                                                 </div>
@@ -182,36 +182,13 @@
                                                                         <textarea rows="5" cols="60" name="resultadoE" id ="resultadoE" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
-                                                   
-                                                                <div class="row">
-                                                                	<h2>Serviços sem custos financeiros</h2>                                                                    
-                                                                	<div class="row">
-                                                                	<div class="form-group col-md-3">
-                                                                        <label>Serviço de sala (água e café)?</label>
-                                                                        <input type="checkbox" id="cb_servicosala" name="cb_servicosala">
-                                                                    </div>                                                                    
-                                                                	</div>
-                                                                    <div class="row">
-                                                                   		 <div class="form-group col-md-4">
-                                                                      		  <label>Equipamentos?</label>
-                                                                       		  <textarea rows="5" cols="60" name="txEquipamentos" class="form-control" placeholder="mesa de som, microfone, datashow, tela, etc"></textarea>
-                                                                    	</div>
-                                                                    	 <div class="form-group col-md-4">
-                                                                        	<label>Material de Apoio?</label>
-                                                                        	<textarea rows="5" cols="60" name="txMaterialapoio" class="form-control" placeholder="caneta, cola, fita adesiva, etc"></textarea>
-                                                                   		 </div>
-                                                                   	
-                                                                    </div>
-                                                                    <div class="row">
+                                                                   <div class="row">
                                                                     	 <div class="form-group col-md-12">
                                                                    		 	<label>Comentários gerais</label><br>
                                                                    		 	<textarea rows="5" cols="60" name="txComentarios" class="form-control"></textarea>
                                                                    		 </div>
                                                                     </div>
-                                                                  	
-                                                                   
-                                                                </div>
-                                                                <ul class="list-inline pull-right">
+                                                                   <ul class="list-inline pull-right">
                                                                     <li>
                                                                         <button type="button" class="btn btn-primary next-step">Avançar</button>
                                                                     </li>
@@ -489,17 +466,478 @@
                                                                         <button type="button" class="btn btn-primary prev-step">Voltar</button>
                                                                     </li>                           
                                                                     <li>
-                                                                       <button type="button" class="btn btn-primary next-step">Avançar</button>
+                                                                       <button type="button" id ="avancarAvaliacao" class="btn btn-primary next-step">Avançar</button>
                                                                     </li>                                         
                                                                 </ul>
                                                             
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step4">
-                                                             <ul class="list-inline pull-right">
-                                                                    <li>
-                                                                        <button type="button" class="btn btn-primary prev-step">Voltar</button>
-                                                                    </li>                                                                                                                                     
-                                                                </ul>
+                                                             <div class="panel panel-default" id="painel_avaliacao">
+																<div class="panel-heading ">
+                                                                    <h3 class="panel-title"><b>Avaliação sobre o evento</b></h3>
+                                                                    </div>
+                                                                 	<div class="row">
+                                                                 		<div class="form-group col-md-3">
+                                                                 			<label>Item</label>
+                                                                 		</div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Péssimo</label>
+                                                                 		</div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Fraco</label>
+                                                                 		</div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Médio</label></div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Bom</label>	
+                                                                 		</div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Excelente</label>
+                                                                 		</div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Não se aplica</label>
+                                                                 		</div>
+                                                                 		<div class="form-group col-md-1">
+                                                                 			<label>Observação</label>
+                                                                 		</div>
+                                                                 	</div>
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Local</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo1" value="pessimo">
+	                                                                        
+																		</div>
+																			<div class="form-group col-md-1">		 
+																			 
+	                                                                         <input type="radio" name="campo1" value="fraco" >
+	                                                                        
+	                                                                        
+																		</div>
+																			<div class="form-group col-md-1">		 
+																			 
+	                                                                         <input type="radio" name="campo1" value="medio"  >
+	                                                                        
+																		</div>
+																			<div class="form-group col-md-1">		 
+																			 
+	                                                                         <input type="radio" name="campo1" value="bom" >
+	                                                                         
+																		</div>
+																			<div class="form-group col-md-1">		 
+																			
+	                                                                         <input type="radio" name="campo1" value="excelente" >
+	                                                                         
+																		</div>
+																			<div class="form-group col-md-1">		 
+																			 
+	                                                                         	<input type="radio" name="campo1" value="naoseaplica">
+																			</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo17" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Data e hora</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo2" value="pessimo">
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo2" value="fraco" >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo2" value="medio"  >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo2" value="bom" >       
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo2" value="excelente" >
+																		</div>
+																			<div class="form-group col-md-1">		 																	 
+	                                                                         <input type="radio" name="campo2" value="naoseaplica">
+																		</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo18" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Artista</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo3" value="pessimo">
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo3" value="fraco" >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo3" value="medio"  >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo3" value="bom" >       
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo3" value="excelente" >
+																		</div>
+																			<div class="form-group col-md-1">		 																	 
+	                                                                         <input type="radio" name="campo3" value="naoseaplica">
+																		</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo19" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Mobilização dos participantes</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo4" value="pessimo">
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo4" value="fraco" >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo4" value="medio"  >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo4" value="bom" >       
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo4" value="excelente" >
+																		</div>
+																			<div class="form-group col-md-1">		 																	 
+	                                                                         <input type="radio" name="campo4" value="naoseaplica">
+																		</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo20" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Mobilização dos voluntários</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo5" value="pessimo">
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo5" value="fraco" >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo5" value="medio"  >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo5" value="bom" >       
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo5" value="excelente" >
+																		</div>
+																			<div class="form-group col-md-1">		 																	 
+	                                                                         <input type="radio" name="campo5" value="naoseaplica">
+																		</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo21" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Equipe organizadora (GT)</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo6" value="pessimo">
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo6" value="fraco" >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo6" value="medio"  >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo6" value="bom" >       
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo6" value="excelente" >
+																		</div>
+																			<div class="form-group col-md-1">		 																	 
+	                                                                         <input type="radio" name="campo6" value="naoseaplica">
+																		</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo22" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="form-group col-md-3">
+																			<label>Programação</label>
+																		</div>
+																		<div class="form-group col-md-1">		 
+																			 <input type="radio" name="campo7" value="pessimo">
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo7" value="fraco" >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo7" value="medio"  >
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo7" value="bom" >       
+																		</div>
+																			<div class="form-group col-md-1">		 
+	                                                                         <input type="radio" name="campo7" value="excelente" >
+																		</div>
+																			<div class="form-group col-md-1">		 																	 
+	                                                                         <input type="radio" name="campo7" value="naoseaplica">
+																		</div>
+																		<div class="form-group col-md-3">
+																			<textarea name="campo23" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																		<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Transporte (ônibus)</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo8" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo8" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo8" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo8" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo8" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo8" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo24" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Alimentação (lanches)</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo9" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo9" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo9" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo9" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo9" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo9" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo25" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Estrutura de palco, equipamentos de som</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo10" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo10" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo10" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo10" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo10" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo10" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo26" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Estandes</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo11" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo11" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo11" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo11" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo11" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo11" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo27" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Segurança (primeiros socorros)</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo12" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo12" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo12" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo12" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo12" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo12" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo28" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Material de apoio</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo13" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo13" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo13" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo13" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo13" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo13" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo29" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																		<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Comunicação (contato com as mídias e panfletagem)</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo14" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo14" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo14" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo14" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo14" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo14" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo30" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Material gráfico (criação e impressão)</label>
+																			</div> 
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo15" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo15" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo15" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo15" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo15" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo15" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo31" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+																	<div class="row">
+																			<div class="form-group col-md-3">
+																				<label>Organização geral</label>
+																			</div>
+																			<div class="form-group col-md-1">		 
+																				 <input type="radio" name="campo16" value="pessimo">
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo16" value="fraco" >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo16" value="medio"  >
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo16" value="bom" >       
+																			</div>
+																				<div class="form-group col-md-1">		 
+		                                                                         <input type="radio" name="campo16" value="excelente" >
+																			</div>
+																				<div class="form-group col-md-1">		 																	 
+		                                                                         <input type="radio" name="campo16" value="naoseaplica">
+																			</div>
+																			<div class="form-group col-md-3">
+																			<textarea name="campo32" rows="3" cols="35"></textarea>
+																		</div>
+																	</div>
+                                                                      <ul class="list-inline pull-right">
+                                                                    	<li>
+                                                                        	<button type="button" class="btn btn-primary prev-step">Voltar</button>
+                                                                    	</li>                                                                    
+                                                                	  </ul>
+														</div>
+                                                             
+                                                             
+                                                   
                                                             </div>
                                                             <div class="clearfix"></div>
                                                         </div>

@@ -178,7 +178,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>370</positionX>
+      <positionX>380</positionX>
       <positionY>473</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -682,8 +682,8 @@
         <version>1</version>
         <sequence>39</sequence>
       </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
+      <stateName>Não tem direito</stateName>
+      <stateDescription>Não tem direito</stateDescription>
       <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -752,7 +752,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1340</positionX>
-      <positionY>550</positionY>
+      <positionY>560</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -798,8 +798,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1670</positionX>
-      <positionY>580</positionY>
+      <positionX>1500</positionX>
+      <positionY>560</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1388,29 +1388,14 @@ function convertStringToData(StringToData) {
 	}&#xd;
 	else if (ativAtual == GERAR_TARIFA  &amp;&amp; temTarifa == &quot;sim&quot;){&#xd;
 		&#xd;
-			var vl_tarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
-		    var dtTarifa		 = hAPI.getCardValue(&quot;dtTarifa&quot;);&#xd;
-		    var banco		 	 = hAPI.getCardValue(&quot;banco&quot;);&#xd;
-		    var agencia		 	 = hAPI.getCardValue(&quot;agencia&quot;);&#xd;
-		    var agendia_dv		 = hAPI.getCardValue(&quot;dv_agencia&quot;);&#xd;
-		    var conta		 	 = hAPI.getCardValue(&quot;contabanco&quot;);&#xd;
-		    var conta_dv		 = hAPI.getCardValue(&quot;dv_conta&quot;);&#xd;
-		 	&#xd;
-		&#xd;
-		&#xd;
-		&#xd;
+		var vl_tarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
+		var dtTarifa		 = hAPI.getCardValue(&quot;dtTarifa&quot;);&#xd;
+			&#xd;
 		var constraint = new Array();		  			&#xd;
 		constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
 		constraint.push(DatasetFactory.createConstraint(&quot;vl_tarifa&quot;, vl_tarifa, vl_tarifa, ConstraintType.MUST));  &#xd;
 		constraint.push(DatasetFactory.createConstraint(&quot;dtTarifa&quot;, dtTarifa, dtTarifa, ConstraintType.MUST));&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;banco&quot;, banco, banco, ConstraintType.MUST));&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;agencia&quot;, agencia, agencia, ConstraintType.MUST));&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;dv_agencia&quot;, agendia_dv, agendia_dv, ConstraintType.MUST));&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;contabanco&quot;, conta, conta, ConstraintType.MUST));&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;dv_conta&quot;, conta_dv, conta_dv, ConstraintType.MUST));&#xd;
-&#xd;
-			&#xd;
-		&#xd;
+	&#xd;
 		var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA100_SOLICITACAO_DIARIAS&quot;, null, constraint, null);&#xd;
 		     &#xd;
 	    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;

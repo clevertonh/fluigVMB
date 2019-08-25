@@ -4,6 +4,7 @@ function enableFields(form){
 	var APROVACAO = 5;
 	var CORRIGIR = 45;
 	var GERENCIAR = 55;
+	var AVALIACAO = 57;
 	
 	var activityEnable = getValue('WKNumState');
 	
@@ -68,6 +69,26 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
+	 }
+	 
+	 else if (activityEnable == AVALIACAO){
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		
+		    for (var row =1; row <=32; row++){
+		    	  form.setEnabled('campo'+row, true);
+		    }
+		  
+		
+		    
+		    
 	 }
 	 
 	

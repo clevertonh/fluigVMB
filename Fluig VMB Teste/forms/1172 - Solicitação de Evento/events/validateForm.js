@@ -3,6 +3,8 @@ function validateForm(form){
 	var ABERTURA = 4;
 	var APROVACAO = 5;
 	var CORRIGIR = 45;
+	var GERENCIAR = 55;
+	var AVALIACAO = 57;
 	
 	
 	
@@ -19,17 +21,17 @@ function validateForm(form){
     }
 	
 	 //variaveis usadas para validação de linhas repetidas no rateio
-	var aCentroCusto = new Array();
-    var aProjeto	  = new Array();    
-    var aAtividade	  = new Array();
-    var aCategoria	  = new Array();
-    var aFonte	  = new Array();
-    var aArea	  = new Array();
+	var aCentroCusto 	= new Array();
+    var aProjeto	  	= new Array();    
+    var aAtividade	 	= new Array();
+    var aCategoria	 	= new Array();
+    var aFonte	  		= new Array();
+    var aArea	 		= new Array();
     
     
     
 
-	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR || activity == AVALIAR_ERRO){
+	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR ){
 	
 		 //retorna email usuario logado
 	    var email = retornaEmailUsuario(usuarioLogado);
@@ -42,6 +44,32 @@ function validateForm(form){
 		if (statusUsuario == true ){
 			 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
 		}
+		
+		if (form.getValue("txNomeEvento") == "" || form.getValue("txNomeEvento") == null){
+       	 throw "O nome do evento precisa ser informado";
+         }
+		if (form.getValue("txLocalEvento") == "" || form.getValue("txLocalEvento") == null){
+       	 throw "O local do evento precisa ser informado";
+         }
+		if (form.getValue("txCoordenador") == "" || form.getValue("txCoordenador") == null){
+       	 throw "É necessário informar o nome do coordenador do evento";
+         }
+		if (form.getValue("dtInicioEvento") == "" || form.getValue("dtInicioEvento") == null){
+       	 throw "A data de inicio do evento precisa ser informado";
+         }
+		if (form.getValue("dtFimEvento") == "" || form.getValue("dtFimEvento") == null){
+       	 throw "A data final do evento precisa ser informado";
+         }
+		if (form.getValue("vl_participantes") == "" || form.getValue("vl_participantes") == null){
+       	 throw "O número de participantes é obrigatório e precisa ser informado";
+         }
+		if (form.getValue("objEvento") == "" || form.getValue("objEvento") == null){
+       	 throw "O objetivo do evento é obrigatório e precisa ser informado";
+         }
+		if (form.getValue("resultadoE") == "" || form.getValue("resultadoE") == null){
+       	 throw "O resultado esperado pelo evento precisa ser informado";
+         }
+		
 		
 		
 		//funções para validar informações financeiras
@@ -70,6 +98,16 @@ function validateForm(form){
 	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 	            }    
 		}
+		
+	}
+	else if (activity == AVALIACAO){	
+		
+		for (var i=1; i <=16; i++){
+			if (form.getValue("campo"+i) == "" || form.getValue("campo"+i) == null){
+	          	 throw "Existe pergunta não respondidas na avaliação";
+	            }	
+		}
+		
 		
 	}
    

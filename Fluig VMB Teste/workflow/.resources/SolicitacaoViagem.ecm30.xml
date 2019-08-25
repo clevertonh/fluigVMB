@@ -777,6 +777,56 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
+        <sequence>200</sequence>
+      </processStatePK>
+      <stateName>Aprovar deposito</stateName>
+      <stateDescription>Aprovar deposito</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>620</positionX>
+      <positionY>1015</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
         <sequence>158</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -920,8 +970,8 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <version>1</version>
         <sequence>190</sequence>
       </processStatePK>
-      <stateName>Intermediário</stateName>
-      <stateDescription>Intermediário</stateDescription>
+      <stateName>Corrigir solicitação</stateName>
+      <stateDescription>Corrigir solicitação</stateDescription>
       <instruction>Evento intermediário do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -1988,7 +2038,41 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <linkSequence>200</linkSequence>
+        <linkSequence>201</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>115</initialStateSequence>
+      <finalStateSequence>200</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>203</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>200</initialStateSequence>
+      <finalStateSequence>116</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>204</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2004,7 +2088,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <linkSequence>201</linkSequence>
+        <linkSequence>205</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2101,6 +2185,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
 	var REALIZAR_PAGAMENTO = 165;&#xd;
 	var AVALIAR_ATRASO = 159;&#xd;
 	var GERAR_TARIFA = 196;&#xd;
+	var GERAR_ADTO = 200;&#xd;
 &#xd;
 	var split1;&#xd;
 	var atv1;&#xd;
@@ -2162,6 +2247,10 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
 			&#xd;
 	}&#xd;
 &#xd;
+	if (ativAtual == GERAR_ADTO || atv1 == GERAR_ADTO ||  atv2 == GERAR_ADTO){&#xd;
+		 throw &quot;Você não pode excluir essa solicitação pois ela já foi atendida.&quot;;&#xd;
+			&#xd;
+	}&#xd;
 &#xd;
 	&#xd;
 	&#xd;
@@ -2193,6 +2282,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
 	var REALIZAR_PAGAMENTO = 165;&#xd;
 	var AVALIAR_ATRASO = 159;&#xd;
 	var GERAR_TARIFA = 196;&#xd;
+	var GERAR_ADTO = 200;&#xd;
 	&#xd;
 	//GATEWAY&#xd;
 	var GATEWAYPASSAGEMCOMPRADA = 143;&#xd;
@@ -2303,17 +2393,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
  		  		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
  		  		    } &#xd;
  		  		  &#xd;
- 		  		    else {&#xd;
- 		  		 		if (adiantamento == &quot;sim&quot; &amp;&amp; vlAdiantamento &gt; 0){&#xd;
-	 		   		  		 var constraint2 = new Array();		  			 		  			&#xd;
-	 		   		  		 constraint2.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-	 		   				 &#xd;
-	 		   				 var DatasetAdto = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_VIAGEM_ADIANTAMENTO&quot;, null, constraint2, null);&#xd;
-	 		   		  		    if (DatasetAdto.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-	 		   		  		    	throw DatasetAdto.getValue(0,&quot;RETORNO&quot;);&#xd;
-	 		   		  		    }&#xd;
- 		   		  		}&#xd;
- 		  		    }&#xd;
+ 		  		  &#xd;
  		  		    &#xd;
  		  		}&#xd;
  		  		&#xd;
@@ -2321,6 +2401,17 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
  		 &#xd;
      	&#xd;
      	&#xd;
+     	}&#xd;
+     	else if (ativAtual ==  GERAR_ADTO){&#xd;
+     		if (adiantamento == &quot;sim&quot; &amp;&amp; vlAdiantamento &gt; 0){&#xd;
+   		  		 var constraint2 = new Array();		  			 		  			&#xd;
+   		  		 constraint2.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+   				 &#xd;
+   				 var DatasetAdto = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_VIAGEM_ADIANTAMENTO&quot;, null, constraint2, null);&#xd;
+   		  		    if (DatasetAdto.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+   		  		    	throw DatasetAdto.getValue(0,&quot;RETORNO&quot;);&#xd;
+   		  		    }&#xd;
+		  		}&#xd;
      	}&#xd;
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050&#xd;
      	else if ( ativAtual == CALCULARDIARIAS  &amp;&amp; recebeDiarias == &quot;sim&quot;) {	&#xd;
@@ -2478,7 +2569,7 @@ function convertStringToData(StringToData) {
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>915</height>
+      <height>1135</height>
       <width>2219</width>
       <positionX>32</positionX>
       <positionY>26</positionY>
@@ -2494,7 +2585,7 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>2ECC71</color>
-      <height>228</height>
+      <height>227</height>
       <width>2189</width>
       <positionX>62</positionX>
       <positionY>26</positionY>
@@ -2510,10 +2601,10 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>3498DB</color>
-      <height>228</height>
+      <height>227</height>
       <width>2189</width>
       <positionX>62</positionX>
-      <positionY>254</positionY>
+      <positionY>253</positionY>
       <stateName>Aprovador</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -2526,10 +2617,10 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>adc9ac</color>
-      <height>228</height>
+      <height>227</height>
       <width>2189</width>
       <positionX>62</positionX>
-      <positionY>482</positionY>
+      <positionY>480</positionY>
       <stateName>Hospitalidade</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -2542,10 +2633,10 @@ function convertStringToData(StringToData) {
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>231</height>
+      <height>227</height>
       <width>2189</width>
       <positionX>62</positionX>
-      <positionY>710</positionY>
+      <positionY>707</positionY>
       <stateName>Tesouraria</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -2554,6 +2645,22 @@ function convertStringToData(StringToData) {
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
         <sequence>5</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d0daae</color>
+      <height>227</height>
+      <width>2189</width>
+      <positionX>62</positionX>
+      <positionY>934</positionY>
+      <stateName>Diretor Financeiro</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <sequence>6</sequence>
       </swimLanePK>
     </SwimLane>
   </list>
@@ -2713,6 +2820,17 @@ function convertStringToData(StringToData) {
       </processLinkBendPK>
       <positionX>1871</positionX>
       <positionY>910</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>14</version>
+        <linkSequence>203</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1869</positionX>
+      <positionY>1044</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

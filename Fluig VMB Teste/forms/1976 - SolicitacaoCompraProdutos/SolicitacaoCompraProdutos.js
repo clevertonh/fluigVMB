@@ -2,7 +2,7 @@ var infoUser;
 var ABERTURA = 0;
 var APROVACAO =5;
 var CORRIGIR = 15;
-var AVALIAR_ERRO = 22;
+var GERAR_SC = 42;
 
 
 var dataAprovacao = FLUIGC.calendar('#dtNecessidade', {
@@ -36,7 +36,7 @@ $(document).ready(function() {
        	
     }
 
-    else if (ATIVIDADE == AVALIAR_ERRO){
+    else if (ATIVIDADE == GERAR_SC){
 		document.getElementById("btn_add_item").style.display = "none";
 		document.getElementById("btn_add_itemS").style.display = "none";
 		
@@ -89,8 +89,7 @@ var visibilidade = true;
 
 
 function removeItens() {
-	
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITARVIAGEM || ATIVIDADE == APROVACAO || ATIVIDADE == COMPRARPASSAGEM){
+	if (ATIVIDADE == ABERTURA ||  ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -101,20 +100,9 @@ function removeItens() {
 
 }
 
-function removeProduto() {
-	if (AtividadeAtual == COMPRARPASSAGEM){
-	    var linhas = $("#tbodyViagem tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);
-	    }
-	}
-
-}
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA 	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -122,6 +110,21 @@ function fnCustomDeleteRateio(oElement) {
 		FLUIGC.toast({
             title: 'Atenção',
             message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
+
+function fnCustomDeleteProduto(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
+		fnWdkRemoveChild(oElement);	
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhum produto.',
             type: 'warning',
             timeout: 3000
         });		
@@ -367,8 +370,7 @@ function removedZoomItem(removedItem) {
 
 
     else if (campoZOOM == RATEIO) {
-        //removeItensRateio();
-    	console.log("---REMOVEU AQUI 6----");
+      
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -557,7 +559,6 @@ function addAnos(data, anos) {
     return new Date(data.setYear(data.getFullYear() + anos));
 
 }
-
 
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {

@@ -37,11 +37,11 @@ function enableFields(form){
 	else if (activity == APROVACAO){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
-		 form.setEnabled("rateioconfigurado", false);		 
-		 form.setEnabled("dataset_solicitacaoevento", false);
-		 form.setEnabled("FinanEvento", false);
-		 bloqueiaDadosFinanceiro();
-		 bloqueiaDadosProduto();
+		// form.setEnabled("rateioconfigurado", false);		 
+		// form.setEnabled("dataset_solicitacaoevento", false);
+		// form.setEnabled("FinanEvento", false);
+		// bloqueiaDadosFinanceiro();
+		// bloqueiaDadosProduto();
 	}
 	else if (activity == GERAR_SC){		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
@@ -101,9 +101,6 @@ function enableFields(form){
 
 	
 	function usuarioAprovador(emailSolicitante){
-		log.info("---GERENTE FUNCIONARIO----"); 
-		log.info(emailSolicitante);
-		
 		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 

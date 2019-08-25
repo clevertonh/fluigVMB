@@ -333,8 +333,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>120</positionX>
-      <positionY>278</positionY>
+      <positionX>110</positionX>
+      <positionY>280</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1036,6 +1036,44 @@
     </ProcessAttachmentSecurity>
   </list>
   <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>PrestacaoContasFundoFixo</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+	var ABERTURA = 4;&#xd;
+	var APROVACAO = 5;&#xd;
+	var AVALIAR_ERRO = 18;&#xd;
+	var CORRIGIR = 25;&#xd;
+	var PRESTAR_CONTAS = 38;&#xd;
+	var VALIDAR_NOTA = 39;&#xd;
+	&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
+	//RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
+	var codSolicitacao 	 = getValue(&quot;WKNumProces&quot;);&#xd;
+	//VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
+	var nextAtv  		 = getValue(&quot;WKNextState&quot;);&#xd;
+	//RECUPERA NUMERO DO DOCUMENTO&#xd;
+	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
+	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
+	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	&#xd;
+	&#xd;
+	 var anexos   = hAPI.listAttachments();&#xd;
+     var temAnexo = false;&#xd;
+     &#xd;
+     if (ativAtual == VALIDAR_NOTA){&#xd;
+    		if (anexos.size() &lt;= 0) {&#xd;
+   				throw &quot;É necessário que a nota fiscal esteja anexada.&quot;;&#xd;
+     	      	}  &#xd;
+     }&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>

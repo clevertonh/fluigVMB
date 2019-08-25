@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Evento</processId>
-      <version>2</version>
+      <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1172</formId>
@@ -213,6 +213,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Hospitalidade&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -259,10 +261,12 @@
       <stateName>Preencher avaliação</stateName>
       <stateDescription>Preencher avaliação</stateDescription>
       <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
+      <deadlineTime>172800</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -285,7 +289,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -425,7 +429,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>5</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -437,7 +441,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>5</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -588,6 +592,38 @@
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>SolicitacaoEvento</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	var ABERTURA = 4;&#xd;
+	var APROVACAO = 5;&#xd;
+	&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
+	//RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
+	var codSolicitacao 	 = getValue(&quot;WKNumProces&quot;);&#xd;
+	//VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
+	var nextAtv  		 = getValue(&quot;WKNextState&quot;);&#xd;
+	//RECUPERA NUMERO DO DOCUMENTO&#xd;
+	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
+	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
+	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	if (ativAtual != ABERTURA &amp;&amp;  ativAtual != APROVACAO){&#xd;
+			 throw &quot;Você não pode excluir essa solicitação pois ela já foi integrada com o sistema de Compras.&quot;;&#xd;
+				&#xd;
+		}&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
         <eventId>beforeStateEntry</eventId>
         <processId>SolicitacaoEvento</processId>
         <version>1</version>
@@ -663,7 +699,7 @@
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>641</height>
+      <height>591</height>
       <width>1071</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
@@ -679,7 +715,7 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>213</height>
+      <height>197</height>
       <width>1041</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
@@ -695,10 +731,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>213</height>
+      <height>197</height>
       <width>1041</width>
       <positionX>40</positionX>
-      <positionY>223</positionY>
+      <positionY>207</positionY>
       <stateName>Aprovador</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -711,10 +747,10 @@
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>215</height>
+      <height>197</height>
       <width>1041</width>
       <positionX>40</positionX>
-      <positionY>436</positionY>
+      <positionY>404</positionY>
       <stateName>Hospitalidade e Evento</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -757,7 +793,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>2</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -768,7 +804,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>2</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -779,7 +815,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>2</version>
+        <version>5</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -790,7 +826,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoEvento</processId>
-        <version>2</version>
+        <version>5</version>
         <linkSequence>58</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

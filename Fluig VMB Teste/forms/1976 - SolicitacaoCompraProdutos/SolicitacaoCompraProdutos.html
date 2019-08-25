@@ -86,11 +86,11 @@
                                                                         <div class="input-group date">
                                                                             <input type="text" class="form-control" id="dataSolicitacao" name="dataSolicitacao" readonly>
                                                                             <span class="input-group-addon"> <span
-                                                               class="fluigicon fluigicon-calendar"></span>
+                                                               				class="fluigicon fluigicon-calendar"></span>
                                                                             </span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="from-group col-md-1">
+                                                                    <div class="form-group col-md-1">
                                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                                                     </div>
                                                                 </div>
@@ -327,10 +327,10 @@
                                                                     <div class="form-group row">
                                                                         <div class="col-md-12">
                                                                             <div class="form-field table-responsive">
-                                                                                <table tablename="tableCompras" id="tableCompras" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true>
+                                                                                <table tablename="tableCompras" id="tableCompras" border="0" class="table table-striped table-bordered" noaddbutton=true customFnDelete="fnCustomDeleteProduto(this)">
                                                                                     <thead>
                                                                                         <tr class="tableHeadRow">
-                                                                                            <th></th>
+                                                                                            
                                                                                             <th class="tableColumn">Descrição do Produto</th>
                                                                                             <th class="tableColumn">Unid. Medida</th>
                                                                                             <th class="tableColumn">Qtd</th>
@@ -342,9 +342,7 @@
                                                                                     </thead>
                                                                                     <tbody id="tbodyCompras">
                                                                                         <tr>
-                                                                                            <td>
-                                                                                                <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeProduto" onclick="fnWdkRemoveChild(this)"></span>
-                                                                                            </td>
+                                                                                           
                                                                                             <td>
                                                                                                 <div class="form-group">
                                                                                                     <input type="hidden" name="produto" id="produto" />

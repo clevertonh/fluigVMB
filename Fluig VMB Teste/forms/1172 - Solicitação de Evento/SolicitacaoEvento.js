@@ -2,7 +2,8 @@ var INICIO =0;
 var ABERTURA = 4;
 var APROVACAO = 5;
 var CORRIGIR = 45;
-var AVALIAR = 40;
+var GERENCIAR = 55;
+var AVALIACAO = 57;
 
 
 var dtSolicitacao;
@@ -82,8 +83,10 @@ $(document).ready(function() {
 		
 	}
 
-	if (ATIVIDADE != ABERTURA && ATIVIDADE != APROVACAO){
-		 //document.getElementById("btn_add_item").style.display = "none";
+	if (ATIVIDADE != INICIO  && ATIVIDADE != ABERTURA  && ATIVIDADE != CORRIGIR){
+		 document.getElementById("btn_add_item").style.display = "none";
+		 document.getElementById("btn_add_itemS").style.display = "none";
+		 
 	}
 
 	
@@ -91,7 +94,7 @@ $(document).ready(function() {
 
 //customFnDelete="fnCustomDeleteRateio(this)"
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA 	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIO || ATIVIDADE == CORRIGIR ){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -106,7 +109,7 @@ function fnCustomDeleteRateio(oElement) {
 }
 
 function fnCustomDeleteProduto(oElement) {	  
-	if (ATIVIDADE == ABERTURA 	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIO || ATIVIDADE == CORRIGIR){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -226,17 +229,12 @@ function adicionaLinhaProduto() {
 		pickTime: false
 	});
 	
-	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
+	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
 
 	//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 
 	var qtde = document.getElementById("id_quantidade" + "___" + row);
-	
-	/*
-	qtde.addEventListener("focus", function( event ) {
-		  event.target.style.background = "pink";    
-		}, true);
-*/	
+
 	qtde.addEventListener("blur", function( event ) {			
 		  //event.target.style.background = "pink";
 		  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
@@ -256,6 +254,11 @@ function adicionaLinha() {
     window["txtcategoria___" + indice].disable(true);
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
+}
+
+function adicionaLinhaAvaliacao(){
+	var indice = wdkAddChild('tableAvaliacao');
+	
 }
 
 

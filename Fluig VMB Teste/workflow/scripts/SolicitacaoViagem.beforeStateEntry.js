@@ -16,6 +16,7 @@ function beforeStateEntry(sequenceId){
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
 	var GERAR_TARIFA = 196;
+	var APROVARDIRETOR_FIN = 200;
 	
 	//GATEWAY
 	var GATEWAYPASSAGEMCOMPRADA = 143;
@@ -126,17 +127,7 @@ function beforeStateEntry(sequenceId){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
  		  		  
- 		  		    else {
- 		  		 		if (adiantamento == "sim" && vlAdiantamento > 0){
-	 		   		  		 var constraint2 = new Array();		  			 		  			
-	 		   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-	 		   				 
-	 		   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
-	 		   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
-	 		   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
-	 		   		  		    }
- 		   		  		}
- 		  		    }
+ 		  		  
  		  		    
  		  		}
  		  		
@@ -144,6 +135,17 @@ function beforeStateEntry(sequenceId){
  		 
      	
      	
+     	}
+     	else if (ativAtual ==  APROVARDIRETOR_FIN){
+     		if (adiantamento == "sim" && vlAdiantamento > 0){
+   		  		 var constraint2 = new Array();		  			 		  			
+   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+   				 
+   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
+   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
+   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
+   		  		    }
+		  		}
      	}
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
      	else if ( ativAtual == CALCULARDIARIAS  && recebeDiarias == "sim") {	

@@ -9,6 +9,12 @@ function createDataset(fields, constraints, sortFields) {
 	var agencia;
 	var contabanco;
 
+	
+	/*Enquanto webservice com a rotina FINA100 não é desenvolvido o dataset considerará 
+	 * que toda vez que for chamado terá seu retorno a informação de sucesso
+	 * */
+	 dataset.addRow(new Array("SUCESSO"));
+	 return dataset;
 
 	 
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra

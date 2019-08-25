@@ -1,14 +1,14 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
 	var APROVACAO =5;
-	var CORRIGIR = 15;
-	var AVALIAR_ERRO = 22;
+	var CONTRATAR = 12;
+	
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
 	
 	
-	if (activity == ABERTURA || activity == CORRIGIR){
+	if (activity == ABERTURA ){
 		 form.setEnabled("aprovacao", false);	
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
@@ -27,11 +27,7 @@ function enableFields(form){
 			 	 
 		 }
 		 
-		 //reseta campo de corrigir marcado pelo aprovador
-		 if (activity == CORRIGIR){
-			 form.setValue("aprovacao","");			 
-		 }
-
+	
 			 
 	}
 	else if (activity == APROVACAO){
@@ -50,7 +46,7 @@ function enableFields(form){
 		    form.setEnabled("aprovacao", true);		
 		 
 	}
-	else if (activity == AVALIAR_ERRO){		
+	else if (activity == CONTRATAR){		
 		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -61,6 +57,9 @@ function enableFields(form){
 		        form.setEnabled(key, habilitar);
 		    }
 		 
+		    form.setEnabled("valor", true);	
+		    form.setEnabled("txtproduto", true);	
+		    
 		
 	}
 
