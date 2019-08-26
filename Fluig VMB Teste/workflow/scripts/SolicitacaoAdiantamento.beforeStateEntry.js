@@ -17,15 +17,18 @@ function beforeStateEntry(sequenceId){
 	var aprovado = hAPI.getCardValue("aprovacao");
 	//var dtAprovacao = hAPI.getCardValue("aprovacao");
 	
-	if (ativAtual == APROVACAO && aprovado == "aprovado"){
-		 var constraint = new Array();		  			 		  			
+	if (ativAtual == APROVACAO ){
+		if(aprovado == "aprovado"){
+			 var constraint = new Array();		  			 		  			
 			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
 			 
 	     var resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_ADIANTAMENTO", null, constraint, null);
 	  		    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
 	  		    	throw resultDataset.getValue(0,"RETORNO");
 	  		    }
-	  			  		    
+	  			  	
+		}
+			    
 	
 	}
 	

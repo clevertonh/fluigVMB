@@ -7,6 +7,7 @@ function createDataset(fields, constraints, sortFields) {
 	var aRateio;
 	var itens = new Array();
 	var documentId;
+	var emailcomprador;
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -20,6 +21,14 @@ function createDataset(fields, constraints, sortFields) {
        		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
+        		
+        		for (var a=0; a<constraints.length; a++){
+        			if (constraints[a].fieldName == "comprador"){
+            			emailcomprador = constraints[a].initialValue;            			
+            			//break;
+            		}        			
+        		}
+        		
         		
          		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesEventosDadosPagamento", null, new Array(c2), null);    				  
@@ -73,6 +82,7 @@ function createDataset(fields, constraints, sortFields) {
         					            	DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
         					            	ITENS: aItemServico ,
         					            	RATEIODIGITADO: aRateio ,
+        					            	COMPRADOR: '' + emailcomprador +'',
         					            	DOCUMENTID:''+ documentId +''
         					            },
         					          options : {

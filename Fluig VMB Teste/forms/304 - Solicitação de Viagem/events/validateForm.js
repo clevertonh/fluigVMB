@@ -14,7 +14,7 @@ function validateForm(form) {
 	var REALIZAR_PAGAMENTO = 165;
 	var AVALIAR_ATRASO = 159;
 	var GERAR_TARIFA = 196;
-	var APROVARDIRETOR_FIN = 200;
+	
 	
 	
 	//GATEWAY

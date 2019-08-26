@@ -127,6 +127,15 @@ function beforeStateEntry(sequenceId){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
  		  		  
+ 		     		if (adiantamento == "sim" && vlAdiantamento > 0){
+ 		   		  		 var constraint2 = new Array();		  			 		  			
+ 		   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+ 		   				 
+ 		   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
+ 		   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
+ 		   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
+ 		   		  		    }
+ 				  		}
  		  		  
  		  		    
  		  		}
@@ -136,17 +145,8 @@ function beforeStateEntry(sequenceId){
      	
      	
      	}
-     	else if (ativAtual ==  APROVARDIRETOR_FIN){
-     		if (adiantamento == "sim" && vlAdiantamento > 0){
-   		  		 var constraint2 = new Array();		  			 		  			
-   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-   				 
-   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
-   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
-   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
-   		  		    }
-		  		}
-     	}
+  
+     	
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
      	else if ( ativAtual == CALCULARDIARIAS  && recebeDiarias == "sim") {	
 			   var constraintDiarias = new Array();		  			
