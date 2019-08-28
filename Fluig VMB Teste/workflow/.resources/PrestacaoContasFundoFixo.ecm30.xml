@@ -5,7 +5,7 @@
       <processId>PrestacaoContasFundoFixo</processId>
     </processDefinitionPK>
     <processDescription>Prestação de Contas Fundo Fixo</processDescription>
-    <instruction></instruction>
+    <instruction>Use esse processo para realizar a prestação de contas de despesas pagas pelo fundo fixo. Observação: Em casos de pagamento que envolvem ativo fixo ou prestação de serviço deve ser usado o processo especifico pois o fundo fixo é apenas a forma de pagamento</instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
@@ -77,7 +77,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>150</positionX>
-      <positionY>82</positionY>
+      <positionY>80</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -333,7 +333,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>110</positionX>
+      <positionX>120</positionX>
       <positionY>280</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -937,7 +937,7 @@
         <linkSequence>40</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
+      <returnPermited>true</returnPermited>
       <initialStateSequence>38</initialStateSequence>
       <finalStateSequence>39</finalStateSequence>
       <returnLabel></returnLabel>
