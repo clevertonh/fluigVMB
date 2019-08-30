@@ -1,10 +1,11 @@
 function validateForm(form){
 	var INICIO =0;
 	var ABERTURA = 4;
-	var APROVACAO = 5;
-	var TESOURARIA = 10;
+	var APROVACAO_DIRETOR = 5;
+	var GERAR_ADTO = 10;
 	var SOLICITANTE = 24;
-	
+	var APROVACAO_GESTOR = 31;
+	var INTEGRAR = 18;
 	
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");
@@ -32,21 +33,26 @@ function validateForm(form){
 	
 		
 	if (activity == ABERTURA){
-		if (form.getValue("vl_solicitado") == "" ){
-			throw "Você precisa informar o valor desejado.";
+		if (form.getValue("formapgto") == "" || form.getValue("formapgto") == null){
+			throw "Você precisa indicar a forma de pagamento no qual o fornecedor deverá receber.";
 		}
-		if (form.getValue("dtNecessidade") == "" ){
+		if (form.getValue("dtNecessidade") == "" || form.getValue("dtNecessidade") == null){
 			throw "Você precisa informar a data de necessidade.";
 		}
-		if (form.getValue("Funcionario") == "" || form.getValue("Funcionario") == null){
-			throw "Você precisa informar o beneficiário que receberá o adiantamento.";
+		if (form.getValue("cgcFornecedor") == "" || form.getValue("cgcFornecedor") == null){
+			throw "Você precisa informar o fornecedor que receberá o adiantamento.";
 		}
-		if (form.getValue("itinerario") == "" || form.getValue("itinerario") == null ){
-			throw "Você precisa informar o itinerário da viagem (país/cidade de origem e país/cidade de destino";
+		if (form.getValue("vl_total") == "" || form.getValue("vl_total") == null || form.getValue("vl_total") <= 0 ){
+			throw "Você precisa indicar o valor total da compra ou serviço.";
 		}
-		if (form.getValue("dtViagem") == "" || form.getValue("dtViagem") == null ){
-			throw "Você precisa informar a data da viagem.";
+		if (form.getValue("vl_adiantado") == "" || form.getValue("vl_adiantado") == null || form.getValue("vl_adiantado") <= 0 ){
+			throw "Você precisa indicar o valor desejado para o adiantamento.";
 		}
+	
+		if (form.getValue("justificativa") == "" || form.getValue("justificativa") == null  ){
+			throw "Você precisa informar a justificativa pelo adiantamento.";
+		}
+		
 		if (form.getValue("centrocusto") == "" || form.getValue("centrocusto") == null ){
 			throw "Você precisa informar o centro de custo.";
 		}
@@ -64,16 +70,10 @@ function validateForm(form){
 		//consultaPendenciaAdiantamento();
 		
 	}
-	else if (activity == APROVACAO){
-		if (form.getValue("vl_aprovado") == "" ){
-			throw "O valor a ser aprovado deve ser informado e maior que zero.";
-		}
-		if ( form.getValue("vl_aprovado") <= 0 ){
-			throw "O valor a ser aprovado deve ser maior que zero.";
-		}
+	else if (activity == APROVACAO_GESTOR){		
 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
 		if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+            throw "Você precisa indicar se a solicitação será aprovada";
         }
 
         if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
@@ -83,11 +83,56 @@ function validateForm(form){
 		//valida se aprovador é diferente do solicitante
 		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-            }
+        }
 	
 	
 	
 	}
+	
+	else if (activity == APROVACAO_DIRETOR){		
+		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+		if (form.getValue("aprovacaoDIR") == false || form.getValue("aprovacaoDIR") == "") {
+            throw "Você precisa indicar se a solicitação será aprovada.";
+        }
+
+        if (form.getValue("aprovacaoDIR") == "reprovado" && form.getValue("justificativaReprovacaoDIR")  == "" ) {
+            throw "Você precisa informar o motivo para reprovação da solicitação.";
+        }
+    	
+	
+	}
+	
+	
+	else if (activity == SOLICITANTE){
+		if (!form.getValue("cartaocredito").match(/^[0-9]/)){
+			 throw "Você deve informar apenas os números do cartão de crédito.";			
+			
+		}
+		
+
+	}
+	
+	else if (activity == GERAR_ADTO){
+		if (nextAtv == INTEGRAR){
+			if (form.getValue("banco") == "" || form.getValue("banco") == null ){
+				 throw "Os dados bancários não foram informados";			
+				
+			}
+			if (form.getValue("agencia") == "" || form.getValue("agencia") == null ){
+				 throw "Os dados bancários não foram informados";				
+				
+			}
+			if (form.getValue("contabanco") == "" || form.getValue("contabanco") == null ){
+				 throw "Os dados bancários não foram informados";				
+				
+			}
+			
+		}
+		
+		
+
+	}
+	
 	
 	function 	consultaPendenciaAdiantamento(){
 		 var dataset = DatasetFactory.getDataset("VM_PendenciaAdiantamento", null, null, null);

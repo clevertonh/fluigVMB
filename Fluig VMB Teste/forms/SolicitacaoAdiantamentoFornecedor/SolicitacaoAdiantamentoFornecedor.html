@@ -31,11 +31,7 @@
                   <div class="panel-body">
                      <div class="row">
                         <div class="col-md-12">
-                           <div id="exTab3" class="container-fluid">
-                              <ul class="nav nav-pills nav-justified">
-                                 <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
-                                 <li><a href="#2b" data-toggle="tab">Diretor Financeiro</a></li>                                
-                              </ul>
+                                       
                               <div class="tab-content clearfix">
                                  <!-- Aba Solicitante -->                                                              
                                  <div class="tab-pane active" id="1b">
@@ -82,13 +78,13 @@
                                                            <input name="cgcFornecedor"
                                                             class="form-control" type="zoom"
                                                             id="cgcFornecedor"
-                                                            data-zoom="{'displayKey':'NOME',
+                                                            data-zoom="{'displayKey':'CPF',
                                                             'datasetId':'VM_Funcionario',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione o fornecedor',
                                                             'fields':[
-                                                            {'field':'NOME','label':'NOME','standard':'true'},
-                                                            {'field':'CPF','label':'CPF'},
+                                                            {'field':'NOME','label':'NOME'},
+                                                            {'field':'CPF','label':'CPF','standard':'true'},
                                                             {'field':'RG','label':'RG'},
                                                             {'field':'EMAIL_F','label':'EMAIL_F'}						  					
                                                             ]
@@ -124,16 +120,12 @@
                                        </div>   
                                         <div class="form-group col-md-2" id="div_vlapr">
                                           <label for="vl_adiantado">Valor do adiantamento solicitado</label>
-                                          <input type="number" class="form-control" name="vl_adiantado" id ="vl_adiantado">
+                                          <input type="number" class="form-control" name="vl_adiantado" id ="vl_adiantado" onblur="Calculapercentual();">
                                        </div>  
                                         <div class="form-group col-md-2">
                                           <label for="percentual">Percentual adiantado</label>
-                                          <input type="number" class="form-control" name="percentual" id ="percentual">
-                                       </div>                                                                       
-                                       <div class="form-group col-md-2">
-                                          <label for="vl_aprovado">Valor Aprovado</label>
-                                          <input type="number" class="form-control" name="vl_aprovado" id ="vl_aprovado">
-                                       </div> 
+                                          <input type="number" class="form-control" name="percentual" id ="percentual" readonly>
+                                       </div>                                                                                                       
                                        <div class="form-group col-md-2">
                                           <label for="dtNecessidade">Data para deposito</label>
                                           <div class="input-group date" >
@@ -146,8 +138,17 @@
                                          
                                      
                                     </div>                                                                  
-                                    
-                                      	  </div>
+                                     <div class="row">
+                                    	<div class="form-group col-md-6">
+                                                            <label for="justificativa">Justificativa</label>
+                                                            <textarea class="form-control" rows="3"
+                                                               id="justificativa" name="justificativa"
+                                                               placeholder="Justifique porque deseja a antecipação do pagamento"></textarea>
+                                         </div> 
+                                         
+                                                                            
+                                    </div> 
+                                    </div>
                                      </div>
                                     
                                     
@@ -157,7 +158,7 @@
                                     <div class="panel panel-info">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
-                                             <b>Informações contabéis</b>
+                                             <b>Informações contábeis</b>
                                           </h5>
                                       	 </div>
 										 
@@ -217,25 +218,18 @@
                                                                      }" />
                                                                </div>                                     	
                                     </div>
-										    
+										         
 										  </div>
 									</div>
-									                                    
-                                                              
-                                    <div class="row">
-                                    	<div class="form-group col-md-6">
-                                                            <label for="justificativa">Justificativa</label>
-                                                            <textarea class="form-control" rows="3"
-                                                               id="justificativa" name="justificativa"
-                                                               placeholder="Justifique porque deseja a antecipação do pagamento"></textarea>
-                                         </div> 
-                                         
-                                                                            
-                                    </div>
-                                 </div>
-                                 <!-- Aba Gestor -->
-                                 <div class="tab-pane" id="2b">
-									<div class="row">
+                                    <div class="panel panel-info" id="div_aprovador">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Dados do aprovador</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
                                        <div class="form-group col-md-4">
                                           <label for="gestor" class="required">Nome aprovador</label>
                                           <input type="text" class="form-control" id="gestor" name="gestor" readonly >
@@ -280,11 +274,109 @@
                                                 placeholder="Por favor, informar o motivo pela reprovação."></textarea>
                                           </div>
                                        </div>
-                                    </div>									
+                                    </div>
+                                      	 </div>
+                                    </div>                                    
+
+  						<div class="panel panel-info" id="div_diretor">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Diretor Financeiro</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="diretor" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="diretor" name="diretor" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emaildiretor">Email</label>
+                                          <input type="email" class="form-control" id="emaildiretor" name="emaildiretor" readonly>
+                                       </div>	
+                                                                                  								
+									</div>
+         							 <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprovacaoDFS">Aprovado</Label> <input type="radio"
+                                             id="aprovacaoDFS" name="aprovacaoDIR" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprovacaoDFN">Reprovado</Label> <input
+                                             type="radio" id="aprovacaoDFN" name="aprovacaoDIR"
+                                             value="reprovado"  />
+                                       </div>
+                                       
+                                       <div class="form-group col-md-4">
+                                          <div class="input-group date">
+                                             <input type="text" class="form-control" id="prazoaprovacaoDIR" name="prazoaprovacaoDIR" readonly>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-12">
+                                          <div class="form-group"
+                                             id='divJustificativaReprovacao'>
+                                             <label for="justificativaReprovacaoDIR">Justificativa</label>
+                                             <textarea class="form-control" rows="3"
+                                                id="justificativaReprovacaoDIR"
+                                                name="justificativaReprovacaoDIR"
+                                                placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                      	 </div>
+                                    </div>
+
+
+                                    
+									<div class="panel panel-info" id="div_pagador">										 
+											   <div class="panel-heading ">
+	                                          <h5 class="panel-title">
+	                                             <b>Banco ou cartão de crédito pagador</b>
+	                                          </h5>
+	                                      	 </div>
+	                                     <div class="panel-body">
+                                     	<div class="row" >
+                              	 			<div class="form-group col-md-1" id="div_banco">
+							                                       	<label>Banco</label>
+							                                       	<input  type="number" name="banco" id="banco" class="form-control">
+						                                       </div>
+						                                        <div class="form-group col-md-1" id="div_agencia" >
+							                                       	<label>Agência</label>
+							                                       	<input  type="text" name="agencia" id="agencia" class="form-control">
+						                                       </div>
+						                                        <div class="form-group col-md-1" id="div_conta">
+							                                       	<label>Conta</label>
+							                                       	<input  type="text" name="contabanco" id="contabanco" class="form-control">
+						                                       </div>
+						                                       <div class="form-group col-md-4" id="div_cartao">
+							                                       	<label>Cartão de crédito</label>
+							                                       	<input  type="text" name="cartaocredito" id="cartaocredito" class="form-control">
+						                                       </div>
+                              	 	
+                              	 	        <div class="form-group col-md-2">
+                                          <label for="dtEmissao">Data de Pagamento</label>
+                                          <div class="input-group date" >
+                                             <input type="text" class="form-control" placeholder="Data de Pgto" id="dtEmissao" name="dtEmissao">
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>  
+                              	 	
+                              	 	
+                              	 	
+                              	 	</div>
+                                     </div> 	 
+                                    </div>
+                                      	 
                                  </div>
-                           
-                              </div>
-                           </div>
+                             </div>
+                        
                         </div>
                      </div>
                   </div>

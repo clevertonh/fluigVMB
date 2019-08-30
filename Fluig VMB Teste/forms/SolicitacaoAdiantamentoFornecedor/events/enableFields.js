@@ -1,9 +1,10 @@
 function enableFields(form){ 
 	
 	var ABERTURA = 0;
-	var APROVACAO = 5;
-	var TESOURARIA = 10;
+	var APROVACAO_DIRETOR = 5;
+	var GERAR_ADTO = 10;
 	var SOLICITANTE = 24;
+	var APROVACAO_GESTOR = 31;
 
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
@@ -21,7 +22,7 @@ function enableFields(form){
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
-		 
+		
 		 var aprovador = usuarioAprovador(emailSolicitante);
 		 if (aprovador!= null && aprovador != ""){
 			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
@@ -30,11 +31,26 @@ function enableFields(form){
 			 	 
 		 }
 		 
-		 form.setEnabled("vl_aprovado", false);
+		    //RETORNAR USUARIO CADASTRADO NESSE PERFIL
+		 	var diretorFinanceiro = diretorFinanceiro();
+			if (diretorFinanceiro!= null && diretorFinanceiro != ""){
+					
+				var diretor = UsuarioLogado(diretorFinanceiro.getValue(0, "workflowColleagueRolePK.colleagueId"));
+				
+				 var nomeDiretor = diretor.getValue(0, "colleagueName");
+				 var emailDiretor = diretor.getValue(0, "mail");
+				 form.setValue("diretor",nomeDiretor);
+				 form.setValue("emaildiretor",emailDiretor);
+				 
+				 
+			}
+			
+		
+		
 		 
 	}
 	
-	else if (activity == APROVACAO){
+	else if (activity == APROVACAO_GESTOR){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 
@@ -50,9 +66,57 @@ function enableFields(form){
 		    
 		    form.setEnabled("aprovacao", true);		 
 			form.setEnabled("justificativaReprovacao", true);
-			form.setEnabled("vl_aprovado", true);
-			
 		
+			
+	}
+	
+	else if (activity == APROVACAO_DIRETOR){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	   
+	    form.setEnabled("aprovacaoDIR", true);
+	    form.setEnabled("justificativaReprovacaoDIR", true);
+	    
+	 
+		 
+	}
+	
+	else if (activity == GERAR_ADTO){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	    
+	    form.setEnabled("banco", true);
+	    form.setEnabled("agencia", true);
+	    form.setEnabled("contabanco", true);
+	    form.setEnabled("dtEmissao", true);	
+	}
+	else if (activity == SOLICITANTE){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	    
+	    form.setEnabled("cartaocredito", true);		 
+	    form.setEnabled("dtEmissao", true);
 	}
 	
 	
@@ -78,6 +142,16 @@ function enableFields(form){
 	//	 log.info(dataset.getValue(0, "EMAIL_G"));
 		 return dataset;
 	}
+	
+	function diretorFinanceiro(){
+		var constraintDiretor = new Array();
+	 	constraintDiretor.push(DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", "DIRETOR_FIN", "DIRETOR_FIN", ConstraintType.MUST));
+		var datasetDiretor = DatasetFactory.getDataset("workflowColleagueRole", null, constraintDiretor, null);
+		
+		return datasetDiretor;
+	}
+	
+
 	
 }
 

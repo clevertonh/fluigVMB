@@ -96,7 +96,7 @@ function createDataset(fields, constraints, sortFields) {
 					        	dataset.addRow(new Array(obj.MSG));
 					        }
 					        else if (obj.CODIGO == "100"){
-					        	log.info("INCLUIDO COM SUCESSO");
+					      //  	log.info("INCLUIDO COM SUCESSO");
 					            dataset.addRow(new Array("SUCESSO"));					           		        					            
 					        }
 					        
