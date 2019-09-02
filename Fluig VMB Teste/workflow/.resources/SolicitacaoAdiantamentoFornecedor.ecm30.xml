@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de adiantamento a fornecedor</processId>
-      <version>6</version>
+      <version>8</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2168</formId>
@@ -596,7 +596,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>8</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;formaPgto&quot;) != &quot;cartao&quot;</condition>
@@ -608,7 +608,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>8</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;formaPgto&quot;) == &quot;cartao&quot;</condition>
@@ -620,7 +620,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>6</version>
+        <version>8</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;reprovado&quot;</condition>
@@ -632,7 +632,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -644,7 +644,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -853,10 +853,10 @@
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
 	var ABERTURA = 0;&#xd;
 	var APROVACAO_DIRETOR = 5;&#xd;
-	var TESOURARIA = 10;&#xd;
+	var GERAR_ADTO = 10;&#xd;
 	var SOLICITANTE = 24;&#xd;
 	var APROVACAO_GESTOR = 31;&#xd;
-	&#xd;
+	var INTEGRAR = 18;&#xd;
 &#xd;
 	//RECUPERA NUMERO DA ATIVIDADE&#xd;
 	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
@@ -870,7 +870,7 @@
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
 	&#xd;
      &#xd;
-    if (ativAtual == TESOURARIA || ativAtual == SOLICITANTE){    &#xd;
+    if ((ativAtual == GERAR_ADTO &amp;&amp; nextAtv == INTEGRAR) || ativAtual == SOLICITANTE){    &#xd;
         var dtPgto		 	 = hAPI.getCardValue(&quot;dtEmissao&quot;);&#xd;
     	&#xd;
     	var constraintAdto = new Array();	&#xd;
@@ -879,7 +879,7 @@
     	    constraintAdto.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			  &#xd;
     	    constraintAdto.push(DatasetFactory.createConstraint(&quot;dtPgto&quot;, dtPgto, dtPgto, ConstraintType.MUST)); 	&#xd;
     &#xd;
-    	    if (ativAtual == TESOURARIA){&#xd;
+    	    if (ativAtual == GERAR_ADTO){&#xd;
     	    	 var banco		 	 = hAPI.getCardValue(&quot;banco&quot;);&#xd;
     	    	 var agencia		 = hAPI.getCardValue(&quot;agencia&quot;);&#xd;
     	    	 var contabanco		 = hAPI.getCardValue(&quot;contabanco&quot;);&#xd;
@@ -890,6 +890,12 @@
     	    	 &#xd;
     	    	 &#xd;
     			 resultDataset = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_ADIANTAMENTO_FORNECEDOR&quot;, null, constraintAdto, null);&#xd;
+    			 &#xd;
+    			 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+    			    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+    			    } &#xd;
+    			 &#xd;
+    			 &#xd;
     			         		       &#xd;
     	    }&#xd;
 	    	else if (ativAtual == SOLICITANTE){&#xd;
@@ -899,12 +905,14 @@
 	    		resultDataset = DatasetFactory.getDataset(&quot;VM_FINA050_SOLICITACAO_ADIANTAMENTO_FORNECEDOR&quot;, null, constraintAdto, null);&#xd;
 	    			    	&#xd;
 	&#xd;
+	    		 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	 		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	 		    } &#xd;
+	    		 &#xd;
 	    	}&#xd;
     	    &#xd;
     	    &#xd;
-    	    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-		    } &#xd;
+    	   &#xd;
     	    &#xd;
     &#xd;
     }       	&#xd;
@@ -1025,7 +1033,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>6</version>
+        <version>8</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1036,7 +1044,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>6</version>
+        <version>8</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1047,7 +1055,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>6</version>
+        <version>8</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1058,7 +1066,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>6</version>
+        <version>8</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1076,7 +1084,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>6</processVersion>
+      <processVersion>8</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1086,7 +1094,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>6</processVersion>
+      <processVersion>8</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1096,7 +1104,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>6</processVersion>
+      <processVersion>8</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1106,7 +1114,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>6</processVersion>
+      <processVersion>8</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1116,7 +1124,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>6</processVersion>
+      <processVersion>8</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

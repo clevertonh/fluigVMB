@@ -41,6 +41,13 @@ function displayFields(form,customHTML){
 	}
 	else if (activity == GERAR_ADTO) {
 		 form.setVisibleById("div_cartao", false);
+		 
+		 //quando os adiantamentos passarem a ser gerados direto para o contas a pagar, esses campos precisarão ser descomentados
+		 form.setVisibleById("div_banco", false);
+		 form.setVisibleById("div_agencia", false);
+		 form.setVisibleById("div_conta", false);
+		 form.setVisibleById("div_dtPgto", false);
+		 
 	}
 	else if (activity == SOLICITANTE) {
 		 form.setVisibleById("div_banco", false);

@@ -108,8 +108,8 @@ function setSelectedZoomItem(selectedItem) {
 	  reloadZoomFilterValues(FONTE, "PROJETO," + selectedItem["CODIGO"]);
   }
   else if (campoZOOM == FUNCIONARIO){
-	  $("#razaosocial").val(selectedItem["NOME"]);
-	  $("#codigoFornecedor").val(selectedItem["RG"]);
+	  $("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);
+	  $("#codigoFornecedor").val(selectedItem["CODIGO"]);
 	  
   }
 

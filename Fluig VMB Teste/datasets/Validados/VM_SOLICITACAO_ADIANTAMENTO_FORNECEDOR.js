@@ -2,6 +2,12 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
 	 
+	
+	/*
+	 * É necessário recuperar a data da aprovação do gestor e a data da aprovação do diretor para enviar e preencher a tabela SZ2
+	 */
+	
+	
 	 if(constraints !== null && constraints.length){
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			 	var documentId = constraints[0].initialValue;
@@ -25,20 +31,21 @@ function createDataset(fields, constraints, sortFields) {
 						            params : {
 						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
 						            	DATAVENCIMENTO :'' + solicitacao.getValue(0,"dtNecessidade") + '',
-						            	VALORSOLICITADO : '' + solicitacao.getValue(0,"vl_solicitado") + '' ,
-						            	VALORAPROVADO : '' + solicitacao.getValue(0,"vl_aprovado") + '' ,
-						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
-						            	EMAILSOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
+						            	VALORSOLICITADO : '' + solicitacao.getValue(0,"vl_adiantado") + '' ,
+						            	VALORAPROVADO : '' + solicitacao.getValue(0,"vl_adiantado") + '' ,
+						            	CPFFORNECEDOR :'' + solicitacao.getValue(0,"cgcFornecedor") +'',	
+						            	CODIGOFORNECEDOR :'' + solicitacao.getValue(0,"codigoFornecedor") +'',
+						            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailSolicitante") +'',
 						            	EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailLider") +'',
+						            	EMAILDIRETOR	: '' + solicitacao.getValue(0,"emaildiretor") +'',
 						            	CCUSTO	: '' + solicitacao.getValue(0,"centrocusto") +'',
 						            	PROJETO	: '' + solicitacao.getValue(0,"projeto") +'',	
 						            	FONTE	: '' + solicitacao.getValue(0,"fontefinanciamento") +'',
 						            	SOLICITACAO  : '' + codSolicitacao + '' ,
-						            	FINALIDADE  : '' + solicitacao.getValue(0,"finalidade") +'',
+						            	FINALIDADE  : '' + solicitacao.getValue(0,"justificativa") +'',
 						            	IDDOCUMENTO: '' + documentId + '',
-						            	ITINERARIO  : '' + solicitacao.getValue(0,"itinerario") +'',
-						            	TIPOADIANTAMENTO: ''+"1" +'',
-						            	PROCESSO: ''+"8" +''
+						            	TIPOADIANTAMENTO: ''+"5" +'',
+						            	PROCESSO: ''+"9" +''
 						            },
 						          options : {
 						             encoding : 'UTF-8',

@@ -38,6 +38,12 @@ function beforeStateEntry(sequenceId){
     	    	 
     	    	 
     			 resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_ADIANTAMENTO_FORNECEDOR", null, constraintAdto, null);
+    			 
+    			 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+    			    	throw resultDataset.getValue(0,"RETORNO");
+    			    } 
+    			 
+    			 
     			         		       
     	    }
 	    	else if (ativAtual == SOLICITANTE){
@@ -47,12 +53,14 @@ function beforeStateEntry(sequenceId){
 	    		resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_ADIANTAMENTO_FORNECEDOR", null, constraintAdto, null);
 	    			    	
 	
+	    		 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+	 		    	throw resultDataset.getValue(0,"RETORNO");
+	 		    } 
+	    		 
 	    	}
     	    
     	    
-    	    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-		    	throw resultDataset.getValue(0,"RETORNO");
-		    } 
+    	   
     	    
     
     }       	

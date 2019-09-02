@@ -78,15 +78,15 @@
                                                            <input name="cgcFornecedor"
                                                             class="form-control" type="zoom"
                                                             id="cgcFornecedor"
-                                                            data-zoom="{'displayKey':'CPF',
-                                                            'datasetId':'VM_Funcionario',
+                                                            data-zoom="{'displayKey':'CNPJ',
+                                                            'datasetId':'VM_Fornecedores',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione o fornecedor',
                                                             'fields':[
-                                                            {'field':'NOME','label':'NOME'},
-                                                            {'field':'CPF','label':'CPF','standard':'true'},
-                                                            {'field':'RG','label':'RG'},
-                                                            {'field':'EMAIL_F','label':'EMAIL_F'}						  					
+                                                            {'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
+                                                            {'field':'CNPJ','label':'CNPJ','standard':'true'},
+                                                            {'field':'CODIGO','label':'CODIGO'},
+                                                            {'field':'TIPO','label':'TIPO'}						  					
                                                             ]
                                                             }">
                                                       </div>
@@ -358,7 +358,7 @@
 							                                       	<input  type="text" name="cartaocredito" id="cartaocredito" class="form-control">
 						                                       </div>
                               	 	
-                              	 	        <div class="form-group col-md-2">
+                              	 	        <div class="form-group col-md-2" id="div_dtPgto">
                                           <label for="dtEmissao">Data de Pagamento</label>
                                           <div class="input-group date" >
                                              <input type="text" class="form-control" placeholder="Data de Pgto" id="dtEmissao" name="dtEmissao">
