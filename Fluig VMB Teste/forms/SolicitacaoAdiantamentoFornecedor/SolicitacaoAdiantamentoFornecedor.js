@@ -27,6 +27,9 @@ $(document).ready(function() {
 		    
 		});
 		
+		
+		//reloadZoomFilterValues("ds_get_Fornecedor", "TIPO," + "FUNCIONARIO");	
+		
 	}
 	else if (ATIVIDADE == TESOURARIA){
 		var dtEmissao = FLUIGC.calendar('#dtEmissao', {

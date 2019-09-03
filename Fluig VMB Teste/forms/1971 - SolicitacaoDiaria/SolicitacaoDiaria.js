@@ -234,7 +234,7 @@ function setSelectedZoomItem(selectedItem) {
     }
     
     else if (campoZOOM == BENEFICIARIO){
-    		$("#cpfbeneficiario").val(selectedItem["CPF"]);
+    		$("#cpfbeneficiario").val(selectedItem["CNPJ"]);
     } 
     
     
