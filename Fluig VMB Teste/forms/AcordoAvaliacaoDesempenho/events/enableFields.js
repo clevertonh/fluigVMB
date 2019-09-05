@@ -24,6 +24,7 @@ function enableFields(form){
 		        form.setEnabled("acao___"+ indexes[i], false);	
 		       	form.setEnabled("porque___"+ indexes[i], false);
 		        form.setEnabled("como___"+ indexes[i], false);	
+		        form.setEnabled("tx_competencia___"+ indexes[i], false);
 	        
 		    }
 	}

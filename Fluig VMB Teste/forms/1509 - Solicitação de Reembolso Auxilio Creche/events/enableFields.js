@@ -53,6 +53,8 @@ function enableFields(form){
 	else if (activity == APROVACAO_RH){
 		form.setEnabled('validacao', false);
 		form.setEnabled('justificativaReprovacaoV', false);
+		form.setEnabled('dtPagamento', false);
+		
 		 
 		//recupera data de pagamento do Fluig
 		var dtPagamento = form.getValue("dtPagamento");

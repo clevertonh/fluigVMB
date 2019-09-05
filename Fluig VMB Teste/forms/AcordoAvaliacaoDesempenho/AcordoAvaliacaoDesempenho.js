@@ -104,10 +104,12 @@ function adicionaMeta() {
     var indice = wdkAddChild('tableMetas');
 
     if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
-    	 $('td:nth-child(5)').hide();
+    	 //$('td:nth-child(5)').hide();
     	 $('td:nth-child(6)').hide();
     	 $('td:nth-child(7)').hide();
     	 $('td:nth-child(8)').hide();
+    	 $('td:nth-child(9)').hide();
+    	 
     }
    
     

@@ -99,6 +99,7 @@
                                                                            <th class="tableColumn" style="width:500px;">O que você fará este ano?</th>
                                                                            <th class="tableColumn" style="width:500px;">Por que a Visão Mundial Brasil precisa que isto seja feito?</th>
                                                                            <th class="tableColumn" style="width:500px;">Como seria um resultado bem-sucedido? </th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_competencia">Competência</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentarioF">Comentários do funcionário</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_campo_10">Como isto foi feito?</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentarioG">Comentários do Gerente</th>
@@ -115,6 +116,26 @@
                                                                            </td>
                                                                            <td>
                                                                               <textArea class="form-control" rows="9" name="como" id="como" maxlength="250" style="width:500px;"  ></textArea>
+                                                                           </td>
+                                                                           <td>
+                                                                           		
+                                                                           		<div class="form-group" style="height:100px;"> 
+                                                                           		<input type="hidden" name="competencia"
+                                                                                    id="competencia" /> 
+							                                                         <input name="tx_competencia"
+							                                                            class="form-control" type="zoom"
+							                                                            id="tx_competencia"
+							                                                            data-zoom="{'displayKey':'NOME',
+							                                                            'datasetId':'VM_Funcionario',
+							                                                            'maximumSelectionLength':'1',
+							                                                            'placeholder':'Selecione a competência',
+							                                                            'fields':[
+							                                                            {'field':'NOME','label':'NOME','standard':'true'},
+							                                                            {'field':'CPF','label':'CPF'},
+							                                                            {'field':'EMAIL_F','label':'EMAIL_F'}						  					
+							                                                            ]
+							                                                            }">
+						                                                     	 </div>
                                                                            </td>
                                                                            <td>
                                                                               <textArea class="form-control" rows="9" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>
