@@ -6,7 +6,8 @@ function createDataset(fields, constraints, sortFields) {
 	var dtTarifa;
 	var aRateio = new Array();
 	
- 
+ //problema para integrar financeiro
+	
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
