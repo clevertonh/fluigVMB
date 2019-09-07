@@ -31,7 +31,11 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("matricula", false);
 	 form.setVisibleById("prazoCancelamento", false);
 	 form.setVisibleById("prazoaprovacao", false); 
+	 form.setVisibleById("_prazoaprovacao", false); 
+	 
 	 form.setVisibleById("matriculasolicitante", false); 
+	 form.setVisibleById("_matriculasolicitante", false); 
+	 
 	 form.setVisibleById("divMatrApr", false); 
 	 form.setVisibleById("cpfaprovador", false); 
 	 form.setVisibleById("prazoreembolso", false);

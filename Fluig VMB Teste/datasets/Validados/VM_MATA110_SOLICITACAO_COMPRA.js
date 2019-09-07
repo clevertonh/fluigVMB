@@ -57,7 +57,8 @@ function createDataset(fields, constraints, sortFields) {
         									 datasetProdutos.getValue(a,"COD_PRODUTO"),
         									 datasetProdutos.getValue(a,"SOLICITACAO"),
         									 datasetProdutos.getValue(a,"QUANTIDADE"),								
-        									 datasetProdutos.getValue(a,"DT_NECESSIDADE")        									
+        									 datasetProdutos.getValue(a,"DT_NECESSIDADE"),
+        									 datasetProdutos.getValue(a,"VALOR_EMPENHADO")  
         									 ));       						        							
          						 }
         						 
@@ -128,12 +129,13 @@ function createDataset(fields, constraints, sortFields) {
 
 
 //FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA
-function addItemCompra(produto,codigo,quantidade,dtnecessidade){
+function addItemCompra(produto,codigo,quantidade,dtnecessidade,nvalor){
 	   var itemServico = { 
 				produto: ''+produto +'', 
 				codSolicitacao: '' + codigo +'',
 				quantidade: ''+ quantidade +'',
-				dtNecessidade: '' + dtnecessidade +''
+				dtNecessidade: '' + dtnecessidade +'',
+				valor: '' + nvalor +''
 					};	
 		
 		return itemServico;

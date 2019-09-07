@@ -69,6 +69,10 @@ function enableFields(form){
 		    form.setEnabled('tarifa', true);
 			form.setEnabled('vl_tarifa', true);
 			form.setEnabled('dtTarifa', true);
+			form.setEnabled('banco', true);
+			form.setEnabled('agencia', true);		
+			form.setEnabled('contabanco', true);
+			form.setEnabled('natureza', true);
 		 
 	}
 	else if (activity == REALIZAR_PGTO || activity == AVALIAR_PGTO){
@@ -97,10 +101,6 @@ function enableFields(form){
 	    form.setEnabled('tarifa', true);
 		form.setEnabled('vl_tarifa', true);
 		form.setEnabled('dtTarifa', true);
-		form.setEnabled('banco', true);
-		form.setEnabled('agencia', true);		
-		form.setEnabled('contabanco', true);
-
 	    
 	}
 	

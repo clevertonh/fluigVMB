@@ -60,7 +60,7 @@ function createDataset(fields, constraints, sortFields) {
                                 datasetFilhos.getValue(j, "txtproduto"),
                                 datasetFilhos.getValue(j, "id_um"),
                                 datasetFilhos.getValue(j, "id_quantidade"),
-                                datasetFilhos.getValue(j, "vrEmpUnit"),
+                                datasetFilhos.getValue(j, "vrTotUnit"),
                                 datasetFilhos.getValue(j, "dtNecessidade"),
                                 datasetFilhos.getValue(j, "codigoProduto"),
                                 solicitacao

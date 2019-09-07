@@ -102,7 +102,7 @@ function removeItens() {
 
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	|| ATIVIDADE == APROVACAO){								
 		fnWdkRemoveChild(oElement);	
 
 	}

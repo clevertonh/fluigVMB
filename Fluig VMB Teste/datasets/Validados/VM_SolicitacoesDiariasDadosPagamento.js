@@ -35,13 +35,7 @@ function createDataset(fields, constraints, sortFields) {
             	var empresa = datasetPrincipal.getValue(a, "companyid");            	
             	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
             	
-            	log.info("codigo solicitação diaria 30/07");
-            	log.dir(constraints);
-            	
-            	log.info(constraints[0].fieldName);
-            	log.info(constraints[0].initialValue);
-            	
-            	
+                	
             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
             		
            		 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);

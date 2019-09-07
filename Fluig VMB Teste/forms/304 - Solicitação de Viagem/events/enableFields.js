@@ -72,101 +72,25 @@ function enableFields(form) {
 		 }
 		 
 	}
-	
-	
-	
-	else {		 
-		 //CAMPOS ABA INICIAL
-		 form.setEnabled('tipoviagem', false);
-		 form.setEnabled('remarcacao', false);
-		 form.setEnabled('dataset_solicitacaoviagem', false);		 
-		 form.setEnabled('aceitenorma', false);
-		 form.setEnabled('justificativa', false);
-		 form.setEnabled('dataSolicitacao', false);
-		 form.setEnabled('justificativaremarcacao', false);
-		 form.setEnabled('rateioconfigurado', false)
-		 form.setEnabled('finalidade', false);
- 
-		 //CAMPOS DADOS DO PASSAGEIRO
-		 form.setEnabled('solicitanteFuncionario', false);
-		 form.setEnabled('solicitantepassageiro', false);
-		 form.setEnabled('passageirofuncionario', false);	
-		 form.setEnabled('passageiroestrangeiro', false);
-		 form.setEnabled('embaixador', false);
-		 form.setEnabled('nomepassageiro', false);
-		 form.setEnabled('nomemae', false);
-		 form.setEnabled('datanasc', false);
-		 form.setEnabled('cpfpassageiro', false);
-		 form.setEnabled('rgpassageiro', false);
-		 form.setEnabled('passaporte', false);
-		 form.setEnabled('outroFuncionario', false);
-		 
-		 
-		 //CAMPOS DA ABA AGENDA
-		 form.setEnabled('viagemplanejada', false);
-		 form.setEnabled('agenda', false);
-		 
-	 
-		 //CAMPOS ABA VOO		 
-		 form.setEnabled('pedirPassagem', false);
-		 form.setEnabled('tipovoo', false);
-		 form.setEnabled('origem1', false);
-		 form.setEnabled('destino1', false);
-		 form.setEnabled('origem2', false);
-		 form.setEnabled('destino2', false);
-		 form.setEnabled('origem3', false);
-		 form.setEnabled('destino3', false);
-		 form.setEnabled('observacaoVoo', false);
-		 form.setEnabled('datapartida1', false);
-		 form.setEnabled('dataretorno1', false);
-		 form.setEnabled('datapartida2', false);
-		 form.setEnabled('datapartida3', false);
-		 
-		 form.setEnabled('internacionalOrigem1', false);
-		 form.setEnabled('internacionalOrigem2', false);
-		 form.setEnabled('internacionalOrigem3', false);
-		 form.setEnabled('internacionalDestino1', false);
-		 form.setEnabled('internacionalDestino2', false);
-		 form.setEnabled('internacionalDestino3', false);
-		 
-		 
-		 //CAMPOS DA ABA DE HOSPEDAGEM
-		 form.setEnabled('pedirHotel', false);
-		 form.setEnabled('tipoquarto', false);
-		 form.setEnabled('datacheckout', false);
-		 form.setEnabled('datacheckin', false);
-		 form.setEnabled('localhospedagem', false);	
-		 form.setEnabled('datacheckin2', false);
-		 form.setEnabled('datacheckout2', false);
-		 form.setEnabled('localhotel2', false);		
-		 form.setEnabled('datacheckin3', false);
-		 form.setEnabled('datacheckout3', false);
-		 form.setEnabled('localhotel3', false);		 
-		 form.setEnabled('observacaoHotel', false);
 
-		 
-		 //CAMPOS DA ABA DE APROVAÇAO
-		 form.setEnabled('dataAprovacao', false);
 	
-		 
-		 //CAMPOS DA ABA DE ADIANTAMENTO
-		 form.setEnabled('adiantamento', false);
-		 form.setEnabled('vl_solicitado', false);
-		 form.setEnabled('vl_aprovado', false);
-		 form.setEnabled('dtNecessidade', false);
-		 form.setEnabled('itinerario', false);
-		 form.setEnabled('centrocustoAdto', false);
-		 form.setEnabled('projetoAdto', false);
-		 form.setEnabled('fontefinanciamentoAdto', false);
-		 
-		 //PROCESSO DE APROVAÇÃO
-		 if (activityEnable == APROVACAO){
+	
+	
+	else if (activityEnable == APROVACAO){	 
+			    var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+			    var mapaForm = new java.util.HashMap();
+			    mapaForm = form.getCardData();
+			    var it = mapaForm.keySet().iterator();
+			     
+			    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+			        var key = it.next();
+			        form.setEnabled(key, habilitar);
+			    }
+		
+			    	    
 			 //CAMPOS HOSPILIDADE
-			 form.setEnabled('vooComprado', false);
-			 form.setEnabled('hotelComprado', false);
 			 form.setEnabled('aprovacao', true);
-			 form.setEnabled('rateioconfigurado', true);
-			 
+				 
 			 //set numero da solicitação
 			 form.setValue("solicitacao",getValue('WKNumProces'));
 			 
@@ -192,6 +116,91 @@ function enableFields(form) {
 		 		 
 		 //PROCESSO DE COMPRA DE PASSAGEM
 		 else  if (activityEnable == COMPRARPASSAGEM){
+			 //CAMPOS ABA INICIAL
+			 form.setEnabled('tipoviagem', false);
+			 form.setEnabled('remarcacao', false);
+			 form.setEnabled('dataset_solicitacaoviagem', false);		
+			 form.setEnabled('dataset_solicitacaoevento', false);	
+			 form.setEnabled('FinanEvento', false);	
+			 
+			 form.setEnabled('aceitenorma', false);
+			 form.setEnabled('justificativa', false);
+			 form.setEnabled('dataSolicitacao', false);
+			 form.setEnabled('justificativaremarcacao', false);
+			 form.setEnabled('rateioconfigurado', false)
+			 form.setEnabled('finalidade', false);
+	 
+			 //CAMPOS DADOS DO PASSAGEIRO
+			 form.setEnabled('solicitanteFuncionario', false);
+			 form.setEnabled('solicitantepassageiro', false);
+			 form.setEnabled('passageirofuncionario', false);	
+			 form.setEnabled('passageiroestrangeiro', false);
+			 form.setEnabled('embaixador', false);
+			 form.setEnabled('nomepassageiro', false);
+			 form.setEnabled('nomemae', false);
+			 form.setEnabled('datanasc', false);
+			 form.setEnabled('cpfpassageiro', false);
+			 form.setEnabled('rgpassageiro', false);
+			 form.setEnabled('passaporte', false);
+			 form.setEnabled('outroFuncionario', false);
+			 
+			 
+			 //CAMPOS DA ABA AGENDA
+			 form.setEnabled('viagemplanejada', false);
+			 form.setEnabled('agenda', false);
+			 
+		 
+			 //CAMPOS ABA VOO		 
+			 form.setEnabled('pedirPassagem', false);
+			 form.setEnabled('tipovoo', false);
+			 form.setEnabled('origem1', false);
+			 form.setEnabled('destino1', false);
+			 form.setEnabled('origem2', false);
+			 form.setEnabled('destino2', false);
+			 form.setEnabled('origem3', false);
+			 form.setEnabled('destino3', false);
+			 form.setEnabled('observacaoVoo', false);
+			 form.setEnabled('datapartida1', false);
+			 form.setEnabled('dataretorno1', false);
+			 form.setEnabled('datapartida2', false);
+			 form.setEnabled('datapartida3', false);
+			 
+			 form.setEnabled('internacionalOrigem1', false);
+			 form.setEnabled('internacionalOrigem2', false);
+			 form.setEnabled('internacionalOrigem3', false);
+			 form.setEnabled('internacionalDestino1', false);
+			 form.setEnabled('internacionalDestino2', false);
+			 form.setEnabled('internacionalDestino3', false);
+			 
+			 
+			 //CAMPOS DA ABA DE HOSPEDAGEM
+			 form.setEnabled('pedirHotel', false);
+			 form.setEnabled('tipoquarto', false);
+			 form.setEnabled('datacheckout', false);
+			 form.setEnabled('datacheckin', false);
+			 form.setEnabled('localhospedagem', false);	
+			 form.setEnabled('datacheckin2', false);
+			 form.setEnabled('datacheckout2', false);
+			 form.setEnabled('localhotel2', false);		
+			 form.setEnabled('datacheckin3', false);
+			 form.setEnabled('datacheckout3', false);
+			 form.setEnabled('localhotel3', false);		 
+			 form.setEnabled('observacaoHotel', false);
+
+			 
+			 //CAMPOS DA ABA DE APROVAÇAO
+			 form.setEnabled('dataAprovacao', false);
+		
+			 
+			 //CAMPOS DA ABA DE ADIANTAMENTO
+			 form.setEnabled('adiantamento', false);
+			 form.setEnabled('vl_solicitado', false);
+			 form.setEnabled('vl_aprovado', false);
+			 form.setEnabled('dtNecessidade', false);
+			 form.setEnabled('itinerario', false);
+			 form.setEnabled('centrocustoAdto', false);
+			 form.setEnabled('projetoAdto', false);
+			 form.setEnabled('fontefinanciamentoAdto', false);
 			 			
 			 //CAMPOS APROVACAO 
 			 form.setEnabled('aprovacao', false);
@@ -227,6 +236,89 @@ function enableFields(form) {
 		 
 		 //PROCESSO SOLICITAR CANCELAMENTO
 		 else if (activityEnable == OBTERPASSAGEM ){
+			 //CAMPOS ABA INICIAL
+			 form.setEnabled('tipoviagem', false);
+			 form.setEnabled('remarcacao', false);
+			 form.setEnabled('dataset_solicitacaoviagem', false);		 
+			 form.setEnabled('aceitenorma', false);
+			 form.setEnabled('justificativa', false);
+			 form.setEnabled('dataSolicitacao', false);
+			 form.setEnabled('justificativaremarcacao', false);
+			 form.setEnabled('rateioconfigurado', false)
+			 form.setEnabled('finalidade', false);
+	 
+			 //CAMPOS DADOS DO PASSAGEIRO
+			 form.setEnabled('solicitanteFuncionario', false);
+			 form.setEnabled('solicitantepassageiro', false);
+			 form.setEnabled('passageirofuncionario', false);	
+			 form.setEnabled('passageiroestrangeiro', false);
+			 form.setEnabled('embaixador', false);
+			 form.setEnabled('nomepassageiro', false);
+			 form.setEnabled('nomemae', false);
+			 form.setEnabled('datanasc', false);
+			 form.setEnabled('cpfpassageiro', false);
+			 form.setEnabled('rgpassageiro', false);
+			 form.setEnabled('passaporte', false);
+			 form.setEnabled('outroFuncionario', false);
+			 
+			 
+			 //CAMPOS DA ABA AGENDA
+			 form.setEnabled('viagemplanejada', false);
+			 form.setEnabled('agenda', false);
+			 
+		 
+			 //CAMPOS ABA VOO		 
+			 form.setEnabled('pedirPassagem', false);
+			 form.setEnabled('tipovoo', false);
+			 form.setEnabled('origem1', false);
+			 form.setEnabled('destino1', false);
+			 form.setEnabled('origem2', false);
+			 form.setEnabled('destino2', false);
+			 form.setEnabled('origem3', false);
+			 form.setEnabled('destino3', false);
+			 form.setEnabled('observacaoVoo', false);
+			 form.setEnabled('datapartida1', false);
+			 form.setEnabled('dataretorno1', false);
+			 form.setEnabled('datapartida2', false);
+			 form.setEnabled('datapartida3', false);
+			 
+			 form.setEnabled('internacionalOrigem1', false);
+			 form.setEnabled('internacionalOrigem2', false);
+			 form.setEnabled('internacionalOrigem3', false);
+			 form.setEnabled('internacionalDestino1', false);
+			 form.setEnabled('internacionalDestino2', false);
+			 form.setEnabled('internacionalDestino3', false);
+			 
+			 
+			 //CAMPOS DA ABA DE HOSPEDAGEM
+			 form.setEnabled('pedirHotel', false);
+			 form.setEnabled('tipoquarto', false);
+			 form.setEnabled('datacheckout', false);
+			 form.setEnabled('datacheckin', false);
+			 form.setEnabled('localhospedagem', false);	
+			 form.setEnabled('datacheckin2', false);
+			 form.setEnabled('datacheckout2', false);
+			 form.setEnabled('localhotel2', false);		
+			 form.setEnabled('datacheckin3', false);
+			 form.setEnabled('datacheckout3', false);
+			 form.setEnabled('localhotel3', false);		 
+			 form.setEnabled('observacaoHotel', false);
+
+			 
+			 //CAMPOS DA ABA DE APROVAÇAO
+			 form.setEnabled('dataAprovacao', false);
+		
+			 
+			 //CAMPOS DA ABA DE ADIANTAMENTO
+			 form.setEnabled('adiantamento', false);
+			 form.setEnabled('vl_solicitado', false);
+			 form.setEnabled('vl_aprovado', false);
+			 form.setEnabled('dtNecessidade', false);
+			 form.setEnabled('itinerario', false);
+			 form.setEnabled('centrocustoAdto', false);
+			 form.setEnabled('projetoAdto', false);
+			 form.setEnabled('fontefinanciamentoAdto', false);
+			 
 			 //CAMPOS APROVACAO 
 			 form.setEnabled('aprovacao', false);
 			 
@@ -265,6 +357,89 @@ function enableFields(form) {
 		 
 		 //PROCESSO DE REGISTRAR CANCELAMENTO DA VIAGEM
 		 else if (activityEnable == REGISTRARCANCELAMENTO ||  activityEnable == CONFIRMARREEMBOLSO ){
+			 //CAMPOS ABA INICIAL
+			 form.setEnabled('tipoviagem', false);
+			 form.setEnabled('remarcacao', false);
+			 form.setEnabled('dataset_solicitacaoviagem', false);		 
+			 form.setEnabled('aceitenorma', false);
+			 form.setEnabled('justificativa', false);
+			 form.setEnabled('dataSolicitacao', false);
+			 form.setEnabled('justificativaremarcacao', false);
+			 form.setEnabled('rateioconfigurado', false)
+			 form.setEnabled('finalidade', false);
+	 
+			 //CAMPOS DADOS DO PASSAGEIRO
+			 form.setEnabled('solicitanteFuncionario', false);
+			 form.setEnabled('solicitantepassageiro', false);
+			 form.setEnabled('passageirofuncionario', false);	
+			 form.setEnabled('passageiroestrangeiro', false);
+			 form.setEnabled('embaixador', false);
+			 form.setEnabled('nomepassageiro', false);
+			 form.setEnabled('nomemae', false);
+			 form.setEnabled('datanasc', false);
+			 form.setEnabled('cpfpassageiro', false);
+			 form.setEnabled('rgpassageiro', false);
+			 form.setEnabled('passaporte', false);
+			 form.setEnabled('outroFuncionario', false);
+			 
+			 
+			 //CAMPOS DA ABA AGENDA
+			 form.setEnabled('viagemplanejada', false);
+			 form.setEnabled('agenda', false);
+			 
+		 
+			 //CAMPOS ABA VOO		 
+			 form.setEnabled('pedirPassagem', false);
+			 form.setEnabled('tipovoo', false);
+			 form.setEnabled('origem1', false);
+			 form.setEnabled('destino1', false);
+			 form.setEnabled('origem2', false);
+			 form.setEnabled('destino2', false);
+			 form.setEnabled('origem3', false);
+			 form.setEnabled('destino3', false);
+			 form.setEnabled('observacaoVoo', false);
+			 form.setEnabled('datapartida1', false);
+			 form.setEnabled('dataretorno1', false);
+			 form.setEnabled('datapartida2', false);
+			 form.setEnabled('datapartida3', false);
+			 
+			 form.setEnabled('internacionalOrigem1', false);
+			 form.setEnabled('internacionalOrigem2', false);
+			 form.setEnabled('internacionalOrigem3', false);
+			 form.setEnabled('internacionalDestino1', false);
+			 form.setEnabled('internacionalDestino2', false);
+			 form.setEnabled('internacionalDestino3', false);
+			 
+			 
+			 //CAMPOS DA ABA DE HOSPEDAGEM
+			 form.setEnabled('pedirHotel', false);
+			 form.setEnabled('tipoquarto', false);
+			 form.setEnabled('datacheckout', false);
+			 form.setEnabled('datacheckin', false);
+			 form.setEnabled('localhospedagem', false);	
+			 form.setEnabled('datacheckin2', false);
+			 form.setEnabled('datacheckout2', false);
+			 form.setEnabled('localhotel2', false);		
+			 form.setEnabled('datacheckin3', false);
+			 form.setEnabled('datacheckout3', false);
+			 form.setEnabled('localhotel3', false);		 
+			 form.setEnabled('observacaoHotel', false);
+
+			 
+			 //CAMPOS DA ABA DE APROVAÇAO
+			 form.setEnabled('dataAprovacao', false);
+		
+			 
+			 //CAMPOS DA ABA DE ADIANTAMENTO
+			 form.setEnabled('adiantamento', false);
+			 form.setEnabled('vl_solicitado', false);
+			 form.setEnabled('vl_aprovado', false);
+			 form.setEnabled('dtNecessidade', false);
+			 form.setEnabled('itinerario', false);
+			 form.setEnabled('centrocustoAdto', false);
+			 form.setEnabled('projetoAdto', false);
+			 form.setEnabled('fontefinanciamentoAdto', false);
+			 
 			 //CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
@@ -282,6 +457,89 @@ function enableFields(form) {
 			 
 		 }
 		 else if (activityEnable == CALCULARDIARIAS || activityEnable == REALIZAR_PAGAMENTO || activityEnable == AVALIAR_ATRASO ){
+			 //CAMPOS ABA INICIAL
+			 form.setEnabled('tipoviagem', false);
+			 form.setEnabled('remarcacao', false);
+			 form.setEnabled('dataset_solicitacaoviagem', false);		 
+			 form.setEnabled('aceitenorma', false);
+			 form.setEnabled('justificativa', false);
+			 form.setEnabled('dataSolicitacao', false);
+			 form.setEnabled('justificativaremarcacao', false);
+			 form.setEnabled('rateioconfigurado', false)
+			 form.setEnabled('finalidade', false);
+	 
+			 //CAMPOS DADOS DO PASSAGEIRO
+			 form.setEnabled('solicitanteFuncionario', false);
+			 form.setEnabled('solicitantepassageiro', false);
+			 form.setEnabled('passageirofuncionario', false);	
+			 form.setEnabled('passageiroestrangeiro', false);
+			 form.setEnabled('embaixador', false);
+			 form.setEnabled('nomepassageiro', false);
+			 form.setEnabled('nomemae', false);
+			 form.setEnabled('datanasc', false);
+			 form.setEnabled('cpfpassageiro', false);
+			 form.setEnabled('rgpassageiro', false);
+			 form.setEnabled('passaporte', false);
+			 form.setEnabled('outroFuncionario', false);
+			 
+			 
+			 //CAMPOS DA ABA AGENDA
+			 form.setEnabled('viagemplanejada', false);
+			 form.setEnabled('agenda', false);
+			 
+		 
+			 //CAMPOS ABA VOO		 
+			 form.setEnabled('pedirPassagem', false);
+			 form.setEnabled('tipovoo', false);
+			 form.setEnabled('origem1', false);
+			 form.setEnabled('destino1', false);
+			 form.setEnabled('origem2', false);
+			 form.setEnabled('destino2', false);
+			 form.setEnabled('origem3', false);
+			 form.setEnabled('destino3', false);
+			 form.setEnabled('observacaoVoo', false);
+			 form.setEnabled('datapartida1', false);
+			 form.setEnabled('dataretorno1', false);
+			 form.setEnabled('datapartida2', false);
+			 form.setEnabled('datapartida3', false);
+			 
+			 form.setEnabled('internacionalOrigem1', false);
+			 form.setEnabled('internacionalOrigem2', false);
+			 form.setEnabled('internacionalOrigem3', false);
+			 form.setEnabled('internacionalDestino1', false);
+			 form.setEnabled('internacionalDestino2', false);
+			 form.setEnabled('internacionalDestino3', false);
+			 
+			 
+			 //CAMPOS DA ABA DE HOSPEDAGEM
+			 form.setEnabled('pedirHotel', false);
+			 form.setEnabled('tipoquarto', false);
+			 form.setEnabled('datacheckout', false);
+			 form.setEnabled('datacheckin', false);
+			 form.setEnabled('localhospedagem', false);	
+			 form.setEnabled('datacheckin2', false);
+			 form.setEnabled('datacheckout2', false);
+			 form.setEnabled('localhotel2', false);		
+			 form.setEnabled('datacheckin3', false);
+			 form.setEnabled('datacheckout3', false);
+			 form.setEnabled('localhotel3', false);		 
+			 form.setEnabled('observacaoHotel', false);
+
+			 
+			 //CAMPOS DA ABA DE APROVAÇAO
+			 form.setEnabled('dataAprovacao', false);
+		
+			 
+			 //CAMPOS DA ABA DE ADIANTAMENTO
+			 form.setEnabled('adiantamento', false);
+			 form.setEnabled('vl_solicitado', false);
+			 form.setEnabled('vl_aprovado', false);
+			 form.setEnabled('dtNecessidade', false);
+			 form.setEnabled('itinerario', false);
+			 form.setEnabled('centrocustoAdto', false);
+			 form.setEnabled('projetoAdto', false);
+			 form.setEnabled('fontefinanciamentoAdto', false);
+			 
 			//CAMPOS SOLICITAR CANCELAMENTO
 			 form.setEnabled('justificativacancelamento', false);
 			 form.setEnabled('cancelarpassagem', false);
@@ -361,7 +619,7 @@ function enableFields(form) {
 			     	        
 				    	    }   
 		 }	 
-	 }	 
+	  
 	
 	
 

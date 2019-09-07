@@ -5,18 +5,8 @@ function createDataset(fields, constraints, sortFields) {
 	var valorTarifa;
 	var dtTarifa;
 	var aRateio = new Array();
-	var banco;
-	var agencia;
-	var contabanco;
-
 	
-	/*Enquanto webservice com a rotina FINA100 não é desenvolvido o dataset considerará 
-	 * que toda vez que for chamado terá seu retorno a informação de sucesso
-	 * */
-	 dataset.addRow(new Array("SUCESSO"));
-	 return dataset;
-
-	 
+ 
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -28,7 +18,7 @@ function createDataset(fields, constraints, sortFields) {
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
-           		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
+        		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
 	    	   	 try {
@@ -59,18 +49,7 @@ function createDataset(fields, constraints, sortFields) {
 						 dtTarifa = constraints[a].initialValue;
 	 					
 					 }
-					 else if (constraints[a].fieldName == "banco" ){
-						 banco = constraints[a].initialValue;
-	 					
-					 }		
-					 else if (constraints[a].fieldName == "agencia" ){
-						 agencia = constraints[a].initialValue;
-	 					
-					 }						 
-					 else if (constraints[a].fieldName == "contabanco" ){
-						 contabanco = constraints[a].initialValue;
-	 					
-					 }	
+		
 					 
 				 }
 				 
@@ -90,9 +69,10 @@ function createDataset(fields, constraints, sortFields) {
 					            	SOLICITACAO : '' + codSolicitacao + '' ,
 					                SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
 					                VALORTARIFA : '' + valorTarifa + '' ,	
-					                BANCO				: '' + banco +'',					                
-					                AGENCIA				: '' + agencia +'',
-					                CONTA				: '' + contabanco +'',
+					                BANCO				: '' + solicitacao.getValue(0,"banco") +'',					                
+					                AGENCIA				: '' + solicitacao.getValue(0,"agencia") +'',
+					                CONTA				: '' + solicitacao.getValue(0,"contabanco") +'',
+					                NATUREZA				: '' + solicitacao.getValue(0,"natureza") +'',
 					                DATALANCAMENTO  : '' + dtTarifa + '',
 					        		RATEIODIGITADO: aRateio ,
 					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
@@ -161,7 +141,7 @@ function preencheRateio(solicitacao){
 			obj.atividade = '' + solicitacao.getValue(0, "ATIVIDADE") +'';	
 			obj.alocacao = '' + solicitacao.getValue(0, "ALOCACAO") +'';
 			obj.localizacao = '' + solicitacao.getValue(0, "LOCALIZACAO") +'';		    					
-			obj.percentual = 1 * parseInt(solicitacao.getValue(0, "PERCENTUAL")) ;
+			obj.percentual = 100 ;
 			
 			if (solicitacao.getValue(0, "PROJETO") != null){
 				obj.projeto = '' + solicitacao.getValue(0, "PROJETO") +'';	
@@ -179,7 +159,7 @@ function preencheRateio(solicitacao){
 				obj.conta = '' + solicitacao.getValue(0, "CONTA_CONTABIL") +'';	
 			}
 			
-			rateio[i] = obj;	
+			rateio[0] = obj;	
 
 	   
 	 			   

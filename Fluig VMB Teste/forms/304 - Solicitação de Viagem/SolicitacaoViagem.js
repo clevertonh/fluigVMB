@@ -66,6 +66,7 @@ $(document).ready(function() {
 	}
 	
 	
+	
 	if (ATIVIDADE != ABERTURA && ATIVIDADE != CORRIGIRSOLICITACAO && ATIVIDADE != SOLICITARVIAGEM && ATIVIDADE != APROVACAO){
 		document.getElementById("btn_add_item").style.display = "none";
 	}

@@ -22,7 +22,8 @@ function createDataset(fields, constraints, sortFields) {
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
 	    		
-	    		var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
+         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);
+	    		//var c2 = DatasetFactory.createConstraint("SOLICITACAO", codSolicitacao, codSolicitacao, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
 
@@ -55,10 +56,6 @@ function createDataset(fields, constraints, sortFields) {
 							 vl_tarifa = constraints[a].initialValue;					 
 							 
 						 }
-						 else if (constraints[a].fieldName == "fornecedorTarifa" ){
-							 fornecedor_tarifa = constraints[a].initialValue;
-													 
-						 }
 						 else if (constraints[a].fieldName == "dtTarifa" ){
 							 dt_tarifa = constraints[a].initialValue;
 							 									
@@ -87,7 +84,6 @@ function createDataset(fields, constraints, sortFields) {
 					        		RATEIODIGITADO: aRateio ,
 					        		VALORTARIFA: '' + vl_tarifa +'',
 					        		DATATARIFA: '' + dt_tarifa +'',
-					        		FORNECEDORTARIFA: '' + fornecedor_tarifa +'',
 					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
 					        		EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
 					            },						            

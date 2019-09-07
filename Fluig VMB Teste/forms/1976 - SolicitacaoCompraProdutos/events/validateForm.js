@@ -1,5 +1,5 @@
 function validateForm(form){
-	var ABERTURA = 0;
+	var ABERTURA = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 15;
 	var GERAR_SC = 42;
