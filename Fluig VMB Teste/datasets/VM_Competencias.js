@@ -4,7 +4,7 @@ function defineStructure() {
 	addColumn("DESC_GRUPO");
 	addColumn("COD_COMPETENCIA");
 	addColumn("DESC_COMPETENCIA");
-	
+	addColumn("CODIGO_IDENTIFICACAO");
 	setKey(["GRUPO","COD_COMPETENCIA"]);
 	//addIndex(["COD_COMPETENCIA"]);
 	
@@ -18,10 +18,10 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("DESC_GRUPO");
     dataset.addColumn("COD_COMPETENCIA");
     dataset.addColumn("DESC_COMPETENCIA");
-   
+    dataset.addColumn("CODIGO_IDENTIFICACAO");
     var dados;
     
-   var webservice = '/VM_COMPETENCIAS';
+   var webservice = '/VM_COMPETENCIA';
 	
 	try {
    	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -68,7 +68,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CGRUPO, objdata[i].CDESCG,objdata[i].CCOMP,objdata[i].CDESCCOMP]);
+			dataset.addRow([objdata[i].CGRUPO, objdata[i].CDESCG,objdata[i].CCOMP,objdata[i].CDESCCOMP, objdata[i].CGRUPO+objdata[i].CCOMP]);
 		}
 	}
 		
