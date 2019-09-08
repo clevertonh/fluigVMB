@@ -40,6 +40,7 @@ function beforeStateEntry(sequenceId){
 	var hotelComprado	 = hAPI.getCardValue("hotelComprado");					
 	var valorDiarias 	 = hAPI.getCardValue("vl_diarias");
 	var recebeDiarias 	 = hAPI.getCardValue("recebediarias");
+	var temTarifa		 	 = hAPI.getCardValue("tarifa");
 	var dataVencimento 	 = hAPI.getCardValue("dtPgto");
 	var geraTarifa 	 	 = hAPI.getCardValue("tarifa");
 	var valorTarifa 	 = hAPI.getCardValue("vl_tarifa");

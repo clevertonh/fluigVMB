@@ -17,6 +17,7 @@ var dadosGestor;
 var site;
 var AtividadeAtual;
 var QtdeLinhasRateio;
+var dtTarifa;
 
 
 
@@ -88,9 +89,20 @@ $(document).ready(function() {
               pickDate: true,
               pickTime: false
           });
+    	dtTarifa = FLUIGC.calendar('#dtTarifa', {
+		     pickDate: true,
+		     pickTime: false
+		     });		
 
     }
     
+    if (ATIVIDADE == GERAR_TARIFA ){
+    	 dtTarifa = FLUIGC.calendar('#dtTarifa', {
+   	     pickDate: true,
+   	     pickTime: false
+   	     });
+    }
+    	
 
     if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIRSOLICITACAO || ATIVIDADE == SOLICITARVIAGEM) {
     	

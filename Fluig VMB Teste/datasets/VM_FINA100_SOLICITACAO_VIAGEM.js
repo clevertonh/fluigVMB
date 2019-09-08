@@ -6,12 +6,10 @@ function createDataset(fields, constraints, sortFields) {
 	var dtTarifa;
 	var aRateio = new Array();
 	
- //problema para integrar financeiro
 	
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
-			// log.info("entrando aqui 1");
 	    		var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
 	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagens", null, new Array(c0,c1), null);
@@ -22,6 +20,7 @@ function createDataset(fields, constraints, sortFields) {
         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    	    var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
 
+	    	    
 	    	   	 try {
 						//chama função que monta array de objetos dos itens do rateio
 						 aRateio = preencheRateio(itensSolicitacao);
@@ -50,12 +49,10 @@ function createDataset(fields, constraints, sortFields) {
 						 dtTarifa = constraints[a].initialValue;
 	 					
 					 }
-		
-					 
+			 
 				 }
 				 
-				 //soma valor diarias mais tarifa
-				 valorTotal = valorTotal + valorTarifa;
+
 
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
