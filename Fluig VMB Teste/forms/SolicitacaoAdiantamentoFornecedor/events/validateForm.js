@@ -112,32 +112,6 @@ function validateForm(form){
 
 	}
 	
-	else if (activity == GERAR_ADTO){
-		if (nextAtv == INTEGRAR){
-			/*
-			if (form.getValue("banco") == "" || form.getValue("banco") == null ){
-				 throw "Os dados bancários não foram informados";			
-				
-			}
-			if (form.getValue("agencia") == "" || form.getValue("agencia") == null ){
-				 throw "Os dados bancários não foram informados";				
-				
-			}
-			if (form.getValue("contabanco") == "" || form.getValue("contabanco") == null ){
-				 throw "Os dados bancários não foram informados";				
-				
-			}
-				if (form.getValue("dtEmissao") == "" || form.getValue("dtEmissao") == null ){
-				 throw "Os dados bancários não foram informados";				
-				
-			}
-			
-			*/
-		}
-		
-		
-
-	}
 	
 	
 	function 	consultaPendenciaAdiantamento(){

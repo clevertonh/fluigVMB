@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de adiantamento a fornecedor</processId>
-      <version>8</version>
+      <version>9</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2168</formId>
@@ -408,8 +408,8 @@
         <version>1</version>
         <sequence>18</sequence>
       </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
+      <stateName>Integrar com Protheus</stateName>
+      <stateDescription>Integrar com Protheus</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -596,7 +596,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;formaPgto&quot;) != &quot;cartao&quot;</condition>
@@ -608,7 +608,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;formaPgto&quot;) == &quot;cartao&quot;</condition>
@@ -620,7 +620,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;reprovado&quot;</condition>
@@ -632,7 +632,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -644,7 +644,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>9</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -1033,7 +1033,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1044,7 +1044,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1055,7 +1055,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1066,7 +1066,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>8</version>
+        <version>9</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1084,7 +1084,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -1094,7 +1094,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -1104,7 +1104,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -1114,7 +1114,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -1124,7 +1124,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>8</processVersion>
+      <processVersion>9</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

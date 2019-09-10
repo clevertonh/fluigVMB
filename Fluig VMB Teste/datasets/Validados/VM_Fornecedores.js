@@ -3,6 +3,7 @@ function defineStructure() {
 	addColumn("CNPJ");
 	addColumn("RAZAO_SOCIAL");
 	addColumn("TIPO");
+	addColumn("QTDE");
 	
 	setKey(["CODIGO"]);
 	
@@ -15,6 +16,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("CNPJ");
 	dataset.addColumn("RAZAO_SOCIAL");
 	dataset.addColumn("TIPO");
+	dataset.addColumn("QTDE");
 	
 	  var objdata;
 	    var dados;
@@ -65,11 +67,11 @@ function createDataset(fields, constraints, sortFields) {
 	    	objdata = JSON.parse(dados);
 			for(var i in objdata){
 				if(filtro != null && (objdata[i].CNOME.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO]);	
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO,objdata[i].CQTDE_ADF]);	
 				
 				}
 				if(filtro == null){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO]);			
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO,objdata[i].CQTDE_ADF]);			
 				}		
 			}
 		}

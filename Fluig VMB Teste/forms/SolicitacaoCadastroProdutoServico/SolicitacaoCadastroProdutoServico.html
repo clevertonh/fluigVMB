@@ -1,0 +1,188 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+        <link type="text/css" rel="stylesheet" href="SolicitacaoCadastroProdutoServico.css"/>
+   </head>
+   <body>
+      <div class="container">
+         <div class="fluig-style-guide">
+            <!--  Imagem  -->
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <div class="col-xs-6 col-md-3">
+                     <img src="https://visaomundial.org/images/logo_VMB.svg">
+                  </div>
+               </div>
+            </div>
+            <!--  Formulário  -->
+            <form role="form">
+               <div class='panel panel-primary'>
+                  <div class="panel-heading">
+                     <div class="container text-center">
+                        <h4>Solicitação de cadastro de produto ou serviço</h4>
+                     </div>
+                  </div>
+                  <div class="panel-body">
+                     <div class="row">
+                        <div class="col-md-12">
+                                       
+                              <div class="tab-content clearfix">
+                                 <!-- Aba Solicitante -->                                                              
+                                 <div class="tab-pane active" id="1b">
+                                    <div class="row">
+                                       <div class="form-group col-md-2">
+                                          <label for="id" class="required">Cód. solicitação</label>
+                                          <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
+                                       </div>
+                                      
+                                    </div>
+                                    <div class="row">
+                                       <div class="form-group col-md-5">
+                                          <label for="solicitante" class="required">Solicitante</label>
+                                          <input type="text" class="form-control" id="solicitante" name="solicitante" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="exampleInputEmail1">Email</label>
+                                          <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
+                                       </div>
+                                       <div class="form-group col-md-2">
+                                          <label for="dtSolicitacao">Data da solicitação</label>
+                                          <div class="input-group date" id="calendariodtSolicitacao">
+                                             <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group col-md-1">
+                                         	<input type="text" id="matriculasolicitante" name="matriculasolicitante" class="form-control" readonly>
+                                         </div>
+                                    </div>
+                                    
+                                     <div class="panel panel-info">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Informações do produto/serviço solicitado</b>
+                                          </h5>
+                                      	 </div>
+                                      	  <div class="panel-body">
+                                      		<div class="row">
+                                      				<div class="form-group col-md-2">
+										  	 		<label>Tipo de cadastro</label><br>
+										  	 		<label for="tipoproduto">Produto</label> 
+                                                    <input type="radio" id="tipoproduto" name="tipo" value="produto" onclick="tipoCadastro()">
+				                                    <label for="tiposervico">Serviço</label>
+				                                    <input type="radio" id="tiposervico" name="tipo" value="servico" onclick="tipoCadastro()">   
+										  	 	</div>
+                                      			<div class="form-group col-md-5">
+                                      				<label>Descrição resumida</label>
+                                      				<input type="text" class="form-control" id="desc_res" name="desc_res">
+                                      			</div>
+                                      			<div class="form-group col-md-5" id="div_descDetalhada">
+                                      				<label>Descrição detalhada</label>
+                                      				<textarea class="form-control" rows="3"
+                                                               id="desc_detalhada" name="desc_detalhada"
+                                                               placeholder="Informe de forma mais detalhada ao que se refere o serviço"></textarea>
+                                      			</div>
+                                      		</div>
+                                    	</div>
+                                     </div>                                    
+                                    <div class="panel panel-info" id="div_compras">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Setor de Compras</b>
+                                          </h5>
+                                      	 </div>										 
+										  <div class="panel-body">
+										  	 <div class="row">
+										  	 	<div class="form-group col-md-3">
+										  	 		<label>Produto já existe</label><br>
+										  	 		<label for="produtoExisteS">Sim</label> 
+                                                    <input type="radio" id="produtoExisteS" name="produtoExiste" value="sim" onclick="produtoExistente()">
+				                                    <label for="produtoExisteN">Não</label>
+				                                    <input type="radio" id="produtoExisteN" name="produtoExiste" value="nao" onclick="produtoExistente()">    
+										  	 	</div>
+										  	 		<div class="form-group col-md-5" id="div_produto">  
+                                      					<label>produto</label>                                                                                         
+                                                        <input type="zoom" name="produto" data-zoom="{
+                                                               'displayKey':'DESCRICAO',
+                                                               'datasetId':'ds_get_Produtos',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Selecione um produto',
+                                                               'fields':[
+                                                                {'field':'CODIGO', 'label':'CODIGO'},
+                                                                {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },
+                                                                {'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA','visible':'false'},
+                                                                {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
+                                                                {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]}" 
+                                                            />
+                                               </div>
+                                               <div class="form-group col-md-3" id="div_produto2">
+                                               		<label>Código Produto</label>
+                                               		<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+                                               </div>
+										  	 </div>	
+										  	 <div class="row" id="div_compras2">
+											  	 <div class="row">
+	                                      			<div class="form-group col-md-5">
+	                                      				<label>Descrição resumida</label>
+	                                      				<input type="text" class="form-control" id="descricao" name="descricao">
+	                                      			</div>
+	                                      			<div class="form-group col-md-6">
+	                                      				<label>Descrição detalhada</label>
+	                                      				<input type="text" class="form-control" id="descricao_det" name="descricao_det">
+	                                      			</div>
+	                                      		</div>
+	                                      		<div class="row">
+                                      				<div class="form-group col-md-1">
+                                      				<label>Grupo</label>
+                                      				<input type="text" class="form-control" id="grupo" name="grupo">
+                                      			</div>
+	                                      			<div class="form-group col-md-2">
+	                                      				<label>Sub-grupo</label>
+	                                      				<input type="text" class="form-control" id="subgrupo" name="subgrupo">
+	                                      			</div>
+	                                      		
+	                                      		</div>
+										  	 </div>																	         
+										  </div>
+									</div>
+                                    <div class="panel panel-info" id="div_contabilidade">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Contabilidade</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
+                                      	 		<div class="form-group col-md-3">
+                                      	 			<label>Conta contábil</label>
+                                      	 			<input type="text" class="form-control" id="contacontabil" name="contacontabil">
+                                      	 		</div>                                      	 		
+                                      	 		<div class="form-group col-md-1">
+                                      	 			<label>TES</label>
+                                      	 			<input type="text" class="form-control" id="tes" name="tes">
+                                      	 		</div>
+                                      	 	</div>         							
+                                      	 </div>
+                                    </div>                                                                      	 
+                                 </div>
+                             </div>
+                        
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <script src="SolicitacaoCadastroProdutoServico.js"></script>
+   </body>
+</html>

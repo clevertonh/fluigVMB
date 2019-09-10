@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Cadastro de Produto e Serviço</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>2218</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -43,7 +43,7 @@
     <processStates/>
     <favorito>false</favorito>
     <inheritFormSecurity>false</inheritFormSecurity>
-    <mobileReady>false</mobileReady>
+    <mobileReady>true</mobileReady>
   </ProcessDefinitionVersion>
   <list>
     <ProcessState>
@@ -176,7 +176,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>260</positionX>
+      <positionX>850</positionX>
       <positionY>400</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -197,6 +197,81 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
       <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+        <sequence>16</sequence>
+      </processStatePK>
+      <stateName>Corrigir descrição</stateName>
+      <stateDescription>Corrigir descrição</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>670</positionX>
+      <positionY>230</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+        <sequence>19</sequence>
+      </processStatePK>
+      <stateName>Ja existe?</stateName>
+      <stateDescription>Ja existe?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>430</positionX>
+      <positionY>221</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -227,8 +302,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>430</positionX>
-      <positionY>420</positionY>
+      <positionX>1080</positionX>
+      <positionY>410</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -274,7 +349,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>440</positionX>
+      <positionX>550</positionX>
       <positionY>250</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -293,7 +368,32 @@
       <digitalSignature>false</digitalSignature>
     </ProcessState>
   </list>
-  <list/>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>2</version>
+        <sequence>19</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;sim&quot;</condition>
+      <destinationSequenceId>14</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>2</version>
+        <sequence>19</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>10</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
   <list>
     <ProcessLink>
       <processLinkPK>
@@ -306,23 +406,6 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>4</initialStateSequence>
       <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>1</version>
-        <linkSequence>11</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>5</initialStateSequence>
-      <finalStateSequence>10</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -351,12 +434,80 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <version>1</version>
-        <linkSequence>15</linkSequence>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>16</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>16</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+        <linkSequence>20</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>19</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>19</initialStateSequence>
       <finalStateSequence>14</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+        <linkSequence>22</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>19</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -365,13 +516,65 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+	var ABERTURA = 0;&#xd;
+	var COMPRAS = 5;&#xd;
+	var CONTABILIDADE = 10;&#xd;
+	&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+    var ativAtual         = getValue(&quot;WKNumState&quot;);        &#xd;
+    //RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
+    var codSolicitacao    = getValue(&quot;WKNumProces&quot;);&#xd;
+    //VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
+    var nextAtv           = getValue(&quot;WKNextState&quot;);&#xd;
+    //RECUPERA NUMERO DO DOCUMENTO&#xd;
+    var idDocumento 	  = getValue(&quot;WKCardId&quot;);&#xd;
+    var idFormulario 	  = getValue(&quot;WKFormId&quot;)&#xd;
+    var empresa 		  = getValue(&quot;WKCompany&quot;);&#xd;
+	&#xd;
+  //GATEWAY&#xd;
+	var GATEWAYINTEGRACAO = 12;&#xd;
+	&#xd;
+	&#xd;
+	var contacontabil	 = hAPI.getCardValue(&quot;contacontabil&quot;);&#xd;
+    var tes		 = hAPI.getCardValue(&quot;tes&quot;);&#xd;
+    &#xd;
+	if (ativAtual == CONTABILIDADE &amp;&amp; nextAtv == GATEWAYINTEGRACAO){&#xd;
+	  &#xd;
+	    &#xd;
+		var constraint = new Array();		  			&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;contacontabil&quot;, contacontabil, contacontabil, ConstraintType.MUST));  &#xd;
+		constraint.push(DatasetFactory.createConstraint(&quot;tes&quot;, tes, tes, ConstraintType.MUST));&#xd;
+			&#xd;
+		&#xd;
+		var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA010_SOLICITACAO_CADASTRO_PRODUTO_SERVICO&quot;, null, constraint, null);&#xd;
+		     &#xd;
+	    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	    } &#xd;
+&#xd;
+}&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
       <color>FFFFFF</color>
       <height>521</height>
-      <width>831</width>
+      <width>1171</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Solicitação de Cadastro de Produto e Serviço</stateName>
@@ -387,7 +590,7 @@
     <SwimLane>
       <color>9F9F9F</color>
       <height>173</height>
-      <width>801</width>
+      <width>1141</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -403,7 +606,7 @@
     <SwimLane>
       <color>C0C0C0</color>
       <height>173</height>
-      <width>801</width>
+      <width>1141</width>
       <positionX>40</positionX>
       <positionY>183</positionY>
       <stateName>Assessoria Administrativa</stateName>
@@ -419,7 +622,7 @@
     <SwimLane>
       <color>82b0b7</color>
       <height>175</height>
-      <width>801</width>
+      <width>1141</width>
       <positionX>40</positionX>
       <positionY>356</positionY>
       <stateName>Contabilidade</stateName>
@@ -464,7 +667,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -475,12 +678,56 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>167</positionX>
       <positionY>48</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>2</version>
+        <linkSequence>17</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>903</positionX>
+      <positionY>332</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>2</version>
+        <linkSequence>17</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>903</positionX>
+      <positionY>265</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>2</version>
+        <linkSequence>18</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>722</positionX>
+      <positionY>434</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCadastroProdutoServico</processId>
+        <version>2</version>
+        <linkSequence>22</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>460</positionX>
+      <positionY>435</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

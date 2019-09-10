@@ -2739,7 +2739,7 @@
     <fonts name="Arial" size="8"/>
     <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess id="SolicitacaoAdiantamentoFornecedor" name="Solicita&#xe7;&#xe3;o de adiantamento a fornecedor" serverId="Fluig teste" version="8" author="" extendedFields="&lt;list/>" cardIndex="2168" formSource="server" category="Financeiro" volume="Default" expedient="Default" instruction="" keyWord="" mobileReady="true" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
+  <bpmn2:BpmnProcess id="SolicitacaoAdiantamentoFornecedor" name="Solicita&#xe7;&#xe3;o de adiantamento a fornecedor" serverId="Fluig teste" version="9" author="" extendedFields="&lt;list/>" cardIndex="2168" formSource="server" category="Financeiro" volume="Default" expedient="Default" instruction="" keyWord="" mobileReady="true" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
   <bpmn2:BpmnPool id="pool1" name="Solicita&#xe7;&#xe3;o de Adiantamento ao Fornecedor" cores="FFFFFF"/>
   <bpmn2:BpmnSwimLane id="swimlane2" name="Solicitante" cores="9F9F9F"/>
   <bpmn2:BpmnSwimLane id="swimlane3" name="Gestor" cores="C0C0C0"/>
@@ -2750,7 +2750,7 @@
   <bpmn2:BpmnSwimLane id="swimlane9" name="Tesouraria" cores="82b0b7"/>
   <bpmn2:BpmnTask id="task10" name="Gerar adiantamento" incoming="flow23" outgoing="flow19 flow39" type="80" managerMechanism="Pool Grupo" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>&#xA;  &lt;groupId>Tesouraria&lt;/groupId>&#xA;  &lt;mechanismName>Pool Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:BpmnEndEvent id="endevent14" name="Reprovado" incoming="flow22" type="60" signalId="0"/>
-  <bpmn2:BpmnEndEvent id="endevent18" name="Fim" incoming="flow19" type="60" signalId="0"/>
+  <bpmn2:BpmnEndEvent id="endevent18" name="Integrar com Protheus" incoming="flow19" type="60" signalId="0"/>
   <bpmn2:SequenceFlow id="flow19" name="" sourceRef="task10" targetRef="endevent18" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow21" name="" sourceRef="task5" targetRef="exclusivegateway29" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow22" name="" sourceRef="exclusivegateway29" targetRef="endevent14" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>

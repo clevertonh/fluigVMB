@@ -31,11 +31,12 @@ $(document).ready(function() {
 		//reloadZoomFilterValues("ds_get_Fornecedor", "TIPO," + "FUNCIONARIO");	
 		
 	}
-	else if (ATIVIDADE == TESOURARIA){
+	else if (ATIVIDADE == TESOURARIA || ATIVIDADE == SOLICITANTE){
 		var dtEmissao = FLUIGC.calendar('#dtEmissao', {
 		    pickDate: true,
 		    pickTime: false,
-		    useCurrent: true		    
+		    useCurrent: true	,
+		    minDate: new Date().toLocaleString(),
 		});
 	}
 
