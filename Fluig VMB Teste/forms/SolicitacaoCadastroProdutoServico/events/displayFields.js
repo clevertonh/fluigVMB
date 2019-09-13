@@ -1,7 +1,8 @@
 function displayFields(form,customHTML){
 	var ABERTURA = 0;
-	var COMPRAS = 5;
-	var CONTABILIDADE = 10;
+	var VALIDAR = 5;
+	var DADOS_CONTABEIS = 10;
+	var CORRIGIR = 16;
 	
 	var activity = getValue('WKNumState');
 	//log.info("----ATIVIDADE displayFields: " + activity);
@@ -19,10 +20,11 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_compras", false);
 		 form.setVisibleById("div_contabilidade", false); 
 	 }
-	 else if (activity == COMPRAS){
+	 else if (activity == VALIDAR || activity == CORRIGIR){
 		 form.setVisibleById("div_contabilidade", false);
 		 
 	 }
+
 	 
 	
 }

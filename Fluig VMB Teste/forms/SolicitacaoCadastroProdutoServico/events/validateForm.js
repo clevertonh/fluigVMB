@@ -1,10 +1,15 @@
 function validateForm(form){
 	var SOLICITAR = 4;
-	var COMPRAS = 5;
-	var CONTABILIDADE = 10;
+	var VALIDAR = 5;
+	var DADOS_CONTABEIS = 10;
+	var CORRIGIR = 16;
 	
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");
+	
+	//GATEWAY
+	var GATEWAYINTEGRACAO = 12;
+	
 	
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
@@ -41,10 +46,35 @@ function validateForm(form){
 		
 		
 	}
-	else if (activity == COMPRAS){
-		
+	else if (activity == VALIDAR || activity == CORRIGIR){
+		if (form.getValue("descricao") == false || form.getValue("descricao") == "") {
+            throw "O campo descrição resumida não foi preenchido";
+        }
+		if (form.getValue("tipo") == 'servico' ){		
+			if (form.getValue("descricao_det") == false || form.getValue("descricao_det") == "") {
+	            throw "O campo descrição detalhada não foi preenchido";
+	        }
+		}
+		if (form.getValue("tipoG") == false || form.getValue("tipoG") == "") {
+            throw "Você precisa informar um código de tipo valido no sistema Protheus";
+        }
+		if (form.getValue("grupo") == false || form.getValue("grupo") == "") {
+            throw "Você precisa informar um grupo valido no sistema Protheus";
+        }
+		if (form.getValue("unidade") == false || form.getValue("unidade") == "") {
+            throw "O campo descrição resumida não foi preenchido";
+        }
+		if (form.getValue("mostrafluig") == false || form.getValue("mostrafluig") == "") {
+            throw "O campo descrição resumida não foi preenchido";
+        }
 	}
-	else if (activity == CONTABILIDADE){
+	else if (activity == DADOS_CONTABEIS && nextAtv == GATEWAYINTEGRACAO){
+		if (form.getValue("contacontabil") == false || form.getValue("contacontabil") == "") {
+            throw "O campo conta contábil precisa ser informado";
+        }
+		if (form.getValue("tes") == false || form.getValue("tes") == "") {
+            throw "O código TES precisa ser informado";
+        }
 		
 	}
 	

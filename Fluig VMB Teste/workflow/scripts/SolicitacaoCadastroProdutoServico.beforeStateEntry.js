@@ -1,7 +1,8 @@
 function beforeStateEntry(sequenceId){
 	var ABERTURA = 0;
-	var COMPRAS = 5;
-	var CONTABILIDADE = 10;
+	var VALIDAR = 5;
+	var DADOS_CONTABEIS = 10;
+	var CORRIGIR = 16;
 	
 	//RECUPERA NUMERO DA ATIVIDADE
     var ativAtual         = getValue("WKNumState");        
@@ -14,14 +15,14 @@ function beforeStateEntry(sequenceId){
     var idFormulario 	  = getValue("WKFormId")
     var empresa 		  = getValue("WKCompany");
 	
-  //GATEWAY
+    //GATEWAY
 	var GATEWAYINTEGRACAO = 12;
 	
 	
 	var contacontabil	 = hAPI.getCardValue("contacontabil");
     var tes		 = hAPI.getCardValue("tes");
     
-	if (ativAtual == CONTABILIDADE && nextAtv == GATEWAYINTEGRACAO){
+	if (ativAtual == DADOS_CONTABEIS && nextAtv == GATEWAYINTEGRACAO){
 	  
 	    
 		var constraint = new Array();		  			

@@ -1,6 +1,7 @@
 var ABERTURA = 0;
-var COMPRAS = 5;
-var CONTABILIDADE = 10;
+var VALIDAR = 5;
+var DADOS_CONTABEIS = 10;
+var CORRIGIR = 16;
 
 
 //preenche data da solicitação no momento que abre a solicitação

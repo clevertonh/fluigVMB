@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Cadastro de Produto e Serviço</processId>
-      <version>2</version>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2218</formId>
@@ -103,14 +103,15 @@
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
-      <stateName>Criar produto</stateName>
-      <stateDescription>Criar produto</stateDescription>
-      <instruction>Informar descrição do produto, unidade de pedida entre outras informações necessárias</instruction>
+      <stateName>Validar cadastro</stateName>
+      <stateDescription>Validar cadastro</stateDescription>
+      <instruction>Use essa tarefa para informar a descrição do produto, unidade de pedida entre outras informações necessárias</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Estoque&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -126,7 +127,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>260</positionX>
-      <positionY>240</positionY>
+      <positionY>237</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -161,7 +162,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;contadores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -212,6 +214,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Estoque&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -280,8 +284,8 @@
         <version>1</version>
         <sequence>12</sequence>
       </processStatePK>
-      <stateName>Produto cadastrado com sucesso</stateName>
-      <stateDescription>Produto cadastrado com sucesso</stateDescription>
+      <stateName>Integrar com Protheus</stateName>
+      <stateDescription>Integrar com Protheus</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -300,7 +304,7 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1080</positionX>
       <positionY>410</positionY>
@@ -374,7 +378,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>4</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;sim&quot;</condition>
@@ -386,7 +390,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>4</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;nao&quot;</condition>
@@ -526,8 +530,9 @@
       </workflowProcessEventPK>
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
 	var ABERTURA = 0;&#xd;
-	var COMPRAS = 5;&#xd;
-	var CONTABILIDADE = 10;&#xd;
+	var VALIDAR = 5;&#xd;
+	var DADOS_CONTABEIS = 10;&#xd;
+	var CORRIGIR = 16;&#xd;
 	&#xd;
 	//RECUPERA NUMERO DA ATIVIDADE&#xd;
     var ativAtual         = getValue(&quot;WKNumState&quot;);        &#xd;
@@ -540,14 +545,14 @@
     var idFormulario 	  = getValue(&quot;WKFormId&quot;)&#xd;
     var empresa 		  = getValue(&quot;WKCompany&quot;);&#xd;
 	&#xd;
-  //GATEWAY&#xd;
+    //GATEWAY&#xd;
 	var GATEWAYINTEGRACAO = 12;&#xd;
 	&#xd;
 	&#xd;
 	var contacontabil	 = hAPI.getCardValue(&quot;contacontabil&quot;);&#xd;
     var tes		 = hAPI.getCardValue(&quot;tes&quot;);&#xd;
     &#xd;
-	if (ativAtual == CONTABILIDADE &amp;&amp; nextAtv == GATEWAYINTEGRACAO){&#xd;
+	if (ativAtual == DADOS_CONTABEIS &amp;&amp; nextAtv == GATEWAYINTEGRACAO){&#xd;
 	  &#xd;
 	    &#xd;
 		var constraint = new Array();		  			&#xd;
@@ -667,18 +672,18 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>167</positionX>
-      <positionY>267</positionY>
+      <positionY>271</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -689,7 +694,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -700,7 +705,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -711,7 +716,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -722,7 +727,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
