@@ -44,11 +44,13 @@ function produtoExistente(){
 function tipoCadastro(){
 	if (document.getElementById("tipoproduto").checked == true){
 		  document.getElementById("div_descDetalhada").style.display = "none";
+		  document.getElementById("div_tipoPessoa").style.display = "none";
+		  
 	
 	}
 	else if (document.getElementById("tiposervico").checked == true){			
 		document.getElementById("div_descDetalhada").style.display = "block";
-		
+		  document.getElementById("div_tipoPessoa").style.display = "block";
 
 		
 		
@@ -56,6 +58,42 @@ function tipoCadastro(){
 }
 
 
+//preenche campos ZOOM
+function setSelectedZoomItem(selectedItem) {
+    var PRODUTO ="produto";   
+
+    //Recebe o nome do campo zoom
+    var campoZOOM = selectedItem.inputId;
+ 
+    //compara para verificar se o zoom é o campo centro de custo
+ if (campoZOOM == PRODUTO) {        	
+	 	$('#codigoProduto').val(selectedItem["CODIGO"]);
+    	
+    }
+ 
+    
+}
+
+function removedZoomItem(removedItem) {
+	 var PRODUTO ="produto";
+   
+    //Recebe o nome do campo zoom
+    var campoZOOM = removedItem.inputId;
+ 
+    if (campoZOOM == PRODUTO) {
+    	$('#codigoProduto').val("");
+    }
+
+
+
+    
+
+
+}
+
+function setZoomData(instance, value) {
+    window[instance].setValue(value);
+}
 
 
 

@@ -22,6 +22,7 @@ function enableFields(form){
 		 	form.setEnabled("desc_res", false);		
 		 	form.setEnabled("desc_detalhada", false);		
 		 	form.setEnabled("tipo", false);
+		 	form.setEnabled("tipoPessoa", false);
 	}
 	else if (activity == DADOS_CONTABEIS){
 			  form.setEnabled("desc_res", false);		
@@ -35,6 +36,7 @@ function enableFields(form){
 			  form.setEnabled("tipo", false);
 			  form.setEnabled("unidade", false);
 			  form.setEnabled("mostrafluig", false);
+		      form.setEnabled("tipoPessoa", false);
 	}
 	
 	

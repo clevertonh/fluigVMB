@@ -91,6 +91,16 @@
                                                                placeholder="Informe de forma mais detalhada ao que se refere o serviço"></textarea>
                                       			</div>
                                       		</div>
+                                      		<div class="row" id="div_tipoPessoa">
+                                      			<div class="form-group col-md-4">
+                                      				<label>Tipo de Pessoa</label>
+                                      				<label for="fisica">Fisica</label> 
+                                                    <input type="radio" id="fisica" name="tipoPessoa" value="fisica">
+				                                    <label for="juridica">Juridica</label>
+				                                    <input type="radio" id="juridica" name="tipoPessoa" value="juridica">   
+                                      				
+                                      			</div>
+                                      		</div>
                                     	</div>
                                      </div>                                    
                                     <div class="panel panel-info" id="div_compras">										 
@@ -110,7 +120,7 @@
 										  	 	</div>
 										  	 		<div class="form-group col-md-5" id="div_produto">  
                                       					<label>produto</label>                                                                                         
-                                                        <input type="zoom" name="produto" data-zoom="{
+                                                        <input type="zoom" name="produto" id="produto" data-zoom="{
                                                                'displayKey':'DESCRICAO',
                                                                'datasetId':'ds_get_Produtos',
                                                                'maximumSelectionLength':'1',
@@ -134,10 +144,12 @@
 	                                      				<label>Descrição resumida</label>
 	                                      				<input type="text" class="form-control" id="descricao" name="descricao">
 	                                      			</div>
+	                                      			<!-- 
 	                                      			<div class="form-group col-md-6">
 	                                      				<label>Descrição detalhada</label>
 	                                      				<input type="text" class="form-control" id="descricao_det" name="descricao_det">
 	                                      			</div>
+	                                      			 -->
 	                                      		</div>
 	                                      		<div class="row">
                                       				<div class="form-group col-md-1">

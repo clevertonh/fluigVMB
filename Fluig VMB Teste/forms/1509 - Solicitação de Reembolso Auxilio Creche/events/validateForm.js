@@ -52,7 +52,7 @@ function validateForm(form){
 	if (activity == ABERTURA && nextAtv == APROVACAO_GESTOR) {
 		
 		
-		if (form.getValue("vl_rmb") == "" ){
+		if (form.getValue("vl_rmb") == "" || form.getValue("vl_rmb") == 0 ){
 			throw "Você precisa informar o valor a ser reembolsado.";
 		}		
 		
@@ -90,7 +90,7 @@ function validateForm(form){
 	}
 	
 	else if (activity == APROVACAO_GESTOR){
-		if (form.getValue("vl_rmb") == "" ){
+		if (form.getValue("vl_rmb") == "" || form.getValue("vl_rmb") == 0){
 			throw "Você precisa informar o valor a ser reembolsado.";
 		}	
 		

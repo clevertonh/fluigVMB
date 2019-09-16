@@ -20,8 +20,8 @@ function createDataset(fields, constraints, sortFields) {
         		      
         		var aProdutos = new Array();
         		
-       		 log.info("lista de produto 1");
-			 log.dir(solicitacao);
+       	///	 log.info("lista de produto 1");
+		//	 log.dir(solicitacao);
 			 
 			 
         		 try {
