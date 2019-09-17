@@ -61,27 +61,37 @@ function tipoCadastro(){
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
     var PRODUTO ="produto";   
+    var CONTA = "contacontabil";
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
  
     //compara para verificar se o zoom é o campo centro de custo
- if (campoZOOM == PRODUTO) {        	
-	 	$('#codigoProduto').val(selectedItem["CODIGO"]);
-    	
-    }
+	 if (campoZOOM == PRODUTO) {        	
+		 	$('#codigoProduto').val(selectedItem["CODIGO"]);
+	    	
+	    }
+	 
+	 if (campoZOOM == CONTA) {        	
+		 	$('#codigoCContabil').val(selectedItem["CODIGO"]);
+	 	
+	 }
  
     
 }
 
 function removedZoomItem(removedItem) {
 	 var PRODUTO ="produto";
+	 var CONTA = "contacontabil";
    
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
  
     if (campoZOOM == PRODUTO) {
     	$('#codigoProduto').val("");
+    }
+    if (campoZOOM == CONTA) {
+    	$('#codigoCContabil').val("");
     }
 
 
