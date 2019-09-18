@@ -58,8 +58,8 @@ function createDataset(fields, constraints, sortFields) {
                         dataset.addRow(new Array(
                                 documentId,
                                 datasetFilhos.getValue(j, "txtproduto"),
-                                datasetFilhos.getValue(j, "id_um"),
-                                datasetFilhos.getValue(j, "id_quantidade"),
+                                datasetFilhos.getValue(j, "idum"),
+                                datasetFilhos.getValue(j, "idquantidade"),
                                 datasetFilhos.getValue(j, "vrTotUnit"),
                                 datasetFilhos.getValue(j, "dtNecessidade"),
                                 datasetFilhos.getValue(j, "codigoProduto"),

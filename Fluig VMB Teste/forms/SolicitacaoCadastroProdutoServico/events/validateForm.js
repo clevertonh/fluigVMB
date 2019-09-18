@@ -67,11 +67,17 @@ function validateForm(form){
 	            throw "Você precisa informar um grupo valido no sistema Protheus";
 	        }
 			if (form.getValue("unidade") == false || form.getValue("unidade") == "") {
-	            throw "O campo descrição resumida não foi preenchido";
+	            throw "O campo unidade de medida precisa ser informado";
 	        }
 			if (form.getValue("mostrafluig") == false || form.getValue("mostrafluig") == "") {
-	            throw "O campo descrição resumida não foi preenchido";
+	            throw "Você precisa indicar em qual processo do Intrasomos esse produto deverá ficar visivel para ser utilizado";
 	        }
+			if (form.getValue("vl_base") == false || form.getValue("vl_base") == "") {
+	            throw "O valor de referencia precisa ser preenchido";
+	        }
+			
+			
+			
 		}
 		else {
 			if (form.getValue("produto") == false || form.getValue("produto") == "") {

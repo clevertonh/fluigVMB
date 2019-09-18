@@ -108,6 +108,7 @@ function montaListaProduto(solicitacao){
 					UM :'',
 					TES :'',
 					CONTA :'',
+					VALOR :'',
 					FLUIG :''
 					
 			};		    				 
@@ -117,7 +118,9 @@ function montaListaProduto(solicitacao){
 			obj.UM = '' + solicitacao.getValue(i, "unidade") +'';
 			obj.TES = '' + solicitacao.getValue(i, "tes") +'';
 			obj.CONTA = '' + solicitacao.getValue(i, "codigoCContabil") +'';
+			obj.VALOR = '' +  solicitacao.getValue(i, "vl_base")+'';
 			obj.FLUIG = '' + solicitacao.getValue(i, "mostrafluig") +'';        				
+			
 			
 			produto[i] = obj;	
 				

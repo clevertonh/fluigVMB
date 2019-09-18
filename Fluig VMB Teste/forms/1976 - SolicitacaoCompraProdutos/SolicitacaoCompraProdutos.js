@@ -143,7 +143,7 @@ function setSelectedZoomItem(selectedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
-    var SERVICO = "txtproduto";
+    var PRODUTO = "txtproduto";
     var EVENTO ="dataset_solicitacaoevento";
       
    
@@ -239,9 +239,9 @@ function setSelectedZoomItem(selectedItem) {
     }
  
 
-    else if (linhaPagamento[0] == SERVICO) {
+    else if (linhaPagamento[0] == PRODUTO) {
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
+    	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
     	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
     	
     	
@@ -284,7 +284,7 @@ function adicionaLinhaProduto() {
 	
 		//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 		
-		var qtde = document.getElementById("id_quantidade" + "___" + row);
+		var qtde = document.getElementById("idquantidade" + "___" + row);
 
 		/*
 		qtde.addEventListener("focus", function( event ) {
@@ -294,7 +294,7 @@ function adicionaLinhaProduto() {
 		qtde.addEventListener("blur", function( event ) {			
 			  //event.target.style.background = "pink";
 			  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-			  var qtde = $('#id_quantidade' + "___" + row).val()			  
+			  var qtde = $('#idquantidade' + "___" + row).val()			  
 			  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
 			  
 			  
@@ -313,8 +313,7 @@ function removedZoomItem(removedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
-    var SERVICO = "txtproduto";
-    var PRODUTO ="codigoProduto";
+    var PRODUTO = "txtproduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
 
@@ -382,11 +381,12 @@ function removedZoomItem(removedItem) {
 
 
 
-    else if (linhaPagamento[0] == SERVICO) {   	
+    else if (linhaPagamento[0] == PRODUTO) {   	
      	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	//$('#dtNecessidade' + "___" + linhaPagamento[1]).val(selectedItem[""]);
+    	$('#idum' + "___" + linhaPagamento[1]).val("");
+    	$('#idquantidade' + "___" + linhaPagamento[1]).val("");
+    	$('#vrUltima' + "___" + linhaPagamento[1]).val("");
+    	$('#dtNecessidade' + "___" + linhaPagamento[1]).val("");
     	
     }
     

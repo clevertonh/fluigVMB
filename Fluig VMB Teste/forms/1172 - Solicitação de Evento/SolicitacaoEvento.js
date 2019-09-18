@@ -233,12 +233,12 @@ function adicionaLinhaProduto() {
 
 	//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
 
-	var qtde = document.getElementById("id_quantidade" + "___" + row);
+	var qtde = document.getElementById("idquantidade" + "___" + row);
 
 	qtde.addEventListener("blur", function( event ) {			
 		  //event.target.style.background = "pink";
 		  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-		  var qtde = $('#id_quantidade' + "___" + row).val()			  
+		  var qtde = $('#idquantidade' + "___" + row).val()			  
 		  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
 		  
 		  

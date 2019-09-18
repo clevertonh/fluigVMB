@@ -82,7 +82,7 @@ function enableFields(form){
 	    	 var indexes = form.getChildrenIndexes("tableCompras");	    	    	    	   
 	    	    for (var i = 0; i < indexes.length; i++) {
 	     	        form.setEnabled("txtproduto___"+ indexes[i], false);	
-	     	         form.setEnabled("id_quantidade___"+ indexes[i], false);	
+	     	         form.setEnabled("idquantidade___"+ indexes[i], false);	
 	     	      	 form.setEnabled("vrTotUnit___"+ indexes[i], false);	
 	     	      	 form.setEnabled("dtNecessidade___"+ indexes[i], false);
     	        

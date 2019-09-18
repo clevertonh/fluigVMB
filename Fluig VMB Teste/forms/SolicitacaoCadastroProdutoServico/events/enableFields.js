@@ -37,6 +37,8 @@ function enableFields(form){
 			  form.setEnabled("unidade", false);
 			  form.setEnabled("mostrafluig", false);
 		      form.setEnabled("tipoPessoa", false);
+		      form.setEnabled("vl_base", false);
+		      
 	}
 	
 	
