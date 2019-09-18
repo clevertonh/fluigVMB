@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Cadastro de Produto e Serviço</processId>
-      <version>4</version>
+      <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2218</formId>
@@ -378,7 +378,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>5</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;sim&quot;</condition>
@@ -390,7 +390,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>5</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;nao&quot;</condition>
@@ -549,7 +549,7 @@
 	var GATEWAYINTEGRACAO = 12;&#xd;
 	&#xd;
 	&#xd;
-	var contacontabil	 = hAPI.getCardValue(&quot;contacontabil&quot;);&#xd;
+	var contacontabil	 = hAPI.getCardValue(&quot;codigoCContabil&quot;);&#xd;
     var tes		 = hAPI.getCardValue(&quot;tes&quot;);&#xd;
     &#xd;
 	if (ativAtual == DADOS_CONTABEIS &amp;&amp; nextAtv == GATEWAYINTEGRACAO){&#xd;
@@ -672,7 +672,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>4</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -683,7 +683,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>4</version>
+        <version>5</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -694,7 +694,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>4</version>
+        <version>5</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -705,7 +705,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>4</version>
+        <version>5</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -716,7 +716,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>4</version>
+        <version>5</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -727,7 +727,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>4</version>
+        <version>5</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

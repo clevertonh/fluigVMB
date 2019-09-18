@@ -35,7 +35,7 @@ function produtoExistente(){
 			
 			document.getElementById("div_produto").style.display = "none";
 			document.getElementById("div_produto2").style.display = "none";			
-			
+			document.getElementById("div_tipoPrd").style.display = "block";		
 			
 		}
 }

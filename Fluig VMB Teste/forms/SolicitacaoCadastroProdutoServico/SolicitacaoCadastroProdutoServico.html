@@ -121,13 +121,14 @@
 										  	 		<div class="form-group col-md-5" id="div_produto">  
                                       					<label>produto</label>                                                                                         
                                                         <input type="zoom" name="produto" id="produto" data-zoom="{
-                                                               'displayKey':'DESCRICAO',
+                                                               'displayKey':'PRODUTO',
                                                                'datasetId':'ds_get_Produtos',
                                                                'maximumSelectionLength':'1',
                                                                'placeholder':'Selecione um produto',
                                                                'fields':[
                                                                 {'field':'CODIGO', 'label':'CODIGO'},
                                                                 {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },
+                                                                 {'field':'PRODUTO', 'label':'PRODUTO' },
                                                                 {'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA','visible':'false'},
                                                                 {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
                                                                 {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]}" 
@@ -141,24 +142,33 @@
 										  	 <div class="row" id="div_compras2">
 											  	 <div class="row">
 	                                      			<div class="form-group col-md-5">
-	                                      				<label>Descrição resumida</label>
+	                                      				<label>Descrição</label>
 	                                      				<input type="text" class="form-control" id="descricao" name="descricao">
 	                                      			</div>
-	                                      			<!-- 
-	                                      			<div class="form-group col-md-6">
-	                                      				<label>Descrição detalhada</label>
-	                                      				<input type="text" class="form-control" id="descricao_det" name="descricao_det">
+	                                      			<div class="form-group col-md-4">
+	                                      				<label>Processo Fluig</label>
+	                                      				<input type="zoom" name="mostrafluig" id="mostrafluig" data-zoom="{
+                                                               'displayKey':'CODIGO',
+                                                               'datasetId':'VM_ListaProcessosIntegradosProtheus',
+                                                               'maximumSelectionLength':'1',
+                                                               'placeholder':'Selecione o processo',
+                                                               'fields':[
+                                                                {'field':'CODIGO', 'label':'CODIGO'},
+                                                                {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                               
+                                                               ]}" 
+                                                            /> 
+	                                      				
 	                                      			</div>
-	                                      			 -->
+	                            
 	                                      		</div>
-	                                      		<div class="row">
-                                      				<div class="form-group col-md-3">
+	                                      		<div class="row" id="div_tipoPrd">
+                                      				<div class="form-group col-md-4">
                                       				<label>Tipo</label>
                                       					<input type="zoom" name="tipoG" id="tipoG" data-zoom="{
                                                                'displayKey':'CODIGO',
-                                                               'datasetId':'VM_ContaContabil',
+                                                               'datasetId':'VM_TipoProduto',
                                                                'maximumSelectionLength':'1',
-                                                               'placeholder':'Selecione uma TES',
+                                                               'placeholder':'Selecione o Tipo',
                                                                'fields':[
                                                                 {'field':'CODIGO', 'label':'CODIGO'},
                                                                 {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                               
@@ -166,13 +176,13 @@
                                                             /> 
                                       			
                                       			</div>
-	                                      			<div class="form-group col-md-3">
+	                                      			<div class="form-group col-md-4">
 	                                      				<label>Grupo</label>
 	                                      					<input type="zoom" name="grupo" id="grupo" data-zoom="{
                                                                'displayKey':'CODIGO',
-                                                               'datasetId':'VM_ContaContabil',
+                                                               'datasetId':'VM_GrupoProduto',
                                                                'maximumSelectionLength':'1',
-                                                               'placeholder':'Selecione uma TES',
+                                                               'placeholder':'Selecione o grupo',
                                                                'fields':[
                                                                 {'field':'CODIGO', 'label':'CODIGO'},
                                                                 {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                               
@@ -180,13 +190,12 @@
                                                             />
 	                                      				
 	                                      			</div>
-	                                      			<div class="form-group col-md-2">
+	                                      			<div class="form-group col-md-3">
 	                                      				<label>Unidade de medida</label>
 	                                      						<input type="zoom" name="unidade" id="unidade" data-zoom="{
                                                                'displayKey':'CODIGO',
-                                                               'datasetId':'VM_ContaContabil',
+                                                               'datasetId':'VM_UnidadeMedida',
                                                                'maximumSelectionLength':'1',
-                                                               'placeholder':'Selecione uma TES',
                                                                'fields':[
                                                                 {'field':'CODIGO', 'label':'CODIGO'},
                                                                 {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                               
@@ -194,11 +203,9 @@
                                                             />
 	                                      				
 	                                      			</div>
-	                                      			<div class="form-group col-md-2">
-	                                      				<label>Processo Fluig</label>
-	                                      				<input type="text" class="form-control" id="mostrafluig" name="mostrafluig">
-	                                      			</div>
+	                                      			
 	                                      		</div>
+	                                      		
 										  	 </div>																	         
 										  </div>
 									</div>
@@ -226,21 +233,22 @@
                                                             />                                      	 			
                                       	 		</div>
                                       	 		                                      	 		
-                                      	 		<div class="form-group col-md-1">
+                                      	 		<div class="form-group col-md-3">
                                       	 			<label>TES</label>
                                       	 			<input type="zoom" name="tes" id="tes" data-zoom="{
                                                                'displayKey':'CODIGO',
-                                                               'datasetId':'VM_ContaContabil',
+                                                               'datasetId':'VM_TES',
                                                                'maximumSelectionLength':'1',
-                                                               'placeholder':'Selecione uma TES',
+                                     
                                                                'fields':[
                                                                 {'field':'CODIGO', 'label':'CODIGO'},
-                                                                {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                               
+                                                                {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}
+                                                                                                                              
                                                                ]}" 
-                                                            />  
-                                      	 			
+                                                            />    
                                       	 		</div>
-                                      	 		<div class="form-group col-md-1">
+                                      	 		<div class="form-group col-md-2">
+                                      	 			<label>Código conta</label>
                                       	 			<input type="text" class="form-control" id="codigoCContabil" name="codigoCContabil" readonly>
                                       	 		</div>
                                       	 	</div>         							

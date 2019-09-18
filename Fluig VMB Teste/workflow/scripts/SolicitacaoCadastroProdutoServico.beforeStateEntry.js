@@ -19,7 +19,7 @@ function beforeStateEntry(sequenceId){
 	var GATEWAYINTEGRACAO = 12;
 	
 	
-	var contacontabil	 = hAPI.getCardValue("contacontabil");
+	var contacontabil	 = hAPI.getCardValue("codigoCContabil");
     var tes		 = hAPI.getCardValue("tes");
     
 	if (ativAtual == DADOS_CONTABEIS && nextAtv == GATEWAYINTEGRACAO){

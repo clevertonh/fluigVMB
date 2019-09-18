@@ -2,9 +2,8 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
 	 
-	
-	var cartao;
-	
+	var contacontabil;
+	var tes;
 	
 	 if(constraints !== null && constraints.length){
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -17,14 +16,20 @@ function createDataset(fields, constraints, sortFields) {
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),documentId,solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         	
-        		      
+        		     
+        		for (var a=0; a<constraints.length; a++){
+        			if (constraints[a].fieldName == "contacontabil"){
+        				contacontabil = constraints[a].initialValue;
+            		} 
+        			else if (constraints[a].fieldName == "tes"){
+        				tes = constraints[a].initialValue;
+        			}
+        		}
+        	 
+        		
         		var aProdutos = new Array();
         		
-       	///	 log.info("lista de produto 1");
-		//	 log.dir(solicitacao);
-			 
-			 
-        		 try {
+            		 try {
 						//chama função que monta array de objetos dos itens do rateio
         			 aProdutos = montaListaProduto(solicitacao);
 					 }
@@ -108,11 +113,10 @@ function montaListaProduto(solicitacao){
 			};		    				 
 			obj.TIPO =  '' + solicitacao.getValue(i, "tipoG") +'';	
 			obj.GRUPO = '' + solicitacao.getValue(i, "grupo") +'';	
-			obj.DESCRICAO = '' + solicitacao.getValue(i, "descricao") +'';
-			obj.ESPECIFICO = '' + solicitacao.getValue(i, "descricao_det") +'';		    					
+			obj.DESCRICAO = '' + solicitacao.getValue(i, "descricao") +'';	    					
 			obj.UM = '' + solicitacao.getValue(i, "unidade") +'';
 			obj.TES = '' + solicitacao.getValue(i, "tes") +'';
-			obj.CONTA = '' + solicitacao.getValue(i, "contacontabil") +'';
+			obj.CONTA = '' + solicitacao.getValue(i, "codigoCContabil") +'';
 			obj.FLUIG = '' + solicitacao.getValue(i, "mostrafluig") +'';        				
 			
 			produto[i] = obj;	

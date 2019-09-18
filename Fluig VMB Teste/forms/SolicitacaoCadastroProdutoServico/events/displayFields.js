@@ -18,13 +18,23 @@ function displayFields(form,customHTML){
 	
 	 if (activity == ABERTURA){
 		 form.setVisibleById("div_compras", false);
-		 form.setVisibleById("div_contabilidade", false); 
-	 }
-	 else if (activity == VALIDAR || activity == CORRIGIR){
 		 form.setVisibleById("div_contabilidade", false);
+		 form.setVisibleById("div_tipoPessoa", false);
 		 
 	 }
-
+	 else if (activity == VALIDAR ){
+		 form.setVisibleById("div_contabilidade", false);
+		 form.setVisibleById("div_compras2", false);
+		 form.setVisibleById("div_tipoPrd", false);
+		 
+		 
+	 }
+	 else if ( activity == CORRIGIR){
+		 form.setVisibleById("div_contabilidade", false);
+		 
+		 
+		 
+	 }
 	 
 	
 }
