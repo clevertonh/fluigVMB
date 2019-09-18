@@ -38,7 +38,7 @@ function beforeStateEntry(sequenceId){
 			
 				  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
 			    	throw resultDataset.getValue(0,"RETORNO");
-			    } 
+			      } 
 			
 		  
 	

@@ -10,9 +10,15 @@ function createDataset(fields, constraints, sortFields) {
 		//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO documentId NA POSIÇÃO 0 e do tipo MUST
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			// log.info("entrando aqui 1");
+			 	var solicitacao;
 	    		var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
-	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
+	    			solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, new Array(c0,c1), null);
+	    		
+	    		
+	    		if (solicitacao.rowsCount ==0 || solicitacao.rowsCount == null){
+	    			solicitacao = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, new Array(c0,c1), null);
+	    		}
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
@@ -51,7 +57,7 @@ function createDataset(fields, constraints, sortFields) {
 						 }
 					 }
 					 //log.info("entrando aqui 2");
-					// log.dir(constraints);
+					 // log.dir(constraints);
 				
 					 //posteriormente trocar o campo emailLider pelo campo de aprovação P&C
 					 

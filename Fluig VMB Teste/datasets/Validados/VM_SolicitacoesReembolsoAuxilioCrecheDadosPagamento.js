@@ -25,7 +25,14 @@ function createDataset(fields, constraints, sortFields) {
             var constraintsActive = new Array();
             constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
             constraintsActive.push(DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST));
-            var datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsActive, null);
+            var datasetPrincipal;
+           		datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, constraintsActive, null);
+            
+            
+        	if (datasetPrincipal.rowsCount ==0 || datasetPrincipal.rowsCount == null){
+        		 datasetPrincipal = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsActive, null);
+    		}
+            
             
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");
@@ -55,7 +62,16 @@ function createDataset(fields, constraints, sortFields) {
                     var constraintsFilhos = new Array(c1, c2, c3);
 
                     //Busca o dataset
-                    var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsFilhos, null);
+                    var datasetFilhos;
+                    	datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, constraintsFilhos, null);
+                    
+                    
+                    
+                	if (datasetFilhos.rowsCount ==0 || datasetFilhos.rowsCount == null){
+                		datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsFilhos, null);
+            		}
+                    
+                    
                     for (var j = 0; j < datasetFilhos.rowsCount; j++) {
                 	//	log.info("-------RETORNO FILHO----- 21:08");
                    	 	
@@ -105,7 +121,16 @@ function createDataset(fields, constraints, sortFields) {
             var constraintsFilhos = new Array(c1, c2, c3);
 
             //Busca o dataset
-            var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsFilhos, null);
+            var datasetFilhos;
+            	datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche", null, constraintsFilhos, null);
+            
+            
+            
+        	if (datasetFilhos.rowsCount ==0 || datasetFilhos.rowsCount == null){
+        		datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesReembolsoAuxilioCreche1", null, constraintsFilhos, null);
+    		}
+            
+            
             for (var j = 0; j < datasetFilhos.rowsCount; j++) {
            	 	
              	//Adiciona os valores nas colunas respectivamente.
