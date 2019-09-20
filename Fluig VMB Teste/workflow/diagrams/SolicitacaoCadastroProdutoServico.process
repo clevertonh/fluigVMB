@@ -108,7 +108,7 @@
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="1080" y="410">
+      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="1040" y="420">
         <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="3" transparency="0.0" width="35" height="35" style="/0/@styles.48"/>
       </graphicsAlgorithm>
       <link businessObjects="endevent12"/>
@@ -1966,11 +1966,11 @@
     <fonts name="Arial" size="8"/>
     <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess id="SolicitacaoCadastroProdutoServico" name="Solicita&#xe7;&#xe3;o de Cadastro de Produto e Servi&#xe7;o" serverId="Fluig teste" version="5" author="" extendedFields="&lt;list/>" cardIndex="2218" formSource="server" category="Compras" volume="Default" expedient="Default" instruction="" keyWord="" mobileReady="true" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
+  <bpmn2:BpmnProcess id="SolicitacaoCadastroProdutoServico" name="Solicita&#xe7;&#xe3;o de Cadastro de Produto e Servi&#xe7;o" serverId="Fluig teste" version="9" author="" extendedFields="&lt;list/>" cardIndex="2218" formSource="server" category="Compras" volume="Default" expedient="Default" instruction="" keyWord="" mobileReady="true" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
   <bpmn2:BpmnPool id="pool1" name="Solicita&#xe7;&#xe3;o de Cadastro de Produto e Servi&#xe7;o" cores="FFFFFF"/>
   <bpmn2:BpmnSwimLane id="swimlane2" name="Solicitante" cores="9F9F9F"/>
   <bpmn2:BpmnSwimLane id="swimlane3" name="Assessoria Administrativa" cores="C0C0C0"/>
-  <bpmn2:BpmnStartEvent id="startevent4" name="In&#xed;cio" incoming="flow8" outgoing="flow6" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
+  <bpmn2:BpmnStartEvent id="startevent4" name="Solicitar cadastro de produto/servi&#xe7;o" incoming="flow8" outgoing="flow6" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
   <bpmn2:BpmnTask id="task5" name="Validar cadastro" incoming="flow6" outgoing="flow20" type="80" managerMechanism="Pool Grupo" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>&#xA;  &lt;groupId>Estoque&lt;/groupId>&#xA;  &lt;mechanismName>Pool Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>" loopType="0" authNotify="true" instrucoes="Use essa tarefa para informar a descri&#xe7;&#xe3;o do produto, unidade de pedida entre outras informa&#xe7;&#xf5;es necess&#xe1;rias" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:SequenceFlow id="flow6" name="" sourceRef="startevent4" targetRef="task5" permiteRetorno="true" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask7" name="Start" outgoing="flow8" type="0"/>

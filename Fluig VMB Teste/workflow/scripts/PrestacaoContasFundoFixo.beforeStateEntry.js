@@ -16,6 +16,8 @@ function beforeStateEntry(sequenceId){
 	var idDocumento = getValue("WKCardId");
 	var idFormulario = getValue("WKFormId")
 	var empresa = getValue("WKCompany");
+	 //RECUPERA USUARIO LOGADO
+    var usuario = getValue('WKUser');
 	
 	
 	 var anexos   = hAPI.listAttachments();

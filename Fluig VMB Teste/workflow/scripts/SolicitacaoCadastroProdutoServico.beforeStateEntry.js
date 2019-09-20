@@ -4,7 +4,7 @@ function beforeStateEntry(sequenceId){
 	var DADOS_CONTABEIS = 10;
 	var CORRIGIR = 16;
 	
-	//RECUPERA NUMERO DA ATIVIDADE
+	//RECUPERA NUMERO DA ATIVIDADE ATUAL
     var ativAtual         = getValue("WKNumState");        
     //RECUPERA CODIGO DA SOLICITAÇÃO
     var codSolicitacao    = getValue("WKNumProces");
@@ -12,8 +12,12 @@ function beforeStateEntry(sequenceId){
     var nextAtv           = getValue("WKNextState");
     //RECUPERA NUMERO DO DOCUMENTO
     var idDocumento 	  = getValue("WKCardId");
+    //RECUPERA ID DE CADASTRO DO FORMULARIO
     var idFormulario 	  = getValue("WKFormId")
-    var empresa 		  = getValue("WKCompany");
+    //RECUPERA EMPRESA
+    var empresa 		  = getValue("WKCompany");    
+    //RECUPERA USUARIO LOGADO
+    var usuario = getValue('WKUser');
 	
     //GATEWAY
 	var GATEWAYINTEGRACAO = 12;
@@ -31,11 +35,20 @@ function beforeStateEntry(sequenceId){
 		constraint.push(DatasetFactory.createConstraint("tes", tes, tes, ConstraintType.MUST));
 			
 		
-		var resultDateset = DatasetFactory.getDataset("VM_MATA010_SOLICITACAO_CADASTRO_PRODUTO_SERVICO", null, constraint, null);
+		var resultDataset = DatasetFactory.getDataset("VM_MATA010_SOLICITACAO_CADASTRO_PRODUTO_SERVICO", null, constraint, null);
 		     
-	    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-	    	throw resultDateset.getValue(0,"RETORNO");
+	    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+	    	throw resultDataset.getValue(0,"RETORNO");
 	    } 
+	    /*
+	    else {
+        		var retornoMensagem = hAPI.setCardValue("codigoProduto",resultDataset.getValue(0,"PRODUTO"));  	
+        		hAPI.setTaskComments(usuario, codSolicitacao, 0, "ID DO PRODUTO: "+retornoMensagem);
+	    }
+	    */
+	    else {
+			  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+		  }
 
 }
 	

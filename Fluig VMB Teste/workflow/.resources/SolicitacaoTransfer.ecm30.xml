@@ -5,11 +5,11 @@
       <processId>SolicitacaoTransfer</processId>
     </processDefinitionPK>
     <processDescription>Solicitação de Transfer</processDescription>
-    <instruction>User esse processo para solicitar a contração de ônibus, vans e carros com motorista</instruction>
+    <instruction>Use esse processo para solicitar a contração de ônibus, vans e carros com motorista particular</instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>Compras</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
     <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Hospitalidade&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
@@ -29,10 +29,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Transfer</processId>
-      <version>1</version>
+      <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>2169</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -109,9 +109,11 @@
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <selectColleague>1</selectColleague>
+      <joint>true</joint>
+      <agreementPercentage>50</agreementPercentage>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Compradores&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>2</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
       <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
@@ -374,7 +376,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>10</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -386,7 +388,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>5</version>
         <sequence>10</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -615,7 +617,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>1</version>
+        <version>5</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -626,7 +628,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>1</version>
+        <version>5</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

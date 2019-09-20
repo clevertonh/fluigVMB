@@ -34,6 +34,8 @@ function beforeStateEntry(sequenceId){
 	var idDocumento = getValue("WKCardId");
 	var idFormulario = getValue("WKFormId")
 	var empresa = getValue("WKCompany");
+	 //RECUPERA USUARIO LOGADO
+    var usuario = getValue('WKUser');
 	
 	
 	var vooComprado		 = hAPI.getCardValue("vooComprado");
@@ -96,10 +98,10 @@ function beforeStateEntry(sequenceId){
  		  			 var constraint = new Array();		  			 		  			
  		  			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
  		
- 		  			 var codigoComprador = getValue("WKUser");
+ 		  			// var codigoComprador = getValue("WKUser");
 	 		  			
  		  			 var constraintsUsuario   = new Array();
- 		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
+ 		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", usuario, usuario, ConstraintType.MUST));
  					 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
  				
  		  			 
@@ -127,6 +129,9 @@ function beforeStateEntry(sequenceId){
  		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
  		  		    	throw resultDateset.getValue(0,"RETORNO");
  		  		    } 
+ 		  		    else {
+ 		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+ 		  		    }
  		  		  
  		     		if (adiantamento == "sim" && vlAdiantamento > 0){
  		   		  		 var constraint2 = new Array();		  			 		  			
@@ -136,14 +141,13 @@ function beforeStateEntry(sequenceId){
  		   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
  		   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
  		   		  		    }
+	 		   		  	  else {
+	 	 		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+	 	 		  		    }
  				  		}
  		  		  
  		  		    
  		  		}
- 		  		
-     	
- 		 
-     	
      	
      	}
   
@@ -155,11 +159,14 @@ function beforeStateEntry(sequenceId){
 			   constraintDiarias.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
 			   constraintDiarias.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
 	  			
-	  			 var resultDateset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraintDiarias, null);
+	  			 var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraintDiarias, null);
 		  		    
-		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-		  		    	throw resultDateset.getValue(0,"RETORNO");
+		  		    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		  		    	throw resultDataset.getValue(0,"RETORNO");
 		  		    } 
+		  		  else {
+		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+		  		    }
 			  								
 		   	    
      	}
@@ -176,11 +183,14 @@ function beforeStateEntry(sequenceId){
     	
     			
     		
-    		var resultDateset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_VIAGEM", null, constraintTarifa, null);
+    		var resultDataset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_VIAGEM", null, constraintTarifa, null);
     		     
-    	    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-    	    	throw resultDateset.getValue(0,"RETORNO");
+    	    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+    	    	throw resultDataset.getValue(0,"RETORNO");
     	    } 
+    	    else {
+    	    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+    	    }
      	}
     
 	   

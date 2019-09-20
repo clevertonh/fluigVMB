@@ -18,6 +18,9 @@ function beforeStateEntry(sequenceId){
 	var idDocumento = getValue("WKCardId");
 	var idFormulario = getValue("WKFormId")
 	var empresa = getValue("WKCompany");
+	 //RECUPERA USUARIO LOGADO
+    var usuario = getValue('WKUser');
+	
 	  
     var recebeDiarias 	 = hAPI.getCardValue("recebediarias");    
     var temTarifa		 	 = hAPI.getCardValue("tarifa");
@@ -55,6 +58,9 @@ function beforeStateEntry(sequenceId){
 	    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
 	    	throw resultDateset.getValue(0,"RETORNO");
 	    } 
+	    else {
+	    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+	    }
 	    
 	}
 	

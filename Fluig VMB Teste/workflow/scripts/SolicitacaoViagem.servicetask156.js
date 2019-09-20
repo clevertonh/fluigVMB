@@ -30,6 +30,9 @@ function servicetask156(attempt, message) {
      		if (resultDataset.getValue(0,"DATA_PAGAMENTO") != ''){
      			//preenche data de pagamento
             	hAPI.setCardValue("dtBaixa",resultDataset.getValue(0,"DATA_PAGAMENTO"));  	
+  
+            	//falta set usuario admin
+            	//hAPI.setTaskComments(usuario, codSolicitacao, 0, "Pagamento efetuado com sucesso");
      		}
      		else {
      			 throw 'Pagamento atrasado!';

@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Cadastro de Produto e Serviço</processId>
-      <version>5</version>
+      <version>9</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2218</formId>
@@ -53,8 +53,8 @@
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
-      <stateName>Início</stateName>
-      <stateDescription>Início</stateDescription>
+      <stateName>Solicitar cadastro de produto/serviço</stateName>
+      <stateDescription>Solicitar cadastro de produto/serviço</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -306,8 +306,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1080</positionX>
-      <positionY>410</positionY>
+      <positionX>1040</positionX>
+      <positionY>420</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -378,7 +378,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>5</version>
+        <version>9</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;sim&quot;</condition>
@@ -390,7 +390,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>5</version>
+        <version>9</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;produtoExiste&quot;) == &quot;nao&quot;</condition>
@@ -534,7 +534,7 @@
 	var DADOS_CONTABEIS = 10;&#xd;
 	var CORRIGIR = 16;&#xd;
 	&#xd;
-	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE ATUAL&#xd;
     var ativAtual         = getValue(&quot;WKNumState&quot;);        &#xd;
     //RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
     var codSolicitacao    = getValue(&quot;WKNumProces&quot;);&#xd;
@@ -542,8 +542,12 @@
     var nextAtv           = getValue(&quot;WKNextState&quot;);&#xd;
     //RECUPERA NUMERO DO DOCUMENTO&#xd;
     var idDocumento 	  = getValue(&quot;WKCardId&quot;);&#xd;
+    //RECUPERA ID DE CADASTRO DO FORMULARIO&#xd;
     var idFormulario 	  = getValue(&quot;WKFormId&quot;)&#xd;
-    var empresa 		  = getValue(&quot;WKCompany&quot;);&#xd;
+    //RECUPERA EMPRESA&#xd;
+    var empresa 		  = getValue(&quot;WKCompany&quot;);    &#xd;
+    //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
     //GATEWAY&#xd;
 	var GATEWAYINTEGRACAO = 12;&#xd;
@@ -561,11 +565,20 @@
 		constraint.push(DatasetFactory.createConstraint(&quot;tes&quot;, tes, tes, ConstraintType.MUST));&#xd;
 			&#xd;
 		&#xd;
-		var resultDateset = DatasetFactory.getDataset(&quot;VM_MATA010_SOLICITACAO_CADASTRO_PRODUTO_SERVICO&quot;, null, constraint, null);&#xd;
+		var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA010_SOLICITACAO_CADASTRO_PRODUTO_SERVICO&quot;, null, constraint, null);&#xd;
 		     &#xd;
-	    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-	    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 	    } &#xd;
+	    /*&#xd;
+	    else {&#xd;
+        		var retornoMensagem = hAPI.setCardValue(&quot;codigoProduto&quot;,resultDataset.getValue(0,&quot;PRODUTO&quot;));  	&#xd;
+        		hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;ID DO PRODUTO: &quot;+retornoMensagem);&#xd;
+	    }&#xd;
+	    */&#xd;
+	    else {&#xd;
+			  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+		  }&#xd;
 &#xd;
 }&#xd;
 	&#xd;
@@ -672,7 +685,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>5</version>
+        <version>9</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -683,7 +696,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>5</version>
+        <version>9</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -694,7 +707,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>5</version>
+        <version>9</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -705,7 +718,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>5</version>
+        <version>9</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -716,7 +729,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>5</version>
+        <version>9</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -727,7 +740,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCadastroProdutoServico</processId>
-        <version>5</version>
+        <version>9</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

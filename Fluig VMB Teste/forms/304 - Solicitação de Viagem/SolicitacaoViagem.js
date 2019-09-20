@@ -1790,13 +1790,13 @@ function desejaHotel() {
     document.getElementById("div_tipoHotel").style.display = "block";
 }
 
-//preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
+//migrar para grupo aprovadores de viagens de embaixadores
 function AprovadorEmbaixador() {
          var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("mail", "raissa_rossiter@wvi.org", "raissa_rossiter@wvi.org", ConstraintType.MUST));
+		 constraints.push(DatasetFactory.createConstraint("mail", "danubia_carvalho@wvi.org", "danubia_carvalho@wvi.org", ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
 		 		
-		 $('#emailGestor').val("raissa_rossiter@wvi.org");
+		 $('#emailGestor').val("danubia_carvalho@wvi.org");
          $('#matriculaApr').val(dataset.values[0]["colleaguePK.colleagueId"]);
          $('#aprovador').val(dataset.values[0]["colleagueName"]);        
         
