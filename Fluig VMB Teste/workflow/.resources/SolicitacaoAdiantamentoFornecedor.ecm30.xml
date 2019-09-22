@@ -157,7 +157,7 @@
       </processStatePK>
       <stateName>Gerar adiantamento</stateName>
       <stateDescription>Gerar adiantamento</stateDescription>
-      <instruction></instruction>
+      <instruction>Integre a solicitação de adiantamento ao fornecedor com a rotina de adiantamentos do Protheus</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -868,6 +868,9 @@
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	 //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
+	&#xd;
 	&#xd;
      &#xd;
     if ((ativAtual == GERAR_ADTO &amp;&amp; nextAtv == INTEGRAR) || ativAtual == SOLICITANTE){    &#xd;
@@ -894,7 +897,9 @@
     			 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
     			    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
     			    } &#xd;
-    			 &#xd;
+    			  else {&#xd;
+					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+				  }&#xd;
     			 &#xd;
     			         		       &#xd;
     	    }&#xd;
@@ -908,6 +913,9 @@
 	    		 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 	 		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 	 		    } &#xd;
+	    		  else {&#xd;
+					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+				  }&#xd;
 	    		 &#xd;
 	    	}&#xd;
     	    &#xd;

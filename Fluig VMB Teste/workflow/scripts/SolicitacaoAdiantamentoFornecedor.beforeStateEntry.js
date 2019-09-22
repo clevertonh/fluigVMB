@@ -45,7 +45,9 @@ function beforeStateEntry(sequenceId){
     			 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
     			    	throw resultDataset.getValue(0,"RETORNO");
     			    } 
-    			 
+    			  else {
+					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+				  }
     			 
     			         		       
     	    }

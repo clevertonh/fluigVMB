@@ -49,7 +49,7 @@ function beforeStateEntry(sequenceId){
                             throw resultDataset.getValue(0,"RETORNO");
                          }
                       	  else {
-        					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+        					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus para o processo de cotação");
         				  }
                          
            
