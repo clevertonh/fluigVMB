@@ -3,8 +3,7 @@ function beforeStateEntry(sequenceId){
 	var APROVACAO_DIRETOR = 5;
 	var GERAR_ADTO = 10;
 	var SOLICITANTE = 24;
-	var APROVACAO_GESTOR = 31;
-	var INTEGRAR = 18;
+	var INTEGRAR = 79;
 
 	//RECUPERA NUMERO DA ATIVIDADE
 	var ativAtual 		 = getValue("WKNumState");		

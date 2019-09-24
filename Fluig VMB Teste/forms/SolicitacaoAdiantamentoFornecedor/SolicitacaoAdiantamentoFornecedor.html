@@ -221,10 +221,10 @@
 										         
 										  </div>
 									</div>
-                                    <div class="panel panel-info" id="div_aprovador">										 
+                                    <div class="panel panel-info" id="div_nivel1">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
-                                             <b>Dados do aprovador</b>
+                                             <b>Gerente de Administração</b>
                                           </h5>
                                       	 </div>
                                       	 
@@ -232,53 +232,32 @@
                                       	 	<div class="row">
                                        <div class="form-group col-md-4">
                                           <label for="gestor" class="required">Nome aprovador</label>
-                                          <input type="text" class="form-control" id="gestor" name="gestor" readonly >
+                                          <input type="text" class="form-control" id="nomeNivel1" name="nomeNivel1" readonly >
                                        </div>
                                        <div class="form-group col-md-4">
-                                          <label for="emailLider">Email do Aprovador</label>
-                                          <input type="email" class="form-control" id="emailLider" name="emailLider" readonly>
-                                       </div>	
-                                          <div class="form-group col-md-4" id="divMatricualApr">
-                                          	<label for="matriculaApr">ID Aprovador</label>
-                                          	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
-                                          </div>                                        								
+                                          <label for="emailNivel1">Email do Aprovador</label>
+                                          <input type="email" class="form-control" id="emailNivel1" name="emailNivel1" readonly>
+                                       </div>	                                                                             								
 									</div>
          							 <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
                                        <div class="form-group col-md-2">
-                                          <Label for="aprovacao">Aprovado</Label> <input type="radio"
-                                             id="aprovacao" name="aprovacao" value="aprovado"
+                                          <Label for="aprNivel1S">Aprovado</Label> <input type="radio"
+                                             id="aprNivel1S" name="aprNivel1" value="aprovado"
                                               />
                                        </div>
                                        <div class="form-group col-md-4">
-                                          <Label for="aprovacaon">Reprovado</Label> <input
-                                             type="radio" id="aprovacaon" name="aprovacao"
+                                          <Label for="aprNivel1N">Reprovado</Label> <input
+                                             type="radio" id="aprNivel1N" name="aprNivel1"
                                              value="reprovado"  />
                                        </div>
-                                       
-                                       <div class="form-group col-md-4">
-                                          <div class="input-group date">
-                                             <input type="text" class="form-control"
-                                                id="prazoaprovacao" name="prazoaprovacao" readonly>
-                                          </div>
-                                       </div>
+                                                                          
                                     </div>
-                                    <div class="row">
-                                       <div class="form-group col-md-12">
-                                          <div class="form-group"
-                                             id='divJustificativaReprovacao'>
-                                             <label for="justificativaReprovacao">Justificativa</label>
-                                             <textarea class="form-control" rows="3"
-                                                id="justificativaReprovacao"
-                                                name="justificativaReprovacao"
-                                                placeholder="Por favor, informar o motivo pela reprovação."></textarea>
-                                          </div>
-                                       </div>
-                                    </div>
+                          
                                       	 </div>
                                     </div>                                    
 
-  						<div class="panel panel-info" id="div_diretor">										 
+  						<div class="panel panel-info" id="div_nivel2">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
                                              <b>Diretor Financeiro</b>
@@ -288,49 +267,217 @@
                                       	 <div class="panel-body">
                                       	 	<div class="row">
                                        <div class="form-group col-md-4">
-                                          <label for="diretor" class="required">Nome</label>
-                                          <input type="text" class="form-control" id="diretor" name="diretor" readonly >
+                                          <label for="nomeNivel2" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="nomeNivel2" name="nomeNivel2" readonly >
                                        </div>
                                        <div class="form-group col-md-4">
-                                          <label for="emaildiretor">Email</label>
-                                          <input type="email" class="form-control" id="emaildiretor" name="emaildiretor" readonly>
+                                          <label for="emailNivel2">Email</label>
+                                          <input type="email" class="form-control" id="emailNivel2" name="emailNivel2" readonly>
                                        </div>	
                                                                                   								
 									</div>
          							 <div class="row">
                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
                                        <div class="form-group col-md-2">
-                                          <Label for="aprovacaoDFS">Aprovado</Label> <input type="radio"
-                                             id="aprovacaoDFS" name="aprovacaoDIR" value="aprovado"
+                                          <Label for="aprNivel2S">Aprovado</Label> 
+										  <input type="radio" id="aprNivel2S" name="aprNivel2" value="aprovado"
                                               />
                                        </div>
                                        <div class="form-group col-md-4">
-                                          <Label for="aprovacaoDFN">Reprovado</Label> <input
-                                             type="radio" id="aprovacaoDFN" name="aprovacaoDIR"
-                                             value="reprovado"  />
-                                       </div>
-                                       
+                                          <Label for="aprNivel2N">Reprovado</Label> 
+										  <input type="radio" id="aprNivel2N" name="aprNivel2" value="reprovado"  />
+                                       </div>                                      
+                                    </div>
+                                      	 </div>
+                                    </div>
+									
+<div class="panel panel-info" id="div_nivel3">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Diretor Marketing</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
                                        <div class="form-group col-md-4">
+                                          <label for="nomeNivel3" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="nomeNivel3" name="nomeNivel3" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailNivel3">Email</label>
+                                          <input type="email" class="form-control" id="emailNivel3" name="emailNivel3" readonly>
+                                       </div>	
+                                                                                  								
+									</div>
+         							 <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprNivel3S">Aprovado</Label> 
+										  <input type="radio" id="aprNivel3S" name="aprNivel3" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprNivel3N">Reprovado</Label> 
+										  <input type="radio" id="aprNivel3N" name="aprNivel3" value="reprovado"  />
+                                       </div>                                      
+                                    </div>
+                                      	 </div>
+                                    </div>		
+									
+<div class="panel panel-info" id="div_nivel4">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Diretor de Suporte</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="nomeNivel4" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="nomeNivel4" name="nomeNivel4" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailNivel4">Email</label>
+                                          <input type="email" class="form-control" id="emailNivel4" name="emailNivel4" readonly>
+                                       </div>	
+                                                                                  								
+									</div>
+         							 <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprNivel4S">Aprovado</Label> 
+										  <input type="radio" id="aprNivel4S" name="aprNivel4" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprNivel4N">Reprovado</Label> 
+										  <input type="radio" id="aprNivel4N" name="aprNivel4" value="reprovado"  />
+                                       </div>                                      
+                                    </div>
+                                      	 </div>
+                                    </div>	
+<div class="panel panel-info" id="div_nivel5">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Diretor Advocacy</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="nomeNivel5" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="nomeNivel5" name="nomeNivel5" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailNivel5">Email</label>
+                                          <input type="email" class="form-control" id="emailNivel5" name="emailNivel5" readonly>
+                                       </div>	
+                                                                                  								
+									</div>
+         							 <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprNivel5S">Aprovado</Label> 
+										  <input type="radio" id="aprNivel5S" name="aprNivel5" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprNivel5N">Reprovado</Label> 
+										  <input type="radio" id="aprNivel5N" name="aprNivel5" value="reprovado"  />
+                                       </div>                                      
+                                    </div>
+                                      	 </div>
+                                    </div>		
+<div class="panel panel-info" id="div_nivel6">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Diretor Ministério</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="nomeNivel6" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="nomeNivel6" name="nomeNivel6" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailNivel6">Email</label>
+                                          <input type="email" class="form-control" id="emailNivel6" name="emailNivel6" readonly>
+                                       </div>	
+                                                                                  								
+									</div>
+         							 <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprNivel6S">Aprovado</Label> 
+										  <input type="radio" id="aprNivel6S" name="aprNivel6" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprNivel6N">Reprovado</Label> 
+										  <input type="radio" id="aprNivel6N" name="aprNivel6" value="reprovado"  />
+                                       </div>                                      
+                                    </div>
+                                      	 </div>
+                                    </div>										
+<div class="panel panel-info" id="div_nivel7">										 
+										   <div class="panel-heading ">
+                                          <h5 class="panel-title">
+                                             <b>Diretor Nacional</b>
+                                          </h5>
+                                      	 </div>
+                                      	 
+                                      	 <div class="panel-body">
+                                      	 	<div class="row">
+                                       <div class="form-group col-md-4">
+                                          <label for="nomeNivel4" class="required">Nome</label>
+                                          <input type="text" class="form-control" id="nomeNivel4" name="nomeNivel7" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="emailNivel7">Email</label>
+                                          <input type="email" class="form-control" id="emailNivel4" name="emailNivel7" readonly>
+                                       </div>	
+                                                                                  								
+									</div>
+         							 <div class="row">
+                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                       <div class="form-group col-md-2">
+                                          <Label for="aprNivel7S">Aprovado</Label> 
+										  <input type="radio" id="aprNivel7S" name="aprNivel7" value="aprovado"
+                                              />
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <Label for="aprNivel7N">Reprovado</Label> 
+										  <input type="radio" id="aprNivel7N" name="aprNivel7" value="reprovado"  />
+                                       </div>                                      
+                                    </div>
+                                      	 </div>
+                                    </div>										
+
+<div class="row">
+    <div class="form-group col-md-4">
                                           <div class="input-group date">
-                                             <input type="text" class="form-control" id="prazoaprovacaoDIR" name="prazoaprovacaoDIR" readonly>
+                                             <input type="text" class="form-control"
+                                                id="prazoaprovacao" name="prazoaprovacao" readonly>
                                           </div>
                                        </div>
-                                    </div>
-                                    <div class="row">
+
+</div>
+          <div class="row" id='divJustificativaReprovacao'>
                                        <div class="form-group col-md-12">
-                                          <div class="form-group"
-                                             id='divJustificativaReprovacao'>
-                                             <label for="justificativaReprovacaoDIR">Justificativa</label>
+                                          <div class="form-group">
+                                             <label for="justificativaReprovacao">Justificativa</label>
                                              <textarea class="form-control" rows="3"
-                                                id="justificativaReprovacaoDIR"
-                                                name="justificativaReprovacaoDIR"
+                                                id="justificativaReprovacao"
+                                                name="justificativaReprovacao"
                                                 placeholder="Por favor, informar o motivo pela reprovação."></textarea>
                                           </div>
                                        </div>
                                     </div>
-                                      	 </div>
-                                    </div>
-
 
                                     
 									<div class="panel panel-info" id="div_pagador">										 

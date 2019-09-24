@@ -1,11 +1,15 @@
 function validateForm(form){
 	var INICIO =0;
 	var ABERTURA = 4;
-	var APROVACAO_DIRETOR = 5;
 	var GERAR_ADTO = 10;
-	var SOLICITANTE = 24;
-	var APROVACAO_GESTOR = 31;
-	var INTEGRAR = 18;
+	var GERAR_ADF_CARTAO = 24;
+	var GERENTE_ADM = 31;
+	var DIRETOR_FINANCEIRO = 5;
+	var DIRETOR_MKT = 48;
+	var DIRETOR_RH = 50;
+	var DIRETOR_ADVOCACY = 52;
+	var DIRETOR_MINISTERIO = 54;
+	var DIRETOR_NACIONAL = 46;
 	
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");
@@ -70,7 +74,7 @@ function validateForm(form){
 		//consultaPendenciaAdiantamento();
 		
 	}
-	else if (activity == APROVACAO_GESTOR){		
+	else if (activity == GERENTE_ADM){		
 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
 		if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
             throw "Você precisa indicar se a solicitação será aprovada";
@@ -89,7 +93,7 @@ function validateForm(form){
 	
 	}
 	
-	else if (activity == APROVACAO_DIRETOR){		
+	else if (activity == DIRETOR_FINANCEIRO){		
 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
 		if (form.getValue("aprovacaoDIR") == false || form.getValue("aprovacaoDIR") == "") {
             throw "Você precisa indicar se a solicitação será aprovada.";
@@ -103,7 +107,7 @@ function validateForm(form){
 	}
 	
 	
-	else if (activity == SOLICITANTE){
+	else if (activity == GERAR_ADF_CARTAO){
 		if (!form.getValue("cartaocredito").match(/^[0-9]/)){
 			 throw "Você deve informar apenas os números do cartão de crédito.";			
 			

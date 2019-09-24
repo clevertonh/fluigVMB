@@ -2,10 +2,16 @@ function displayFields(form,customHTML){
 	
 	
 	var ABERTURA = 0;
-	var APROVACAO_DIRETOR = 5;
 	var GERAR_ADTO = 10;
-	var SOLICITANTE = 24;
-	var APROVACAO_GESTOR = 31;
+	var GERAR_ADF_CARTAO = 24;
+	var GERENTE_ADM = 31;
+	var DIRETOR_FINANCEIRO = 5;
+	var DIRETOR_MKT = 48;
+	var DIRETOR_RH = 50;
+	var DIRETOR_ADVOCACY = 52;
+	var DIRETOR_MINISTERIO = 54;
+	var DIRETOR_NACIONAL = 46;
+	
 
 	var activity = getValue('WKNumState');
 	//log.info("----ATIVIDADE displayFields: " + activity);
@@ -26,30 +32,81 @@ function displayFields(form,customHTML){
 	if (activity == ABERTURA){
 		 form.setVisibleById("div_projeto", false);
 		 form.setVisibleById("div_fonte", false);
-		 form.setVisibleById("div_aprovador", false);
+		 form.setVisibleById("div_nivel1", false);
 		 form.setVisibleById("div_pagador", false);
-		 form.setVisibleById("div_diretor", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false);
+		 form.setVisibleById("divJustificativaReprovacao", false);
+		 
+		 
 		
 	}
-	else if (activity == APROVACAO_GESTOR) {
+	else if (activity == GERENTE_ADM) {
 		 form.setVisibleById("div_pagador", false);
-		 form.setVisibleById("div_diretor", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false);
 	}
-	else if (activity == APROVACAO_DIRETOR) {
+	else if (activity == DIRETOR_FINANCEIRO) {
 		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false);
 
 	}
+	else if (activity == DIRETOR_MKT) {
+		 form.setVisibleById("div_pagador", false);		 
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false);
+
+	}
+	else if (activity == DIRETOR_RH) {
+		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false);
+
+	}
+	else if (activity == DIRETOR_ADVOCACY) {
+		 form.setVisibleById("div_pagador", false);
+		 
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false);
+
+	}
+	else if (activity == DIRETOR_MINISTERIO) {
+		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel7", false);
+
+	}
+	else if (activity == DIRETOR_NACIONAL) {
+		 form.setVisibleById("div_pagador", false);		 
+
+	}
+	
+	
 	else if (activity == GERAR_ADTO) {
 		 form.setVisibleById("div_pagador", false);
 		 
-		 //quando os adiantamentos passarem a ser gerados direto para o contas a pagar, esses campos precisarão ser descomentados
+		 //quando os adiantamentos passarem a ser gerados direto para o contas a pagar, esses campos precisarão ser solicitados
 		 form.setVisibleById("div_banco", false);
 		 form.setVisibleById("div_agencia", false);
 		 form.setVisibleById("div_conta", false);
 		 form.setVisibleById("div_dtPgto", false);
 		 
 	}
-	else if (activity == SOLICITANTE) {
+	else if (activity == GERAR_ADF_CARTAO) {
 		 form.setVisibleById("div_banco", false);
 		 form.setVisibleById("div_agencia", false);
 		 form.setVisibleById("div_conta", false);
