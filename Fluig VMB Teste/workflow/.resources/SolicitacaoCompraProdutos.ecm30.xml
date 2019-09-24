@@ -353,8 +353,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>670</positionX>
-      <positionY>450</positionY>
+      <positionX>340</positionX>
+      <positionY>453</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -530,6 +530,23 @@
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCompraProdutos</processId>
+        <version>1</version>
+        <linkSequence>46</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>42</initialStateSequence>
+      <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list/>
   <list>
@@ -570,7 +587,8 @@
                      var constraint = new Array();                                 &#xd;
                      //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));&#xd;
                      constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-                     &#xd;
+              &#xd;
+                  &#xd;
                 	 	var codigoComprador = getValue(&quot;WKUser&quot;);&#xd;
 	 		  			&#xd;
                 	 	var constraintsUsuario   = new Array();&#xd;
@@ -584,14 +602,14 @@
 	  					constraint.push(DatasetFactory.createConstraint(&quot;comprador&quot;, emailComprador, emailComprador, ConstraintType.MUST));	&#xd;
 	  				}&#xd;
                      &#xd;
-                  &#xd;
+                 &#xd;
                       var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
                        &#xd;
                       	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
                             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
                          }&#xd;
                       	  else {&#xd;
-        					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+        					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus para o processo de cotação&quot;);&#xd;
         				  }&#xd;
                          &#xd;
            &#xd;
@@ -718,6 +736,28 @@
       </processLinkBendPK>
       <positionX>167</positionX>
       <positionY>287</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCompraProdutos</processId>
+        <version>6</version>
+        <linkSequence>46</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>776</positionX>
+      <positionY>464</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCompraProdutos</processId>
+        <version>6</version>
+        <linkSequence>46</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>776</positionX>
+      <positionY>68</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

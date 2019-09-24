@@ -499,7 +499,7 @@
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
+      <periodId>Default</periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
       <signalId>0</signalId>
@@ -1508,7 +1508,9 @@ function convertStringToData(StringToData) {
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
-&#xd;
+	 //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
+	&#xd;
 	&#xd;
 	var autorizado 		 = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
 	var aprovadoNoPrazo  = hAPI.getCardValue(&quot;aprPrazo&quot;);		&#xd;
@@ -1528,7 +1530,10 @@ function convertStringToData(StringToData) {
 			&#xd;
 				  if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 			    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-			    } &#xd;
+			      } &#xd;
+				  else {&#xd;
+					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+				  }&#xd;
 			&#xd;
 		  &#xd;
 	&#xd;
