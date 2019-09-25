@@ -1,6 +1,8 @@
 var INICIAL = 0;
 var ACORDO = 4;
 var FEEDBACK1 = 5;
+var FEEDBACK2 = 9;
+var AVALIACAO = 11;
 
 var dtAcordo;
 
@@ -47,6 +49,7 @@ var visibilidade = true;
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
+
 	
 	if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
 		dtAcordo = FLUIGC.calendar('#dataAcordo', {
@@ -67,8 +70,14 @@ $(document).ready(function() {
 });
 
 
+
 function fnCustomDeleteMeta(oElement) {	  
-		if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO){
+
+	// $("#acao___1").val() =="" verificar se o campo esta vazio, se sim deixar deletar
+	
+	
+	
+	if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO ){
 			//verificar se é campo meta esta vazio
 			//se sim, permitir excluir
 			
@@ -109,7 +118,15 @@ function adicionaMeta() {
     	 $('td:nth-child(7)').hide();
     	 $('td:nth-child(8)').hide();
     	 $('td:nth-child(9)').hide();
+    	 $('td:nth-child(10)').hide();
+    	 $('td:nth-child(11)').hide();
+    	 $('td:nth-child(12)').hide();
+    	 $('td:nth-child(13)').hide();
     	 
+    }
+    
+    if (ATIVIDADE == FEEDBACK2){
+    	//BLOQUEAR CAMPOS DE FEEDBACK 1
     }
    
     

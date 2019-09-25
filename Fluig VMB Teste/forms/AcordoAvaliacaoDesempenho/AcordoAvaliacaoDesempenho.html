@@ -55,7 +55,7 @@
                                              <div class="tab-content">
                                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                                    <div class="row">
-                                                      <div class="form-group col-md-5">
+                                                      <div class="form-group col-md-4">
                                                          <label for="Funcionario">Nome do Avaliado</label> 
                                                          <input name="Funcionario"
                                                             class="form-control" type="zoom"
@@ -71,9 +71,18 @@
                                                             ]
                                                             }">
                                                       </div>
-                                                      <div class="form-group col-md-5">
+                                                      <div class="form-group col-md-4">
                                                          <label>Função</label>
                                                          <input type="text" class="form-control" name="funcao" id="funcao" readonly>
+                                                      </div>
+                                                          <div class="form-group col-md-2">
+                                                         <label for="dataAdmissao">Data de Admissão</label>
+                                                         <div class="input-group date">
+                                                            <input type="text" class="form-control" id="dataAdmissao" name="dataAdmissao">
+                                                            <span class="input-group-addon"> <span
+                                                               class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
                                                       </div>
                                                       <div class="form-group col-md-2">
                                                          <label for="dataSolicitacao">Data de elaboração</label>
@@ -100,22 +109,30 @@
                                                                            <th class="tableColumn" style="width:500px;">Por que a Visão Mundial Brasil precisa que isto seja feito?</th>
                                                                            <th class="tableColumn" style="width:500px;">Como seria um resultado bem-sucedido? </th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_competencia">Competência</th>
-                                                                           <th class="tableColumn" style="width:500px;" id="div_comentarioF">Comentários do funcionário</th>
-                                                                           <th class="tableColumn" style="width:500px;" id="div_campo_10">Como isto foi feito?</th>
-                                                                           <th class="tableColumn" style="width:500px;" id="div_comentarioG">Comentários do Gerente</th>
+                                                                           
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario1">Comentários do funcionário</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario2">Como isto foi feito?</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario3">Comentários do Gerente</th>
+                                                                         
                                                                            <th class="tableColumn"  id="div_progresso">Progresso</th>
+                                                                             
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario4">Comentários do funcionário</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario5">Como isto foi feito?</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario6">Comentários do Gerente</th>
+                                                                           
+                                                                             <th class="tableColumn"  id="div_progresso2">Progresso</th>
                                                                         </tr>
                                                                      </thead>
                                                                      <tbody id="tbodyItensMetas">
                                                                         <tr>
                                                                            <td>                                                    
-                                                                              <textArea class="form-control" rows="6" name="acao" id="acao" maxlength="250" style="width:500px;"  ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="acao" id="acao" maxlength="250" style="width:500px;" placeholder="Registre de 3 a 5 metas. Inclua uma para gestão de pessoal, se você for gerente." ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="porque" id="porque" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="porque" id="porque" maxlength="250" style="width:500px;" placeholder ="Como isto apoia as metas de sua unidade e Our Promise 2030?"></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="como" id="como" maxlength="250" style="width:500px;"  ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="como" id="como" maxlength="250" style="width:500px;"  placeholder ="Inclua como será o resultado e como isto será alcançado"></textArea>
                                                                            </td>
                                                                            <td>
                                                                            		
@@ -145,14 +162,36 @@
                                                                            <td>
                                                                               <textArea class="form-control" rows="6" name="comentarioG" id="comentarioG" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
-                                                                           <td >                                                                             	
+                                                                            <td >                                                                             	
                                                                            	 	<label for="verde">Verde</label> 
 	                                                                            <input type="radio" id="verde" name="progresso" value="verde" class="form-control" onclick="clickProgresso()">
                                                                        	  		<label for="amarelo">Amarelo</label> 
     				                                                         	<input type="radio" id="amarelo" name="progresso" value="amarelo" class="form-control" onclick="clickProgresso()">   
     	                                                                       	<label for="vermelho">Vermelho</label> 
 						                                                        <input type="radio" id="vermelho" name="progresso" value="vermelho" class="form-control" onclick="clickProgresso()">
-                                                                           </td>                                                                                                                                   
+						                                                        <label for="branco">Não se aplica</label> 
+						                                                        <input type="radio" id="branco" name="progresso" value="branco" class="form-control" onclick="clickProgresso()">
+                                                                           </td>
+                                                                           
+                                                                           <td id="div_15">
+                                                                              <textArea class="form-control" rows="6" name="campo_15" id="campo_15" maxlength="250" style="width:500px;" ></textArea>
+                                                                           </td>
+                                                                           <td id="div_16">
+                                                                              <textArea class="form-control" rows="6" name="campo_16" id="campo_16" maxlength="250" style="width:500px;" ></textArea>
+                                                                           </td>
+                                                                           <td id="div_17">
+                                                                              <textArea class="form-control" rows="6" name="campo_17" id="campo_17" maxlength="250" style="width:500px;" ></textArea>
+                                                                           </td>
+                                                                              <td id="div_18">                                                                             	
+                                                                           	 	<label for="verde2">Verde</label> 
+	                                                                            <input type="radio" id="verde2" name="progresso2" value="verde" class="form-control" onclick="clickProgresso()">
+                                                                       	  		<label for="amarelo2">Amarelo</label> 
+    				                                                         	<input type="radio" id="amarelo2" name="progresso2" value="amarelo" class="form-control" onclick="clickProgresso()">   
+    	                                                                       	<label for="vermelho2">Vermelho</label> 
+						                                                        <input type="radio" id="vermelho2" name="progresso2" value="vermelho" class="form-control" onclick="clickProgresso()">
+						                                                        <label for="branco2">Não se aplica</label> 
+						                                                        <input type="radio" id="branco2" name="progresso2" value="branco" class="form-control" onclick="clickProgresso()">
+                                                                           </td>                                                                                                                             
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>
@@ -186,8 +225,8 @@
 							                                            <thead>
 							                                                <tr class="tableHeadRow">
 							                                                    <th class="tableColumn">Ao início do ano, planeje: O que eu preciso para executar bem o meu trabalho?</th>
-							                                                    <th class="tableColumn" id="div_analise">Análise: Estava disponível e foi alcançado?</th>
-							                                                    <th class="tableColumn" id="div_analise2">Análise: Estava disponível e foi alcançado?</th>
+							                                                    <th class="tableColumn" id="div_analise">Avalie: Estava disponível e foi alcançado?</th>
+							                                                    <th class="tableColumn" id="div_analise2">Avalie: Estava disponível e foi alcançado?</th>
 							                                                </tr>
 							                                            </thead>
 							                                            <tbody id="rowTbFeedback">
@@ -198,39 +237,39 @@
 							                                            		</td>
 							                                            		<td id="div_campo6">
 							                                            			<br>
-							                                            			<textarea rows="5" id="campo_6" name="campo_6" class="form-control"></textarea>	
+							                                            			<textarea rows="5" id="campo_6" name="campo_6" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo11">
 							                                            			<br>
-							                                            			<textarea rows="5" id="campo_11" name="campo_11" class="form-control"></textarea>	
+							                                            			<textarea rows="5" id="campo_11" name="campo_11" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            	</tr>
 							                                            	<tr>
 							                                            		<td>
-							                                            			<label>Apoio do líder imediato (qual auxílio, recursos, orientação e assistência o seu líder precisa disponibilizar para possibilitar que você faça um bom trabalho este ano?)</label><br>
-                                                           							 <textarea rows="5"  id="campo_2" name="campo_2" class="form-control"></textarea>
+							                                            			<label>Apoio do líder imediato</label><br>
+                                                           							 <textarea rows="5"  id="campo_2" name="campo_2" class="form-control" placeholder="Qual auxílio, recursos, orientação e assistência o seu líder precisa disponibilizar para possibilitar que você faça um bom trabalho este ano?"></textarea>
 							                                            		</td>
 							                                            		<td id="div_campo7">
 							                                            		 	<br><br>
-                                                           							 <textarea rows="5" id="campo_7" name="campo_7" class="form-control"></textarea>	
+                                                           							 <textarea rows="5" id="campo_7" name="campo_7" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo12">
 							                                            		 	<br><br>
-                                                           							 <textarea rows="5" id="campo_12" name="campo_12" class="form-control"></textarea>	
+                                                           							 <textarea rows="5" id="campo_12" name="campo_12" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            	</tr>
 							                                            	<tr>
 							                                            		<td>
-							                                            			<label>Equilíbrio de vida (que abordagem você usará este ano para assegurar o equilíbrio entre trabalho e vida pessoal e como saberá se isso foi alcançado?)</label><br>
-                                                            						<textarea rows="5" id="campo_3" name="campo_3" class="form-control"></textarea>	
+							                                            			<label>Equilíbrio de vida</label><br>
+                                                            						<textarea rows="5" id="campo_3" name="campo_3" class="form-control" placeholder="que abordagem você usará este ano para assegurar o equilíbrio entre trabalho e vida pessoal e como saberá se isso foi alcançado?"></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo8">
 							                                            			<br><br>
-                                                           							 <textarea rows="5" id="campo_8" name="campo_8" class="form-control"></textarea>	
+                                                           							 <textarea rows="5" id="campo_8" name="campo_8" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo13">
 							                                            			<br><br>
-                                                            						<textarea rows="5" id="campo_13" name="campo_13" class="form-control"></textarea>	
+                                                            						<textarea rows="5" id="campo_13" name="campo_13" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            	</tr>
 							                                            	<tr>
