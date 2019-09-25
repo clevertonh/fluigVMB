@@ -30,8 +30,15 @@ function enableFields(form){
 	}
 	
 	
-	if (activity ==  FEEDBACK1){
+	else if (activity ==  FEEDBACK1){
 		
+	}
+	else if (activity ==  FEEDBACK2){
+		form.setEnabled("campo_6___1", false);	
+		form.setEnabled("_campo_7", false);	
+		form.setEnabled("_campo_8", false);	
+		form.setEnabled("_campo_9", false);	
+	
 	}
 
 	    
