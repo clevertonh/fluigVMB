@@ -88,7 +88,6 @@ function createDataset(fields, constraints, sortFields) {
         					        		RATEIODIGITADO: aRateio ,
         					        		DOCUMENTID:''+ documentId +'',
         					        		COMPRADOR: '' + emailcomprador +'',
-        					        		OBSERVACAO:'' + solicitacao.getValue(0,"finalidade") + '',
         					        		EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
         					            },
         					          options : {

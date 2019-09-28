@@ -4,14 +4,8 @@ var APROVACAO =5;
 var CORRIGIR = 15;
 var GERAR_SC = 42;
 
+var linhas = 0;
 
-var dataAprovacao = FLUIGC.calendar('#dtNecessidade', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
 
 var dtSolicitacao;
 var codigoEvento;
@@ -118,7 +112,10 @@ function fnCustomDeleteRateio(oElement) {
 
 function fnCustomDeleteProduto(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
-		fnWdkRemoveChild(oElement);	
+		fnWdkRemoveChild(oElement);
+		
+		//reinicia variavel q controla quantidade de linhas permitidas de itens de produtos
+		linhas = 0;
 
 	}
 	else {
@@ -273,33 +270,40 @@ function adicionaLinha() {
 }
 
 function adicionaLinhaProduto() {
-	
-		var row = wdkAddChild('tableCompras');
-		FLUIGC.calendar("#dtNecessidade___" + row, {
-			pickDate: true,
-			pickTime: false
-		});
+		linhas = 0;	
+				
+		if (linhas == 0){		
+			var row = wdkAddChild('tableCompras');
+			
+			linhas = linhas + row;	
+			FLUIGC.calendar("#dtNecessidade___" + row, {
+				pickDate: true,
+				pickTime: false,    
+			    minDate: new Date().toLocaleString()
+				
+			});
+			
+			reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
 		
-		reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
-	
-		//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
+			var qtde = document.getElementById("idquantidade" + "___" + row);
+
+			qtde.addEventListener("blur", function( event ) {			
+				  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
+				  var qtde = $('#idquantidade' + "___" + row).val()			  
+				  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
+				  
+				  
+				}, true);
+
+		}
+		else {
+	         FLUIGC.toast({
+	  	        title: 'Atenção: ',
+	  	        message: 'É recomendado a inclusão de um único item por solicitação, pois em caso de falta de saldo orçamentário a solicitação inteira será recusada.' ,
+	  	        type: 'info'
+	  	    }); 
+		}
 		
-		var qtde = document.getElementById("idquantidade" + "___" + row);
-
-		/*
-		qtde.addEventListener("focus", function( event ) {
-			  event.target.style.background = "pink";    
-			}, true);
-		 */	
-		qtde.addEventListener("blur", function( event ) {			
-			  //event.target.style.background = "pink";
-			  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-			  var qtde = $('#idquantidade' + "___" + row).val()			  
-			  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
-			  
-			  
-			}, true);
-
 }
 
 function removedZoomItem(removedItem) {

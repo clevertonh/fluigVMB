@@ -19,17 +19,18 @@ function beforeStateEntry(sequenceId){
        var empresa = getValue("WKCompany");
        //RECUPERA USUARIO LOGADO
        var usuario = getValue('WKUser');
-   	
        
-       //var aprovado = hAPI.getCardValue("aprovacao");
+       var aprovacao  = hAPI.getCardValue("aprovacao");
        
        
-       if (ativAtual == GERAR_SC &&  nextAtv == 44){    	   
+   	      
+
+       if (ativAtual == APROVACAO &&  aprovacao == "aprovado"){    	
                      var constraint = new Array();                                 
                      //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
                      constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
               
-                  
+                  /*
                 	 	var codigoComprador = getValue("WKUser");
 	 		  			
                 	 	var constraintsUsuario   = new Array();
@@ -42,7 +43,7 @@ function beforeStateEntry(sequenceId){
 	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
 	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
 	  				}
-                     
+                     */
                  
                       var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
                        
@@ -56,6 +57,7 @@ function beforeStateEntry(sequenceId){
            
               
        }
+
                  
        
        
