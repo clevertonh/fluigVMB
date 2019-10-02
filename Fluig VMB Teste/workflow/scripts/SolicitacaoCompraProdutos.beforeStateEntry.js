@@ -2,7 +2,7 @@ function beforeStateEntry(sequenceId){
        //VARIAVEIS DEFAULT
        var ABERTURA = 0;
        var APROVACAO = 5;
-       var GERAR_SC = 42;
+       var ASSUMIR = 42;
        
        //GATEWAY
        var GATEWAYAPROVADO = 14;
@@ -22,15 +22,16 @@ function beforeStateEntry(sequenceId){
        
        var aprovacao  = hAPI.getCardValue("aprovacao");
        
-       
-   	      
+       //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  
+       var opcao;
 
        if (ativAtual == APROVACAO &&  aprovacao == "aprovado"){    	
+     //  if (ativAtual == ASSUMIR &&  nextAtv == 44){ 
                      var constraint = new Array();                                 
                      //constraint.push(DatasetFactory.createConstraint("solicitacao", codSolicitacao, codSolicitacao, ConstraintType.MUST));
                      constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
               
-                  /*
+                  
                 	 	var codigoComprador = getValue("WKUser");
 	 		  			
                 	 	var constraintsUsuario   = new Array();
@@ -43,8 +44,8 @@ function beforeStateEntry(sequenceId){
 	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
 	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
 	  				}
-                     */
-                 
+                    
+ 		  			 constraint.push(DatasetFactory.createConstraint("acao", 3, 3, ConstraintType.MUST));
                       var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
                        
                       	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
@@ -56,6 +57,37 @@ function beforeStateEntry(sequenceId){
                          
            
               
+       }
+       else if (ativAtual == ASSUMIR){
+
+    	   /*
+    	   var constraint = new Array();                                 
+           constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+    
+        
+      	 	var codigoComprador = getValue("WKUser");
+	  			
+      	 	var constraintsUsuario   = new Array();
+ 			 	constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
+ 			 	var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
+		
+ 			 
+ 			 
+ 			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
+				var emailComprador = datasetComprador.getValue(0, "mail");	  
+				constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
+			}
+
+ 			constraint.push(DatasetFactory.createConstraint("acao", 4, 4, ConstraintType.MUST));	
+ 			
+            var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
+             
+            	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+                  throw resultDataset.getValue(0,"RETORNO");
+            	 }
+
+*/ 	 
+               
        }
 
                  

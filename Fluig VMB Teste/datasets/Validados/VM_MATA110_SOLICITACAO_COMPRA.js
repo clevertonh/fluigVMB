@@ -9,6 +9,8 @@ function createDataset(fields, constraints, sortFields) {
 	var tipoViagem;
 	var documentId;
 	var emailcomprador;
+	//default == 3
+	var acao = 3;
 	
 	
 	
@@ -33,7 +35,10 @@ function createDataset(fields, constraints, sortFields) {
         		for (var a=0; a<constraints.length; a++){
         			if (constraints[a].fieldName == "comprador"){
             			emailcomprador = constraints[a].initialValue;
-            		}        			
+            		}  
+        			if (constraints[a].fieldName == "acao"){
+        				acao = constraints[a].initialValue;
+            		} 
         		}
         	 
         		
@@ -80,6 +85,7 @@ function createDataset(fields, constraints, sortFields) {
         					            timeoutService: '100', // segundos
         					            params : {
         					            	PROCESSO : '' + 2 + '' ,
+        					            	ACAO: '' + acao + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 
