@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Locação de Veiculo</processId>
-      <version>17</version>
+      <version>18</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1919</formId>
@@ -377,7 +377,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>18</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -389,7 +389,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>18</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -401,7 +401,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>17</version>
+        <version>18</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -413,7 +413,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>4</expressionOrder>
-        <version>17</version>
+        <version>18</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -605,6 +605,8 @@
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	 //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
 	&#xd;
     var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
@@ -663,6 +665,9 @@
                    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
                          throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
                       }&#xd;
+                   else {&#xd;
+                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+                   }&#xd;
                       &#xd;
           &#xd;
            &#xd;
@@ -768,7 +773,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>17</version>
+        <version>18</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -779,7 +784,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>17</version>
+        <version>18</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -790,7 +795,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>17</version>
+        <version>18</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
