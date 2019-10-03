@@ -57,7 +57,7 @@ $(document).ready(function() {
     	 $("#valor").blur(function(){
     		 //window['txtproduto'].disable(false); 
     		 //ALTERAR PARA NUMERO QUE CORRESPONDERÁ AOS SERVIÇOS DE LOCAÇÃO
-    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "2");
+    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "6");
          }); 
     }
     
@@ -107,7 +107,6 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
-
 function removeItens() {
 	
 	if (ATIVIDADE == ABERTURA  ){
@@ -120,7 +119,6 @@ function removeItens() {
 	}
 
 }
-
 
 function fnCustomDeleteRateio(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR){								
@@ -136,7 +134,6 @@ function fnCustomDeleteRateio(oElement) {
         });		
 	}		
 }
-
 
 function fnCustomDeleteCondutor(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR){								
@@ -200,6 +197,11 @@ function clickRenovacao(){
 	}
 	
 }
+
+function clickAprovacao(){
+	//falta codigo para ocultar e exibir campo de justificativa por reprovação
+}
+
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
@@ -353,7 +355,6 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
-
 function buscaDadosLocacaoAnterior(item){
     var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("solicitacao", item.SOLICITACAO, item.SOLICITACAO, ConstraintType.MUST));
@@ -425,8 +426,6 @@ function adicionaCondutor() {
     
     
 }
-
-
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -696,27 +695,6 @@ function addMeses(data, meses) {
 function addAnos(data, anos) {
     return new Date(data.setYear(data.getFullYear() + anos));
 
-}
-
-function carregaAprovador() {		
-	var email = parent.WCMAPI.userEmail.toUpperCase();
-		
-	var constraints = new Array();
-    constraints.push(DatasetFactory.createConstraint("EMAIL_USUARIO", email, email, ConstraintType.MUST));
-	
-	    var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, constraints, null);
-	    if (dataset != null && dataset.values.length > 0) {
-
-	    	//SET CAMPOS DO APROVADOR
-	        $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
-	        $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
-	        $('#aprovador').val(dataset.values[0]["DIRETOR"]);
-	        //$('solicitanteFuncionario').val(dataset.values[0]["FUNCIONARIO_VMB"]);
-
-
-	    }
-	 
-	
 }
 
 //carrega itens do rateio para informações de pagamento

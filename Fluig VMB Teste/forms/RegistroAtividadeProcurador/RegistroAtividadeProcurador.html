@@ -1,0 +1,48 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	  <link type="text/css" rel="stylesheet" href="RegistroAtividadeProcurador.css" />
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<div class="row">
+    <div class="form-group col-md-3">
+                                          <label for="dtSolicitacao">Data de registro</label>
+                                          <div class="input-group date">
+                                             <input type="text" class="form-control" id="dtRegistro" name="dtRegistro"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+	
+	
+	
+		
+	</div>
+	<div class="row">
+	<div class="form-group col-md-3">
+			<label>Quantidade</label>
+			<input type="number" id="quantidade" name="quantidade" class="form-control">
+		</div>
+	
+	</div>
+	<div class="row">
+		<div class="form-group col-md-6">
+			<label>Descrição da operação</label>
+			<textarea rows="5" cols="6" id="descricao" name="descricao" class="form-control"></textarea>
+		</div>
+	</div>
+
+
+</form>
+</div>
+<script src="RegistroAtividadeProcurador.js"></script>
+</body>
+</html>

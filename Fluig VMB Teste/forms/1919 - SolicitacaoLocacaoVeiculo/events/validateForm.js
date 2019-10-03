@@ -325,10 +325,11 @@ function validateForm(form){
                    }
                } 
                else {                	
-            	   if (atividade == "E010101" ) {
-                	   throw "Você não pode usar uma atividade de folha  para custear uma locação de veículo.";
+            	   if (atividade == "E010101" || atividade == "E020201") {
+                	   throw "Você não pode usar uma atividade de folha nem estrutural para custear uma locação de veículo.";
 
                    }
+         
               
                   }
            }

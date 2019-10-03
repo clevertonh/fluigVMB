@@ -61,8 +61,8 @@
                                                                 </li>
                                                                  <li role="presentation" class="disabled">
                                                                     <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Informações Financeira"> <span class="round-tab"> <i
-                                                      class="fluigicon fluigicon-money"></i>
-                                                      </span>
+			                                                      class="fluigicon fluigicon-money"></i>
+			                                                      </span>
                                                                     </a>
                                                                 </li>
                                                                 
@@ -95,6 +95,7 @@
                                                                             </span>
                                                                         </div>
                                                                     </div>
+                                                                   </div>
                                                                     <div class="row">
                                                                     	<div class="form-group col-md-2">                                                                    		
                                                                    			<label>Troca de condutor</label><br> 
@@ -180,7 +181,7 @@
                                                                     <div class="form-group col-md-1">
                                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                                                     </div>
-                                                                </div>
+                                                               
                                                                 <ul class="list-inline pull-right">
                                                                     <li>
                                                                         <button type="button" class="btn btn-primary next-step">Avançar</button>
@@ -469,17 +470,17 @@
                                        <div class="form-group col-md-2">
                                           <Label for="aprovacao">Aprovado</Label> <input type="radio"
                                              id="aprovacao" name="aprovacao" value="aprovado"
-                                             onclick="clickAprovado();" />
+                                             onclick="clickAprovacao();" />
                                        </div>
                                        <div class="form-group col-md-4">
                                           <Label for="aprovacaon">Reprovado</Label> <input
                                              type="radio" id="aprovacaon" name="aprovacao"
-                                             value="reprovado" onclick="clickReprovado();" />
+                                             value="reprovado" onclick="clickAprovacao();" />
                                        </div>
                                        <div class="form-group col-md-4">
                                           <Label for="devolver">Devolver para correção</Label> <input
                                              type="radio" id="devolver" name="aprovacao"
-                                             value="devolvido" onclick="clickAprovado();" />
+                                             value="devolvido" onclick="clickAprovacao();" />
                                        </div>                                      
                                        <div class="form-group col-md-4">
                                           <div class="input-group date">

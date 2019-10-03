@@ -117,6 +117,7 @@ function createDataset(fields, constraints, sortFields) {
         					        		COMPRADOR: '' + emailcomprador +'',
         					        		TIPOVIAGEM: '' + tipoViagem +'',
         					        		DOCUMENTID: '' + documentId +'' ,
+        					        		OBSERVACAO:'' + solicitacao.getValue(0,"finalidade") + '',
         					        		EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''
         					            },
         					          options : {
