@@ -224,7 +224,6 @@ function setSelectedZoomItem(selectedItem) {
   
 
     else if (campoZOOM == RATEIO) {    
-    	console.log("---ENTROU AQUI 9 ----");
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
@@ -240,6 +239,7 @@ function setSelectedZoomItem(selectedItem) {
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
     	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
+    	$('#prazoFornecedor' + "___" + linhaPagamento[1]).val(selectedItem["PRAZO_FORNECEDOR"]);
     	
     	
     }

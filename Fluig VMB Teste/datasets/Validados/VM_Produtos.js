@@ -8,6 +8,7 @@ function defineStructure() {
 	addColumn("FLUIG");
 	addColumn("GERA_SC");
 	addColumn("ULTIMO_VALOR");
+	addColumn("PRAZO_FORNECEDOR");
 	
 	setKey(["CODIGO"]);
 	addIndex(["CODIGO"]);
@@ -25,6 +26,7 @@ function createDataset(fields, constraints, sortFields) {
 	 dataset.addColumn("FLUIG");
 	 dataset.addColumn("GERA_SC");
 	 dataset.addColumn("ULTIMO_VALOR");
+	 dataset.addColumn("PRAZO_FORNECEDOR");
 	 
     var dados;
     var webservice = '/PRODUTO';
@@ -59,8 +61,7 @@ function createDataset(fields, constraints, sortFields) {
 	        	throw new Exception("Retorno está vazio");
 	        }
     
-    else{
-        log.info(vo.getResult());        
+    else{       
         dados = vo.getResult();
     }
     
@@ -74,8 +75,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CUNIDADE, objdata[i].CULTIMAC,objdata[i].CTERMOREF, objdata[i].CFLUIG, objdata[i].CGERASC, objdata[i].CULTIMOV]);					
-//			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CFLUIG , "UN"]);
+			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CPRODUTO, objdata[i].CUNIDADE, objdata[i].CULTIMAC,objdata[i].CTERMOREF, objdata[i].CFLUIG, objdata[i].CGERASC, objdata[i].CULTIMOV,objdata[i].CPRAZOFOR]);					
 		}
 	}
 		
@@ -93,11 +93,6 @@ function getConstraints(constraints, field){
 	
 	for(var i=0;i<constraints.length;i++){
 		if(constraints[i].fieldName == field  ){		
-			log.info("--------------DATASET CENTRO DE CUSTO-------------");
-//			log.info("CAMPO: "+field);
-			log.info("CONSTRAINTS: "+constraints[i]);
-			log.info("INFORMACAO DIGITADA: "+constraints[i].initialValue);
-							
 			return constraints[i].initialValue;
 		}
 	}
