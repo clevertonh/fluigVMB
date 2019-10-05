@@ -27,19 +27,19 @@ function validateForm(form){
     var dataRetirada;
     var dataAtual = new Date();
     
+    //retorna email usuario logado
+    var email = retornaEmailUsuario(usuarioLogado);
+	var statusUsuario = false;
+		
+	//consulta situação atual do solicitante
+	statusUsuario = consultaAfastamento(email);
 	
+	  if (statusUsuario == true ){
+	      throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+	  }	
 
 	if (activity == INICIO ||  activity == ABERTURA || activity == CORRIGIR ){
-		 //retorna email usuario logado
-	    var email = retornaEmailUsuario(usuarioLogado);
-		var statusUsuario = false;
-			
-		//consulta situação atual do solicitante
-		statusUsuario = consultaAfastamento(email);
 		
-		  if (statusUsuario == true ){
-		      throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
-		  }	
 		
 		  if (form.getValue("renovacao") == false || form.getValue("renovacao") == "") {
               throw "Você deve indicar se a solicitação é uma renovação de locação de veículo ou não.";
@@ -78,7 +78,7 @@ function validateForm(form){
            	}
 
           
-		//funções para validar informações financeiras
+           //funções para validar informações financeiras
 			validaLinhasPreenchidas();
 			validaLinhasRepetidas();
 			validaPercentualRateio();
@@ -329,7 +329,9 @@ function validateForm(form){
                 	   throw "Você não pode usar uma atividade de folha nem estrutural para custear uma locação de veículo.";
 
                    }
-         
+            	   if (atividade == "A443201"){
+            		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
+            	   }
               
                   }
            }

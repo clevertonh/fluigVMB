@@ -5,8 +5,8 @@
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>    
     <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
     <link type="text/css" rel="stylesheet" href="SolicitacaoTransfer.css" />
 </head>
 
@@ -27,25 +27,26 @@
                     <div class="panel-heading">
                         <div class="container text-center">
                             <h4>Solicitação de Transfer</h4>
+                            <!--                         <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * sÃ£o de preenchimento obrigatÃ³rio.</div>
+                           -->                            
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="container-fluid">
+                                <div id="exTab3" class="container-fluid">
                                     <ul class="nav nav-pills nav-justified">
                                         <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
                                         <li><a href="#2b" data-toggle="tab">Diretor(a)</a></li>
-                                        <li><a href="#3b" data-toggle="tab">Hospitalidade</a></li>
-
                                     </ul>
-                                        			<div class="tab-pane active" id="1b">
+                                      <div class="tab-content clearfix">
+                                        	<div class="tab-pane active" id="1b">
                                         	 						<div class="row">
-                                                                    <div class="form-group col-md-2">
-                                                                        <label for="id" class="required">Cód. solicitação
-                                                                        </label>
-                                                                        <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
-                                                                    </div>
+	                                                                    <div class="form-group col-md-2">
+	                                                                        <label for="id" class="required">Cód. solicitação
+	                                                                        </label>
+	                                                                        <input type="text" class="form-control" id="solicitacao" name='solicitacao' readonly>
+	                                                                    </div>
                                                                 </div>
                                                                     <div class="row">
                                                                     <div class="form-group col-md-5">
@@ -72,31 +73,31 @@
                                                                     <div class="row">
                                                                     	<div class="form-group col-md-4">
                                                                     		<label>Local de saída</label>
-                                                                    		<textarea rows="2" cols="40" name="localsaida" id ="localsaida" class="form-control"></textarea>
+                                                                    		<textarea rows="2" cols="40" name="localsaida" id ="localsaida" class="form-control" placeholder="Informe o endereço completo"></textarea>
                                                                     	</div>
                                                                     	<div class="form-group col-md-4">
                                                                     		<label>Local de destino</label>
-                                                                    		<textarea rows="2" cols="40" name="localDestino" id="localDestino"  class="form-control"></textarea>
+                                                                    		<textarea rows="2" cols="40" name="localDestino" id="localDestino"  class="form-control" placeholder="Informe o endereço completo"></textarea>
                                                                     	</div>
                                                                     	<div class="form-group col-md-4">
                                                                     		<label>Local de retorno</label>
-                                                                    		<textarea rows="2" cols="40" name="localRetorno" id="localRetorno"  class="form-control"></textarea>
+                                                                    		<textarea rows="2" cols="40" name="localRetorno" id="localRetorno"  class="form-control" placeholder="Informe o endereço completo"></textarea>
                                                                     	</div>
                                                                     </div>
                                                                     <div class="row">         
                                                                     	<div class="form-group col-md-3">
-	                                                                    	<label for="dtRetirada">Data e horário de saída</label>
+	                                                                    	<label for="dtSaida">Data e horário de saída</label>
 	                                                                        <div class="input-group date">
-	                                                                            <input type="text" class="form-control" id="dtRetirada" placeholder="Selecione uma data" name="dtRetirada">
+	                                                                            <input type="text" class="form-control" id="dtSaida" placeholder="Selecione uma data" name="dtSaida">
 	                                                                            <span class="input-group-addon">
 	                             												<span class="fluigicon fluigicon-calendar"></span>
 	                                                                            </span>
 	                                                                        </div>
                                                                     	</div>                                                                                                                              	  
 	                                                                    <div class="form-group col-md-3">
-	                                                                        <label for="dtDevolucao">Data e horário de retorno</label>
+	                                                                        <label for="dtRetorno">Data e horário de retorno</label>
 	                                                                        <div class="input-group date">
-	                                                                            <input type="text" class="form-control" id="dtDevolucao" placeholder="Selecione uma data" name="dtDevolucao">
+	                                                                            <input type="text" class="form-control" id="dtRetorno" placeholder="Selecione uma data" name="dtRetorno">
 	                                                                            <span class="input-group-addon">
 	                              												<span class="fluigicon fluigicon-calendar"></span>
 	                                                                            </span>
@@ -110,7 +111,30 @@
 	                                                                    	<label>Capacidade por veículos</label>
 	                                                                    	<input type="number" class="form-control" name="capacidade" id="capacidade">
 	                                                                    </div>
-                                                                 	</div>                                                                                                                                                                                              
+                                                                 	</div>   
+                                                                 	<div class="row">
+						                                    			<div class="form-group col-md-3">
+						                                                    <label>Valor máximo para contratação</label>
+						                                                 	<input type="number" id="valor" name="valor" class="form-control">
+						                                                </div>
+						                                                <div class="form-group col-md-5" id="div_produto">
+						                                                         <label>Tipo de veículo</label>                                                        
+						                                                         <input type="zoom" name="txtproduto" id="txtproduto" data-zoom="{
+							                                                                               'displayKey':'DESCRICAO',
+						                                                                                    'datasetId':'ds_get_Produtos',
+						                                                                                    'maximumSelectionLength':'1',
+						                                                                                    'placeholder':'Selecione o tipo de veículo',
+						                                                                                    'fields':[
+						                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+						                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+						                                                                                    ]
+						                                                                                    }" />
+						                                               </div>
+						     											<div class="form-group col-md-3">
+																			<label>Código produto</label>
+						     												<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
+						     											</div>                                           
+						                                    		</div>                                                                                                                                                                                           
                                                                  	<div class="row">
 	                                                                 	<div class="form-group col-md-4">
 	                                                                    	<label>Nome de Contato</label>
@@ -122,21 +146,27 @@
 	                                                                    </div>                                                    
                                                                 	</div>
                                                                   	<div class="row">
-                                                                 		<div class="form-group col-md-12">
+                                                                  	  <div class="form-group col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="finalidade">Finalidade</label>
+                                                                            <textarea class="form-control" rows="3" id="finalidade" name="finalidade" placeholder="Informe o motivo para locação desse veículo"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                 		<div class="form-group col-md-6">
                                                                     		<label>Observações</label>
-                                                                    		<textarea rows="3" cols="60" name="observacao" id="observacao"  class="form-control"></textarea>
+                                                                    		<textarea rows="3" cols="60" name="observacao" id="observacao"  class="form-control" placeholder="Caso deseje complementar com alguma informação não solicitada no formulário"></textarea>
                                                                    		</div>                                                                 		
                                                                  	</div>                                                                                                   	 
-						                                        	 <div class="panel panel-info">										 
+						                                        	<div class="panel panel-info">										 
 																   		<div class="panel-heading ">
 							                                        	  <h5 class="panel-title">
 							                                             <b>Informações contabéis</b>
 							                                          </h5>
 							                                      		 </div>
 								                                      	<div class="panel-body">
-									                                      	  <div class="row" id="divEventos">
+									                                      	  <div class="form-group row" id="divEventos">
 								                                                      <div class="form-group col-md-8" id="selecaodeevento">
-								                                                         <label>Solicitação de Evento</label> <input
+								                                                         <label>Vincule essa solicitação a um Evento Visão Mundial</label> <input
 								                                                            name="dataset_solicitacaoevento" class="form-control"
 								                                                            type="zoom" id="dataset_solicitacaoevento"
 								                                                            data-zoom="{
@@ -165,7 +195,7 @@
 								                                                   
 								                                                   
 								                                                   </div>
-								                                              <div class="row">
+								                                              <div class="form-group row">
 							                                                            <div class="form-group col-md-6" id="selecaorateio">
 							                                                                                <label>Carregar base rateio pré-configurado</label>
 							                                                                                <input name="rateioconfigurado" class="form-control" type="zoom" id="rateioconfigurado" data-zoom="{'displayKey':'DESCRICAO',
@@ -189,7 +219,8 @@
 							                                                                                <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
 							                                                                                    <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar linha
 							                                                                                </button>
-							                                                                            </div>	                                                                            
+							                                                                            </div>	 
+																					</div> 							                                                                                                                                                       
 																						<div class="form-group row">
 							                                                                            <div class="col-md-12">
 							                                                                                <div class="form-field table-responsive">
@@ -323,13 +354,13 @@
 							                                                                            </div>
 							                                                                        </div>                                                                            
 							                                                                            
-							                                            	</div>    
+							                                            	   
 								                                      	  </div>
 						                                      		 </div>                                      
 				                                        		 	
-                                        		 	</div>
-                                        
-                                        <div class="tab-pane" id="2b">
+                                        	</div>
+                                    	
+                                    	 <div class="tab-pane" id="2b">
                                            <div class="row">
                                        <div class="form-group col-md-5">
                                           <label for="aprovador">Nome</label> <input type="text"
@@ -382,32 +413,8 @@
                                           </div>
                                        </div>
                                     </div>
-                                        </div>
-                                    	<div class="tab-pane" id="3b">
-                                    		<div class="row">
-                                    			<div class="form-group col-md-3">
-                                                    <label>Valor contratado</label>
-                                                 	<input type="number" id="valor" name="valor" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                         <label>Tipo de veículo</label>                                                        
-                                                         <input type="zoom" name="txtproduto" id="txtproduto" data-zoom="{
-	                                                                               'displayKey':'DESCRICAO',
-                                                                                    'datasetId':'ds_get_Produtos',
-                                                                                    'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione o tipo de veículo',
-                                                                                    'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
-                                                                                    ]
-                                                                                    }" />
-                                               </div>
-     											<div class="form-group col-md-3">
-													<label>Código produto</label>
-     												<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
-     											</div>                                           
-                                    		</div>
-                                    	</div>
+     </div>
+                                    	</div>   
                                     </div>
                                 </div>
                             </div>

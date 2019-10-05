@@ -27,6 +27,8 @@ function displayFields(form,customHTML){
 	 
 	 if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setVisibleById("div_solicitacaoAnterior", false);
+		 form.setVisibleById("div_produto", false); 
+		 
 		 
 	 }
 }

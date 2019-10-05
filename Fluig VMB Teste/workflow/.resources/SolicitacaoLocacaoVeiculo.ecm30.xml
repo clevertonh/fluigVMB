@@ -29,13 +29,13 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Locação de Veiculo</processId>
-      <version>18</version>
+      <version>19</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1919</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
-    <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
     <active>true</active>
     <blockedVersion>false</blockedVersion>
     <counterSign>false</counterSign>
@@ -377,7 +377,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>18</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -389,7 +389,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>18</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -401,19 +401,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>18</version>
-        <sequence>9</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
-      <destinationSequenceId>39</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoLocacaoVeiculo</processId>
-        <expressionOrder>4</expressionOrder>
-        <version>18</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -609,7 +597,7 @@
     var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
 	&#xd;
-    var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+    var aprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
     var valor = hAPI.getCardValue(&quot;valor&quot;);&#xd;
     var produto = hAPI.getCardValue(&quot;codigoProduto&quot;);&#xd;
     &#xd;
@@ -639,25 +627,11 @@
     	 &#xd;
     	 &#xd;
     }&#xd;
-    else if (ativAtual == CONTRATAR ){ 	   &#xd;
+    else if (ativAtual == APROVACAO  &amp;&amp; aprovacao ==&quot;aprovado&quot;){ 	   &#xd;
                   var constraint = new Array();                                 &#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valor, valor, ConstraintType.MUST));&#xd;
                   constraint.push(DatasetFactory.createConstraint(&quot;produto&quot;, produto, produto, ConstraintType.MUST));&#xd;
-                  &#xd;
-                  &#xd;
-                  var codigoComprador = getValue(&quot;WKUser&quot;);&#xd;
-		  			&#xd;
-		  			 var constraintsUsuario   = new Array();&#xd;
-		  			 	constraintsUsuario.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, codigoComprador, codigoComprador, ConstraintType.MUST));&#xd;
-		  			 	var datasetComprador = DatasetFactory.getDataset(&quot;colleague&quot;, null, constraintsUsuario, null);&#xd;
-				&#xd;
-		  			 &#xd;
-		  			 &#xd;
-		  			if (datasetComprador!= null &amp;&amp; datasetComprador.rowsCount &gt; 0){&#xd;
-	  					var emailComprador = datasetComprador.getValue(0, &quot;mail&quot;);	  &#xd;
-	  					constraint.push(DatasetFactory.createConstraint(&quot;comprador&quot;, emailComprador, emailComprador, ConstraintType.MUST));	&#xd;
-	  				}&#xd;
                   &#xd;
                   &#xd;
                    var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_LOCACAO_VEICULO&quot;, null, constraint, null);                                                                    &#xd;
@@ -666,7 +640,7 @@
                          throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
                       }&#xd;
                    else {&#xd;
-                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
                    }&#xd;
                       &#xd;
           &#xd;
@@ -773,7 +747,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -784,7 +758,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -795,7 +769,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

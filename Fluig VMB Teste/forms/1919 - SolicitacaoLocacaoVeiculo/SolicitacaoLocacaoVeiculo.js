@@ -45,6 +45,12 @@ $(document).ready(function() {
             useCurrent: true,
             minDate: new Date().toLocaleString()
         });
+    
+   	 $("#valor").blur(function(){
+   		 $("#div_produto").show();
+		 reloadZoomFilterValues("txtproduto", "FLUIG," + "6");
+     }); 
+    	
     	
     }
 
@@ -54,11 +60,7 @@ $(document).ready(function() {
 		
 	}
     else if (ATIVIDADE == CONTRATAR){
-    	 $("#valor").blur(function(){
-    		 //window['txtproduto'].disable(false); 
-    		 //ALTERAR PARA NUMERO QUE CORRESPONDERÁ AOS SERVIÇOS DE LOCAÇÃO
-    		 reloadZoomFilterValues("txtproduto", "FLUIG," + "6");
-         }); 
+    
     }
     
 

@@ -107,63 +107,62 @@
                                                                     </div>
                                                                 </div>
                                                               
-                                                     <div class="row" id="divEventos">
-                                                      <div class="form-group col-md-8" id="selecaodeevento">
-                                                         <label>Solicitação de Evento</label> <input
-                                                            name="dataset_solicitacaoevento" class="form-control"
-                                                            type="zoom" id="dataset_solicitacaoevento"
-                                                            data-zoom="{
-                                                            'displayKey':'SOLICITACAO',
-                                                            'datasetId':'VM_SolicitacoesEventos',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione um evento',
-                                                            'fields':[
-                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
-                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
-                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
-                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
-                                                            ]
-                                                            }">
-                                                      </div>                                                                                                          
-                                                   
-                                                   <div class="form-group col-md-4">
-                                                         			<label>Carregar informações financeiras do evento</label><br> <label
-			                                                            for="carregaFinan">Sim</label> <input
-			                                                            type="radio" id="carregaFinan" name="FinanEvento"
-			                                                            value="sim" onclick="clickFinanceiroEvento()">
-			                                                         <label for="NcarregaFinan">Não</label> <input
-			                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
-			                                                            value="nao" onclick="clickFinanceiroEvento()">
-                                                      			</div>
-                                                   
-                                                   
-                                                   </div>                            
-                                                             <div class="panel panel-default" id="panelItens">
+                                                                              
+                                                             <div class="panel panel-info" id="panelItens">
                                                                     <div class="panel-heading ">
                                                                         <h3 class="panel-title">
                                                             <b>Informa&ccedil;&otilde;es do Pagamento</b>
                                                          </h3>
                                                                     </div>
                                                                     <div class="panel-body">
+                                                                    <div class="form-group row" id="divEventos">
+				                                                      <div class="form-group col-md-8" id="selecaodeevento">
+				                                                         <label>Vincule essa solicitação a um Evento Visão Mundial</label> <input
+				                                                            name="dataset_solicitacaoevento" class="form-control"
+				                                                            type="zoom" id="dataset_solicitacaoevento"
+				                                                            data-zoom="{
+				                                                            'displayKey':'SOLICITACAO',
+				                                                            'datasetId':'VM_SolicitacoesEventos',
+				                                                            'maximumSelectionLength':'1',
+				                                                            'placeholder':'Selecione um evento',
+				                                                            'fields':[
+				                                                            {'field':'SOLICITACAO','label':'SOLICITACAO'},                                                            
+				                                                            {'field':'SOLICITANTE','label':'SOLICITANTE','standard':'true'},
+				                                                            {'field':'TXNOMEEVENTO','label':'TXNOMEEVENTO'},
+				                                                            {'field':'FINANEVENTO','label':'FINANEVENTO'}                                                           						  					
+				                                                            ]
+				                                                            }">
+				                                                      </div>                                                                                                          
+				                                                   
+				                                                   <div class="form-group col-md-4">
+				                                                         			<label>Carregar informações financeiras do evento</label><br> <label
+							                                                            for="carregaFinan">Sim</label> <input
+							                                                            type="radio" id="carregaFinan" name="FinanEvento"
+							                                                            value="sim" onclick="clickFinanceiroEvento()">
+							                                                         <label for="NcarregaFinan">Não</label> <input
+							                                                            type="radio" id="NcarregaFinan" name="FinanEvento"
+							                                                            value="nao" onclick="clickFinanceiroEvento()">
+				                                                      			</div>
+				                                                   </div>   
                                                                         <div class="form-group row">
                                                                             <div class="form-group col-md-6" id="selecaorateio">
                                                                                 <label>Carregar base rateio pré-configurado</label>
                                                                                 <input name="rateioconfigurado" class="form-control" type="zoom" id="rateioconfigurado" data-zoom="{'displayKey':'DESCRICAO',
-                                                            'datasetId':'VM_RateioConfigurado',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione um rateio',
-                                                            'fields':[
-                                                            {
-                                                            'field':'CODIGO',
-                                                            'label':'CODIGO'
-                                                            },                                                              
-                                                            {
-                                                            'field':'DESCRICAO',
-                                                            'label':'DESCRICAO',
-                                                            'standard':'true'
-                                                            }						  					
-                                                            ]
-                                                            }">
+					                                                            'datasetId':'VM_RateioConfigurado',
+					                                                            'maximumSelectionLength':'1',
+					                                                            'placeholder':'Selecione um rateio',
+					                                                            'fields':[
+					                                                            {
+					                                                            'field':'CODIGO',
+					                                                            'label':'CODIGO'
+					                                                            },                                                              
+					                                                            {
+					                                                            'field':'DESCRICAO',
+					                                                            'label':'DESCRICAO',
+					                                                            'standard':'true'
+					                                                            }						  					
+					                                                            ]
+					                                                            }">
                                                                             </div>
                                                                             <div class="col-md-6 fs-txt-right">
                                                                                 <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
@@ -381,11 +380,11 @@
 	                                                      				</div>
 	                                                      				<div class="form-group col-md-2">
 	                                                         				<label>Valor mensal</label> 
-				                                                            	<input type="number" id="valorMensal" name="valorMensal"  >
+				                                                            	<input type="number" id="valorMensal" name="valorMensal" class="form-control" >
 	                                                      				</div>
 	                                                      					<div class="form-group col-md-2">
 					                                                        <label>Valor anual</label> 
-					                                                        	<input type="number" id="valorAnual"  name="valorAnual"  >
+					                                                        	<input type="number" id="valorAnual"  name="valorAnual" class="form-control" >
 	                                                      				</div>
                                                                 	</div>                                                                                                                                                                                            
                                                                 </div>

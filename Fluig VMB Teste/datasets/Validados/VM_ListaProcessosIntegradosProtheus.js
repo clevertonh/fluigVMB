@@ -17,7 +17,9 @@ function createDataset(fields, constraints, sortFields) {
                  	  {CODIGO:  '7' ,DESCRICAO: 'SOLICITACAO DE EVENTO'}, 
                  	  {CODIGO:  '8' ,DESCRICAO: 'ADIANTAMENTO DE VIAGEM INTERNACIONAL'}, 
                  	  {CODIGO:  '9' ,DESCRICAO: 'ADIANTAMENTO AO FORNECEDOR'}, 
-                      {CODIGO:  '10',DESCRICAO: 'CADASTRO DE PRODUTO'}
+                      {CODIGO:  '10',DESCRICAO: 'CADASTRO DE PRODUTO'},
+                      {CODIGO:  '11',DESCRICAO: 'CONTRATACAO DE SERVICO'},
+                      {CODIGO:  '12',DESCRICAO: 'SOLICITACAO DE TRANSFER'}
                  ];
    
     if(dados != null){

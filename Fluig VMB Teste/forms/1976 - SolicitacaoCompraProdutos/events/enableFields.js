@@ -32,6 +32,7 @@ function enableFields(form){
 			 form.setValue("aprovacao","");			 
 		 }
 
+	
 			 
 	}
 	else if (activity == APROVACAO){

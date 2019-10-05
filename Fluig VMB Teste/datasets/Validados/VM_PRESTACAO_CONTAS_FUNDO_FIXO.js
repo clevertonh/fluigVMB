@@ -77,7 +77,7 @@ function createDataset(fields, constraints, sortFields) {
 					            	TIPOFFX : '' + tipoFFX +'',
 					            	VALOR : '' + solicitacao.getValue(0,"vl_nota") + '' ,
 					            	CPF_FORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
-					            	ANO_FISCAL : '' + "" +"2019"+'',
+					            	ANO_FISCAL : '' + "" +"2020"+'',
 					            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAprovador") +'',
 					            	EMAIL_SOLICITANTE: ''+ solicitacao.getValue(0,"emailSolicitante") +'',
 					            	DATAAPROV  : '' + solicitacao.getValue(0,"dtAprovacao") + '',

@@ -26,6 +26,7 @@ function validateForm(form){
     validaLinhasRepetidas();
     validaPercentualRateio();
     validaCamposAgenda();
+    validaAtividades();	
 	 
 
      
@@ -246,6 +247,35 @@ function validateForm(form){
            
           
            
+     }
+     
+     
+     
+     //VALIDA SE FOI INFORMADO ATIVIDADE ESTRUTURAL OU FOLHA E PROIBE USO
+     function validaAtividades(){
+    	   var indexes = form.getChildrenIndexes("tableItens");            
+    	   
+           for (var i = 0; i < indexes.length; i++) {
+        	   var ccusto = form.getValue("txtcentrocusto___" + indexes[i]);
+               var atividade = form.getValue("txtatividade___" + indexes[i]);
+            
+         if (ccusto == "99990") {             
+                   if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
+                       throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear diarias";
+
+                   }
+               } 
+               else {                	
+            	   if (atividade == "E010101" || atividade == "E020201") {
+                	   throw "Você não pode usar uma atividade de folha nem estrutural para custear diarias";
+
+                   }
+            	   if (atividade == "A443201"){
+            		   throw "Você não pode usar uma atividade de capacitação para custear diarias.";
+            	   }
+              
+                  }
+           }
      }
 
 	

@@ -290,6 +290,9 @@ function validateForm(form){
                 	   throw "Você não pode usar uma atividade de folha  para custear uma compra.";
 
                    }
+            	   if (atividade == "A443201"){
+            		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
+            	   }
               
                   }
            }

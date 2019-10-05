@@ -11,6 +11,7 @@ function createDataset(fields, constraints, sortFields) {
 	var tipoFFX;
 	var tipoLAN;
 	var historico;
+	var anofiscal;
 
 	 
 	 if(constraints !== null && constraints.length){
@@ -46,6 +47,7 @@ function createDataset(fields, constraints, sortFields) {
         		}
         		
         		
+        		
 				
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
@@ -60,7 +62,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	TIPOFFX : '' + tipoFFX +'',
 						            	VALOR : '' + solicitacao.getValue(0,"vl_solicitacao") + '' ,
 						            	CPF_FORNECEDOR :'' + solicitacao.getValue(0,"cpfbeneficiario") +'',	
-						            	ANO_FISCAL : '' + "" +"2019"+'',
+						            	ANO_FISCAL : '' + "" +"2020"+'',
 						            	EMAIL_APROVADOR	: '' + solicitacao.getValue(0,"emailAprovador") +'',
 						            	EMAIL_SOLICITANTE	: '' + solicitacao.getValue(0,"emailSolicitante") +'',
 						            	DATAAPROV  : '' + dtAprovacao + '',

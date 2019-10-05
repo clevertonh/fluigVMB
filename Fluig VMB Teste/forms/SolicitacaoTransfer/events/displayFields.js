@@ -1,4 +1,9 @@
 function displayFields(form,customHTML){ 
+	var ABERTURA = 0;
+	var APROVACAO =5;
+	var CONTRATAR = 15;
+	var CORRIGIR = 12;
+	
 	
 	var activity = getValue('WKNumState');
 	//log.info("----ATIVIDADE displayFields: " + activity);
@@ -15,4 +20,16 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("_prazoaprovacaoDIR", false);
 	
 	
+	 if (activity == ABERTURA || activity == CORRIGIR){		 
+		 form.setVisibleById("div_produto", false); 
+	 }
+	 else if (activity == APROVACAO){		 
+	 }
+	 
+	 else if (activity == CONTRATAR){
+		 
+	 }
+	 
 }
+
+

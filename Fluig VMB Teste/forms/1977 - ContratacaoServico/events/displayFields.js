@@ -15,6 +15,8 @@ function displayFields(form,customHTML){
 	 
 	 form.setVisibleById("prazoaprovacao", false); 
 	 
-		 
+	 if (activity == ABERTURA || activity == CORRIGIR){
+		 form.setVisibleById("3b", false); 
+	 }
     
 }
