@@ -68,15 +68,15 @@ $(document).ready(function() {
 		dtSolicitacao.setDate(new Date().toLocaleString());
 	
 		dtInicioEvento = FLUIGC.calendar('#dtInicioEvento', {
-		    pickDate: true,
-		    pickTime: false,
-		    useCurrent: true,
-		    minDate: new Date().toLocaleString()
+			pickDate: true,
+            pickTime: true,
+            useCurrent: true, 
+            minDate: new Date().toLocaleString()
 		});
 		
 		dtFimEvento = FLUIGC.calendar('#dtFimEvento', {
 		    pickDate: true,
-		    pickTime: false,
+		    pickTime: true,
 		    useCurrent: true,
 		    minDate: new Date().toLocaleString()
 		});
@@ -229,10 +229,7 @@ function adicionaLinhaProduto() {
 		pickTime: false
 	});
 	
-	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
-
-	//$('span').click(function(){ $('#id_um' + "___" + row).focus(); });
-
+	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
 	var qtde = document.getElementById("idquantidade" + "___" + row);
 
 	qtde.addEventListener("blur", function( event ) {			

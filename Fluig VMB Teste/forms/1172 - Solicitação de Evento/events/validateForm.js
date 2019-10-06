@@ -291,7 +291,7 @@ function validateForm(form){
                var produto = form.getValue("txtproduto___" + indexes[i]);
                var valor = form.getValue("vrTotUnit___" + indexes[i]);
                var dataViagem = form.getValue("dtNecessidade___" + indexes[i]);      
-               var quantidade = form.getValue("id_quantidade___" + indexes[i]);      
+               var quantidade = form.getValue("idquantidade___" + indexes[i]);      
         
                if (produto == "" || produto === null){
                	throw "O produto não foi informado!";

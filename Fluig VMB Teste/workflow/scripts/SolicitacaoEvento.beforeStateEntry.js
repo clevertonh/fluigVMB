@@ -22,8 +22,27 @@ function beforeStateEntry(sequenceId){
        
        var aprovado = hAPI.getCardValue("aprovacao");
        
-       
+       /*   
        if (ativAtual == APROVACAO ){	   
+              if (aprovado == "aprovado"){
+                
+                     
+            	//A tarefa destino tem o mecanismo de atribuição para um papel, cujo o código é papelUser
+                   
+                  var formData = new java.util.HashMap();
+            
+                  formData.put("Nome_do_Campo1", "Valor do Campo 1");
+                  formData.put("Nome_do_Campo2", "Valor do Campo 2");
+                                   
+                  hAPI.startProcess("pool", 4, users, "Solicitação inicializada pela função hAPI", true, formData, false);     
+                    
+                         
+              }
+              
+       }
+                 
+
+    if (ativAtual == APROVACAO ){	   
               if (aprovado == "aprovado"){
                     var constraint = new Array();                                 
                     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));      
@@ -51,7 +70,7 @@ function beforeStateEntry(sequenceId){
 						  
 						    var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);                                                                    
 		                     if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-		                            throw resultDataset.getValue(0,"RETORNO");
+		                         //   throw resultDataset.getValue(0,"RETORNO");
 		                         }  
 		                     else {
 		                    	 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
@@ -65,7 +84,7 @@ function beforeStateEntry(sequenceId){
               }
               
        }
-                 
-
+ */
+ 
        
 }

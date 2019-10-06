@@ -1,5 +1,6 @@
 var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
+var CONTRATAR = 12;
 
 
 //Initialize tooltips
@@ -72,6 +73,12 @@ $(document).ready(function() {
 		
 		
 	}
+	else if (ATIVIDADE == CONTRATAR){		
+	   	 $("#valor").blur(function(){
+	   		 $("#div_produto").show();
+			 reloadZoomFilterValues("txtproduto", "FLUIG," + "11");
+	     }); 
+	}
 
 	
 });
@@ -103,7 +110,6 @@ function setSelectedZoomItem(selectedItem) {
 
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---ENTROU AQUI 1 ----");
         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -174,17 +180,22 @@ function setSelectedZoomItem(selectedItem) {
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
-    		//$("#carregaFinan").prop("disabled", true);
-    		//$("#NcarregaFinan").prop("disabled", true);
+//    		$('#carregaFinan').attr('readonly', true);
+//    		$('#NcarregaFinan').attr('readonly', true);
+    		
+
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
     		$("#NcarregaFinan").prop("disabled", false);
+//    		$('#carregaFinan').attr('readonly', false);
+//    		$('#NcarregaFinan').attr('readonly', false);
     	}
     }
     
     else if (campoZOOM == SERVICO) {
-    	$('#codigoProduto').val(selectedItem["CODIGO"]);
+    	console.log(selectedItem["CODIGO"]);
+      	$("#codigoProduto").val(selectedItem["CODIGO"]);
        	
     	
     }
@@ -237,7 +248,6 @@ function removedZoomItem(removedItem) {
     var linhaPagamento = campoZOOM.split('___');
  
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
@@ -261,7 +271,6 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
@@ -270,7 +279,6 @@ function removedZoomItem(removedItem) {
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-    	console.log("---REMOVEU AQUI 3----");
 //      var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
 
         $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");

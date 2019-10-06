@@ -73,6 +73,11 @@ function validateForm(form){
 		//necessario criar um webservice de consultar saldo de adiantamento a fornecedor
 		//consultaPendenciaAdiantamento();
 		
+		 if (!grupoCommpradores(usuarioLogado)){
+			 throw "Apenas funcionários da área de Administração podem solicitar adiantamento a fornecedor.";
+		 }
+		
+		
 	}
 	else if (activity == GERENTE_ADM){		
 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
@@ -145,9 +150,17 @@ function validateForm(form){
 	        else {
 	        	return false;
 	        }	 
- }
+	 }
    
-        
+		function grupoCommpradores(usuario){
+			var constraint = new Array();
+			constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", usuario, usuario, ConstraintType.MUST));
+			constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "GestaoCompras", "GestaoCompras", ConstraintType.MUST));
+			var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
+			
+		
+		}
+		
             
             
             function retornaCPFAprovador(email){

@@ -10,7 +10,8 @@
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Financeiro</categoryId>
-    <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationId>Grupo</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -28,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Adiantamento</processId>
-      <version>14</version>
+      <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1942</formId>
@@ -321,19 +322,28 @@
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	 //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
+	&#xd;
 	&#xd;
 	var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
 	//var dtAprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
 	&#xd;
-	if (ativAtual == APROVACAO &amp;&amp; aprovado == &quot;aprovado&quot;){&#xd;
-		 var constraint = new Array();		  			 		  			&#xd;
+	if (ativAtual == APROVACAO ){&#xd;
+		if(aprovado == &quot;aprovado&quot;){&#xd;
+			 var constraint = new Array();		  			 		  			&#xd;
 			 constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
 			 &#xd;
 	     var resultDataset = DatasetFactory.getDataset(&quot;VM_SOLICITACAO_ADIANTAMENTO&quot;, null, constraint, null);&#xd;
 	  		    if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 	  		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 	  		    }&#xd;
-	  			  		    &#xd;
+	  		  else {&#xd;
+				  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+			  }&#xd;
+	  			  	&#xd;
+		}&#xd;
+			    &#xd;
 	&#xd;
 	}&#xd;
 	&#xd;
@@ -422,7 +432,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
-        <version>14</version>
+        <version>17</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -433,7 +443,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamento</processId>
-        <version>14</version>
+        <version>17</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

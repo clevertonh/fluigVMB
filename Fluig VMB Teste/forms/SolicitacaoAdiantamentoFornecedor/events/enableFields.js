@@ -30,33 +30,8 @@ function enableFields(form){
 		 form.setValue("solicitante",nomeUsuario);
 		 form.setValue("emailSolicitante",emailUsuario);
 		
-		 /*
-		
-		 var aprovador = usuarioAprovador(emailSolicitante);
-		 if (aprovador!= null && aprovador != ""){
-			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
-			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
-			 	 
-		 }
-		 
-		
-		    //RETORNAR USUARIO CADASTRADO NESSE PERFIL
-		 	var diretorFinanceiro = diretorFinanceiro();
-			if (diretorFinanceiro!= null && diretorFinanceiro != ""){
-					
-				var diretor = UsuarioLogado(diretorFinanceiro.getValue(0, "workflowColleagueRolePK.colleagueId"));
-				
-				 var nomeDiretor = diretor.getValue(0, "colleagueName");
-				 var emailDiretor = diretor.getValue(0, "mail");
-				 form.setValue("diretor",nomeDiretor);
-				 form.setValue("emaildiretor",emailDiretor);
-				 
-				 
-			}
-			
-		*/
-		
+
+	
 		 
 	}
 	
@@ -239,16 +214,11 @@ function enableFields(form){
 		 return dataset;
 	}
 
-	function usuarioAprovador(emailSolicitante){
-	//	log.info("---GERENTE FUNCIONARIO----"); 
-	//	log.info(emailSolicitante);
-		
+	function usuarioAprovador(emailSolicitante){		
 		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
-		 
-		  
-	//	 log.info(dataset.getValue(0, "EMAIL_G"));
-		 return dataset;
+
+		return dataset;
 	}
 	
 	function diretorFinanceiro(){
@@ -258,6 +228,8 @@ function enableFields(form){
 		
 		return datasetDiretor;
 	}
+	
+
 	
 
 	

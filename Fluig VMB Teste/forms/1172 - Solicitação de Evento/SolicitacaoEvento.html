@@ -58,14 +58,20 @@
                                                                     </a>
                                                                 </li>
                                                                 <li role="presentation" class="disabled">
-                                                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Produtos e Serviços"> <span class="round-tab"> <i
+                                                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Produtos"> <span class="round-tab"> <i
+				                                                      class="fluigicon fluigicon-user"></i>
+				                                                      </span>
+                                                                    </a>
+                                                                </li>
+                                                                  <li role="presentation" class="disabled">
+                                                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Serviços de alimentação"> <span class="round-tab"> <i
 				                                                      class="fluigicon fluigicon-user"></i>
 				                                                      </span>
                                                                     </a>
                                                                 </li>
                                                                 
                                                                      <li role="presentation" class="disabled">
-                                                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Avaliação"> <span class="round-tab"> <i
+                                                                    <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Avaliação"> <span class="round-tab"> <i
 				                                                      class="fluigicon fluigicon-user"></i>
 				                                                      </span>
                                                                     </a>
@@ -103,35 +109,7 @@
                                                                     <div class="form-group col-md-1">
                                                                         <input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                                                     </div>
-                                                                </div>
-                                                                <!-- 
-                                                                <div class="row">
-                                                                	<div class="form-group col-md-3">                                                                		
-                                                                		<label>Alteração em evento</label><br> <label
-                                                            			for="altEvento">Sim</label> 
-                                                            			<input type="checkbox" id="altEvento" name="altEvento" value="sim">                                                         		
-                                                                	</div>
-                                                                	<div class="form-group col-md-9">
-                                                                		<label>Selecione o evento que deseja modificar/complementar</label>
-                                                                		<input name="selecEventos" class="form-control" type="zoom" id="selecEventos" data-zoom="{'displayKey':'txNomeEvento',
-                                                            'datasetId':'VM_SolicitacoesEventos',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione um evento',
-                                                            'fields':[
-                                                            {
-                                                            'field':'Solicitacao',
-                                                            'label':'Solicitacao'
-                                                            },                                                              
-                                                            {
-                                                            'field':'txNomeEvento',
-                                                            'label':'txNomeEvento',
-                                                            'standard':'true'
-                                                            }						  					
-                                                            ]
-                                                            }">
-                                                                	</div>
-                                                                </div>
-                                                                 -->
+                                                                </div>                                             
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
                                                                         <label>Nome do Evento</label>
@@ -144,8 +122,12 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label>Coordenador do Evento</label>
+                                                                        <label>Responsável pelo Evento</label>
                                                                         <input type="text" name="txCoordenador" class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                    	<label>Custo máximo do evento</label>
+                                                                    	<input type="number" id="vl_maximo" name="vl_maximo" class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -167,8 +149,12 @@
                                                                             </span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-md-3">
-                                                                        <label>Número de participantes</label>
+                                                                    <div class="form-group col-md-2">
+                                                                        <label>Número de participantes Funcionários</label>
+                                                                        <input class="form-control" type="number" name="vl_funcionarios" id="vl_funcionarios">
+                                                                    </div>
+                                                                     <div class="form-group col-md-2">
+                                                                        <label>Número de participantes convidados</label>
                                                                         <input class="form-control" type="number" name="vl_participantes" id="vl_participantes">
                                                                     </div>
                                                                 </div>
@@ -471,7 +457,14 @@
                                                                 </ul>
                                                             
                                                             </div>
-                                                            <div class="tab-pane" role="tabpanel" id="step4">
+ 															<div class="tab-pane" role="tabpanel" id="step4">
+                                                                   <ul class="list-inline pull-right">
+                                                                    <li>
+                                                                        <button type="button" class="btn btn-primary next-step">Avançar</button>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>                                                         
+                                                            <div class="tab-pane" role="tabpanel" id="step5">
                                                              <div class="panel panel-default" id="painel_avaliacao">
 																<div class="panel-heading ">
                                                                     <h3 class="panel-title"><b>Avaliação sobre o evento</b></h3>

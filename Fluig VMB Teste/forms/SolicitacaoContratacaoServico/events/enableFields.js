@@ -59,6 +59,7 @@ function enableFields(form){
 		 
 		    form.setEnabled("valor", true);	
 		    form.setEnabled("txtproduto", true);	
+		    form.setEnabled("codigoProduto", true);
 		    
 		
 	}

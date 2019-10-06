@@ -55,6 +55,7 @@ function removedZoomItem(removedItem) {
     var PROJETO = "projeto";
     var FONTE = "fontefinanciamento";
     var FUNCIONARIO ="Funcionario";
+    var VIAGEM = "dataset_solicitacaoviagem";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -73,6 +74,24 @@ function removedZoomItem(removedItem) {
     	 $("#cpfbeneficiario").val("");
     	 
     }
+    
+    else if (campoZOOM == VIAGEM){
+		      $('#dtViagem').attr('readonly', false);
+		   	  $('#dtRetorno').attr('readonly', false);
+		   	  $('#itinerario').attr('readonly', false);
+		      window[FUNCIONARIO].clear();		 
+		   	  window[FUNCIONARIO].disable(false);
+		   	  window[CCUSTO].clear();
+		   	  window[PROJETO].clear();
+		      window[FONTE].clear();      
+		      $("#cpfbeneficiario").val("");
+		      $("#dtViagem").val(null);
+		      $("#dtRetorno").val(null);
+		      $("#itinerario").val("");
+		      $("textarea[name='finalidade']").val("");
+		      
+   	 
+   }
 
 }
 
@@ -90,11 +109,9 @@ function setSelectedZoomItem(selectedItem) {
   
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
-  console.log("campo zomm "+campoZOOM);
   
   //compara para verificar se o zoom é o campo centro de custo
   if (campoZOOM == CCUSTO) {
-	  console.log("campo zoom " + CCUSTO);
       //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
       window[PROJETO].clear();
       window[FONTE].clear();
@@ -129,8 +146,12 @@ function setSelectedZoomItem(selectedItem) {
 	  $("#dtViagem").val(selectedItem["DT_VIAGEM"]);
 	  $("#dtRetorno").val(selectedItem["DT_RETORNO"]);
 	  $("textarea[name='finalidade']").val(selectedItem["FINALIDADE"]);
-	  window["Funcionario"].setValue(selectedItem["BENEFICIARIO"]);
-	  window["centrocusto"].setValue(selectedItem["CENTRO_CUSTO"]);
+	  window[FUNCIONARIO].setValue(selectedItem["BENEFICIARIO"]);
+	  
+	  if (selectedItem["CENTRO_CUSTO"] != ''){
+		  window[CCUSTO].setValue(selectedItem["CENTRO_CUSTO"]);  
+	  }
+	
 	  
 	  
 	  
@@ -140,11 +161,16 @@ function setSelectedZoomItem(selectedItem) {
 		  document.getElementById("div_projeto").style.display = "block";
 	  	  document.getElementById("div_fonte").style.display = "block";
 		  
-		  window["projeto"].setValue(selectedItem["PROJETO"]);
-		  window["fontefinanciamento"].setValue(selectedItem["FONTE_FINANCIAMENTO"]);
+		  window[PROJETO].setValue(selectedItem["PROJETO"]);
+		  window[FONTE].setValue(selectedItem["FONTE_FINANCIAMENTO"]);
 	  }
 	  
 	
+	  $('#dtViagem').attr('readonly', true);
+	  $('#dtRetorno').attr('readonly', true);
+	  $('#itinerario').attr('readonly', true);
+	  window[FUNCIONARIO].disable(true);
+	  
   }
 
 }
