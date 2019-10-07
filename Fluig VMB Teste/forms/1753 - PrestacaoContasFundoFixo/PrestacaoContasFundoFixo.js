@@ -249,7 +249,7 @@ function fnCustomDeleteRateio(oElement) {
 function adicionaLinhaProduto() {
 	
 	var row = wdkAddChild('tableCompras');	
-	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "");	
+	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
 
 	
 }

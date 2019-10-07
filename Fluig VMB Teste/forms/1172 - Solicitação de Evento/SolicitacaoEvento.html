@@ -62,16 +62,9 @@
 				                                                      class="fluigicon fluigicon-user"></i>
 				                                                      </span>
                                                                     </a>
-                                                                </li>
-                                                                  <li role="presentation" class="disabled">
-                                                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Serviços de alimentação"> <span class="round-tab"> <i
-				                                                      class="fluigicon fluigicon-user"></i>
-				                                                      </span>
-                                                                    </a>
-                                                                </li>
-                                                                
+                                                                </li>                                                                                                                            
                                                                      <li role="presentation" class="disabled">
-                                                                    <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Avaliação"> <span class="round-tab"> <i
+                                                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Avaliação"> <span class="round-tab"> <i
 				                                                      class="fluigicon fluigicon-user"></i>
 				                                                      </span>
                                                                     </a>
@@ -149,7 +142,7 @@
                                                                             </span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-md-2">
+                                                                    <div class="form-group col-md-3">
                                                                         <label>Número de participantes Funcionários</label>
                                                                         <input class="form-control" type="number" name="vl_funcionarios" id="vl_funcionarios">
                                                                     </div>
@@ -369,75 +362,96 @@
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step3">
                                                                 <div class="panel panel-default" id="painel_produtos">
-                                                                	<h2>Utilize essa aba para informar todo e qualquer tipo de produto que necessitará ser comprado</h2>
+                                                                	<h2>Utilize essa aba para informar a necessidade de reserva para hospedagem dos participantes do evento </h2>
                                                                    
                                                                     <div class="panel-body">
-                                                                        <div class="form-group row">
+                                                                    	<div class="row">
+                                                                    		<div class="form-group col-md-2">
+                                                                    			<label>Quantidade total de hóspedes</label>
+                                                                    			<input type="number" id="vl_Hospedes" name="vl_Hospedes" class="form-control">
+                                                                    		</div>
+                                                                    		<div class="form-group col-md-3">
+                                                                        <label>Check-in geral</label>
+                                                                        <div class="input-group date">
+                                                                            <input type="text" class="form-control" id="dtcheckin" placeholder="Selecione uma data " name="dtcheckin">
+                                                                            <span class="input-group-addon">
+                             												<span class="fluigicon fluigicon-calendar"></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                        <label>Check-out geral</label>
+                                                                        <div class="input-group date">
+                                                                            <input type="text" class="form-control" id="dtcheckout" placeholder="Selecione uma data " name="dtcheckout">
+                                                                            <span class="input-group-addon">
+                             												<span class="fluigicon fluigicon-calendar"></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    		
+                                                                    	</div>
+                                                                    	<!--
+                                                                    	<div class="panel panel-success">
+                                                                    		<div class="panel-heading ">
+									                                          <h5 class="panel-title">
+									                                             <b>Tipo de acomodação</b>
+									                                          </h5>
+									                                       </div>
+                                                                    	 <div class="panel-body">
+                                                                    	 	<div class="row">
+                                                                    		<div class="form-group col-md-3" id="div_tipoHotel">
+						                                                         <label>Tipo de quarto</label><br> <label
+						                                                            for="solteiro">Solteiro</label> 
+						                                                            <input type="radio"id="solteiro" name="tipoquarto" value="solteiro"> 
+						                                                            <label for="duplo">Duplo</label> 
+						                                                            <input type="radio" id="duplo" name="tipoquarto" value="duplo"> 
+						                                                            <label for="triplo">Triplo</label> 
+						                                                            <input type="radio" id="triplo" name="tipoquarto" value="triplo"> 
+						                                                            <label for="outroquarto">Outro</label> 
+						                                                            <input type="radio" id="outroquarto" name="tipoquarto" value="outros">
+					                                                      </div>
+                                                                    		<div class="form-group col-md-3">
+                                                                    			<label>Quantidade de hóspedes por quarto</label>
+                                                                    			<input type="number" id="vl_HospedeporQ" name="vl_HospedeporQ" class="form-control">
+                                                                    		</div>
+                                                                    		<div class='form-group col-md-3'>
+                                                                    			<br>
+                                                                    			
+                                                                    		</div>
+                                                                    	</div>
+                                                                    	 </div>
+                                                                    	
+                                                                    	</div>
+                                                                    	
+                                                                    	  -->
+                                                                        <div class="form-group row">                                                                        	
                                                                             <div class="col-md-12 fs-txt-right">
-                                                                                <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
-                                                                                    <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar produto
+                                                                                <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaTipoHospedagem()">
+                                                                                    <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar Tipos de Acomodação
                                                                                 </button>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-field table-responsive">
-                                                                                    <table tablename="tableCompras" id="tableCompras" border="0" class="table table-striped table-bordered" customFnDelete="fnCustomDeleteProduto(this)" noaddbutton="true">
+                                                                                    <table tablename="tableHospedagem" id="tableHospedagem" border="0" class="table table-striped table-bordered" customFnDelete="fnCustomDeleteHospedagem(this)" noaddbutton="true">
                                                                                         <thead>
                                                                                             <tr class="tableHeadRow">
-                                                                                                
-                                                                                                <th class="tableColumn">Descrição do Produto</th>
-                                                                                                <th class="tableColumn">Unid. Medida</th>
-                                                                                                <th class="tableColumn">Qtd</th>
-                                                                                                <th class="tableColumn">Valor da ultima compra</th>
-                                                                                                <th class="tableColumn">Valor total</th>
-                                                                                                <th class="tableColumn">Data de necessidade</th>
-                                                                                                <th class="tableColumn" id="div_codProduto">Codigo Prod.</th>
+                                                                                                <th class="tableColumn">Tipo de quarto</th>
+                                                                                                <th class="tableColumn">Quantidade</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody id="tbodyCompras">
                                                                                             <tr>
                                                                                                 
                                                                                                 <td>
-                                                                                                    <div class="form-group">
-                                                                                                        <input type="hidden" name="produto" id="produto" />
-                                                                                                        <input type="zoom" name="txtproduto" data-zoom="{
-                                                                                    'displayKey':'DESCRICAO',
-                                                                                    'datasetId':'ds_get_Produtos',
-                                                                                    'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione um produto',
-                                                                                    'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },
-                                                                                    {'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA','visible':'false'},
-                                                                                    {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
-                                                                                    {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]
-                                                                                    }" />
+                                                                                                    <div class="form-group">  
+                                                                                                        <input class="form-control" name="idhospedagem" id="idhospedagem" type="text" />                                                                                                   
                                                                                                     </div>
-                                                                                                </td>
+                                                                                                </td>                                                                                               
                                                                                                 <td>
-                                                                                                    <input class="form-control" name="idum" id="idum" type="text" maxlength="2" style="width:100px;" readonly/>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <input class="form-control money" name="idquantidade" id="idquantidade" type="number" maxlength="6" style="width:100px;" />
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <input class="form-control money" name="vrUltima" id="vrUltima" type="number" style="width:200px;" readonly/>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:200px;" />
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class="input-group date" style="width:150px;">
-                                                                                                        <input type="text" class="form-control" id="dtNecessidade" name="dtNecessidade" mask="00/00/0000">
-                                                                                                        <span class="input-group-addon">
-                                                       			  											<span class="fluigicon fluigicon-calendar"></span>
-                                                                                                        </span>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readOnly />
-                                                                                                </td>
+                                                                                                    <input class="form-control money" name="idquantidade" id="idquantidade" type="number" />
+                                                                                                </td>                                                                                        
                                                                                             </tr>
                                                                                         </tbody>
                                                                                     </table>
@@ -457,14 +471,8 @@
                                                                 </ul>
                                                             
                                                             </div>
- 															<div class="tab-pane" role="tabpanel" id="step4">
-                                                                   <ul class="list-inline pull-right">
-                                                                    <li>
-                                                                        <button type="button" class="btn btn-primary next-step">Avançar</button>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>                                                         
-                                                            <div class="tab-pane" role="tabpanel" id="step5">
+ 												                                                        
+                                                            <div class="tab-pane" role="tabpanel" id="step4">
                                                              <div class="panel panel-default" id="painel_avaliacao">
 																<div class="panel-heading ">
                                                                     <h3 class="panel-title"><b>Avaliação sobre o evento</b></h3>

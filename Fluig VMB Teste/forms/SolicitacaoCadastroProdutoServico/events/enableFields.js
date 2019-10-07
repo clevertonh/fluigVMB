@@ -1,5 +1,6 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
+	var INICIAR = 4;
 	var VALIDAR = 5;
 	var DADOS_CONTABEIS = 10;
 	var CORRIGIR = 16;
@@ -14,6 +15,21 @@ function enableFields(form){
 		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
+		
+	}
+	else if (activity == INICIAR){
+		
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	    
+		form.setEnabled("desc_res", true);	
 		
 	}
 	else if (activity == VALIDAR || activity == CORRIGIR){

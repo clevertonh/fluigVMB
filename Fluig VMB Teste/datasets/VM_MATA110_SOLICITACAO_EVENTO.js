@@ -12,6 +12,10 @@ function createDataset(fields, constraints, sortFields) {
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
+    		
+    		dataset.addRow(new Array("SUCESSO"));	
+    		/*
+    	
      		
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
@@ -21,15 +25,7 @@ function createDataset(fields, constraints, sortFields) {
        		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
-        		
-        		for (var a=0; a<constraints.length; a++){
-        			if (constraints[a].fieldName == "comprador"){
-            			emailcomprador = constraints[a].initialValue;            			
-            			//break;
-            		}        			
-        		}
-        		
-        		
+        		           	
          		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesEventosDadosPagamento", null, new Array(c2), null);    				  
 
@@ -40,31 +36,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         					 catch (erro){
         						 dataset.addRow(["ERRO AO RECUPERAR RATEIO"]);
-        					 }
-        				  				 
-        					 
-        					 try {
-        						 
-        						  var c1 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-        						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoEventosProdutos", null, new Array(c1), null);
-          						  
-        						 for (var a=0; a<datasetProdutos.rowsCount;a++){
-        							 aItemServico.push(addItemCompra(
-        									 datasetProdutos.getValue(a,"COD_PRODUTO"),
-        									 datasetProdutos.getValue(a,"SOLICITACAO"),
-        									 datasetProdutos.getValue(a,"QUANTIDADE"),								
-        									 datasetProdutos.getValue(a,"DT_NECESSIDADE"),
-        									 datasetProdutos.getValue(a,"metadata#id")        									
-        									 ));       						        							
-         						 }
-        						 
-        						 
-        					 }
-        					 catch (erro){
-        						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
-        					 }
-        					 
-				            	//solicitacao : '' + solicitacao.getValue(0,"solicitacao") + '' ,
+        					 }      				  			
         					        							
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
@@ -115,6 +87,7 @@ function createDataset(fields, constraints, sortFields) {
         							dataset.addRow([err.message]);
         					    }
 
+        						*/
     		}
     		
     		

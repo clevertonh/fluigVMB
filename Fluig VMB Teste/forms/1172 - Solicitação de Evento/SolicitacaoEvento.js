@@ -9,6 +9,8 @@ var AVALIACAO = 57;
 var dtSolicitacao;
 var dtInicioEvento;
 var dtFimEvento;
+var dtcheckout;
+var dtcheckin;
 
 
 //Initialize tooltips
@@ -81,6 +83,21 @@ $(document).ready(function() {
 		    minDate: new Date().toLocaleString()
 		});
 		
+		dtcheckin = FLUIGC.calendar('#dtcheckin', {
+		    pickDate: true,
+		    pickTime: true,
+		    useCurrent: true,
+		    minDate: new Date().toLocaleString()
+		});
+		
+		dtcheckout = FLUIGC.calendar('#dtcheckout', {
+		    pickDate: true,
+		    pickTime: true,
+		    useCurrent: true,
+		    minDate: new Date().toLocaleString()
+		});
+		
+		
 	}
 
 	if (ATIVIDADE != INICIO  && ATIVIDADE != ABERTURA  && ATIVIDADE != CORRIGIR){
@@ -108,7 +125,7 @@ function fnCustomDeleteRateio(oElement) {
 	}		
 }
 
-function fnCustomDeleteProduto(oElement) {	  
+function fnCustomDeleteHospedagem(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIO || ATIVIDADE == CORRIGIR){								
 		fnWdkRemoveChild(oElement);	
 
@@ -134,9 +151,7 @@ function setSelectedZoomItem(selectedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
-    var SERVICO = "txtproduto";
-    var PRODUTO ="codigoProduto";
-  
+ 
    
 
     //Recebe o nome do campo zoom
@@ -208,12 +223,7 @@ function setSelectedZoomItem(selectedItem) {
     	buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
-    else if (linhaPagamento[0] == SERVICO) {    	
-       	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
 
-    }
     else if (linhaPagamento[0] == FONTE){
   	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
     }
@@ -221,27 +231,28 @@ function setSelectedZoomItem(selectedItem) {
 }
 
 
-function adicionaLinhaProduto() {
+function adicionaLinhaTipoHospedagem() {
 	
-	var row = wdkAddChild('tableCompras');
-	FLUIGC.calendar("#dtNecessidade___" + row, {
-		pickDate: true,
-		pickTime: false
-	});
-	
-	reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
-	var qtde = document.getElementById("idquantidade" + "___" + row);
+	var row = wdkAddChild('tableHospedagem');
+/*	
+	//capiturar dados do pai e preencher automaticamente no filho		
+	if ($("#solteiro").val() =="solteiro" ){
+		$('#idhospedagem' + "___" + row).val($("#solteiro").val());
+	}
+	else if ($("#duplic").val() =="duplo" ){
+		$('#idhospedagem' + "___" + row).val($("#duplo").val());
+	}
+	else if ($("#triplo").val() =="triplo" ){
+		$('#idhospedagem' + "___" + row).val($("#triplo").val());
+	}
+	else if ($("#outros").val() =="outros" ){
+		$('#idhospedagem' + "___" + row).val($("#outros").val());
+	}	
 
-	qtde.addEventListener("blur", function( event ) {			
-		  //event.target.style.background = "pink";
-		  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-		  var qtde = $('#idquantidade' + "___" + row).val()			  
-		  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
-		  
-		  
-		}, true);
+	$('#idhospedagem' + "___" + row).val($("#duplo").val());
+	$('#idquantidade' + "___" + row).val($("[name=vl_HospedeporQ]").val());
 	
-	
+*/
 }
 
 function adicionaLinha() {
@@ -270,8 +281,6 @@ function removedZoomItem(removedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
-    var SERVICO = "txtproduto";
-    var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
     
     //Recebe o nome do campo zoom
@@ -279,13 +288,10 @@ function removedZoomItem(removedItem) {
 
     //separa string para campos filho
     var linhaPagamento = campoZOOM.split('___');
-    console.log("Retornando resultado removedZoomItem");
-    console.log(removedItem);
 
 
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---REMOVEU AQUI 1----");
-        //limpa todos os campos do pagamento          
+         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -328,8 +334,7 @@ function removedZoomItem(removedItem) {
     } 
     else if (campoZOOM == RATEIO) {
         //removeItensRateio();
-    	console.log("---REMOVEU AQUI 6----");
-	    var linhas = $("#tbodyItens tr");
+ 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
 	        var span = $(td).children()[0];
@@ -337,11 +342,7 @@ function removedZoomItem(removedItem) {
 	        
 	    }
     } 
-    else if (linhaPagamento[0] == SERVICO) {   	    	 
-    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	$('#id_um' + "___" + linhaPagamento[1]).val(selectedItem[""]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem[""]);    	 
-    }
+
     else if (linhaPagamento[0] == FONTE) {
    	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
       }

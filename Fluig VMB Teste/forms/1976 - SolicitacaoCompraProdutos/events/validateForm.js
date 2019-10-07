@@ -258,7 +258,7 @@ function validateForm(form){
                	throw "O produto não foi informado!";
                }
                else if (valor == "" || valor === null || valor == 0){
-               	throw "O valor empenhado para o produto não foi informado ou deve ser maior que zero!";
+               	throw "O valor de referencia para o produto não existe, por favor, entre em contato com assessoria_administrativa@wvi.org informando o código do produto e solicite a atualização desse registro.";
                }
                else if (dataViagem == "" || dataViagem === null){
                	throw "A data de necessidade  não foi informada!";
