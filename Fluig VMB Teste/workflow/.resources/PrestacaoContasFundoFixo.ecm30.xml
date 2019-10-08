@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Fundo Fixo</categoryId>
+    <categoryId>Financeiro.Fundo Fixo</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
     <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Prestação de Contas Fundo Fixo</processId>
-      <version>18</version>
+      <version>19</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1753</formId>
@@ -721,7 +721,7 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>18</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;validado&quot;</condition>
@@ -733,7 +733,7 @@
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>18</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;negado&quot;</condition>
@@ -1061,6 +1061,8 @@
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	 //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
 	&#xd;
 	 var anexos   = hAPI.listAttachments();&#xd;
@@ -1201,7 +1203,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1212,7 +1214,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>27</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1223,7 +1225,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1234,7 +1236,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>28</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1245,7 +1247,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>PrestacaoContasFundoFixo</processId>
-        <version>18</version>
+        <version>19</version>
         <linkSequence>28</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>

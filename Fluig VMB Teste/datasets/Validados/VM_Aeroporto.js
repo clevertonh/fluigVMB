@@ -1,5 +1,5 @@
 function createDataset(fields, constraints, sortFields) {
-       var dataset = DatasetBuilder.newDataset();
+    var dataset = DatasetBuilder.newDataset();
        
     dataset.addColumn("AEROPORTO");
     dataset.addColumn("CIDADE");

@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Fundo Fixo</categoryId>
+    <categoryId>Financeiro.Fundo Fixo</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
     <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Fundo Fixo</processId>
-      <version>2</version>
+      <version>3</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1854</formId>
@@ -275,7 +275,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoFundoFixo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>3</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -287,7 +287,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoFundoFixo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>3</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -390,7 +390,9 @@
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
-&#xd;
+	 //RECUPERA USUARIO LOGADO&#xd;
+    var usuario = getValue(&apos;WKUser&apos;);&#xd;
+	&#xd;
 	&#xd;
 	var aprovado = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
 	&#xd;
@@ -413,6 +415,9 @@
 		  if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 		    	throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		    } &#xd;
+		  else {&#xd;
+			  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+		  }&#xd;
 		&#xd;
 	  &#xd;
 &#xd;
@@ -503,7 +508,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoFundoFixo</processId>
-        <version>2</version>
+        <version>3</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -514,7 +519,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoFundoFixo</processId>
-        <version>2</version>
+        <version>3</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -532,7 +537,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoFundoFixo</processId>
-      <processVersion>2</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -542,7 +547,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoFundoFixo</processId>
-      <processVersion>2</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -552,7 +557,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoFundoFixo</processId>
-      <processVersion>2</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -562,7 +567,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoFundoFixo</processId>
-      <processVersion>2</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -572,7 +577,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoFundoFixo</processId>
-      <processVersion>2</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

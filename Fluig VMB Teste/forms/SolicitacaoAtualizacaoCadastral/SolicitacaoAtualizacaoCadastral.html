@@ -1,0 +1,278 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	 <link type="text/css" rel="stylesheet" href="SolicitacaoAtualizacaoCadastral.css" />
+
+</head>
+<body>
+<div class="fluig-style-guide">
+	<div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-6 col-md-3">
+                        <img src="https://visaomundial.org/images/logo_VMB.svg">
+                    </div>
+                </div>
+            </div>
+<form name="form" role="form">
+<div class="panel panel-success">
+<div class="panel-heading ">
+		    <h3 class="panel-title">
+		    <b>Identificação do funcionário</b>
+		    </h3>
+	   	</div>
+	   	<div class="panel-body">
+	   		<div class="form-group row">
+                                       <div class="form-group col-md-5">
+                                          <label for="solicitante" class="required">Funcionário</label>
+                                          <input type="text" class="form-control" id="solicitante" name="solicitante" readonly >
+                                       </div>
+                                       <div class="form-group col-md-4">
+                                          <label for="exampleInputEmail1">Email</label>
+                                          <input type="email" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly>
+                                       </div>
+                                       <div class="form-group col-md-3">
+                                          <label for="dtSolicitacao">Data de registro</label>
+                                          <div class="input-group date">
+                                             <input type="text" class="form-control" id="dtSolicitacao" name="dtSolicitacao"  readonly>
+                                             <span class="input-group-addon">
+                                             <span class="fluigicon fluigicon-calendar"></span>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </div>
+	   	</div>
+</div>
+	 
+<div class="panel panel-info">
+	<div class="panel-heading ">
+		    <h3 class="panel-title">
+		    <b>Endereço residência</b>
+		    </h3>
+	   	</div>
+	    <div class="panel-body">
+	        <div class="form-group row">
+	        	<div class="form-group col-md-2">
+	        		<label>CEP</label>
+	        		<input type="text" id="cep" name="cep" class="form-control">
+	        	</div>
+	        	<div class="form-group col-md-6">
+	        		<label>Endereço</label>
+	        		<input type="text" id="endereco" name="endereco" class="form-control">
+	        	</div>
+	        </div>
+	        <div class="form-group row">
+	        	<div class="form-group col-md-2">
+	        		<label>Número</label>
+	        		<input type="number" id="numero" name="numero" class="form-control">
+	        	</div>
+	        	<div class="form-group col-md-5">
+	        		<label>Complemento</label>
+	        		<input type="text" id="complemento" name="complemento" class="form-control">
+	        	</div>
+	        	<div class="form-group col-md-4">
+	        		<label>Bairro</label>
+	        		<input type="text" id="bairro" name="bairro" class="form-control">
+	        	</div>
+	        	
+	        </div>
+	        <div class="form-group row">
+	        	<div class="form-group col-md-4">
+	        		<label>Municipio</label>
+	        		<input type="text" id="municipio" name="municipio" class="form-control">
+	        	</div>
+	        	<div class="form-group col-md-4">
+	        		<label>Estado</label>
+	        		<input type="text" id="estado" name="estado" class="form-control">
+	        	</div>
+	        </div>
+	    </div>
+	    
+	</div>
+	
+	
+	
+	<div class="panel panel-success">
+		<div class="panel-heading ">
+		    <h3 class="panel-title">
+		    <b>Informações Pessoais</b>
+		    </h3>
+	   	</div>
+	    
+	    <div class="panel-body">
+	        <div class="row">	    	
+		    		<div class="form-group col-md-5">
+                                                         <label>Estado civil</label> 
+                                                         <input name="estadoCivil"
+                                                            class="form-control" type="zoom"
+                                                            id="estadoCivil"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'ds_get_Generico',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione seu Estado cívil',
+                                                            'fields':[
+                                                            {'field':'DESCRICAO','label':'DESCRICAO','standard':'true'},
+                                                            {'field':'IDENTIFICADOR','label':'IDENTIFICADOR','visible' : 'false'}   
+                                                                                                                                                                                         				  					
+                                                            ]
+                                                            }">
+                                                      </div>
+		    										<div class="form-group col-md-5">
+                                                         <label>Tipo Sanguíneo</label> 
+                                                         <input name="tipoSanguineo"
+                                                            class="form-control" type="zoom"
+                                                            id="tipoSanguineo"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'ds_get_Generico',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o tipo sanguineo/fator rh',
+                                                            'fields':[
+                                                            {'field':'DESCRICAO','label':'DESCRICAO','standard':'true'},
+                                                            {'field':'IDENTIFICADOR','label':'IDENTIFICADOR','visible' : 'false'}   
+                                                                                                                                                                                         				  					
+                                                            ]
+                                                            }">
+                                                      </div>
+		    	</div>  
+	    </div>
+	    
+	</div>
+
+	
+	<div class="panel panel-info">
+	<div class="panel-heading ">
+		    <h3 class="panel-title">
+		    <b>Declaração de Raça</b>
+		    </h3>
+	   	</div>
+	    <div class="panel-body">
+	      <div class="form-group row">
+	      	<div class="form-group col-md-5">
+                                                         
+                                                         <input name="etnia"
+                                                            class="form-control" type="zoom"
+                                                            id="etnia"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'ds_get_Generico',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Declare sua etnia',
+                                                            'fields':[
+                                                            {'field':'DESCRICAO','label':'DESCRICAO','standard':'true'},
+                                                            {'field':'IDENTIFICADOR','label':'IDENTIFICADOR','visible' : 'false'}   
+                                                                                                                                                                                         				  					
+                                                            ]
+                                                            }">
+                                                      </div>
+	      </div>  
+	    </div>
+	</div>	
+	<div class="panel panel-success">
+		<div class="panel-heading ">
+		    <h3 class="panel-title">
+		    <b>Portador de necessidades Especiais</b>
+		    </h3>
+	   	</div>
+	    <div class="panel-body">
+	        <div class="form-group row">
+	      	<div class="form-group col-md-5">
+                                                         
+                                                         <input name="PNE"
+                                                            class="form-control" type="zoom"
+                                                            id="PNE"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'ds_get_Generico',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Informe sua necessidade especial',
+                                                            'fields':[
+                                                            {'field':'DESCRICAO','label':'DESCRICAO','standard':'true'},
+                                                            {'field':'IDENTIFICADOR','label':'IDENTIFICADOR','visible' : 'false'}   
+                                                                                                                                                                                         				  					
+                                                            ]
+                                                            }">
+                                                      </div>
+	      </div>
+	    </div>	    
+	</div>	
+		<div class="panel panel-info">
+			<div class="panel-heading ">
+			    <h3 class="panel-title">
+			    <b>Contato de Emergência</b>
+			    </h3>
+		   	</div>
+		    <div class="panel-body">
+		        <div class="row">
+		    		<div class="form-group col-md-5">
+		    			<label>Pessoa para Contato</label>		    	
+		    			<input type="text" id="contato" name="contato" class="form-control">		    	
+		    		</div>
+		    	
+		    		<div class="form-group col-md-3">
+                                                         <label>Parentesco</label> 
+                                                         <input name="parentesco"
+                                                            class="form-control" type="zoom"
+                                                            id="parentesco"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'ds_get_Generico',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Grau de parentesco',
+                                                            'fields':[
+                                                            {'field':'DESCRICAO','label':'DESCRICAO','standard':'true'},
+                                                            {'field':'IDENTIFICADOR','label':'IDENTIFICADOR','visible' : 'false'}   
+                                                                                                                                                                                         				  					
+                                                            ]
+                                                            }">
+                                                      </div>
+		    		
+		    		
+		    		
+		    				<div class="form-group col-md-2">
+		    			<label>Telefone Fixo</label>		    	
+						<input type="text" id="telefone" name="telefone" class="form-control">		    					
+		    		</div>
+		    				<div class="form-group col-md-2">
+		    			<label>Telefone Celular</label>
+		    			<input type="text" id="celular" name="celular" class="form-control">		    	
+		    					
+		    		</div>
+		    	</div>
+		    </div>	
+		    <div class="panel panel-success">
+		<div class="panel-heading ">
+		    <h3 class="panel-title">
+		    <b>Tamanho de camisa (para recebimento de camisas durante campanhas)</b>
+		    </h3>
+	   	</div>
+	    	    
+	</div>
+	<div class="panel-body">
+	        <div class="form-group row">
+	      	<div class="form-group col-md-5">
+                                                         
+                                                         <input name="tamanhoCamisa"
+                                                            class="form-control" type="zoom"
+                                                            id="tamanhoCamisa"
+                                                            data-zoom="{'displayKey':'DESCRICAO',
+                                                            'datasetId':'ds_get_Generico',
+                                                            'maximumSelectionLength':'1',
+                                                            'placeholder':'Selecione o tamanho',
+                                                            'fields':[
+                                                            {'field':'DESCRICAO','label':'DESCRICAO','standard':'true'},
+                                                            {'field':'IDENTIFICADOR','label':'IDENTIFICADOR','visible' : 'false'}   
+                                                                                                                                                                                         				  					
+                                                            ]
+                                                            }">
+                                                      </div>
+	      </div>
+	    </div>
+		    <div class="row">
+		    	<br>
+		    </div>	   
+	</div>
+</form>
+</div>
+ <script src="SolicitacaoAtualizacaoCadastral.js"></script>
+</body>
+</html>
