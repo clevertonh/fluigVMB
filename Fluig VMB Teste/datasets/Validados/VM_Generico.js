@@ -68,7 +68,7 @@ function createDataset(fields, constraints, sortFields) {
 	    if(dados != null){
             for(var i in dados){
             	
-            	if(filtro != null && (dados[i].DESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1)){
+             if(filtro != null && (dados[i].DESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1)){
             		dataset.addRow([dados[i].IDENTIFICADOR, dados[i].DESCRICAO]);
               }
               if(filtro == null){

@@ -60,7 +60,9 @@ function validateForm(form){
 		 if (form.getValue("telefone") == "" && form.getValue("celular") == "") {
 	            throw "Você precisa informar um dos campos de telefone para contato.";
 	        }
-		 
+		 if (form.getValue("tamanhoCamisa") == "" || form.getValue("tamanhoCamisa") == null) {
+	            throw "Você precisa informar o tamanho desejado para camisa de campanhas da Visão Mundial.";
+	        }
 		 
 	}
 	else if (activity == ATUALIZACAO){
