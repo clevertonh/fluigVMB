@@ -21,7 +21,7 @@ function createDataset(fields, constraints, sortFields) {
          
     var objdata;
     var dados;
-    var CEP;
+    var CEP; //="50010340";
     // https://viacep.com.br/ws/01001000/json/
     
     try {
@@ -29,7 +29,7 @@ function createDataset(fields, constraints, sortFields) {
 	     //BUSCA SERVIÇO CADASTRADO PARA PROVEDOR PRINCIPAL 
     	 var data = {
 	            companyId : getValue("WKCompany") + '',
-	            serviceCode : 'CONSULTA CEP',
+	            serviceCode : 'CEP',
 	            endpoint : '/'+CEP+'/json',
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
@@ -43,7 +43,20 @@ function createDataset(fields, constraints, sortFields) {
     }
     
     else{
-        //log.info(vo.getResult());        
+        //log.info(vo.getResult());    
+    	/*
+    	 * { 
+			   "uf":"PE",
+			   "complemento":"",
+			   "logradouro":"Rua do Fogo",
+			   "bairro":"Santo Antônio",
+			   "localidade":"Recife",
+			   "ibge":"2611606",
+			   "unidade":"",
+			   "gia":"",
+			   "cep":"50010-340"
+			}
+    	 */
     	dados = vo.getResult();
     }
     
@@ -51,19 +64,11 @@ function createDataset(fields, constraints, sortFields) {
     	throw new Exception(err);
     }
     
-    var filtro = getConstraints(constraints,"CODIGO");
-    
-    
-    if(dados != null){
-    	objdata = JSON.parse(dados);
+     if(dados != null){
+    	objdata = JSON.parse(dados);    	
 		for(var i in objdata){
-			if(filtro != null && (objdata[i].CDESCRICAO.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CTIPO]);
-			
-			}
-			if(filtro == null){
-				dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCRICAO, objdata[i].CTIPO]);			
-			}		
+			dataset.addRow([objdata[i].cep, objdata[i].logradouro, objdata[i].bairro, objdata[i].localidade, objdata[i].uf]);		
+				
 		}
 	}
     	
@@ -74,15 +79,13 @@ function createDataset(fields, constraints, sortFields) {
 
 
 
-function getConstraints(constraints, field, field2){
+function getConstraints(constraints, field){
 	
 	if(constraints == null)
 		return null;
 	
 	for(var i=0;i<constraints.length;i++){
-		if(constraints[i].fieldName == field || constraints[i].fieldName == field2 ){		
-		
-							
+		if(constraints[i].fieldName == field  ){		
 			return constraints[i].initialValue;
 		}
 	}

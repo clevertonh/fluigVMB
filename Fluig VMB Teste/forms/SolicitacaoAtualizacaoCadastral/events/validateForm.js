@@ -16,25 +16,17 @@ function validateForm(form){
     //retorna email usuario logado
     var email = retornaEmailUsuario(usuarioLogado);
 	
-	if (activity == INICIO){
-		//VERIFICA SE USUARIO LOGADO É FUNCIONARIO VISAO MUNDIAL
-         var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("mail", email, email, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("ds_get_Funcionario", null, constraints, null);
-	
-		 if(dataset.values.length > 0){
-			throw "Apenas funcionários podem solicitar atualização de seus dados cadastrais!";
-		}
-		 
-		 if (form.getValue("cep") == "" || form.getValue("cep") == null) {
-	            throw "Você precisa informar o CEP.";
-	        }
+	if (activity == INICIO){		 
+		 if (form.getValue("cep") == "" && !form.getValue("cep").match(/^[0-9]{8}/) ) {
+			  throw "Você precisa informar o CEP.";
+         }
 		 if (form.getValue("endereco") == "" || form.getValue("endereco") == null) {
 	            throw "Você precisa informar o endereço.";
 	        }
-		 if (form.getValue("numero") == "" || form.getValue("numero") == null) {
-	            throw "Você precisa informar o número da residência/edificio.";
-	        }
+		 
+		 if (form.getValue("numero") == "" && !form.getValue("numero").match(/^[0-9]/)) {
+			  throw "Você precisa informar o número da residência/edificio.";
+          }
 		 
 		 if (form.getValue("bairro") == "" || form.getValue("bairro") == null) {
 	            throw "Você precisa informar o bairro.";
@@ -101,5 +93,24 @@ function validateForm(form){
     	        }	    
        }
 	
+     function consultaAfastamento(email){   	    	
+   	 	 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("EMAIL", email, email, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
+		 
+		// log.info("usuario afastado");
+		// log.dir(dataset);
+		 
+		 if (dataset.values.length >0 ) {
+		//	 log.info("Usuario afastado");
+			 return true;
+	        	
+	        }  
+	        else {
+	       // 	log.info("Usuario não afastado");
+	        	return false;
+	        }	 
+   }
+
 	
 }

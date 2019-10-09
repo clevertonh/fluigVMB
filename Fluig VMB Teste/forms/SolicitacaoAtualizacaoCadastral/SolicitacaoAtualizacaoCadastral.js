@@ -23,20 +23,19 @@ $(document).ready(function() {
 			
 		   	 $("#cep").blur(function(){
 				 reloadZoomFilterValues("estadoCivil", "IDENTIFICADOR," + "ESTADO_CIVIL");
-				 reloadZoomFilterValues("tipoSanguineo", "IDENTIFICADOR," + "TIPO_SANGUINIO");
+				 reloadZoomFilterValues("tipoSanguineo", "IDENTIFICADOR," + "TIPO_SANGUINEO");
 				 reloadZoomFilterValues("etnia", "IDENTIFICADOR," + "ETNIA");
 				 reloadZoomFilterValues("PNE", "IDENTIFICADOR," + "PNE");
 				 reloadZoomFilterValues("parentesco", "IDENTIFICADOR," + "PARENTESCO");
 				 reloadZoomFilterValues("tamanhoCamisa", "IDENTIFICADOR," + "TAMANHO_CAMISA");
 				 
 				 //consulta endereço após informado CEP
-				 
-				
-				 
-				 
+				 	 
 		     });
 			
-			
+
 	 }
 			
 });
+
+	

@@ -14,7 +14,7 @@ function createDataset(fields, constraints, sortFields) {
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
     		
     		dataset.addRow(new Array("SUCESSO"));	
-    		/*
+    	
     	
      		
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
@@ -37,7 +37,13 @@ function createDataset(fields, constraints, sortFields) {
         					 catch (erro){
         						 dataset.addRow(["ERRO AO RECUPERAR RATEIO"]);
         					 }      				  			
-        					        							
+        		
+        					 var dataAtual = new Date();
+    						 var dataReserva = convertDataToString(dataAtual)
+        					 //chama função que monta array de objeto para enviar o item de hospedagem   
+        					 aItemServico.push(addItemViagem("DVHOS001",codSolicitacao,solicitacao.getValue(0,"vl_Hospedes"),0,dataReserva));        
+    						 
+        					 
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
         					        var data = {
@@ -82,12 +88,10 @@ function createDataset(fields, constraints, sortFields) {
         					        
         					    } 
         						catch(err) {
-        					        //throw err;
-        							//log.info(err);
         							dataset.addRow([err.message]);
         					    }
 
-        						*/
+        					
     		}
     		
     		
