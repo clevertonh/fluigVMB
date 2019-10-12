@@ -21,7 +21,7 @@ function createDataset(fields, constraints, sortFields) {
          
     var objdata;
     var dados;
-    var CEP; //="50010340";
+    var CEP ="50010340";
     // https://viacep.com.br/ws/01001000/json/
     
     try {
@@ -56,6 +56,7 @@ function createDataset(fields, constraints, sortFields) {
 			   "gia":"",
 			   "cep":"50010-340"
 			}
+2019-10-12 13:53:45,048 INFO  [com.datasul.technology.webdesk.customization.ScriptingLog] (default task-5) "{\"uf\":\"PE\",\"complemento\":\"\",\"logradouro\":\"Rua do Fogo\",\"bairro\":\"Santo Antônio\",\"localidade\":\"Recife\",\"ibge\":\"2611606\",\"unidade\":\"\",\"gia\":\"\",\"cep\":\"50010-340\"}"			
     	 */
     	dados = vo.getResult();
     }
@@ -64,12 +65,21 @@ function createDataset(fields, constraints, sortFields) {
     	throw new Exception(err);
     }
     
+    
+    log.info("consulta CEP");
+    log.dir(dados)
+    
+//    "{\"uf\":\"PE\",\"complemento\":\"\",\"logradouro\":\"Rua do Fogo\",\"bairro\":\"Santo Antônio\",\"localidade\":\"Recife\",\"ibge\":\"2611606\",\"unidade\":\"\",\"gia\":\"\",\"cep\":\"50010-340\"}"
+    
      if(dados != null){
     	objdata = JSON.parse(dados);    	
 		for(var i in objdata){
 			dataset.addRow([objdata[i].cep, objdata[i].logradouro, objdata[i].bairro, objdata[i].localidade, objdata[i].uf]);		
 				
 		}
+		
+		
+		
 	}
     	
     return dataset;

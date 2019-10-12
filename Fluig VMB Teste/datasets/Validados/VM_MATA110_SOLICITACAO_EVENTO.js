@@ -13,7 +13,7 @@ function createDataset(fields, constraints, sortFields) {
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
     		
-    		dataset.addRow(new Array("SUCESSO"));	
+    		//dataset.addRow(new Array("SUCESSO"));	
     	
     	
      		
@@ -38,10 +38,8 @@ function createDataset(fields, constraints, sortFields) {
         						 dataset.addRow(["ERRO AO RECUPERAR RATEIO"]);
         					 }      				  			
         		
-        					 var dataAtual = new Date();
-    						 var dataReserva = convertDataToString(dataAtual)
         					 //chama função que monta array de objeto para enviar o item de hospedagem   
-        					 aItemServico.push(addItemViagem("DVHOS001",codSolicitacao,solicitacao.getValue(0,"vl_Hospedes"),0,dataReserva));        
+        					 aItemServico.push(addItemCompra("DVHOS001",codSolicitacao,1,solicitacao.getValue(0,"dtInicioEvento"),documentId));        
     						 
         					 
         					 try{
@@ -183,4 +181,47 @@ function retornaSolicitacao(cardindexdocumentid,carddocumentid,empresa){
    var historicoFormulario = DatasetFactory.getDataset("workflowProcess", null, constraintsHistorico, null);	       		 
 
    return historicoFormulario;
+}
+
+//FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA
+function addItemViagem(produto,codigo,qtde, nValor,dataviagem){
+	   var itemServico = { 
+				produto: ''+produto +'', 
+				quantidade: ''+ qtde +'',
+				codSolicitacao: '' + codigo +'',					
+				valor: '' + nValor + '',
+				dtViagem :''+ dataviagem +''
+					};	
+		
+		return itemServico;
+}
+
+//recebe data JS e convert para data FLuig
+function convertDataToString(dataToString) {
+    var dia;
+
+    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+    var mes = dataToString.getMonth() + 1;
+
+    if (dataToString.getDate().toString().length == 1) {
+        dia = dataToString.getDate();
+        dia = "0" + dia.toString();
+
+    } else {
+        dia = dataToString.getDate();
+
+    }
+
+    //converte mes
+    if (mes.toString().length == 1) {
+        mes = "0" + mes.toString();
+
+    }
+    //else {mes = dataToString.getMonth() + 1;}
+
+
+    //novo formato de data: para salvar em campos data do Fluig
+    return dia + "/" + mes + "/" + dataToString.getFullYear();
+
+
 }
