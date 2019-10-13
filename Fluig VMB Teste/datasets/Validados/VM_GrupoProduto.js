@@ -3,6 +3,7 @@ function defineStructure() {
 	addColumn("CODIGO");
 	addColumn("DESCRICAO");
 	addColumn("GRUPO");
+	addColumn("GRUPO_PRODUTO");
 
 	setKey(["CODIGO"]);
 }
@@ -14,6 +15,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("CODIGO");
     dataset.addColumn("DESCRICAO");
     dataset.addColumn("GRUPO");
+    dataset.addColumn("GRUPO_PRODUTO");
 
     var dados;
     
