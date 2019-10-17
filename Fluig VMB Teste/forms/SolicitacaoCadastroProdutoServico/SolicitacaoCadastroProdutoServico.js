@@ -30,10 +30,10 @@ function produtoExistente(){
 				document.getElementById("div_produto2").style.display = "block";
 				
 				if(document.getElementById("tipoproduto").checked == true){
-					reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
+					reloadZoomFilterValues("txtproduto", "FLUIG," + "2");	
 				}
 				else if (document.getElementById("tiposervico").checked == true){
-					reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "11");	
+					reloadZoomFilterValues("txtproduto", "FLUIG," + "11");	
 				}
 				
 				
@@ -44,11 +44,12 @@ function produtoExistente(){
 			document.getElementById("div_produto").style.display = "none";
 			document.getElementById("div_produto2").style.display = "none";			
 			document.getElementById("div_tipoPrd").style.display = "block";		
+			
 			if(document.getElementById("fisica").checked == true){
-				reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
+				reloadZoomFilterValues("txtproduto", "FLUIG," + "2");	
 			}
-			else if (document.getElementById("tipoproduto").checked == true){
-				reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "11");	
+			else if (document.getElementById("tiposervico").checked == true){
+				reloadZoomFilterValues("txtproduto", "FLUIG," + "11");	
 			}	
 			
 		}
