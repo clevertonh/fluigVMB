@@ -51,7 +51,7 @@ function createDataset(fields, constraints, sortFields) {
 						        	serviceCode : 'REST FLUIG',
 						            endpoint : '/F_MATA010',
 						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-						            timeoutService: '100', // segundos
+						            timeoutService: '360', // segundos
 						            params : {
 						            	PRODUTO : aProdutos						            	
 						            },
