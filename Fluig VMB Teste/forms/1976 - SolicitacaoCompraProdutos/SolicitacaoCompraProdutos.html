@@ -329,12 +329,14 @@
                                                                                         <tr class="tableHeadRow">
                                                                                             
                                                                                             <th class="tableColumn">Descrição do Produto</th>
+                                                                                            <th class="tableColumn">Sugestão de marca</th>
                                                                                             <th class="tableColumn">Unid. Medida</th>
-                                                                                            <th class="tableColumn">Prazo fornecedor</th>
-                                                                                            <th class="tableColumn">Qtd</th>
+                                                                                            <th class="tableColumn">Qtd</th>                          
                                                                                             <th class="tableColumn">Valor da ultima compra</th>
                                                                                             <th class="tableColumn">Valor total</th>
+                                                                                            <th class="tableColumn">Prazo fornecedor</th>
                                                                                             <th class="tableColumn">Data de necessidade</th>
+                                                                                            <th class="tableColumn">Observação</th>
                                                                                             <th class="tableColumn" id="div_codProduto">Codigo Prod.</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -352,19 +354,20 @@
                                                                                     'fields':[
                                                                                     {'field':'CODIGO', 'label':'CODIGO'},
                                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },                                                                                    
-                                                                                    {'field':'PRAZO_FORNECEDOR', 'label':'PRAZO_FORNECEDOR'},
-																					{'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA','visible':'false'},                                                                                    
+                                                                                    {'field':'PRAZO_FORNECEDOR', 'label':'PRAZO_FORNECEDOR','visible':'false'},
+																					{'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA'},                                                                                    
                                                                                     {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
                                                                                     {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]
                                                                                     }" />
                                                                                                 </div>
                                                                                             </td>                                                                                            
                                                                                             <td>
+                                                                                            	<input type="text" class="form-control" name="marca" id="marca">
+                                                                                            </td>
+                                                                                            <td>
                                                                                                 <input class="form-control" name="idum" id="idum" type="text" style="width:100px;" readonly/>
                                                                                             </td>
-<td>
-                                                                                                <input class="form-control" name="prazoFornecedor" id="prazoFornecedor" type="number" style="width:100px;" readonly/>
-                                                                                            </td>                                                                                            
+																							                                                                                          
                                                                                             <td>
                                                                                                 <input class="form-control money" name="idquantidade" id="idquantidade" type="number" style="width:100px;" />
                                                                                             </td>
@@ -375,6 +378,9 @@
                                                                                                 <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:200px;" readonly/>
                                                                                             </td>
                                                                                             <td>
+                                                                                                <input class="form-control" name="prazoFornecedor" id="prazoFornecedor" type="number" style="width:100px;" readonly/>
+                                                                                            </td>  
+                                                                                            <td>
                                                                                                 <div class="input-group date" style="width:150px;">
                                                                                                     <input type="text" class="form-control" id="dtNecessidade" name="dtNecessidade" mask="00/00/0000">
                                                                                                     <span class="input-group-addon">
@@ -382,6 +388,9 @@
                                                                                                     </span>
                                                                                                 </div>
                                                                                             </td>
+                                                                                           <td>
+                                                                                                <input class="form-control" name="observacaoItem" id="observacaoItem" type="text" style="width:100px;" >
+                                                                                            </td>  
                                                                                             <td>
                                                                                                 <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" style="width: 150px;" readOnly />
                                                                                             </td>
