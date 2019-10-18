@@ -34,7 +34,7 @@ function beforeStateEntry(sequenceId){
                    var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    
                       
                    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-                         throw resultDataset.getValue(0,"RETORNO");
+                        // throw resultDataset.getValue(0,"RETORNO");
                       }
                    else {
                 	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema de Cotação do Protheus.");
