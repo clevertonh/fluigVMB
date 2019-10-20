@@ -282,53 +282,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <version>1</version>
-        <sequence>40</sequence>
-      </processStatePK>
-      <stateName>Reprovado</stateName>
-      <stateDescription>Reprovado</stateDescription>
-      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>false</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>600</positionX>
-      <positionY>269</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>68</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoCompraProdutos</processId>
-        <version>1</version>
         <sequence>44</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -371,6 +324,53 @@
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
     </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoCompraProdutos</processId>
+        <version>1</version>
+        <sequence>47</sequence>
+      </processStatePK>
+      <stateName>Reprovado</stateName>
+      <stateDescription>Reprovado</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>600</positionX>
+      <positionY>269</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
   </list>
   <list>
     <ConditionProcessState>
@@ -394,7 +394,7 @@
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
-      <destinationSequenceId>40</destinationSequenceId>
+      <destinationSequenceId>47</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -455,7 +455,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>9</initialStateSequence>
-      <finalStateSequence>40</finalStateSequence>
+      <finalStateSequence>47</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -561,7 +561,7 @@
        //VARIAVEIS DEFAULT&#xd;
        var ABERTURA = 0;&#xd;
        var APROVACAO = 5;&#xd;
-       var GERAR_SC = 42;&#xd;
+       var ASSUMIR = 42;&#xd;
        &#xd;
        //GATEWAY&#xd;
        var GATEWAYAPROVADO = 14;&#xd;
@@ -581,29 +581,14 @@
        &#xd;
        var aprovacao  = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
        &#xd;
-       &#xd;
-   	      &#xd;
+       //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  &#xd;
+       var opcao;&#xd;
 &#xd;
        if (ativAtual == APROVACAO &amp;&amp;  aprovacao == &quot;aprovado&quot;){    	&#xd;
                      var constraint = new Array();                                 &#xd;
-                     //constraint.push(DatasetFactory.createConstraint(&quot;solicitacao&quot;, codSolicitacao, codSolicitacao, ConstraintType.MUST));&#xd;
-                     constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-              &#xd;
-                  /*&#xd;
-                	 	var codigoComprador = getValue(&quot;WKUser&quot;);&#xd;
-	 		  			&#xd;
-                	 	var constraintsUsuario   = new Array();&#xd;
- 		  			 	constraintsUsuario.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, codigoComprador, codigoComprador, ConstraintType.MUST));&#xd;
- 		  			 	var datasetComprador = DatasetFactory.getDataset(&quot;colleague&quot;, null, constraintsUsuario, null);&#xd;
- 				&#xd;
+                     constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
+ 		  			 constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, 3, 3, ConstraintType.MUST));&#xd;
  		  			 &#xd;
- 		  			 &#xd;
- 		  			if (datasetComprador!= null &amp;&amp; datasetComprador.rowsCount &gt; 0){&#xd;
-	  					var emailComprador = datasetComprador.getValue(0, &quot;mail&quot;);	  &#xd;
-	  					constraint.push(DatasetFactory.createConstraint(&quot;comprador&quot;, emailComprador, emailComprador, ConstraintType.MUST));	&#xd;
-	  				}&#xd;
-                     */&#xd;
-                 &#xd;
                       var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
                        &#xd;
                       	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
@@ -615,6 +600,37 @@
                          &#xd;
            &#xd;
               &#xd;
+       }&#xd;
+       else if (ativAtual == ASSUMIR){&#xd;
+&#xd;
+    	   /*&#xd;
+    	   var constraint = new Array();                                 &#xd;
+           constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+    &#xd;
+        &#xd;
+      	 	var codigoComprador = getValue(&quot;WKUser&quot;);&#xd;
+	  			&#xd;
+      	 	var constraintsUsuario   = new Array();&#xd;
+ 			 	constraintsUsuario.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, codigoComprador, codigoComprador, ConstraintType.MUST));&#xd;
+ 			 	var datasetComprador = DatasetFactory.getDataset(&quot;colleague&quot;, null, constraintsUsuario, null);&#xd;
+		&#xd;
+ 			 &#xd;
+ 			 &#xd;
+ 			if (datasetComprador!= null &amp;&amp; datasetComprador.rowsCount &gt; 0){&#xd;
+				var emailComprador = datasetComprador.getValue(0, &quot;mail&quot;);	  &#xd;
+				constraint.push(DatasetFactory.createConstraint(&quot;comprador&quot;, emailComprador, emailComprador, ConstraintType.MUST));	&#xd;
+			}&#xd;
+&#xd;
+ 			constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, 4, 4, ConstraintType.MUST));	&#xd;
+ 			&#xd;
+            var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
+             &#xd;
+            	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                  throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+            	 }&#xd;
+&#xd;
+*/ 	 &#xd;
+               &#xd;
        }&#xd;
 &#xd;
                  &#xd;

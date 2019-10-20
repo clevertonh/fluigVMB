@@ -1,6 +1,8 @@
 function validateForm(form){
 	var ABERTURA = 0;
 	var APROVACAO =5;
+	var COMPRAS = 12;
+	var HOSPITALIDADE = 22;
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');

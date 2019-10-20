@@ -1,6 +1,7 @@
 var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
-var CONTRATAR = 12;
+var COMPRAS = 12;
+var HOSPITALIDADE = 22;
 
 
 //Initialize tooltips
@@ -40,6 +41,8 @@ function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
+
+
 var visibilidade = true;
 
 
@@ -73,7 +76,7 @@ $(document).ready(function() {
 		
 		
 	}
-	else if (ATIVIDADE == CONTRATAR){		
+	else if (ATIVIDADE == COMPRAS || ATIVIDADE == HOSPITALIDADE){		
 	   	 $("#valor").blur(function(){
 	   		 $("#div_produto").show();
 			 reloadZoomFilterValues("txtproduto", "FLUIG," + "11");
@@ -100,6 +103,7 @@ function setSelectedZoomItem(selectedItem) {
     var RATEIO = "rateioconfigurado";
     var EVENTO ="dataset_solicitacaoevento";
     var SERVICO ="txtproduto";
+    var FORNECEDOR ="cnpjcpf";
    
 
     //Recebe o nome do campo zoom
@@ -133,9 +137,8 @@ function setSelectedZoomItem(selectedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].disable(true);
         window[FONTE + "___" + linhaPagamento[1]].disable(true);
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(true);
-
-
-    } else if (linhaPagamento[0] == PROJETO) {
+    } 
+    else if (linhaPagamento[0] == PROJETO) {
         //LIMPA TODOS AS COLUNAS POSTERIORES
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -156,48 +159,46 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
    
-    } else if (linhaPagamento[0] == ATIVIDADE) {
+    } 
+    else if (linhaPagamento[0] == ATIVIDADE) {
 	        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
 	        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
-
-
-
-
     else if (linhaPagamento[0] == FONTE){
-    		$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
-  	  
+    		$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);	  
     }
- 
-
     else if (campoZOOM == RATEIO) {    
 		buscaItensRateio(selectedItem["CODIGO"]);
 	
-    }
-    
+    }    
     else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		evento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
-//    		$('#carregaFinan').attr('readonly', true);
-//    		$('#NcarregaFinan').attr('readonly', true);
-    		
-
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
     		$("#NcarregaFinan").prop("disabled", false);
-//    		$('#carregaFinan').attr('readonly', false);
-//    		$('#NcarregaFinan').attr('readonly', false);
     	}
-    }
-    
+    }   
     else if (campoZOOM == SERVICO) {
-    	console.log(selectedItem["CODIGO"]);
       	$("#codigoProduto").val(selectedItem["CODIGO"]);
        	
     	
+    }
+    else if (campoZOOM == FORNECEDOR){
+    		$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
+    	//	$("#nomefantasia").val(selectedItem["CNPJ"]);  		
+    		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   		
+    		if (selectedItem["TIPO"] == "JURIDICA"){ 	
+    			//$("#fisica").attr('checked', false);   	    	
+        		document.getElementById("juridica").click();  
+        	}
+    		else if (selectedItem["TIPO"] == "FISICA"){
+    			//$("#juridica").attr('checked', false);
+    			document.getElementById("fisica").click();  
+    		}
     }
     
 }
@@ -240,6 +241,7 @@ function removedZoomItem(removedItem) {
     var ITEMRATEIO ="rateio";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
+    var FORNECEDOR ="cnpjcpf";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -319,6 +321,13 @@ function removedZoomItem(removedItem) {
 		//remove linhas de pagamento
         removeItens();
 
+    }
+    else if (campoZOOM == FORNECEDOR){
+    	$("#fisica").attr('checked', false);
+    	$("#juridica").attr('checked', false);
+    	$("#razaosocial").val("");  
+		$("#nomefantasia").val("");  		
+		$("#codigoFornecedor").val("");   		
     }
 }
 

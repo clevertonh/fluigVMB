@@ -1,7 +1,8 @@
 function displayFields(form,customHTML){
 	var ABERTURA = 0;
 	var APROVACAO =5;
-	var CONTRATAR = 12;
+	var COMPRAS = 12;
+	var HOSPITALIDADE = 22;
 	
 	var activity = getValue('WKNumState');
 
@@ -24,8 +25,12 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("3b", false);
 
 	 }
-	 else if (activity == CONTRATAR ){
+	 else if (activity == COMPRAS || activity == HOSPITALIDADE ){
 		 form.setVisibleById("div_produto", false); 
+		 form.setVisibleById("div_status", false); 
+		 
 	 }
+	 
+	 
     
 }

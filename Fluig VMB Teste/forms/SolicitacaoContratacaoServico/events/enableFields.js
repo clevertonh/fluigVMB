@@ -1,7 +1,8 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
 	var APROVACAO =5;
-	var CONTRATAR = 12;
+	var COMPRAS = 12;
+	var HOSPITALIDADE = 22;
 	
 	
 	var activity = getValue('WKNumState');
@@ -46,20 +47,13 @@ function enableFields(form){
 		    form.setEnabled("aprovacao", true);		
 		 
 	}
-	else if (activity == CONTRATAR){		
-		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-		    var mapaForm = new java.util.HashMap();
-		    mapaForm = form.getCardData();
-		    var it = mapaForm.keySet().iterator();
-		     
-		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-		        var key = it.next();
-		        form.setEnabled(key, habilitar);
-		    }
+	else if (activity == COMPRAS || activity == HOSPITALIDADE){		
+		  	form.setEnabled("aprovacao", false);		
 		 
 		    form.setEnabled("valor", true);	
 		    form.setEnabled("txtproduto", true);	
 		    form.setEnabled("codigoProduto", true);
+		    form.setEnabled("cnpjcpf", true);
 		    
 		
 	}
@@ -100,7 +94,7 @@ function enableFields(form){
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
 		  
-		 log.info(dataset.getValue(0, "EMAIL_G"));
+		 //log.info(dataset.getValue(0, "EMAIL_G"));
 		 return dataset;
 	}
 

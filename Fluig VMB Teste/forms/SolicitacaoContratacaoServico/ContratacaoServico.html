@@ -107,7 +107,7 @@
                                                                     </div>
                                                                 </div>
                                                               
-                                                                              
+                                                              <!-- <button class="accordion">Section 1</button>   -->              
                                                              <div class="panel panel-info" id="panelItens">
                                                                     <div class="panel-heading ">
                                                                         <h3 class="panel-title">
@@ -480,7 +480,59 @@
                                         </div>
                                     
                                     <div class="tab-pane" id="3b">
-                                    		<div class="row">
+                                    <div class="panel-body">
+           	<div class="panel panel-success">
+				 <div class="panel-heading ">
+					<h5 class="panel-title">
+					<b>Informações do fornecedor</b>
+		 		</h5>
+		 	</div>
+			 <div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-4">
+	                                                         <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label> 
+	                                                           <input name="cnpjcpf"
+	                                                            class="form-control" type="zoom"
+	                                                            id="cnpjcpf"
+	                                                            data-zoom="{'displayKey':'CNPJ',
+	                                                            'datasetId':'ds_get_Fornecedor',
+	                                                            'maximumSelectionLength':'1',
+	                                                            'placeholder':'Selecione o fornecedor',
+	                                                            'fields':[
+	                                                            {'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
+	                                                            {'field':'CNPJ','label':'CNPJ','standard':'true'},
+	                                                            {'field':'CODIGO','label':'CODIGO'},
+	                                                            {'field':'TIPO','label':'TIPO', 'visible' : 'false'}						  					
+	                                                            ]
+	                                                            }">
+	                                                      </div>
+					<div class="form-group col-md-6">
+						<label>Razão Social</label>
+						<input class="form-control" type="text" id="razaosocial" name="razaosocial">
+					</div>                                    				
+				</div>	
+				<div class="row">
+					<div class="form-group col-md-5">
+						<label>Nome Fantásia</label>
+						<input class="form-control" type="text" id="nomefantasia" name="nomefantasia">
+					</div>	
+					<div class="form-group col-md-2">
+	                	<label>Codigo Fornecedor</label>
+	               		<input type="text" id ="codigoFornecedor" class="form-control" name="codigoFornecedor" readonly>
+	                </div>
+	              	 <div class="form-group col-md-4">
+                                      				<label>Tipo de Pessoa</label><br>
+                                      				<label for="fisica">Fisica</label> 
+                                                    <input type="radio" id="fisica" name="tipoPessoa" value="fisica">
+				                                    <label for="juridica">Juridica</label>
+				                                    <input type="radio" id="juridica" name="tipoPessoa" value="juridica">   
+                                      				
+                                      			</div>    
+					
+					
+				</div>	
+				<div class="row">
+                                    		
                                     			<div class="form-group col-md-3">
                                                     <label>Valor adiantado</label>
                                                  	<input type="number" id="valor" name="valor" class="form-control">
@@ -491,7 +543,7 @@
 	                                                                               'displayKey':'DESCRICAO',
                                                                                     'datasetId':'ds_get_Produtos',
                                                                                     'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione o tipo de veículo',
+                                                                                    'placeholder':'Selecione o serviço',
                                                                                     'fields':[
                                                                                     {'field':'CODIGO', 'label':'CODIGO'},
                                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
@@ -501,8 +553,39 @@
      											<div class="form-group col-md-3">
 													<label>Código produto</label>
      												<input class="form-control" name="codigoProduto" id="codigoProduto" type="text" readonly />
-     											</div>                                           
+     											</div>   
+     											
+     											                                       
                                     		</div>
+						
+			 </div>
+		 </div>
+           </div>
+                                    		<div class="panel-body" id="div_status">
+                                    			<div class="panel panel-success">
+	                                    			<div class="panel-heading ">
+															<h5 class="panel-title">
+															<b>Status</b>
+												 		</h5>
+												 	</div>
+												 	<div class="panel-body">
+													 	<div class="row">
+			                                    			<div class="form-group col-md-2">
+			     												<label>Status Serviço</label>
+			     												<input class="form-control" name="aprovacaoServico" id="aprovacaoServico" type="text" readonly />
+			     											</div> 
+			     											<div class="form-group col-md-2">
+			     												<label>Status Contrato</label>
+			     												<input class="form-control" name="contrato" id="contrato" type="text" readonly />
+			     											</div> 
+			                                    		</div>
+												 	</div>
+	                                    			
+                                    			</div>
+	                                    		
+                                    		</div>
+                                    		
+                                    		
                                     	</div>
                                     
                                     </div>

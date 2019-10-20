@@ -6,7 +6,7 @@
     </processDefinitionPK>
     <processDescription>Aprovação de Compras</processDescription>
     <instruction></instruction>
-    <active>true</active>
+    <active>false</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Compras</categoryId>
@@ -28,14 +28,14 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Aprovação de Compras</processId>
-      <version>4</version>
+      <version>19</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2399</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
-    <active>true</active>
+    <active>false</active>
     <blockedVersion>false</blockedVersion>
     <counterSign>false</counterSign>
     <openInstances>0</openInstances>
@@ -53,9 +53,9 @@
         <version>1</version>
         <sequence>56</sequence>
       </processStatePK>
-      <stateName>Início</stateName>
-      <stateDescription>Início</stateDescription>
-      <instruction></instruction>
+      <stateName>Solicitar aprovação</stateName>
+      <stateDescription>Solicitar aprovação</stateDescription>
+      <instruction>Solicitar aprovação para compra ou serviço conforme alçada de valor prevista em norma interna.</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -598,7 +598,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>65</sequence>
+        <sequence>68</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -622,8 +622,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>730</positionX>
-      <positionY>740</positionY>
+      <positionX>740</positionX>
+      <positionY>830</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -647,10 +647,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 50000</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 50000</condition>
       <destinationSequenceId>58</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -659,10 +659,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt; 50000</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt; 50000</condition>
       <destinationSequenceId>27</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -671,10 +671,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 3500</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 3500</condition>
       <destinationSequenceId>58</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -683,10 +683,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt;3500</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt;3500</condition>
       <destinationSequenceId>35</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -695,10 +695,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 35000</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 35000</condition>
       <destinationSequenceId>58</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -707,10 +707,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt;35000</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt;35000</condition>
       <destinationSequenceId>11</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -719,10 +719,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>61</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 35000</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 35000</condition>
       <destinationSequenceId>5</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -731,10 +731,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>19</version>
         <sequence>61</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt; 35000</condition>
+      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt; 35000</condition>
       <destinationSequenceId>35</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -801,24 +801,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>11</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>22</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>13</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
+      <finalStateSequence>68</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -835,7 +818,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>15</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
+      <finalStateSequence>68</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -852,7 +835,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>18</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
+      <finalStateSequence>68</finalStateSequence>
       <returnLabel></returnLabel>
       <name>reprovado</name>
       <automaticLink>false</automaticLink>
@@ -971,7 +954,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>27</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
+      <finalStateSequence>68</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -988,7 +971,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>5</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
+      <finalStateSequence>68</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1005,7 +988,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>35</initialStateSequence>
-      <finalStateSequence>65</finalStateSequence>
+      <finalStateSequence>68</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1131,9 +1114,107 @@
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>AprovacaoCompras</processId>
+        <version>1</version>
+        <linkSequence>66</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>13</initialStateSequence>
+      <finalStateSequence>68</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>AprovacaoCompras</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+	    var codSolicitacao = getValue(&quot;WKNumProces&quot;);&#xd;
+&#xd;
+		//RECUPERA NUMERO DA ATIVIDADE&#xd;
+		var ativAtual 		 = getValue(&quot;WKNumState&quot;);	&#xd;
+	    //VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
+	    var nextAtv = getValue(&quot;WKNextState&quot;);&#xd;
+	    //RECUPERA NUMERO DO DOCUMENTO&#xd;
+	    var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
+	    var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
+	    var empresa = getValue(&quot;WKCompany&quot;);&#xd;
+	    //RECUPERA USUARIO LOGADO&#xd;
+	       var usuario = getValue(&apos;WKUser&apos;);&#xd;
+	       &#xd;
+	    var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
+	    var limiteAnual 	 = hAPI.getCardValue(&quot;limiteanual&quot;);&#xd;
+	    &#xd;
+	    &#xd;
+	 //gerente de adm&#xd;
+	if (ativAtual == 5){&#xd;
+		 //hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Proxima atividade ID &quot;+nextAtv);&#xd;
+		&#xd;
+		//aprovado&#xd;
+		if (nextAtv == 33){&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
+		}&#xd;
+		else {&#xd;
+			//reprovado.&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
+			&#xd;
+		}&#xd;
+		&#xd;
+	}&#xd;
+	//diretor financeiro&#xd;
+	else if (ativAtual == 35){&#xd;
+		//aprovado&#xd;
+		if (nextAtv == 37){&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;); &#xd;
+		}&#xd;
+		else {&#xd;
+			//reprovado.&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
+			&#xd;
+		}	&#xd;
+	}&#xd;
+	//comitê&#xd;
+	else if (ativAtual == 11 || ativAtual == 13 || ativAtual == 15 || ativAtual == 18){&#xd;
+		//aprovado&#xd;
+		if (nextAtv == 68){&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
+		}	&#xd;
+		else {&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  	&#xd;
+		}&#xd;
+	&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	//diretoria nacional&#xd;
+	else if (ativAtual == 27){&#xd;
+		//aprovado&#xd;
+		if (nextAtv == 68){&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
+		}	&#xd;
+		else {&#xd;
+			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
+			&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
@@ -1240,7 +1321,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>21</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1251,7 +1332,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1262,29 +1343,29 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>44</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>747</positionX>
+      <positionX>757</positionX>
       <positionY>904</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>253</positionX>
-      <positionY>757</positionY>
+      <positionY>847</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>46</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1295,18 +1376,18 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>46</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
       <positionX>392</positionX>
-      <positionY>757</positionY>
+      <positionY>847</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1317,7 +1398,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>54</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1328,7 +1409,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>55</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1339,7 +1420,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>63</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1350,7 +1431,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <version>4</version>
+        <version>19</version>
         <linkSequence>64</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
