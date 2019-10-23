@@ -1,12 +1,14 @@
 function displayFields(form,customHTML){ 
 	var ABERTURA = 0;
-	var SOLICITAR = 4;
+	var SOLICITAR = 56;
 	var APROVACAO =5;
 	var COMPRAS = 12;
 	var HOSPITALIDADE = 22;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
+	
+	log.info("----ATIVIDADE APROVACAO CONTRATOS: " + activity);
 	
 	//campos sempre ocultos
 	 form.setVisibleById("aprovacaoServico", false);
