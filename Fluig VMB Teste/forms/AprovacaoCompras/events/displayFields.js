@@ -1,17 +1,21 @@
 function displayFields(form,customHTML){ 
 	var ABERTURA = 0;
 	var SOLICITAR = 56;
-	var APROVACAO =5;
-	var COMPRAS = 12;
-	var HOSPITALIDADE = 22;
+	var GERENTE_ADM =5;
+	var DIRETOR_FIN = 35;
+	var DIRETOR_RH = 11;
+	var DIRETOR_MINISTERIO = 13;
+	var DIRETOR_MKT = 15;
+	var DIRETOR_ADVOCACY = 18;
+	var DIRETOR_NACIONAL = 27;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
 	
-	log.info("----ATIVIDADE APROVACAO CONTRATOS: " + activity);
+	//log.info("----ATIVIDADE APROVACAO CONTRATOS: " + activity);
 	
 	//campos sempre ocultos
-	 form.setVisibleById("aprovacaoServico", false);
+	//form.setVisibleById("divAprovacaoServico", false);
 	 
 	if (activity == ABERTURA || activity == SOLICITAR){
 		 form.setVisibleById("div_nivel1", false);
@@ -21,14 +25,65 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
-		 form.setVisibleById("divJustificativaReprovacao", false);
-		 
-		 
 		 
 		 
 	}
-    
-	
+	else if (activity == GERENTE_ADM){		 
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);		 
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false); 
+	}
+	else if ( activity == DIRETOR_FIN){
+		 form.setVisibleById("div_nivel1", false);	
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false); 
+	}
+	else if (activity == DIRETOR_RH){
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false); 
+	}
+	else if (activity == DIRETOR_MINISTERIO){
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);		 
+		 form.setVisibleById("div_nivel7", false); 
+	}
+	else if (activity == DIRETOR_MKT){
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);		 
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false); 
+	}
+	else if (activity == DIRETOR_ADVOCACY){
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false); 
+	}
+	else if (activity == DIRETOR_NACIONAL){
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);
+		 form.setVisibleById("div_nivel7", false); 
+	}
 	
 	
 	

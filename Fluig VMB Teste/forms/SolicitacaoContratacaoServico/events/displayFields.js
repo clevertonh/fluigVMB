@@ -27,7 +27,7 @@ function displayFields(form,customHTML){
 	 }
 	 else if (activity == COMPRAS || activity == HOSPITALIDADE ){
 		 form.setVisibleById("div_produto", false); 
-		 form.setVisibleById("div_status", false); 
+		// form.setVisibleById("div_status", false); 
 		 
 	 }
 	 

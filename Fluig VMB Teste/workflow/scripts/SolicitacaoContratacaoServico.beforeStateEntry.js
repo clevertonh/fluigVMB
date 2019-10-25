@@ -1,9 +1,21 @@
 function beforeStateEntry(sequenceId){
 	var ABERTURA = 0;
 	var SOLICITAR = 4;	
-	var APROVACAO =5;
-	var REALIZAR_COTACAO = 12;
-	var APROVAR_SERVICO = 59;
+	var APROVACAO_GESTOR =5;
+	var REALIZAR_COTACAO_COMPRAS = 12;
+	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
+	var ENVIAR_APROVACAO_COMPRAS = 209;
+	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var APROVACAO_SERVICO_COMPRAS = 105;
+	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
+	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
+	var VERIFICAR_APROVACAO_COMPRAS = 145;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
+	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var INTEGRAR_PROTHEUS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS = 215;
+	var VALIDAR_RH = 16;
+	
 	
 	
 	
@@ -25,7 +37,17 @@ function beforeStateEntry(sequenceId){
     var valor = hAPI.getCardValue("valor");
     var produto = hAPI.getCardValue("codigoProduto");
     
- if (ativAtual == APROVAR_SERVICO  ){ 	   
+    var cgc = hAPI.getCardValue("codigoProduto");
+    var codigoSA2 = hAPI.getCardValue("codigoProduto");
+    var razaoSocial = hAPI.getCardValue("codigoProduto");
+    var valido = hAPI.getCardValue("codigoProduto");
+    
+    
+ if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
+	 
+	 //SALVA NO COMENTÁRIO OS DADOS DO FORNECEDOR ATUAL PARA O CASO DE HAVER TROCA DE FORNECEDOR
+	 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor " + cgc +"-"+razaoSocial + " selecionado como melhor opção do processo de cotação.");
+	 	 
                   var constraint = new Array();                                 
                   constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
                   constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
@@ -45,4 +67,16 @@ function beforeStateEntry(sequenceId){
           
            
     }	
+ 
+ else if (ativAtual == VALIDAR_RH){
+	 if (valido == "negado"){
+		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
+	 }
+ }
+ 
+ 
+ 
+ 
+ 
+ 
 }
