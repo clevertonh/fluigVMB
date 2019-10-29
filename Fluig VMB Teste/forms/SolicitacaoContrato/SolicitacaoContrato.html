@@ -21,7 +21,7 @@
 								<label>Tipo de Contrato</label><br>
                                       				<label for="servico">Serviço</label> 
                                                     <input type="radio" id="servico" name="tipoAprovacao" value="servico">				                                  
-				                                    <label for="produto">Compra de produtos</label>
+				                                    <label for="produto">Mercadoria</label>
 				                                    <input type="radio" id="produto" name="tipoAprovacao" value="produto">  
 							</div>	
 					</div>
@@ -29,6 +29,12 @@
 						<div class='form-group col-md-12'>
 							<label>Finalidade</label>
 							<textarea class="form-control" id="finalidade" name="finalidade"></textarea>
+						</div>
+					</div>
+					<div class="row">						
+						<div class='form-group col-md-12'>
+							<label>Negociação</label>
+							<textarea class="form-control" id="negociacao" name="negociacao"></textarea>
 						</div>
 					</div>
           </div>
@@ -74,7 +80,7 @@
 	               		<input type="text" id ="codigoFornecedor" class="form-control" name="codigoFornecedor" readonly>
 	                </div>
 	              	 <div class="form-group col-md-4">
-                                      				<label>Tipo de Pessoa</label>
+                                      				<label>Tipo de Pessoa</label><br>
                                       				<label for="fisica">Fisica</label> 
                                                     <input type="radio" id="fisica" name="tipoPessoa" value="fisica">
 				                                    <label for="juridica">Juridica</label>
@@ -121,6 +127,35 @@
 						<input class="form-control" type="number" id="limiteanual" name="limiteanual">
 				</div>
 	  		</div>
+	  		     <div class="row">
+                                                                        <div class="form-group col-md-3">
+                                                                            <label>Vigência do contrato</label>
+                                                                            <br>
+
+                                                                        </div>
+                                                                    </div>
+	  		<div class="row">
+
+                                                                        <div class="form-group col-md-2">
+                                                                            <label for="dtInicio">Data de Início</label>
+                                                                            <div class="input-group date">
+                                                                                <input type="text" class="form-control" id="dtInicio" name="dtInicio">
+                                                                                <span class="input-group-addon"> <span
+class="fluigicon fluigicon-calendar"></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-2">
+                                                                            <label for="dtFim">Data de Encerramento</label>
+                                                                            <div class="input-group date">
+                                                                                <input type="text" class="form-control" id="dtFim" name="dtFim">
+                                                                                <span class="input-group-addon"> <span
+class="fluigicon fluigicon-calendar"></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
 	  	</div>
 	  	</div>
 	  	

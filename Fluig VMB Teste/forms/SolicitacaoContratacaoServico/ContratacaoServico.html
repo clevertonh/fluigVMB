@@ -311,6 +311,12 @@ class="fluigicon fluigicon-calendar"></span>
                                                             </div>
                                                             <div class="tab-pane" role="tabpanel" id="step2">
                                                                 <div class="panel-body">
+                                                                	<div class="row">
+                                                                		<div class="form-group col-md-6">
+                                                                			<label>Resumo do serviço</label>
+                                                                			<input type="text" id="resumo" name="resumo" class="form-control">
+                                                                		</div>
+                                                                	</div>
                                                                     <div class="row">
                                                                         <div class="form-group col-md-6">
                                                                             <label>Objetivos</label>
@@ -361,7 +367,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <div class="panel-body">
                                                                     <div class="row">
                                                                         <div class="form-group col-md-3">
-                                                                            <label>Forma de pagamento</label>
+                                                                            <label>Período de pagamento</label>
                                                                             <br>
                                                                             <label for="mensal">Mensal</label>
                                                                             <input type="radio" id="mensal" name="formapgto" value="mensal">
@@ -523,10 +529,36 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <input type="radio" id="juridica" name="tipoPessoa" value="juridica">
 
                                                             </div>
-
                                                         </div>
                                                         <div class="row">
-
+                                                        	<div class="form-group col-md-4">
+                                                        		<label>Meio de pagamento</label>
+                                                        		<input type="text" id="meioPagamento" name="meioPagamento" class="form-control">
+                                                        	</div>
+                                                        	<div class="form-group col-md-4">
+                                                        		<label>Forma de pagamento</label>
+                                                        		<input type="text" id="condicaoPgto" name="condicaoPgto" class="form-control"> 
+                                                        	</div>
+                                                        </div>
+                                                        <div class="row">
+                                                        	<div class="form-group col-md-2">
+                                                        		<label>Banco</label>
+                                                        		<input type="text" id="banco" name="banco" class="form-control">
+                                                        	</div>
+                                                        	<div class="form-group col-md-2">
+                                                        		<label>Agência</label>
+                                                        		<input type="text" id="agencia" name="agencia" class="form-control">
+                                                        	</div>
+                                                        	<div class="form-group col-md-3">
+                                                        		<label>Conta</label>
+                                                        		<input type="text" id="contaFornecedor" name="contaFornecedor" class="form-control">
+                                                        	</div>
+                                                        	<div class="form-group col-md-3">
+                                                        		<label>Tipo de Conta</label>
+                                                        		<input type="text" id="tipoConta" name="tipoConta" class="form-control">
+                                                        	</div>
+                                                        </div>
+                                                        <div class="row">
                                                             <div class="form-group col-md-3">
                                                                 <label>Valor adiantado</label>
                                                                 <input type="number" id="valor" name="valor" class="form-control">
@@ -558,8 +590,8 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <label>Valor anual ou limite anual </label>
                                                                 <input type="number" id="CotacaovalorAnual" name="CotacaovalorAnual" class="form-control">
                                                             </div>
-                                                            <div class="form-group col-md-5">
-                                                                <label>Número do Contrato</label>
+                                                            <div class="form-group col-md-5" id="div_contrato">
+                                                                <label>Número do Contrato</label><br>
                                                                 <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
 																'displayKey':'DESCRICAO',
 																'datasetId':'vm_Produtos',

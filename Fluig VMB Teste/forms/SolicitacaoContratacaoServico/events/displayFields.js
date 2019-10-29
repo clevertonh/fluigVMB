@@ -22,7 +22,7 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoaprovacao", false); 
 	 
 	 if (activity == ABERTURA || activity == APROVACAO){
-		 form.setVisibleById("3b", false);
+		// form.setVisibleById("3b", false);
 
 	 }
 	 else if (activity == COMPRAS || activity == HOSPITALIDADE ){
