@@ -1043,6 +1043,18 @@ Caso não tenha havia contratação informe que não houve candidato selecionado
       <destinationSequenceId>15</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>RecrutamentoSelecao</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>5</version>
+        <sequence>12</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;novafuncao&quot;</condition>
+      <destinationSequenceId>49</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
   </list>
   <list>
     <ProcessLink>
