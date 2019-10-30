@@ -1,4 +1,4 @@
-var ABERTURA = 0;
+	var ABERTURA = 0;
 	var SOLICITAR = 4;	
 	var APROVACAO_GESTOR =5;
 	var CORRIGIR = 142;
@@ -191,7 +191,7 @@ function setSelectedZoomItem(selectedItem) {
     		$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);	  
     }
     else if (campoZOOM == RATEIO) {    
-		buscaItensRateio(selectedItem["CODIGO"]);
+			buscaItensRateio(selectedItem["CODIGO"]);
 	
     }    
     else if (campoZOOM == EVENTO){    	
@@ -210,7 +210,8 @@ function setSelectedZoomItem(selectedItem) {
     	
     }
     else if (campoZOOM == FORNECEDOR){
-    		$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
+	    	$("#razaosocial").prop("disabled", false);
+	    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
     	//	$("#nomefantasia").val(selectedItem["CNPJ"]);  		
     		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   		
     		if (selectedItem["TIPO"] == "JURIDICA"){ 	
@@ -226,7 +227,7 @@ function setSelectedZoomItem(selectedItem) {
 }
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA 	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR	){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -569,32 +570,39 @@ function removeItens() {
 
 }
 
+/*
+
 function calculaValores(){
-	//*mensal e fixo
-	//recebe o periodo para identificar quantos meses e depois multiplica pelo valor mensal
-	//para calcular o valor anual.
-	//Valor mensal obrigatório e diferente de zero
-	
-	//*mensal por demanda
-	// recebe o periodo para identificar quantos meses e depois calcular o valor amual.
-	//valor mensal deve ser zero caso não tenha teto mensal
-	//valor anual é obrigatório
+	var dtInicio = convertStringToData($('#dtInicio').val());
+	var dtFim = convertStringToData($('#dtFim').val());
+	//var diferencaMeses  = moment.range(dtInicio, dtFim);
 	
 	if (document.getElementById("mensal").checked == true){
-
-		var dtInicio = convertStringToData($('#dtInicio').val());
-		dtInicio.getMonth();
-		var dtFim = convertStringToData($('#dtFim').val());
-		dtFim.getMonth();
-		
-		
-		
+		if (document.getElementById("fixo").checked == true){
+			
+		//	log.info("CALCULO MESES");
+	//		log.info(diferencaMeses.diff('months'));
+			
+			//Calcula quantos meses terá o contrato
+			//multiplica a quantidade de meses pelo valor mensal para preencher o valor anual
+			//O valor mensal será obrigatório e diferente de zero
+			
+		}
+		else if (document.getElementById("demanda").checked == true){
+			//Calcula quantos meses terá o contrato
+			//O valor mensal deve ser zero
+			//O valor anual será obrigatório e diferente de zero
+			$('#valorMensal').val(0);
+			
+			
+		}	
 	}
 	else if (document.getElementById("unico").checked == true){
 	
 	}
 	
 }
+*/
 
 
 

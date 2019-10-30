@@ -50,7 +50,32 @@ function validateForm(form){
 	}
 	
 	
-	if (activity == SOLICITAR  ){
+	if (activity == SOLICITAR ){
+		
+		   if (form.getValue("resumo") == null || form.getValue("resumo") == "") {
+	            throw "Você precisa informar o campo resumo do serviço";
+	        }
+		   if (form.getValue("objetivos") == null || form.getValue("objetivos") == "") {
+	            throw "Você precisa informar o campo objetivo";
+	        }
+		   if (form.getValue("justificativa") == null || form.getValue("justificativa") == "") {
+	            throw "Você precisa informar o campo justificativa";
+	        }
+		   if (form.getValue("resultados") == null || form.getValue("resultados") == "") {
+	            throw "Você precisa informar o campo resutlado";
+	        }
+		   if (form.getValue("localServico") == null || form.getValue("localServico") == "") {
+	            throw "Você precisa informar o o campo local de realização do serviço";
+	        }
+		   if (form.getValue("perfil") == null || form.getValue("perfil") == "") {
+	            throw "Você precisa informar o tipo de perfil.";
+	        }
+		   if (form.getValue("supervisao") == null || form.getValue("supervisao") == "") {
+	            throw "Você precisa informar quem é o supervisor/responsável pelas atividades.";
+	        }
+		
+		
+		
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
 		validaLinhasRepetidas();
