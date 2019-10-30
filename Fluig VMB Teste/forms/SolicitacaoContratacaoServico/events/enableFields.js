@@ -1,16 +1,32 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
-	var APROVACAO =5;
-	var COMPRAS = 12;
-	var HOSPITALIDADE = 22;
+	var SOLICITAR = 4;	
+	var APROVACAO_GESTOR =5;
+	var CORRIGIR = 142;
+	var REALIZAR_COTACAO_COMPRAS = 12;
+	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
+	var ENVIAR_APROVACAO_COMPRAS = 209;
+	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var APROVACAO_SERVICO_COMPRAS = 105;
+	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
+	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
+	var VERIFICAR_APROVACAO_COMPRAS = 145;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
+	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var INTEGRAR_PROTHEUS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS = 215;
+	var VALIDAR_RH = 16;
 	
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
 	
 	
-	if (activity == ABERTURA ){
+	if (activity == ABERTURA || activity  == SOLICITAR || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
+		 form.setValue("aprovacao","");
+		 form.setValue("dtInicio","");
+		 form.setValue("dtFim","");
 		 
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
@@ -31,7 +47,7 @@ function enableFields(form){
 	
 			 
 	}
-	else if (activity == APROVACAO){
+	else if (activity == APROVACAO_GESTOR){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
@@ -47,9 +63,17 @@ function enableFields(form){
 		    form.setEnabled("aprovacao", true);		
 		 
 	}
-	else if (activity == COMPRAS || activity == HOSPITALIDADE){		
-		  	form.setEnabled("aprovacao", false);		
-		 
+	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){		
+			form.setValue("solicitacao",getValue('WKNumProces'));
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
 		    form.setEnabled("valor", true);	
 		    form.setEnabled("txtproduto", true);	
 		    form.setEnabled("codigoProduto", true);

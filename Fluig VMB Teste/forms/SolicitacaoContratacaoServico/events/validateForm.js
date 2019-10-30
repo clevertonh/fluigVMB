@@ -1,8 +1,21 @@
 function validateForm(form){
 	var ABERTURA = 0;
-	var APROVACAO =5;
-	var COMPRAS = 12;
-	var HOSPITALIDADE = 22;
+	var SOLICITAR = 4;	
+	var APROVACAO_GESTOR =5;
+	var CORRIGIR = 142;
+	var REALIZAR_COTACAO_COMPRAS = 12;
+	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
+	var ENVIAR_APROVACAO_COMPRAS = 209;
+	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var APROVACAO_SERVICO_COMPRAS = 105;
+	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
+	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
+	var VERIFICAR_APROVACAO_COMPRAS = 145;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
+	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var INTEGRAR_PROTHEUS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS = 215;
+	var VALIDAR_RH = 16;
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -24,52 +37,44 @@ function validateForm(form){
     	usuarioLogado = usuariosubstituto;
     }
     
-
-	if (activity == ABERTURA ||  activity == APROVACAO ){
+	 //retorna email usuario logado
+    var email = retornaEmailUsuario(usuarioLogado);
 	
-		 //retorna email usuario logado
-	    var email = retornaEmailUsuario(usuarioLogado);
+	var statusUsuario = false;
 		
-		var statusUsuario = false;
-			
-		//consulta situação atual do solicitante
-		statusUsuario = consultaAfastamento(email);
-		
-		if (statusUsuario == true ){
-			 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
-		}
-		
-		
+	//consulta situação atual do solicitante
+	statusUsuario = consultaAfastamento(email);
+	
+	if (statusUsuario == true ){
+		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+	}
+	
+	
+	if (activity == SOLICITAR  ){
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
 		validaLinhasRepetidas();
 		validaPercentualRateio();
 		validaAtividades();
-		
-		//valida campos do produto
-		validaProdutos();
-		
-		
-		if (activity == APROVACAO){
 			
-	 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
-            if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-                throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
-            }
-
-            if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
-                throw "Você precisa informar o motivo para reprovação da solicitação.";
-            }
-            
-			//valida se aprovador é diferente do solicitante
-			if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
-	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-	            }    
-		}
-		
 	}
    
-	
+	else if (activity == APROVACAO_GESTOR){
+		
+ 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
+            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+        }
+
+        if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
+            throw "Você precisa informar o motivo para reprovação da solicitação.";
+        }
+        
+		//valida se aprovador é diferente do solicitante
+		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
+          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+            }    
+	}
 	
     function consultaAfastamento(emailLogado){   	    	
   	 	 var constraints   = new Array();

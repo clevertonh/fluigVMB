@@ -1,8 +1,22 @@
 function displayFields(form,customHTML){
 	var ABERTURA = 0;
-	var APROVACAO =5;
-	var COMPRAS = 12;
-	var HOSPITALIDADE = 22;
+	var SOLICITAR = 4;	
+	var APROVACAO_GESTOR =5;
+	var CORRIGIR = 142;
+	var REALIZAR_COTACAO_COMPRAS = 12;
+	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
+	var ENVIAR_APROVACAO_COMPRAS = 209;
+	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var APROVACAO_SERVICO_COMPRAS = 105;
+	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
+	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
+	var VERIFICAR_APROVACAO_COMPRAS = 145;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
+	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var INTEGRAR_PROTHEUS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS = 215;
+	var VALIDAR_RH = 16;
+	
 	
 	var activity = getValue('WKNumState');
 
@@ -21,13 +35,13 @@ function displayFields(form,customHTML){
 	 
 	 form.setVisibleById("prazoaprovacao", false); 
 	 
-	 if (activity == ABERTURA || activity == APROVACAO){
-		// form.setVisibleById("3b", false);
+	 if (activity == ABERTURA || activity == SOLICITAR || activity == APROVACAO_GESTOR){
+		 form.setVisibleById("3b", false);
 
 	 }
-	 else if (activity == COMPRAS || activity == HOSPITALIDADE ){
+	 else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE ){
 		 form.setVisibleById("div_produto", false); 
-		// form.setVisibleById("div_status", false); 
+		 form.setVisibleById("div_status", false); 
 		 
 	 }
 	 

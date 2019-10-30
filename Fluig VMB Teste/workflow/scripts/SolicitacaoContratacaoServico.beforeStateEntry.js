@@ -2,6 +2,7 @@ function beforeStateEntry(sequenceId){
 	var ABERTURA = 0;
 	var SOLICITAR = 4;	
 	var APROVACAO_GESTOR =5;
+	var CORRIGIR = 142;
 	var REALIZAR_COTACAO_COMPRAS = 12;
 	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
 	var ENVIAR_APROVACAO_COMPRAS = 209;

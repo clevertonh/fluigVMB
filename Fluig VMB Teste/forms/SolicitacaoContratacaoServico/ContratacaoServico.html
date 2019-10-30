@@ -63,13 +63,13 @@ class="fluigicon fluigicon-document-square"></i>
                                                                 </li>
                                                                 <li role="presentation" class="disabled">
                                                                     <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Forma de pagamento"> <span class="round-tab"> <i
-class="fluigicon fluigicon-money"></i>
+class="fluigicon fluigicon-calendar"></i>
 </span>
                                                                     </a>
                                                                 </li>
                                                                 <li role="presentation" class="disabled">
                                                                     <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Prazo"> <span class="round-tab"> <i
-class="fluigicon fluigicon-calendar"></i>
+class="fluigicon fluigicon-money"></i>
 </span>
                                                                     </a>
                                                                 </li>
@@ -367,29 +367,32 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <div class="panel-body">
                                                                     <div class="row">
                                                                         <div class="form-group col-md-3">
-                                                                            <label>Período de pagamento</label>
+                                                                            <label>Período de execução do serviço</label>
                                                                             <br>
-                                                                            <label for="mensal">Mensal</label>
-                                                                            <input type="radio" id="mensal" name="formapgto" value="mensal">
-                                                                            <label for="unico">Pagamento único</label>
-                                                                            <input type="radio" id="unico" name="formapgto" value="unico">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="form-group col-md-3">
+                                                                            <label for="dtInicio">Data de Início</label>
+                                                                            <div class="input-group date">
+                                                                                <input type="text" class="form-control" id="dtInicio" name="dtInicio">
+                                                                                <span class="input-group-addon"> <span
+class="fluigicon fluigicon-calendar"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="form-group col-md-3">
-                                                                            <label>Definição do valor</label>
-                                                                            <br>
-                                                                            <label for="fixo">Valor fixo</label>
-                                                                            <input type="radio" id="fixo" name="definicaoValor" value="fixo">
-                                                                            <label for="demanda">Valor por demanda</label>
-                                                                            <input type="radio" id="demanda" name="definicaoValor" value="demanda">
+                                                                            <label for="dtFim">Data final</label>
+                                                                            <div class="input-group date">
+                                                                                <input type="text" class="form-control" id="dtFim" name="dtFim">
+                                                                                <span class="input-group-addon"> <span
+class="fluigicon fluigicon-calendar"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="form-group col-md-2">
-                                                                            <label>Valor mensal ou limite mensal</label>
-                                                                            <input type="number" id="valorMensal" name="valorMensal" class="form-control">
-                                                                        </div>
-                                                                        <div class="form-group col-md-2">
-                                                                            <label>Valor anual ou limite anual </label>
-                                                                            <input type="number" id="valorAnual" name="valorAnual" class="form-control">
-                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                                 <ul class="list-inline pull-left">
@@ -409,32 +412,29 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <div class="panel-body">
                                                                     <div class="row">
                                                                         <div class="form-group col-md-3">
-                                                                            <label>Prazo de execução do serviço</label>
+                                                                            <label>Período de pagamento</label>
                                                                             <br>
-
+                                                                            <label for="mensal">Mensal</label>
+                                                                            <input type="radio" id="mensal" name="formapgto" value="mensal">
+                                                                            <label for="unico">Pagamento único</label>
+                                                                            <input type="radio" id="unico" name="formapgto" value="unico">
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row">
-
+                                                                        <div class="form-group col-md-4">
+                                                                            <label>Definição do valor</label>
+                                                                            <br>
+                                                                            <label for="fixo">Valor fixo</label>
+                                                                            <input type="radio" id="fixo" name="definicaoValor" value="fixo">
+                                                                            <label for="demanda">Valor por demanda</label>
+                                                                            <input type="radio" id="demanda" name="definicaoValor" value="demanda">
+                                                                        </div>
                                                                         <div class="form-group col-md-2">
-                                                                            <label for="dtInicio">Data de Início</label>
-                                                                            <div class="input-group date">
-                                                                                <input type="text" class="form-control" id="dtInicio" name="dtInicio">
-                                                                                <span class="input-group-addon"> <span
-class="fluigicon fluigicon-calendar"></span>
-                                                                                </span>
-                                                                            </div>
+                                                                            <label>Valor mensal ou limite mensal</label>
+                                                                            <input type="number" id="valorMensal" name="valorMensal" class="form-control">
                                                                         </div>
                                                                         <div class="form-group col-md-2">
-                                                                            <label for="dtFim">Data final</label>
-                                                                            <div class="input-group date">
-                                                                                <input type="text" class="form-control" id="dtFim" name="dtFim">
-                                                                                <span class="input-group-addon"> <span
-class="fluigicon fluigicon-calendar"></span>
-                                                                                </span>
-                                                                            </div>
+                                                                            <label>Valor anual ou limite anual </label>
+                                                                            <input type="number" id="valorAnual" name="valorAnual" class="form-control">
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
                                                                 <ul class="list-inline pull-right">
@@ -476,13 +476,14 @@ class="fluigicon fluigicon-calendar"></span>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <Label for="devolver">Devolver para correção</Label>
-                                                    <input type="radio" id="devolver" name="aprovacao" value="corrigir" />
+                                                    <Label for="corrigir">Devolver para correção</Label>
+                                                    <input type="radio" id="corrigir" name="aprovacao" value="corrigir" />
                                                 </div>
 
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="3b">
+                                       		
                                             <div class="panel-body">
                                                 <div class="panel panel-success">
                                                     <div class="panel-heading ">
@@ -508,13 +509,13 @@ class="fluigicon fluigicon-calendar"></span>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label>Razão Social</label>
-                                                                <input class="form-control" type="text" id="razaosocial" name="razaosocial">
+                                                                <input class="form-control" type="text" id="razaosocial" name="razaosocial" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-5">
                                                                 <label>Nome Fantásia</label>
-                                                                <input class="form-control" type="text" id="nomefantasia" name="nomefantasia">
+                                                                <input class="form-control" type="text" id="nomefantasia" name="nomefantasia" readonly>
                                                             </div>
                                                             <div class="form-group col-md-2">
                                                                 <label>Codigo Fornecedor</label>
@@ -524,38 +525,38 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <label>Tipo de Pessoa</label>
                                                                 <br>
                                                                 <label for="fisica">Fisica</label>
-                                                                <input type="radio" id="fisica" name="tipoPessoa" value="fisica">
+                                                                <input type="radio" id="fisica" name="tipoPessoa" value="fisica" readonly>
                                                                 <label for="juridica">Juridica</label>
-                                                                <input type="radio" id="juridica" name="tipoPessoa" value="juridica">
+                                                                <input type="radio" id="juridica" name="tipoPessoa" value="juridica" readonly>
 
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                         	<div class="form-group col-md-4">
                                                         		<label>Meio de pagamento</label>
-                                                        		<input type="text" id="meioPagamento" name="meioPagamento" class="form-control">
+                                                        		<input type="text" id="meioPagamento" name="meioPagamento" class="form-control" readonly>
                                                         	</div>
                                                         	<div class="form-group col-md-4">
                                                         		<label>Forma de pagamento</label>
-                                                        		<input type="text" id="condicaoPgto" name="condicaoPgto" class="form-control"> 
+                                                        		<input type="text" id="condicaoPgto" name="condicaoPgto" class="form-control" readonly> 
                                                         	</div>
                                                         </div>
                                                         <div class="row">
                                                         	<div class="form-group col-md-2">
                                                         		<label>Banco</label>
-                                                        		<input type="text" id="banco" name="banco" class="form-control">
+                                                        		<input type="text" id="banco" name="banco" class="form-control" readonly>
                                                         	</div>
                                                         	<div class="form-group col-md-2">
                                                         		<label>Agência</label>
-                                                        		<input type="text" id="agencia" name="agencia" class="form-control">
+                                                        		<input type="text" id="agencia" name="agencia" class="form-control" readonly>
                                                         	</div>
                                                         	<div class="form-group col-md-3">
                                                         		<label>Conta</label>
-                                                        		<input type="text" id="contaFornecedor" name="contaFornecedor" class="form-control">
+                                                        		<input type="text" id="contaFornecedor" name="contaFornecedor" class="form-control" readonly>
                                                         	</div>
                                                         	<div class="form-group col-md-3">
                                                         		<label>Tipo de Conta</label>
-                                                        		<input type="text" id="tipoConta" name="tipoConta" class="form-control">
+                                                        		<input type="text" id="tipoConta" name="tipoConta" class="form-control" readonly>
                                                         	</div>
                                                         </div>
                                                         <div class="row">
@@ -577,7 +578,7 @@ class="fluigicon fluigicon-calendar"></span>
 																}" />
                                                             </div>
                                                             <div class="form-group col-md-3">
-                                                                <label>Código produto</label>
+                                                                <label>Código do serviço</label>
                                                                 <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" readonly />
                                                             </div>
                                                         </div>
@@ -607,7 +608,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                 </div>
                                             </div>
                                             <div class="panel-body" id="div_status">
-                                                <div class="panel panel-success">
+                                                <div class="panel panel-info">
                                                     <div class="panel-heading ">
                                                         <h5 class="panel-title">
 															<b>Aprovação do serviço</b>
@@ -623,7 +624,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                 </div>
                                             </div>
                                             <div class="panel-body" id="div_rh">
-		                                                <div class="panel panel-success">
+		                                                <div class="panel panel-info">
 		                                                    <div class="panel-heading ">
 		                                                        <h5 class="panel-title">
 																	<b>Validação de Pessoas e Cultura</b>
@@ -643,6 +644,7 @@ class="fluigicon fluigicon-calendar"></span>
 		                                                    </div>
 		                                                </div>
                                             		</div>
+                                       	
                                         </div>
                                     </div>
                                 </div>

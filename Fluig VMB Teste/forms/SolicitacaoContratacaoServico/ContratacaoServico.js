@@ -1,7 +1,21 @@
 var ABERTURA = 0;
-var APROVACAO_GESTOR = 5;
-var COMPRAS = 12;
-var HOSPITALIDADE = 22;
+	var SOLICITAR = 4;	
+	var APROVACAO_GESTOR =5;
+	var CORRIGIR = 142;
+	var REALIZAR_COTACAO_COMPRAS = 12;
+	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
+	var ENVIAR_APROVACAO_COMPRAS = 209;
+	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var APROVACAO_SERVICO_COMPRAS = 105;
+	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
+	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
+	var VERIFICAR_APROVACAO_COMPRAS = 145;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
+	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var INTEGRAR_PROTHEUS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS = 215;
+	var VALIDAR_RH = 16;
+	
 
 
 //Initialize tooltips
@@ -41,10 +55,7 @@ function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
-
-
 var visibilidade = true;
-
 
 var dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
     pickDate: true,
@@ -53,8 +64,6 @@ var dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
     minDate: new Date().toLocaleString(),
     maxDate: new Date().toLocaleString()
 });
-
-
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
@@ -76,7 +85,20 @@ $(document).ready(function() {
 		
 		
 	}
-	else if (ATIVIDADE == COMPRAS || ATIVIDADE == HOSPITALIDADE){		
+	else if (ATIVIDADE == CORRIGIR){
+		var dtInicio = FLUIGC.calendar('#dtInicio', {
+		    pickDate: true,
+		    pickTime: false,
+		    minDate: new Date().toLocaleString(),
+		});
+		
+		var dtFim = FLUIGC.calendar('#dtFim', {
+		    pickDate: true,
+		    pickTime: false,
+		    minDate: new Date().toLocaleString(),
+		});
+	}
+	else if (ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){		
 	   	 $("#valor").blur(function(){
 	   		 $("#div_produto").show();
 			 reloadZoomFilterValues("txtproduto", "FLUIG," + "11");
@@ -226,7 +248,6 @@ function adicionaLinha() {
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
 }
-
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -424,7 +445,6 @@ function adicionaItem(itens) {
     }
 }
 
-
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
   //variavel para armazenar a data limite para aprovação   
@@ -476,11 +496,6 @@ function addAnos(data, anos) {
   return new Date(data.setYear(data.getFullYear() + anos));
 
 }
-
-
-
-
-
 
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
@@ -554,7 +569,32 @@ function removeItens() {
 
 }
 
+function calculaValores(){
+	//*mensal e fixo
+	//recebe o periodo para identificar quantos meses e depois multiplica pelo valor mensal
+	//para calcular o valor anual.
+	//Valor mensal obrigatório e diferente de zero
+	
+	//*mensal por demanda
+	// recebe o periodo para identificar quantos meses e depois calcular o valor amual.
+	//valor mensal deve ser zero caso não tenha teto mensal
+	//valor anual é obrigatório
+	
+	if (document.getElementById("mensal").checked == true){
 
+		var dtInicio = convertStringToData($('#dtInicio').val());
+		dtInicio.getMonth();
+		var dtFim = convertStringToData($('#dtFim').val());
+		dtFim.getMonth();
+		
+		
+		
+	}
+	else if (document.getElementById("unico").checked == true){
+	
+	}
+	
+}
 
 
 

@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Nomeacao de cargo</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>2515</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -203,8 +203,8 @@
         <version>1</version>
         <sequence>12</sequence>
       </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
+      <stateName>aprovado</stateName>
+      <stateDescription>aprovado</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -248,11 +248,11 @@
         <companyId>1</companyId>
         <processId>NomeacaoCargo</processId>
         <version>1</version>
-        <sequence>16</sequence>
+        <sequence>17</sequence>
       </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
-      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <stateName>reprovado</stateName>
+      <stateDescription>reprovado</stateDescription>
+      <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -260,7 +260,7 @@
       <engineAllocationConfiguration></engineAllocationConfiguration>
       <selectColleague>0</selectColleague>
       <initialState>false</initialState>
-      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
       <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
       <allowanceAuthorityTime>0</allowanceAuthorityTime>
       <frequenceAuthorityTime>1</frequenceAuthorityTime>
@@ -283,7 +283,7 @@
       <inhibitTransfer>false</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
-      <bpmnType>68</bpmnType>
+      <bpmnType>65</bpmnType>
       <signalId>0</signalId>
       <counterSign>false</counterSign>
       <openInstances>0</openInstances>
@@ -354,7 +354,7 @@
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>10</initialStateSequence>
-      <finalStateSequence>16</finalStateSequence>
+      <finalStateSequence>17</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -462,7 +462,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>NomeacaoCargo</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -473,7 +473,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>NomeacaoCargo</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
