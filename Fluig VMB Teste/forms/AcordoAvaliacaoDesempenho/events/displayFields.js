@@ -13,7 +13,7 @@ function displayFields(form,customHTML){
     customHTML.append("</script>");
 	
     if (activity == INICIAL || activity == ACORDO){		    
-    	
+    		
     		form.setVisibleById("div_comentario1", false);	
     		form.setVisibleById("div_comentario2", false);	
     		form.setVisibleById("div_comentario3", false);	
@@ -52,12 +52,17 @@ function displayFields(form,customHTML){
 		    form.setVisibleById("campo_15", false);
 		    form.setVisibleById("campo_16", false);
 		
-		
+		    form.setVisibleById("div_sumario", false);
+		    form.setVisibleById("div_avancar", false);
+		    form.setVisibleById("wizard_3", false);
+		    
 	 
+		    
 		    
 		    
 	 }
     else if (activity == FEEDBACK1){
+    	form.setVisibleById("div_sumario", false);
     	//ABA 1
     	//form.setVisibleById("div_comentario4", false);	
 		//form.setVisibleById("div_comentario5", false);	
@@ -89,7 +94,15 @@ function displayFields(form,customHTML){
     	
     }
     else if (activity == FEEDBACK2){
+    	form.setVisibleById("div_sumario", false);
     	//form.setVisibleById("div_analise", false);
+    	
+    	
+    	
+    }
+    
+    else if (activity == AVALIACAO){
+    
     	
     	
     	

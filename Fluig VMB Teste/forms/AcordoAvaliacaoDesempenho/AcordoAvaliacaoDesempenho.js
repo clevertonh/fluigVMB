@@ -48,9 +48,7 @@ var visibilidade = true;
 
 
 //preenche data da solicitação no momento que abre a solicitação
-$(document).ready(function() {
-
-	
+$(document).ready(function() {	
 	if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
 		dtAcordo = FLUIGC.calendar('#dataAcordo', {
 		    pickDate: true,
@@ -63,22 +61,15 @@ $(document).ready(function() {
 		dtAcordo.setDate(new Date().toLocaleString());
 		
 	}
-	
 
-	
 	
 });
 
 
-
 function fnCustomDeleteMeta(oElement) {	  
-
-	// $("#acao___1").val() =="" verificar se o campo esta vazio, se sim deixar deletar
-	
-	
-	
+	// $("#acao___1").val() =="" verificar se o campo esta vazio, se sim deixar deletar	
 	if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO ){
-			//verificar se é campo meta esta vazio
+			//verificar se o campo meta esta vazio
 			//se sim, permitir excluir
 			
 			FLUIGC.toast({
@@ -91,28 +82,27 @@ function fnCustomDeleteMeta(oElement) {
 		else {
 			fnWdkRemoveChild(oElement);	
 		}		
-	}
+}
 
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
     var BENEFICIARIO ="beneficiario";
-   
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
 
      if (campoZOOM == BENEFICIARIO){
     		$("#cpfbeneficiario").val(selectedItem["CPF"]);
-    } 
+     } 
     
     
 }
 
 function adicionaMeta() {
-    var indice = wdkAddChild('tableMetas');
-
+  
     if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
+    	  var indice = wdkAddChild('tableMetas');
     	 //$('td:nth-child(5)').hide();
     	 $('td:nth-child(6)').hide();
     	 $('td:nth-child(7)').hide();
@@ -125,7 +115,8 @@ function adicionaMeta() {
     	 
     }
     
-    if (ATIVIDADE == FEEDBACK2){
+    if (ATIVIDADE == FEEDBACK1 || ATIVIDADE == FEEDBACK2 ){
+    	var indice = wdkAddChild('tableMetas');
     	//BLOQUEAR CAMPOS DE FEEDBACK 1
     }
    
@@ -134,16 +125,18 @@ function adicionaMeta() {
 
 function clickProgresso(){
 	if (document.getElementById("verde").checked == true){
-		$('#progresso').css('background-color', '#008000');	
+		$('#div_14').css('background-color', '#008000');	
 	}
 	else if (document.getElementById("amarelo").checked == true){
-		$('#amarelo').css('background-color', '#FFFF00');	
+		$('#div_14').css('background-color', '#FFFF00');	
 	}
 	else if (document.getElementById("vermelho").checked == true){
-		$('#vermelho').css('background-color', '#FF0000');	
+		$('#div_14').css('background-color', '#FF0000');	
 	}
 	
 }
+
+
 
 function removedZoomItem(removedItem) {   
     var BENEFICIARIO ="beneficiario";
