@@ -5,6 +5,13 @@ function defineStructure() {
 	addColumn("TIPO");
 	addColumn("QTDE");
 	
+	addColumn("FANTASIA");
+	addColumn("FORM_PGTO");
+	addColumn("BANCO");
+	addColumn("AGENCIA");
+	addColumn("CONTA_F");
+	addColumn("TIPO_CONTA");
+	
 	setKey(["CODIGO"]);
 	
 }
@@ -17,6 +24,12 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("RAZAO_SOCIAL");
 	dataset.addColumn("TIPO");
 	dataset.addColumn("QTDE");
+	dataset.addColumn("FANTASIA");
+	dataset.addColumn("FORM_PGTO");
+	dataset.addColumn("BANCO");
+	dataset.addColumn("AGENCIA");
+	dataset.addColumn("CONTA_F");
+	dataset.addColumn("TIPO_CONTA");
 	
 	  var objdata;
 	    var dados;
@@ -67,11 +80,11 @@ function createDataset(fields, constraints, sortFields) {
 	    	objdata = JSON.parse(dados);
 			for(var i in objdata){
 				if(filtro != null && (objdata[i].CNOME.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO,objdata[i].CQTDE_ADF]);	
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ,objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);	
 				
 				}
 				if(filtro == null){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO,objdata[i].CQTDE_ADF]);			
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ,objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);			
 				}		
 			}
 		}

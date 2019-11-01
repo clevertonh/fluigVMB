@@ -13,13 +13,12 @@ function displayFields(form,customHTML){
 	var VERIFICAR_APROVACAO_COMPRAS = 145;
 	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
 	var SOLICITACAO_CONTRATO_COMPRAS = 63;
-	var INTEGRAR_PROTHEUS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS = 215;
-	var VALIDAR_RH = 16;
+	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
+	var VALIDAR_RH = 161;
 	
 	
 	var activity = getValue('WKNumState');
-
 	var solicitante = getValue("WKUser");  
 	
   	customHTML.append("<script>");
@@ -34,17 +33,33 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("_matriculasolicitante", false);
 	 
 	 form.setVisibleById("prazoaprovacao", false); 
+	 form.setVisibleById("div_tipoAprovacao", false); 
 	 
-	 if (activity == ABERTURA || activity == SOLICITAR || activity == APROVACAO_GESTOR){
+	 
+	 if (activity == ABERTURA || activity == SOLICITAR || activity == CORRIGIR || activity == APROVACAO_GESTOR){
 		 form.setVisibleById("3b", false);
+		 form.setVisibleById("4b", false);
+		 
 
 	 }
 	 else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE ){
 		 form.setVisibleById("div_produto", false); 
 		 form.setVisibleById("div_status", false); 
+		 form.setVisibleById("div_rh", false);
+		 form.setVisibleById("4b", false);
+		 
+		 
 		 
 	 }
-	 
+	 else if (activity == VALIDAR_RH){
+		 form.setVisibleById("div_status", false); 
+		 
+	 }
+	 else if (activity == ENVIAR_APROVACAO_COMPRAS || activity == ENVIAR_APROVACAO_HOSPITALIDADE ){
+		 form.setVisibleById("div_status", false); 
+		 
+	 }
+
 	 
     
 }

@@ -13,9 +13,9 @@ function validateForm(form){
 	var VERIFICAR_APROVACAO_COMPRAS = 145;
 	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
 	var SOLICITACAO_CONTRATO_COMPRAS = 63;
-	var INTEGRAR_PROTHEUS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS = 215;
-	var VALIDAR_RH = 16;
+	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
+	var VALIDAR_RH = 161;
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -50,38 +50,21 @@ function validateForm(form){
 	}
 	
 	
-	if (activity == SOLICITAR ){
-		
-		   if (form.getValue("resumo") == null || form.getValue("resumo") == "") {
-	            throw "Você precisa informar o campo resumo do serviço";
+	if (activity == SOLICITAR || activity == CORRIGIR){
+	
+			if (form.getValue("solicitante") == null || form.getValue("solicitante") == "") {
+	            throw "Seus dados de solicitante não foram carregados, por favor, atualize o navegador e tente novamente. Se o erro persistir, entre em contato com o setor de Sistemas.";
 	        }
-		   if (form.getValue("objetivos") == null || form.getValue("objetivos") == "") {
-	            throw "Você precisa informar o campo objetivo";
-	        }
-		   if (form.getValue("justificativa") == null || form.getValue("justificativa") == "") {
-	            throw "Você precisa informar o campo justificativa";
-	        }
-		   if (form.getValue("resultados") == null || form.getValue("resultados") == "") {
-	            throw "Você precisa informar o campo resutlado";
-	        }
-		   if (form.getValue("localServico") == null || form.getValue("localServico") == "") {
-	            throw "Você precisa informar o o campo local de realização do serviço";
-	        }
-		   if (form.getValue("perfil") == null || form.getValue("perfil") == "") {
-	            throw "Você precisa informar o tipo de perfil.";
-	        }
-		   if (form.getValue("supervisao") == null || form.getValue("supervisao") == "") {
-	            throw "Você precisa informar quem é o supervisor/responsável pelas atividades.";
-	        }
-		
-		
-		
+		 
+		 
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
 		validaLinhasRepetidas();
 		validaPercentualRateio();
 		validaAtividades();
-			
+		
+		validaCamposPreenchidos();
+		
 	}
    
 	else if (activity == APROVACAO_GESTOR){
@@ -98,8 +81,43 @@ function validateForm(form){
 		//valida se aprovador é diferente do solicitante
 		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
           	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-            }    
+        }    
+		
+		
+		//funções para validar informações financeiras
+		validaLinhasPreenchidas();
+		validaLinhasRepetidas();
+		validaPercentualRateio();
+		validaAtividades();
+	
+		validaCamposPreenchidos();
+	
 	}
+	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){
+		//valida se aprovador é diferente do solicitante
+		if (form.getValue("cnpjcpf") == null  || form.getValue("cnpjcpf")  == "" ){
+          	 throw "Você precisa selecionar o fornecedor vencedor da cotação.";
+        } 
+		if (form.getValue("negociacao") == null  || form.getValue("negociacao")  == "" ){
+         	 throw "O campo de negociação deve ser preenchida.";
+        } 
+		if (form.getValue("condicaoPgto") == null  || form.getValue("condicaoPgto")  == "" ){
+        	 throw "É preciso informar o campo Forma de pagamento.";
+       } 
+		
+		
+		if (form.getValue("melhorProposta") == "nao" ){
+			if (form.getValue("justificativaP") !="" && form.getValue("justificativaP") != null){
+				throw "É preciso informar o motivo por não estar escolhendo o fornecedor de menor valor.";
+			}
+		}
+		
+		
+		
+	}
+
+	
+	
 	
     function consultaAfastamento(emailLogado){   	    	
   	 	 var constraints   = new Array();
@@ -320,5 +338,68 @@ function validateForm(form){
            }
      }
 	
+     
+     function validaCamposPreenchidos(){
+    	 if (form.getValue("resumo") == null || form.getValue("resumo") == "") {
+	            throw "Você precisa informar o campo resumo do serviço";
+	        }
+		   if (form.getValue("objetivos") == null || form.getValue("objetivos") == "") {
+	            throw "Você precisa informar o campo objetivo";
+	        }
+		   if (form.getValue("justificativa") == null || form.getValue("justificativa") == "") {
+	            throw "Você precisa informar o campo justificativa";
+	        }
+		   if (form.getValue("resultados") == null || form.getValue("resultados") == "") {
+	            throw "Você precisa informar o campo resutlado";
+	        }
+		   if (form.getValue("localServico") == null || form.getValue("localServico") == "") {
+	            throw "Você precisa informar o o campo local de realização do serviço";
+	        }
+		   if (form.getValue("perfil") == null || form.getValue("perfil") == "") {
+	            throw "Você precisa informar o tipo de perfil.";
+	        }
+		   if (form.getValue("supervisao") == null || form.getValue("supervisao") == "") {
+	            throw "Você precisa informar quem é o supervisor/responsável pelas atividades.";
+	        }
+		
+		   if (form.getValue("dtInicio") == null || form.getValue("dtInicio") == "") {
+	            throw "Você precisa informar prevista para inicio da execução do serviço.";
+	        }
+		   if (form.getValue("dtFim") == null || form.getValue("dtFim") == "") {
+	            throw "Você precisa informar prevista para termino da execução do serviço.";
+	        }
+		   
+		   if (form.getValue("formapgto") == null || form.getValue("formapgto") == "") {
+	            throw "Você precisa informar o campo período de pagamento.";
+	        }
+		   if (form.getValue("definicaoValor") == null || form.getValue("definicaoValor") == "") {
+	            throw "Você precisa informar o campo de definição de valor.";
+	        }
+		   
+		   if (form.getValue("definicaoValor") == "fixo"){
+			
+			   if (form.getValue("valorMensal") == null || form.getValue("valorMensal") == "" || parseFloat(form.getValue("valorMensal")) == 0) {
+		            throw "Você precisa informar qual o valor mensal do serviço.";
+		        }
+		   }
+		   
+		   if (form.getValue("valorAnual") == null || form.getValue("valorAnual") == "" || parseFloat(form.getValue("valorAnual")) == 0) {
+	            throw "Você precisa informar o valor total ou o valor limite total para a vigência do contrato.";
+	        }
+		   
+		   if ( parseFloat(form.getValue("valorAnual"))  < parseFloat(form.getValue("valorMensal")) ){
+			   throw "O valor total ou limite total não pode ser menor que o valor mensal.";
+		   }
+     }
 	
+}
+
+
+
+//recebe data do Fluig e convert para data normal
+function convertStringToData(StringToData) {
+    //variavel para armazenar a data limite para aprovação   
+    var data = StringToData.split('/');
+
+    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
 }

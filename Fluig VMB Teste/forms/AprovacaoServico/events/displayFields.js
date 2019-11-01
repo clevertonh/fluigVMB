@@ -12,6 +12,11 @@ function displayFields(form,customHTML){
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
 	
+	customHTML.append("<script>");
+    customHTML.append("var ATIVIDADE = " + activity + ";");
+    customHTML.append("</script>");
+	
+	
 	//log.info("----ATIVIDADE APROVACAO CONTRATOS: " + activity);
 	
 	//campos sempre ocultos

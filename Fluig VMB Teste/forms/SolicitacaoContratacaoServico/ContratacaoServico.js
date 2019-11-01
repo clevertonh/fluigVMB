@@ -12,8 +12,8 @@
 	var VERIFICAR_APROVACAO_COMPRAS = 145;
 	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
 	var SOLICITACAO_CONTRATO_COMPRAS = 63;
-	var INTEGRAR_PROTHEUS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS = 215;
+	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
 	var VALIDAR_RH = 16;
 	
 
@@ -71,17 +71,25 @@ $(document).ready(function() {
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
 	
+		var dataAtual = new Date();
+		var dias = 3;
+		// Incrementa a quantidade de dias na data atual:
+		dataAtual.setDate(dataAtual.getDate() + dias);
+	    //minDate: dataAtual
+		
 		var dtInicio = FLUIGC.calendar('#dtInicio', {
 		    pickDate: true,
 		    pickTime: false,
-		    minDate: new Date().toLocaleString(),
+		    minDate: new Date().toLocaleString()
+		    
 		});
-		
+				
 		var dtFim = FLUIGC.calendar('#dtFim', {
 		    pickDate: true,
 		    pickTime: false,
-		    minDate: new Date().toLocaleString(),
+		    minDate: new Date().toLocaleString()
 		});
+		
 		
 		
 	}
@@ -89,16 +97,16 @@ $(document).ready(function() {
 		var dtInicio = FLUIGC.calendar('#dtInicio', {
 		    pickDate: true,
 		    pickTime: false,
-		    minDate: new Date().toLocaleString(),
+		    minDate: new Date().toLocaleString()
 		});
 		
 		var dtFim = FLUIGC.calendar('#dtFim', {
 		    pickDate: true,
 		    pickTime: false,
-		    minDate: new Date().toLocaleString(),
+		    minDate: new Date().toLocaleString()
 		});
 	}
-	else if (ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){		
+	else if (ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){		
 	   	 $("#valor").blur(function(){
 	   		 $("#div_produto").show();
 			 reloadZoomFilterValues("txtproduto", "FLUIG," + "11");
@@ -210,11 +218,15 @@ function setSelectedZoomItem(selectedItem) {
     	
     }
     else if (campoZOOM == FORNECEDOR){
-	    	$("#razaosocial").prop("disabled", false);
 	    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
-    	//	$("#nomefantasia").val(selectedItem["CNPJ"]);  		
-    		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   		
-    		if (selectedItem["TIPO"] == "JURIDICA"){ 	
+    		$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
+    		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
+    		
+    		
+    	//	console.log(selectedItem["TIPO"]);
+    		
+    		if (selectedItem["TIPO"] == "JURIDICA"){ 
+    		//	console.log(selectedItem["TIPO"]);
     			//$("#fisica").attr('checked', false);   	    	
         		document.getElementById("juridica").click();  
         	}
@@ -222,6 +234,23 @@ function setSelectedZoomItem(selectedItem) {
     			//$("#juridica").attr('checked', false);
     			document.getElementById("fisica").click();  
     		}
+    		else if (selectedItem["TIPO"] == "FUNCIONARIO"){
+    			//$("#juridica").attr('checked', false);
+    			document.getElementById("fisica").click();  
+    		}
+    		
+    		$("#juridica").prop("disabled", true);
+    		$("#fisica").prop("disabled", true);
+    		
+    		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
+    		$("#banco").val(selectedItem["BANCO"]);   
+    		$("#agencia").val(selectedItem["AGENCIA"]);   
+    		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
+    		$("#tipoConta").val(selectedItem["TIPO_CONTA"]);   
+    
+    
+    
+    
     }
     
 }

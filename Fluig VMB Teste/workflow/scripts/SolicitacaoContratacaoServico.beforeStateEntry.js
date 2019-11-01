@@ -13,9 +13,9 @@ function beforeStateEntry(sequenceId){
 	var VERIFICAR_APROVACAO_COMPRAS = 145;
 	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
 	var SOLICITACAO_CONTRATO_COMPRAS = 63;
-	var INTEGRAR_PROTHEUS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS = 215;
-	var VALIDAR_RH = 16;
+	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
+	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
+	var VALIDAR_RH = 161;
 	
 	
 	
@@ -35,45 +35,68 @@ function beforeStateEntry(sequenceId){
 	
 	
     var aprovacao = hAPI.getCardValue("aprovacao");
-    var valor = hAPI.getCardValue("valor");
-    var produto = hAPI.getCardValue("codigoProduto");
-    
-    var cgc = hAPI.getCardValue("codigoProduto");
-    var codigoSA2 = hAPI.getCardValue("codigoProduto");
-    var razaoSocial = hAPI.getCardValue("codigoProduto");
-    var valido = hAPI.getCardValue("codigoProduto");
-    
-    
- if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
-	 
-	 //SALVA NO COMENTÁRIO OS DADOS DO FORNECEDOR ATUAL PARA O CASO DE HAVER TROCA DE FORNECEDOR
-	 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor " + cgc +"-"+razaoSocial + " selecionado como melhor opção do processo de cotação.");
-	 	 
-                  var constraint = new Array();                                 
-                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-                  constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
-                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
-                  
-                  /*
-                   var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    
-                      
-                   if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-                         throw resultDataset.getValue(0,"RETORNO");
-                      }
-                   else {
-                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor selecionado e processo enviado para aprovação");
-                   }
-                      
-                   */
-          
            
-    }	
- 
- else if (ativAtual == VALIDAR_RH){
-	 if (valido == "negado"){
-		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
+    var cgc = hAPI.getCardValue("cnpjcpf");
+    var razaoSocial = hAPI.getCardValue("razaosocial");     
+    var valido = hAPI.getCardValue("valido");
+     
+     if (ativAtual == APROVACAO_GESTOR){
+    	 if (aprovacao =="aprovado"){
+    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação aprovada.");
+    	 }
+    	 else if (aprovacao =="reprovado"){
+    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada.");
+    	 }
+     }
+    
+     else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
+		 	
+		 	if (nextAtv == VALIDAR_RH){
+		 		/*
+				 * verifica se foi adicionado anexo. 
+				 * Pois quando tem anexo é obrigatório marcar algo como comprado
+				 * */
+				 var anexos   = hAPI.listAttachments();
+			     var temAnexo = false;
+				
+			 	if (anexos.size() <= 0) {
+					throw "Você precisa anexar as cotações/propostas de acordo com a política de exigência de cotações.";
+			 	} 
+			 	
+			 	
+			 	 //SALVA NO COMENTÁRIO OS DADOS DO FORNECEDOR ATUAL PARA O CASO DE HAVER TROCA DE FORNECEDOR
+				 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor " + cgc +"-"+razaoSocial + " selecionado como melhor opção do processo de cotação.");
+			 	
+		 	}
+		 
+			
+		 	 
+	               //   var constraint = new Array();                                 
+//	                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+//	                  constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
+//	                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
+	                  
+	                  /*
+	                   var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    
+	                      
+	                   if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+	                         throw resultDataset.getValue(0,"RETORNO");
+	                      }
+	                   else {
+	                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor selecionado e processo enviado para aprovação");
+	                   }
+	                      
+	                   */
+	          
+	           
+	    }	
+	 
+	 else if (ativAtual == VALIDAR_RH){
+		 if (valido == "negado"){
+			 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
+		 }
 	 }
- }
+
  
  
  

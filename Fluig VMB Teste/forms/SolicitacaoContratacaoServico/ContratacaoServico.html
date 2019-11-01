@@ -40,6 +40,7 @@
                                         <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
                                         <li><a href="#2b" data-toggle="tab">Aprovador</a></li>
                                         <li><a href="#3b" data-toggle="tab">Compras</a></li>
+                                        <li><a href="#4b" data-toggle="tab">Gerência de P&C</a></li>
                                     </ul>
                                     <div class="tab-content clearfix">
                                         <div class="tab-pane active" id="1b">
@@ -72,7 +73,7 @@ class="fluigicon fluigicon-calendar"></i>
 class="fluigicon fluigicon-money"></i>
 </span>
                                                                     </a>
-                                                                </li>
+                                                                </li>                                                                
                                                             </ul>
                                                         </div>
                                                         <div class="tab-content">
@@ -210,8 +211,8 @@ class="fluigicon fluigicon-calendar"></span>
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div class="form-group">
-                                                                                                        <input type="hidden" name="projeto" id="projeto" />
-                                                                                                        <input type="zoom" name="txtprojeto" data-zoom="{
+                                                                                                        <input type="hidden" name="projeto" id="projeto" style="width: 150px;"/>
+                                                                                                        <input type="zoom" style="width: 150px;" name="txtprojeto" data-zoom="{
 'displayKey':'CODIGO',
 'datasetId':'VM_Projeto',
 'maximumSelectionLength':'1',
@@ -225,8 +226,8 @@ class="fluigicon fluigicon-calendar"></span>
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div class="form-group">
-                                                                                                        <input type="hidden" name="atividade" id="atividade" style="width: 200px;" />
-                                                                                                        <input type="zoom" name="txtatividade" style="width: 200px;" data-zoom="{
+                                                                                                        <input type="hidden" name="atividade" id="atividade" style="width: 150px;" />
+                                                                                                        <input type="zoom" name="txtatividade" style="width: 150px;" data-zoom="{
 'displayKey':'CODIGO',
 'datasetId':'ds_get_Atividade',
 'maximumSelectionLength':'1',
@@ -240,8 +241,8 @@ class="fluigicon fluigicon-calendar"></span>
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div class="form-group">
-                                                                                                        <input type="hidden" name="categoria" id="categoria" />
-                                                                                                        <input type="zoom" name="txtcategoria" data-zoom="{
+                                                                                                        <input type="hidden" name="categoria" style="width: 150px;" id="categoria" />
+                                                                                                        <input type="zoom" name="txtcategoria" style="width: 150px;" data-zoom="{
 'displayKey':'CODIGO',
 'datasetId':'VM_Categoria',
 'maximumSelectionLength':'1',
@@ -320,11 +321,11 @@ class="fluigicon fluigicon-calendar"></span>
                                                                     <div class="row">
                                                                         <div class="form-group col-md-6">
                                                                             <label>Objetivos</label>
-                                                                            <textarea class="form-control" rows="5" id="objetivos" name="objetivos"></textarea>
+                                                                            <textarea class="form-control" rows="5" id="objetivos" name="objetivos" placeholder="Quais os objetivos dessa contratação de serviço"></textarea>
                                                                         </div>
                                                                         <div class="form-group col-md-6">
                                                                             <label>Justificativa</label>
-                                                                            <textarea class="form-control" rows="5" id="justificativa" name="justificativa"></textarea>
+                                                                            <textarea class="form-control" rows="5" id="justificativa" name="justificativa" placeholder="Porque necessita contratar esse serviço"></textarea>
                                                                         </div>
 
                                                                     </div>
@@ -332,7 +333,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                                     <div class="row">
                                                                         <div class="form-group col-md-6">
                                                                             <label>Resultados esperados</label>
-                                                                            <textarea class="form-control" rows="5" id="resultados" name="resultados"></textarea>
+                                                                            <textarea class="form-control" rows="5" id="resultados" name="resultados" placeholder="Quais resultados essa contratação de serviço tratará para Visão Mundial"></textarea>
                                                                         </div>
                                                                         <div class="form-group col-md-6">
                                                                             <label>Local de realização do serviço</label>
@@ -346,7 +347,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                                         </div>
                                                                         <div class="form-group col-md-6">
                                                                             <label>Supervisor das atividades</label>
-                                                                            <input type="text" class="form-control" id="supervisao" name="supervisao">
+                                                                            <input type="text" class="form-control" id="supervisao" name="supervisao" placeholder="Nome do responsável por controlar as atividades">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -432,7 +433,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                                             <input type="number" id="valorMensal" name="valorMensal" class="form-control">
                                                                         </div>
                                                                         <div class="form-group col-md-2">
-                                                                            <label>Valor anual ou limite anual </label>
+                                                                            <label>Valor total ou limite total </label>
                                                                             <input type="number" id="valorAnual" name="valorAnual" class="form-control">
                                                                         </div>
                                                                     </div>
@@ -488,7 +489,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                 <div class="panel panel-success">
                                                     <div class="panel-heading ">
                                                         <h5 class="panel-title">
-														<b>Informações financeira do fornecedor selecionado</b>
+														<b>Informações financeira do fornecedor selecionado como melhor proposta</b>
 														</h5>
                                                     </div>
                                                     <div class="panel-body">
@@ -503,7 +504,13 @@ class="fluigicon fluigicon-calendar"></span>
 																{'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
 																{'field':'CNPJ','label':'CNPJ','standard':'true'},
 																{'field':'CODIGO','label':'CODIGO'},
-																{'field':'TIPO','label':'TIPO', 'visible' : 'false'}						  					
+																{'field':'TIPO','label':'TIPO', 'visible' : 'false'},
+																{'field':'FANTASIA','label':'FANTASIA', 'visible' : 'false'},
+																{'field':'FORM_PGTO','label':'FORM_PGTO', 'visible' : 'false'},
+																{'field':'BANCO','label':'BANCO', 'visible' : 'false'},
+																{'field':'AGENCIA','label':'AGENCIA', 'visible' : 'false'},
+																{'field':'CONTA_F','label':'CONTA_F', 'visible' : 'false'},
+																{'field':'TIPO_CONTA','label':'TIPO_CONTA', 'visible' : 'false'}																				  					
 																]
 																}">
                                                             </div>
@@ -537,9 +544,18 @@ class="fluigicon fluigicon-calendar"></span>
                                                         		<input type="text" id="meioPagamento" name="meioPagamento" class="form-control" readonly>
                                                         	</div>
                                                         	<div class="form-group col-md-4">
-                                                        		<label>Forma de pagamento</label>
-                                                        		<input type="text" id="condicaoPgto" name="condicaoPgto" class="form-control" readonly> 
-                                                        	</div>
+                                                                <label>Forma de pagamento</label>
+                                                                <input type="zoom" name="condicaoPgto" id="condicaoPgto" data-zoom="{
+																'displayKey':'DESCRICAO',
+																'datasetId':'VM_CondicaoPagamento',
+																'maximumSelectionLength':'1',
+																'placeholder':'Selecione a condição de pagamento',
+																'fields':[
+																{'field':'CODIGO', 'label':'CODIGO'},
+																{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+																]
+																}" />
+                                                            </div>
                                                         </div>
                                                         <div class="row">
                                                         	<div class="form-group col-md-2">
@@ -559,31 +575,18 @@ class="fluigicon fluigicon-calendar"></span>
                                                         		<input type="text" id="tipoConta" name="tipoConta" class="form-control" readonly>
                                                         	</div>
                                                         </div>
+                                                        <div class="row">						
+															<div class='form-group col-md-12'>
+																<label>Negociação</label>
+																<textarea class="form-control" id="negociacao" name="negociacao"></textarea>
+															</div>
+														</div>
                                                         <div class="row">
                                                             <div class="form-group col-md-3">
                                                                 <label>Valor adiantado</label>
                                                                 <input type="number" id="valor" name="valor" class="form-control">
                                                             </div>
-                                                            <div class="form-group col-md-4" id="div_produto">
-                                                                <label>Serviço</label>
-                                                                <input type="zoom" name="txtproduto" id="txtproduto" data-zoom="{
-																'displayKey':'DESCRICAO',
-																'datasetId':'ds_get_Produtos',
-																'maximumSelectionLength':'1',
-																'placeholder':'Selecione o serviço',
-																'fields':[
-																{'field':'CODIGO', 'label':'CODIGO'},
-																{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
-																]
-																}" />
-                                                            </div>
-                                                            <div class="form-group col-md-3">
-                                                                <label>Código do serviço</label>
-                                                                <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" readonly />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-2">
+                                                             <div class="form-group col-md-2">
                                                                 <label>Valor mensal ou limite mensal</label>
                                                                 <input type="number" id="CotacaovalorMensal" name="CotacaovalorMensal" class="form-control">
                                                             </div>
@@ -591,6 +594,50 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <label>Valor anual ou limite anual </label>
                                                                 <input type="number" id="CotacaovalorAnual" name="CotacaovalorAnual" class="form-control">
                                                             </div>
+                                                            
+                                                            
+                                                            
+                                                             <div class="form-group col-md-1" id="div_tipoAprovacao">                                                                
+                                                                <input class="form-control" name="tipoAprovacao" id="tipoAprovacao" type="text" value="servico" readonly />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" id="div_produto">
+	                                                        <div class="form-group col-md-4" >
+	                                                                <label>Serviço</label>
+	                                                                <input type="zoom" name="txtproduto" id="txtproduto" data-zoom="{
+																	'displayKey':'DESCRICAO',
+																	'datasetId':'ds_get_Produtos',
+																	'maximumSelectionLength':'1',
+																	'placeholder':'Selecione o serviço',
+																	'fields':[
+																	{'field':'CODIGO', 'label':'CODIGO'},
+																	{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+																	]
+																	}" />
+	                                                            </div>
+	                                                            <div class="form-group col-md-3">
+	                                                                <label>Código do serviço</label>
+	                                                                <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" readonly />
+	                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                        	<div class="form-group col-md-3">
+                                                        		<label>Melhor proposta</label>
+                                                                <br>
+                                                                <label for="propostaS">Sim</label>
+                                                                <input type="radio" id="propostaS" name="melhorProposta" value="sim" >
+                                                                <label for="propostaN">Não</label>
+                                                                <input type="radio" id="propostaN" name="melhorProposta" value="nao" >                                                        		
+                                                        	</div>
+                                                        	<div class="form-group col-md-6">
+                                                        		<label>Justificativa</label>
+                                                        		<textarea class="form-control" rows="5" id="justificativaP" name="justificativaP" placeholder="Informe a justificativa por não estar indicando o fornecedor de menor valor como melhor proposta."></textarea>
+                                                        	</div>
+                                                        </div>    
+                                                            
+                                                        <div class="row">
+                                                           
+                                                              <!--
                                                             <div class="form-group col-md-5" id="div_contrato">
                                                                 <label>Número do Contrato</label><br>
                                                                 <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
@@ -603,6 +650,7 @@ class="fluigicon fluigicon-calendar"></span>
 																{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
 																]}" />
                                                             </div>
+                                                            -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -622,30 +670,42 @@ class="fluigicon fluigicon-calendar"></span>
                                                         </div>                                                             
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="panel-body" id="div_rh">
-		                                                <div class="panel panel-info">
-		                                                    <div class="panel-heading ">
-		                                                        <h5 class="panel-title">
-																	<b>Validação de Pessoas e Cultura</b>
-																</h5>
-		                                                    </div>
-		                                                    <div class="panel-body">
-																<div class="row">
-		                                                            <div class="form-group col-md-4">
-		                                                                <label>Validado</label>
-		                                                                <br>
-		                                                                <label for="validoS">Sim</label>
-		                                                                <input type="radio" id="validoS" name="valido" value="sim">
-		                                                                <label for="validoN">Não</label>
-		                                                                <input type="radio" id="validoN" name="valido" value="nao">
-		                                                            </div>
-		                                                        </div>                                                             
-		                                                    </div>
-		                                                </div>
-                                            		</div>
-                                       	
+                                            </div>                                                                                  	
                                         </div>
+                                    	<div class="tab-pane" id="4b">
+	                                    	 <div class="panel-body" id="div_rh">
+			                                                <div class="panel panel-info">
+			                                                    <div class="panel-heading ">
+			                                                        <h5 class="panel-title">
+																		<b>Validação de Pessoas e Cultura</b>
+																	</h5>
+			                                                    </div>
+			                                                    <div class="panel-body">
+			                                                    	<div class="row">
+				                                                    	<div class="form-group col-md-5">
+	                                                                        <label for="solicitante" class="required">Gerência de P&C</label>
+	                                                                        <input type="text" class="form-control" id="nome_rh" name="nome_rh" readonly>
+	                                                                    </div>
+	                                                                    <div class="form-group col-md-4">
+	                                                                        <label for="exampleInputEmail1">Email</label>
+	                                                                        <input type="email" class="form-control" id="emailRH" name="emailRH" readonly>
+	                                                                    </div>
+			                                                    	</div>
+																	<div class="row">
+			                                                            <div class="form-group col-md-4">
+			                                                                <label>Validado</label>
+			                                                                <br>
+			                                                                <label for="validoS">Sim</label>
+			                                                                <input type="radio" id="validoS" name="valido" value="sim">
+			                                                                <label for="validoN">Não</label>
+			                                                                <input type="radio" id="validoN" name="valido" value="nao">
+			                                                            </div>
+			                                                        </div>                                                             
+			                                                    </div>
+			                                                </div>
+	                                            		</div>
+                                    	</div>
+                                    
                                     </div>
                                 </div>
                             </div>

@@ -26,6 +26,9 @@ function beforeStateEntry(sequenceId){
 	    var numProcess = getValue("WKNumProces");
 	    var limiteAnual 	 = hAPI.getCardValue("limiteanual");
 	    
+ 
+	    
+	    
 	    
 	 //gerente de adm
 	if (ativAtual == GERENTE_ADM){				
@@ -33,7 +36,7 @@ function beforeStateEntry(sequenceId){
 		
 		//aprovado
 		if (aprovacao == "aprovado"){
-			//hAPI.setCardValue("aprovacaoServico","aprovado");  
+			hAPI.setCardValue("aprovacaoServico","aprovado");  
 		}
 		else {
 			//reprovado.

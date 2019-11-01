@@ -172,10 +172,10 @@ function enableFields(form){
  	  totalProgresso = progresso1 + progresso2; 	  
  	  sumario = totalProgresso/qtdetotal;
  	  
- 	  console.log("RESULTADO 3");
- 	  console.log(qtdetotal);
- 	 console.log(totalProgresso);
- 	console.log(sumario);
+ //	  console.log("RESULTADO 3");
+// 	  console.log(qtdetotal);
+// 	 console.log(totalProgresso);
+// 	console.log(sumario);
  	  
  	  
  	  if (sumario <=1){
@@ -191,7 +191,8 @@ function enableFields(form){
  		  form.setValue("definicao","Atingiu resultados extraordinários que tiveram um impacto positivo significativo sobre a equipe ou organização, excedendo bastante o que se considera típico para esta função/nível. Promoveu o uso de novas mentalidades e comportamentos para nortear decisões, colocando-se como exemplo. Outras pessoas foram influenciadas positivamente pelos resultados profissionais e pessoais alcançados.");
  	  }
   }
-	
-	
+	//AZUL EXCEPCIONAL
+  	//VERDE VALORIZADO
+	//VERMELHO RUIM
 	
 }
