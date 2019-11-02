@@ -23,10 +23,11 @@ function enableFields(form){
 	 var emailSolicitante = dataset.getValue(0, "mail");
 	 
 	
-	 
-	
-	
-	if (activity == GERENTE_ADM){
+	if (activity == ABERTURA || activity == SOLICITAR){
+		 form.setValue("solicitante",nomeSolicitante);
+		 form.setValue("emailSolicitante",emailSolicitante);
+	}
+	else if (activity == GERENTE_ADM){
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();

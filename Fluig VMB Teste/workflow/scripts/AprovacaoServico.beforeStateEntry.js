@@ -27,10 +27,6 @@ function beforeStateEntry(sequenceId){
 	    var limiteAnual 	 = hAPI.getCardValue("limiteanual");
 	    
  
-	    
-	    
-	    
-	 //gerente de adm
 	if (ativAtual == GERENTE_ADM){				
 		var aprovacao 	 = hAPI.getCardValue("aprNivel1");
 		

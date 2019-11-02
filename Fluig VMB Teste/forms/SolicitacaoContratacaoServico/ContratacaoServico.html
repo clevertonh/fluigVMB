@@ -484,7 +484,36 @@ class="fluigicon fluigicon-calendar"></span>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="3b">
-                                       		
+                                         <div class="panel-body" id="div_comprador">
+                                          <div class="panel panel-success">
+                                         	 <div class="panel-heading ">
+                                                        <h5 class="panel-title">
+														<b>Dados do Negociador</b>
+														</h5>
+                                                    </div>
+                                           	<div class="panel-body">
+                                           		<div class="row">
+							                     <div class="form-group col-md-5">
+							                        <label for="comprador">Negociador</label>
+							                        <input type="text" class="form-control" id="comprador" name="comprador" readonly>
+							                     </div>
+							                     <div class="form-group col-md-4">
+							                        <label for="exampleInputEmail1">Email</label>
+							                        <input type="email" class="form-control" id="emailComprador" name="emailComprador" readonly>
+							                     </div>
+							                     <div class="form-group col-md-3">
+							                        <label for="dtCotacao">Data da encerramento da cotação</label>
+							                        <div class="input-group date">
+							                           <input type="text" class="form-control" id="dtCotacao" name="dtCotacao" readonly>
+							                           <span class="input-group-addon"> <span
+							                              class="fluigicon fluigicon-calendar"></span>
+							                           </span>
+							                        </div>
+							                     </div>
+							                  </div>
+                                           	</div>
+                                          </div>
+                                         </div>
                                             <div class="panel-body">
                                                 <div class="panel panel-success">
                                                     <div class="panel-heading ">
@@ -494,7 +523,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                     </div>
                                                     <div class="panel-body">
                                                         <div class="row">
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-5">
                                                                 <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label>
                                                                 <input name="cnpjcpf" class="form-control" type="zoom" id="cnpjcpf" data-zoom="{'displayKey':'CNPJ',
 																'datasetId':'ds_get_Fornecedor',

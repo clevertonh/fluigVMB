@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Aprovação de Serviço</processId>
-      <version>4</version>
+      <version>8</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2563</formId>
@@ -876,7 +876,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel4&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel6&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel5&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel3&quot;) ==&quot;reprovado&quot;</condition>
@@ -888,7 +888,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 50000</condition>
@@ -900,7 +900,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt; 50000</condition>
@@ -912,7 +912,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel1&quot;) ==&quot;reprovado&quot;</condition>
@@ -924,7 +924,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;=3500</condition>
@@ -936,7 +936,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt;3500</condition>
@@ -948,7 +948,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;reprovado&quot;</condition>
@@ -960,7 +960,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 35000</condition>
@@ -972,7 +972,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt;35000</condition>
@@ -984,7 +984,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>61</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 35000</condition>
@@ -996,7 +996,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>61</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt; 35000</condition>
@@ -1008,7 +1008,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>86</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;reprovado&quot;</condition>
@@ -1020,7 +1020,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>8</version>
         <sequence>86</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;aprovado&quot;</condition>
@@ -1538,8 +1538,7 @@
 	    var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
 	    var limiteAnual 	 = hAPI.getCardValue(&quot;limiteanual&quot;);&#xd;
 	    &#xd;
-	    &#xd;
-	 //gerente de adm&#xd;
+ &#xd;
 	if (ativAtual == GERENTE_ADM){				&#xd;
 		var aprovacao 	 = hAPI.getCardValue(&quot;aprNivel1&quot;);&#xd;
 		&#xd;
@@ -1726,7 +1725,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
-        <version>4</version>
+        <version>8</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1737,7 +1736,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
-        <version>4</version>
+        <version>8</version>
         <linkSequence>54</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1748,7 +1747,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
-        <version>4</version>
+        <version>8</version>
         <linkSequence>63</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1759,7 +1758,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
-        <version>4</version>
+        <version>8</version>
         <linkSequence>64</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1770,7 +1769,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AprovacaoServico</processId>
-        <version>4</version>
+        <version>8</version>
         <linkSequence>91</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

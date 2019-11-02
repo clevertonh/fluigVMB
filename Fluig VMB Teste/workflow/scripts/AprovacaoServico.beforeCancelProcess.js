@@ -1,6 +1,4 @@
 function beforeCancelProcess(colleagueId,processId){
-	
-	
 	//RECUPERA NUMERO DA ATIVIDADE
 	var ativAtual 		 = getValue("WKNumState");		
 	//RECUPERA CODIGO DA SOLICITAÇÃO

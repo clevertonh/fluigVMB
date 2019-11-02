@@ -1,20 +1,20 @@
-	var ABERTURA = 0;
-	var SOLICITAR = 4;	
-	var APROVACAO_GESTOR =5;
-	var CORRIGIR = 142;
-	var REALIZAR_COTACAO_COMPRAS = 12;
-	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
-	var ENVIAR_APROVACAO_COMPRAS = 209;
-	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
-	var APROVACAO_SERVICO_COMPRAS = 105;
-	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
-	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
-	var VERIFICAR_APROVACAO_COMPRAS = 145;
-	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
-	var SOLICITACAO_CONTRATO_COMPRAS = 63;
-	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
-	var VALIDAR_RH = 16;
+var ABERTURA = 0;
+var SOLICITAR = 4;	
+var APROVACAO_GESTOR =5;
+var CORRIGIR = 142;
+var REALIZAR_COTACAO_COMPRAS = 12;
+var REALIZAR_COTACAO_HOSPITALIDADE = 22;
+var ENVIAR_APROVACAO_COMPRAS = 209;
+var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+var APROVACAO_SERVICO_COMPRAS = 105;
+var APROVACAO_SERVICO_HOSPITALIDADE = 94;
+var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
+var VERIFICAR_APROVACAO_COMPRAS = 145;
+var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
+var SOLICITACAO_CONTRATO_COMPRAS = 63;
+var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
+var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
+var VALIDAR_RH = 16;
 	
 
 
@@ -105,6 +105,14 @@ $(document).ready(function() {
 		    pickTime: false,
 		    minDate: new Date().toLocaleString()
 		});
+	}
+	else if (ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){
+		var dtCotacao = FLUIGC.calendar('#dtCotacao', {
+		    pickDate: true,
+		    pickTime: false
+		});
+		
+		dtCotacao.setDate(new Date().toLocaleString());
 	}
 	else if (ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){		
 	   	 $("#valor").blur(function(){
@@ -378,7 +386,12 @@ function removedZoomItem(removedItem) {
     	$("#juridica").attr('checked', false);
     	$("#razaosocial").val("");  
 		$("#nomefantasia").val("");  		
-		$("#codigoFornecedor").val("");   		
+		$("#codigoFornecedor").val("");   	
+		$("#meioPagamento").val("");
+		$("#banco").val("");   
+		$("#agencia").val("");   
+		$("#contaFornecedor").val("");   
+		$("#tipoConta").val("");  
     }
 }
 

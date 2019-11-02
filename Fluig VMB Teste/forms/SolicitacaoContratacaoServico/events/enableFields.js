@@ -124,7 +124,9 @@ function enableFields(form){
 	        form.setEnabled(key, habilitar);
 	    }
 	    
-	    
+		 form.setValue("comprador",nomeSolicitante);
+		 form.setValue("emailComprador",emailSolicitante);
+		  
 	    
 	}
 

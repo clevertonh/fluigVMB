@@ -34,6 +34,8 @@ function displayFields(form,customHTML){
 	 
 	 form.setVisibleById("prazoaprovacao", false); 
 	 form.setVisibleById("div_tipoAprovacao", false); 
+	 form.setVisibleById("div_comprador", false); 
+	 
 	 
 	 
 	 if (activity == ABERTURA || activity == SOLICITAR || activity == CORRIGIR || activity == APROVACAO_GESTOR){
