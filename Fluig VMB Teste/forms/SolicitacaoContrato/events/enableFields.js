@@ -2,8 +2,10 @@ function enableFields(form){
 	var ABERTURA = 0;
 	var SOLICITAR = 4;
 	var ELABORAR =10;
-	var ENVIAR_ASSINATURA = 18;
+	var ASSINAR = 18;
 	var REGISTRAR = 32;
+	var ARQUIVAR = 22;
+	
 	
 	
 	
@@ -20,6 +22,35 @@ function enableFields(form){
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
 	}
+	 else if (activity == ELABORAR ||  activity == REGISTRAR){
+		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		  //  form.setEnabled("cnpjcpf", true);
+	 }
+	 
+	 else if (activity == ASSINAR   ){
+		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("statusContrato", true);
+	 }
+	 
+	 
 	 
 	 
 		function UsuarioLogado(solicitante){

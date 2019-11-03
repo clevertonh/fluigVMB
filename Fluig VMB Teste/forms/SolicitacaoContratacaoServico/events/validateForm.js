@@ -11,11 +11,13 @@ function validateForm(form){
 	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
 	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
 	var VERIFICAR_APROVACAO_COMPRAS = 145;
-	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
-	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
+	var SOLICITACAO_CONTRATO_COMPRAS = 151;
 	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
 	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
 	var VALIDAR_RH = 161;
+	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
+	var VERIFICAR_ASSINATRA_COMPRAS = 274;
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -363,10 +365,10 @@ function validateForm(form){
 	        }
 		
 		   if (form.getValue("dtInicio") == null || form.getValue("dtInicio") == "") {
-	            throw "Você precisa informar prevista para inicio da execução do serviço.";
+	            throw "Você precisa informar a data prevista para inicio da execução do serviço.";
 	        }
 		   if (form.getValue("dtFim") == null || form.getValue("dtFim") == "") {
-	            throw "Você precisa informar prevista para termino da execução do serviço.";
+	            throw "Você precisa informar a data de termino da execução do serviço.";
 	        }
 		   
 		   if (form.getValue("formapgto") == null || form.getValue("formapgto") == "") {

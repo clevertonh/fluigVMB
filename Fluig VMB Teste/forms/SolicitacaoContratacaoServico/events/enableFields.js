@@ -11,12 +11,13 @@ function enableFields(form){
 	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
 	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
 	var VERIFICAR_APROVACAO_COMPRAS = 145;
-	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
-	var SOLICITACAO_CONTRATO_COMPRAS = 63;
+	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
+	var SOLICITACAO_CONTRATO_COMPRAS = 151;
 	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
 	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
 	var VALIDAR_RH = 161;
-	
+	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
+	var VERIFICAR_ASSINATRA_COMPRAS = 274;
 	
 	
 	var activity = getValue('WKNumState');
@@ -126,8 +127,24 @@ function enableFields(form){
 	    
 		 form.setValue("comprador",nomeSolicitante);
 		 form.setValue("emailComprador",emailSolicitante);
-		  
+		
 	    
+	}
+	else if (activity == SOLICITACAO_CONTRATO_HOSPITALIDADE ||  activity == SOLICITACAO_CONTRATO_COMPRAS 
+			||  activity == VERIFICAR_ASSINATRA_HOSPITALIDADE
+			||  activity == VERIFICAR_ASSINATRA_COMPRAS
+			||  activity == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS
+			||  activity == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE
+			){
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
 	}
 
 

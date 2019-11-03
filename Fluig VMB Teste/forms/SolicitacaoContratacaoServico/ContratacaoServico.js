@@ -10,11 +10,13 @@ var APROVACAO_SERVICO_COMPRAS = 105;
 var APROVACAO_SERVICO_HOSPITALIDADE = 94;
 var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
 var VERIFICAR_APROVACAO_COMPRAS = 145;
-var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;
-var SOLICITACAO_CONTRATO_COMPRAS = 63;
+var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
+var SOLICITACAO_CONTRATO_COMPRAS = 151;
 var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
 var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
-var VALIDAR_RH = 16;
+var VALIDAR_RH = 161;
+var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
+var VERIFICAR_ASSINATRA_COMPRAS = 274;
 	
 
 
@@ -90,7 +92,41 @@ $(document).ready(function() {
 		    minDate: new Date().toLocaleString()
 		});
 		
-		
+	
+		   $("#dtFim").blur(function(){  
+			   var dataInicio =  $("#dtInicio").val(); // 03/11/2019
+               var arr = dataInicio.split("/").reverse();
+               var dia = new Date(arr[0], arr[1] - 1, arr[2]);
+                 
+               var AnoFiscal;
+                
+               //MONTA AF FISCAL
+               if (dia.getMonth() > 8){
+            	   AnoFiscal = dia.getFullYear() + 1;
+               }
+               else {
+            	   AnoFiscal = dia.getFullYear();
+               }
+               
+               //DATA LIMITE
+               var dtLimite = new Date (AnoFiscal,8,'30')
+               console.log(dtLimite);
+               
+               var data = this.value;
+               var arrF = data.split("/").reverse();
+               var diaFinal = new Date(arrF[0], arrF[1] - 1, arrF[2]);
+             
+               console.log(diaFinal);
+               
+               if (diaFinal > dtLimite){
+            	    FLUIGC.toast({
+                        title: 'Informação',
+                        message: 'O serviço contratado só podem ter sua vigência programada até o final do AF '+ AnoFiscal,
+                        type: 'danger',
+                        timeout: 6000
+                    });
+               }
+	          });
 		
 	}
 	else if (ATIVIDADE == CORRIGIR){
