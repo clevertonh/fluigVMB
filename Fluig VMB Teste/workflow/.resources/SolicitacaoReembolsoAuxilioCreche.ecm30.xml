@@ -422,8 +422,8 @@
       <deadlineFieldName>dtPagamento</deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Tesouraria&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -1412,13 +1412,14 @@
 	var VALIDACAO = 48;&#xd;
 	var APROVACAO_RH = 27;&#xd;
 	var ALTERACAO_DATA = 67;&#xd;
+	var CORRIGIR = 85;&#xd;
 	&#xd;
 	&#xd;
 var ativAtual = getValue(&quot;WKNumState&quot;);&#xd;
 	&#xd;
-	log.info(&quot;Processo beforeCancel - atividade: &quot; + ativAtual);&#xd;
+	//log.info(&quot;Processo beforeCancel - atividade: &quot; + ativAtual);&#xd;
 	&#xd;
-	if (ativAtual != ABERTURA &amp;&amp; ativAtual != APROVACAO_GESTOR &amp;&amp; ativAtual != VALIDACAO){&#xd;
+	if (ativAtual != ABERTURA &amp;&amp; ativAtual != APROVACAO_GESTOR &amp;&amp; ativAtual != VALIDACAO &amp;&amp; ativAtual != CORRIGIR) {&#xd;
 		&#xd;
 		 throw &quot;Você não pode excluir essa solicitação pois ela já está em processo de pagamento.&quot;;&#xd;
 		&#xd;
