@@ -16,31 +16,26 @@ function beforeStateEntry(sequenceId){
 	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
 	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
 	var VALIDAR_RH = 161;
+	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
+	var VERIFICAR_ASSINATRA_COMPRAS = 274;
 	
 	
-	
-	
-	//RECUPERA NUMERO DA ATIVIDADE
 	var ativAtual 		 = getValue("WKNumState");		
-	//RECUPERA CODIGO DA SOLICITAÇÃO
 	var codSolicitacao 	 = getValue("WKNumProces");
-	//VERIFICA QUAL A PROXIMA ATIVIDADE
 	var nextAtv  		 = getValue("WKNextState");
-	//RECUPERA NUMERO DO DOCUMENTO
 	var idDocumento = getValue("WKCardId");
 	var idFormulario = getValue("WKFormId")
 	var empresa = getValue("WKCompany");
-	 //RECUPERA USUARIO LOGADO
     var usuario = getValue('WKUser');
 	
 	
-    var aprovacao = hAPI.getCardValue("aprovacao");
-           
     var cgc = hAPI.getCardValue("cnpjcpf");
     var razaoSocial = hAPI.getCardValue("razaosocial");     
-    var valido = hAPI.getCardValue("valido");
+    
      
      if (ativAtual == APROVACAO_GESTOR){
+    	 var aprovacao = hAPI.getCardValue("aprovacao");
+    	   
     	 if (aprovacao =="aprovado"){
     		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação aprovada.");
     	 }
@@ -50,7 +45,6 @@ function beforeStateEntry(sequenceId){
      }
     
      else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
-		 	
 		 	if (nextAtv == VALIDAR_RH){
 		 		/*
 				 * verifica se foi adicionado anexo. 
@@ -67,16 +61,31 @@ function beforeStateEntry(sequenceId){
 			 	 //SALVA NO COMENTÁRIO OS DADOS DO FORNECEDOR ATUAL PARA O CASO DE HAVER TROCA DE FORNECEDOR
 				 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor " + cgc +"-"+razaoSocial + " selecionado como melhor opção do processo de cotação.");
 			 	
-		 	}
-		 
-			
-		 	 
-	               //   var constraint = new Array();                                 
-//	                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-//	                  constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
-//	                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
+		 	}		 
+	    }	
+	 
+	 else if (ativAtual == VALIDAR_RH){
+		 var valido = hAPI.getCardValue("valido");
+		    
+		 if (valido == "negado"){
+			 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
+		 }
+	 }
+	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
+		 /*		
+		 	var definicaoValor = hAPI.getCardValue("definicaoValor");
+				if (definicaoValor ="fixo"){
+					  var qtdMeses = hAPI.getCardValue("qtdMeses");
+					  var produto = hAPI.getCardValue("produto");
+					  var valorMensal = hAPI.getCardValue("CotacaovalorMensal");
+					 
+		              var constraint = new Array();                                 
+	                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+	                  constraint.push(DatasetFactory.createConstraint("qtdMeses", qtdMeses, qtdMeses, ConstraintType.MUST));
+	                  constraint.push(DatasetFactory.createConstraint("valor", valorMensal, valorMensal, ConstraintType.MUST));
+	                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
 	                  
-	                  /*
+	                 
 	                   var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    
 	                      
 	                   if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
@@ -85,22 +94,7 @@ function beforeStateEntry(sequenceId){
 	                   else {
 	                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor selecionado e processo enviado para aprovação");
 	                   }
-	                      
-	                   */
-	          
-	           
-	    }	
-	 
-	 else if (ativAtual == VALIDAR_RH){
-		 if (valido == "negado"){
-			 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
-		 }
+				}
+	 */
 	 }
-
- 
- 
- 
- 
- 
- 
 }

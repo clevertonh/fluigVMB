@@ -80,11 +80,11 @@ function createDataset(fields, constraints, sortFields) {
 	    	objdata = JSON.parse(dados);
 			for(var i in objdata){
 				if(filtro != null && (objdata[i].CNOME.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ,objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);	
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME.trim(), objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ.trim(),objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);	
 				
 				}
 				if(filtro == null){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME, objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ,objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);			
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME.trim(), objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ.trim(),objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);			
 				}		
 			}
 		}
