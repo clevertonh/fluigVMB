@@ -3,8 +3,6 @@ function displayFields(form,customHTML){
 	var SOLICITAR = 4;
 	var ELABORAR =10;
 	var ASSINAR = 18;
-	var REGISTRAR = 32;
-	var ARQUIVAR = 22;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  

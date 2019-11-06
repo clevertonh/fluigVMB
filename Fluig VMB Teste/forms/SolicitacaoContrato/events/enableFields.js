@@ -3,8 +3,6 @@ function enableFields(form){
 	var SOLICITAR = 4;
 	var ELABORAR =10;
 	var ASSINAR = 18;
-	var REGISTRAR = 32;
-	var ARQUIVAR = 22;
 	
 	
 	
@@ -22,7 +20,7 @@ function enableFields(form){
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
 	}
-	 else if (activity == ELABORAR ||  activity == REGISTRAR){
+	 else if (activity == ELABORAR ){
 		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();

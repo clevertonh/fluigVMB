@@ -3,9 +3,6 @@ function validateForm(form){
 	var SOLICITAR = 4;
 	var ELABORAR =10;
 	var ASSINAR = 18;
-	var REGISTRAR = 32;
-	var ARQUIVAR = 22;
-	
 	
 	var activity = getValue('WKNumState');
 	
