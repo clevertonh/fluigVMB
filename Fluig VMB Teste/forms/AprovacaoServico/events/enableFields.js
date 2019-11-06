@@ -23,9 +23,23 @@ function enableFields(form){
 	 var emailSolicitante = dataset.getValue(0, "mail");
 	 
 	
-	if (activity == ABERTURA || activity == SOLICITAR){
+	if (activity == ABERTURA ){
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
+	}
+	else if (activity == SOLICITAR){
+		 form.setValue("solicitante",nomeSolicitante);
+		 form.setValue("emailSolicitante",emailSolicitante);
+		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		 
 	}
 	else if (activity == GERENTE_ADM){
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos

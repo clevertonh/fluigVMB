@@ -22,6 +22,7 @@ function beforeStateEntry(sequenceId){
     var aprovacao = hAPI.getCardValue("aprovacao");
     var valor = hAPI.getCardValue("valor");
     var produto = hAPI.getCardValue("codigoProduto");
+   // var contrato = hAPI.getCardValue("temContrato");
     
     if (ativAtual == ABERTURA || ativAtual == SOLICITAR){
     	 var anexos   = hAPI.listAttachments();
@@ -68,4 +69,11 @@ function beforeStateEntry(sequenceId){
           
            
     }	
+
+    
+    
+    
+    
+    
+    
 }

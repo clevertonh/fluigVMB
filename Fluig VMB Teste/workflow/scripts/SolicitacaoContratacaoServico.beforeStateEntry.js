@@ -46,6 +46,7 @@ function beforeStateEntry(sequenceId){
     
      else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
 		 	if (nextAtv == VALIDAR_RH){
+		 		
 		 		/*
 				 * verifica se foi adicionado anexo. 
 				 * Pois quando tem anexo é obrigatório marcar algo como comprado

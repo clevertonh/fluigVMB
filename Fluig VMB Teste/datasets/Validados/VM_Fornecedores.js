@@ -11,6 +11,7 @@ function defineStructure() {
 	addColumn("AGENCIA");
 	addColumn("CONTA_F");
 	addColumn("TIPO_CONTA");
+	addColumn("TIPO_PJ");
 	
 	setKey(["CODIGO"]);
 	
@@ -30,8 +31,9 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("AGENCIA");
 	dataset.addColumn("CONTA_F");
 	dataset.addColumn("TIPO_CONTA");
+	dataset.addColumn("TIPO_PJ");
 	
-	  var objdata;
+	  	var objdata;
 	    var dados;
 	    
 	    try {
@@ -42,7 +44,7 @@ function createDataset(fields, constraints, sortFields) {
 		            serviceCode : 'REST FLUIG',
 		            endpoint : '/VM_FORNECEDOR',
 		            method : 'get',// 'delete', 'patch', 'put', 'get'     
-		            timeoutService: '100' // segundos	            	  
+		            timeoutService: '360' // segundos	            	  
 		        }
 	    
 	    var vo = clientService.invoke(JSON.stringify(data));
@@ -54,7 +56,7 @@ function createDataset(fields, constraints, sortFields) {
 		            serviceCode : 'REST FLUIG 2',
 		            endpoint : '/VM_FORNECEDOR',
 		            method : 'get',// 'delete', 'patch', 'put', 'get'     
-		            timeoutService: '100' // segundos	            	  
+		            timeoutService: '360' // segundos	            	  
 		        }   	
 	        vo = clientService.invoke(JSON.stringify(data));
 	        
@@ -80,11 +82,11 @@ function createDataset(fields, constraints, sortFields) {
 	    	objdata = JSON.parse(dados);
 			for(var i in objdata){
 				if(filtro != null && (objdata[i].CNOME.toUpperCase().indexOf(filtro.toUpperCase())  > -1 || objdata[i].CCODIGO.indexOf(filtro)  > -1)){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME.trim(), objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ.trim(),objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);	
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME.trim(), objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ.trim(),objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC,objdata[i].CTIPOPJ.trim()]);	
 				
 				}
 				if(filtro == null){
-					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME.trim(), objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ.trim(),objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC]);			
+					dataset.addRow([objdata[i].CCODIGO, objdata[i].CCGC, objdata[i].CNOME.trim(), objdata[i].CTIPO.trim(),objdata[i].NQTDE_ADF,objdata[i].CREDUZ.trim(),objdata[i].CFPGTO,objdata[i].CBANCO,objdata[i].CAGENCIA,objdata[i].CCONTAF,objdata[i].CTIPOC,objdata[i].CTIPOPJ.trim()]);			
 				}		
 			}
 		}

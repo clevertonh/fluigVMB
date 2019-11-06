@@ -1,4 +1,5 @@
 function beforeStateEntry(sequenceId){
+	var INICIAR = 0;
 	var SOLICITAR = 56;
 	var GERENTE_ADM =5;
 	var DIRETOR_FIN = 35;
@@ -26,20 +27,23 @@ function beforeStateEntry(sequenceId){
 	    var numProcess = getValue("WKNumProces");
 	    var limiteAnual 	 = hAPI.getCardValue("limiteanual");
 	    
- 
-	if (ativAtual == GERENTE_ADM){				
-		var aprovacao 	 = hAPI.getCardValue("aprNivel1");
-		
-		//aprovado
-		if (aprovacao == "aprovado"){
-			hAPI.setCardValue("aprovacaoServico","aprovado");  
-		}
-		else {
-			//reprovado.
-			hAPI.setCardValue("aprovacaoServico","reprovado");
-			hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo: " + hAPI.getCardValue("justificativaReprovacao"));	
+	if (ativAtual == SOLICITAR ){
+	 	
+		 	
+	    }
+	else if (ativAtual == GERENTE_ADM){				
+			var aprovacao 	 = hAPI.getCardValue("aprNivel1");
 			
-		}
+			//aprovado
+			if (aprovacao == "aprovado"){
+				hAPI.setCardValue("aprovacaoServico","aprovado");  
+			}
+			else {
+				//reprovado.
+				hAPI.setCardValue("aprovacaoServico","reprovado");
+				hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo: " + hAPI.getCardValue("justificativaReprovacao"));	
+				
+			}
 		
 	}
 	//diretor financeiro

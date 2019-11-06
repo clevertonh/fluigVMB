@@ -87,6 +87,7 @@ function enableFields(form){
 		    form.setEnabled("condicaoPgto", true);
 		    form.setEnabled("melhorProposta", true);		    
 		    form.setEnabled("justificativaP", true);
+		    form.setEnabled("tipoPJ", true);
 		    
 		    
 		    form.setEnabled("CotacaovalorMensal", true);
@@ -108,6 +109,7 @@ function enableFields(form){
 	    
 	    
 	    form.setEnabled("valido", true);
+		form.setValue("valido","");
 	    
 	    form.setValue("nome_rh",nomeSolicitante);
 	    form.setValue("emailRH",emailSolicitante);

@@ -1,8 +1,16 @@
 function validateForm(form){
 	var ABERTURA = 4;
 	var APROVACAO =5;
-	var CONTRATAR = 15;
+	var COTACAO = 15;
 	var CORRIGIR = 12;
+	var VALIDAR_RH = 30;
+	var SOLICITAR_APROVACAO = 28;
+	var APROVACAO_SERVICO = 36;
+	var SOLICITAR_CONTRATO = 37;
+	var SOLICITACAO_CONTRATO = 43;
+	var VERIFICAR_ASSINATURA = 44;
+	var FINALIZAR = 48;
+	
 	
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");

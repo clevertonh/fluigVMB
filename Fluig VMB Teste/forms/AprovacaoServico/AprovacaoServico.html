@@ -69,28 +69,32 @@
                   <div class="panel panel-success">
                      <div class="panel-heading ">
                         <h5 class="panel-title">
-                           <b>Informações do fornecedor</b>
+                           <b>Informações do fornecedor selecionado</b>
                         </h5>
                      </div>
                      <div class="panel-body">
                         <div class="row">
-                           <div class="form-group col-md-4">
-                              <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label> 
-                              <input name="cnpjcpf"
-                                 class="form-control" type="zoom"
-                                 id="cnpjcpf"
-                                 data-zoom="{'displayKey':'CNPJ',
-                                 'datasetId':'ds_get_Fornecedor',
-                                 'maximumSelectionLength':'1',
-                                 'placeholder':'Selecione o fornecedor',
-                                 'fields':[
-                                 {'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
-                                 {'field':'CNPJ','label':'CNPJ','standard':'true'},
-                                 {'field':'CODIGO','label':'CODIGO'},
-                                 {'field':'TIPO','label':'TIPO'}						  					
-                                 ]
-                                 }">
-                           </div>
+                           <div class="form-group col-md-5">
+                                                                <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label>
+                                                                <input name="cnpjcpf" class="form-control" type="zoom" id="cnpjcpf" data-zoom="{'displayKey':'CNPJ',
+																'datasetId':'ds_get_Fornecedor',
+																'maximumSelectionLength':'1',
+																'placeholder':'Selecione o fornecedor',
+																'fields':[
+																{'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
+																{'field':'CNPJ','label':'CNPJ','standard':'true'},
+																{'field':'CODIGO','label':'CODIGO'},
+																{'field':'TIPO','label':'TIPO', 'visible' : 'false'},
+																{'field':'FANTASIA','label':'FANTASIA', 'visible' : 'false'},
+																{'field':'FORM_PGTO','label':'FORM_PGTO', 'visible' : 'false'},
+																{'field':'BANCO','label':'BANCO', 'visible' : 'false'},
+																{'field':'AGENCIA','label':'AGENCIA', 'visible' : 'false'},
+																{'field':'CONTA_F','label':'CONTA_F', 'visible' : 'false'},
+																{'field':'TIPO_CONTA','label':'TIPO_CONTA', 'visible' : 'false'},
+																{'field':'TIPO_PJ','label':'TIPO_PJ', 'visible' : 'false'}																					  					
+																]
+																}">
+                                                            </div>
                            <div class="form-group col-md-5">
                               <label>Razão Social</label>
                               <input class="form-control" type="text" id="razaosocial" name="razaosocial">
@@ -105,12 +109,16 @@
                               <label>Codigo Fornecedor</label>
                               <input type="text" id ="codigoFornecedor" class="form-control" name="codigoFornecedor" readonly>
                            </div>
-                           <div class="form-group col-md-4">
+                           <div class="form-group col-md-2">
                               <label>Tipo de Pessoa</label><br>
                               <label for="fisica">Fisica</label>
-                              <input type="radio" id="fisica" name="tipoPessoa" value="fisica">
+                              <input type="radio" id="fisica" name="tipoPessoa" value="FISICA">
                               <label for="juridica">Juridica</label>
-                              <input type="radio" id="juridica" name="tipoPessoa" value="juridica">   
+                              <input type="radio" id="juridica" name="tipoPessoa" value="JURIDICA">   
+                           </div>
+                           <div class="form-group col-md-1">
+                                <label>Tipo PJ</label>
+                            	<input type="text" id="tipoPJ" class="form-control" name="tipoPJ" readonly>
                            </div>
                         </div>
                         <div class="row">
