@@ -54,6 +54,7 @@ function enableFields(form){
 	    
 	    form.setValue("nomeNivel1",nomeSolicitante); 	
 	  	form.setValue("emailNivel1",emailSolicitante); 	
+		form.setValue("justificativaReprovacao",""); 
 	  	form.setEnabled("aprNivel1", true);
 	  	
 	}
@@ -70,6 +71,8 @@ function enableFields(form){
 	    
 	    form.setValue("nomeNivel2",nomeSolicitante); 	
 	  	form.setValue("emailNivel2",emailSolicitante); 	
+	  	form.setValue("justificativaReprovacao",""); 	
+	  	
 	  	form.setEnabled("aprNivel2", true);
 		
 	}
@@ -86,6 +89,7 @@ function enableFields(form){
 	    
 	    form.setValue("nomeNivel4",nomeSolicitante); 	
 	  	form.setValue("emailNivel4",emailSolicitante); 	
+		form.setValue("justificativaReprovacao",""); 
 	  	form.setEnabled("aprNivel4", true);
 			
 	}
@@ -101,7 +105,8 @@ function enableFields(form){
 	    }
 	    
 	    form.setValue("nomeNivel6",nomeSolicitante); 	
-	  	form.setValue("emailNivel6",emailSolicitante); 	
+	  	form.setValue("emailNivel6",emailSolicitante); 
+		form.setValue("justificativaReprovacao",""); 
 	  	form.setEnabled("aprNivel6", true);
 		
 	}
@@ -118,6 +123,7 @@ function enableFields(form){
 	    
 	    form.setValue("nomeNivel3",nomeSolicitante); 	
 	  	form.setValue("emailNivel3",emailSolicitante); 	
+		form.setValue("justificativaReprovacao",""); 
 	  	form.setEnabled("aprNivel3", true);
 			
 		}
@@ -133,7 +139,8 @@ function enableFields(form){
 	    }
 	    
 	    form.setValue("nomeNivel5",nomeSolicitante); 	
-	  	form.setValue("emailNivel5",emailSolicitante); 	
+	  	form.setValue("emailNivel5",emailSolicitante); 
+		form.setValue("justificativaReprovacao",""); 
 	  	form.setEnabled("aprNivel5", true);
 		
 	}
@@ -149,7 +156,8 @@ function enableFields(form){
 	    }
 	    
 	    form.setValue("nomeNivel4",nomeSolicitante); 	
-	  	form.setValue("emailNivel4",emailSolicitante); 	
+	  	form.setValue("emailNivel4",emailSolicitante); 
+		form.setValue("justificativaReprovacao",""); 
 	  	form.setEnabled("aprNivel4", true);
 		
 	}

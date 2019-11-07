@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Locação de Veiculo</processId>
-      <version>19</version>
+      <version>24</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1919</formId>
@@ -265,6 +265,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;GERENCIA_RH&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -315,7 +317,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;47&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -366,7 +369,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;47&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -417,7 +421,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;47&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -468,6 +473,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;47&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -996,7 +1003,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -1008,7 +1015,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -1020,7 +1027,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -1032,10 +1039,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>53</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;PF&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;FISICA&quot;</condition>
       <destinationSequenceId>55</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1044,10 +1051,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>53</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;juridica&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;MEI&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;MEI&quot;</condition>
       <destinationSequenceId>55</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1056,10 +1063,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>53</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;juridica&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) !=&quot;MEI&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) !=&quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) !=&quot;MEI&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) !=&quot;&quot;</condition>
       <destinationSequenceId>59</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1068,7 +1075,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>57</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;valido&quot;) ==&quot;sim&quot; </condition>
@@ -1080,7 +1087,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>57</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;valido&quot;) ==&quot;nao&quot;</condition>
@@ -1092,7 +1099,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>70</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoServico&quot;) ==&quot;aprovado&quot;</condition>
@@ -1104,7 +1111,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>70</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoServico&quot;) !=&quot;aprovado&quot;</condition>
@@ -1116,7 +1123,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>73</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) !=&quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;Numerocontrato&quot;) != null</condition>
@@ -1128,7 +1135,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>73</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) == &quot;&quot;</condition>
@@ -1140,7 +1147,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) ==&quot;assinado&quot; </condition>
@@ -1152,7 +1159,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>24</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) !=&quot;assinado&quot; </condition>
@@ -1719,8 +1726,17 @@
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
 	var ABERTURA = 0;&#xd;
 	var SOLICITAR = 4;&#xd;
-	var APROVACAO = 5;&#xd;
-	var CONTRATAR = 47;&#xd;
+	var APROVACAO =5;&#xd;
+	var CORRIGIR = 39;&#xd;
+	var COTAR = 47;&#xd;
+	var VALIDAR_RH = 55;&#xd;
+	var SOLICITAR_APROVACAO = 59;&#xd;
+	var APROVACAO_SERVICO = 61;&#xd;
+	var SOLICITAR_CONTRATO = 65;&#xd;
+	var SOLICITACAO_CONTRATO = 77;&#xd;
+	var VERIFICAR_ASSINATURA = 79;&#xd;
+	var FINALIZAR = 83;&#xd;
+&#xd;
 	&#xd;
 	&#xd;
 	//RECUPERA NUMERO DA ATIVIDADE&#xd;
@@ -1736,11 +1752,9 @@
 	 //RECUPERA USUARIO LOGADO&#xd;
     var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
-	&#xd;
-    var aprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
-    var valor = hAPI.getCardValue(&quot;valor&quot;);&#xd;
-    var produto = hAPI.getCardValue(&quot;codigoProduto&quot;);&#xd;
-   // var contrato = hAPI.getCardValue(&quot;temContrato&quot;);&#xd;
+    &#xd;
+    var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
+    var razaoSocial = hAPI.getCardValue(&quot;razaosocial&quot;);  &#xd;
     &#xd;
     if (ativAtual == ABERTURA || ativAtual == SOLICITAR){&#xd;
     	 var anexos   = hAPI.listAttachments();&#xd;
@@ -1768,27 +1782,65 @@
     	 &#xd;
     	 &#xd;
     }&#xd;
-    else if (ativAtual == APROVACAO  &amp;&amp; aprovacao ==&quot;aprovado&quot;){ 	   &#xd;
-                  var constraint = new Array();                                 &#xd;
-                  constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-                  constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valor, valor, ConstraintType.MUST));&#xd;
-                  constraint.push(DatasetFactory.createConstraint(&quot;produto&quot;, produto, produto, ConstraintType.MUST));&#xd;
-                  &#xd;
-                  &#xd;
-                   var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_LOCACAO_VEICULO&quot;, null, constraint, null);                                                                    &#xd;
-                      &#xd;
-                   if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                         throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                      }&#xd;
-                   else {&#xd;
-                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
-                   }&#xd;
-                      &#xd;
-          &#xd;
-           &#xd;
-    }	&#xd;
+    else if (ativAtual == APROVACAO  ){ 	&#xd;
+    	&#xd;
+ 	   &#xd;
+   	 if (aprovacao ==&quot;aprovado&quot;){&#xd;
+   	     var valor = hAPI.getCardValue(&quot;valor&quot;);&#xd;
+   	     var produto = hAPI.getCardValue(&quot;codigoProduto&quot;);&#xd;
 &#xd;
-    &#xd;
+   	    &#xd;
+   		 var constraint = new Array();                                 &#xd;
+         constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+         constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valor, valor, ConstraintType.MUST));&#xd;
+         constraint.push(DatasetFactory.createConstraint(&quot;produto&quot;, produto, produto, ConstraintType.MUST));&#xd;
+         &#xd;
+         &#xd;
+          var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_LOCACAO_VEICULO&quot;, null, constraint, null);                                                                    &#xd;
+             &#xd;
+          if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+             }&#xd;
+          else {&#xd;
+        	  	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
+       	   		hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);&#xd;
+          &#xd;
+          }&#xd;
+                &#xd;
+                &#xd;
+   		&#xd;
+   	 }&#xd;
+   	 &#xd;
+   	 else if (aprovacao ==&quot;reprovado&quot;){&#xd;
+   		 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada.&quot;);&#xd;
+   	 }&#xd;
+      }	&#xd;
+&#xd;
+    else if (ativAtual == COTACAO){	 		&#xd;
+ 		/*&#xd;
+		 * verifica se foi adicionado anexo. &#xd;
+		 * Pois quando tem anexo é obrigatório marcar algo como comprado&#xd;
+		 * */&#xd;
+		 var anexos   = hAPI.listAttachments();&#xd;
+	     var temAnexo = false;&#xd;
+		&#xd;
+	 	if (anexos.size() &lt;= 0) {&#xd;
+			throw &quot;Você precisa anexar as cotações/propostas de acordo com a política de exigência de cotações.&quot;;&#xd;
+	 	} &#xd;
+	 	&#xd;
+	 	&#xd;
+	 	 //SALVA NO COMENTÁRIO OS DADOS DO FORNECEDOR ATUAL PARA O CASO DE HAVER TROCA DE FORNECEDOR&#xd;
+		 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial + &quot; selecionado como melhor opção do processo de cotação.&quot;);&#xd;
+	 	&#xd;
+ &#xd;
+}&#xd;
+ else if (ativAtual == VALIDAR_RH){&#xd;
+	 var valido = hAPI.getCardValue(&quot;valido&quot;);&#xd;
+	    &#xd;
+	 if (valido == &quot;negado&quot;){&#xd;
+		 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial + &quot; não pode ser contratado pois não atende aos requisitos da legislação trabalhista.&quot;);&#xd;
+	 }&#xd;
+ }&#xd;
     &#xd;
     &#xd;
     &#xd;
@@ -1911,7 +1963,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1922,7 +1974,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1933,7 +1985,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1944,7 +1996,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>63</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1955,7 +2007,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>63</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1966,7 +2018,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>63</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1977,7 +2029,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>93</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1988,7 +2040,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>93</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1999,7 +2051,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>93</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -2010,7 +2062,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>94</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2021,7 +2073,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>95</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2032,7 +2084,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
-        <version>19</version>
+        <version>24</version>
         <linkSequence>96</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2044,7 +2096,458 @@
   <list/>
   <list/>
   <list/>
-  <list/>
+  <list>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>contaFornecedor</processField>
+      <subProcessField>contaFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>CotacaovalorMensal</processField>
+      <subProcessField>CotacaovalorMensal</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>tipoAprovacao</processField>
+      <subProcessField>tipoAprovacao</subProcessField>
+      <mapFlow>0</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>agencia</processField>
+      <subProcessField>agencia</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>tipoAprovacao</processField>
+      <subProcessField>tipoAprovacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>comprador</processField>
+      <subProcessField>solicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>contaFornecedor</processField>
+      <subProcessField>contaFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>CotacaovalorMensal</processField>
+      <subProcessField>CotacaovalorMensal</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>agencia</processField>
+      <subProcessField>agencia</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>tipoConta</processField>
+      <subProcessField>tipoConta</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>valorAdiantado</processField>
+      <subProcessField>valor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>statusContrato</processField>
+      <subProcessField>statusContrato</subProcessField>
+      <mapFlow>0</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>condicaoPgto</processField>
+      <subProcessField>condicaoPgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>comprador</processField>
+      <subProcessField>solicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>CotacaovalorMensal</processField>
+      <subProcessField>CotacaovalorAnual</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>negociacao</processField>
+      <subProcessField>negociacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>condicaoPgto</processField>
+      <subProcessField>condicaoPgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>negociacao</processField>
+      <subProcessField>negociacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>finalidade</processField>
+      <subProcessField>finalidade</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>tipoConta</processField>
+      <subProcessField>tipoConta</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>nomefantasia</processField>
+      <subProcessField>nomefantasia</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>dtDevolucao</processField>
+      <subProcessField>dtFim</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>emailComprador</processField>
+      <subProcessField>emailSolicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>meioPagamento</processField>
+      <subProcessField>meioPagamento</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>meioPagamento</processField>
+      <subProcessField>meioPagamento</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>nomefantasia</processField>
+      <subProcessField>nomefantasia</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>dtDevolucao</processField>
+      <subProcessField>dtFim</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>emailComprador</processField>
+      <subProcessField>emailSolicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>finalidade</processField>
+      <subProcessField>finalidade</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>codigoFornecedor</processField>
+      <subProcessField>codigoFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>aprovacaoServico</processField>
+      <subProcessField>aprovacaoServico</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>banco</processField>
+      <subProcessField>banco</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>cnpjcpf</processField>
+      <subProcessField>cnpjcpf</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>dtRetirada</processField>
+      <subProcessField>dtInicio</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>razaosocial</processField>
+      <subProcessField>razaosocial</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>tipoPessoa</processField>
+      <subProcessField>tipoPessoa</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>tipoPessoa</processField>
+      <subProcessField>tipoPessoa</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>CotacaovalorMensal</processField>
+      <subProcessField>CotacaovalorAnual</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>dtCotacao</processField>
+      <subProcessField>dataSolicitacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>cnpjcpf</processField>
+      <subProcessField>cnpjcpf</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>dtRetirada</processField>
+      <subProcessField>dtInicio</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>61</stateSequence>
+      <version>1</version>
+      <subProcessCode>AprovacaoServico</subProcessCode>
+      <processField>razaosocial</processField>
+      <subProcessField>razaosocial</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>codigoFornecedor</processField>
+      <subProcessField>codigoFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>valorAdiantado</processField>
+      <subProcessField>valor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoLocacaoVeiculo</processCode>
+      <stateSequence>77</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>banco</processField>
+      <subProcessField>banco</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+  </list>
   <list/>
   <list/>
   <list/>

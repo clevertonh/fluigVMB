@@ -2,20 +2,31 @@ function enableFields(form){
 	var ABERTURA = 0;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
-	var CONTRATAR = 47;
+	var COTAR = 47;
+	var VALIDAR_RH = 55;
+	var SOLICITAR_APROVACAO = 59;
+	var APROVACAO_SERVICO = 61;
+	var SOLICITAR_CONTRATO = 65;
+	var SOLICITACAO_CONTRATO = 77;
+	var VERIFICAR_ASSINATURA = 79;
+	var FINALIZAR = 83;
 
 	
 	var activity = getValue('WKNumState');	
 	var solicitante = getValue("WKUser");  
-	
+
+	var dataset = UsuarioLogado(solicitante);		 			 			 			 
+	 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+	 var emailSolicitante = dataset.getValue(0, "mail");
+	 
+	 
+	 form.setEnabled("matriculasolicitante", true);	
 	
 	if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
 		 form.setEnabled("justificativaReprovacao", false);		 
 		 
-		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
-		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
-		 var emailSolicitante = dataset.getValue(0, "mail");
+		
 		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
@@ -55,25 +66,108 @@ function enableFields(form){
 		    form.setEnabled("aprovacao", true);		 
 			form.setEnabled("justificativaReprovacao", true);
 			form.setEnabled("valor", true);	
-			
+			form.setEnabled("matriculasolicitante", true);	
+			form.setEnabled("justificativa", true);
+			form.setEnabled("prazoaprovacao", true);
 		
 		 
 		 
 		 
 	}
-	else if (activity == CONTRATAR){
-		
+	else if (activity == COTAR){		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-		 var mapaForm = new java.util.HashMap();
-		    mapaForm = form.getCardData();
-		    var it = mapaForm.keySet().iterator();
-		     
-		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-		        var key = it.next();
-		        form.setEnabled(key, habilitar);
-		    }
-		    		
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+		 
 		
+	    form.setEnabled("cnpjcpf", true);
+	    form.setEnabled("razaosocial", true);		    
+	    form.setEnabled("nomefantasia", true);	
+	    form.setEnabled("codigoFornecedor", true);	
+	    form.setEnabled("tipoPessoa", true);	
+	    form.setEnabled("meioPagamento", true);	
+	    form.setEnabled("condicaoPgto", true);	
+	    form.setEnabled("banco", true);
+	    form.setEnabled("agencia", true);
+	    form.setEnabled("contaFornecedor", true);
+	    form.setEnabled("tipoConta", true);
+	    form.setEnabled("valorAdiantado", true);	
+	    form.setEnabled("negociacao", true);
+	    form.setEnabled("condicaoPgto", true);
+	    form.setEnabled("melhorProposta", true);		    
+	    form.setEnabled("justificativaP", true);
+	    form.setEnabled("tipoPJ", true);
+	    form.setEnabled("contatoEmpresa", true);
+	    form.setEnabled("CotacaovalorMensal", true);
+	    form.setEnabled("dtCotacao", true);
+	    
+	    form.setValue("comprador",nomeSolicitante);
+		form.setValue("emailComprador",emailSolicitante);
+		 
+		 
+	    
+	}
+	else if (activity == VALIDAR_RH){
+
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	    
+	    
+	    form.setEnabled("valido", true);
+		form.setValue("valido","");
+	    
+	    form.setValue("nome_rh",nomeSolicitante);
+	    form.setValue("emailRH",emailSolicitante);
+	    
+	}
+	else if (activity == SOLICITAR_APROVACAO ){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	    
+
+	    
+	}
+	else if (activity == SOLICITAR_CONTRATO ){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+	}
+	else if (activity == VERIFICAR_ASSINATURA){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
 	}
 
 	

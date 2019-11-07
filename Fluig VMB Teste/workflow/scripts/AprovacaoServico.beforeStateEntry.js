@@ -42,7 +42,7 @@ function beforeStateEntry(sequenceId){
 				//reprovado.
 				hAPI.setCardValue("aprovacaoServico","reprovado");
 				hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo: " + hAPI.getCardValue("justificativaReprovacao"));	
-				
+				hAPI.setCardValue("justificativaReprovacao","");
 			}
 		
 	}
@@ -58,7 +58,7 @@ function beforeStateEntry(sequenceId){
 			//reprovado.
 			hAPI.setCardValue("aprovacaoServico","reprovado");  
 			hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo: " + hAPI.getCardValue("justificativaReprovacao"));	
-			
+			hAPI.setCardValue("justificativaReprovacao","");
 		}
 	}
 	else if (ativAtual == DIRETOR_RH || ativAtual == DIRETOR_MINISTERIO  || ativAtual == DIRETOR_MKT  || ativAtual == DIRETOR_ADVOCACY){
@@ -84,7 +84,7 @@ function beforeStateEntry(sequenceId){
 				hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo:" + hAPI.getCardValue("justificativaReprovacao"));	
 			}
 			
-			
+			hAPI.setCardValue("justificativaReprovacao","");
 			
 		}
 		else {
@@ -105,7 +105,7 @@ function beforeStateEntry(sequenceId){
 			//reprovado.
 			hAPI.setCardValue("aprovacaoServico","reprovado");  
 			hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo:" + hAPI.getCardValue("justificativaReprovacao"));	
-			
+			hAPI.setCardValue("justificativaReprovacao","");
 		}
 	}
 }

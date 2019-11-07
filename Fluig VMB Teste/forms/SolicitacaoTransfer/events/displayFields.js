@@ -22,10 +22,7 @@ function displayFields(form,customHTML){
 	
 	 form.setVisibleById("prazoaprovacao", false); 
 	 form.setVisibleById("matriculasolicitante", false); 
-	
-	 form.setVisibleById("_matriculasolicitante", false); 
-	 form.setVisibleById("_prazoaprovacao", false); 
-	 form.setVisibleById("_prazoaprovacaoDIR", false);
+	 form.setVisibleById("prazoaprovacaoDIR", false);
 	 form.setVisibleById("div_tipoAprovacao", false); 
 	
 	

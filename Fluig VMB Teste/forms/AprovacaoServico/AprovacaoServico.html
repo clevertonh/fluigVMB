@@ -93,17 +93,17 @@
 																{'field':'TIPO_CONTA','label':'TIPO_CONTA', 'visible' : 'false'},
 																{'field':'TIPO_PJ','label':'TIPO_PJ', 'visible' : 'false'}																					  					
 																]
-																}">
+																}" >
                                                             </div>
                            <div class="form-group col-md-5">
                               <label>Razão Social</label>
-                              <input class="form-control" type="text" id="razaosocial" name="razaosocial">
+                              <input class="form-control" type="text" id="razaosocial" name="razaosocial" readonly>
                            </div>
                         </div>
                         <div class="row">
                            <div class="form-group col-md-4">
                               <label>Nome Fantásia</label>
-                              <input class="form-control" type="text" id="nomefantasia" name="nomefantasia">
+                              <input class="form-control" type="text" id="nomefantasia" name="nomefantasia" readonly>
                            </div>
                            <div class="form-group col-md-2">
                               <label>Codigo Fornecedor</label>
@@ -482,22 +482,44 @@
                      </div>
                   </div>
                </div>
-               <div class="panel-body">
-                  <div class="row" id='divJustificativaReprovacao'>
-                     <div class="form-group col-md-12">
-                        <div class="form-group">
-                           <label for="justificativaReprovacao">Justificativa</label>
-                           <textarea class="form-control" rows="3"
-                              id="justificativaReprovacao"
-                              name="justificativaReprovacao"
-                              placeholder="Em caso de reprovação, por favor, informar o motivo"></textarea>
-                        </div>
-                     </div>
-                  </div>
+               <div class="panel-body" id='divJustificativaReprovacao'>
+               		<div class="panel panel-info">
+               			<div class="panel-heading ">
+	                        <h5 class="panel-title">
+	                           <b>Justificativa em caso de reprovação</b>
+	                        </h5>
+	                     </div>
+	                      <div class="panel-body">
+		                      <div class="row" >
+			                     <div class="form-group col-md-12">
+			                        <div class="form-group">			                          
+			                           <textarea class="form-control" rows="3"
+			                              id="justificativaReprovacao"
+			                              name="justificativaReprovacao"
+			                              placeholder="Em caso de reprovação, por favor, informar o motivo"></textarea>
+			                        </div>
+			                     </div>
+			                  </div>
+	                      </div>
+               		</div>                  
                </div>
-               <div class="row" id="divAprovacaoServico">
-                  <input class="form-control" name="aprovacaoServico" id ="aprovacaoServico" type="text" readonly/>
+               <div class="panel-body" id="divAprovacaoServico">
+               	 	<div class="panel panel-success">
+	               	 	<div class="panel-heading ">
+	                        <h5 class="panel-title">
+	                           <b>Status final da Aprovação</b>
+	                        </h5>
+	                     </div>
+               	 		 <div class="panel-body">
+               	 			<div class="row" >
+			               		<div class="form-group col-md-3">
+			               			<input class="form-control" name="aprovacaoServico" id ="aprovacaoServico" type="text" readonly/>
+			               		</div>                 
+			               </div>
+               	 		</div>
+               	 	</div>
                </div>
+               
             </div>
          </form>
       </div>

@@ -20,7 +20,7 @@ function displayFields(form,customHTML){
 	//log.info("----ATIVIDADE APROVACAO CONTRATOS: " + activity);
 	
 	//campos sempre ocultos
-	form.setVisibleById("divAprovacaoServico", false);
+	
 	 
 	if (activity == ABERTURA || activity == SOLICITAR){
 		 form.setVisibleById("div_nivel1", false);
@@ -31,6 +31,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
 		 form.setVisibleById("divJustificativaReprovacao", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 		 
 	}
 	else if (activity == GERENTE_ADM){		 
@@ -40,6 +41,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	else if ( activity == DIRETOR_FIN){
 		 form.setVisibleById("div_nivel1", false);	
@@ -48,6 +50,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	else if (activity == DIRETOR_RH){
 		 form.setVisibleById("div_nivel1", false);
@@ -56,6 +59,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	else if (activity == DIRETOR_MINISTERIO){
 		 form.setVisibleById("div_nivel1", false);
@@ -64,6 +68,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel4", false);
 		 form.setVisibleById("div_nivel5", false);		 
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	else if (activity == DIRETOR_MKT){
 		 form.setVisibleById("div_nivel1", false);
@@ -72,6 +77,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	else if (activity == DIRETOR_ADVOCACY){
 		 form.setVisibleById("div_nivel1", false);
@@ -80,6 +86,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel4", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	else if (activity == DIRETOR_NACIONAL){
 		 form.setVisibleById("div_nivel1", false);
@@ -88,6 +95,7 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false); 
+		 form.setVisibleById("divAprovacaoServico", false);
 	}
 	
 	
