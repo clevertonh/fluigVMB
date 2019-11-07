@@ -37,41 +37,84 @@ function validateForm(form){
 			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
 		}
 		
+		
+		if (form.getValue("aprNivel1") =="reprovado"){
+			if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+				throw "É necessário informar a justificativa pela reprovação.";
+			}
+		}
+		
+		
+		
 	}
 	else if (activity == DIRETOR_FIN ){		
-		if (form.getValue("aprNivel2") == "" ||  form.getValue("aprNivel2") == null){
-			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
-		}
+			if (form.getValue("aprNivel2") == "" ||  form.getValue("aprNivel2") == null){
+				throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
+			}
+			
+			
+			if (form.getValue("aprNivel2") =="reprovado"){
+				if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+					throw "É necessário informar a justificativa pela reprovação.";
+				}
+			}
+		
 		
 	}
 	else if (activity == DIRETOR_RH ){		
-		if (form.getValue("aprNivel4") == "" ||  form.getValue("aprNivel4") == null){
-			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
-		}
+			if (form.getValue("aprNivel4") == "" ||  form.getValue("aprNivel4") == null){
+				throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
+			}
+			
+			if (form.getValue("aprNivel4") =="reprovado"){
+				if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+					throw "É necessário informar a justificativa pela reprovação.";
+				}
+			}
 		
 	}
 	else if (activity == DIRETOR_MINISTERIO ){		
-		if (form.getValue("aprNivel6") == "" ||  form.getValue("aprNivel6") == null){
-			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
-		}
-		
+			if (form.getValue("aprNivel6") == "" ||  form.getValue("aprNivel6") == null){
+				throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
+			}
+			if (form.getValue("aprNivel6") =="reprovado"){
+				if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+					throw "É necessário informar a justificativa pela reprovação.";
+				}
+			}
+			
 	}
 	else if (activity == DIRETOR_MKT ){		
-		if (form.getValue("aprNivel3") == "" ||  form.getValue("aprNivel3") == null){
-			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
-		}
+			if (form.getValue("aprNivel3") == "" ||  form.getValue("aprNivel3") == null){
+				throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
+			}
+			if (form.getValue("aprNivel3") =="reprovado"){
+				if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+					throw "É necessário informar a justificativa pela reprovação.";
+				}
+			}
 		
 	}
 	else if (activity == DIRETOR_ADVOCACY ){		
-		if (form.getValue("aprNivel5") == "" ||  form.getValue("aprNivel5") == null){
-			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
-		}
+			if (form.getValue("aprNivel5") == "" ||  form.getValue("aprNivel5") == null){
+				throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
+			}
+			if (form.getValue("aprNivel5") =="reprovado"){
+				if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+					throw "É necessário informar a justificativa pela reprovação.";
+				}
+			}
 		
 	}
 	else if (activity == DIRETOR_NACIONAL ){		
-		if (form.getValue("aprNivel4") == "" ||  form.getValue("aprNivel4") == null){
-			throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
-		}
+			if (form.getValue("aprNivel4") == "" ||  form.getValue("aprNivel4") == null){
+				throw "Você precisa escolher entre aprovar ou reprovar a compra/serviço.";
+			}
+			if (form.getValue("aprNivel4") =="reprovado"){
+				if (form.getValue("justificativaReprovacao") == "" ||  form.getValue("justificativaReprovacao") == null){
+					throw "É necessário informar a justificativa pela reprovação.";
+				}
+			}
 		
 	}
 	

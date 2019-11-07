@@ -42,6 +42,9 @@ function enableFields(form){
 		 
 	}
 	else if (activity == GERENTE_ADM){
+		//set numero da solicitação
+		form.setValue("solicitacao",getValue('WKNumProces'));
+		 
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -59,6 +62,9 @@ function enableFields(form){
 	  	
 	}
 	else if (activity == DIRETOR_FIN){
+		 //set numero da solicitação
+		form.setValue("solicitacao",getValue('WKNumProces'));
+		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();

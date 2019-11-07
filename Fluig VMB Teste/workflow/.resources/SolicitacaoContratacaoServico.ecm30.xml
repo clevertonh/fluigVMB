@@ -1366,7 +1366,7 @@
       <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
       <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>true</transferAttachments>
-      <subProcessId>AprovacaoServico</subProcessId>
+      <subProcessId>SolicitacaoAprovacaoServico</subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
@@ -1416,7 +1416,7 @@
       <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
       <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>true</transferAttachments>
-      <subProcessId>AprovacaoServico</subProcessId>
+      <subProcessId>SolicitacaoAprovacaoServico</subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
@@ -3810,9 +3810,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>razaosocial</processField>
-      <subProcessField>razaosocial</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valorAnual</processField>
+      <subProcessField>CotacaovalorAnual</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -3838,6 +3838,16 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>objetivos</processField>
+      <subProcessField>finalidade</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>63</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -3858,6 +3868,36 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoAprovacao</processField>
+      <subProcessField>tipoAprovacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>contaFornecedor</processField>
+      <subProcessField>contaFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtInicio</processField>
+      <subProcessField>dtInicio</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>66</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -3870,19 +3910,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valorMensal</processField>
-      <subProcessField>CotacaovalorMensal</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valor</processField>
-      <subProcessField>valor</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtFim</processField>
+      <subProcessField>dtFim</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -3890,9 +3920,29 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>razaosocial</processField>
-      <subProcessField>razaosocial</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoAprovacao</processField>
+      <subProcessField>tipoAprovacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>objetivos</processField>
+      <subProcessField>finalidade</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valorAnual</processField>
+      <subProcessField>CotacaovalorAnual</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -3910,19 +3960,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>banco</processField>
-      <subProcessField>banco</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>comprador</processField>
-      <subProcessField>solicitante</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>definicaoValor</processField>
+      <subProcessField>definicaoValor</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -3940,9 +3980,39 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>agencia</processField>
-      <subProcessField>agencia</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>emailComprador</processField>
+      <subProcessField>emailSolicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>aprovacaoServico</processField>
+      <subProcessField>aprovacaoServico</subProcessField>
+      <mapFlow>0</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtCotacao</processField>
+      <subProcessField>dataSolicitacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>emailComprador</processField>
+      <subProcessField>emailSolicitante</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -3960,9 +4030,29 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>formapgto</processField>
-      <subProcessField>formapgto</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>definicaoValor</processField>
+      <subProcessField>definicaoValor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoPessoa</processField>
+      <subProcessField>tipoPessoa</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>melhorProposta</processField>
+      <subProcessField>melhorProposta</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4008,29 +4098,19 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>contaFornecedor</processField>
+      <subProcessField>contaFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>63</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>meioPagamento</processField>
-      <subProcessField>meioPagamento</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>nomefantasia</processField>
-      <subProcessField>nomefantasia</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
       <processField>meioPagamento</processField>
       <subProcessField>meioPagamento</subProcessField>
       <mapFlow>2</mapFlow>
@@ -4068,6 +4148,26 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoConta</processField>
+      <subProcessField>tipoConta</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>formapgto</processField>
+      <subProcessField>formapgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>63</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -4088,16 +4188,6 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>justificativaP</processField>
-      <subProcessField>justificativaP</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>63</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -4108,21 +4198,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoConta</processField>
-      <subProcessField>tipoConta</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>formapgto</processField>
-      <subProcessField>formapgto</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>justificativaP</processField>
+      <subProcessField>justificativaP</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4158,11 +4238,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
+      <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoAprovacao</processField>
-      <subProcessField>tipoAprovacao</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>meioPagamento</processField>
+      <subProcessField>meioPagamento</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4170,9 +4250,19 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valor</processField>
-      <subProcessField>valor</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>nomefantasia</processField>
+      <subProcessField>nomefantasia</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>justificativaP</processField>
+      <subProcessField>justificativaP</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4188,39 +4278,9 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtCotacao</processField>
-      <subProcessField>dataSolicitacao</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>nomefantasia</processField>
-      <subProcessField>nomefantasia</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtFim</processField>
-      <subProcessField>dtFim</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
       <processField>meioPagamento</processField>
       <subProcessField>meioPagamento</subProcessField>
       <mapFlow>2</mapFlow>
@@ -4238,11 +4298,21 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
+      <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>justificativaP</processField>
-      <subProcessField>justificativaP</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoConta</processField>
+      <subProcessField>tipoConta</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtFim</processField>
+      <subProcessField>dtFim</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4258,11 +4328,21 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtCotacao</processField>
+      <subProcessField>dataSolicitacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoConta</processField>
-      <subProcessField>tipoConta</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>comprador</processField>
+      <subProcessField>solicitante</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4270,19 +4350,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>definicaoValor</processField>
-      <subProcessField>definicaoValor</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>emailComprador</processField>
-      <subProcessField>emailSolicitante</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valor</processField>
+      <subProcessField>valor</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4300,19 +4370,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtCotacao</processField>
-      <subProcessField>dataSolicitacao</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>contaFornecedor</processField>
-      <subProcessField>contaFornecedor</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valor</processField>
+      <subProcessField>valor</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4328,16 +4388,6 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtInicio</processField>
-      <subProcessField>dtInicio</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>63</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -4350,19 +4400,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>definicaoValor</processField>
-      <subProcessField>definicaoValor</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoAprovacao</processField>
-      <subProcessField>tipoAprovacao</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>banco</processField>
+      <subProcessField>banco</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4370,9 +4410,19 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>objetivos</processField>
-      <subProcessField>finalidade</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valorMensal</processField>
+      <subProcessField>CotacaovalorMensal</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>nomefantasia</processField>
+      <subProcessField>nomefantasia</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4388,11 +4438,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
+      <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtFim</processField>
-      <subProcessField>dtFim</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>razaosocial</processField>
+      <subProcessField>razaosocial</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4408,11 +4458,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
+      <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtInicio</processField>
-      <subProcessField>dtInicio</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>formapgto</processField>
+      <subProcessField>formapgto</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4423,16 +4473,6 @@
       <subProcessCode>SolicitacaoContrato</subProcessCode>
       <processField>agencia</processField>
       <subProcessField>agencia</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valorAnual</processField>
-      <subProcessField>CotacaovalorAnual</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4450,9 +4490,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>emailComprador</processField>
-      <subProcessField>emailSolicitante</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>comprador</processField>
+      <subProcessField>solicitante</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4470,10 +4510,10 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>aprovacaoServico</processField>
-      <subProcessField>aprovacaoServico</subProcessField>
-      <mapFlow>0</mapFlow>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>razaosocial</processField>
+      <subProcessField>razaosocial</subProcessField>
+      <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
@@ -4483,6 +4523,16 @@
       <subProcessCode>SolicitacaoContrato</subProcessCode>
       <processField>objetivos</processField>
       <subProcessField>finalidade</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valorMensal</processField>
+      <subProcessField>CotacaovalorMensal</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4498,26 +4548,6 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoPessoa</processField>
-      <subProcessField>tipoPessoa</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>melhorProposta</processField>
-      <subProcessField>melhorProposta</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>66</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -4528,9 +4558,9 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
+      <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
       <processField>agencia</processField>
       <subProcessField>agencia</subProcessField>
       <mapFlow>2</mapFlow>
@@ -4548,11 +4578,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
+      <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>cnpjcpf</processField>
-      <subProcessField>cnpjcpf</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>negociacao</processField>
+      <subProcessField>negociacao</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4560,19 +4590,19 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoPessoa</processField>
-      <subProcessField>tipoPessoa</subProcessField>
-      <mapFlow>2</mapFlow>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>aprovacaoServico</processField>
+      <subProcessField>aprovacaoServico</subProcessField>
+      <mapFlow>0</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>melhorProposta</processField>
-      <subProcessField>melhorProposta</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>codigoFornecedor</processField>
+      <subProcessField>codigoFornecedor</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4583,6 +4613,16 @@
       <subProcessCode>SolicitacaoContrato</subProcessCode>
       <processField>condicaoPgto</processField>
       <subProcessField>condicaoPgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>cnpjcpf</processField>
+      <subProcessField>cnpjcpf</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4610,9 +4650,19 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>codigoFornecedor</processField>
-      <subProcessField>codigoFornecedor</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoPessoa</processField>
+      <subProcessField>tipoPessoa</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>105</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>melhorProposta</processField>
+      <subProcessField>melhorProposta</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4623,16 +4673,6 @@
       <subProcessCode>SolicitacaoContrato</subProcessCode>
       <processField>statusContrato</processField>
       <subProcessField>statusContrato</subProcessField>
-      <mapFlow>0</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>aprovacaoServico</processField>
-      <subProcessField>aprovacaoServico</subProcessField>
       <mapFlow>0</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4658,11 +4698,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
+      <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>contaFornecedor</processField>
-      <subProcessField>contaFornecedor</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>banco</processField>
+      <subProcessField>banco</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4670,9 +4710,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>94</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>negociacao</processField>
-      <subProcessField>negociacao</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>cnpjcpf</processField>
+      <subProcessField>cnpjcpf</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4698,6 +4738,16 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>codigoFornecedor</processField>
+      <subProcessField>codigoFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>66</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -4718,11 +4768,31 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
+      <stateSequence>66</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valorMensal</processField>
-      <subProcessField>CotacaovalorMensal</subProcessField>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>cnpjcpf</processField>
+      <subProcessField>cnpjcpf</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtInicio</processField>
+      <subProcessField>dtInicio</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoContratacaoServico</processCode>
+      <stateSequence>94</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>agencia</processField>
+      <subProcessField>agencia</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -4730,79 +4800,9 @@
       <processCode>SolicitacaoContratacaoServico</processCode>
       <stateSequence>105</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
       <processField>negociacao</processField>
       <subProcessField>negociacao</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>66</stateSequence>
-      <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>cnpjcpf</processField>
-      <subProcessField>cnpjcpf</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valorAnual</processField>
-      <subProcessField>CotacaovalorAnual</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>banco</processField>
-      <subProcessField>banco</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>codigoFornecedor</processField>
-      <subProcessField>codigoFornecedor</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>objetivos</processField>
-      <subProcessField>finalidade</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>105</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>comprador</processField>
-      <subProcessField>solicitante</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoContratacaoServico</processCode>
-      <stateSequence>94</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>cnpjcpf</processField>
-      <subProcessField>cnpjcpf</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
   </list>

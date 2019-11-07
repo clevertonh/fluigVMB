@@ -25,7 +25,7 @@ function beforeStateEntry(sequenceId){
 	    var usuario = getValue('WKUser');
 	       
 	    var numProcess = getValue("WKNumProces");
-	    var limiteAnual 	 = hAPI.getCardValue("limiteanual");
+//	    var limiteAnual 	 = hAPI.getCardValue("CotacaovalorAnual");
 	    
 	if (ativAtual == SOLICITAR ){
 	 	
