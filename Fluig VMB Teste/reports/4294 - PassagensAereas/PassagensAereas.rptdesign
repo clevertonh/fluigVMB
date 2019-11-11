@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <text-property name="title">Passagens  Aereas</text-property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.java.util);
+
+var dataset = null;
+var count = 0;]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <script-data-source name="DataSetFluig" id="7"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="VM_PassagensAereas" id="9">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">Codigo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">DataSolic</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">Nome</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">origem1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">datapartida1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">destino1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">dataretorno1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">origem2</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">destino2</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">datapartida2</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">origem3</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">destino3</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">datapartida3</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">viagemCancelada</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">remarcacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">Codigo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">DataSolic</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Nome</property>
+                </structure>
+                <structure>
+                    <property name="columnName">origem1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">datapartida1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">destino1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dataretorno1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">origem2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">destino2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">datapartida2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">origem3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">destino3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">datapartida3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">viagemCancelada</property>
+                </structure>
+                <structure>
+                    <property name="columnName">remarcacao</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Codigo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">DataSolic</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">Nome</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">origem1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">datapartida1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">destino1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">dataretorno1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">origem2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">destino2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">datapartida2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">origem3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">destino3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">datapartida3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">viagemCancelada</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">remarcacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try {
+	var factory = DatasetFactory.getInstance(${WKCompany});
+	dataset = factory.getDataset("VM_PassagensAereas",null,null,null);
+
+}
+catch (e) {
+}
+finally{
+}
+
+]]></method>
+            <property name="dataSource">DataSetFluig</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+	if (count < dataset.rowsCount ){
+		
+		row["Codigo"]= dataset.getValue(count,"solicitacao");		
+		row["DataSolic"]= dataset.getValue(count,"dataSolicitacao");
+		row["Nome"]= dataset.getValue(count,"nomepassageiro");
+		row["origem1"]= dataset.getValue(count,"origem1");
+		row["datapartida1"]= dataset.getValue(count,"datapartida1");	
+		row["destino1"]= dataset.getValue(count,"destino1");			
+		row["dataretorno1"]= dataset.getValue(count,"dataretorno1");		
+		row["origem2"]= dataset.getValue(count,"origem2");
+		row["destino2"]= dataset.getValue(count,"destino2");	
+		row["datapartida2"]= dataset.getValue(count,"datapartida2");
+		row["origem3"]= dataset.getValue(count,"origem3");	
+		row["destino3"]= dataset.getValue(count,"destino3");				
+		row["datapartida3"]= dataset.getValue(count,"datapartida3");		
+		row["viagemCancelada"]= dataset.getValue(count,"viagemCancelada");
+		row["remarcacao"]= dataset.getValue(count,"remarcacao");	
+	
+		count ++;
+		return true;
+		
+
+	}
+}
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">landscape</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="288">
+            <property name="backgroundColor">#C0C0C0</property>
+            <property name="fontWeight">bold</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">Relatório para pagamento de diárias - solicitações de passagens aerea compradas</text-property>
+        </label>
+        <table id="192">
+            <property name="fontSize">8pt</property>
+            <property name="dataSet">VM_PassagensAereas</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Codigo</property>
+                    <text-property name="displayName">Codigo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Codigo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">DataSolic</property>
+                    <text-property name="displayName">DataSolic</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DataSolic"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Nome</property>
+                    <text-property name="displayName">Nome</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Nome"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">origem1</property>
+                    <text-property name="displayName">origem1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["origem1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">datapartida1</property>
+                    <text-property name="displayName">datapartida1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["datapartida1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">destino1</property>
+                    <text-property name="displayName">destino1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["destino1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dataretorno1</property>
+                    <text-property name="displayName">dataretorno1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dataretorno1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">origem2</property>
+                    <text-property name="displayName">origem2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["origem2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">destino2</property>
+                    <text-property name="displayName">destino2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["destino2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">datapartida2</property>
+                    <text-property name="displayName">datapartida2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["datapartida2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">origem3</property>
+                    <text-property name="displayName">origem3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["origem3"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">destino3</property>
+                    <text-property name="displayName">destino3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["destino3"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">datapartida3</property>
+                    <text-property name="displayName">datapartida3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["datapartida3"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">viagemCancelada</property>
+                    <text-property name="displayName">viagemCancelada</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["viagemCancelada"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">remarcacao</property>
+                    <text-property name="displayName">remarcacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["remarcacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="271"/>
+            <column id="272"/>
+            <column id="273"/>
+            <column id="274"/>
+            <column id="275"/>
+            <column id="276"/>
+            <column id="277"/>
+            <column id="278"/>
+            <column id="279"/>
+            <column id="280"/>
+            <column id="281"/>
+            <column id="282"/>
+            <column id="283"/>
+            <column id="284"/>
+            <column id="285"/>
+            <header>
+                <row id="193">
+                    <cell id="194">
+                        <label id="195">
+                            <text-property name="text">Codigo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="196">
+                        <label id="197">
+                            <text-property name="text">DataSolic</text-property>
+                        </label>
+                    </cell>
+                    <cell id="198">
+                        <label id="199">
+                            <text-property name="text">Nome</text-property>
+                        </label>
+                    </cell>
+                    <cell id="200">
+                        <label id="201">
+                            <text-property name="text">origem1</text-property>
+                        </label>
+                    </cell>
+                    <cell id="202">
+                        <label id="203">
+                            <text-property name="text">datapartida1</text-property>
+                        </label>
+                    </cell>
+                    <cell id="204">
+                        <label id="205">
+                            <text-property name="text">destino1</text-property>
+                        </label>
+                    </cell>
+                    <cell id="206">
+                        <label id="207">
+                            <text-property name="text">dataretorno1</text-property>
+                        </label>
+                    </cell>
+                    <cell id="208">
+                        <label id="209">
+                            <text-property name="text">origem2</text-property>
+                        </label>
+                    </cell>
+                    <cell id="210">
+                        <label id="211">
+                            <text-property name="text">destino2</text-property>
+                        </label>
+                    </cell>
+                    <cell id="212">
+                        <label id="213">
+                            <text-property name="text">datapartida2</text-property>
+                        </label>
+                    </cell>
+                    <cell id="214">
+                        <label id="215">
+                            <text-property name="text">origem3</text-property>
+                        </label>
+                    </cell>
+                    <cell id="216">
+                        <label id="217">
+                            <text-property name="text">destino3</text-property>
+                        </label>
+                    </cell>
+                    <cell id="218">
+                        <label id="219">
+                            <text-property name="text">datapartida3</text-property>
+                        </label>
+                    </cell>
+                    <cell id="220">
+                        <label id="221">
+                            <text-property name="text">viagemCancelada</text-property>
+                        </label>
+                    </cell>
+                    <cell id="222">
+                        <label id="223">
+                            <text-property name="text">remarcacao</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="224">
+                    <cell id="225">
+                        <data id="226">
+                            <property name="resultSetColumn">Codigo</property>
+                        </data>
+                    </cell>
+                    <cell id="227">
+                        <data id="228">
+                            <property name="resultSetColumn">DataSolic</property>
+                        </data>
+                    </cell>
+                    <cell id="229">
+                        <data id="230">
+                            <property name="resultSetColumn">Nome</property>
+                        </data>
+                    </cell>
+                    <cell id="231">
+                        <data id="232">
+                            <property name="resultSetColumn">origem1</property>
+                        </data>
+                    </cell>
+                    <cell id="233">
+                        <data id="234">
+                            <property name="resultSetColumn">datapartida1</property>
+                        </data>
+                    </cell>
+                    <cell id="235">
+                        <data id="236">
+                            <property name="resultSetColumn">destino1</property>
+                        </data>
+                    </cell>
+                    <cell id="237">
+                        <data id="238">
+                            <property name="resultSetColumn">dataretorno1</property>
+                        </data>
+                    </cell>
+                    <cell id="239">
+                        <data id="240">
+                            <property name="resultSetColumn">origem2</property>
+                        </data>
+                    </cell>
+                    <cell id="241">
+                        <data id="242">
+                            <property name="resultSetColumn">destino2</property>
+                        </data>
+                    </cell>
+                    <cell id="243">
+                        <data id="244">
+                            <property name="resultSetColumn">datapartida2</property>
+                        </data>
+                    </cell>
+                    <cell id="245">
+                        <data id="246">
+                            <property name="resultSetColumn">origem3</property>
+                        </data>
+                    </cell>
+                    <cell id="247">
+                        <data id="248">
+                            <property name="resultSetColumn">destino3</property>
+                        </data>
+                    </cell>
+                    <cell id="249">
+                        <data id="250">
+                            <property name="resultSetColumn">datapartida3</property>
+                        </data>
+                    </cell>
+                    <cell id="251">
+                        <data id="252">
+                            <property name="resultSetColumn">viagemCancelada</property>
+                        </data>
+                    </cell>
+                    <cell id="253">
+                        <data id="254">
+                            <property name="resultSetColumn">remarcacao</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="255">
+                    <cell id="256"/>
+                    <cell id="257"/>
+                    <cell id="258"/>
+                    <cell id="259"/>
+                    <cell id="260"/>
+                    <cell id="261"/>
+                    <cell id="262"/>
+                    <cell id="263"/>
+                    <cell id="264"/>
+                    <cell id="265"/>
+                    <cell id="266"/>
+                    <cell id="267"/>
+                    <cell id="268"/>
+                    <cell id="269"/>
+                    <cell id="270"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

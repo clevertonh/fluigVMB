@@ -56,25 +56,18 @@ function validateForm(form){
 		if (form.getValue("justificativa") == "" || form.getValue("justificativa") == null  ){
 			throw "Você precisa informar a justificativa pelo adiantamento.";
 		}
+				
 		
-		if (form.getValue("centrocusto") == "" || form.getValue("centrocusto") == null ){
-			throw "Você precisa informar o centro de custo.";
+		if (form.getValue("tipoAprovacao") == "" || form.getValue("tipoAprovacao") == null  ){
+			throw "Você precisa indicar o campo tipo.";
 		}
-		if (form.getValue("centrocusto") == "99990" ){
-			if (form.getValue("projeto") == "" || form.getValue("projeto") == null ){
-				throw "Você precisa informar o projeto.";
-			}
-			if (form.getValue("fontefinanciamento") == "" || form.getValue("fontefinanciamento") == null){
-				throw "Você precisa informar a fonte de financiamento.";
-			}
 			
-		}
 		
 		//necessario criar um webservice de consultar saldo de adiantamento a fornecedor
 		//consultaPendenciaAdiantamento();
 		
 		 if (!grupoCommpradores(usuarioLogado)){
-			 throw "Apenas funcionários da área de Administração podem solicitar adiantamento a fornecedor.";
+			 //throw "Apenas funcionários da área de Administração podem solicitar adiantamento a fornecedor.";
 		 }
 		
 		
@@ -158,7 +151,7 @@ function validateForm(form){
 			constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "GestaoCompras", "GestaoCompras", ConstraintType.MUST));
 			var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
 			
-		
+			
 		}
 		
             

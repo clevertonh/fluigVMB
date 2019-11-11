@@ -12,10 +12,25 @@ function createDataset(fields, constraints, sortFields) {
 		 if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
 			 	var documentId = constraints[0].initialValue;
 			// 	var dtAprovacao = constraints[1].initialValue;
+			// 	var aprovador;
 			 
 			 	var c0 = DatasetFactory.createConstraint("documentid", documentId, documentId, ConstraintType.MUST);    
 	    		var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
 	    		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesAdiantamentoFornecedor", null, new Array(c0,c1), null);
+	    	
+	    		/*
+	    		
+	    		if (solicitacao.getValue(0,"emailNivel1") !=null && solicitacao.getValue(0,"emailNivel1") !="") {
+	    			aprovador = solicitacao.getValue(0,"emailNivel1");	    			
+	    		}
+	    		else if (solicitacao.getValue(0,"emailNivel7") !=null && solicitacao.getValue(0,"emailNivel7") !=""){
+    				aprovador = solicitacao.getValue(0,"emailNivel7");
+	    		}
+	    		else if (solicitacao.getValue(0,"emailNivel5") !=null && solicitacao.getValue(0,"emailNivel5") !=""){
+	    				aprovador = solicitacao.getValue(0,"emailNivel5");
+	    		}
+	    		
+	    		*/
 	    		
 	    		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),documentId,solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
@@ -27,7 +42,7 @@ function createDataset(fields, constraints, sortFields) {
 						        	serviceCode : 'REST FLUIG',
 						            endpoint : '/F_CADFN001',
 						            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-						            timeoutService: '100', // segundos
+						            timeoutService: '360', // segundos
 						            params : {
 						            	DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',	
 						            	DATAVENCIMENTO :'' + solicitacao.getValue(0,"dtNecessidade") + '',
@@ -37,7 +52,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	CODIGOFORNECEDOR :'' + solicitacao.getValue(0,"codigoFornecedor") +'',
 						            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailSolicitante") +'',
 						            	EMAILAPROVADOR	: '' + solicitacao.getValue(0,"emailNivel1") +'',
-						            	EMAILDIRETOR	: '' + solicitacao.getValue(0,"emailNivel2") +'',
+						            	EMAILDIRETOR	: '' + solicitacao.getValue(0,"emailNivel2") +'',						            	
 						            	CCUSTO	: '' + solicitacao.getValue(0,"centrocusto") +'',
 						            	PROJETO	: '' + solicitacao.getValue(0,"projeto") +'',	
 						            	FONTE	: '' + solicitacao.getValue(0,"fontefinanciamento") +'',

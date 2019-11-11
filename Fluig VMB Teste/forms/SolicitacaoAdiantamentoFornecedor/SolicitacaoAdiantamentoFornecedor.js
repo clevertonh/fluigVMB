@@ -48,22 +48,11 @@ function removedZoomItem(removedItem) {
     var CCUSTO = "centrocusto";
     var PROJETO = "projeto";
     var FONTE = "fontefinanciamento";
-    var FUNCIONARIO ="cgcFornecedor";
+    var FORNECEDOR ="cgcFornecedor";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
-    if (campoZOOM == CCUSTO) {
-        window[PROJETO].clear();
-        window[FONTE].clear();
-        window[PROJETO].disable(true);
-        window[FONTE].disable(true);
-       
-   } 
-    else if (campoZOOM == PROJETO){
-    	 window[FONTE].clear();
-    	 window[FONTE].disable(true);
-    }
-    else if (campoZOOM == FUNCIONARIO){
+    if (campoZOOM == FORNECEDOR){
     	 $("#razaosocial").val("");
     	 $("#codigoFornecedor").val("");
     	 
@@ -76,42 +65,13 @@ function setZoomData(instance, value) {
 }
 
 function setSelectedZoomItem(selectedItem) {
-  var CCUSTO = "centrocusto";
-  var PROJETO = "projeto";
-  var FONTE = "fontefinanciamento";
-  var FUNCIONARIO ="cgcFornecedor";
+   var FORNECEDOR ="cgcFornecedor";
 
   
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
   
-  //compara para verificar se o zoom é o campo centro de custo
-  if (campoZOOM == CCUSTO) {
-      //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
-      window[PROJETO].clear();
-      window[FONTE].clear();
-      window[FONTE].disable(true);
-      
-	  	if (selectedItem["CODIGO"] == '99990'){
-	  	    window[PROJETO].disable(false);	  
-	  	    window[FONTE].disable(true);
-	  	     document.getElementById("div_projeto").style.display = "block";
-	  		 document.getElementById("div_fonte").style.display = "block";
-	  	}
-	  	else {
-	  		
-	  		window[PROJETO].disable(true);
-	  		window[FONTE].disable(true);
-	    
-	  	}
-
-  } 
-  else if (campoZOOM == PROJETO){
-	  window[FONTE].clear();
-	  window[FONTE].disable(false);
-	  reloadZoomFilterValues(FONTE, "PROJETO," + selectedItem["CODIGO"]);
-  }
-  else if (campoZOOM == FUNCIONARIO){
+ if (campoZOOM == FORNECEDOR){
 	  $("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);
 	  $("#codigoFornecedor").val(selectedItem["CODIGO"]);
 	  

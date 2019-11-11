@@ -64,12 +64,47 @@
                                          	<input type="text" id="matriculasolicitante" name="matriculasolicitante" readonly>
                                          </div>
                                     </div>
-                                    
+                                    <div class="row">
+                                    	<div class="form-group col-md-6">
+		                                    <div class="panel panel-info">
+		                                    	   <div class="panel-heading ">
+			                                          <h5 class="panel-title">
+			                                             <b>Tipo</b>
+			                                          </h5>
+		                                      	 </div>
+		                                      	 <div class="panel-body">
+			                                      	 <div class="row">
+									                     <div class="form-group col-md-4">					                     
+									                        <label for="servico">Serviço</label> 
+									                        <input type="radio" id="servico" name="tipoAprovacao" value="servico">				                                  
+									                        <label for="mercadoria">Mercadoria</label>
+									                        <input type="radio" id="mercadoria" name="tipoAprovacao" value="mercadoria">  
+									                     </div>
+									                </div>
+		                                      	 </div>
+		                                    </div>   
+	                                    </div>
+										<div class="form-group col-md-6">
+											 <div class="panel panel-info">
+												 	<div class="panel-heading ">
+				                                          <h5 class="panel-title">
+				                                             <b>Finalidade</b>
+				                                          </h5>
+			                                      	 </div>
+			                                      	  <div class="panel-body">
+				                                      	  	<div class="row">			                                      	  		
+				                                      	  		<textarea class="form-control" id="finalidade" name="finalidade"></textarea>
+				                                      	  	</div>
+			                                      	  </div>
+											 </div>
+										</div>
+	                                            
+                                    </div>
                                      <div class="panel panel-info">										 
 										   <div class="panel-heading ">
-                                          <h5 class="panel-title">
-                                             <b>Informações do adiantamento</b>
-                                          </h5>
+	                                          <h5 class="panel-title">
+	                                             <b>Informações do adiantamento</b>
+	                                          </h5>
                                       	 </div>
                                       	  <div class="panel-body">
                                       	    <div class="row">
@@ -104,12 +139,10 @@
                                                                    			<label>Forma de Pagamento</label><br> 
                                                                    			<label for="cartao">Cartão de crédito</label> 
                                                                    			<input type="radio" id="cartao" name="formapgto" value="cartao">
-				                                                         	<label for="deposito">Depósito</label>
-				                                                         	<input type="radio" id="deposito" name="formapgto" value="deposito">                                                                    	                                                                    	
+				                                                         	<label for="transferencia">Transferencia</label>
+				                                                         	<input type="radio" id="transferencia" name="formapgto" value="transferencia">                                                                    	                                                                    	
 				                                                         	<label for="boleto">Boleto</label>
-				                                                         	<input type="radio" id="boleto" name="formapgto" value="boleto">
-				                                                         	<label for="ordemPgto">Ordem de pgto</label>
-				                                                         	<input type="radio" id="ordemPgto" name="formapgto" value="ordempagamento">
+				                                                         	<input type="radio" id="boleto" name="formapgto" value="boleto">				                                                         
                                                 </div>
                                     </div>
                                     
@@ -150,77 +183,57 @@
                                     </div> 
                                     </div>
                                      </div>
-                                    
-                                    
-                                  
-                                    
-                                    
-                                    <div class="panel panel-info">										 
-										   <div class="panel-heading ">
-                                          <h5 class="panel-title">
-                                             <b>Informações contábeis</b>
-                                          </h5>
-                                      	 </div>
-										 
-										  <div class="panel-body">
-										    <div class="form-group row">                                    		
-                        				  <div class="form-group col-md-3">
-                        				  	<label>Centro de custo</label>  
-                        				  	      				  	                                                                  																					
-                                                                  <input 
-                                                                     type="zoom" 
-                                                                     id="centrocusto"
-                                                                     name="centrocusto" 
-                                                                     data-zoom="{
-                                                                     'displayKey':'CODIGO',
-                                                                     'datasetId':'VM_CentroCusto',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione um centro de custo',
-                                                                     'fields':[
-                                                                     {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
-                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO'}]
-                                                                     }" />
-                                                               </div>
-															<div class="form-group col-md-3" id="div_projeto">
-																<label>Projeto</label> 
-									                                                               																					
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="projeto" 
-                                                                     id="projeto"
-                                                                     data-zoom="{
-                                                                     'displayKey':'CODIGO',
-                                                                     'datasetId':'VM_projeto',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione um projeto',
-                                                                     'fields':[
-                                                                     {'field':'CODIGO', 'label':'CODIGO'},
-                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'}
-                                                                     ]
-                                                                     }" />
-                                                               </div> 
-                                                                <div class="form-group col-md-3" id="div_fonte">
-                                                                <label>Fonte de Financiamento</label> 
-                                                                                         																						
-                                                                  <input
-                                                                     type="zoom" 
-                                                                     name="fontefinanciamento" 
-                                                                     id="fontefinanciamento"
-                                                                     data-zoom="{
-                                                                     'displayKey':'CODIGO',
-                                                                     'datasetId':'ds_get_FonteFinanciamento',
-                                                                     'maximumSelectionLength':'1',
-                                                                     'placeholder':'Selecione uma fonte de financ.',
-                                                                     'fields':[
-                                                                     {'field':'CODIGO', 'label':'CODIGO'},
-                                                                     {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true'},
-                                                                     {'field':'PROJETO', 'label':'PROJETO', 'visible':'false'}]
-                                                                     }" />
-                                                               </div>                                     	
-                                    </div>
-										         
-										  </div>
-									</div>
+                                     
+                                      <div class="panel panel-info" id="div_contrato">
+                                     	<div class="panel-body" >
+                                                <div class="panel panel-info">
+                                                    <div class="panel-heading ">
+                                                        <h5 class="panel-title">
+															<b>Informações do Contrato</b>
+														</h5>
+                                                    </div>
+                                                    <div class="panel-body">
+														<div class="row">
+                                                              <div class="form-group col-md-3">
+                                                                <label>Número do Contrato</label><br>
+                                                                <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
+																'displayKey':'DESCRICAO',
+																'datasetId':'vm_Produtos',
+																'maximumSelectionLength':'1',
+																'placeholder':'Selecione o serviço',
+																'fields':[
+																{'field':'CODIGO', 'label':'CODIGO'},
+																{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+																]}" />
+                                                            </div>
+                                                            <div class="form-group col-md-1">
+                                                            	<label>Revisão</label>
+                                                            	<input type="text" name="revisao" id="revisao" class="form-control"/>
+                                                            </div>
+                                                            <div class="form-group col-md-2">
+										                        <label for="dtCotacao">Data de Inicio</label>
+										                        <div class="input-group date">
+										                           <input type="text" class="form-control" id="dtInicio" name="dtInicio" readonly>
+										                           <span class="input-group-addon"> <span
+										                              class="fluigicon fluigicon-calendar"></span>
+										                           </span>
+										                        </div>
+									                    	 </div>
+									                    	    <div class="form-group col-md-2">
+										                        <label for="dtCotacao">Data de Encerramento</label>
+										                        <div class="input-group date">
+										                           <input type="text" class="form-control" id="dtFim" name="dtFim" readonly>
+										                           <span class="input-group-addon"> <span
+										                              class="fluigicon fluigicon-calendar"></span>
+										                           </span>
+										                        </div>
+									                    	 </div>
+                                                        </div>                                                             
+                                                    </div>
+                                                </div>
+                                            </div>
+                                      </div>	
+                                                                            
                                     <div class="panel panel-info" id="div_nivel1">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
@@ -229,31 +242,29 @@
                                       	 </div>
                                       	 
                                       	 <div class="panel-body">
-                                      	 	<div class="row">
-                                       <div class="form-group col-md-4">
-                                          <label for="gestor" class="required">Nome aprovador</label>
-                                          <input type="text" class="form-control" id="nomeNivel1" name="nomeNivel1" readonly >
-                                       </div>
-                                       <div class="form-group col-md-4">
-                                          <label for="emailNivel1">Email do Aprovador</label>
-                                          <input type="email" class="form-control" id="emailNivel1" name="emailNivel1" readonly>
-                                       </div>	                                                                             								
-									</div>
-         							 <div class="row">
-                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
-                                       <div class="form-group col-md-2">
-                                          <Label for="aprNivel1S">Aprovado</Label> <input type="radio"
-                                             id="aprNivel1S" name="aprNivel1" value="aprovado"
-                                              />
-                                       </div>
-                                       <div class="form-group col-md-4">
-                                          <Label for="aprNivel1N">Reprovado</Label> <input
-                                             type="radio" id="aprNivel1N" name="aprNivel1"
-                                             value="reprovado"  />
-                                       </div>
-                                                                          
-                                    </div>
-                          
+	                                      	 	<div class="row">
+			                                       <div class="form-group col-md-4">
+			                                          <label for="gestor" class="required">Nome aprovador</label>
+			                                          <input type="text" class="form-control" id="nomeNivel1" name="nomeNivel1" readonly >
+			                                       </div>
+			                                       <div class="form-group col-md-4">
+			                                          <label for="emailNivel1">Email do Aprovador</label>
+			                                          <input type="email" class="form-control" id="emailNivel1" name="emailNivel1" readonly>
+			                                       </div>	                                                                             								
+												</div>
+		         							 <div class="row">
+			                                       <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+			                                       <div class="form-group col-md-2">
+			                                          <Label for="aprNivel1S">Aprovado</Label> <input type="radio"
+			                                             id="aprNivel1S" name="aprNivel1" value="aprovado"
+			                                              />
+			                                       </div>
+			                                       <div class="form-group col-md-4">
+			                                          <Label for="aprNivel1N">Reprovado</Label> <input
+			                                             type="radio" id="aprNivel1N" name="aprNivel1"
+			                                             value="reprovado"  />
+			                                       </div>                                                                          
+		                                    </div>                          
                                       	 </div>
                                     </div>                                    
 
@@ -291,7 +302,7 @@
                                       	 </div>
                                     </div>
 									
-<div class="panel panel-info" id="div_nivel3">										 
+									<div class="panel panel-info" id="div_nivel3">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
                                              <b>Diretor Marketing</b>
@@ -325,7 +336,7 @@
                                       	 </div>
                                     </div>		
 									
-<div class="panel panel-info" id="div_nivel4">										 
+									<div class="panel panel-info" id="div_nivel4">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
                                              <b>Diretor de Suporte</b>
@@ -358,7 +369,7 @@
                                     </div>
                                       	 </div>
                                     </div>	
-<div class="panel panel-info" id="div_nivel5">										 
+									<div class="panel panel-info" id="div_nivel5">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
                                              <b>Diretor Advocacy</b>
@@ -391,7 +402,7 @@
                                     </div>
                                       	 </div>
                                     </div>		
-<div class="panel panel-info" id="div_nivel6">										 
+									<div class="panel panel-info" id="div_nivel6">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
                                              <b>Diretor Ministério</b>
@@ -424,7 +435,7 @@
                                     </div>
                                       	 </div>
                                     </div>										
-<div class="panel panel-info" id="div_nivel7">										 
+									<div class="panel panel-info" id="div_nivel7">										 
 										   <div class="panel-heading ">
                                           <h5 class="panel-title">
                                              <b>Diretor Nacional</b>
@@ -506,13 +517,13 @@
 						                                       </div>
                               	 	
                               	 	        <div class="form-group col-md-2" id="div_dtPgto">
-                                          <label for="dtEmissao">Data de Pagamento</label>
-                                          <div class="input-group date" >
-                                             <input type="text" class="form-control" placeholder="Data de Pgto" id="dtEmissao" name="dtEmissao">
-                                             <span class="input-group-addon">
-                                             <span class="fluigicon fluigicon-calendar"></span>
-                                             </span>
-                                          </div>
+	                                          <label for="dtEmissao">Data de Pagamento</label>
+	                                          <div class="input-group date" >
+	                                             <input type="text" class="form-control" placeholder="Data de Pgto" id="dtEmissao" name="dtEmissao">
+	                                             <span class="input-group-addon">
+	                                             <span class="fluigicon fluigicon-calendar"></span>
+	                                             </span>
+	                                          </div>
                                        </div>  
                               	 	
                               	 	

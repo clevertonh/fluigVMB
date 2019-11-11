@@ -20,6 +20,12 @@ function enableFields(form){
 	 var nomeUsuario = dataset.getValue(0, "colleagueName");
 	 var emailUsuario = dataset.getValue(0, "mail");
 	 
+	 
+	 form.setEnabled("matriculasolicitante", true);	
+	 form.setEnabled("prazoaprovacao", true);	
+	 form.setEnabled("prazoaprovacaoDIR", true);	
+	 
+	 
 	
 	if (activity == ABERTURA){
 		form.setEnabled("aprovacao", false);	
