@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Adiantamento a Fornecedor</processId>
-      <version>19</version>
+      <version>23</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2168</formId>
@@ -266,7 +266,7 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationId>Pool Papel</engineAllocationId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;GERENCIA_ADM&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
@@ -370,8 +370,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_MKT&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_SUPORTE&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -422,8 +422,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_SUPORTE&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_MINISTERIO&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -526,8 +526,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_MINISTERIO&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_ADVOCACY&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -816,53 +816,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <version>1</version>
-        <sequence>40</sequence>
-      </processStatePK>
-      <stateName>Cancelar</stateName>
-      <stateDescription>Cancelar</stateDescription>
-      <instruction>Atividade final do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>1700</positionX>
-      <positionY>430</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>65</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>1</version>
         <sequence>79</sequence>
       </processStatePK>
       <stateName>Integrar com Protheus</stateName>
@@ -887,8 +840,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1700</positionX>
-      <positionY>310</positionY>
+      <positionX>1690</positionX>
+      <positionY>365</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1100,7 +1053,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>75</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel1&quot;) ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 3500</condition>
@@ -1112,7 +1065,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>75</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel1&quot;) ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt;3500</condition>
@@ -1124,7 +1077,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>75</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel1&quot;) ==&quot;reprovado&quot;</condition>
@@ -1136,7 +1089,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 35000</condition>
@@ -1148,7 +1101,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt;35000</condition>
@@ -1160,7 +1113,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;reprovado&quot;</condition>
@@ -1172,10 +1125,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>94</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;formapgto&quot;) != hAPI.getCardValue(&quot;cartao&quot;)</condition>
+      <condition>hAPI.getCardValue(&quot;meioPagamento&quot;) != hAPI.getCardValue(&quot;CARTAO&quot;)</condition>
       <destinationSequenceId>10</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1184,10 +1137,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>94</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;formapgto&quot;) == hAPI.getCardValue(&quot;cartao&quot;)</condition>
+      <condition>hAPI.getCardValue(&quot;meioPagamento&quot;) == hAPI.getCardValue(&quot;CARTAO&quot;)</condition>
       <destinationSequenceId>24</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1196,7 +1149,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>99</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &lt;= 35000</condition>
@@ -1208,7 +1161,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>99</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;vl_adiantado&quot;) &gt; 35000</condition>
@@ -1220,7 +1173,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel4&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel6&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel5&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel3&quot;) ==&quot;reprovado&quot;</condition>
@@ -1232,7 +1185,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &lt;= 50000</condition>
@@ -1244,7 +1197,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>133</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &gt; 50000</condition>
@@ -1256,7 +1209,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>140</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;reprovado&quot;</condition>
@@ -1268,7 +1221,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>23</version>
         <sequence>140</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;aprovado&quot;</condition>
@@ -1784,23 +1737,6 @@
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
-      <defaultLink>true</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>1</version>
-        <linkSequence>149</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>10</initialStateSequence>
-      <finalStateSequence>40</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
@@ -2036,7 +1972,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>19</version>
+        <version>23</version>
         <linkSequence>95</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2047,7 +1983,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>19</version>
+        <version>23</version>
         <linkSequence>101</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2058,7 +1994,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>19</version>
+        <version>23</version>
         <linkSequence>102</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2069,7 +2005,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>19</version>
+        <version>23</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2080,7 +2016,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAdiantamentoFornecedor</processId>
-        <version>19</version>
+        <version>23</version>
         <linkSequence>139</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2098,7 +2034,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2108,7 +2044,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>5</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2118,7 +2054,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2128,7 +2064,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2141,7 +2077,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2151,7 +2087,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2161,7 +2097,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2171,7 +2107,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>46</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2181,7 +2117,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>46</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2191,7 +2127,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>48</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2201,7 +2137,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>48</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2211,7 +2147,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>50</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2221,7 +2157,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>50</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2231,7 +2167,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>52</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2241,7 +2177,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>52</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>
@@ -2251,7 +2187,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>54</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2261,7 +2197,7 @@ Data Pagto: @[form:dtNecessidade] | Justificativa: @[form:justificativa]&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>SolicitacaoAdiantamentoFornecedor</processId>
-      <processVersion>19</processVersion>
+      <processVersion>23</processVersion>
       <stateSequence>54</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

@@ -6,10 +6,10 @@ function displayFields(form,customHTML){
 	var GERAR_ADF_CARTAO = 24;
 	var GERENTE_ADM = 31;
 	var DIRETOR_FINANCEIRO = 5;
-	var DIRETOR_MKT = 48;
-	var DIRETOR_RH = 50;
-	var DIRETOR_ADVOCACY = 52;
-	var DIRETOR_MINISTERIO = 54;
+	var DIRETOR_RH = 48;
+	var DIRETOR_MINISTERIO = 50;
+	var DIRETOR_MKT = 52;
+	var DIRETOR_ADVOCACY = 54;
 	var DIRETOR_NACIONAL = 46;
 	
 
@@ -59,6 +59,7 @@ function displayFields(form,customHTML){
 	}
 	else if (activity == DIRETOR_FINANCEIRO) {
 		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel1", false);
 		 form.setVisibleById("div_nivel3", false);
 		 form.setVisibleById("div_nivel4", false);
 		 form.setVisibleById("div_nivel5", false);
@@ -67,7 +68,9 @@ function displayFields(form,customHTML){
 
 	}
 	else if (activity == DIRETOR_MKT) {
-		 form.setVisibleById("div_pagador", false);		 
+		 form.setVisibleById("div_pagador", false);	
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
 		 form.setVisibleById("div_nivel4", false);
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
@@ -76,25 +79,44 @@ function displayFields(form,customHTML){
 	}
 	else if (activity == DIRETOR_RH) {
 		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);	
 		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false);
+		 
 
 	}
 	else if (activity == DIRETOR_ADVOCACY) {
 		 form.setVisibleById("div_pagador", false);
-		 
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
 		 form.setVisibleById("div_nivel6", false);
 		 form.setVisibleById("div_nivel7", false);
 
 	}
 	else if (activity == DIRETOR_MINISTERIO) {
 		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
 		 form.setVisibleById("div_nivel7", false);
+		 
 
 	}
 	else if (activity == DIRETOR_NACIONAL) {
-		 form.setVisibleById("div_pagador", false);		 
+		 form.setVisibleById("div_pagador", false);
+		 form.setVisibleById("div_nivel1", false);
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+		 form.setVisibleById("div_nivel4", false);
+		 form.setVisibleById("div_nivel5", false);
+		 form.setVisibleById("div_nivel6", false);	 
 
 	}
 	

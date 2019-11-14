@@ -110,13 +110,13 @@ $(document).ready(function() {
                
                //DATA LIMITE
                var dtLimite = new Date (AnoFiscal,8,'30')
-               console.log(dtLimite);
+              // console.log(dtLimite);
                
                var data = this.value;
                var arrF = data.split("/").reverse();
                var diaFinal = new Date(arrF[0], arrF[1] - 1, arrF[2]);
              
-               console.log(diaFinal);
+              // console.log(diaFinal);
                
                if (diaFinal > dtLimite){
             	    FLUIGC.toast({

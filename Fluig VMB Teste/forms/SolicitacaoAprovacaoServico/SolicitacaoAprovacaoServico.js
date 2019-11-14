@@ -178,28 +178,28 @@ function setSelectedZoomItem(selectedItem) {
   }
   else if (campoZOOM == FORNECEDOR){
 	    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
-  		$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
-  		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
+	    	$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
+	    	$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
   		
   		
-  		console.log(selectedItem["TIPO"]);
   		
-  		if (selectedItem["TIPO"].trim() == "JURIDICA"){ 	    	
-      		document.getElementById("juridica").click();  
-      	}
-  		else if (selectedItem["TIPO"].trim() == "FISICA"){
-  			document.getElementById("fisica").click();  
-  		}
-  		else if (selectedItem["TIPO"].trim() == "FUNCIONARIO"){
-  			document.getElementById("fisica").click();  
-  		}
-
-  		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
-  		$("#banco").val(selectedItem["BANCO"]);   
-  		$("#agencia").val(selectedItem["AGENCIA"]);   
-  		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
-  		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());   
-  		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());  
+  		
+	  		if (selectedItem["TIPO"].trim() == "JURIDICA"){ 	    	
+	      		document.getElementById("juridica").click();  
+	      	}
+	  		else if (selectedItem["TIPO"].trim() == "FISICA"){
+	  			document.getElementById("fisica").click();  
+	  		}
+	  		else if (selectedItem["TIPO"].trim() == "FUNCIONARIO"){
+	  			document.getElementById("fisica").click();  
+	  		}
+	
+	  		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
+	  		$("#banco").val(selectedItem["BANCO"]);   
+	  		$("#agencia").val(selectedItem["AGENCIA"]);   
+	  		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
+	  		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());   
+	  		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());  
   
   
   

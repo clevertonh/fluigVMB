@@ -5,11 +5,14 @@ function enableFields(form){
 	var GERAR_ADF_CARTAO = 24;
 	var GERENTE_ADM = 31;
 	var DIRETOR_FINANCEIRO = 5;
-	var DIRETOR_MKT = 48;
-	var DIRETOR_RH = 50;
-	var DIRETOR_ADVOCACY = 52;
-	var DIRETOR_MINISTERIO = 54;
+	var DIRETOR_RH = 48;
+	var DIRETOR_MINISTERIO = 50;
+	var DIRETOR_MKT = 52;
+	var DIRETOR_ADVOCACY = 54;
 	var DIRETOR_NACIONAL = 46;
+	
+	
+
 	
 	
 	
@@ -28,11 +31,8 @@ function enableFields(form){
 	 
 	
 	if (activity == ABERTURA){
-		form.setEnabled("aprovacao", false);	
-		form.setEnabled("justificativaReprovacao", false);
-		 
-	
-		 
+		 form.setEnabled("aprovacao", false);	
+		 form.setEnabled("justificativaReprovacao", false);		
 		 form.setValue("solicitante",nomeUsuario);
 		 form.setValue("emailSolicitante",emailUsuario);
 		

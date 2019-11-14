@@ -109,43 +109,89 @@
                                       	  <div class="panel-body">
                                       	    <div class="row">
                                        <div class="form-group col-md-5">
-                                                         <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label> 
-                                                           <input name="cgcFornecedor"
-                                                            class="form-control" type="zoom"
-                                                            id="cgcFornecedor"
-                                                            data-zoom="{'displayKey':'CNPJ',
-                                                            'datasetId':'ds_get_Fornecedor',
-                                                            'maximumSelectionLength':'1',
-                                                            'placeholder':'Selecione o fornecedor',
-                                                            'fields':[
-                                                            {'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
-                                                            {'field':'CNPJ','label':'CNPJ','standard':'true'},
-                                                            {'field':'CODIGO','label':'CODIGO'},
-                                                            {'field':'TIPO','label':'TIPO'}						  					
-                                                            ]
-                                                            }">
-                                                      </div>
+                                                                <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label>
+                                                                <input name="cnpjcpf" class="form-control" type="zoom" id="cnpjcpf" data-zoom="{'displayKey':'CNPJ',
+																'datasetId':'ds_get_Fornecedor',
+																'maximumSelectionLength':'1',
+																'placeholder':'Selecione o fornecedor',
+																'fields':[
+																{'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
+																{'field':'CNPJ','label':'CNPJ','standard':'true'},
+																{'field':'CODIGO','label':'CODIGO'},
+																{'field':'TIPO','label':'TIPO', 'visible' : 'false'},
+																{'field':'FANTASIA','label':'FANTASIA', 'visible' : 'false'},
+																{'field':'FORM_PGTO','label':'FORM_PGTO', 'visible' : 'false'},
+																{'field':'BANCO','label':'BANCO', 'visible' : 'false'},
+																{'field':'AGENCIA','label':'AGENCIA', 'visible' : 'false'},
+																{'field':'CONTA_F','label':'CONTA_F', 'visible' : 'false'},
+																{'field':'TIPO_CONTA','label':'TIPO_CONTA', 'visible' : 'false'},
+																{'field':'TIPO_PJ','label':'TIPO_PJ', 'visible' : 'false'}																					  					
+																]
+																}" >
+                                                            </div>
                                       		<div class="form-group col-md-5">
                                                    	<label>Razão Social</label>
                                                		<input type="text" id ="razaosocial" class="form-control" name="razaosocial" readonly>
-                                             </div>  
-                                             <div class="form-group col-md-2">
-                                                   	<label>Codigo Fornecedor</label>
-                                               		<input type="text" id ="codigoFornecedor" class="form-control" name="codigoFornecedor" readonly>
-                                             </div>                  
+                                             </div>                                                               
                                     </div>
                                     <div class="row">
-                                    	 		<div class="form-group col-md-5">                                                                    		
-                                                                   			<label>Forma de Pagamento</label><br> 
-                                                                   			<label for="cartao">Cartão de crédito</label> 
-                                                                   			<input type="radio" id="cartao" name="formapgto" value="cartao">
-				                                                         	<label for="transferencia">Transferencia</label>
-				                                                         	<input type="radio" id="transferencia" name="formapgto" value="transferencia">                                                                    	                                                                    	
-				                                                         	<label for="boleto">Boleto</label>
-				                                                         	<input type="radio" id="boleto" name="formapgto" value="boleto">				                                                         
-                                                </div>
-                                    </div>
-                                    
+			                           <div class="form-group col-md-4">
+			                              <label>Nome Fantásia</label>
+			                              <input class="form-control" type="text" id="nomefantasia" name="nomefantasia" readonly>
+			                           </div>
+			                           <div class="form-group col-md-2">
+			                              <label>Codigo Fornecedor</label>
+			                              <input type="text" id ="codigoFornecedor" class="form-control" name="codigoFornecedor" readonly>
+			                           </div>
+			                           <div class="form-group col-md-2">
+			                              <label>Tipo de Pessoa</label><br>
+			                              <label for="fisica">Fisica</label>
+			                              <input type="radio" id="fisica" name="tipoPessoa" value="FISICA">
+			                              <label for="juridica">Juridica</label>
+			                              <input type="radio" id="juridica" name="tipoPessoa" value="JURIDICA">   
+			                           </div>
+			                           <div class="form-group col-md-1">
+			                                <label>Tipo PJ</label>
+			                            	<input type="text" id="tipoPJ" class="form-control" name="tipoPJ" readonly>
+			                           </div>
+			                        </div>
+			                        <div class="row">
+			                           <div class="form-group col-md-4">
+			                              <label>Meio de pagamento</label>
+			                              <input type="text" id="meioPagamento" name="meioPagamento" class="form-control" readonly>
+			                           </div>
+			                           <div class="form-group col-md-4">
+			                              <label>Forma de pagamento</label>
+			                              <input type="zoom" name="condicaoPgto" id="condicaoPgto" data-zoom="{
+			                                 'displayKey':'DESCRICAO',
+			                                 'datasetId':'VM_CondicaoPagamento',
+			                                 'maximumSelectionLength':'1',
+			                                 'placeholder':'Selecione a condição de pagamento',
+			                                 'fields':[
+			                                 {'field':'CODIGO', 'label':'CODIGO'},
+			                                 {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+			                                 ]
+			                                 }" />
+			                           </div>
+			                        </div>
+			                        <div class="row">
+			                           <div class="form-group col-md-2">
+			                              <label>Banco</label>
+			                              <input type="text" id="bancoF" name="bancoF" class="form-control" readonly>
+			                           </div>
+			                           <div class="form-group col-md-2">
+			                              <label>Agência</label>
+			                              <input type="text" id="agenciaF" name="agenciaF" class="form-control" readonly>
+			                           </div>
+			                           <div class="form-group col-md-3">
+			                              <label>Conta</label>
+			                              <input type="text" id="contaFornecedor" name="contaFornecedor" class="form-control" readonly>
+			                           </div>
+			                           <div class="form-group col-md-3">
+			                              <label>Tipo de Conta</label>
+			                              <input type="text" id="tipoConta" name="tipoConta" class="form-control" readonly>
+			                           </div>
+			                        </div>
                                     <div class="row">
                                        <div class="form-group col-md-2">
                                           <label for="vl_total">Valor total da compra ou serviço</label>
@@ -160,7 +206,7 @@
                                           <input type="number" class="form-control" name="percentual" id ="percentual" readonly>
                                        </div>                                                                                                       
                                        <div class="form-group col-md-3">
-                                          <label for="dtNecessidade">Data para deposito</label>
+                                          <label for="dtNecessidade">Data de vencimento</label>
                                           <div class="input-group date" >
                                              <input type="text" class="form-control" placeholder="Data de necessidade" id="dtNecessidade" name="dtNecessidade">
                                              <span class="input-group-addon">
@@ -494,12 +540,12 @@
 									<div class="panel panel-info" id="div_pagador">										 
 											   <div class="panel-heading ">
 	                                          <h5 class="panel-title">
-	                                             <b>Banco ou cartão de crédito pagador</b>
+	                                             <b>Cartão de crédito pagador</b>
 	                                          </h5>
 	                                      	 </div>
 	                                     <div class="panel-body">
                                      	<div class="row" >
-                              	 			<div class="form-group col-md-1" id="div_banco">
+                              	 								<div class="form-group col-md-1" id="div_banco">
 							                                       	<label>Banco</label>
 							                                       	<input  type="number" name="banco" id="banco" class="form-control">
 						                                       </div>

@@ -2,6 +2,13 @@ var ABERTURA = 0;
 var APROVACAO_GESTOR = 5;
 var TESOURARIA = 10;
 var SOLICITANTE = 24;
+var GERENTE_ADM = 31;
+var DIRETOR_FINANCEIRO = 5;
+var DIRETOR_RH = 48;
+var DIRETOR_MINISTERIO = 50;
+var DIRETOR_MKT = 52;
+var DIRETOR_ADVOCACY = 54;
+var DIRETOR_NACIONAL = 46;
 
 
 
@@ -48,13 +55,22 @@ function removedZoomItem(removedItem) {
     var CCUSTO = "centrocusto";
     var PROJETO = "projeto";
     var FONTE = "fontefinanciamento";
-    var FORNECEDOR ="cgcFornecedor";
+    var FORNECEDOR ="cnpjcpf";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
     if (campoZOOM == FORNECEDOR){
-    	 $("#razaosocial").val("");
-    	 $("#codigoFornecedor").val("");
+    	$("#fisica").attr('checked', false);
+    	$("#juridica").attr('checked', false);
+    	$("#razaosocial").val("");  
+		$("#nomefantasia").val("");  		
+		$("#codigoFornecedor").val("");   	
+		$("#meioPagamento").val("");
+		$("#banco").val("");   
+		$("#agencia").val("");   
+		$("#contaFornecedor").val("");   
+		$("#tipoConta").val("");   
+		$("#tipoPJ").val("");  
     	 
     }
 
@@ -65,17 +81,41 @@ function setZoomData(instance, value) {
 }
 
 function setSelectedZoomItem(selectedItem) {
-   var FORNECEDOR ="cgcFornecedor";
+   var FORNECEDOR ="cnpjcpf";
 
   
   //Recebe o nome do campo zoom
   var campoZOOM = selectedItem.inputId;
   
- if (campoZOOM == FORNECEDOR){
-	  $("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);
-	  $("#codigoFornecedor").val(selectedItem["CODIGO"]);
-	  
-  }
+  if (campoZOOM == FORNECEDOR){
+	 	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
+	 	$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
+	 	$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
+		
+	
+	
+	 	console.log(selectedItem["TIPO"].trim());
+	
+		if (selectedItem["TIPO"].trim() == "JURIDICA"){ 	    	
+   		document.getElementById("juridica").click();  
+		}
+		else if (selectedItem["TIPO"].trim() == "FISICA"){
+			document.getElementById("fisica").click();  
+		}
+		else if (selectedItem["TIPO"].trim() == "FUNCIONARIO"){
+			document.getElementById("fisica").click();  
+		}
+
+		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
+		$("#bancoF").val(selectedItem["BANCO"]);   
+		$("#agenciaF").val(selectedItem["AGENCIA"]);   
+		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
+		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());   
+		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());  
+
+
+
+}
 
 
 }

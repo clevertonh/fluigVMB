@@ -179,7 +179,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>410</positionX>
+      <positionX>420</positionX>
       <positionY>60</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -1667,24 +1667,37 @@
 	 //RECUPERA USUARIO LOGADO&#xd;
     var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
-	&#xd;
-    var aprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
     var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
     var razaoSocial = hAPI.getCardValue(&quot;razaosocial&quot;);     &#xd;
     &#xd;
-    if (ativAtual == APROVACAO  &amp;&amp; aprovacao ==&quot;aprovado&quot;){ 	   &#xd;
-                  var constraint = new Array();                                 &#xd;
-                  constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-                  &#xd;
-                   var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
-                      &#xd;
-                   if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                         throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                      }&#xd;
-                   else {&#xd;
-                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
-                   }&#xd;
-                      &#xd;
+    if (ativAtual == APROVACAO ){&#xd;
+    	&#xd;
+      	 var aprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+  	   &#xd;
+    	 if (aprovacao ==&quot;aprovado&quot;){&#xd;
+    		 &#xd;
+    		    var constraint = new Array();                                 &#xd;
+                constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+                &#xd;
+                 var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
+                    &#xd;
+                 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                       throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+                    }&#xd;
+                 else {&#xd;
+              	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
+                 }&#xd;
+                 &#xd;
+                 &#xd;
+                 &#xd;
+    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);&#xd;
+    	 }&#xd;
+    	 &#xd;
+    	 else if (aprovacao ==&quot;reprovado&quot;){&#xd;
+    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada.&quot;);&#xd;
+    	 }&#xd;
+    	&#xd;
+                       &#xd;
           &#xd;
            &#xd;
     }&#xd;
@@ -1706,7 +1719,13 @@
 		 	&#xd;
 	 &#xd;
     }&#xd;
-    &#xd;
+	 else if (ativAtual == VALIDAR_RH){&#xd;
+		 var valido = hAPI.getCardValue(&quot;valido&quot;);&#xd;
+		    &#xd;
+		 if (valido == &quot;negado&quot;){&#xd;
+			 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial + &quot; não pode ser contratado pois não atende aos requisitos da legislação trabalhista.&quot;);&#xd;
+		 }&#xd;
+	 }&#xd;
     &#xd;
     &#xd;
     &#xd;

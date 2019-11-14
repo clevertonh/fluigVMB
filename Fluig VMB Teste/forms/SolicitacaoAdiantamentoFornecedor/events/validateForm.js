@@ -5,10 +5,10 @@ function validateForm(form){
 	var GERAR_ADF_CARTAO = 24;
 	var GERENTE_ADM = 31;
 	var DIRETOR_FINANCEIRO = 5;
-	var DIRETOR_MKT = 48;
-	var DIRETOR_RH = 50;
-	var DIRETOR_ADVOCACY = 52;
-	var DIRETOR_MINISTERIO = 54;
+	var DIRETOR_RH = 48;
+	var DIRETOR_MINISTERIO = 50;
+	var DIRETOR_MKT = 52;
+	var DIRETOR_ADVOCACY = 54;
 	var DIRETOR_NACIONAL = 46;
 	
 	var activity = getValue('WKNumState');
@@ -37,13 +37,13 @@ function validateForm(form){
 	
 		
 	if (activity == ABERTURA){
-		if (form.getValue("formapgto") == "" || form.getValue("formapgto") == null){
+		if (form.getValue("condicaoPgto") == "" || form.getValue("condicaoPgto") == null){
 			throw "Você precisa indicar a forma de pagamento no qual o fornecedor deverá receber.";
 		}
 		if (form.getValue("dtNecessidade") == "" || form.getValue("dtNecessidade") == null){
 			throw "Você precisa informar a data de necessidade.";
 		}
-		if (form.getValue("cgcFornecedor") == "" || form.getValue("cgcFornecedor") == null){
+		if (form.getValue("cnpjcpf") == "" || form.getValue("cnpjcpf") == null){
 			throw "Você precisa informar o fornecedor que receberá o adiantamento.";
 		}
 		if (form.getValue("vl_total") == "" || form.getValue("vl_total") == null || form.getValue("vl_total") <= 0 ){
