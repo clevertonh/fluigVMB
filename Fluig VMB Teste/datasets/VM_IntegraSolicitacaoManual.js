@@ -1,15 +1,15 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("documentid", "9821", "9821", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("documentid", "10467", "10467", ConstraintType.MUST));     
 	 
-	 var valorDiarias="3.2";
-	 var dataVencimento="11/10/2019";	 	
-	// constraint.push(DatasetFactory.createConstraint("vl_tarifa", valorDiarias, valorDiarias, ConstraintType.MUST));  
-	 //constraint.push(DatasetFactory.createConstraint("dtTarifa", dataVencimento, dataVencimento, ConstraintType.MUST));
+	 var produto="DVPSG001";
+	 var valor="1";	 	
+	 constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));  
+	 constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
 	
 	
-    var dataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_EVENTO", null, constraint, null);
+    var dataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);
     
     return dataset;
 	
