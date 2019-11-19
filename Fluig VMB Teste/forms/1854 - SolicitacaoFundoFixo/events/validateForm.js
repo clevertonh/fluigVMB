@@ -6,10 +6,15 @@ function validateForm(form){
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");
 	
-    //recupera usuario logado
+	//recupera usuario logado
     var usuarioLogado = getValue('WKUser');
+    var usuariosubstituto = getValue('WKReplacement');
+    
+    if (usuariosubstituto != null){
+    	usuarioLogado = usuariosubstituto;
+    }
 	
-	 //retorna email usuario logado
+    //retorna email usuario logado
     var email = retornaEmailUsuario(usuarioLogado);
 	
 	var statusUsuario = false;
@@ -18,7 +23,7 @@ function validateForm(form){
 	statusUsuario = consultaAfastamento(email);
 	
 	if (statusUsuario == true ){
-		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação/tarefa em nossos sistemas!";
+		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
 	}
 	
   

@@ -24,22 +24,21 @@ function validateForm(form){
     	usuarioLogado = usuariosubstituto;
     }
     
-
+	 //retorna email usuario logado
+    var email = retornaEmailUsuario(usuarioLogado);
+	
+	var statusUsuario = false;
+		
+	//consulta situação atual do solicitante
+	statusUsuario = consultaAfastamento(email);
+	
+	if (statusUsuario == true ){
+		 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
+	}
+	
+	
 	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR || activity == GERAR_SC){
 	
-		 //retorna email usuario logado
-	    var email = retornaEmailUsuario(usuarioLogado);
-		
-		var statusUsuario = false;
-			
-		//consulta situação atual do solicitante
-		statusUsuario = consultaAfastamento(email);
-		
-		if (statusUsuario == true ){
-			 throw "Atenção! Você está afastado de suas atividades de trabalho, por esse motivo, não poderá realizar nenhuma solicitação em nossos sistemas!";
-		}
-		
-		
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
 		validaLinhasRepetidas();
