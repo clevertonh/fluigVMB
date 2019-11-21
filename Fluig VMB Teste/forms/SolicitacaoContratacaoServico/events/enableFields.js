@@ -88,6 +88,8 @@ function enableFields(form){
 		    form.setEnabled("melhorProposta", true);		    
 		    form.setEnabled("justificativaP", true);
 		    form.setEnabled("tipoPJ", true);
+		    form.setEnabled("origem", true);
+		    form.setEnabled("contato", true);
 		    
 		    
 		    form.setEnabled("CotacaovalorMensal", true);

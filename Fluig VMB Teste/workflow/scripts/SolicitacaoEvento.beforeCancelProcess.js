@@ -16,7 +16,7 @@ function beforeCancelProcess(colleagueId,processId){
 	
 	
 	if (ativAtual != ABERTURA &&  ativAtual != APROVACAO){
-			 throw "Você não pode excluir essa solicitação pois ela já foi integrada com o sistema de Compras.";
+			// throw "Você não pode excluir essa solicitação pois ela já foi integrada com o sistema de Compras.";
 				
 		}
 	

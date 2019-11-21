@@ -50,6 +50,7 @@ function beforeStateEntry(sequenceId){
 	var fornecedorT	 	 = hAPI.getCardValue("fornecedorTarifa");
 	var adiantamento	 = hAPI.getCardValue("adiantamento");
 	var vlAdiantamento	 = hAPI.getCardValue("vl_aprovado");
+	var aprovacao		 = hAPI.getCardValue("aprovacao");
 
 	
 	
@@ -63,6 +64,21 @@ function beforeStateEntry(sequenceId){
 	 var anexos   = hAPI.listAttachments();
      var temAnexo = false;
 	
+     
+     	if (ativAtual == APROVACAO && aprovacao == "aprovado"){
+     		if (adiantamento == "sim" && vlAdiantamento > 0){
+   		  		 var constraint2 = new Array();		  			 		  			
+   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+   				 
+   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
+   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
+   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
+   		  		    }
+	   		  	  else {
+ 		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação de adiantamento integrada com o sistema Protheus");
+ 		  		    }
+		  		}
+     	}
 	
      	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA){
      		if ((vooComprado == '' && hotelComprado == '' ) || ( vooComprado == null && hotelComprado == null) ){
@@ -133,18 +149,7 @@ function beforeStateEntry(sequenceId){
  		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
  		  		    }
  		  		  
- 		     		if (adiantamento == "sim" && vlAdiantamento > 0){
- 		   		  		 var constraint2 = new Array();		  			 		  			
- 		   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
- 		   				 
- 		   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
- 		   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
- 		   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
- 		   		  		    }
-	 		   		  	  else {
-	 	 		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-	 	 		  		    }
- 				  		}
+ 		
  		  		  
  		  		    
  		  		}

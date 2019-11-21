@@ -18,6 +18,8 @@ function beforeStateEntry(sequenceId){
 	var VALIDAR_RH = 161;
 	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
 	var VERIFICAR_ASSINATRA_COMPRAS = 274;
+	var TIPO_PJ_C = 281;
+	var TIPO_PJ_H = 278;
 	
 	
 	var ativAtual 		 = getValue("WKNumState");		
@@ -45,7 +47,7 @@ function beforeStateEntry(sequenceId){
      }
     
      else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
-		 	if (nextAtv == VALIDAR_RH){
+		 	if (nextAtv == TIPO_PJ_C || nextAtv == TIPO_PJ_H){
 		 		
 		 		/*
 				 * verifica se foi adicionado anexo. 
@@ -73,17 +75,18 @@ function beforeStateEntry(sequenceId){
 		 }
 	 }
 	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
-		 /*		
+			
 		 	var definicaoValor = hAPI.getCardValue("definicaoValor");
-				if (definicaoValor ="fixo"){
-					  var qtdMeses = hAPI.getCardValue("qtdMeses");
+		 	
+				if (definicaoValor =="fixo"){
+  					  //var qtdMeses = hAPI.getCardValue("qtdMeses");
 					  var produto = hAPI.getCardValue("produto");
-					  var valorMensal = hAPI.getCardValue("CotacaovalorMensal");
+					  //var valorMensal = hAPI.getCardValue("CotacaovalorMensal");
 					 
 		              var constraint = new Array();                                 
 	                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-	                  constraint.push(DatasetFactory.createConstraint("qtdMeses", qtdMeses, qtdMeses, ConstraintType.MUST));
-	                  constraint.push(DatasetFactory.createConstraint("valor", valorMensal, valorMensal, ConstraintType.MUST));
+//	                  constraint.push(DatasetFactory.createConstraint("qtdMeses", qtdMeses, qtdMeses, ConstraintType.MUST));
+//	                  constraint.push(DatasetFactory.createConstraint("valor", valorMensal, valorMensal, ConstraintType.MUST));
 	                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
 	                  
 	                 
@@ -96,6 +99,6 @@ function beforeStateEntry(sequenceId){
 	                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor selecionado e processo enviado para aprovação");
 	                   }
 				}
-	 */
+	
 	 }
 }

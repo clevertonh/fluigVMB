@@ -7,7 +7,7 @@ function createDataset(fields, constraints, sortFields) {
 	var aRateio;
 	var itens = new Array();
 	var documentId;
-	var valor;
+	var valor = 0;
 	var produto;
 	var emailcomprador ="";
 	
@@ -57,7 +57,7 @@ function createDataset(fields, constraints, sortFields) {
         					            serviceCode : 'REST FLUIG',
         					            endpoint : '/F_MATA110',
         					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-        					            timeoutService: '100', // segundos
+        					            timeoutService: '360', // segundos
         					            params : {
         					            	PROCESSO : '' + 11 + '' ,
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
