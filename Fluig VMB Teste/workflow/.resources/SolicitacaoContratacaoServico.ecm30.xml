@@ -1904,7 +1904,7 @@
         <version>82</version>
         <sequence>130</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;)  ==&quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;Numerocontrato&quot;) == null</condition>
       <destinationSequenceId>63</destinationSequenceId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;12&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Executor Atividade</engineAllocationId>
@@ -1930,7 +1930,7 @@
         <version>82</version>
         <sequence>137</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) == &quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;Numerocontrato&quot;) == null</condition>
       <destinationSequenceId>66</destinationSequenceId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;22&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Executor Atividade</engineAllocationId>
@@ -3440,17 +3440,18 @@
 		 }&#xd;
 	 }&#xd;
 	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){&#xd;
-		 /*		&#xd;
+			&#xd;
 		 	var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);&#xd;
-				if (definicaoValor =&quot;fixo&quot;){&#xd;
-					  var qtdMeses = hAPI.getCardValue(&quot;qtdMeses&quot;);&#xd;
+		 	&#xd;
+				if (definicaoValor ==&quot;fixo&quot;){&#xd;
+  					  //var qtdMeses = hAPI.getCardValue(&quot;qtdMeses&quot;);&#xd;
 					  var produto = hAPI.getCardValue(&quot;produto&quot;);&#xd;
-					  var valorMensal = hAPI.getCardValue(&quot;CotacaovalorMensal&quot;);&#xd;
+					  //var valorMensal = hAPI.getCardValue(&quot;CotacaovalorMensal&quot;);&#xd;
 					 &#xd;
 		              var constraint = new Array();                                 &#xd;
 	                  constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-	                  constraint.push(DatasetFactory.createConstraint(&quot;qtdMeses&quot;, qtdMeses, qtdMeses, ConstraintType.MUST));&#xd;
-	                  constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valorMensal, valorMensal, ConstraintType.MUST));&#xd;
+//	                  constraint.push(DatasetFactory.createConstraint(&quot;qtdMeses&quot;, qtdMeses, qtdMeses, ConstraintType.MUST));&#xd;
+//	                  constraint.push(DatasetFactory.createConstraint(&quot;valor&quot;, valorMensal, valorMensal, ConstraintType.MUST));&#xd;
 	                  constraint.push(DatasetFactory.createConstraint(&quot;produto&quot;, produto, produto, ConstraintType.MUST));&#xd;
 	                  &#xd;
 	                 &#xd;
@@ -3463,7 +3464,7 @@
 	                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Fornecedor selecionado e processo enviado para aprovação&quot;);&#xd;
 	                   }&#xd;
 				}&#xd;
-	 */&#xd;
+	&#xd;
 	 }&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
