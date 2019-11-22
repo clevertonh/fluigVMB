@@ -7,6 +7,7 @@ var GERAR_SC = 42;
 var linhas = 0;
 
 
+console.log(ATIVIDADE);
 var dtSolicitacao;
 var codigoEvento;
 

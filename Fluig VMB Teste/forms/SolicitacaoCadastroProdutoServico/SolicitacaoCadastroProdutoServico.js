@@ -4,6 +4,7 @@ var DADOS_CONTABEIS = 10;
 var CORRIGIR = 16;
 
 
+console.log(ATIVIDADE);
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	
@@ -121,4 +122,31 @@ function setZoomData(instance, value) {
 }
 
 
+//string.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
+/*
+ * export const convertToSlug = (text) => {
+  const a = 'àáäâãèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+  const b = 'aaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+  const p = new RegExp(a.split('').join('|'), 'g')
+  return text.toString().toLowerCase().trim()
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special chars
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word characters and dashes with a single dash (-)
+}
+ * */
+
+/*
+ * function removeAcento (text)
+{       
+    text = text.toLowerCase();                                                         
+    text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
+    text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
+    text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
+    text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
+    text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
+    text = text.replace(new RegExp('[Ç]','gi'), 'c');
+    return text;                 
+}
+ * 
+ * */

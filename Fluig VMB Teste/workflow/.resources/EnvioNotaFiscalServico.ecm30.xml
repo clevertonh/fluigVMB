@@ -4,7 +4,7 @@
       <companyId>1</companyId>
       <processId>EnvioNotaFiscalServico</processId>
     </processDefinitionPK>
-    <processDescription>EnvioNotaFiscalServico</processDescription>
+    <processDescription>Envio de Nota Fiscal de Serviço</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
@@ -27,11 +27,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>EnvioNotaFiscalServico</processId>
-      <version>1</version>
+      <processId>Envio de Nota Fiscal de Serviço</processId>
+      <version>6</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>2672</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -53,8 +53,8 @@
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
-      <stateName>Início</stateName>
-      <stateDescription>Início</stateDescription>
+      <stateName>Envia relatório de atividade</stateName>
+      <stateDescription>Envia relatório de atividade</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -210,6 +210,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -260,6 +262,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;13&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -310,6 +314,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -374,8 +380,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>700</positionX>
-      <positionY>220</positionY>
+      <positionX>610</positionX>
+      <positionY>350</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -410,6 +416,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;13&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -526,31 +534,6 @@
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
         <version>1</version>
-        <sequence>57</sequence>
-      </processStatePK>
-      <stateName>Já possui NF</stateName>
-      <stateDescription>Já possui NF</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>630</positionX>
-      <positionY>330</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>EnvioNotaFiscalServico</processId>
-        <version>1</version>
         <sequence>53</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -647,7 +630,7 @@
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>6</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -659,7 +642,7 @@
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>6</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) ==&quot;reprovado&quot;</condition>
@@ -671,35 +654,11 @@
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>1</version>
+        <version>6</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) ==&quot;corrigir&quot;</condition>
       <destinationSequenceId>32</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>EnvioNotaFiscalServico</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>1</version>
-        <sequence>57</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;notafiscal&quot;) == &quot;sim&quot;</condition>
-      <destinationSequenceId>49</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>EnvioNotaFiscalServico</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>1</version>
-        <sequence>57</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;notafiscal&quot;) == &quot;nao&quot;</condition>
-      <destinationSequenceId>44</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -879,12 +838,12 @@
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
         <version>1</version>
-        <linkSequence>58</linkSequence>
+        <linkSequence>62</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>35</initialStateSequence>
-      <finalStateSequence>57</finalStateSequence>
+      <initialStateSequence>16</initialStateSequence>
+      <finalStateSequence>63</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -896,46 +855,12 @@
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
         <version>1</version>
-        <linkSequence>59</linkSequence>
+        <linkSequence>64</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>57</initialStateSequence>
+      <initialStateSequence>35</initialStateSequence>
       <finalStateSequence>44</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>não</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>EnvioNotaFiscalServico</processId>
-        <version>1</version>
-        <linkSequence>60</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>57</initialStateSequence>
-      <finalStateSequence>49</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>sim</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>EnvioNotaFiscalServico</processId>
-        <version>1</version>
-        <linkSequence>62</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>16</initialStateSequence>
-      <finalStateSequence>63</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1036,13 +961,13 @@
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>EnvioNotaFiscalServico</processId>
-        <version>1</version>
+        <version>6</version>
         <stateSequence>44</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
       <runType>1</runType>
       <type>0</type>
-      <value>&lt;BpmnMessageData&gt;&lt;Type&gt;1&lt;/Type&gt;&lt;Receiver&gt;wasleyguittar@gmail.com&lt;/Receiver&gt;&lt;Subject&gt;Autorização para emissão de Nota Fiscal&lt;/Subject&gt;&lt;Content&gt;Prezado fornecedor&#xd;
+      <value>&lt;BpmnMessageData&gt;&lt;Type&gt;1&lt;/Type&gt;&lt;Receiver&gt;wasleyguittar@gmail.com;wasley_santos@wvi.org&lt;/Receiver&gt;&lt;Subject&gt;Autorização para emissão de Nota Fiscal&lt;/Subject&gt;&lt;Content&gt;Prezado fornecedor&#xd;
 &#xd;
 A Visão Mundial validou seu relatório de atividade, a partir desse momento está autorizado a emissão da nota fiscal&lt;/Content&gt;&lt;/BpmnMessageData&gt;</value>
       <frequencia>01</frequencia>

@@ -777,6 +777,56 @@ Obs.: A compra da passagem irá gerar uma solicitação de compra no Protheus</i
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
+        <sequence>200</sequence>
+      </processStatePK>
+      <stateName>Informa aprovador sobre cancelamento</stateName>
+      <stateDescription>Informa aprovador sobre cancelamento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1010</positionX>
+      <positionY>300</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>84</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
         <sequence>158</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -1852,23 +1902,6 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <linkSequence>188</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>64</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>1</version>
         <linkSequence>189</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1988,7 +2021,41 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <linkSequence>200</linkSequence>
+        <linkSequence>201</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>33</initialStateSequence>
+      <finalStateSequence>200</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>202</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>200</initialStateSequence>
+      <finalStateSequence>64</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>1</version>
+        <linkSequence>203</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2004,7 +2071,7 @@ hAPI.getCardValue(&quot;recebediarias&quot;) == &quot;sim&quot;  &amp;&amp; hAPI
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>1</version>
-        <linkSequence>201</linkSequence>
+        <linkSequence>204</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2664,17 +2731,6 @@ function convertStringToData(StringToData) {
         <companyId>1</companyId>
         <processId>SolicitacaoViagem</processId>
         <version>16</version>
-        <linkSequence>188</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>1062</positionX>
-      <positionY>129</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoViagem</processId>
-        <version>16</version>
         <linkSequence>189</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2736,8 +2792,35 @@ function convertStringToData(StringToData) {
       <positionX>1871</positionX>
       <positionY>910</positionY>
     </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>16</version>
+        <linkSequence>201</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1062</positionX>
+      <positionY>129</positionY>
+    </ProcessLinkBend>
   </list>
-  <list/>
+  <list>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoViagem</processId>
+        <version>16</version>
+        <stateSequence>200</stateSequence>
+        <triggerSequence>0</triggerSequence>
+      </processStateTriggerPK>
+      <runType>1</runType>
+      <type>0</type>
+      <value>&lt;BpmnMessageData&gt;&lt;Type&gt;2&lt;/Type&gt;&lt;Receiver&gt;emailGestor&lt;/Receiver&gt;&lt;Subject&gt;Cancelamento de Viagem&lt;/Subject&gt;&lt;Content&gt;Prezado Diretor(a)&#xd;
+&#xd;
+Você está recebendo esse email para informar que o solicitante ou o passageiro dessa viagem solicitou a área de Hospitalidade que a viagem seja cancelada. &lt;/Content&gt;&lt;/BpmnMessageData&gt;</value>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+  </list>
   <list/>
   <list/>
   <list>

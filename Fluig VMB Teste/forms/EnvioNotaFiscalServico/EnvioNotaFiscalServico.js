@@ -1,53 +1,68 @@
+var infoUser;
 var ABERTURA = 0;
 var SOLICITAR = 4;	
-var APROVACAO_GESTOR =5;
-var CORRIGIR = 142;
-var REALIZAR_COTACAO_COMPRAS = 12;
-var REALIZAR_COTACAO_HOSPITALIDADE = 22;
-var ENVIAR_APROVACAO_COMPRAS = 209;
-var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
-var APROVACAO_SERVICO_COMPRAS = 105;
-var APROVACAO_SERVICO_HOSPITALIDADE = 94;
-var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
-var VERIFICAR_APROVACAO_COMPRAS = 145;
-var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
-var SOLICITACAO_CONTRATO_COMPRAS = 151;
-var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
-var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
-var VALIDAR_RH = 161;
-var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
-var VERIFICAR_ASSINATRA_COMPRAS = 274;
-	
+var VALIDAR = 29;
+var AGUARDAR_APROVACAO = 13;
+var CORRIGIR = 32;
+var GERAR_PEDIDO = 35;
+var AUTORIZAR_NF = 44;
+var ENVIAR_NF = 42;
+var LANCAR_PRE_NOTA = 49;
+var CLASSIFICAR_NOTA = 51;
 
-console.log(ATIVIDADE);
+var linhas = 0;
+
+
+var dtSolicitacao;
+var codigoEvento;
+
+$(document).ready(function() {
+	
+    if (ATIVIDADE == ABERTURA) {        
+    	dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
+            pickDate: true,
+            pickTime: false,
+            useCurrent: true
+        });
+        
+    	dtSolicitacao.setDate(new Date().toLocaleString());
+       	
+    }
+
+});
+
+
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
 
 //Wizard
 $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
 
-  var $target = $(e.target);
+    var $target = $(e.target);
 
-  if ($target.parent().hasClass('disabled')) {
-      return false;
-  }
+    if ($target.parent().hasClass('disabled')) {
+        return false;
+    }
 });
 
 $(".next-step").click(function(e) {
 
-  var $active = $('.wizard .nav-tabs li.active');
-  $active.next().removeClass('disabled');
-  nextTab($active);
+    var $active = $('.wizard .nav-tabs li.active');
+    $active.next().removeClass('disabled');
+    nextTab($active);
 
 });
 $(".prev-step").click(function(e) {
 
-      var $active = $('.wizard .nav-tabs li.active');
-      prevTab($active);
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
 
-  }
+    }
 
 );
+
+
+//termina aqui o read
 
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
@@ -59,109 +74,52 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
-var dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
-    pickDate: true,
-    pickTime: false,
-    useCurrent: true,
-    minDate: new Date().toLocaleString(),
-    maxDate: new Date().toLocaleString()
-});
 
-//preenche data da solicitação no momento que abre a solicitação
-$(document).ready(function() {
-	
-	if (ATIVIDADE == ABERTURA){
-		dtSolicitacao.setDate(new Date().toLocaleString());
-	
-		var dataAtual = new Date();
-		var dias = 3;
-		// Incrementa a quantidade de dias na data atual:
-		dataAtual.setDate(dataAtual.getDate() + dias);
-	    //minDate: dataAtual
-		
-		var dtInicio = FLUIGC.calendar('#dtInicio', {
-		    pickDate: true,
-		    pickTime: false,
-		    minDate: new Date().toLocaleString()
-		    
-		});
-				
-		var dtFim = FLUIGC.calendar('#dtFim', {
-		    pickDate: true,
-		    pickTime: false,
-		    minDate: new Date().toLocaleString()
-		});
-		
-	
-		   $("#dtFim").blur(function(){  
-			   var dataInicio =  $("#dtInicio").val(); // 03/11/2019
-               var arr = dataInicio.split("/").reverse();
-               var dia = new Date(arr[0], arr[1] - 1, arr[2]);
-                 
-               var AnoFiscal;
-                
-               //MONTA AF FISCAL
-               if (dia.getMonth() > 8){
-            	   AnoFiscal = dia.getFullYear() + 1;
-               }
-               else {
-            	   AnoFiscal = dia.getFullYear();
-               }
-               
-               //DATA LIMITE
-               var dtLimite = new Date (AnoFiscal,8,'30')
-              // console.log(dtLimite);
-               
-               var data = this.value;
-               var arrF = data.split("/").reverse();
-               var diaFinal = new Date(arrF[0], arrF[1] - 1, arrF[2]);
-             
-              // console.log(diaFinal);
-               
-               if (diaFinal > dtLimite){
-            	    FLUIGC.toast({
-                        title: 'Informação',
-                        message: 'O serviço contratado só podem ter sua vigência programada até o final do AF '+ AnoFiscal,
-                        type: 'danger',
-                        timeout: 6000
-                    });
-               }
-	          });
-		
-	}
-	else if (ATIVIDADE == CORRIGIR){
-		var dtInicio = FLUIGC.calendar('#dtInicio', {
-		    pickDate: true,
-		    pickTime: false,
-		    minDate: new Date().toLocaleString()
-		});
-		
-		var dtFim = FLUIGC.calendar('#dtFim', {
-		    pickDate: true,
-		    pickTime: false,
-		    minDate: new Date().toLocaleString()
-		});
-	}
-	else if (ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){
-		var dtCotacao = FLUIGC.calendar('#dtCotacao', {
-		    pickDate: true,
-		    pickTime: false
-		});
-		
-		dtCotacao.setDate(new Date().toLocaleString());
-	}
-	else if (ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){		
-	   	 $("#valor").blur(function(){
-	   		 $("#div_produto").show();
-			 reloadZoomFilterValues("txtproduto", "FLUIG," + "11");
-	     }); 
+function removeItens() {
+	if (ATIVIDADE == ABERTURA ||  ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){
+	    var linhas = $("#tbodyItens tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);
+	    }
 	}
 
-	
-});
+}
 
 
+function fnCustomDeleteRateio(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	|| ATIVIDADE == APROVACAO){								
+		fnWdkRemoveChild(oElement);	
 
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhuma linha do rateio.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
+
+function fnCustomDeleteProduto(oElement) {	  
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
+		fnWdkRemoveChild(oElement);
+		
+		//reinicia variavel q controla quantidade de linhas permitidas de itens de produtos
+		linhas = 0;
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhum produto.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
@@ -175,19 +133,22 @@ function setSelectedZoomItem(selectedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
+    var PRODUTO = "txtproduto";
     var EVENTO ="dataset_solicitacaoevento";
-    var SERVICO ="txtproduto";
-    var FORNECEDOR ="cnpjcpf";
+      
    
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
 
+    //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
+    //separa string
     var linhaPagamento = campoZOOM.split('___');
 
 
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
+    	console.log("---ENTROU AQUI 1 ----");
         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -199,10 +160,16 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
         if (selectedItem["CODIGO"] != '99990') {
+        	console.log("---ENTROU AQUI 2 ----");
+            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
             reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
         } else {
+        	console.log("---ENTROU AQUI 3 ----");
+            //desabilita zoom que não devem ser preenchidos
+        	console.log("---desabilita zoom que não devem ser preenchidos---");
+            console.log(selectedItem["CODIGO"]);
             window[PROJETO + "___" + linhaPagamento[1]].disable(false);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -211,8 +178,9 @@ function setSelectedZoomItem(selectedItem) {
         window[CATEGORIA + "___" + linhaPagamento[1]].disable(true);
         window[FONTE + "___" + linhaPagamento[1]].disable(true);
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(true);
-    } 
-    else if (linhaPagamento[0] == PROJETO) {
+
+
+    } else if (linhaPagamento[0] == PROJETO) {
         //LIMPA TODOS AS COLUNAS POSTERIORES
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[CATEGORIA + "___" + linhaPagamento[1]].clear();
@@ -232,86 +200,57 @@ function setSelectedZoomItem(selectedItem) {
         reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
         reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-   
-    } 
-    else if (linhaPagamento[0] == ATIVIDADE) {
-	        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
-	        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
+       // $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+
+    } else if (linhaPagamento[0] == ATIVIDADE) {
+    	//POR CAUSA DA EDIÇÃO
+    	//PRIMEIRO PRECISO RECUPERAR O QUE ESTÁ NO CAMPO DO PROJETO
+    	//reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+        
+    	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
 
     }
-    else if (linhaPagamento[0] == FONTE){
-    		$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);	  
-    }
+
+
+  
+
     else if (campoZOOM == RATEIO) {    
-			buscaItensRateio(selectedItem["CODIGO"]);
-	
-    }    
+    	buscaItensRateio(selectedItem["CODIGO"]);
+    	
+    }
+
+
+    else if (linhaPagamento[0] == FONTE){
+  	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+  	  
+    }
+ 
+
+    else if (linhaPagamento[0] == PRODUTO) {
+    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
+    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
+    	$('#prazoFornecedor' + "___" + linhaPagamento[1]).val(selectedItem["PRAZO_FORNECEDOR"]);
+    	
+    	
+    }
+    
     else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
-    		evento = selectedItem["SOLICITACAO"];    		
+    		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
+    		//$("#carregaFinan").prop("disabled", true);
+    		//$("#NcarregaFinan").prop("disabled", true);
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
     		$("#NcarregaFinan").prop("disabled", false);
     	}
-    }   
-    else if (campoZOOM == SERVICO) {
-      	$("#codigoProduto").val(selectedItem["CODIGO"]);
-       	
-    	
-    }
-    else if (campoZOOM == FORNECEDOR){
-	    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
-    		$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
-    		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
-    		
-    		
-    		console.log(selectedItem["TIPO"]);  
-    		console.log(selectedItem["TIPO_PJ"]);  
-    		
-    		
-    		if (selectedItem["TIPO"] == "JURIDICA"){ 
-   	
-        		document.getElementById("juridica").click();  
-        	}
-    		else if (selectedItem["TIPO"] == "FISICA"){
-    			document.getElementById("fisica").click();  
-    		}
-    		else if (selectedItem["TIPO"] == "FUNCIONARIO"){
-    			document.getElementById("fisica").click();  
-    		}
-    		
-    		//$("#juridica").prop("disabled", true);
-    		//$("#fisica").prop("disabled", true);
-    		
-    		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
-    		$("#banco").val(selectedItem["BANCO"]);   
-    		$("#agencia").val(selectedItem["AGENCIA"]);   
-    		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
-    		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());  
-    		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());   
-    
-    
-    
-    
     }
     
-}
-
-function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR	){								
-		fnWdkRemoveChild(oElement);	
-
-	}
-	else {
-		FLUIGC.toast({
-            title: 'Atenção',
-            message: 'Você não pode remover nenhuma linha do rateio.',
-            type: 'warning',
-            timeout: 3000
-        });		
-	}		
+    
 }
 
 function adicionaLinha() {
@@ -321,6 +260,43 @@ function adicionaLinha() {
     window["txtcategoria___" + indice].disable(true);
     window["txtfontefinanciamento___" + indice].disable(true);
     window["txtareaestrategica___" + indice].disable(true);
+}
+
+function adicionaLinhaProduto() {
+		linhas = 0;	
+				
+		if (linhas == 0){		
+			var row = wdkAddChild('tableCompras');
+			
+			linhas = linhas + row;	
+			FLUIGC.calendar("#dtNecessidade___" + row, {
+				pickDate: true,
+				pickTime: false,    
+			    minDate: new Date().toLocaleString()
+				
+			});
+			
+			reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
+		
+			var qtde = document.getElementById("idquantidade" + "___" + row);
+
+			qtde.addEventListener("blur", function( event ) {			
+				  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
+				  var qtde = $('#idquantidade' + "___" + row).val()			  
+				  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
+				  
+				  
+				}, true);
+
+		}
+		else {
+	         FLUIGC.toast({
+	  	        title: 'Atenção: ',
+	  	        message: 'É recomendado a inclusão de um único item por solicitação, pois em caso de falta de saldo orçamentário a solicitação inteira será recusada.' ,
+	  	        type: 'info'
+	  	    }); 
+		}
+		
 }
 
 function removedZoomItem(removedItem) {
@@ -334,10 +310,10 @@ function removedZoomItem(removedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
+    var PRODUTO = "txtproduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
-    var FORNECEDOR ="cnpjcpf";
-    
+
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
@@ -345,6 +321,7 @@ function removedZoomItem(removedItem) {
     var linhaPagamento = campoZOOM.split('___');
  
     if (linhaPagamento[0] == CCUSTO) {
+    	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
@@ -368,6 +345,7 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
+    	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
@@ -376,6 +354,7 @@ function removedZoomItem(removedItem) {
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
+    	console.log("---REMOVEU AQUI 3----");
 //      var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
 
         $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
@@ -387,8 +366,7 @@ function removedZoomItem(removedItem) {
 
 
     else if (campoZOOM == RATEIO) {
-        //removeItensRateio();
-    	console.log("---REMOVEU AQUI 6----");
+      
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -400,6 +378,15 @@ function removedZoomItem(removedItem) {
 
 
 
+    else if (linhaPagamento[0] == PRODUTO) {   	
+     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");
+    	$('#idum' + "___" + linhaPagamento[1]).val("");
+    	$('#idquantidade' + "___" + linhaPagamento[1]).val("");
+    	$('#vrUltima' + "___" + linhaPagamento[1]).val("");
+    	$('#dtNecessidade' + "___" + linhaPagamento[1]).val("");
+    	
+    }
+    
     else if (linhaPagamento[0] == FONTE) {
   	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
      }
@@ -417,25 +404,8 @@ function removedZoomItem(removedItem) {
         removeItens();
 
     }
-    else if (campoZOOM == FORNECEDOR){
-    	$("#fisica").attr('checked', false);
-    	$("#juridica").attr('checked', false);
-    	$("#razaosocial").val("");  
-		$("#nomefantasia").val("");  		
-		$("#codigoFornecedor").val("");   	
-		$("#meioPagamento").val("");
-		$("#banco").val("");   
-		$("#agencia").val("");   
-		$("#contaFornecedor").val("");   
-		$("#tipoConta").val("");  
-		$("#tipoPJ").val("");   
-		
-		
-		//$("#juridica").prop("disabled", false);
-		//$("#fisica").prop("disabled", false);
 
-		
-    }
+
 }
 
 function setZoomData(instance, value) {
@@ -444,7 +414,7 @@ function setZoomData(instance, value) {
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
-		buscaDadosFinanceiroEvento(evento);	
+		buscaDadosFinanceiroEvento(codigoEvento);	
 	}
 	else {
 		window['rateioconfigurado'].clear();
@@ -478,7 +448,7 @@ function buscaDadosFinanceiroEvento(evento){
 }
 
 function adicionaItem(itens) {
-	//console.log(itens);
+	console.log(itens);
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
@@ -525,7 +495,7 @@ function adicionaItem(itens) {
        window["txtcategoria___" + indice].disable(true); 
        window["txtfontefinanciamento___" + indice].disable(true); 
        window["txtareaestrategica___" + indice].disable(true); 
-      // $("#percentual___"+ indice).prop("disabled", true);
+       //$("#percentual___"+ indice).prop("disabled", true);
  
 
     }
@@ -533,53 +503,57 @@ function adicionaItem(itens) {
 
 //recebe data do Fluig e convert para data normal
 function convertStringToData(StringToData) {
-  //variavel para armazenar a data limite para aprovação   
-  var data = StringToData.split('/');
+    //variavel para armazenar a data limite para aprovação   
+    var data = StringToData.split('/');
 
-  return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
 }
 
 //recebe data JS e convert para data FLuig
 function convertDataToString(dataToString) {
-  var dia;
+    var dia;
 
-  //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
-  var mes = dataToString.getMonth() + 1;
+    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+    var mes = dataToString.getMonth() + 1;
+
+    console.log("MES: " + mes);
+
+    if (dataToString.getDate().toString().length == 1) {
+        dia = dataToString.getDate();
+        dia = "0" + dia.toString();
+
+    } else {
+        dia = dataToString.getDate();
+
+    }
+
+    console.log("TAMANHO MES: " + mes.toString().length);
+    //converte mes
+    if (mes.toString().length == 1) {
+        mes = "0" + mes.toString();
+
+    }
+    //else {mes = dataToString.getMonth() + 1;}
 
 
-  if (dataToString.getDate().toString().length == 1) {
-      dia = dataToString.getDate();
-      dia = "0" + dia.toString();
-
-  } else {
-      dia = dataToString.getDate();
-
-  }
-  if (mes.toString().length == 1) {
-      mes = "0" + mes.toString();
-
-  }
-  //else {mes = dataToString.getMonth() + 1;}
-
-
-  //novo formato de data: para salvar em campos data do Fluig
-  return dia + "/" + mes + "/" + dataToString.getFullYear();
+    //novo formato de data: para salvar em campos data do Fluig
+    return dia + "/" + mes + "/" + dataToString.getFullYear();
 
 
 }
 
 function addDias(data, dias) {
-  return new Date(data.setDate(data.getDate() + dias));;
+    return new Date(data.setDate(data.getDate() + dias));;
 
 }
 
 function addMeses(data, meses) {
-  return new Date(data.setMonth(data.getMonth() + meses));
+    return new Date(data.setMonth(data.getMonth() + meses));
 
 }
 
 function addAnos(data, anos) {
-  return new Date(data.setYear(data.getFullYear() + anos));
+    return new Date(data.setYear(data.getFullYear() + anos));
 
 }
 
@@ -587,7 +561,7 @@ function addAnos(data, anos) {
 function buscaItensRateio(rateio) {
 
 	var constraints = new Array();
-  constraints.push(DatasetFactory.createConstraint("RATEIO", rateio, rateio, ConstraintType.MUST));	
+    constraints.push(DatasetFactory.createConstraint("RATEIO", rateio, rateio, ConstraintType.MUST));	
 	var dataset = DatasetFactory.getDataset("ds_get_ItensRateio", null, constraints, null);
 	
 	adicionaItensRateio(dataset.values) ;
@@ -595,99 +569,53 @@ function buscaItensRateio(rateio) {
 }
 
 function adicionaItensRateio(itens) {
-  for (var i in itens) {
-      var indice = wdkAddChild("tableItens");
-      
-      window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);   
-      
-     
-      
-      if (itens[i].PROJETO == null || itens[i].PROJETO == "") {
-          window["txtprojeto___" + indice].disable(true);
-      } else {
-          window["txtprojeto___" + indice].setValue(itens[i].PROJETO);
-          //$("#projeto").val(itens[i].PROJETO);
-      }
-      
-      window["txtatividade___" + indice].setValue(itens[i].ATIVIDADE);
-     
-      
-      if (itens[i].CATEGORIA == null || itens[i].CATEGORIA == "") {
-          window["txtcategoria___" + indice].disable(true);
-      } else {
-          window["txtcategoria___" + indice].setValue(itens[i].CATEGORIA);
-      }
+    for (var i in itens) {
+        var indice = wdkAddChild("tableItens");
+        
+        window["txtcentrocusto___" + indice].setValue(itens[i].CENTROCUSTO);   
+        
+       
+        
+        if (itens[i].PROJETO == null || itens[i].PROJETO == "") {
+            window["txtprojeto___" + indice].disable(true);
+        } else {
+            window["txtprojeto___" + indice].setValue(itens[i].PROJETO);
+            //$("#projeto").val(itens[i].PROJETO);
+        }
+        
+        window["txtatividade___" + indice].setValue(itens[i].ATIVIDADE);
+       
+        
+        if (itens[i].CATEGORIA == null || itens[i].CATEGORIA == "") {
+            window["txtcategoria___" + indice].disable(true);
+        } else {
+            window["txtcategoria___" + indice].setValue(itens[i].CATEGORIA);
+        }
 
-      if (itens[i].FONTE == null || itens[i].FONTE == "") {
-          window["txtfontefinanciamento___" + indice].disable(true);
-      } else {
-          window["txtfontefinanciamento___" + indice].setValue(itens[i].FONTE);
-      }
+        if (itens[i].FONTE == null || itens[i].FONTE == "") {
+            window["txtfontefinanciamento___" + indice].disable(true);
+        } else {
+            window["txtfontefinanciamento___" + indice].setValue(itens[i].FONTE);
+        }
 
-      if (itens[i].AREA == null || itens[i].AREA == "") {
-          window["txtareaestrategica___" + indice].disable(true);
-      } else {
-          window["txtareaestrategica___" + indice].setValue(itens[i].AREA);
-      }
+        if (itens[i].AREA == null || itens[i].AREA == "") {
+            window["txtareaestrategica___" + indice].disable(true);
+        } else {
+            window["txtareaestrategica___" + indice].setValue(itens[i].AREA);
+        }
 
-      $("#alocacao___" + indice).val(itens[i].ALOCACAO);
-      $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
-      $("#contacontabil___" + indice).val(itens[i].CONTA);
-      $("#percentual___" + indice).val(itens[i].PERCENTUAL);      
-      $("#rateio___" + indice).val(itens[i].RATEIO);
+        $("#alocacao___" + indice).val(itens[i].ALOCACAO);
+        $("#localizacao___" + indice).val(itens[i].LOCALIZACAO);
+        $("#contacontabil___" + indice).val(itens[i].CONTA);
+        $("#percentual___" + indice).val(itens[i].PERCENTUAL);      
+        $("#rateio___" + indice).val(itens[i].RATEIO);
 
-      
-  }
-  
-  
+        
+    }
+    
+    
 }
 
-function removeItens() {
-	
-	if (ATIVIDADE == ABERTURA ){
-	    var linhas = $("#tbodyItens tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);
-	    }
-	}
-
-}
-
-/*
-
-function calculaValores(){
-	var dtInicio = convertStringToData($('#dtInicio').val());
-	var dtFim = convertStringToData($('#dtFim').val());
-	//var diferencaMeses  = moment.range(dtInicio, dtFim);
-	
-	if (document.getElementById("mensal").checked == true){
-		if (document.getElementById("fixo").checked == true){
-			
-		//	log.info("CALCULO MESES");
-	//		log.info(diferencaMeses.diff('months'));
-			
-			//Calcula quantos meses terá o contrato
-			//multiplica a quantidade de meses pelo valor mensal para preencher o valor anual
-			//O valor mensal será obrigatório e diferente de zero
-			
-		}
-		else if (document.getElementById("demanda").checked == true){
-			//Calcula quantos meses terá o contrato
-			//O valor mensal deve ser zero
-			//O valor anual será obrigatório e diferente de zero
-			$('#valorMensal').val(0);
-			
-			
-		}	
-	}
-	else if (document.getElementById("unico").checked == true){
-	
-	}
-	
-}
-*/
 
 
 
