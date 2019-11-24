@@ -64,11 +64,216 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>                
+					                  <div class="panel panel-success">
+					                     <div class="panel-heading ">
+					                        <h5 class="panel-title">
+					                           <b>Informações do fornecedor</b>
+					                        </h5>
+					                     </div>
+					                     <div class="panel-body">
+					                        <div class="row">
+					                           <div class="form-group col-md-5">
+					                              <label for="cgcFornecedor">CPF/CNPJ Fornecedor</label>
+					                              <input name="cnpjcpf" class="form-control" type="zoom" id="cnpjcpf" data-zoom="{'displayKey':'CNPJ',
+					                                 'datasetId':'ds_get_Fornecedor',
+					                                 'maximumSelectionLength':'1',
+					                                 'placeholder':'Selecione o fornecedor',
+					                                 'fields':[
+					                                 {'field':'RAZAO_SOCIAL','label':'RAZAO_SOCIAL'},
+					                                 {'field':'CNPJ','label':'CNPJ','standard':'true'},
+					                                 {'field':'CODIGO','label':'CODIGO'},
+					                                 {'field':'TIPO','label':'TIPO', 'visible' : 'false'},
+					                                 {'field':'FANTASIA','label':'FANTASIA', 'visible' : 'false'},
+					                                 {'field':'FORM_PGTO','label':'FORM_PGTO', 'visible' : 'false'},
+					                                 {'field':'BANCO','label':'BANCO', 'visible' : 'false'},
+					                                 {'field':'AGENCIA','label':'AGENCIA', 'visible' : 'false'},
+					                                 {'field':'CONTA_F','label':'CONTA_F', 'visible' : 'false'},
+					                                 {'field':'TIPO_CONTA','label':'TIPO_CONTA', 'visible' : 'false'}																				  					
+					                                 ]
+					                                 }">
+					                           </div>
+					                           <div class="form-group col-md-6">
+					                              <label>Razão Social</label>
+					                              <input class="form-control" type="text" id="razaosocial" name="razaosocial" readonly>
+					                           </div>
+					                        </div>
+					                        <div class="row">
+					                           <div class="form-group col-md-5">
+					                              <label>Nome Fantásia</label>
+					                              <input class="form-control" type="text" id="nomefantasia" name="nomefantasia" readonly>
+					                           </div>
+					                           <div class="form-group col-md-2">
+					                              <label>Codigo Fornecedor</label>
+					                              <input type="text" id="codigoFornecedor" class="form-control" name="codigoFornecedor" readonly>
+					                           </div>
+					                           <div class="form-group col-md-3">
+					                              <label>Tipo de Pessoa</label>
+					                              <br>
+					                              <label for="fisica">Fisica</label>
+					                              <input type="radio" id="fisica" name="tipoPessoa" value="fisica" readonly>
+					                              <label for="juridica">Juridica</label>
+					                              <input type="radio" id="juridica" name="tipoPessoa" value="juridica" readonly>
+					                           </div>
+					                           <div class="form-group col-md-1">
+                                                   <label>Tipo PJ</label>
+                                                   <input type="text" id="tipoPJ" class="form-control" name="tipoPJ" readonly>
+                                               </div>
+					                        </div>
+					                     </div>
+					                  </div>
+              						 <div class="panel panel-success">
+              						 	<div class="panel-heading ">
+					                        <h5 class="panel-title">
+					                           <b>Informações do contrato</b>
+					                        </h5>
+					                     </div>
+					                     <div class="panel-body">
+					                     	<div class="row">
+					                     		<div class="form-group col-md-5" id="div_contrato">
+                                                                <label>Número do Contrato</label><br>
+                                                                <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
+																'displayKey':'DESCRICAO',
+																'datasetId':'vm_Produtos',
+																'maximumSelectionLength':'1',
+																'placeholder':'Selecione o contrato',
+																'fields':[
+																{'field':'CODIGO', 'label':'CODIGO'},
+																{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+																]}" />
+                                                            </div>
+					                     		<div class="form-group col-md-2">
+					                     			<label>Revisão</label>
+					                     			<input type="text" name="revisao" id="revisao" class="form-control">
+					                     		</div>
+					                     	</div>
+					                     	<div class="row">
+					                           <div class="form-group col-md-3">
+					                              <label for="dtInicio">Data de Início</label>
+					                              <div class="input-group date">
+					                                 <input type="text" class="form-control" id="dtInicio" name="dtInicio">
+					                                 <span class="input-group-addon"> <span
+					                                    class="fluigicon fluigicon-calendar"></span>
+					                                 </span>
+					                              </div>
+					                           </div>
+					                           <div class="form-group col-md-3">
+					                              <label for="dtFim">Data de Encerramento</label>
+					                              <div class="input-group date">
+					                                 <input type="text" class="form-control" id="dtFim" name="dtFim">
+					                                 <span class="input-group-addon"> <span
+					                                    class="fluigicon fluigicon-calendar"></span>
+					                                 </span>
+					                              </div>
+					                           </div>
+					                           <div class="form-group col-md-3">
+					                           	<label>Valor do contrato</label>
+					                           	<input type="number" id="vlcontrato" name="vlcontrato" class="form-control">
+					                           </div>
+					                           <div class="form-group col-md-3">
+					                           		<label>Saldo atual</label>
+					                           		<input type="number" id="saldoAtual" name="saldoAtual" class="form-control">
+					                           </div>
+					                        </div>
+					                     </div>
+              						 </div>
+              						 
+              						 <div class="panel panel-success">
+              						 	<div class="panel-heading ">
+					                        <h5 class="panel-title">
+					                           <b>Informações do pagamento</b>
+					                        </h5>
+					                     </div>
+					                     <div class="panel-body">
+					                     	<div class="row">
+					                     		      <div class="form-group col-md-3">
+						                     		     <label for="dtVencimento">Data Vencimento</label>
+	                                                      <div class="input-group date">
+	                                                           <input type="text" class="form-control" id="dtVencimento" name="dtVencimento">
+	                                                           <span class="input-group-addon">
+	                                                           <span class="fluigicon fluigicon-calendar">
+	                                                           </span>
+	                                                           </span>
+	                                                      </div>
+                                                      </div>
+                                                      <div class="form-group col-md-3">
+                                                      	<label>Valor Bruto</label>
+                                                      	<input type="number" id="vlbruto" name="vlbruto" class="form-control">
+                                                      </div>
+                                             </div>
+					                     </div>
+					                     	
+					                     </div>
+					                     <div class="panel panel-success">
+						                     <div class="panel-heading ">
+						                        <h5 class="panel-title">
+						                           <b>Itens do serviço</b>
+						                        </h5>
+						                     </div>
+					                     	<div class="panel-body">
+					                     	    <div class="form-group row">
+                                                                            <div class="col-md-12 fs-txt-right">
+                                                                                <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
+                                                                                    <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar linha
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+					                     		<div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-field table-responsive">
+                                                                                    <table tablename="tableServico" id="tableServico" border="0" class="table table-striped table-bordered" nodeletebutton=true noaddbutton=true>
+                                                                                        <thead>
+                                                                                            <tr class="tableHeadRow">
+                                                                                                <th></th>
+                                                                                                <th class="tableColumn">Descrição do Serviço</th>                                                                                             
+                                                                                                <th class="tableColumn">Valor</th>
+                                                                                                
+                                                                                                <th class="tableColumn">Codigo Prod.</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody id="tbodyServico">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <span class="fluigicon fluigicon-remove-circle fluigicon-md fs-cursor-pointer remove-linha" id="removeServico" onclick="fnWdkRemoveChild(this)"></span>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <div class="form-group">
+                                                                                                        <input type="hidden" name="produto" id="produto" />
+                                                                                                        <input type="zoom" name="txtproduto" data-zoom="{
+						                                                                                    'displayKey':'DESCRICAO',
+						                                                                                    'datasetId':'VM_Produtos',
+						                                                                                    'maximumSelectionLength':'1',
+						                                                                                    'placeholder':'Selecione um produto',
+						                                                                                    'fields':[
+						                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+						                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }                                                                                                                                                                      
+						                                                                                    ]
+						                                                                                    }" />
+                                                                                                    </div>
+                                                                                                </td>                                                                                                                                                                                                                                                                                       
+                                                                                                <td>
+                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:100px;" />
+                                                                                                </td>     
+                                                                                                                                                                                    
+                                                                                                <td>
+                                                                                                    <input class="form-control" name="codigoProduto" id="codigoProduto" type="text" maxlength="5" style="width: 150px;" readonly />
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+					                     	</div>
+					                     
+					                     
+					                     </div>
+              						 
+              						 
                                     <div class="panel panel-info" id="panelItens">
                                         <div class="panel-heading ">
                                             <h3 class="panel-title">
-<b>Informa&ccedil;&otilde;es do Pagamento</b>
+<b>Informa&ccedil;&otilde;es financeira</b>
 </h3>
                                         </div>
                                         <div class="panel-body">
