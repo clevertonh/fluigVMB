@@ -239,9 +239,6 @@ function setSelectedZoomItem(selectedItem) {
 
     else if (linhaPagamento[0] == SERVICO) {
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
-    	$('#prazoFornecedor' + "___" + linhaPagamento[1]).val(selectedItem["PRAZO_FORNECEDOR"]);
     	
     	
     }
@@ -402,11 +399,7 @@ function removedZoomItem(removedItem) {
 
 
     else if (linhaPagamento[0] == PRODUTO) {   	
-     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");
-    	$('#idum' + "___" + linhaPagamento[1]).val("");
-    	$('#idquantidade' + "___" + linhaPagamento[1]).val("");
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val("");
-    	$('#dtNecessidade' + "___" + linhaPagamento[1]).val("");
+     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");    
     	
     }
     
