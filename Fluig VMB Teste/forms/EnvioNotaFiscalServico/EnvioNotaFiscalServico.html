@@ -35,8 +35,7 @@
                         <div id="exTab3" class="container-fluid">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active"><a href="#1b" data-toggle="tab">Solicitante</a></li>
-                                <li><a href="#2b" data-toggle="tab">Gerente</a></li>
-                                <li><a href="#3b" data-toggle="tab">Administração</a></li>
+                                <li><a href="#2b" data-toggle="tab">Administração</a></li>
                             </ul>
                             <div class="tab-content clearfix">
                                 <div class="tab-pane active" id="1b">
@@ -120,6 +119,40 @@
                                                    <input type="text" id="tipoPJ" class="form-control" name="tipoPJ" readonly>
                                                </div>
 					                        </div>
+					                     	<div class="row">
+                                                        	<div class="form-group col-md-4">
+                                                        		<label>Meio de pagamento</label>
+                                                        		<input type="text" id="meioPagamento" name="meioPagamento" class="form-control" readonly>
+                                                        	</div>
+                                                             <div class="form-group col-md-3">
+								                     		     <label for="dtVencimento">Data Vencimento</label>
+			                                                      <div class="input-group date">
+			                                                           <input type="text" class="form-control" id="dtVencimento" name="dtVencimento">
+			                                                           <span class="input-group-addon">
+			                                                           <span class="fluigicon fluigicon-calendar">
+			                                                           </span>
+			                                                           </span>
+			                                                      </div>
+		                                                      </div>
+                                                        </div>
+					                        <div class="row">
+                                                        	<div class="form-group col-md-2">
+                                                        		<label>Banco</label>
+                                                        		<input type="text" id="banco" name="banco" class="form-control" readonly>
+                                                        	</div>
+                                                        	<div class="form-group col-md-2">
+                                                        		<label>Agência</label>
+                                                        		<input type="text" id="agencia" name="agencia" class="form-control" readonly>
+                                                        	</div>
+                                                        	<div class="form-group col-md-3">
+                                                        		<label>Conta</label>
+                                                        		<input type="text" id="contaFornecedor" name="contaFornecedor" class="form-control" readonly>
+                                                        	</div>
+                                                        	<div class="form-group col-md-3">
+                                                        		<label>Tipo de Conta</label>
+                                                        		<input type="text" id="tipoConta" name="tipoConta" class="form-control" readonly>
+                                                        	</div>
+                                                        </div>
 					                     </div>
 					                  </div>
               						 <div class="panel panel-success">
@@ -144,14 +177,14 @@
                                                             </div>
 					                     		<div class="form-group col-md-2">
 					                     			<label>Revisão</label>
-					                     			<input type="text" name="revisao" id="revisao" class="form-control">
+					                     			<input type="text" name="revisao" id="revisao" class="form-control" readonly>
 					                     		</div>
 					                     	</div>
 					                     	<div class="row">
 					                           <div class="form-group col-md-3">
 					                              <label for="dtInicio">Data de Início</label>
 					                              <div class="input-group date">
-					                                 <input type="text" class="form-control" id="dtInicio" name="dtInicio">
+					                                 <input type="text" class="form-control" id="dtInicio" name="dtInicio" readonly>
 					                                 <span class="input-group-addon"> <span
 					                                    class="fluigicon fluigicon-calendar"></span>
 					                                 </span>
@@ -160,50 +193,23 @@
 					                           <div class="form-group col-md-3">
 					                              <label for="dtFim">Data de Encerramento</label>
 					                              <div class="input-group date">
-					                                 <input type="text" class="form-control" id="dtFim" name="dtFim">
+					                                 <input type="text" class="form-control" id="dtFim" name="dtFim" readonly>
 					                                 <span class="input-group-addon"> <span
 					                                    class="fluigicon fluigicon-calendar"></span>
 					                                 </span>
 					                              </div>
 					                           </div>
 					                           <div class="form-group col-md-3">
-					                           	<label>Valor do contrato</label>
-					                           	<input type="number" id="vlcontrato" name="vlcontrato" class="form-control">
+					                           	<label>Valor total do contrato</label>
+					                           	<input type="number" id="vlcontrato" name="vlcontrato" class="form-control" readonly>
 					                           </div>
 					                           <div class="form-group col-md-3">
-					                           		<label>Saldo atual</label>
-					                           		<input type="number" id="saldoAtual" name="saldoAtual" class="form-control">
+					                           		<label>Saldo atual do contrato</label>
+					                           		<input type="number" id="saldoAtual" name="saldoAtual" class="form-control" readonly>
 					                           </div>
 					                        </div>
 					                     </div>
               						 </div>
-              						 
-              						 <div class="panel panel-success">
-              						 	<div class="panel-heading ">
-					                        <h5 class="panel-title">
-					                           <b>Informações do pagamento</b>
-					                        </h5>
-					                     </div>
-					                     <div class="panel-body">
-					                     	<div class="row">
-					                     		      <div class="form-group col-md-3">
-						                     		     <label for="dtVencimento">Data Vencimento</label>
-	                                                      <div class="input-group date">
-	                                                           <input type="text" class="form-control" id="dtVencimento" name="dtVencimento">
-	                                                           <span class="input-group-addon">
-	                                                           <span class="fluigicon fluigicon-calendar">
-	                                                           </span>
-	                                                           </span>
-	                                                      </div>
-                                                      </div>
-                                                      <div class="form-group col-md-3">
-                                                      	<label>Valor Bruto</label>
-                                                      	<input type="number" id="vlbruto" name="vlbruto" class="form-control">
-                                                      </div>
-                                             </div>
-					                     </div>
-					                     	
-					                     </div>
 					                     <div class="panel panel-success">
 						                     <div class="panel-heading ">
 						                        <h5 class="panel-title">
@@ -212,12 +218,11 @@
 						                     </div>
 					                     	<div class="panel-body">
 					                     	    <div class="form-group row">
-                                                                            <div class="col-md-12 fs-txt-right">
-                                                                                <button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
-                                                                                    <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar linha
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
+					                     	   			 <div class="col-md-2 fs-txt-left">
+					                     	   			 	<label>Valor total</label>
+                                                            <input type="number" id="vl_servico" name="vl_servico" class="form-control" readonly>
+                                                          </div>                                                        
+                                                 </div>
 					                     		<div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-field table-responsive">
@@ -252,7 +257,7 @@
                                                                                                     </div>
                                                                                                 </td>                                                                                                                                                                                                                                                                                       
                                                                                                 <td>
-                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:100px;" />
+                                                                                                    <input class="form-control money" name="vrTotUnit" id="vrTotUnit" type="number" style="width:120px;" />
                                                                                                 </td>     
                                                                                                                                                                                     
                                                                                                 <td>
@@ -264,6 +269,15 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+					                     	
+					                     	<div class="form-group row">					                     	   			 
+                                                          <div class="col-md-12 fs-txt-right">
+                                                          	<button type="button" class="btn btn-primary" id="btn_add_itemS" name="btn_add_itemS" onclick="adicionaLinhaProduto()">
+                                                            <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar linha
+                                                            </button>
+                                                          </div>
+                                                 </div>
+					                     	
 					                     	</div>
 					                     
 					                     
@@ -322,12 +336,7 @@
 }						  					
 ]
 }">
-                                                </div>
-                                                <div class="col-md-6 fs-txt-right">
-                                                    <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
-                                                        <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
-                                                    </button>
-                                                </div>
+                                                </div>                                               
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-md-12">
@@ -460,6 +469,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        	<div class="form-group row">
+                                        		 <div class="col-md-12 fs-txt-right">
+                                                    <button type="button" class="btn btn-primary" id="btn_add_item" name="btn_add_item" onclick="adicionaLinha()">
+                                                        <span class="fluigicon fluigicon-plus-sign fluigicon-sm"></span> Adicionar
+                                                    </button>
+                                                </div>
+                                        	</div>
+                                        
                                         </div>
                                     </div>
 
@@ -467,38 +484,34 @@
                                 <div class="tab-pane" id="2b">
                                 	<div class="row">
                                        <div class="form-group col-md-4">
-                                          <label for="gestor" class="required">Nome aprovador</label>
-                                          <input type="text" class="form-control" id="gestor" name="gestor" readonly >
+                                          <label for="comprador" class="required">Nome comprador</label>
+                                          <input type="text" class="form-control" id="comprador" name="comprador" readonly >
                                        </div>
                                        <div class="form-group col-md-4">
-                                          <label for="emailLider">Email do Aprovador</label>
-                                          <input type="email" class="form-control" id="emailLider" name="emailLider" readonly>
+                                          <label for="emailComprador">Email do comprador</label>
+                                          <input type="email" class="form-control" id="emailComprador" name="emailComprador" readonly>
                                        </div>	
                                           <div class="form-group col-md-4" id="divMatricualApr">
-                                          	<label for="matriculaApr">ID Aprovador</label>
-                                          	<input type="text" class="form-control" id="matriculaApr" name="matriculaApr" readonly>
+                                          	<label for="idComprador">ID comprador</label>
+                                          	<input type="text" class="form-control" id="matidCompradorriculaApr" name="idComprador" readonly>
                                           </div>                                        								
 									</div>
                                     <div class="row">
-                                        <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+                                        <h3>Para validar ou cancelar, marque a opção desejada:</h3>
                                         <div class="form-group col-md-2">
-                                            <Label for="aprovacao">Aprovado</Label>
-                                            <input type="radio" id="aprovacao" name="aprovacao" value="aprovado" onclick="justificativaReprovacao()" />
+                                            <Label for="validado">Validar</Label>
+                                            <input type="radio" id="validado" name="validacao" value="aprovado"  />
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <Label for="aprovacaon">Reprovado</Label>
-                                            <input type="radio" id="aprovacaon" name="aprovacao" value="reprovado" onclick="justificativaReprovacao()" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <Label for="devolver">Devolver para correção</Label>
-                                            <input type="radio" id="devolver" name="aprovacao" value="corrigir" onclick="justificativaReprovacao()" />
-                                        </div>
+                                            <Label for="cancelado">Cancelar</Label>
+                                            <input type="radio" id="cancelado" name="validacao" value="cancelado"  />
+                                        </div>                                     
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <div class="form-group">
                                                 <label for="justificativaR">Justificativa</label>
-                                                <textarea class="form-control" rows="3" id="justificativaR" name="justificativaR" placeholder="Por favor, informar o motivo pela reprovação."></textarea>
+                                                <textarea class="form-control" rows="3" id="justificativaR" name="justificativaR" placeholder="Por favor, informar o motivo pela cancelamento"></textarea>
                                             </div>
                                         </div>
                                     </div>

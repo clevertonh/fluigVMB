@@ -16,10 +16,9 @@ var linhas = 0;
 var dtSolicitacao;
 var codigoEvento;
 
-$(document).ready(function() {
-	
+$(document).ready(function() {	
     if (ATIVIDADE == ABERTURA) {        
-    	dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
+    	dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
             pickDate: true,
             pickTime: false,
             useCurrent: true
@@ -27,6 +26,14 @@ $(document).ready(function() {
         
     	dtSolicitacao.setDate(new Date().toLocaleString());
        	
+    	
+    	var dtVencimento = FLUIGC.calendar('#dtVencimento', {
+            pickDate: true,
+            pickTime: false,
+            useCurrent: true,
+            minDate: new Date().toLocaleString()
+        });
+    	
     }
 
 });
@@ -89,7 +96,7 @@ function removeItens() {
 
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	|| ATIVIDADE == APROVACAO){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -123,7 +130,7 @@ function fnCustomDeleteProduto(oElement) {
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
-    var LOCALIZACAO = "localizacao";
+	var LOCALIZACAO = "localizacao";
     var CONTA = "contacontabil";
     var CCUSTO = "txtcentrocusto";
     var CATEGORIA = "txtcategoria";
@@ -133,8 +140,10 @@ function setSelectedZoomItem(selectedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
-    var PRODUTO = "txtproduto";
     var EVENTO ="dataset_solicitacaoevento";
+    var SERVICO ="txtproduto";
+    var FORNECEDOR ="cnpjcpf";
+   
       
    
 
@@ -228,7 +237,7 @@ function setSelectedZoomItem(selectedItem) {
     }
  
 
-    else if (linhaPagamento[0] == PRODUTO) {
+    else if (linhaPagamento[0] == SERVICO) {
     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
     	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
     	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
@@ -241,14 +250,42 @@ function setSelectedZoomItem(selectedItem) {
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
-    		//$("#carregaFinan").prop("disabled", true);
-    		//$("#NcarregaFinan").prop("disabled", true);
+
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
     		$("#NcarregaFinan").prop("disabled", false);
     	}
     }
+    
+    else if (campoZOOM == FORNECEDOR){
+    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
+		$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
+		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
+		
+		if (selectedItem["TIPO"] == "JURIDICA"){ 
+	
+    		document.getElementById("juridica").click();  
+    	}
+		else if (selectedItem["TIPO"] == "FISICA"){
+			document.getElementById("fisica").click();  
+		}
+		else if (selectedItem["TIPO"] == "FUNCIONARIO"){
+			document.getElementById("fisica").click();  
+		}
+		
+		
+		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
+		$("#banco").val(selectedItem["BANCO"]);   
+		$("#agencia").val(selectedItem["AGENCIA"]);   
+		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
+		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());  
+		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());   
+
+
+
+
+}
     
     
 }
@@ -263,41 +300,26 @@ function adicionaLinha() {
 }
 
 function adicionaLinhaProduto() {
-		linhas = 0;	
-				
-		if (linhas == 0){		
-			var row = wdkAddChild('tableCompras');
-			
-			linhas = linhas + row;	
-			FLUIGC.calendar("#dtNecessidade___" + row, {
-				pickDate: true,
-				pickTime: false,    
-			    minDate: new Date().toLocaleString()
-				
-			});
-			
-			reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
-		
-			var qtde = document.getElementById("idquantidade" + "___" + row);
-
-			qtde.addEventListener("blur", function( event ) {			
-				  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-				  var qtde = $('#idquantidade' + "___" + row).val()			  
-				  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
-				  
-				  
-				}, true);
-
-		}
-		else {
-	         FLUIGC.toast({
-	  	        title: 'Atenção: ',
-	  	        message: 'É recomendado a inclusão de um único item por solicitação, pois em caso de falta de saldo orçamentário a solicitação inteira será recusada.' ,
-	  	        type: 'info'
-	  	    }); 
-		}
-		
+	var row = wdkAddChild('tableServico');
+    $("input[id^='custo___']:last").blur(doFormTotal);
 }
+
+function doFormTotal() {
+    var total = 0;  
+    
+     $("input[id^='vrTotUnit___']").each(function() {
+        if ($(this).val()) {
+            total += parseFloat($(this).val()); 
+        }
+    });
+     
+    
+    $("#vl_servico").val(total);
+    
+  
+  
+}
+
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -313,6 +335,7 @@ function removedZoomItem(removedItem) {
     var PRODUTO = "txtproduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
+    var FORNECEDOR ="cnpjcpf";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -403,6 +426,26 @@ function removedZoomItem(removedItem) {
 		//remove linhas de pagamento
         removeItens();
 
+    }
+    
+    else if (campoZOOM == FORNECEDOR){
+    	$("#fisica").attr('checked', false);
+    	$("#juridica").attr('checked', false);
+    	$("#razaosocial").val("");  
+		$("#nomefantasia").val("");  		
+		$("#codigoFornecedor").val("");   	
+		$("#meioPagamento").val("");
+		$("#banco").val("");   
+		$("#agencia").val("");   
+		$("#contaFornecedor").val("");   
+		$("#tipoConta").val("");  
+		$("#tipoPJ").val("");   
+		
+		
+		//$("#juridica").prop("disabled", false);
+		//$("#fisica").prop("disabled", false);
+
+		
     }
 
 
