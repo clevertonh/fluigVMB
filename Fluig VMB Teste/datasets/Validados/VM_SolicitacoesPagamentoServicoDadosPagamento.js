@@ -20,7 +20,7 @@ function createDataset(fields, constraints, sortFields) {
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit' ){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
         	
-        	 //dataset interno
+        	//dataset interno
             var constraintsActive = new Array();
             constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
             constraintsActive.push(DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST));
@@ -41,9 +41,7 @@ function createDataset(fields, constraints, sortFields) {
                 	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
                  }
             	
-             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
-            		//log.info("-----RETORNO CONTRAINT 21:08------");
-            		
+             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){             		
             		//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
                     var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
                     var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
@@ -52,9 +50,7 @@ function createDataset(fields, constraints, sortFields) {
 
                     //Busca o dataset
                     var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesPagamentoServico", null, constraintsFilhos, null);
-                    for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-                	//	log.info("-------RETORNO FILHO----- 21:08");
-                   	 	
+                    for (var j = 0; j < datasetFilhos.rowsCount; j++) {                   	 	
                      	//Adiciona os valores nas colunas respectivamente.
                         dataset.addRow(new Array(
                                 documentId,

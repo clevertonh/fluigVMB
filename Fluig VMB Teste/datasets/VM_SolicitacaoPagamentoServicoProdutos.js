@@ -57,7 +57,7 @@ function createDataset(fields, constraints, sortFields) {
                                 documentId,
                                 datasetFilhos.getValue(j, "txtproduto"),
                                 datasetFilhos.getValue(j, "idquantidade"),
-                                datasetFilhos.getValue(j, "vrUltima"),
+                                datasetFilhos.getValue(j, "vrUnitario"),
                                 datasetFilhos.getValue(j, "codigoProduto"),
                                 solicitacao
                         ));

@@ -1,9 +1,21 @@
 //NO PROTHEUS CORRESPONDE A CLASSE DE VALOR
 function defineStructure() {
-	addColumn("CODIGO");
-	addColumn("DESCRICAO");
-
-	setKey(["CODIGO"]);
+	addColumn("CONTRATO");
+	addColumn("REVISAO");
+	addColumn("VALOR_TOTAL");
+	addColumn("SALDO");
+	addColumn("DT_INICIO");
+	addColumn("DT_FIM");
+	addColumn("CODIGO_FORNECE");
+	addColumn("CGC");
+	addColumn("FORNECEDOR");
+	addColumn("FILIAL");
+	
+	
+	
+	setKey(["CONTRATO","REVISAO"]);
+	//addIndex(["CONTRATO"]);
+	//addIndex(["CGC"]);
 	
 }
 
@@ -11,12 +23,20 @@ function defineStructure() {
 function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
-	dataset.addColumn("CODIGO");
-    dataset.addColumn("DESCRICAO");
-
+	dataset.addColumn("CONTRATO");
+    dataset.addColumn("REVISAO");
+    dataset.addColumn("VALOR_TOTAL");
+    dataset.addColumn("SALDO");
+    dataset.addColumn("DT_INICIO");
+    dataset.addColumn("DT_FIM");
+    dataset.addColumn("CODIGO_FORNECE");
+    dataset.addColumn("CGC");
+    dataset.addColumn("FORNECEDOR");
+    dataset.addColumn("FILIAL");
+    
     var dados;
     
-   var webservice = '/VM_CONDPGTO';
+   var webservice = '/VM_CONTRATOS';
 	
 	try {
    	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -26,7 +46,7 @@ function createDataset(fields, constraints, sortFields) {
 	            serviceCode : 'REST FLUIG',
 	            endpoint : webservice,
 	            method : 'get',   
-	            timeoutService: '100'        	  
+	            timeoutService: '240'        	  
 	        }
    
    var vo = clientService.invoke(JSON.stringify(data));
@@ -38,7 +58,7 @@ function createDataset(fields, constraints, sortFields) {
 	    	            serviceCode : 'REST FLUIG 2',
 	    	            endpoint :  webservice,
 	    	            method : 'get',    
-	    	            timeoutService: '100'       	  
+	    	            timeoutService: '240'       	  
 	    	        }   	
 	            vo = clientService.invoke(JSON.stringify(data));
 	            
@@ -53,7 +73,7 @@ function createDataset(fields, constraints, sortFields) {
 	        	}
    
    } catch(err) {
-   	throw new Exception(err);
+   		throw new Exception(err);
    }
     
     
@@ -63,7 +83,18 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CCODIGO, objdata[i].CDESCR]);
+			dataset.addRow([objdata[i].CCONTRATO, 
+			                objdata[i].CREVISAO,
+			                objdata[i].NVALORT,
+			                objdata[i].NSALDO, 
+			                objdata[i].DDTINICIO,
+			                objdata[i].DDTFIM,
+			                objdata[i].CCODIGOF,
+			                objdata[i].CCGC,
+			                objdata[i].CFORNECE,
+			                objdata[i].CFILCTR
+			                ]
+			);
 		}
 	}
 		

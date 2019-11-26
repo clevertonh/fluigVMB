@@ -1493,20 +1493,8 @@ function removedZoomItem(removedItem) {
     }
 
     else if (campoZOOM == RATEIO) {
-    	//remove linhas de pagamento
-    	//console.log("---REMOVEU AQUI 6----");
         removeItens();    	
-    	/*
-	    var linhas = $("#tbodyItens tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);	
-	        
-	    }
-	    
-	    */
-    }
+     }
 
 
     else if (campoZOOM == FUNCIONARIO) {
