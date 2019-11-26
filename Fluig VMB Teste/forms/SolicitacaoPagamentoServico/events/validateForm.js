@@ -1,13 +1,11 @@
 function validateForm(form){	
 	var ABERTURA = 0;
 	var SOLICITAR = 4;
-	var VALIDAR = 29;
-	var AGUARDAR_APROVACAO = 13;
-	var CORRIGIR = 32;
-	var GERAR_PEDIDO = 35;
-	var AUTORIZAR_NF = 44;
-	var ENVIAR_NF = 42;
-	var LANCAR_PRE_NOTA = 49;
+	var INCLUIR_MEDICAO = 87;
+	var AGUARDAR_APROVACAO = 65;
+	var CORRIGIR = 92;
+	var ANEXAR_RELATORIO = 74;
+	var ENCERRAR_MEDICAO = 13;
 	var CLASSIFICAR_NOTA = 51;
 	
 	

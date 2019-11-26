@@ -1,13 +1,11 @@
 function enableFields(form){
 	var ABERTURA = 0;
 	var SOLICITAR = 4;
-	var VALIDAR = 29;
-	var AGUARDAR_APROVACAO = 13;
-	var CORRIGIR = 32;
-	var GERAR_PEDIDO = 35;
-	var AUTORIZAR_NF = 44;
-	var ENVIAR_NF = 42;
-	var LANCAR_PRE_NOTA = 49;
+	var INCLUIR_MEDICAO = 87;
+	var AGUARDAR_APROVACAO = 65;
+	var CORRIGIR = 92;
+	var ANEXAR_RELATORIO = 74;
+	var ENCERRAR_MEDICAO = 13;
 	var CLASSIFICAR_NOTA = 51;
 	
 	
@@ -22,20 +20,12 @@ function enableFields(form){
 		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
- 
-		 /*
-		 var aprovador = usuarioAprovador(emailSolicitante);
-		 if (aprovador!= null && aprovador != ""){
-			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
-			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
-				 
-		 }
-		 */
-				 
+ 				 
+		 
+		
 	}
 	
-	else if (activity == VALIDAR){
+	else if (activity == INCLUIR_MEDICAO){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 
@@ -43,6 +33,12 @@ function enableFields(form){
 		
 	}
 	
+	if (activity != INCLUIR_MEDICAO){
+		 form.setEnabled("validacao", false);		
+	}
+	
+	
+
 	
 	function UsuarioLogado(solicitante){
 		 var constraints   = new Array();

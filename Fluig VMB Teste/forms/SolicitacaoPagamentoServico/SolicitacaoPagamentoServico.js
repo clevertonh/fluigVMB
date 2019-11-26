@@ -1,13 +1,11 @@
 var infoUser;
 var ABERTURA = 0;
-var SOLICITAR = 4;	
-var VALIDAR = 29;
-var AGUARDAR_APROVACAO = 13;
-var CORRIGIR = 32;
-var GERAR_PEDIDO = 35;
-var AUTORIZAR_NF = 44;
-var ENVIAR_NF = 42;
-var LANCAR_PRE_NOTA = 49;
+var SOLICITAR = 4;
+var INCLUIR_MEDICAO = 87;
+var AGUARDAR_APROVACAO = 65;
+var CORRIGIR = 92;
+var ANEXAR_RELATORIO = 74;
+var ENCERRAR_MEDICAO = 13;
 var CLASSIFICAR_NOTA = 51;
 
 var linhas = 0;
@@ -111,11 +109,13 @@ function fnCustomDeleteRateio(oElement) {
 }
 
 function fnCustomDeleteProduto(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR){								
 		fnWdkRemoveChild(oElement);
 		
 		//reinicia variavel q controla quantidade de linhas permitidas de itens de produtos
 		linhas = 0;
+		fnWdkRemoveChild(oElement);
+		doFormTotal();
 
 	}
 	else {
@@ -297,8 +297,24 @@ function adicionaLinha() {
 }
 
 function adicionaLinhaProduto() {
-	var row = wdkAddChild('tableServico');
-    $("input[id^='custo___']:last").blur(doFormTotal);
+	linhas = 0;	
+	
+	if (linhas == 0){
+		var row = wdkAddChild('tableServico');
+		
+		var qtde = document.getElementById("idquantidade" + "___" + row);
+
+		qtde.addEventListener("blur", function( event ) 	{			
+			  var vl_unitario = $('#vrUnitario' + "___" + row).val();
+			  var qtde = $('#idquantidade' + "___" + row).val()			  
+			  $('#vrTotUnit___'+ row).val( vl_unitario * qtde  );			  
+			  
+			  
+			}, true);
+	
+	}
+	
+    $("input[id^='idquantidade___']:last").blur(doFormTotal);
 }
 
 function doFormTotal() {
@@ -316,7 +332,6 @@ function doFormTotal() {
   
   
 }
-
 
 function removedZoomItem(removedItem) {
     var LOCALIZACAO = "localizacao";
@@ -450,6 +465,7 @@ function setZoomData(instance, value) {
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
+		console.log(codigoEvento);
 		buscaDadosFinanceiroEvento(codigoEvento);	
 	}
 	else {
