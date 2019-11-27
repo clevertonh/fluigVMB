@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de pagamento de Serviço</processId>
-      <version>4</version>
+      <version>6</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2676</formId>
@@ -526,7 +526,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>6</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;aprovado&quot;</condition>
@@ -538,7 +538,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>6</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;cancelado&quot;</condition>
@@ -550,7 +550,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>6</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;corrigir&quot;</condition>
@@ -743,11 +743,9 @@
        //VARIAVEIS DEFAULT&#xd;
        var ABERTURA = 0;&#xd;
        var INCLUIR_MEDICAO = 87;&#xd;
+       var ANEXAR_RELATORIO = 74;&#xd;
        &#xd;
-       //GATEWAY&#xd;
-       var GATEWAYAPROVADO = 14;&#xd;
-       &#xd;
-       //RECUPERA NUMERO DA ATIVIDADE&#xd;
+         //RECUPERA NUMERO DA ATIVIDADE&#xd;
        var ativAtual               = getValue(&quot;WKNumState&quot;);        &#xd;
        //RECUPERA CODIGO DA SOLICITAÇÃO&#xd;
        var codSolicitacao    = getValue(&quot;WKNumProces&quot;);&#xd;
@@ -761,9 +759,7 @@
        var usuario = getValue(&apos;WKUser&apos;);&#xd;
        &#xd;
        var validacao  = hAPI.getCardValue(&quot;validacao&quot;);&#xd;
-       &#xd;
-       //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  &#xd;
-       var opcao;&#xd;
+      &#xd;
 &#xd;
        if (ativAtual == INCLUIR_MEDICAO &amp;&amp;  validacao == &quot;aprovado&quot;){    	&#xd;
                      var constraint = new Array();                                 &#xd;
@@ -776,10 +772,7 @@
                          }&#xd;
                       	  else {&#xd;
         					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Medição de contrato integrado com sistema Protheus&quot;);&#xd;
-        				  }&#xd;
-                         &#xd;
-           &#xd;
-              &#xd;
+        				  }      &#xd;
        }&#xd;
  &#xd;
                  &#xd;

@@ -2,11 +2,9 @@ function beforeStateEntry(sequenceId){
        //VARIAVEIS DEFAULT
        var ABERTURA = 0;
        var INCLUIR_MEDICAO = 87;
+       var ANEXAR_RELATORIO = 74;
        
-       //GATEWAY
-       var GATEWAYAPROVADO = 14;
-       
-       //RECUPERA NUMERO DA ATIVIDADE
+         //RECUPERA NUMERO DA ATIVIDADE
        var ativAtual               = getValue("WKNumState");        
        //RECUPERA CODIGO DA SOLICITAÇÃO
        var codSolicitacao    = getValue("WKNumProces");

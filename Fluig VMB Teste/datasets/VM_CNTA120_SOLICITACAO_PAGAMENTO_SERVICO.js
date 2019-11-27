@@ -1,7 +1,7 @@
 function createDataset(fields, constraints, sortFields) {	
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
-	
+		
 	var aItemServico = new Array();
 	var aRateio;
 	var itens = new Array();
@@ -11,8 +11,6 @@ function createDataset(fields, constraints, sortFields) {
 	//default == 3
 	var acao = 3;
 	
-	
-	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
     		  		
@@ -28,9 +26,6 @@ function createDataset(fields, constraints, sortFields) {
         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);            		
         		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesPagamentoServicoDadosPagamento", null, new Array(c2), null);    				  
 
-
-        	 
-        		
       					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -91,12 +86,8 @@ function createDataset(fields, constraints, sortFields) {
         					             mediaType: 'application/json'
         					          }
         					        }
-        					              	     
-        					        
-        					        log.info("INTEGRACAO MEDICAO CONTRATO 16:50");
-        					        log.dir(data);
-        					        
-         					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
+ 
+        					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
         		        					        var obj = JSON.parse(vo.getResult());
         		        					         					        
         		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){

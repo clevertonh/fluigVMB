@@ -42,39 +42,5 @@ function beforeStateEntry(sequenceId){
            
               
        }
-       else if (ativAtual == ASSUMIR){
-
-    	   /*
-    	   var constraint = new Array();                                 
-           constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-    
-        
-      	 	var codigoComprador = getValue("WKUser");
-	  			
-      	 	var constraintsUsuario   = new Array();
- 			 	constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", codigoComprador, codigoComprador, ConstraintType.MUST));
- 			 	var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
-		
- 			 
- 			 
- 			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
-				var emailComprador = datasetComprador.getValue(0, "mail");	  
-				constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
-			}
-
- 			constraint.push(DatasetFactory.createConstraint("acao", 4, 4, ConstraintType.MUST));	
- 			
-            var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
-             
-            	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-                  throw resultDataset.getValue(0,"RETORNO");
-            	 }
-
-*/ 	 
-               
-       }
-
-                 
-       
        
 }

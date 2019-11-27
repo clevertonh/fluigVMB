@@ -32,15 +32,8 @@ function createDataset(fields, constraints, sortFields) {
             	 if (historicoFormulario.rowsCount > 0){
                 	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
                  }
-                 
-            	
-          
-            	
-            	//log.info("-----RETORNO CONTRAINT 20:45------");
-            	//log.dir(constraints);
-            	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
-            		//log.info("-----RETORNO CONTRAINT 21:08------");
-            		
+ 
+            	 if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
             		//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
                     var c1 = DatasetFactory.createConstraint("tablename", "tableServico" , "tableServico", ConstraintType.MUST);
                     var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
@@ -50,8 +43,6 @@ function createDataset(fields, constraints, sortFields) {
                     //Busca o dataset
                     var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesPagamentoServico", null, constraintsFilhos, null);
                     for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-                	//	log.info("-------RETORNO FILHO----- 21:08");
-                   	 	
                      	//Adiciona os valores nas colunas respectivamente.
                         dataset.addRow(new Array(
                                 documentId,
@@ -70,8 +61,7 @@ function createDataset(fields, constraints, sortFields) {
         }
     } 
     
-    
-    
+     
     return dataset;
 }
 
