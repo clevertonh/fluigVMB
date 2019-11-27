@@ -91,7 +91,7 @@ function beforeStateEntry(sequenceId){
    	 }
       }	
 
-    else if (ativAtual == COTACAO){	 		
+    else if (ativAtual == COTAR){	 		
  		/*
 		 * verifica se foi adicionado anexo. 
 		 * Pois quando tem anexo é obrigatório marcar algo como comprado

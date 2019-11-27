@@ -26,7 +26,8 @@ function beforeStateEntry(sequenceId){
     var temTarifa		 	 = hAPI.getCardValue("tarifa");
    
 	
-	if (ativAtual == CALCULAR_DIARIAS  && recebeDiarias == "sim"){
+	if (ativAtual == CALCULAR_DIARIAS){
+		if (recebeDiarias == "sim"){
 		  	var dtVencimento	 = hAPI.getCardValue("dtVencimento");
 		    var valorTotal		 = hAPI.getCardValue("vl_diarias");
 		    
@@ -41,26 +42,31 @@ function beforeStateEntry(sequenceId){
 		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
 		    	throw resultDateset.getValue(0,"RETORNO");
 		    } 
+		}
+
 	
 	}
-	else if (ativAtual == GERAR_TARIFA  && temTarifa == "sim"){
-		
-		var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
-		var dtTarifa		 = hAPI.getCardValue("dtTarifa");
+	else if (ativAtual == GERAR_TARIFA){
+		if ( temTarifa == "sim"){
+				var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
+				var dtTarifa		 = hAPI.getCardValue("dtTarifa");
+					
+				var constraint = new Array();		  			
+				constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
+				constraint.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
+				constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
 			
-		var constraint = new Array();		  			
-		constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
-		constraint.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
-		constraint.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
-	
-		var resultDateset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_DIARIAS", null, constraint, null);
-		     
-	    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
-	    	throw resultDateset.getValue(0,"RETORNO");
-	    } 
-	    else {
-	    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-	    }
+				var resultDateset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_DIARIAS", null, constraint, null);
+				     
+			    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
+			    	throw resultDateset.getValue(0,"RETORNO");
+			    } 
+			    else {
+			    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+			    }
+		}
+		
+
 	    
 	}
 	

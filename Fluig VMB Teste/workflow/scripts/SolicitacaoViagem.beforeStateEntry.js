@@ -65,137 +65,143 @@ function beforeStateEntry(sequenceId){
      var temAnexo = false;
 	
      
-     	if (ativAtual == APROVACAO && aprovacao == "aprovado"){
-     		if (adiantamento == "sim" && vlAdiantamento > 0){
-   		  		 var constraint2 = new Array();		  			 		  			
-   		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-   				 
-   				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
-   		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
-   		  		    	throw DatasetAdto.getValue(0,"RETORNO");
-   		  		    }
-	   		  	  else {
- 		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação de adiantamento integrada com o sistema Protheus");
- 		  		    }
-		  		}
+     	if (ativAtual == APROVACAO){
+     		if (aprovacao == "aprovado"){
+     			if (adiantamento == "sim" && vlAdiantamento > 0){
+      		  		 var constraint2 = new Array();		  			 		  			
+      		  		 constraint2.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+      				 
+      				 var DatasetAdto = DatasetFactory.getDataset("VM_SOLICITACAO_VIAGEM_ADIANTAMENTO", null, constraint2, null);
+      		  		    if (DatasetAdto.getValue(0,"RETORNO") != "SUCESSO"){
+      		  		    	throw DatasetAdto.getValue(0,"RETORNO");
+      		  		    }
+   	   		  	  else {
+    		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação de adiantamento integrada com o sistema Protheus");
+    		  		    }
+   		  		}
+     		}
+     	
      	}
 	
-     	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA){
-     		if ((vooComprado == '' && hotelComprado == '' ) || ( vooComprado == null && hotelComprado == null) ){
-     			if (anexos.size() > 0) {
-       	          //temAnexo = true;
-     				throw "Você anexou um bilhete e/ou voucher então é necessário indicar qual serviço foi comprado!";
-       	      	}     			
-     		}     		
-     		else if (vooComprado == 'sim' || hotelComprado == 'sim' ){
-     			if (anexos.size() <= 0) {
-     				throw "Você indicou que uma passagem ou hospedagem foi comprada mas não anexou o bilhete e/ou voucher!";
-         	    }     			
+     	if (ativAtual == COMPRARPASSAGEM ){
+     		if (nextAtv == GATEWAYPASSAGEMCOMPRADA){
+     			if ((vooComprado == '' && hotelComprado == '' ) || ( vooComprado == null && hotelComprado == null) ){
+         			if (anexos.size() > 0) {
+           	          //temAnexo = true;
+         				throw "Você anexou um bilhete e/ou voucher então é necessário indicar qual serviço foi comprado!";
+           	      	}     			
+         		}     		
+         		else if (vooComprado == 'sim' || hotelComprado == 'sim' ){
+         			if (anexos.size() <= 0) {
+         				throw "Você indicou que uma passagem ou hospedagem foi comprada mas não anexou o bilhete e/ou voucher!";
+             	    }     			
+         		}
      		}
-     		
-     		
-     	}
+       	}
      
 
      
-     	if (ativAtual == COMPRARPASSAGEM && nextAtv == GATEWAYPASSAGEMCOMPRADA && ( vooComprado == 'sim' || hotelComprado == 'sim' ) ) {
- 	 		  	//EXECUTA FUNÇÃO QUE RETORNA PRODUTOS A SEREM GERADOS PARA SOLICITAÇÃO DE COMPRA 		  	
- 		  		try{
- 		  			itensServico();
- 		  		}
- 		  		catch (err){
- 		  			throw "FALHA AO RECUPERAR ITENS COMPRADOS NA SOLICITAÇÃO DE VIAGEM.";
- 		  		}
-     			
- 		  		
- 		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
- 		  		if (aItemServico.length >0){ 		    					     	    		     	   
- 		  			
- 		  			 var constraint = new Array();		  			 		  			
- 		  			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
- 		
- 		  			// var codigoComprador = getValue("WKUser");
-	 		  			
- 		  			 var constraintsUsuario   = new Array();
- 		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", usuario, usuario, ConstraintType.MUST));
- 					 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
- 				
- 		  			 
- 		  			 
- 		  			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
-	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
-	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
-	  				}
- 		  			
- 		  			 
- 		  			 
- 		  			//Cria constraints para enviar produtos e valores
- 		  			for (var a=0; a<aItemServico.length; a++){
- 		  				constraint.push(DatasetFactory.createConstraint("produto", aItemServico[a].produto, aItemServico[a].produto, ConstraintType.MUST));  
- 		  				constraint.push(DatasetFactory.createConstraint("quantidade", aItemServico[a].quantidade, aItemServico[a].quantidade, ConstraintType.MUST));
- 		  				constraint.push(DatasetFactory.createConstraint("valor", aItemServico[a].valor, aItemServico[a].valor, ConstraintType.MUST));
- 		  				constraint.push(DatasetFactory.createConstraint("dataViagem", aItemServico[a].dtviagem, aItemServico[a].dtviagem, ConstraintType.MUST));
- 		  			
- 		  			
- 		  			}
- 		
- 	  				
- 		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
- 		  		    
- 		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
- 		  		    	throw resultDateset.getValue(0,"RETORNO");
- 		  		    } 
- 		  		    else {
- 		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
- 		  		    }
- 		  		  
- 		
- 		  		  
- 		  		    
- 		  		}
-     	
+     	if (ativAtual == COMPRARPASSAGEM  ) {
+     		if (nextAtv == GATEWAYPASSAGEMCOMPRADA){
+     			if (vooComprado == 'sim' || hotelComprado == 'sim'){
+         		  	//EXECUTA FUNÇÃO QUE RETORNA PRODUTOS A SEREM GERADOS PARA SOLICITAÇÃO DE COMPRA 		  	
+     		  		try{
+     		  			itensServico();
+     		  		}
+     		  		catch (err){
+     		  			throw "FALHA AO RECUPERAR ITENS COMPRADOS NA SOLICITAÇÃO DE VIAGEM.";
+     		  		}
+         			
+     		  		
+     		  		//VERIFICA SE EXISTEM PRODUTOS PARA SER GERADOS
+     		  		if (aItemServico.length >0){ 		    					     	    		     	   
+     		  			
+     		  			 var constraint = new Array();		  			 		  			
+     		  			 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+     		
+     		  			// var codigoComprador = getValue("WKUser");
+    	 		  			
+     		  			 var constraintsUsuario   = new Array();
+     		  			 constraintsUsuario.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", usuario, usuario, ConstraintType.MUST));
+     					 var datasetComprador = DatasetFactory.getDataset("colleague", null, constraintsUsuario, null);
+     				
+     		  			 
+     		  			 
+     		  			if (datasetComprador!= null && datasetComprador.rowsCount > 0){
+    	  					var emailComprador = datasetComprador.getValue(0, "mail");	  
+    	  					constraint.push(DatasetFactory.createConstraint("comprador", emailComprador, emailComprador, ConstraintType.MUST));	
+    	  				}
+     		  			
+     		  			 
+     		  			 
+     		  			//Cria constraints para enviar produtos e valores
+     		  			for (var a=0; a<aItemServico.length; a++){
+     		  				constraint.push(DatasetFactory.createConstraint("produto", aItemServico[a].produto, aItemServico[a].produto, ConstraintType.MUST));  
+     		  				constraint.push(DatasetFactory.createConstraint("quantidade", aItemServico[a].quantidade, aItemServico[a].quantidade, ConstraintType.MUST));
+     		  				constraint.push(DatasetFactory.createConstraint("valor", aItemServico[a].valor, aItemServico[a].valor, ConstraintType.MUST));
+     		  				constraint.push(DatasetFactory.createConstraint("dataViagem", aItemServico[a].dtviagem, aItemServico[a].dtviagem, ConstraintType.MUST));
+     		  			
+     		  			
+     		  			}
+     		
+     	  				
+     		  		    var resultDateset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_VIAGEM", null, constraint, null);
+     		  		    
+     		  		    if (resultDateset.getValue(0,"RETORNO") != "SUCESSO"){
+     		  		    	throw resultDateset.getValue(0,"RETORNO");
+     		  		    } 
+     		  		    else {
+     		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+     		  		    } 		  		    
+     		  		}
+         		}
+     		}
+     		
      	}
   
      	
 	   	//INTEGRAÇÃO COM ROTINA DO CONTAS A PAGAR FINA050
-     	else if ( ativAtual == CALCULARDIARIAS  && recebeDiarias == "sim") {	
-			   var constraintDiarias = new Array();		  			
-			   constraintDiarias.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
-			   constraintDiarias.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
-			   constraintDiarias.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
-	  			
-	  			 var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraintDiarias, null);
-		  		    
-		  		    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-		  		    	throw resultDataset.getValue(0,"RETORNO");
-		  		    } 
-		  		  else {
-		  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-		  		    }
-			  								
-		   	    
+     	else if ( ativAtual == CALCULARDIARIAS ) {
+     				if (recebeDiarias == "sim"){
+     				   var constraintDiarias = new Array();		  			
+     				   constraintDiarias.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST)); 		  		
+     				   constraintDiarias.push(DatasetFactory.createConstraint("valorDiarias", valorDiarias, valorDiarias, ConstraintType.MUST));  
+     				   constraintDiarias.push(DatasetFactory.createConstraint("dataVencimento", dataVencimento, dataVencimento, ConstraintType.MUST));
+     		  			
+     		  			 var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_VIAGEM", null, constraintDiarias, null);
+     			  		    
+     			  		    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+     			  		    	throw resultDataset.getValue(0,"RETORNO");
+     			  		    } 
+     			  		  else {
+     			  		    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+     			  		    } 		
+     				}
      	}
      	//INTEGRAÇÃO COM ROTINA DA MOVIMENTAÇÃO BANCARIA
-     	else if (ativAtual == GERAR_TARIFA  && temTarifa == "sim"){
-     		var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
-    		var dtTarifa		 = hAPI.getCardValue("dtTarifa");
-    			
-    		
-    		var constraintTarifa = new Array();		  			
-    		constraintTarifa.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
-    		constraintTarifa.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
-    		constraintTarifa.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
-    	
-    			
-    		
-    		var resultDataset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_VIAGEM", null, constraintTarifa, null);
-    		     
-    	    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-    	    	throw resultDataset.getValue(0,"RETORNO");
-    	    } 
-    	    else {
-    	    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-    	    }
+     	else if (ativAtual == GERAR_TARIFA){
+		     		if (temTarifa == "sim"){
+		         		var vl_tarifa		 = hAPI.getCardValue("vl_tarifa");
+		        		var dtTarifa		 = hAPI.getCardValue("dtTarifa");
+		        			
+		        		
+		        		var constraintTarifa = new Array();		  			
+		        		constraintTarifa.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
+		        		constraintTarifa.push(DatasetFactory.createConstraint("vl_tarifa", vl_tarifa, vl_tarifa, ConstraintType.MUST));  
+		        		constraintTarifa.push(DatasetFactory.createConstraint("dtTarifa", dtTarifa, dtTarifa, ConstraintType.MUST));
+		        	
+		        			
+		        		
+		        		var resultDataset = DatasetFactory.getDataset("VM_FINA100_SOLICITACAO_VIAGEM", null, constraintTarifa, null);
+		        		     
+		        	    if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		        	    	throw resultDataset.getValue(0,"RETORNO");
+		        	    } 
+		        	    else {
+		        	    	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+		        	    }
+		     		}
+
      	}
     
 	   

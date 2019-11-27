@@ -25,20 +25,23 @@ function beforeStateEntry(sequenceId){
        //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  
        var opcao;
 
-       if (ativAtual == APROVACAO &&  aprovacao == "aprovado"){    	
-                     var constraint = new Array();                                 
-                     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
- 		  			 constraint.push(DatasetFactory.createConstraint("acao", 3, 3, ConstraintType.MUST));
- 		  			 
-                      var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
-                       
-                      	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-                            throw resultDataset.getValue(0,"RETORNO");
-                         }
-                      	  else {
-        					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus para o processo de cotação");
-        				  }
-                         
+       if (ativAtual == APROVACAO ){
+    	   		if (aprovacao == "aprovado"){
+                    var constraint = new Array();                                 
+                    constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
+		  			 constraint.push(DatasetFactory.createConstraint("acao", 3, 3, ConstraintType.MUST));
+		  			 
+                     var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
+                      
+                     	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+                           throw resultDataset.getValue(0,"RETORNO");
+                        }
+                     	  else {
+       					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus para o processo de cotação");
+       				  }
+                        
+    	   		}
+
            
               
        }

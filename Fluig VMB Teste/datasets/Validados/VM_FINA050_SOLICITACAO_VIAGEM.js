@@ -152,7 +152,7 @@ function preencheRateio(solicitacao){
 			obj.atividade = '' + solicitacao.getValue(i, "ATIVIDADE") +'';	
 			obj.alocacao = '' + solicitacao.getValue(i, "ALOCACAO") +'';
 			obj.localizacao = '' + solicitacao.getValue(i, "LOCALIZACAO") +'';		    					
-			obj.percentual = 1 * parseInt(solicitacao.getValue(i, "PERCENTUAL")) ;
+			obj.percentual = 1 * parseFloat(solicitacao.getValue(i, "PERCENTUAL")) ;
 			
 			if (solicitacao.getValue(i, "PROJETO") != null){
 				obj.projeto = '' + solicitacao.getValue(i, "PROJETO") +'';	

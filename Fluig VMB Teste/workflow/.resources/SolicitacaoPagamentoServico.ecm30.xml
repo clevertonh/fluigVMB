@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de pagamento de Serviço</processId>
-      <version>6</version>
+      <version>13</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2676</formId>
@@ -111,7 +111,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -162,7 +163,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -177,7 +179,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>860</positionX>
+      <positionX>1080</positionX>
       <positionY>460</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -213,7 +215,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -264,6 +267,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -314,6 +319,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -405,6 +412,58 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <version>1</version>
+        <sequence>100</sequence>
+      </processStatePK>
+      <stateName>Lançar pré-nota</stateName>
+      <stateDescription>Lançar pré-nota</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1080</positionX>
+      <positionY>280</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoPagamentoServico</processId>
+        <version>1</version>
         <sequence>81</sequence>
       </processStatePK>
       <stateName>validado?</stateName>
@@ -454,7 +513,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1030</positionX>
+      <positionX>1270</positionX>
       <positionY>480</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -526,7 +585,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>13</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;aprovado&quot;</condition>
@@ -538,7 +597,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>13</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;cancelado&quot;</condition>
@@ -550,7 +609,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>6</version>
+        <version>13</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;corrigir&quot;</condition>
@@ -717,12 +776,29 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <version>1</version>
-        <linkSequence>99</linkSequence>
+        <linkSequence>101</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>100</initialStateSequence>
+      <finalStateSequence>51</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoPagamentoServico</processId>
+        <version>1</version>
+        <linkSequence>102</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>13</initialStateSequence>
-      <finalStateSequence>51</finalStateSequence>
+      <finalStateSequence>100</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -761,23 +837,24 @@
        var validacao  = hAPI.getCardValue(&quot;validacao&quot;);&#xd;
       &#xd;
 &#xd;
-       if (ativAtual == INCLUIR_MEDICAO &amp;&amp;  validacao == &quot;aprovado&quot;){    	&#xd;
-                     var constraint = new Array();                                 &#xd;
-                     constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
-                     &#xd;
-                      var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA120_SOLICITACAO_PAGAMENTO_SERVICO&quot;, null, constraint, null);                                                                    &#xd;
-                       &#xd;
-                      	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                         }&#xd;
-                      	  else {&#xd;
-        					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Medição de contrato integrado com sistema Protheus&quot;);&#xd;
-        				  }      &#xd;
-       }&#xd;
- &#xd;
+       if (ativAtual == INCLUIR_MEDICAO ){   &#xd;
+    	   if (validacao == &quot;aprovado&quot;){&#xd;
+        	   &#xd;
+               var constraint = new Array();                                 &#xd;
+               constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
+               &#xd;
+                var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA120_SOLICITACAO_PAGAMENTO_SERVICO&quot;, null, constraint, null);                                                                    &#xd;
                  &#xd;
-       &#xd;
-       &#xd;
+                	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                      throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+                   }&#xd;
+                	  else {&#xd;
+  					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Medição de contrato integrado com sistema Protheus&quot;);&#xd;
+  				  } &#xd;
+    	   }&#xd;
+    	     &#xd;
+       }&#xd;
+  &#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -786,7 +863,7 @@
     <SwimLane>
       <color>FFFFFF</color>
       <height>571</height>
-      <width>1121</width>
+      <width>1331</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Envio de nota de fiscal de serviço</stateName>
@@ -802,7 +879,7 @@
     <SwimLane>
       <color>9F9F9F</color>
       <height>190</height>
-      <width>1091</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -818,7 +895,7 @@
     <SwimLane>
       <color>C0C0C0</color>
       <height>190</height>
-      <width>1091</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>200</positionY>
       <stateName>Administração</stateName>
@@ -834,7 +911,7 @@
     <SwimLane>
       <color>82b0b7</color>
       <height>191</height>
-      <width>1091</width>
+      <width>1301</width>
       <positionX>40</positionX>
       <positionY>390</positionY>
       <stateName>Contabilidade</stateName>
@@ -852,7 +929,7 @@
     <ProcessComponGraf>
       <componType>1</componType>
       <positionX>780</positionX>
-      <positionY>57</positionY>
+      <positionY>40</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
@@ -892,6 +969,16 @@
       </processLinkAssocPK>
       <initialStateSequence>69</initialStateSequence>
       <finalStateSequence>65</finalStateSequence>
+    </ProcessLinkAssoc>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoPagamentoServico</processId>
+        <version>1</version>
+        <linkSequence>103</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>69</initialStateSequence>
+      <finalStateSequence>100</finalStateSequence>
     </ProcessLinkAssoc>
   </list>
   <list/>

@@ -29,24 +29,44 @@ function beforeStateEntry(sequenceId){
     var valorTotal		 = hAPI.getCardValue("vl_rmb");
  	
 	
-	if ((ativAtual == APROVACAO_RH && autorizado == "aprovado" && aprovadoNoPrazo == "" ) || ativAtual == ALTERACAO_DATA){
-			var constraint = new Array();		  						     
-			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
-			constraint.push(DatasetFactory.createConstraint("valor", valorTotal, valorTotal, ConstraintType.MUST));  
-			constraint.push(DatasetFactory.createConstraint("dataVencimento", dtVencimento, dtVencimento, ConstraintType.MUST));
+	if (ativAtual == APROVACAO_RH   ){
+			if (autorizado == "aprovado" && aprovadoNoPrazo == ""){
+				var constraint = new Array();		  						     
+				constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
+				constraint.push(DatasetFactory.createConstraint("valor", valorTotal, valorTotal, ConstraintType.MUST));  
+				constraint.push(DatasetFactory.createConstraint("dataVencimento", dtVencimento, dtVencimento, ConstraintType.MUST));
+					
 				
-			
-			var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE", null, constraint, null);
-			
-				  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-			    	throw resultDataset.getValue(0,"RETORNO");
-			      } 
-				  else {
-					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-				  }
-			
+				var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE", null, constraint, null);
+				
+					  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+				    	throw resultDataset.getValue(0,"RETORNO");
+				      } 
+					  else {
+						  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+					  }
+				
+			}
+		
 		  
 	
+	}
+	else if (ativAtual == ALTERACAO_DATA){
+				var constraint = new Array();		  						     
+				constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			
+				constraint.push(DatasetFactory.createConstraint("valor", valorTotal, valorTotal, ConstraintType.MUST));  
+				constraint.push(DatasetFactory.createConstraint("dataVencimento", dtVencimento, dtVencimento, ConstraintType.MUST));
+					
+				
+				var resultDataset = DatasetFactory.getDataset("VM_FINA050_SOLICITACAO_REEMBOLSO_AUXILIO_CRECHE", null, constraint, null);
+				
+					  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+				    	throw resultDataset.getValue(0,"RETORNO");
+				      } 
+					  else {
+						  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+					  }
+		
 	}
 	
 }

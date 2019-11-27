@@ -22,26 +22,24 @@ function beforeStateEntry(sequenceId){
 	
 	var dtAprovacao = hAPI.getCardValue("dtAprovacao");
 	
-	if (ativAtual == APROVACAO && aprovado == "aprovado" ){
-		var constraint = new Array();		  			
-		constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-					  
-		
-		constraint.push(DatasetFactory.createConstraint("dtAprovacao", dtAprovacao, dtAprovacao, ConstraintType.MUST));  
-//		constraint.push(DatasetFactory.createConstraint("valor", dtVencimento, dtVencimento, ConstraintType.MUST));
-//		constraint.push(DatasetFactory.createConstraint("tipoffx", dtVencimento, dtVencimento, ConstraintType.MUST));	
-		
-		var resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_FUNDO_FIXO", null, constraint, null);
-		
-//		log.info("DATASET VM_REPOSICAO_FUNDO_FIXO");
-//		log.dir(resultDataset);
-		
-		  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-		    	throw resultDataset.getValue(0,"RETORNO");
-		    } 
-		  else {
-			  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-		  }
+	if (ativAtual == APROVACAO ){
+		if (aprovado == "aprovado" ){
+			var constraint = new Array();		  			
+			constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+						  
+			
+			constraint.push(DatasetFactory.createConstraint("dtAprovacao", dtAprovacao, dtAprovacao, ConstraintType.MUST));  
+			
+			var resultDataset = DatasetFactory.getDataset("VM_SOLICITACAO_FUNDO_FIXO", null, constraint, null);
+			
+			  if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+			    	throw resultDataset.getValue(0,"RETORNO");
+			    } 
+			  else {
+				  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
+			  }
+		}
+	
 		
 	  
 

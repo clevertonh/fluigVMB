@@ -2,6 +2,10 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
 		
+//	 dataset.addRow(new Array("SUCESSO"));		
+	 
+//	 return dataset;
+	 
 	var aItemServico = new Array();
 	var aRateio;
 	var itens = new Array();
@@ -87,6 +91,9 @@ function createDataset(fields, constraints, sortFields) {
         					          }
         					        }
  
+        					        log.info("RATEIO CONFIGURADO");
+        					        log.dir(aRateio);
+        					        
         					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
         		        					        var obj = JSON.parse(vo.getResult());
         		        					         					        
@@ -150,7 +157,7 @@ function preencheRateio(solicitacao){
 			obj.atividade = '' + solicitacao.getValue(i, "ATIVIDADE") +'';	
 			obj.alocacao = '' + solicitacao.getValue(i, "ALOCACAO") +'';
 			obj.localizacao = '' + solicitacao.getValue(i, "LOCALIZACAO") +'';		    					
-			obj.percentual = 1 * parseInt(solicitacao.getValue(i, "PERCENTUAL")) ;
+			obj.percentual = parseFloat(solicitacao.getValue(i, "PERCENTUAL")) ;
 			
 			if (solicitacao.getValue(i, "PROJETO") != null){
 				obj.projeto = '' + solicitacao.getValue(i, "PROJETO") +'';	

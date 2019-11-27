@@ -9,6 +9,7 @@ function defineStructure() {
 	addColumn("CODIGO_FORNECE");
 	addColumn("CGC");
 	addColumn("FORNECEDOR");
+	addColumn("OBJETO");
 	addColumn("FILIAL");
 	
 	
@@ -32,6 +33,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("CODIGO_FORNECE");
     dataset.addColumn("CGC");
     dataset.addColumn("FORNECEDOR");
+    dataset.addColumn("OBJETO");
     dataset.addColumn("FILIAL");
     
     var dados;
@@ -92,6 +94,7 @@ function createDataset(fields, constraints, sortFields) {
 			                objdata[i].CCODIGOF,
 			                objdata[i].CCGC,
 			                objdata[i].CFORNECE,
+			                objdata[i].COBJETO,
 			                objdata[i].CFILCTR
 			                ]
 			);

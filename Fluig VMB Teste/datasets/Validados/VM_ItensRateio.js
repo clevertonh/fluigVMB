@@ -18,10 +18,12 @@ function defineStructure() {
 }
 
 function onSync(lastSyncDate) {
-//VERIFICAR COMO IMPLEMENTAR JORNALIZAÇÃO POIS A TABELA DE RATEIO É GRANDE
+	//VERIFICAR COMO IMPLEMENTAR JORNALIZAÇÃO POIS A TABELA DE RATEIO É GRANDE
 }
 
 function createDataset(fields, constraints, sortFields) {
+	
+	
 	
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("SEQUENCIAL");
