@@ -27,6 +27,11 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_compras2", false);
 		 form.setVisibleById("div_tipoPrd", false);
 		 
+			if (form.getValue("tipo") == "servico"){
+				 form.setVisibleById("vl_base", false);
+				
+			}
+		 
 		 
 	 }
 	 else if ( activity == CORRIGIR){

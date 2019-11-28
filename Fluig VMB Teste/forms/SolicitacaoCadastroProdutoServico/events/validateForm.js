@@ -34,15 +34,15 @@ function validateForm(form){
 	
 	
 	if (activity == SOLICITAR ){
-		if (form.getValue("desc_res") == false || form.getValue("desc_res") == "") {
+		if (form.getValue("desc_res") == null || form.getValue("desc_res") == "") {
             throw "O campo descrição resumida não foi preenchido";
         }
 		
 		if (form.getValue("tipo") == 'servico' ){		
-			if (form.getValue("desc_detalhada") == false || form.getValue("desc_detalhada") == "") {
+			if (form.getValue("desc_detalhada") == null || form.getValue("desc_detalhada") == "") {
 	            throw "O campo descrição detalhada não foi preenchido";
 	        }
-			if (form.getValue("tipoPessoa") == false || form.getValue("tipoPessoa") == "") {
+			if (form.getValue("tipoPessoa") == null || form.getValue("tipoPessoa") == "") {
 	            throw "O tipo de pessoa não foi informado";
 	        }
 		}
@@ -52,35 +52,45 @@ function validateForm(form){
 	else if (activity == VALIDAR || activity == CORRIGIR){
 		
 		if (form.getValue("produtoExiste") == 'nao'){
-			if (form.getValue("descricao") == false || form.getValue("descricao") == "") {
+			if (form.getValue("descricao") == null || form.getValue("descricao") == "") {
 	            throw "O campo descrição resumida não foi preenchido";
 	        }
-			if (form.getValue("tipo") == 'servico' ){		
+			
+			if (form.getValue("tipo") == "servico" ){		
 				if (form.getValue("descricao_det") == false || form.getValue("descricao_det") == "") {
 		            throw "O campo descrição detalhada não foi preenchido";
 		        }
 			}
-			if (form.getValue("tipoG") == false || form.getValue("tipoG") == "") {
+			
+			if (form.getValue("tipoG") == null || form.getValue("tipoG") == "") {
 	            throw "Você precisa informar um código de tipo valido no sistema Protheus";
 	        }
-			if (form.getValue("grupo") == false || form.getValue("grupo") == "") {
+			
+			if (form.getValue("grupo") == null || form.getValue("grupo") == "") {
 	            throw "Você precisa informar um grupo valido no sistema Protheus";
 	        }
-			if (form.getValue("unidade") == false || form.getValue("unidade") == "") {
+			
+			if (form.getValue("unidade") == null || form.getValue("unidade") == "") {
 	            throw "O campo unidade de medida precisa ser informado";
 	        }
-			if (form.getValue("mostrafluig") == false || form.getValue("mostrafluig") == "") {
+			
+			if (form.getValue("mostrafluig") == null || form.getValue("mostrafluig") == "") {
 	            throw "Você precisa indicar em qual processo do Intrasomos esse produto deverá ficar visivel para ser utilizado";
 	        }
-			if (form.getValue("vl_base") == false || form.getValue("vl_base") == "") {
-	            throw "O valor de referencia precisa ser preenchido";
-	        }
+			
+			if (form.getValue("tipo") == "produto"){
+				if (form.getValue("vl_base") == null || form.getValue("vl_base") == "") {
+		            throw "O valor de referencia precisa ser preenchido";
+		        }
+				
+			}
+			
 			
 			
 			
 		}
 		else {
-			if (form.getValue("produto") == false || form.getValue("produto") == "") {
+			if (form.getValue("produto") == null || form.getValue("produto") == "") {
 	            throw "Se o produto já existe, o mesmo deve ser informado para o usuário.";
 	        }
 		}
@@ -88,10 +98,10 @@ function validateForm(form){
 	
 	}
 	else if (activity == DADOS_CONTABEIS && nextAtv == GATEWAYINTEGRACAO){
-		if (form.getValue("contacontabil") == false || form.getValue("contacontabil") == "") {
+		if (form.getValue("contacontabil") == null || form.getValue("contacontabil") == "") {
             throw "O campo conta contábil precisa ser informado";
         }
-		if (form.getValue("tes") == false || form.getValue("tes") == "") {
+		if (form.getValue("tes") == null || form.getValue("tes") == "") {
             throw "O código TES precisa ser informado";
         }
 		

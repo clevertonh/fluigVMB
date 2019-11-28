@@ -76,18 +76,15 @@ function beforeStateEntry(sequenceId){
 	 }
 	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
 			
-		 	var definicaoValor = hAPI.getCardValue("definicaoValor");
+		 	var definicaoValor = hAPI.getCardValue("definicaoValor");		 	
+		 	var contrato = hAPI.getCardValue("Numerocontrato");
 		 	
-				if (definicaoValor =="fixo"){
-  					  //var qtdMeses = hAPI.getCardValue("qtdMeses");
-					  var produto = hAPI.getCardValue("produto");
-					  //var valorMensal = hAPI.getCardValue("CotacaovalorMensal");
-					 
+		 	//para esse caso o contrato será registrado com esses dados
+		 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus
+		 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição
+				if (definicaoValor =="fixo" && contrato ==""){  					 					
 		              var constraint = new Array();                                 
 	                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-//	                  constraint.push(DatasetFactory.createConstraint("qtdMeses", qtdMeses, qtdMeses, ConstraintType.MUST));
-//	                  constraint.push(DatasetFactory.createConstraint("valor", valorMensal, valorMensal, ConstraintType.MUST));
-	                  constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
 	                  
 	                 
 	                   var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    

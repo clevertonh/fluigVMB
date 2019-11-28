@@ -77,19 +77,6 @@ function prevTab(elem) {
 var visibilidade = true;
 
 
-function removeItens() {
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR){
-	    var linhas = $("#tbodyItens tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);
-	    }
-	}
-
-}
-
-
 function fnCustomDeleteRateio(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	){								
 		fnWdkRemoveChild(oElement);	
@@ -281,6 +268,12 @@ function setSelectedZoomItem(selectedItem) {
     	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
     	$("#saldoAtual").val(selectedItem["SALDO"]);
     	$("#filial").val(selectedItem["FILIAL"]);
+    	$("#codigoFluig").val(selectedItem["ID_FLUIG"]);
+    	
+    	
+    	//PEGA ID DO FLUIG E BUSCAR FORMULARIO
+    	 retornaSolicitacaoContratacaoServico(selectedItem["ID_FLUIG"]);
+      	
     }
     
     
@@ -443,8 +436,20 @@ function removedZoomItem(removedItem) {
     	$("#dtFim").val("");
     	$("#vlcontrato").val("");
     	$("#saldoAtual").val("");
+    	$("#filial").val("");
+    	$("#codigoFluig").val("");
     	
     	window[CONTRATO].disable(true);
+    	
+    	removeItens();
+    	
+    	$("#carregaFinan").attr('checked', false);
+     	$("#NcarregaFinan").attr('checked', false);
+     	
+     	$("#carregaFinan").prop("disabled", false);
+ 		$("#NcarregaFinan").prop("disabled", false);
+ 		window['rateioconfigurado'].clear();
+         window['rateioconfigurado'].disable(false);
 		
     }
     else if (campoZOOM == CONTRATO){
@@ -454,6 +459,17 @@ function removedZoomItem(removedItem) {
     	$("#vlcontrato").val("");
     	$("#saldoAtual").val("");
     	$("#filial").val("");
+    	$("#codigoFluig").val("");
+    	
+    	removeItens();
+    	
+    	$("#carregaFinan").attr('checked', false);
+     	$("#NcarregaFinan").attr('checked', false);
+     	
+     	$("#carregaFinan").prop("disabled", false);
+ 		$("#NcarregaFinan").prop("disabled", false);
+ 		window['rateioconfigurado'].clear();
+         window['rateioconfigurado'].disable(false);
     }
 
 
@@ -467,6 +483,18 @@ function apagaRateio(){
         fnWdkRemoveChild(span);	
         
     }
+}
+
+function removeItens() {
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR){
+	    var linhas = $("#tbodyItens tr");
+	    for (var i = 1; i < linhas.length; i++) {
+	        var td = $(linhas[i]).children()[0];
+	        var span = $(td).children()[0];
+	        fnWdkRemoveChild(span);
+	    }
+	}
+
 }
 
 function setZoomData(instance, value) {
@@ -486,7 +514,7 @@ function clickFinanceiroEvento(){
 	
 }
 function buscaDadosFinanceiroEvento(evento){
-	   var constraints = new Array();
+	    var constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("solicitacao", evento, evento, ConstraintType.MUST));
 	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesEventos", null, constraints, null);
 
@@ -510,6 +538,54 @@ function buscaDadosFinanceiroEvento(evento){
 	    	    
 
 }
+
+
+function retornaSolicitacaoContratacaoServico(codigoFluig){
+	   var constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", codigoFluig, codigoFluig, ConstraintType.MUST));
+	    var dataset = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraints, null);
+
+
+	    //VERIFICA SE FOI VINCULADO A UMA SOLICITAÇÃO DE EVENTO
+	    if (dataset.values[0]["dataset_solicitacaoevento"] != null && dataset.values[0]["dataset_solicitacaoevento"] != ''){
+	    	window["dataset_solicitacaoevento"].setValue(dataset.values[0]["dataset_solicitacaoevento"]);
+	    	
+	    	//VERIFICA SE O CAMPO DE DADOS FINANCEIRO DO EVENTO ESTA MARCADO COMO SIM
+	    	if (dataset.values[0]["FinanEvento"]  == "sim"){	
+	    		document.getElementById("carregaFinan").click();  
+		    	//CHAMA FUNCAO DE EVENTO QUE PREENCHE OS ITENS FINANCEIRO
+		    	buscaDadosFinanceiroEvento(dataset.values[0]["dataset_solicitacaoevento"]);
+
+	    	}
+	    	else {
+	    		$("#carregaFinan").prop("disabled", false);
+	    		$("#NcarregaFinan").prop("disabled", false);
+	    	}
+	    
+	    	
+	    }
+	    else {
+	    		if (dataset.values[0]["carregaCusto"] =="solicitacao"){
+	    			 if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+	    			    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+	    			    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+	    			  }
+	    			 
+	    			 
+	    			constraints = new Array();
+	    		    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+	    		    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+	    		    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+	    		    dataset = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraints, null);
+	    		    
+	    		    if (dataset != null && dataset.values.length > 0) {
+	    		        adicionaItem(dataset.values);
+	    		    }
+	    		}
+	    }
+	      
+}
+
 
 
 function adicionaItem(itens) {	

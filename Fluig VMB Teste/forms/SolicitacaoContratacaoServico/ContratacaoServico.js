@@ -17,9 +17,11 @@ var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
 var VALIDAR_RH = 161;
 var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
 var VERIFICAR_ASSINATRA_COMPRAS = 274;
-	
 
-console.log(ATIVIDADE);
+var linhas = 0;
+var codigoEvento;
+
+
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
 
@@ -161,8 +163,6 @@ $(document).ready(function() {
 });
 
 
-
-
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
     var LOCALIZACAO = "localizacao";
@@ -178,6 +178,7 @@ function setSelectedZoomItem(selectedItem) {
     var EVENTO ="dataset_solicitacaoevento";
     var SERVICO ="txtproduto";
     var FORNECEDOR ="cnpjcpf";
+    var CONTRATO = "Numerocontrato";
    
 
     //Recebe o nome do campo zoom
@@ -248,28 +249,26 @@ function setSelectedZoomItem(selectedItem) {
     }    
     else if (campoZOOM == EVENTO){    	
     	if (selectedItem["FINANEVENTO"] == "sim"){
-    		evento = selectedItem["SOLICITACAO"];    		
+    		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
+
     	}
     	else {
     		$("#carregaFinan").prop("disabled", false);
     		$("#NcarregaFinan").prop("disabled", false);
     	}
-    }   
-    else if (campoZOOM == SERVICO) {
-      	$("#codigoProduto").val(selectedItem["CODIGO"]);
-       	
+    }
+    
+    
+    else if (linhaPagamento[0] == SERVICO) {
+    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	
     	
     }
     else if (campoZOOM == FORNECEDOR){
 	    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
     		$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
     		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
-    		
-    		
-    		console.log(selectedItem["TIPO"]);  
-    		console.log(selectedItem["TIPO_PJ"]);  
-    		
     		
     		if (selectedItem["TIPO"] == "JURIDICA"){ 
    	
@@ -292,12 +291,92 @@ function setSelectedZoomItem(selectedItem) {
     		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());  
     		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());   
     
-    
+    		reloadZoomFilterValues(CONTRATO, "CGC," + selectedItem["CNPJ"]);
+    		
+    		window[CONTRATO].disable(false);
     
     
     }
     
+    else if (campoZOOM == CONTRATO){
+    	$("#revisao").val(selectedItem["REVISAO"]);
+    	$("#dtInicioC").val(selectedItem["DT_INICIO"]);
+    	$("#dtFimC").val(selectedItem["DT_FIM"]);
+    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
+    	$("#saldoAtual").val(selectedItem["SALDO"]);
+    	$("#filial").val(selectedItem["FILIAL"]);
+    }
+    
 }
+
+
+function adicionaLinhaProduto() {
+	linhas = 0;	
+	
+	if (linhas == 0){
+		var row = wdkAddChild('tableServico');
+		
+		var qtde = document.getElementById("idquantidade" + "___" + row);
+
+		qtde.addEventListener("blur", function( event ) 	{			
+			  var vl_unitario = $('#vrUnitario' + "___" + row).val();
+			  var qtde = $('#idquantidade' + "___" + row).val()			  
+			  $('#vrTotUnit___'+ row).val( vl_unitario * qtde  );			  
+			  
+			  
+			}, true);
+	
+	}
+	
+    $("input[id^='idquantidade___']:last").blur(doFormTotal);
+}
+
+function doFormTotal() {
+    var total = 0;  
+    var mensal =0;
+    
+     $("input[id^='vrTotUnit___']").each(function() {
+        if ($(this).val()) {
+            total += parseFloat($(this).val()); 
+        }
+    });
+     
+     
+     $("input[id^='vrUnitario___']").each(function() {
+         if ($(this).val()) {
+        	 mensal += parseFloat($(this).val()); 
+         }
+     });
+    
+    $("#CotacaovalorMensal").val(mensal);
+     
+    $("#CotacaovalorAnual").val(total);
+    
+  
+  
+}
+
+
+function fnCustomDeleteProduto(oElement) {	  	
+	if (ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){								
+		fnWdkRemoveChild(oElement);
+		
+		//reinicia variavel q controla quantidade de linhas permitidas de itens de produtos
+		linhas = 0;
+		fnWdkRemoveChild(oElement);
+		doFormTotal();
+
+	}
+	else {
+		FLUIGC.toast({
+            title: 'Atenção',
+            message: 'Você não pode remover nenhum produto.',
+            type: 'warning',
+            timeout: 3000
+        });		
+	}		
+}
+
 
 function fnCustomDeleteRateio(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR	){								
@@ -333,10 +412,12 @@ function removedZoomItem(removedItem) {
     var PROJETO = "txtprojeto";
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
+    var PRODUTO = "txtproduto";
     var ITEMRATEIO ="rateio";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
     var FORNECEDOR ="cnpjcpf";
+    var CONTRATO = "Numerocontrato";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -404,6 +485,11 @@ function removedZoomItem(removedItem) {
   	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
      }
     
+    else if (linhaPagamento[0] == PRODUTO) {   	
+     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");    
+    	
+    }
+    
     else if (campoZOOM == EVENTO){
     	$("#carregaFinan").attr('checked', false);
     	$("#NcarregaFinan").attr('checked', false);
@@ -431,10 +517,24 @@ function removedZoomItem(removedItem) {
 		$("#tipoPJ").val("");   
 		
 		
-		//$("#juridica").prop("disabled", false);
-		//$("#fisica").prop("disabled", false);
-
+		window[CONTRATO].clear();
+		$("#revisao").val("");
+    	$("#dtInicioC").val("");
+    	$("#dtFimC").val("");
+    	$("#vlcontrato").val("");
+    	$("#saldoAtual").val("");
+    	
+    	window[CONTRATO].disable(true);
 		
+    }
+    
+    else if (campoZOOM == CONTRATO){
+    	$("#revisao").val("");
+    	$("#dtInicioC").val("");
+    	$("#dtFimC").val("");
+    	$("#vlcontrato").val("");
+    	$("#saldoAtual").val("");
+    	$("#filial").val("");
     }
 }
 
@@ -444,9 +544,9 @@ function setZoomData(instance, value) {
 
 function clickFinanceiroEvento(){	
 	if (document.getElementById("carregaFinan").checked == true){
-		buscaDadosFinanceiroEvento(evento);	
+		buscaDadosFinanceiroEvento(codigoEvento);	
 	}
-	else {
+	else {		
 		window['rateioconfigurado'].clear();
 		window['rateioconfigurado'].disable(false);
 		removeItens();

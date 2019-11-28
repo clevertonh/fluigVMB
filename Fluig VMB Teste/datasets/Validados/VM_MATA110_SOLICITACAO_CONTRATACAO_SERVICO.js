@@ -35,20 +35,28 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         					 
         					 
-        					 
-        					 for (var a=0; a<constraints.length; a++){
-        		        			if (constraints[a].fieldName == "produto"){
-        		        				produto = constraints[a].initialValue;            			        		            			
-        		            		}   
-        		        			if (constraints[a].fieldName == "valor"){
-        		        				valor = constraints[a].initialValue;            			        		            			
-        		            		} 
-        		        		}
-        					 
-        					 
-        				  				 
-        					 //criação do item da solicitação de compra
-        					 aItemServico.push(addItemCompra(produto,codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor)); 
+        					 try {
+        						 
+       						  var c3 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+       						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoContratacaoServicoProdutos", null, new Array(c3), null);
+       						  
+       						  for (var a=0; a<datasetProdutos.rowsCount;a++){
+       							 aItemServico.push(addItemCompra(
+       									 datasetProdutos.getValue(a,"COD_PRODUTO"),
+       									 datasetProdutos.getValue(a,"SOLICITACAO"),
+       									 datasetProdutos.getValue(a,"QUANTIDADE"),								
+       									 datasetProdutos.getValue(a,"VALOR_EMPENHADO")  
+       									 ));       						        							
+        						 }
+       						 
+       						 
+       					 }
+       					 
+       					 catch (erro){
+       						 dataset.addRow(["ERRO AO MONTAR ITENS"]);
+       						 return dataset;
+       					 }
+        				
         					 
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();

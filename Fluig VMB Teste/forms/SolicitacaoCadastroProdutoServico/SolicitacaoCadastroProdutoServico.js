@@ -4,7 +4,7 @@ var DADOS_CONTABEIS = 10;
 var CORRIGIR = 16;
 
 
-console.log(ATIVIDADE);
+
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {
 	

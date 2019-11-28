@@ -48,14 +48,19 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_statusContrato", false); 
 
 	 }
-	 else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE ){
-		 form.setVisibleById("div_produto", false); 
+	 else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE ){ 
 		 form.setVisibleById("div_status", false); 
 		 form.setVisibleById("div_rh", false);
 		 form.setVisibleById("4b", false);
 		 
 		 if (form.getValue("cnpjcpf") == "" || form.getValue("cnpjcpf") == null){
 			 form.setVisibleById("div_statusContrato", false);
+		 }
+		 
+		 
+		 
+		 if (form.getValue("definicaoValor") == "demanda") {
+			 form.setVisibleById("div_itensServico", false);
 		 }
 		 
 		 

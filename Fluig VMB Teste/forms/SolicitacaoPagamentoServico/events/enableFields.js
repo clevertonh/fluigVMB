@@ -26,11 +26,31 @@ function enableFields(form){
 	}
 	
 	else if (activity == INCLUIR_MEDICAO){
+		
+		 var dataset = UsuarioLogado(solicitante);		 			 			 			 		 
+		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+		 var emailSolicitante = dataset.getValue(0, "mail");
+		 
+		 form.setValue("comprador",nomeSolicitante);
+		 form.setValue("emailComprador",emailSolicitante);
+		 form.setValue("idComprador",solicitante);
+		 
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 
+			
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
 		
-		
+		    form.setEnabled("validacao", true);
+		    form.setEnabled("justificativaR", true);
 	}
 	
 	if (activity != INCLUIR_MEDICAO){

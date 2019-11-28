@@ -39,6 +39,13 @@ function enableFields(form){
 		 	form.setEnabled("desc_detalhada", false);		
 		 	form.setEnabled("tipo", false);
 		 	form.setEnabled("tipoPessoa", false);
+		 	
+		 	
+		 	if (form.getValue("tipo") == "servico"){
+				 form.setValue("vl_base",0);
+			}
+		 	
+		 	
 	}
 	else if (activity == DADOS_CONTABEIS){
 			  form.setEnabled("desc_res", false);		

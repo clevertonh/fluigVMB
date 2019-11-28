@@ -58,14 +58,25 @@ function validateForm(form){
 	            throw "Seus dados de solicitante não foram carregados, por favor, atualize o navegador e tente novamente. Se o erro persistir, entre em contato com o setor de Sistemas.";
 	        }
 		 
+			
+			if (form.getValue("carregaCusto") != "pagamento"){
+				//funções para validar informações financeiras
+				validaLinhasPreenchidas();
+				validaLinhasRepetidas();
+				validaPercentualRateio();
+				validaAtividades();
+				
+			}
 		 
-		//funções para validar informações financeiras
-		validaLinhasPreenchidas();
-		validaLinhasRepetidas();
-		validaPercentualRateio();
-		validaAtividades();
 		
 		validaCamposPreenchidos();
+		
+		
+		
+		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("valorAnual"))){
+			 throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
+		}
+		
 		
 	}
    
@@ -86,13 +97,21 @@ function validateForm(form){
         }    
 		
 		
-		//funções para validar informações financeiras
-		validaLinhasPreenchidas();
-		validaLinhasRepetidas();
-		validaPercentualRateio();
-		validaAtividades();
+		if (form.getValue("carregaCusto") != "pagamento"){
+			//funções para validar informações financeiras
+			validaLinhasPreenchidas();
+			validaLinhasRepetidas();
+			validaPercentualRateio();
+			validaAtividades();
+			
+		}
 	
 		validaCamposPreenchidos();
+		
+		
+		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("valorAnual"))){
+			 throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
+		}
 	
 	}
 	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){
@@ -114,6 +133,11 @@ function validateForm(form){
 			}
 		}
 		
+		
+		
+		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("CotacaovalorAnual"))){
+			throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
+		}
 		
 		
 	}
@@ -392,6 +416,11 @@ function validateForm(form){
 		   if ( parseFloat(form.getValue("valorAnual"))  < parseFloat(form.getValue("valorMensal")) ){
 			   throw "O valor total ou limite total não pode ser menor que o valor mensal.";
 		   }
+		   
+		   if ( form.getValue("carregaCusto") == "" || form.getValue("carregaCusto") == null ){
+			   throw "O campo com a informação de Centro de custo/projeto será informado no pagamento ou agora precisa ser preenchido.";
+		   }
+		   
      }
 	
 }

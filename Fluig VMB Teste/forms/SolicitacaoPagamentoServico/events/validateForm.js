@@ -13,5 +13,13 @@ function validateForm(form){
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser"); 
 	
+	if (activity == SOLICITAR ){
+		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("vl_servico"))){
+			 throw "O contrato não possui saldo suficiente para pagar essa nota fiscal.";
+		}
+	}
+	
+	
+	
 	
 }

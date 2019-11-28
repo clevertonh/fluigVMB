@@ -91,9 +91,27 @@ function enableFields(form){
 		    form.setEnabled("origem", true);
 		    form.setEnabled("contato", true);
 		    
+		    form.setEnabled("Numerocontrato", true);
+		    form.setEnabled("revisao", true);
+		    form.setEnabled("filial", true);
+		    form.setEnabled("dtInicioC", true);
+		    form.setEnabled("dtFimC", true);
+		    form.setEnabled("vlcontrato", true);
+		    form.setEnabled("saldoAtual", true);
 		    
-		    form.setEnabled("CotacaovalorMensal", true);
-		    form.setEnabled("CotacaovalorAnual", true);
+		    form.setEnabled("vrUnitario", true);
+		    form.setEnabled("idquantidade", true);
+		    form.setEnabled("vrTotUnit", true);
+		    
+		
+		    
+		    if (form.getValue("definicaoValor") == "fixo") {
+		    		form.setEnabled("CotacaovalorMensal", true);
+				    form.setEnabled("CotacaovalorAnual", true);
+			 }
+			 
+		    
+		  
 		    
 		    
 		
