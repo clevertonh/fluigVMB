@@ -7,6 +7,7 @@ var CORRIGIR = 92;
 var ANEXAR_RELATORIO = 74;
 var ENCERRAR_MEDICAO = 13;
 var CLASSIFICAR_NOTA = 51;
+var PRE_NOTA = 100;
 
 var linhas = 0;
 var codigoEvento;

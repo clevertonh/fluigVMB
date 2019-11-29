@@ -208,10 +208,13 @@ function validateForm(form){
                           }
                       } 
                       else {                	
-                   	   if (atividade != "E010101" ) {
-                       	   throw "Você só pode usar a atividade de folha para solicitar pagamento de auxilio creche.";
-
-                          }
+	                   	   if (atividade != "E010101" ) {
+	                       	   throw "Você só pode usar a atividade de folha para solicitar pagamento de auxilio creche.";
+	
+	                          }
+	                   	  if (atividade == "A450101"){
+		               		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
+		               	   }
                      
                          }
                   }

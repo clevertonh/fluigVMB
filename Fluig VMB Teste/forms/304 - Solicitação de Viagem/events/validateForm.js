@@ -565,7 +565,7 @@ function validateForm(form) {
                 	   throw "Você não pode usar uma atividade de folha ou estutural para custear uma viagem.";
 
                    }
-            	   if (atividade == "A443201"){
+            	   if (atividade == "A450101"){
             		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
             	   }
               

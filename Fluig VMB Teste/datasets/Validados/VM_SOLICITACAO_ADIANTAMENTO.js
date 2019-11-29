@@ -39,7 +39,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	IDDOCUMENTO: '' + documentId + '',
 						            	ITINERARIO  : '' + solicitacao.getValue(0,"itinerario") +'',
 						            	TIPOADIANTAMENTO: ''+"1" +'',
-						            	PROCESSO: ''+"8" +''
+						            	PROCESSO: ''+8 +''
 						            },
 						          options : {
 						             encoding : 'UTF-8',

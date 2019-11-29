@@ -58,14 +58,36 @@ function enableFields(form) {
 			 form.setValue("emailSolicitante",emailSolicitante);
 				
 			 var aprovador = usuarioAprovador(emailSolicitante);
-	
-			 if (aprovador!= null && aprovador != ""){
+			 
+			 log.info("APROVADOR VIAGEM 3");
+			// log.info(aprovador.values[0] );
+			 //log.info(aprovador.getValue(0, "MATRICULA_APROVADOR"));
+			 /*
+			 
+			 {
+				  "values" : [ ],
+				  "indexes" : [ ],
+				  "fieldTypes" : { },
+				  "columnsCount" : 0,
+				  "columnsName" : [ ],
+				  "rowsCount" : 0,
+				  "insertOrUpdateRows" : [ ],
+				  "updatedRows" : [ ],
+				  "insertedRows" : [ ],
+				  "keyFieldsAndIndex" : { },
+				  "deletedRows" : [ ],
+				  "keyFields" : null,
+				  "map" : [ ]
+				}
+			 
+			 */
+			
+			 if (aprovador!= null && aprovador != "" && aprovador != undefined ){
 				 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
 				 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
 				 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
 				 form.setValue("solicitanteFuncionario",aprovador.getValue(0, "FUNCIONARIO_VMB"));
-				 
-				
+				 				
 			 }
 			 
 			

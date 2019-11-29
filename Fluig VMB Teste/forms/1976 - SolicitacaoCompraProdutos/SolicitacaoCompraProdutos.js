@@ -143,6 +143,7 @@ function setSelectedZoomItem(selectedItem) {
     var RATEIO = "rateioconfigurado";
     var PRODUTO = "txtproduto";
     var EVENTO ="dataset_solicitacaoevento";
+    var SOLICITACAO_ANTERIOR = "solicitacaocompraanterior";
       
    
 
@@ -156,7 +157,6 @@ function setSelectedZoomItem(selectedItem) {
 
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---ENTROU AQUI 1 ----");
         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -168,16 +168,10 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
         if (selectedItem["CODIGO"] != '99990') {
-        	console.log("---ENTROU AQUI 2 ----");
-            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
             reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 
         } else {
-        	console.log("---ENTROU AQUI 3 ----");
-            //desabilita zoom que não devem ser preenchidos
-        	console.log("---desabilita zoom que não devem ser preenchidos---");
-            console.log(selectedItem["CODIGO"]);
             window[PROJETO + "___" + linhaPagamento[1]].disable(false);
             window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 
@@ -225,37 +219,43 @@ function setSelectedZoomItem(selectedItem) {
   
 
     else if (campoZOOM == RATEIO) {    
-    	buscaItensRateio(selectedItem["CODIGO"]);
+    		buscaItensRateio(selectedItem["CODIGO"]);
     	
     }
 
 
     else if (linhaPagamento[0] == FONTE){
-  	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+  	  		$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
   	  
     }
  
 
     else if (linhaPagamento[0] == PRODUTO) {
-    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
-    	$('#vrUltima' + "___" + linhaPagamento[1]).val(selectedItem["ULTIMO_VALOR"]);
-    	$('#prazoFornecedor' + "___" + linhaPagamento[1]).val(selectedItem["PRAZO_FORNECEDOR"]);
-    	
+	    	
+	    	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+	    	$('#idum' + "___" + linhaPagamento[1]).val(selectedItem["UNIDADE_MEDIDA"]);
+	    	$('#vrUltima' + "___" + linhaPagamento[1]).val(parseFloat(selectedItem["ULTIMO_VALOR"]));
+	    	$('#prazoFornecedor' + "___" + linhaPagamento[1]).val(parseFloat(selectedItem["PRAZO_FORNECEDOR"]));
+	    	
     	
     }
     
     else if (campoZOOM == EVENTO){    	
-    	if (selectedItem["FINANEVENTO"] == "sim"){
-    		codigoEvento = selectedItem["SOLICITACAO"];    		
-    		document.getElementById("carregaFinan").click();  
-    		//$("#carregaFinan").prop("disabled", true);
-    		//$("#NcarregaFinan").prop("disabled", true);
-    	}
-    	else {
-    		$("#carregaFinan").prop("disabled", false);
-    		$("#NcarregaFinan").prop("disabled", false);
-    	}
+	    	if (selectedItem["FINANEVENTO"] == "sim"){
+	    		codigoEvento = selectedItem["SOLICITACAO"];    		
+	    		document.getElementById("carregaFinan").click();  
+	    		//$("#carregaFinan").prop("disabled", true);
+	    		//$("#NcarregaFinan").prop("disabled", true);
+	    	}
+	    	else {
+	    		$("#carregaFinan").prop("disabled", false);
+	    		$("#NcarregaFinan").prop("disabled", false);
+	    	}
+    }
+    else if (campoZOOM == SOLICITACAO_ANTERIOR) {
+    		buscaSolicitacaoAnterior(selectedItem["SOLICITACAO"]);
+    		
+    		
     }
     
     
@@ -321,6 +321,7 @@ function removedZoomItem(removedItem) {
     var PRODUTO = "txtproduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
+    var SOLICITACAO_ANTERIOR = "solicitacaocompraanterior";
 
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -329,7 +330,6 @@ function removedZoomItem(removedItem) {
     var linhaPagamento = campoZOOM.split('___');
  
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---REMOVEU AQUI 1----");
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
@@ -353,7 +353,6 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
@@ -362,9 +361,7 @@ function removedZoomItem(removedItem) {
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-    	console.log("---REMOVEU AQUI 3----");
-//      var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-
+ 
         $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
         $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
@@ -412,6 +409,29 @@ function removedZoomItem(removedItem) {
         removeItens();
 
     }
+    
+    else if (campoZOOM == SOLICITACAO_ANTERIOR) {
+		    	window['rateioconfigurado'].clear();
+		        window['rateioconfigurado'].disable(false);
+		    	var linhas = $("#tbodyItens tr");
+		 	    for (var i = 1; i < linhas.length; i++) {
+		 	        var td = $(linhas[i]).children()[0];
+		 	        var span = $(td).children()[0];
+		 	        fnWdkRemoveChild(span);	
+		 	        
+		 	    }
+		
+		 		var linhas2 = $("#tbodyCompras tr");
+		 	    for (var i = 1; i < linhas2.length; i++) {
+		 	        var td = $(linhas2[i]).children()[0];
+		 	        var span = $(td).children()[0];
+		 	        fnWdkRemoveChild(span);	
+		 	        
+		 	    }
+		 	    
+		 	    
+    }
+
 
 
 }
@@ -455,8 +475,54 @@ function buscaDadosFinanceiroEvento(evento){
 	    }
 }
 
+
+function buscaSolicitacaoAnterior(solicitacao){
+	   var constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("solicitacao", solicitacao, solicitacao, ConstraintType.MUST));
+	    var dataset = DatasetFactory.getDataset("VM_SolicitacoesCompra", null, constraints, null);
+
+	    
+	    if (dataset.values[0]["dataset_solicitacaoevento"] != null && dataset.values[0]["dataset_solicitacaoevento"] != '') {
+	    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+	    	window["dataset_solicitacaoevento"].setValue(dataset.values[0]["dataset_solicitacaoevento"]);
+	    }
+	    
+	    if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+	    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+	    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+	    }
+	    
+	    constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+	    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+	    dataset = DatasetFactory.getDataset("VM_SolicitacoesCompra", null, constraints, null);
+
+	    
+	    if (dataset != null && dataset.values.length > 0) {
+	        adicionaItem(dataset.values);
+	        
+	        constraints = new Array();
+	        constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+		    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+		    constraints.push(DatasetFactory.createConstraint("tablename", "tableCompras", "tableCompras", ConstraintType.MUST));
+		    dataset = DatasetFactory.getDataset("VM_SolicitacoesCompra", null, constraints, null);
+	        
+		    if (dataset != null && dataset.values.length > 0) {
+		    	  adicionaItemProduto(dataset.values);
+		    }
+	        
+	    }
+	    
+	    
+	    
+	    
+	    
+}
+
+
 function adicionaItem(itens) {
-	console.log(itens);
+
     for (var i in itens) {
         var indice = wdkAddChild("tableItens");
 
@@ -505,6 +571,51 @@ function adicionaItem(itens) {
        window["txtareaestrategica___" + indice].disable(true); 
        //$("#percentual___"+ indice).prop("disabled", true);
  
+
+    }
+}
+
+function adicionaItemProduto(itens) {
+
+    for (var i in itens) {
+        var indice = wdkAddChild("tableCompras");
+
+        window["txtproduto___" + indice].setValue(itens[i].txtproduto);       
+        $("#marca___" + indice).val(itens[i].marca);
+        $("#idum___" + indice).val(itens[i].idum);
+        $("#codigoProduto___" + indice).val(itens[i].codigoProduto);
+        
+        var dataset;
+        var constraints = new Array();
+        constraints.push(DatasetFactory.createConstraint("CODIGO", itens[i].codigoProduto, itens[i].codigoProduto, ConstraintType.MUST));
+	    dataset = DatasetFactory.getDataset("VM_Produtos", null, constraints, null);	    
+        
+	        
+	    
+	    var qtde = document.getElementById("idquantidade" + "___" + indice);
+
+		qtde.addEventListener("blur", function( event ) {			
+			  var vl_ultimaCompra = $('#vrUltima' + "___" + indice).val();
+			  var qtde = $('#idquantidade' + "___" + indice).val()			  
+			  $('#vrTotUnit___'+ indice).val( vl_ultimaCompra * qtde  );			  
+			  
+			  
+			}, true);
+
+		
+		FLUIGC.calendar("#dtNecessidade___" + indice, {
+			pickDate: true,
+			pickTime: false,    
+		    minDate: new Date().toLocaleString()
+			
+		});
+		
+	    
+	    $("#vrUltima___" + indice).val(parseFloat(dataset.values[0]["ULTIMO_VALOR"]));
+	    $("#prazoFornecedor___" + indice).val(parseFloat(dataset.values[0]["PRAZO_FORNECEDOR"]));
+        
+        
+        
 
     }
 }

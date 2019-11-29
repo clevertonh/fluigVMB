@@ -1780,11 +1780,15 @@ function desejaHotel() {
 
 //migrar para grupo aprovadores de viagens de embaixadores
 function AprovadorEmbaixador() {
-         var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("mail", "danubia_carvalho@wvi.org", "danubia_carvalho@wvi.org", ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
-		 		
-		 $('#emailGestor').val("danubia_carvalho@wvi.org");
+         var constraint   = new Array();         
+     	 constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "APR_EMBAIXADORES", "APR_EMBAIXADORES", ConstraintType.MUST));
+     	 var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
+        	 
+     	 constraint.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", dataset.values[0]["colleagueGroupPK.colleagueId"], dataset.values[0]["colleagueGroupPK.colleagueId"], ConstraintType.MUST));
+     	 dataset = DatasetFactory.getDataset("colleague", null, constraint, null);
+
+		 
+		 $('#emailGestor').val(dataset.values[0]["mail"]);
          $('#matriculaApr').val(dataset.values[0]["colleaguePK.colleagueId"]);
          $('#aprovador').val(dataset.values[0]["colleagueName"]);        
         

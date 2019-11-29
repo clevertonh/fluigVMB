@@ -6,6 +6,7 @@ function enableFields(form){
 	var CORRIGIR = 92;
 	var ANEXAR_RELATORIO = 74;
 	var ENCERRAR_MEDICAO = 13;
+	var PRE_NOTA = 100;
 	var CLASSIFICAR_NOTA = 51;
 	
 	
@@ -21,7 +22,7 @@ function enableFields(form){
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
  				 
-		 
+		 form.setEnabled("validacao", false);		
 		
 	}
 	
@@ -49,15 +50,24 @@ function enableFields(form){
 		        form.setEnabled(key, habilitar);
 		    }
 		
+		    
 		    form.setEnabled("validacao", true);
 		    form.setEnabled("justificativaR", true);
 	}
+	else if (activity == ANEXAR_RELATORIO || activity == AGUARDAR_APROVACAO || activity == ENCERRAR_MEDICAO || activity == PRE_NOTA || activity == CLASSIFICAR_NOTA){
+				var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+			    var mapaForm = new java.util.HashMap();
+			    mapaForm = form.getCardData();
+			    var it = mapaForm.keySet().iterator();
+			     
+			    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+			        var key = it.next();
+			        form.setEnabled(key, habilitar);
+			    }
 	
-	if (activity != INCLUIR_MEDICAO){
-		 form.setEnabled("validacao", false);		
 	}
 	
-	
+
 
 	
 	function UsuarioLogado(solicitante){

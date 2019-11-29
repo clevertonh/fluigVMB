@@ -31,10 +31,13 @@ function enableFields(form){
 	    
 		form.setEnabled("desc_res", true);	
 		
+
 	}
 	else if (activity == VALIDAR || activity == CORRIGIR){
 			//set numero da VALIDAR
 		 	form.setValue("solicitacao",getValue('WKNumProces'));
+		 		 
+		 	
 		 	form.setEnabled("desc_res", false);		
 		 	form.setEnabled("desc_detalhada", false);		
 		 	form.setEnabled("tipo", false);
@@ -45,6 +48,8 @@ function enableFields(form){
 				 form.setValue("vl_base",0);
 			}
 		 	
+		 	
+		 
 		 	
 	}
 	else if (activity == DADOS_CONTABEIS){
@@ -62,6 +67,7 @@ function enableFields(form){
 		      form.setEnabled("tipoPessoa", false);
 		      form.setEnabled("vl_base", false);
 		      
+
 	}
 	
 	
@@ -75,6 +81,8 @@ function enableFields(form){
 		 return dataset;
 	}
 	
+	
+
 	
 	
 }

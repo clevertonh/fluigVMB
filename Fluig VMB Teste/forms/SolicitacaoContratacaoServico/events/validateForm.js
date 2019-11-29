@@ -73,7 +73,7 @@ function validateForm(form){
 		
 		
 		
-		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("valorAnual"))){
+		if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("valorAnual"))){
 			 throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
 		}
 		
@@ -135,7 +135,7 @@ function validateForm(form){
 		
 		
 		
-		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("CotacaovalorAnual"))){
+		if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorAnual"))){
 			throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
 		}
 		

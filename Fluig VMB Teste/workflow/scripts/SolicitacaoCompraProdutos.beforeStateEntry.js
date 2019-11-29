@@ -23,13 +23,13 @@ function beforeStateEntry(sequenceId){
        var aprovacao  = hAPI.getCardValue("aprovacao");
        
        //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  
-       var opcao;
+       var opcao = 3;
 
        if (ativAtual == APROVACAO ){
     	   		if (aprovacao == "aprovado"){
                     var constraint = new Array();                                 
                     constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
-		  			 constraint.push(DatasetFactory.createConstraint("acao", 3, 3, ConstraintType.MUST));
+		  			 constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
 		  			 
                      var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
                       

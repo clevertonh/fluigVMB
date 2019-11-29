@@ -49,6 +49,8 @@ function validateForm(form){
 		validaProdutos();
 		
 		
+		
+		
 		if (activity == APROVACAO){
 			
 	 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
@@ -242,6 +244,9 @@ function validateForm(form){
             }
         
     }
+    
+    
+    
   
      //VALIDA SE FOI INFORMADO PELO MENOS 1 SERVIÇO E SE TODOS OS CAMPOS FORAM PREENCHIDOS
      function validaProdutos(){

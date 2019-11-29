@@ -1,4 +1,5 @@
 var ABERTURA = 0;
+var INICIAR = 4;
 var VALIDAR = 5;
 var DADOS_CONTABEIS = 10;
 var CORRIGIR = 16;
@@ -19,8 +20,20 @@ $(document).ready(function() {
 		
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
-		
-	}	
+		var desc_res = $("#desc_res").val();		
+		$("#desc_res").blur(function(){	
+			
+
+			
+			console.log(removeAcento(desc_res));
+			
+			
+		});
+
+
+	}		
+
+	
 });
 
 
@@ -136,9 +149,7 @@ function setZoomData(instance, value) {
 }
  * */
 
-/*
- * function removeAcento (text)
-{       
+function removeAcento (text){       
     text = text.toLowerCase();                                                         
     text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
     text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
@@ -148,5 +159,5 @@ function setZoomData(instance, value) {
     text = text.replace(new RegExp('[Ç]','gi'), 'c');
     return text;                 
 }
- * 
- * */
+
+

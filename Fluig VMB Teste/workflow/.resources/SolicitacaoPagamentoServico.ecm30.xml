@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de pagamento de Serviço</processId>
-      <version>13</version>
+      <version>14</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2676</formId>
@@ -106,7 +106,7 @@
       </processStatePK>
       <stateName>Encerrar medição</stateName>
       <stateDescription>Encerrar medição</stateDescription>
-      <instruction>Tarefa usada para acompanhar o status de aguardando aprovação da medição de contrato. Após aprovação de todas as instâncias movimente a tarefa para encerrar a medição de contrato e gerar o pedido de compra.</instruction>
+      <instruction>Encerre a medição de contratos no sistema Protheus para gerar o pedido de compra automaticamente.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -156,8 +156,8 @@
         <version>1</version>
         <sequence>51</sequence>
       </processStatePK>
-      <stateName>Lançar nota fiscal</stateName>
-      <stateDescription>Lançar nota fiscal</stateDescription>
+      <stateName>Classsificar nota fiscal</stateName>
+      <stateDescription>Classsificar nota fiscal</stateDescription>
       <instruction>Confirme a classificação da nota fiscal através da rotina de documento de entrada do sistema Protheus para enviar para o Contas a Pagar</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -179,7 +179,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1080</positionX>
+      <positionX>1040</positionX>
       <positionY>460</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -210,7 +210,7 @@
       </processStatePK>
       <stateName>Aguardar aprovação</stateName>
       <stateDescription>Aguardar aprovação</stateDescription>
-      <instruction>Use o Protheus para anexar o relatório de atividades no registro de medição</instruction>
+      <instruction>Aguarde a aprovação do registro de medição.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -260,9 +260,9 @@
         <version>1</version>
         <sequence>74</sequence>
       </processStatePK>
-      <stateName>Anexar relatório</stateName>
-      <stateDescription>Anexar relatório</stateDescription>
-      <instruction></instruction>
+      <stateName>Anexar relatório no Protheus</stateName>
+      <stateDescription>Anexar relatório no Protheus</stateDescription>
+      <instruction>Baixe o anexo relacionado ao relatório de atividades e anexe no registro de medição de contratos do sistema Protheus</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -283,8 +283,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>480</positionX>
-      <positionY>280</positionY>
+      <positionX>460</positionX>
+      <positionY>270</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -314,7 +314,7 @@
       </processStatePK>
       <stateName>Incluir medição</stateName>
       <stateDescription>Incluir medição</stateDescription>
-      <instruction></instruction>
+      <instruction>Valide a nota fiscal e relatório de atividade para gerar a inclusão da medição no Protheus automaticamente.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -387,6 +387,57 @@
       <automatic>false</automatic>
       <positionX>280</positionX>
       <positionY>50</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoPagamentoServico</processId>
+        <version>1</version>
+        <sequence>100</sequence>
+      </processStatePK>
+      <stateName>Lançar pré-nota</stateName>
+      <stateDescription>Lançar pré-nota</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1040</positionX>
+      <positionY>280</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -533,7 +584,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>13</version>
+        <version>14</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;aprovado&quot;</condition>
@@ -545,7 +596,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>13</version>
+        <version>14</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;cancelado&quot;</condition>
@@ -557,7 +608,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>13</version>
+        <version>14</version>
         <sequence>81</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;validacao&quot;) == &quot;corrigir&quot;</condition>
@@ -724,11 +775,28 @@
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>
         <version>1</version>
-        <linkSequence>99</linkSequence>
+        <linkSequence>101</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>13</initialStateSequence>
+      <finalStateSequence>100</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoPagamentoServico</processId>
+        <version>1</version>
+        <linkSequence>102</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>100</initialStateSequence>
       <finalStateSequence>51</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -751,6 +819,7 @@
        var ABERTURA = 0;&#xd;
        var INCLUIR_MEDICAO = 87;&#xd;
        var ANEXAR_RELATORIO = 74;&#xd;
+       var PRE_NOTA = 100;&#xd;
        &#xd;
          //RECUPERA NUMERO DA ATIVIDADE&#xd;
        var ativAtual               = getValue(&quot;WKNumState&quot;);        &#xd;
@@ -859,8 +928,8 @@
   <list>
     <ProcessComponGraf>
       <componType>1</componType>
-      <positionX>780</positionX>
-      <positionY>40</positionY>
+      <positionX>670</positionX>
+      <positionY>60</positionY>
       <processComponGrafPK>
         <companyId>1</companyId>
         <processId>SolicitacaoPagamentoServico</processId>

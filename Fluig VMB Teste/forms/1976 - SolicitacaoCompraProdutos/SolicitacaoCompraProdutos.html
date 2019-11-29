@@ -106,7 +106,24 @@
                                                                             <textarea class="form-control" rows="3" id="finalidade" name="finalidade"></textarea>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="form-group col-md-6">
+                                                                		<label>Repetir solicitação de compra com base na anterior</label>
+                                                                		<input name="solicitacaocompraanterior" class="form-control"
+			                                                            type="zoom" id="solicitacaocompraanterior"
+			                                                            data-zoom="{
+			                                                            'displayKey':'SOLICITACAO',
+			                                                            'datasetId':'VM_SolicitacoesCompra',
+			                                                            'maximumSelectionLength':'1',
+			                                                            'placeholder':'Selecione um solicitação de compra',
+			                                                            'fields':[
+			                                                            {'field':'SOLICITACAO','label':'SOLICITACAO','standard':'true'},                                                            
+			                                                            {'field':'SOLICITANTE','label':'SOLICITANTE'}                                                           						  					
+			                                                            ]
+			                                                            }">
+                                                                	</div>
                                                                 </div>
+                                                              
+                                                                
                                                                 <!-- Linha 4 -->
                                                                 <!-- Linha 5  ( Tabela )-->
                                                                 <div class="panel panel-info" id="panelItens">
@@ -327,7 +344,7 @@
                                                                                             <th class="tableColumn">Qtd</th>                          
                                                                                             <th class="tableColumn">Valor da ultima compra</th>
                                                                                             <th class="tableColumn">Valor total</th>
-                                                                                            <th class="tableColumn">Prazo fornecedor</th>
+                                                                                            <th class="tableColumn">Prazo fornecedor (dias)</th>
                                                                                             <th class="tableColumn">Data de necessidade</th>
                                                                                             <th class="tableColumn">Observação</th>
                                                                                             <th class="tableColumn" id="div_codProduto">Codigo Prod.</th>
@@ -340,18 +357,18 @@
                                                                                                 <div class="form-group">
                                                                                                     <input type="hidden" name="produto" id="produto" />
                                                                                                     <input type="zoom" name="txtproduto" data-zoom="{
-                                                                                    'displayKey':'DESCRICAO',
-                                                                                    'datasetId':'ds_get_Produtos',
-                                                                                    'maximumSelectionLength':'1',
-                                                                                    'placeholder':'Selecione um produto',
-                                                                                    'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },                                                                                    
-                                                                                    {'field':'PRAZO_FORNECEDOR', 'label':'PRAZO_FORNECEDOR','visible':'false'},
-																					{'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA'},                                                                                    
-                                                                                    {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
-                                                                                    {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]
-                                                                                    }" />
+				                                                                                    'displayKey':'DESCRICAO',
+				                                                                                    'datasetId':'ds_get_Produtos',
+				                                                                                    'maximumSelectionLength':'1',
+				                                                                                    'placeholder':'Selecione um produto',
+				                                                                                    'fields':[
+				                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
+				                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' },                                                                                    
+				                                                                                    {'field':'PRAZO_FORNECEDOR', 'label':'PRAZO_FORNECEDOR','visible':'false'},
+																									{'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA'},                                                                                    
+				                                                                                    {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
+				                                                                                    {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]
+				                                                                                    }" />
                                                                                                 </div>
                                                                                             </td>                                                                                            
                                                                                             <td>
@@ -362,7 +379,7 @@
                                                                                             </td>
 																							                                                                                          
                                                                                             <td>
-                                                                                                <input class="form-control money" name="idquantidade" id="idquantidade" type="number" style="width:100px;" />
+                                                                                                <input class="form-control money" name="idquantidade" id="idquantidade" type="number" style="width:100px;" min="1"/>
                                                                                             </td>
                                                                                             <td>
                                                                                                 <input class="form-control money" name="vrUltima" id="vrUltima" type="number" style="width:200px;" readonly/>

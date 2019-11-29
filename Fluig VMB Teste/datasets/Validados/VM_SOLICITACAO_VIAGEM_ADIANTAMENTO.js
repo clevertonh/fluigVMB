@@ -47,13 +47,6 @@ function createDataset(fields, constraints, sortFields) {
     			 }
         		
         		
-        		
-        		
-        		log.info("ADIANTAMENTO VIAGEM");
-        		log.dir(solicitacao);
-        		
-        		
-        		
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
 					        var data = {
@@ -79,7 +72,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
 						            	ITINERARIO  : '' + solicitacao.getValue(0,"itinerario")  +'',
 						            	TIPOADIANTAMENTO: ''+"1" +'',
-						            	PROCESSO: ''+"8" +''
+						            	PROCESSO: ''+ 8 +''
 						            },
 						          options : {
 						             encoding : 'UTF-8',

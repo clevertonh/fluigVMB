@@ -3,6 +3,7 @@ function beforeStateEntry(sequenceId){
        var ABERTURA = 0;
        var INCLUIR_MEDICAO = 87;
        var ANEXAR_RELATORIO = 74;
+       var PRE_NOTA = 100;
        
          //RECUPERA NUMERO DA ATIVIDADE
        var ativAtual               = getValue("WKNumState");        

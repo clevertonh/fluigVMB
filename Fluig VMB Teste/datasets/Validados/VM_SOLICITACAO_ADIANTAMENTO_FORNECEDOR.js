@@ -60,7 +60,7 @@ function createDataset(fields, constraints, sortFields) {
 						            	FINALIDADE  : '' + solicitacao.getValue(0,"justificativa") +'',
 						            	IDDOCUMENTO: '' + documentId + '',
 						            	TIPOADIANTAMENTO: ''+"5" +'',
-						            	PROCESSO: ''+"9" +''
+						            	PROCESSO: ''+ 9 +''
 						            },
 						          options : {
 						             encoding : 'UTF-8',

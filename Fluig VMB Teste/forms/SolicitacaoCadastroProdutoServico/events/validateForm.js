@@ -38,6 +38,10 @@ function validateForm(form){
             throw "O campo descrição resumida não foi preenchido";
         }
 		
+		if (form.getValue("tipo") =="" || form.getValue("tipo") == null){
+			throw "O campo tipo de cadastro precisa ser informado.";
+		}
+		
 		if (form.getValue("tipo") == 'servico' ){		
 			if (form.getValue("desc_detalhada") == null || form.getValue("desc_detalhada") == "") {
 	            throw "O campo descrição detalhada não foi preenchido";
@@ -51,13 +55,17 @@ function validateForm(form){
 	}
 	else if (activity == VALIDAR || activity == CORRIGIR){
 		
+		if (form.getValue("produtoExiste")  =="" || form.getValue("produtoExiste")  == null){
+			 throw "É preciso informar se o produto já existe ou não.";
+		}
+		
 		if (form.getValue("produtoExiste") == 'nao'){
 			if (form.getValue("descricao") == null || form.getValue("descricao") == "") {
-	            throw "O campo descrição resumida não foi preenchido";
+	            throw "O campo descrição não foi preenchido";
 	        }
 			
 			if (form.getValue("tipo") == "servico" ){		
-				if (form.getValue("descricao_det") == false || form.getValue("descricao_det") == "") {
+				if (form.getValue("descricao_det") == false || form.getValue("descricao_det") == "" ) {
 		            throw "O campo descrição detalhada não foi preenchido";
 		        }
 			}
