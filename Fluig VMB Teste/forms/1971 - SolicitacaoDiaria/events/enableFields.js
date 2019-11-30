@@ -12,26 +12,25 @@ function enableFields(form){
 
 	
 	var solicitante = getValue("WKUser");  
-	var nomeSolicitante;
-	var emailSolicitante;
-	
-	
 	
 	if (activity == ABERTURA || activity ==  CORRIGIR){
 		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
-		 nomeSolicitante = dataset.getValue(0, "colleagueName");
-		 emailSolicitante = dataset.getValue(0, "mail");
+		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+		 var emailSolicitante = dataset.getValue(0, "mail");
 		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
 		 
-		 var aprovador = usuarioAprovador();
-		 if (aprovador!= null && aprovador != ""){
+		 var aprovador = usuarioAprovador(emailSolicitante);
+		 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
 			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
 			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
 			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
 			 	 
+		 }
+		 else {
+			 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
 		 }
 		 
 		 form.setEnabled("aprovacao", false);		
@@ -112,15 +111,13 @@ function enableFields(form){
 		 
 		 return dataset;
 	}
-
-	function usuarioAprovador(){
-		
-		
+	
+	function usuarioAprovador(emailSolicitante){
 		var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
 		  
-		
+		 
 		 return dataset;
 	}
 

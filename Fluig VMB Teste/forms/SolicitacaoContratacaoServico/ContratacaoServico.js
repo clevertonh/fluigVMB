@@ -504,8 +504,7 @@ function removedZoomItem(removedItem) {
 
     }
     else if (campoZOOM == FORNECEDOR){
-    	$("#fisica").attr('checked', false);
-    	$("#juridica").attr('checked', false);
+    	$("[name='tipoPessoa']").attr('checked', false);
     	$("#razaosocial").val("");  
 		$("#nomefantasia").val("");  		
 		$("#codigoFornecedor").val("");   	
@@ -515,6 +514,19 @@ function removedZoomItem(removedItem) {
 		$("#contaFornecedor").val("");   
 		$("#tipoConta").val("");  
 		$("#tipoPJ").val("");   
+		$("#contatoEmpresa").val("");   
+		window['condicaoPgto'].clear();
+		$("#negociacao").val(""); 
+		$("#valorAdiantado").val(0); 
+		$("#CotacaovalorMensal").val(0); 
+		$("#CotacaovalorAnual").val(0); 
+		
+		$("[name='formapgto']").attr('checked', false);
+		$("[name='definicaoValor']").attr('checked', false);
+		$("[name='origem']").attr('checked', false);
+		$("[name='melhorProposta']").attr('checked', false);
+		$("#justificativaP").val(""); 
+	
 		
 		
 		window[CONTRATO].clear();
@@ -523,7 +535,7 @@ function removedZoomItem(removedItem) {
     	$("#dtFimC").val("");
     	$("#vlcontrato").val("");
     	$("#saldoAtual").val("");
-    	
+    	$("#filial").val("");	
     	window[CONTRATO].disable(true);
 		
     }

@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Aprovação de Serviço</processId>
-      <version>3</version>
+      <version>8</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2660</formId>
@@ -878,7 +878,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel4&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel6&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel5&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel3&quot;) ==&quot;reprovado&quot;</condition>
@@ -890,7 +890,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &lt;= 50000</condition>
@@ -902,7 +902,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>25</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &gt; 50000</condition>
@@ -914,7 +914,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel1&quot;) ==&quot;reprovado&quot;</condition>
@@ -926,7 +926,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &lt;=3500</condition>
@@ -938,7 +938,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>33</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &gt;3500</condition>
@@ -950,7 +950,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;reprovado&quot;</condition>
@@ -962,7 +962,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &lt;= 35000</condition>
@@ -974,7 +974,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &gt;35000</condition>
@@ -986,7 +986,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>61</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &lt;= 35000</condition>
@@ -998,7 +998,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>61</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &gt; 35000</condition>
@@ -1010,7 +1010,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>86</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;reprovado&quot;</condition>
@@ -1022,7 +1022,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>3</version>
+        <version>8</version>
         <sequence>86</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;aprovado&quot;</condition>
@@ -1539,18 +1539,14 @@
 	    var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
 //	    var limiteAnual 	 = hAPI.getCardValue(&quot;CotacaovalorAnual&quot;);&#xd;
 	    &#xd;
-	if (ativAtual == SOLICITAR ){&#xd;
-	 	&#xd;
-		 	&#xd;
-	    }&#xd;
-	else if (ativAtual == GERENTE_ADM){				&#xd;
+   if (ativAtual == GERENTE_ADM){				&#xd;
 			var aprovacao 	 = hAPI.getCardValue(&quot;aprNivel1&quot;);&#xd;
 			&#xd;
 			//aprovado&#xd;
 			if (aprovacao == &quot;aprovado&quot;){&#xd;
 				hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
 			}&#xd;
-			else {&#xd;
+			else if (aprovacao == &quot;reprovado&quot;){&#xd;
 				//reprovado.&#xd;
 				hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);&#xd;
 				hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo: &quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
@@ -1566,7 +1562,7 @@
 		if (aprovacao == &quot;aprovado&quot;){&#xd;
 			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
 		}&#xd;
-		else {&#xd;
+		else if (aprovacao == &quot;reprovado&quot;) {&#xd;
 			//reprovado.&#xd;
 			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
 			hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo: &quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
@@ -1599,8 +1595,8 @@
 			hAPI.setCardValue(&quot;justificativaReprovacao&quot;,&quot;&quot;);&#xd;
 			&#xd;
 		}&#xd;
-		else {&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
+		else if (aprovacaoRH == &quot;aprovado&quot; || aprovacaoMINISTERIO == &quot;aprovado&quot; || aprovacaoMKT == &quot;aprovado&quot; || aprovacaoADVOCACY == &quot;aprovado&quot; ) {&#xd;
+					hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
 			&#xd;
 		}&#xd;
 	&#xd;
@@ -1613,12 +1609,41 @@
 		if (aprovacao == &quot;aprovado&quot;){&#xd;
 			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
 		}&#xd;
-		else {&#xd;
+		else if (aprovacao == &quot;reprovado&quot;) {&#xd;
 			//reprovado.&#xd;
 			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
 			hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo:&quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
 			hAPI.setCardValue(&quot;justificativaReprovacao&quot;,&quot;&quot;);&#xd;
 		}&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	function convertDataToString(dataToString) {&#xd;
+	    var dia;&#xd;
+&#xd;
+	    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO&#xd;
+	    var mes = dataToString.getMonth() + 1;&#xd;
+	    if (dataToString.getDate().toString().length == 1) {&#xd;
+	        dia = dataToString.getDate();&#xd;
+	        dia = &quot;0&quot; + dia.toString();&#xd;
+&#xd;
+	    } else {&#xd;
+	        dia = dataToString.getDate();&#xd;
+&#xd;
+	    }&#xd;
+&#xd;
+	   &#xd;
+	    //converte mes&#xd;
+	    if (mes.toString().length == 1) {&#xd;
+	        mes = &quot;0&quot; + mes.toString();&#xd;
+&#xd;
+	    }&#xd;
+&#xd;
+	    //novo formato de data: para salvar em campos data do Fluig&#xd;
+	    return dia + &quot;/&quot; + mes + &quot;/&quot; + dataToString.getFullYear();&#xd;
+&#xd;
+&#xd;
 	}&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
@@ -1729,7 +1754,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
-        <version>3</version>
+        <version>8</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1740,7 +1765,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
-        <version>3</version>
+        <version>8</version>
         <linkSequence>54</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1751,7 +1776,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
-        <version>3</version>
+        <version>8</version>
         <linkSequence>63</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1762,7 +1787,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
-        <version>3</version>
+        <version>8</version>
         <linkSequence>64</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1773,7 +1798,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoAprovacaoServico</processId>
-        <version>3</version>
+        <version>8</version>
         <linkSequence>91</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

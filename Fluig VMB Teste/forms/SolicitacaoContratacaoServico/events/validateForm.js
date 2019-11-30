@@ -141,6 +141,11 @@ function validateForm(form){
 		
 		
 	}
+	else if (activity ==  VALIDAR_RH){
+			if (form.getValue("valido") == "" || form.getValue("valido") == null ){
+				throw "Você precisa indicar se esse fornecedor esta apto para prestar serviço segundo a legislação trabalhista.";
+			}
+	}
 
 	
 	

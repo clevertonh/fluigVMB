@@ -31,13 +31,16 @@ function enableFields(form){
 		 
 		 var aprovador = usuarioAprovador(emailSolicitante);
 			
-		 if (aprovador!= null && aprovador != ""){
+		 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
 			 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
 			 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
 			 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
 			 form.setValue("solicitanteFuncionario",aprovador.getValue(0, "FUNCIONARIO_VMB"));
 			 
 			
+		 }
+		 else {
+			 throw "Seu cadastro está sem diretor, por favor, procure o setor de Recursos Humanos e solicite a atualização";
 		 }
 		 
 		 //reseta campo de corrigir marcado pelo aprovador

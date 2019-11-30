@@ -1,5 +1,6 @@
 function displayFields(form,customHTML){
 	var ABERTURA = 0;
+	var SOLICITAR = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
 	var COTAR = 47;
@@ -33,9 +34,14 @@ function displayFields(form,customHTML){
 	 
 		
 	 
-	 if (activity == ABERTURA || activity == CORRIGIR){
+	 if (activity == ABERTURA || activity == CORRIGIR || activity == SOLICITAR){
 		 form.setVisibleById("div_solicitacaoAnterior", false);
-		 form.setVisibleById("div_produto", false); 
+		 
+		 if (activity != SOLICITAR){
+			 form.setVisibleById("div_produto", false); 
+		 }
+		 
+		 
 		 form.setVisibleById("3b", false);
 		 form.setVisibleById("4b", false);
 		 form.setVisibleById("div_statusContrato", false); 
@@ -63,6 +69,15 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_statusContrato", false); 
 		 
 	 }
+	 
+	 
+	 if (form.getValue("Numerocontrato") !="" && form.getValue("Numerocontrato") != null){
+		 form.setVisibleById("div_statusContrato", false); 
+		 form.setVisibleById("div_status", false); 
+		 
+	 }
+	 
+	
 	 
 	 
 	 

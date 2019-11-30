@@ -41,11 +41,14 @@ function enableFields(form){
 		 
 		 
 		 var aprovador = usuarioAprovador(emailSolicitante);
-		 if (aprovador!= null && aprovador != ""){
+		 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
 			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
 			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
 			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
 			 	 
+		 }
+		 else {
+			 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
 		 }
 		 
 	
@@ -58,7 +61,9 @@ function enableFields(form){
 		 
 	}
 	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){					
-			
+		 form.setValue("comprador",nomeSolicitante);
+		 form.setValue("emailComprador",emailSolicitante);
+		 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -91,6 +96,9 @@ function enableFields(form){
 		    form.setEnabled("origem", true);
 		    form.setEnabled("contato", true);
 		    
+		    form.setEnabled("CotacaovalorMensal", true);
+		    form.setEnabled("CotacaovalorAnual", true);
+		    
 		    form.setEnabled("Numerocontrato", true);
 		    form.setEnabled("revisao", true);
 		    form.setEnabled("filial", true);
@@ -117,6 +125,11 @@ function enableFields(form){
 		
 	}
 	else if (activity == VALIDAR_RH ){
+		form.setValue("valido","");
+	    
+	    form.setValue("nome_rh",nomeSolicitante);
+	    form.setValue("emailRH",emailSolicitante);
+	    
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -129,14 +142,15 @@ function enableFields(form){
 	    
 	    
 	    form.setEnabled("valido", true);
-		form.setValue("valido","");
-	    
-	    form.setValue("nome_rh",nomeSolicitante);
-	    form.setValue("emailRH",emailSolicitante);
+	
 	    
 	    
 	}
 	else if (activity == ENVIAR_APROVACAO_COMPRAS ||  activity == ENVIAR_APROVACAO_HOSPITALIDADE ){
+	
+		form.setValue("aprovacaoServico","");
+		
+		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -147,8 +161,7 @@ function enableFields(form){
 	        form.setEnabled(key, habilitar);
 	    }
 	    
-		 form.setValue("comprador",nomeSolicitante);
-		 form.setValue("emailComprador",emailSolicitante);
+		
 		
 	    
 	}
@@ -158,6 +171,9 @@ function enableFields(form){
 			||  activity == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS
 			||  activity == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE
 			){
+		
+			form.setValue("statusContrato","");
+		
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();

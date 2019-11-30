@@ -24,12 +24,16 @@ function enableFields(form){
 		 form.setValue("emailSolicitante",emailSolicitante);
  
 		 var aprovador = usuarioAprovador(emailSolicitante);
-		 if (aprovador!= null && aprovador != ""){
+		 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
 			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
 			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
 			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
 				 
 		 }
+		 else {
+			 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
+		 }
+		 
 				 
 	}
 	

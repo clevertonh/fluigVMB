@@ -91,12 +91,11 @@ function validateForm(form) {
         if (form.getValue("nomepassageiro") == "" || form.getValue("nomepassageiro") == null) {
             throw "É necessário indicar o nome do passageiro.";
         }
-        /*
-        if (form.getValue("nomemae") == "" || form.getValue("nomemae") == null) {
-            throw "É necessário indicar o nome da mãe do passageiro.";
+    
+    	if (form.getValue("emailGestor") == "" || form.getValue("emailGestor") == null) {
+            throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
         }
-        
-        */
+    	
         if (form.getValue("datanasc") == "" || form.getValue("datanasc") == null) {
             throw "É necessário indicar a data de nascimento do passageiro.";
         }

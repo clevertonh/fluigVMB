@@ -3,7 +3,7 @@ var SOLICITAR = 4;
 var ELABORAR =10;
 var ASSINAR = 18;
 
-
+/*
 var dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
     pickDate: true,
     pickTime: false,
@@ -13,7 +13,7 @@ var dtSolicitacao = FLUIGC.calendar('#dataSolicitacao', {
 });
 
 
-
+*/
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {	
@@ -21,7 +21,7 @@ $(document).ready(function() {
 	
 	
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR){
-		dtSolicitacao.setDate(new Date().toLocaleString());
+		//dtSolicitacao.setDate(new Date().toLocaleString());
 		
 		var dtInicio = FLUIGC.calendar('#dtInicio', {
 		    pickDate: true,
@@ -64,13 +64,13 @@ $(document).ready(function() {
                
                //DATA LIMITE
                var dtLimite = new Date (AnoFiscal,8,'30')
-               console.log(dtLimite);
+             
                
                var data = this.value;
                var arrF = data.split("/").reverse();
                var diaFinal = new Date(arrF[0], arrF[1] - 1, arrF[2]);
              
-               console.log(diaFinal);
+             
                
                if (diaFinal > dtLimite){
             	    FLUIGC.toast({

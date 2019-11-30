@@ -221,6 +221,7 @@
                                                                 </ul>
                                                             </div>
 															<div class="tab-pane" role="tabpanel" id="step2">
+																
                                                                  <div class="panel-body">
                                                                     <div class="form-group row">
                                                                         <div class="col-md-12 fs-txt-right">
@@ -630,7 +631,7 @@
                                                         		<input type="text" id="meioPagamento" name="meioPagamento" class="form-control" readonly>
                                                         	</div>
                                                         	<div class="form-group col-md-4">
-                                                                <label>Forma de pagamento</label>
+                                                                <label>Condição de pagamento</label>
                                                                 <input type="zoom" name="condicaoPgto" id="condicaoPgto" data-zoom="{
 																'displayKey':'DESCRICAO',
 																'datasetId':'VM_CondicaoPagamento',
@@ -664,7 +665,7 @@
                                                           <div class="row">
 								                        	<div class="form-group col-md-10">
 								                        		<label>Contatos</label>
-								                        		<textarea rows="3" class="form-control" name="contatoEmpresa" id="contatoEmpresa"></textarea>
+								                        		<textarea rows="3" class="form-control" name="contatoEmpresa" id="contatoEmpresa" placeholder="informe o nome e email do responsável que irá assinar o contrato"></textarea>
 								                        	</div>
 								                        </div>
                                                         <div class="row">						
@@ -682,11 +683,61 @@
                                                                 <label>Valor do servico</label>
                                                                 <input type="number" id="CotacaovalorMensal" name="CotacaovalorMensal" class="form-control">
                                                             </div>
-                                                             <div class="form-group col-md-1" id="div_tipoAprovacao">                                                                
+                                                             
+                                                               <div class="form-group col-md-3">
+                                                                            <label>Período de pagamento</label>
+                                                                            <br>
+                                                                            <label for="mensal">Mensal</label>
+                                                                            <input type="radio" id="mensal" name="formapgto" value="mensal">
+                                                                            <label for="unico">Pagamento único</label>
+                                                                            <input type="radio" id="unico" name="formapgto" value="unico">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                            <label>Definição do valor</label>
+                                                                            <br>
+                                                                            <label for="fixo">Valor fixo</label>
+                                                                            <input type="radio" id="fixo" name="definicaoValor" value="fixo" >
+                                                                            <label for="demanda">Valor por demanda</label>
+                                                                            <input type="radio" id="demanda" name="definicaoValor" value="demanda">
+                                                                        </div>
+                                                            
+                                                            
+                                                        </div>    
+                                                        <div class="row">
+                                                        	    <div class="form-group col-md-2">
+                                                          		<label>Mês competência</label>
+                                                          		<input type="text" id="competencia" name="competencia" class="form-control">
+                                                          		                                                          		
+                                                          </div> 
+                                                          <div class="form-group col-md-2">
+                                                          		<label>Ano competência</label>
+                                                          		<input type="text" id="Anocompetencia" name="Anocompetencia" class="form-control">
+                                                          		                                                          		
+                                                          </div> 
+                                                          <div class="form-group col-md-3">
+								                     		     <label for="dtVencimento">Data Vencimento</label>
+			                                                      <div class="input-group date">
+			                                                           <input type="text" class="form-control" id="dtVencimento" name="dtVencimento">
+			                                                           <span class="input-group-addon">
+			                                                           <span class="fluigicon fluigicon-calendar">
+			                                                           </span>
+			                                                           </span>
+			                                                      </div>
+		                                                      </div>
+                                                        </div>   
+                                                        <div class="row">
+                                                        	<div class="form-group col-md-1" id="div_tipoAprovacao">                                                                
                                                                 <input class="form-control" name="tipoAprovacao" id="tipoAprovacao" type="text" value="servico" readonly />
                                                             </div>
-                                                        </div>                                                        
+                                                        </div>                                                 
                                                         <div class="row">
+                                                       		 <div class="form-group col-md-3">
+										                        <label>O contrato será feito por:</label><br>
+										                        <label for="OrigemVM">Visão Mundial</label> 
+										                        <input type="radio" id="OrigemVM" name="origem" value="visaomundial">				                                  
+										                        <label for="Origemf">Fornecedor</label>
+										                        <input type="radio" id="Origemf" name="origem" value="fornecedor">  
+										                     </div>
                                                         	<div class="form-group col-md-3">
                                                         		<label>Melhor proposta</label>
                                                                 <br>
@@ -701,26 +752,88 @@
                                                         	</div>
                                                         </div>    
                                                             
-                                                        <div class="row">
-                                                           
-                                                              <!--
-                                                            <div class="form-group col-md-5" id="div_contrato">
-                                                                <label>Número do Contrato</label><br>
-                                                                <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
-																'displayKey':'DESCRICAO',
-																'datasetId':'vm_Produtos',
-																'maximumSelectionLength':'1',
-																'placeholder':'Selecione o serviço',
-																'fields':[
-																{'field':'CODIGO', 'label':'CODIGO'},
-																{'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
-																]}" />
-                                                            </div>
-                                                            -->
-                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
+                                        <div class="panel-body" >
+                                            <div class="panel panel-success">
+                                                 	<div class="panel-heading ">
+                                                        <h5 class="panel-title">
+														<b>Se o fornecedor já tiver um contrato ativo com a Visão Mundial que represente a proposta de valor, selecione o mesmo abaixo</b>
+														</h5>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                    <div class="row">
+								                     		<div class="form-group col-md-6" id="div_contrato">
+                                                                <label>Número do Contrato</label><br>
+                                                                <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
+																'displayKey':'CONTRATO',
+																'datasetId':'ds_get_Contratos',
+																'maximumSelectionLength':'1',
+																'placeholder':'Selecione o contrato',
+																'fields':[
+																{'field':'CONTRATO', 'label':'CONTRATO', 'standard':'true'},
+																{'field':'REVISAO', 'label':'REVISAO', 'visible' : 'false'},
+																{'field':'VALOR_TOTAL', 'label':'VALOR_TOTAL'},
+																{'field':'SALDO', 'label':'SALDO', 'visible' : 'false'},
+																{'field':'DT_INICIO', 'label':'DT_INICIO', 'visible' : 'false'},
+																{'field':'DT_FIM', 'label':'DT_FIM', 'visible' : 'false'},
+																{'field':'CODIGO_FORNECE', 'label':'CODIGO_FORNECE', 'visible' : 'false'},
+																{'field':'CGC', 'label':'CGC' , 'visible' : 'false'},
+																{'field':'FILIAL', 'label':'FILIAL'},
+																{'field':'ID_FLUIG', 'label':'ID_FLUIG'},
+																{'field':'FORNECEDOR', 'label':'FORNECEDOR'}
+																]}" />
+                                                            </div>
+								                     		<div class="form-group col-md-1">
+								                     			<label>Revisão</label>
+								                     			<input type="text" name="revisao" id="revisao" class="form-control" readonly>
+								                     		</div>
+								                     		<div class="form-group col-md-1">
+								                     			<label>Filial</label>
+								                     			<input type="text" name="filial" id="filial" class="form-control" readonly>
+								                     		</div>
+								                     		<div class="form-group col-md-2">
+								                     			<label>Codigo Fluig</label>
+								                     			<input type="text" name="codigoFluig" id="codigoFluig" class="form-control" readonly>
+								                     		</div>
+								                     	</div>
+                                                    <div class="row">
+								                           <div class="form-group col-md-3">
+								                              <label for="dtInicioC">Data de Início</label>
+								                              <div class="input-group date">
+								                                 <input type="text" class="form-control" id="dtInicioC" name="dtInicioC" readonly>
+								                                 <span class="input-group-addon"> <span
+								                                    class="fluigicon fluigicon-calendar"></span>
+								                                 </span>
+								                              </div>
+								                           </div>
+								                           <div class="form-group col-md-3">
+								                              <label for="dtFimC">Data de Encerramento</label>
+								                              <div class="input-group date">
+								                                 <input type="text" class="form-control" id="dtFimC" name="dtFimC" readonly>
+								                                 <span class="input-group-addon"> <span
+								                                    class="fluigicon fluigicon-calendar"></span>
+								                                 </span>
+								                              </div>
+								                           </div>
+								                           <div class="form-group col-md-3">
+								                           	<label>Valor total do contrato</label>
+								                           	<input type="number" id="vlcontrato" name="vlcontrato" class="form-control" readonly>
+								                           </div>
+								                           <div class="form-group col-md-3">
+								                           		<label>Saldo atual do contrato</label>
+								                           		<input type="number" id="saldoAtual" name="saldoAtual" class="form-control" readonly>
+								                           </div>
+								                        </div>
+                                                    
+                                                    
+                                                     </div>
+                                                    
+                                                
+                                                 </div>
+                                            </div>    
                                             <div class="panel-body" id="div_status">
                                                 <div class="panel panel-info">
                                                     <div class="panel-heading ">

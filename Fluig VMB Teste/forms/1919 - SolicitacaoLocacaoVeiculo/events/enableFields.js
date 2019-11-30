@@ -1,5 +1,6 @@
 function enableFields(form){ 
 	var ABERTURA = 0;
+	var SOLICITAR = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
 	var COTAR = 47;
@@ -15,14 +16,17 @@ function enableFields(form){
 	var activity = getValue('WKNumState');	
 	var solicitante = getValue("WKUser");  
 
-	var dataset = UsuarioLogado(solicitante);		 			 			 			 
+	 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 	 var nomeSolicitante = dataset.getValue(0, "colleagueName");
-	 var emailSolicitante = dataset.getValue(0, "mail");
+		var emailSolicitante = dataset.getValue(0, "mail");
 	 
 	 
 	 form.setEnabled("matriculasolicitante", true);	
 	
-	if (activity == ABERTURA || activity == CORRIGIR){
+	if (activity == ABERTURA || activity == CORRIGIR || activity == SOLICITAR){
+		 nomeSolicitante = dataset.getValue(0, "colleagueName");
+		 emailSolicitante = dataset.getValue(0, "mail");
+		 
 		 form.setEnabled("aprovacao", false);	
 		 form.setEnabled("justificativaReprovacao", false);		 
 		 
@@ -33,11 +37,14 @@ function enableFields(form){
 		 
 		 
 		 var aprovador = usuarioAprovador(emailSolicitante);
-		 if (aprovador!= null && aprovador != ""){
+		 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
 			 form.setValue("emailGestor",aprovador.getValue(0, "EMAIL_APROVADOR"));
 			 form.setValue("matriculaApr",aprovador.getValue(0, "MATRICULA_APROVADOR"));
 			 form.setValue("aprovador",aprovador.getValue(0, "DIRETOR"));
 			 	 
+		 }
+		 else {
+			 throw "Seu cadastro está sem diretor, por favor, procure o setor de Recursos Humanos e solicite a atualização";
 		 }
 		 
 		 //reseta campo de corrigir marcado pelo aprovador
@@ -106,7 +113,27 @@ function enableFields(form){
 	    form.setEnabled("contatoEmpresa", true);
 	    form.setEnabled("CotacaovalorMensal", true);
 	    form.setEnabled("dtCotacao", true);
+	    form.setEnabled("origem", true);	    
+	    form.setEnabled("Numerocontrato", true);	  
+	    form.setEnabled("revisao", true);
+	    form.setEnabled("filial", true);
+	    form.setEnabled("dtInicioC", true);
+	    form.setEnabled("dtFimC", true);
+	    form.setEnabled("vlcontrato", true);
+	    form.setEnabled("saldoAtual", true);
+	    form.setEnabled("codigoFluig", true);
 	    
+	    form.setEnabled("formapgto", true);
+	    form.setEnabled("definicaoValor", true);
+	    
+	    form.setEnabled("competencia", true);
+	    form.setEnabled("Anocompetencia", true);
+	    
+	    form.setEnabled("comprador", true);
+	    form.setEnabled("emailComprador", true);
+	    
+	   
+		 
 	    form.setValue("comprador",nomeSolicitante);
 		form.setValue("emailComprador",emailSolicitante);
 		 
@@ -133,32 +160,13 @@ function enableFields(form){
 	    form.setValue("emailRH",emailSolicitante);
 	    
 	}
-	else if (activity == SOLICITAR_APROVACAO ){
-		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-	    var mapaForm = new java.util.HashMap();
-	    mapaForm = form.getCardData();
-	    var it = mapaForm.keySet().iterator();
-	     
-	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-	        var key = it.next();
-	        form.setEnabled(key, habilitar);
-	    }
-	    
 
-	    
-	}
-	else if (activity == SOLICITAR_CONTRATO ){
-		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-	    var mapaForm = new java.util.HashMap();
-	    mapaForm = form.getCardData();
-	    var it = mapaForm.keySet().iterator();
-	     
-	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-	        var key = it.next();
-	        form.setEnabled(key, habilitar);
-	    }
-	}
-	else if (activity == VERIFICAR_ASSINATURA){
+	else if (activity == SOLICITAR_APROVACAO || 
+			activity == SOLICITAR_CONTRATO  || 
+			activity ==  VERIFICAR_ASSINATURA ||
+			activity ==  FINALIZAR
+			
+	){
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -172,8 +180,9 @@ function enableFields(form){
 
 	
 
-
-
+	if (activity ==  FINALIZAR){
+		form.setEnabled("dtVencimento", true);
+	}
 	
 	function bloqueiaDadosFinanceiro(){
 		//BLOQUEIA CAMPOS DE RATEIO DE PAGAMENTO POIS JA FOI ENVIADO PARA O PROTHEUS

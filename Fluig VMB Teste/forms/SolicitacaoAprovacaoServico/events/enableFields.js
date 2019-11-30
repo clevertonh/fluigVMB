@@ -22,14 +22,28 @@ function enableFields(form){
 	 var nomeSolicitante = dataset.getValue(0, "colleagueName");
 	 var emailSolicitante = dataset.getValue(0, "mail");
 	 
+	 
 	
 	if (activity == ABERTURA ){
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
+		 
+		//data do dia
+         var dataAtual = new Date();         
+         var dataSolicitacao = convertDataToString(dataAtual);
+         form.setValue("dataSolicitacao",dataSolicitacao);
+         
 	}
 	else if (activity == SOLICITAR){
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
+		 
+		//data do dia
+         var dataAtual = new Date();         
+         var dataSolicitacao = convertDataToString(dataAtual);
+         form.setValue("dataSolicitacao",dataSolicitacao);
+         
+         
 		 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -39,12 +53,18 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
+		    
+		    
+		    
 		 
 	}
 	else if (activity == GERENTE_ADM){
 		//set numero da solicitação
 		form.setValue("solicitacao",getValue('WKNumProces'));
-		 
+	    form.setValue("nomeNivel1",nomeSolicitante); 	
+	  	form.setValue("emailNivel1",emailSolicitante); 	
+		form.setValue("justificativaReprovacao",""); 
+		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -55,9 +75,7 @@ function enableFields(form){
 	        form.setEnabled(key, habilitar);
 	    }
 	    
-	    form.setValue("nomeNivel1",nomeSolicitante); 	
-	  	form.setValue("emailNivel1",emailSolicitante); 	
-		form.setValue("justificativaReprovacao",""); 
+
 	  	form.setEnabled("aprNivel1", true);
 	  	
 	}
@@ -178,6 +196,32 @@ function enableFields(form){
 		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
 		 
 		 return dataset;
+	}
+	
+	function convertDataToString(dataToString) {
+	    var dia;
+
+	    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+	    var mes = dataToString.getMonth() + 1;
+	    if (dataToString.getDate().toString().length == 1) {
+	        dia = dataToString.getDate();
+	        dia = "0" + dia.toString();
+
+	    } else {
+	        dia = dataToString.getDate();
+
+	    }
+
+	    //converte mes
+	    if (mes.toString().length == 1) {
+	        mes = "0" + mes.toString();
+
+	    }
+
+	    //novo formato de data: para salvar em campos data do Fluig
+	    return dia + "/" + mes + "/" + dataToString.getFullYear();
+
+
 	}
 
 }

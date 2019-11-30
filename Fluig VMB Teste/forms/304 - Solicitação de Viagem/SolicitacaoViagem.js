@@ -478,8 +478,7 @@ function passageiroFuncionario() {
     		 document.getElementById("solicitanteNpassageiro").checked == true &&
     		 document.getElementById("passageirofuncionario").checked == true
     ){
-//    	alert("É recomendado que o próprio passageiro/hóspede realize sua solicitação de viagem quando funcionário.");
-        
+
     	alertaFuncionario();
     	
     	document.getElementById("divOutroFun").style.display = "block";
@@ -1040,223 +1039,6 @@ function prazoCancelamento(dataViagem) {
     }
 }
 
-//preenche campos ZOOM
-function setSelectedZoomItem(selectedItem) {
-    var LOCALIZACAO = "localizacao";
-    var CONTA = "contacontabil";
-    var CCUSTO = "txtcentrocusto";
-    var CATEGORIA = "txtcategoria";
-    var FONTE = "txtfontefinanciamento";
-    var ATIVIDADE = "txtatividade";
-    var AREAESTRATEGICA = "txtareaestrategica";
-    var PROJETO = "txtprojeto";
-    var ALOCACAO = "alocacao";
-    var REMARCACAO = "dataset_solicitacaoviagem";
-    var RATEIO = "rateioconfigurado";
-    var AGENDA = "agenda";
-    var FUNCIONARIO = "outroFuncionario";
-    var SERVICO = "txtservico";
-    var EVENTO ="dataset_solicitacaoevento";
-    var CCUSTO_ADTO = "centrocustoAdto";
-    var PROJETO_ADTO = "projetoAdto";
-    var FONTE_ADTO = "fontefinanciamentoAdto";
-  
-   
-
-    //Recebe o nome do campo zoom
-    var campoZOOM = selectedItem.inputId;
-    //separa string
-    var linhaPagamento = campoZOOM.split('___');
-
-
-    //compara para verificar se o zoom é o campo centro de custo
-    if (linhaPagamento[0] == CCUSTO) {
-         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
-        window[PROJETO + "___" + linhaPagamento[1]].clear();
-        window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
-        window[CATEGORIA + "___" + linhaPagamento[1]].clear();
-        window[FONTE + "___" + linhaPagamento[1]].clear();
-        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
-        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
-        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
-
-        if (selectedItem["CODIGO"] != '99990') {
-            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
-            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
-
-        } else {
-            window[PROJETO + "___" + linhaPagamento[1]].disable(false);
-            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
-
-        }
-
-        window[CATEGORIA + "___" + linhaPagamento[1]].disable(true);
-        window[FONTE + "___" + linhaPagamento[1]].disable(true);
-        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(true);
-
-
-    } else if (linhaPagamento[0] == PROJETO) {
-         //LIMPA TODOS AS COLUNAS POSTERIORES
-        window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
-        window[CATEGORIA + "___" + linhaPagamento[1]].clear();
-        window[FONTE + "___" + linhaPagamento[1]].clear();
-        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
-        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
-        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
-        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
-
-        //DESBLOQUEIA TODOS OS CAMPOS
-        window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
-        window[FONTE + "___" + linhaPagamento[1]].disable(false);
-        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(false);
-        window[CATEGORIA + "___" + linhaPagamento[1]].disable(false);
-
-        //ENVIAR VALOR DE PROJETO COMO FILTRO PARA OS CAMPOS
-        reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
-        reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-        reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
-        
-        //$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
-
-    } else if (linhaPagamento[0] == ATIVIDADE) {      
-    	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
-        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
-        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
-
-    }
-
-    else if (linhaPagamento[0] == FONTE){
-    	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
-    }
-
-    else if (campoZOOM == REMARCACAO) {
-         if (selectedItem["tipoviagem"] == "nacional") {
-            document.getElementById("nacional").checked = true;
-
-            document.getElementById("nacional").click();
-        } else {
-            $("#internacional").attr('checked', 'checked');	 
-            document.getElementById("internacional").click();
-
-        }
-
-        //document.getElementById("solicitanteNpassageiro").click();
-        $('#nomepassageiro').val(selectedItem["nomepassageiro"]);
-        $('#nomemae').val(selectedItem["nomemae"]);
-        $('#cpfpassageiro').val(selectedItem["cpfpassageiro"]);
-        $('#rgpassageiro').val(selectedItem["rgpassageiro"]);
-        $('#passaporte').val(selectedItem["passaporte"]);
-        $('#datanasc').val(selectedItem["datanasc"]);
-        $('#finalidade').val(selectedItem["finalidade"]);
-
-        //preenche informações de pagamento
-        buscaRemarcacao(selectedItem);
-
-
-
-    }
-
-    else if (campoZOOM == RATEIO) {    
-    	apagaRateio();
-    	buscaItensRateio(selectedItem["CODIGO"]);
-    	
-    }
-
-    //preenche dados do funcionario
-    else if (campoZOOM == FUNCIONARIO) {
-    //	console.log("---ENTROU AQUI 10 ----");
-        $('#nomepassageiro').val(selectedItem["NOME"]);
-        $('#nomemae').val(selectedItem["MAE"]);
-        $('#cpfpassageiro').val(selectedItem["CPF"]);
-        $('#rgpassageiro').val(selectedItem["RG"]);
-        $('#passaporte').val(selectedItem["PASSAPORTE"]);
-        $('#datanasc').val(selectedItem["DTNASC"]);
-        $('#emailPassageiro').val(selectedItem["EMAIL_F"]);
-
-        //console.log(selectedItem["EMAIL_F"]);
-        
-        if (selectedItem["EXTRANGEIRO"] == 'SIM'){        
-        	document.getElementById("passageiroestrangeiro").click();
-        }
-        else{
-        	document.getElementById("passageiroestrangeironao").click();
-        }      
-        //mostra campos do passageiro
-        var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
-
-        if (document.getElementById("solicitanteNfuncionario").checked == true &&
-            document.getElementById("solicitanteNpassageiro").checked == true &&
-            document.getElementById("passageirofuncionario").checked == true) {
-
-            var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
-
-        }
-
-    }
-
-
-
-    else if (linhaPagamento[0] == AGENDA) {
-          buscaAtividades(selectedItem);
-    }   
-    
-
-    else if (linhaPagamento[0] == SERVICO) {
-     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
-    	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
-    }
-    
-    else if (campoZOOM == EVENTO){   
-    	apagaRateio();
-    	if (selectedItem["FINANEVENTO"] == "sim"){
-    		codigoEvento = selectedItem["SOLICITACAO"];    		
-    		document.getElementById("carregaFinan").click();  
-    		//$("#carregaFinan").prop("disabled", true);
-    		//$("#NcarregaFinan").prop("disabled", true);
-    	}
-    	else {
-    		$("#carregaFinan").prop("disabled", false);
-    		$("#NcarregaFinan").prop("disabled", false);
-    	}
-    }
-    
-    
-    //compara para verificar se o zoom é o campo centro de custo
-    else if (campoZOOM == CCUSTO_ADTO) {
-        //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
-        window[PROJETO_ADTO].clear();
-        window[FONTE_ADTO].clear();
-        window[FONTE_ADTO].disable(true);
-        
-  	  	if (selectedItem["CODIGO"] == '99990'){
-  	  	    window[PROJETO_ADTO].disable(false);	  
-  	  	    window[FONTE_ADTO].disable(true);
-  	  	    //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + selectedItem["CODIGO"] );
-  	  	     document.getElementById("div_projeto").style.display = "block";
-  	  		 document.getElementById("div_fonte").style.display = "block";
-  	  	}
-  	  	else {
-  	  		
-  	  		window[PROJETO_ADTO].disable(true);
-  	  		window[FONTE_ADTO].disable(true);
-  	    	//reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null )
-  	  	}
-
-    } 
-    else if (campoZOOM == PROJETO_ADTO){
-  	  window[FONTE_ADTO].clear();
-  	  window[FONTE_ADTO].disable(false);
-  	  reloadZoomFilterValues(FONTE_ADTO, "PROJETO," + selectedItem["CODIGO"]);
-    }
-    
-    
-    
-    
-    
-
-}
-
 function apagaRateio(){
     var linhas = $("#tbodyItens tr");
     for (var i = 1; i < linhas.length; i++) {
@@ -1784,20 +1566,28 @@ function AprovadorEmbaixador() {
      	 constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "APR_EMBAIXADORES", "APR_EMBAIXADORES", ConstraintType.MUST));
      	 var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
         	 
+       	 constraint   = new Array(); 
      	 constraint.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", dataset.values[0]["colleagueGroupPK.colleagueId"], dataset.values[0]["colleagueGroupPK.colleagueId"], ConstraintType.MUST));
      	 dataset = DatasetFactory.getDataset("colleague", null, constraint, null);
 
+        	 
+     	 if (dataset != null && dataset.values.length > 0){
+     		 $('#emailGestor').val(dataset.values[0]["mail"]);
+             $('#matriculaApr').val(dataset.values[0]["colleaguePK.colleagueId"]);
+             $('#aprovador').val(dataset.values[0]["colleagueName"]);  
+             
+             FLUIGC.toast({
+      	        title: 'Atenção: ',
+      	        message: 'Sua solicitação será aprovada por: ' + dataset.values[0]["colleagueName"] ,
+      	        type: 'info'
+      	    }); 
+             
+     	 }
 		 
-		 $('#emailGestor').val(dataset.values[0]["mail"]);
-         $('#matriculaApr').val(dataset.values[0]["colleaguePK.colleagueId"]);
-         $('#aprovador').val(dataset.values[0]["colleagueName"]);        
+		      
         
          
-         FLUIGC.toast({
- 	        title: 'Atenção: ',
- 	        message: 'Sua solicitação será aprovada por: ' + dataset.values[0]["colleagueName"] ,
- 	        type: 'info'
- 	    }); 
+
 
 }
 
@@ -1807,10 +1597,9 @@ function carregaAprovador() {
 		
 	var constraints = new Array();
     constraints.push(DatasetFactory.createConstraint("EMAIL_USUARIO", email, email, ConstraintType.MUST));
+    var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, constraints, null);
 	
-	    var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, constraints, null);
-	    if (dataset != null && dataset.values.length > 0) {
-
+    	if (dataset != null && dataset.values.length > 0) {
 	    	//SET CAMPOS DO APROVADOR
 	        $('#emailGestor').val(dataset.values[0]["EMAIL_APROVADOR"]);
 	        $('#matriculaApr').val(dataset.values[0]["MATRICULA_APROVADOR"]);
@@ -1825,6 +1614,13 @@ function carregaAprovador() {
 	 	    }); 
 	        
 	        
+	    }
+	    else {
+	    	 FLUIGC.toast({
+		 	        title: 'Atenção: ',
+		 	        message: 'Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização' ,
+		 	        type: 'info'
+		 	    }); 
 	    }
 	 
 	
@@ -1863,7 +1659,6 @@ function dadosFuncionarioDataSet() {
     	    });    		
     }    
 }
-
 //preciso acrescentar isso numa chamada assincrona e colocar uma progressbar
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
@@ -1958,4 +1753,222 @@ function fnCustomDeleteServico(oElement) {
             timeout: 3000
         });		
 	}		
+}
+//preenche campos ZOOM
+function setSelectedZoomItem(selectedItem) {
+    var LOCALIZACAO = "localizacao";
+    var CONTA = "contacontabil";
+    var CCUSTO = "txtcentrocusto";
+    var CATEGORIA = "txtcategoria";
+    var FONTE = "txtfontefinanciamento";
+    var ATIVIDADE = "txtatividade";
+    var AREAESTRATEGICA = "txtareaestrategica";
+    var PROJETO = "txtprojeto";
+    var ALOCACAO = "alocacao";
+    var REMARCACAO = "dataset_solicitacaoviagem";
+    var RATEIO = "rateioconfigurado";
+    var AGENDA = "agenda";
+    var FUNCIONARIO = "outroFuncionario";
+    var SERVICO = "txtservico";
+    var EVENTO ="dataset_solicitacaoevento";
+    var CCUSTO_ADTO = "centrocustoAdto";
+    var PROJETO_ADTO = "projetoAdto";
+    var FONTE_ADTO = "fontefinanciamentoAdto";
+  
+   
+
+    //Recebe o nome do campo zoom
+    var campoZOOM = selectedItem.inputId;
+    //separa string
+    var linhaPagamento = campoZOOM.split('___');
+
+
+    //compara para verificar se o zoom é o campo centro de custo
+    if (linhaPagamento[0] == CCUSTO) {
+         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
+        window[PROJETO + "___" + linhaPagamento[1]].clear();
+        window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
+        window[CATEGORIA + "___" + linhaPagamento[1]].clear();
+        window[FONTE + "___" + linhaPagamento[1]].clear();
+        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+
+        if (selectedItem["CODIGO"] != '99990') {
+            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
+            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+
+        } else {
+            window[PROJETO + "___" + linhaPagamento[1]].disable(false);
+            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
+
+        }
+
+        window[CATEGORIA + "___" + linhaPagamento[1]].disable(true);
+        window[FONTE + "___" + linhaPagamento[1]].disable(true);
+        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(true);
+
+
+    } 
+    else if (linhaPagamento[0] == PROJETO) {
+         //LIMPA TODOS AS COLUNAS POSTERIORES
+        window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
+        window[CATEGORIA + "___" + linhaPagamento[1]].clear();
+        window[FONTE + "___" + linhaPagamento[1]].clear();
+        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val("");
+        $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+
+        //DESBLOQUEIA TODOS OS CAMPOS
+        window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
+        window[FONTE + "___" + linhaPagamento[1]].disable(false);
+        window[AREAESTRATEGICA + "___" + linhaPagamento[1]].disable(false);
+        window[CATEGORIA + "___" + linhaPagamento[1]].disable(false);
+
+        //ENVIAR VALOR DE PROJETO COMO FILTRO PARA OS CAMPOS
+        reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
+        reloadZoomFilterValues(FONTE + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
+        reloadZoomFilterValues(AREAESTRATEGICA + "___" + linhaPagamento[1], "PROJETO," + selectedItem["CODIGO"]);
+        
+        //$('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+
+    } 
+    else if (linhaPagamento[0] == ATIVIDADE) {      
+    	//window[AREAESTRATEGICA + "___" + linhaPagamento[1]].setValue(selectedItem["AREA_ESTRATEGICA"]);
+        $('#' + LOCALIZACAO + "___" + linhaPagamento[1]).val(selectedItem["LOCALIZACAO"]);
+        $('#' + ALOCACAO + "___" + linhaPagamento[1]).val(selectedItem["ALOCACAO"]);
+
+    }
+
+    else if (linhaPagamento[0] == FONTE){
+    	  $('#' + CONTA + "___" + linhaPagamento[1]).val(selectedItem["CONTA"]);
+    }
+
+    else if (campoZOOM == REMARCACAO) {
+         if (selectedItem["tipoviagem"] == "nacional") {
+            document.getElementById("nacional").checked = true;
+
+            document.getElementById("nacional").click();
+        } else {
+            $("#internacional").attr('checked', 'checked');	 
+            document.getElementById("internacional").click();
+
+        }
+
+        //document.getElementById("solicitanteNpassageiro").click();
+        $('#nomepassageiro').val(selectedItem["nomepassageiro"]);
+        $('#nomemae').val(selectedItem["nomemae"]);
+        $('#cpfpassageiro').val(selectedItem["cpfpassageiro"]);
+        $('#rgpassageiro').val(selectedItem["rgpassageiro"]);
+        $('#passaporte').val(selectedItem["passaporte"]);
+        $('#datanasc').val(selectedItem["datanasc"]);
+        $('#finalidade').val(selectedItem["finalidade"]);
+
+        //preenche informações de pagamento
+        buscaRemarcacao(selectedItem);
+
+
+
+    }
+
+    else if (campoZOOM == RATEIO) {    
+    	apagaRateio();
+    	buscaItensRateio(selectedItem["CODIGO"]);
+    	
+    }
+
+    //preenche dados do funcionario
+    else if (campoZOOM == FUNCIONARIO) {
+    //	console.log("---ENTROU AQUI 10 ----");
+        $('#nomepassageiro').val(selectedItem["NOME"]);
+        $('#nomemae').val(selectedItem["MAE"]);
+        $('#cpfpassageiro').val(selectedItem["CPF"]);
+        $('#rgpassageiro').val(selectedItem["RG"]);
+        $('#passaporte').val(selectedItem["PASSAPORTE"]);
+        $('#datanasc').val(selectedItem["DTNASC"]);
+        $('#emailPassageiro').val(selectedItem["EMAIL_F"]);
+
+        //console.log(selectedItem["EMAIL_F"]);
+        
+        if (selectedItem["EXTRANGEIRO"] == 'SIM'){        
+        	document.getElementById("passageiroestrangeiro").click();
+        }
+        else{
+        	document.getElementById("passageiroestrangeironao").click();
+        }      
+        //mostra campos do passageiro
+        var Visivel = document.getElementById("divdadospassageiro").style.display = "block";
+
+        if (document.getElementById("solicitanteNfuncionario").checked == true &&
+            document.getElementById("solicitanteNpassageiro").checked == true &&
+            document.getElementById("passageirofuncionario").checked == true) {
+
+            var emailFuncionarioPassageiro = selectedItem["EMAIL_USUARIO"];
+
+        }
+
+    }
+
+
+
+    else if (linhaPagamento[0] == AGENDA) {
+          buscaAtividades(selectedItem);
+    }   
+    
+
+    else if (linhaPagamento[0] == SERVICO) {
+     	$('#codigoProduto' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+    	$('#geraSolicCompra' + "___" + linhaPagamento[1]).val(selectedItem["GERA_SC"]);
+    }
+    
+    else if (campoZOOM == EVENTO){   
+    	apagaRateio();
+    	if (selectedItem["FINANEVENTO"] == "sim"){
+    		codigoEvento = selectedItem["SOLICITACAO"];    		
+    		document.getElementById("carregaFinan").click();  
+    		//$("#carregaFinan").prop("disabled", true);
+    		//$("#NcarregaFinan").prop("disabled", true);
+    	}
+    	else {
+    		$("#carregaFinan").prop("disabled", false);
+    		$("#NcarregaFinan").prop("disabled", false);
+    	}
+    }
+    
+    
+    //compara para verificar se o zoom é o campo centro de custo
+    else if (campoZOOM == CCUSTO_ADTO) {
+        //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
+        window[PROJETO_ADTO].clear();
+        window[FONTE_ADTO].clear();
+        window[FONTE_ADTO].disable(true);
+        
+  	  	if (selectedItem["CODIGO"] == '99990'){
+  	  	    window[PROJETO_ADTO].disable(false);	  
+  	  	    window[FONTE_ADTO].disable(true);
+  	  	    //reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + selectedItem["CODIGO"] );
+  	  	     var bloqck1 = document.getElementById("div_projeto").style.display = "block";
+  	  	     var bloqck2 = document.getElementById("div_fonte").style.display = "block";
+  	  	}
+  	  	else {
+  	  		
+  	  		window[PROJETO_ADTO].disable(true);
+  	  		window[FONTE_ADTO].disable(true);
+  	    	//reloadZoomFilterValues(PROJETO, "CENTRO_CUSTO," + null )
+  	  	}
+
+    } 
+    else if (campoZOOM == PROJETO_ADTO){
+  	  window[FONTE_ADTO].clear();
+  	  window[FONTE_ADTO].disable(false);
+  	  reloadZoomFilterValues(FONTE_ADTO, "PROJETO," + selectedItem["CODIGO"]);
+    }
+    
+    
+    
+    
+    
+
 }

@@ -69,15 +69,27 @@ function displayFields(form,customHTML){
 	 else if (activity == VALIDAR_RH){
 		 form.setVisibleById("div_status", false); 
 		 form.setVisibleById("div_statusContrato", false); 
+		
+		 if (form.getValue("definicaoValor") == "demanda") {
+			 form.setVisibleById("div_itensServico", false);
+		 }
 		 
 	 }
 	 else if (activity == ENVIAR_APROVACAO_COMPRAS || activity == ENVIAR_APROVACAO_HOSPITALIDADE ){
-		 form.setVisibleById("div_status", false); 
+		// form.setVisibleById("div_status", false); 
 		 form.setVisibleById("div_statusContrato", false); 
+		 
+		 if (form.getValue("definicaoValor") == "demanda") {
+			 form.setVisibleById("div_itensServico", false);
+		 }
 		 
 	 }
 	 else if (activity == SOLICITACAO_CONTRATO_HOSPITALIDADE || activity == SOLICITACAO_CONTRATO_COMPRAS){
 		 		form.setVisibleById("div_statusContrato", false);
+		 		
+		 		 if (form.getValue("definicaoValor") == "demanda") {
+					 form.setVisibleById("div_itensServico", false);
+				 }
 	 }
 
 	 

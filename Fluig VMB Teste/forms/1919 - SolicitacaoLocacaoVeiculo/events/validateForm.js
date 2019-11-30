@@ -3,7 +3,14 @@ function validateForm(form){
 	var ABERTURA = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 39;
-	var CONTRATAR = 47;
+	var COTAR = 47;
+	var VALIDAR_RH = 55;
+	var SOLICITAR_APROVACAO = 59;
+	var APROVACAO_SERVICO = 61;
+	var SOLICITAR_CONTRATO = 65;
+	var SOLICITACAO_CONTRATO = 77;
+	var VERIFICAR_ASSINATURA = 79;
+	var FINALIZAR = 83;
 	
 	
 	//recupera atividade do processo
@@ -67,6 +74,15 @@ function validateForm(form){
               throw "A locação de veículo só pode ocorrer para capacidade inferior ou igual a 7 lugares. Para veículos como ônibus e similares ou receptivo deve ser usado a solicitação de transfer. ";
           }
 		  
+		  if (form.getValue("txtproduto") == ""  || form.getValue("txtproduto")  == null){
+	        	 throw "Você precisa informar o tipo de veículo para gerar a solicitaçao de compra.";
+	       }
+		  
+			if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
+	         	 throw "Você precisa informar o valor maximo para contratação.";
+	        }
+			
+			
 	  	   var indexes = form.getChildrenIndexes("tableCondutor");            
     	   
            for (var i = 0; i < indexes.length; i++) {
@@ -124,13 +140,34 @@ function validateForm(form){
 		validaAtividades();
 		
 	}
-	else if (activity == CONTRATAR){	
-		if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
-         	 throw "Você precisa informar o custo da locação do veículo.";
+	else if (activity == COTAR){	
+		if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
+         	 throw "Você precisa informar o CNPJ/CPF do fornecedor escolhido como melhor proposta.";
         }
-		if (form.getValue("txtproduto") == ""  || form.getValue("txtproduto")  == null){
-        	 throw "Você precisa informar o tipo de veículo para gerar a solicitaçao de compra.";
+		if (form.getValue("condicaoPgto") == ""  || form.getValue("condicaoPgto")  == null ){
+        	 throw "Você precisa informar o campo de condição de pagamento.";
        }
+		if (form.getValue("contatoEmpresa") == ""  || form.getValue("contatoEmpresa")  == null ){
+       	 throw "Você precisa informar o nome e email de contato do fornecedor.";
+		}	
+		
+		if (form.getValue("CotacaovalorMensal") == ""  || form.getValue("CotacaovalorMensal")  == null ){
+	       	 throw "Você precisa informar o valor contratado do serviço";
+			}	
+		
+		if (form.getValue("formapgto") == ""  || form.getValue("formapgto")  == null ){
+	       	 throw "Você precisa informar o campo de período de pagamento";
+			}	
+		
+		if (form.getValue("definicaoValor") == ""  || form.getValue("definicaoValor")  == null ){
+	       	 throw "Você precisa informar o campo dde definição do valor";
+			}	
+		
+		if (form.getValue("Numerocontrato") != null && form.getValue("Numerocontrato") != ""){
+			if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorMensal"))){
+				 throw "O contrato não possui saldo suficiente para contratar esse serviço.";
+			}
+		}
 		
 		
 	}
@@ -329,7 +366,7 @@ function validateForm(form){
                 	   throw "Você não pode usar uma atividade de folha nem estrutural para custear uma locação de veículo.";
 
                    }
-            	   if (atividade == "A443201"){
+            	   if (atividade == "A450101"){
             		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
             	   }
               

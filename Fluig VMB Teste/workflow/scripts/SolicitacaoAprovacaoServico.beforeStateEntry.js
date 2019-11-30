@@ -27,18 +27,14 @@ function beforeStateEntry(sequenceId){
 	    var numProcess = getValue("WKNumProces");
 //	    var limiteAnual 	 = hAPI.getCardValue("CotacaovalorAnual");
 	    
-	if (ativAtual == SOLICITAR ){
-	 	
-		 	
-	    }
-	else if (ativAtual == GERENTE_ADM){				
+   if (ativAtual == GERENTE_ADM){				
 			var aprovacao 	 = hAPI.getCardValue("aprNivel1");
 			
 			//aprovado
 			if (aprovacao == "aprovado"){
 				hAPI.setCardValue("aprovacaoServico","aprovado");  
 			}
-			else {
+			else if (aprovacao == "reprovado"){
 				//reprovado.
 				hAPI.setCardValue("aprovacaoServico","reprovado");
 				hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo: " + hAPI.getCardValue("justificativaReprovacao"));	
@@ -54,7 +50,7 @@ function beforeStateEntry(sequenceId){
 		if (aprovacao == "aprovado"){
 			hAPI.setCardValue("aprovacaoServico","aprovado");  
 		}
-		else {
+		else if (aprovacao == "reprovado") {
 			//reprovado.
 			hAPI.setCardValue("aprovacaoServico","reprovado");  
 			hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo: " + hAPI.getCardValue("justificativaReprovacao"));	
@@ -87,8 +83,8 @@ function beforeStateEntry(sequenceId){
 			hAPI.setCardValue("justificativaReprovacao","");
 			
 		}
-		else {
-			hAPI.setCardValue("aprovacaoServico","aprovado");  
+		else if (aprovacaoRH == "aprovado" || aprovacaoMINISTERIO == "aprovado" || aprovacaoMKT == "aprovado" || aprovacaoADVOCACY == "aprovado" ) {
+					hAPI.setCardValue("aprovacaoServico","aprovado");  
 			
 		}
 	
@@ -101,11 +97,40 @@ function beforeStateEntry(sequenceId){
 		if (aprovacao == "aprovado"){
 			hAPI.setCardValue("aprovacaoServico","aprovado");  
 		}
-		else {
+		else if (aprovacao == "reprovado") {
 			//reprovado.
 			hAPI.setCardValue("aprovacaoServico","reprovado");  
 			hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada. Motivo:" + hAPI.getCardValue("justificativaReprovacao"));	
 			hAPI.setCardValue("justificativaReprovacao","");
 		}
+	}
+	
+	
+	
+	function convertDataToString(dataToString) {
+	    var dia;
+
+	    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+	    var mes = dataToString.getMonth() + 1;
+	    if (dataToString.getDate().toString().length == 1) {
+	        dia = dataToString.getDate();
+	        dia = "0" + dia.toString();
+
+	    } else {
+	        dia = dataToString.getDate();
+
+	    }
+
+	   
+	    //converte mes
+	    if (mes.toString().length == 1) {
+	        mes = "0" + mes.toString();
+
+	    }
+
+	    //novo formato de data: para salvar em campos data do Fluig
+	    return dia + "/" + mes + "/" + dataToString.getFullYear();
+
+
 	}
 }
