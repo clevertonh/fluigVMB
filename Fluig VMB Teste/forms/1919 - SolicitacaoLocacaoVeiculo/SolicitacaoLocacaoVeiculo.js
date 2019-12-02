@@ -60,12 +60,13 @@ $(document).ready(function() {
     	
     	
     }
-
+    /*
     else if (ATIVIDADE == APROVACAO){
-		document.getElementById("btn_add_item").style.display = "none";
+    		document.getElementById("btn_add_item").style.display = "none";
 	
 		
 	}
+    */
     else if (ATIVIDADE == COTAR){
 		    	var dtCotacao = FLUIGC.calendar('#dtCotacao', {
 				    pickDate: true,
@@ -144,7 +145,7 @@ function removeItens() {
 }
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR || ATIVIDADE == APROVACAO){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -159,7 +160,7 @@ function fnCustomDeleteRateio(oElement) {
 }
 
 function fnCustomDeleteCondutor(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR	|| ATIVIDADE == CORRIGIR || ATIVIDADE == APROVACAO){								
 		fnWdkRemoveChild(oElement);	
 
 	}

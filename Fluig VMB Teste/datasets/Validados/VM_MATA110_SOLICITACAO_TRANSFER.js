@@ -10,6 +10,8 @@ function createDataset(fields, constraints, sortFields) {
 	var valor;
 	var produto;
 	var emailcomprador ="";
+	//default == 3
+	var acao = 3;
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitação NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -26,6 +28,13 @@ function createDataset(fields, constraints, sortFields) {
            		var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesTransferDadosPagamento", null, new Array(c2), null);    				  
     	    
+            	for (var a=0; a<constraints.length; a++){
+        			 
+        			if (constraints[a].fieldName == "acao"){
+        				acao = constraints[a].initialValue;
+            		} 
+        		}
+            	
         					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -47,6 +56,7 @@ function createDataset(fields, constraints, sortFields) {
         					            timeoutService: '360', // segundos
         					            params : {
         					            	PROCESSO : '' + 12 + '' ,
+        					            	ACAO: '' + acao + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

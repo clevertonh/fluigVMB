@@ -203,10 +203,13 @@ function validateForm(form){
                   }
               } 
               else {                	
-           	   if (atividade == "E010101" || atividade == "E020201") {
-               	   throw "Você não pode usar uma atividade de folha ou estutural para custear uma viagem.";
+           	   		if (atividade == "E010101" || atividade == "E020201") {
+           	   			throw "Você não pode usar uma atividade de folha ou estutural para custear uma viagem.";
 
-                  }
+           	   		}
+	           	   	 if (atividade == "A450101"){
+	          		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
+	          	   }
              
                  }
           }

@@ -50,6 +50,9 @@ function beforeCancelProcess(colleagueId,processId){
       	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
             throw resultDataset.getValue(0,"RETORNO");
          }
+      	 else {
+	     	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação excluida do sistema Protheus.");
+	        }
       	  
     }
      else if (ativAtual == FINALIZAR){

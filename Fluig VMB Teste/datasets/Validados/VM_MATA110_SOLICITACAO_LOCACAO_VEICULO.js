@@ -89,7 +89,8 @@ function createDataset(fields, constraints, sortFields) {
          					        	dataset.addRow(new Array("RETORNO VAZIO"));
         					        }        					                					       
         					        else if((JSON.parse(vo.getResult()).errorMessage != null && JSON.parse(vo.getResult()).errorMessage != "")){
-        					        	dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
+        					        		dataset.addRow(new Array(JSON.parse(vo.getResult()).errorMessage));
+        					        		
         					        }
         					        else if (JSON.parse(vo.getResult()).CODIGO != "100"){
         					        	dataset.addRow(new Array(obj.MSG));
@@ -111,6 +112,7 @@ function createDataset(fields, constraints, sortFields) {
     	 	
 	return dataset;
 }
+
 
 
 //FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA

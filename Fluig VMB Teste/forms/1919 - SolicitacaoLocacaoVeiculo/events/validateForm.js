@@ -46,128 +46,128 @@ function validateForm(form){
 	  }	
 
 	if (activity == INICIO ||  activity == ABERTURA || activity == CORRIGIR ){
-		
-		
-		  if (form.getValue("renovacao") == false || form.getValue("renovacao") == "") {
-              throw "Você deve indicar se a solicitação é uma renovação de locação de veículo ou não.";
-          }		 
-		  if (form.getValue("renovacao") =="nao"){
-			  if (form.getValue("localRetirada") == null || form.getValue("localRetirada") == "") {
-	              throw "É obrigatório informar o local para retirada.";
+		 if (nextAtv == APROVACAO){
+			 if (form.getValue("renovacao") == false || form.getValue("renovacao") == "") {
+	              throw "Você deve indicar se a solicitação é uma renovação de locação de veículo ou não.";
+	          }		 
+			  if (form.getValue("renovacao") =="nao"){
+				  if (form.getValue("localRetirada") == null || form.getValue("localRetirada") == "") {
+		              throw "É obrigatório informar o local para retirada.";
+		          }
+			  }
+			
+			  if (form.getValue("localDevolucao") == null || form.getValue("localDevolucao") == "") {
+	              throw "É obrigatório informar o local para devolução.";
+	          }		  
+			  if (form.getValue("dtRetirada") == null || form.getValue("dtRetirada") == "") {
+	              throw "É obrigatório informar a data de retirada.";
 	          }
-		  }
+			  if (form.getValue("dtDevolucao") == null || form.getValue("dtDevolucao") == "") {
+	              throw "É obrigatório informar a data de devolução.";
+	          }
+			  if (form.getValue("capacidade") == null || form.getValue("capacidade") == "" ) {
+	              throw "É obrigatório informar a capacidade para o veículo";
+	          }
 		
-		  if (form.getValue("localDevolucao") == null || form.getValue("localDevolucao") == "") {
-              throw "É obrigatório informar o local para devolução.";
-          }		  
-		  if (form.getValue("dtRetirada") == null || form.getValue("dtRetirada") == "") {
-              throw "É obrigatório informar a data de retirada.";
-          }
-		  if (form.getValue("dtDevolucao") == null || form.getValue("dtDevolucao") == "") {
-              throw "É obrigatório informar a data de devolução.";
-          }
-		  if (form.getValue("capacidade") == null || form.getValue("capacidade") == "" ) {
-              throw "É obrigatório informar a capacidade para o veículo";
-          }
-	
-		  if (form.getValue("capacidade") > 7 ) {
-              throw "A locação de veículo só pode ocorrer para capacidade inferior ou igual a 7 lugares. Para veículos como ônibus e similares ou receptivo deve ser usado a solicitação de transfer. ";
-          }
-		  
-		  if (form.getValue("txtproduto") == ""  || form.getValue("txtproduto")  == null){
-	        	 throw "Você precisa informar o tipo de veículo para gerar a solicitaçao de compra.";
-	       }
-		  
-			if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
-	         	 throw "Você precisa informar o valor maximo para contratação.";
-	        }
-			
-			
-	  	   var indexes = form.getChildrenIndexes("tableCondutor");            
-    	   
-           for (var i = 0; i < indexes.length; i++) {
-        	   var condutor = form.getValue("nomeCondutor___" + indexes[i]);
-               
-	            if (condutor == null || condutor == "") {
-	            	 throw "É obrigatório informar o nome do condutor. ";
-	            }	                     	
-           	}
+			  if (form.getValue("capacidade") > 7 ) {
+	              throw "A locação de veículo só pode ocorrer para capacidade inferior ou igual a 7 lugares. Para veículos como ônibus e similares ou receptivo deve ser usado a solicitação de transfer. ";
+	          }
+			  
+			  if (form.getValue("txtproduto") == ""  || form.getValue("txtproduto")  == null){
+		        	 throw "Você precisa informar o tipo de veículo para gerar a solicitaçao de compra.";
+		       }
+			  
+				if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
+		         	 throw "Você precisa informar o valor maximo para contratação.";
+		        }
+				
+				
+		  	   var indexes = form.getChildrenIndexes("tableCondutor");            
+	    	   
+	           for (var i = 0; i < indexes.length; i++) {
+	        	   var condutor = form.getValue("nomeCondutor___" + indexes[i]);
+	               
+		            if (condutor == null || condutor == "") {
+		            	 throw "É obrigatório informar o nome do condutor. ";
+		            }	                     	
+	           	}
 
-          
-           //funções para validar informações financeiras
-			validaLinhasPreenchidas();
-			validaLinhasRepetidas();
-			validaPercentualRateio();
-			validaAtividades();		
-
-		
-	}
+	          
+	           //funções para validar informações financeiras
+				validaLinhasPreenchidas();
+				validaLinhasRepetidas();
+				validaPercentualRateio();
+				validaAtividades();		
+		 }
+		}
    
 	else if (activity == APROVACAO){
-		
- 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
-        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
-        }
+		 		if (nextAtv == 9){ //atividade 9 = verificar aprovação
+		 			//valida se o aprovador marcou o campo de aprovacao ou reprovação
+		 	        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
+		 	            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+		 	        }
 
-        if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
-            throw "Você precisa informar o motivo para reprovação da solicitação.";
-        }
-        
-		//valida se aprovador é diferente do solicitante
-		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
-          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-        }    
-		
-		/*
-		if (form.getValue("aprovacao") == "aprovado"){
-			//recebe data de retirada e faz conversão
-			dataRetirada = convertStringToData(form.getValue("dtRetirada"));
-			//compara se data atual é maior que data de retirada
-			if (dataAtual > dataRetirada){
-				throw "Essa solicitação não pode mais ser aprovada pois a data de retirada já se passou.";				
-			}
-		}
+		 	        if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
+		 	            throw "Você precisa informar o motivo para reprovação da solicitação.";
+		 	        }
+		 	        
+		 			//valida se aprovador é diferente do solicitante
+		 			if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
+		 	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+		 	        }    
+		 			
+		 			/*
+		 			if (form.getValue("aprovacao") == "aprovado"){
+		 				//recebe data de retirada e faz conversão
+		 				dataRetirada = convertStringToData(form.getValue("dtRetirada"));
+		 				//compara se data atual é maior que data de retirada
+		 				if (dataAtual > dataRetirada){
+		 					throw "Essa solicitação não pode mais ser aprovada pois a data de retirada já se passou.";				
+		 				}
+		 			}
 
-		*/
-		//	form.setValue("justificativaReprovacao","solicitação não aprovada no tempo. Por isso foi rejeitada automaticamente pelo sistema.");
-		
-		
-		//funções para validar informações financeiras
-		validaLinhasPreenchidas();
-		validaLinhasRepetidas();
-		validaPercentualRateio();
-		validaAtividades();
+		 			*/
+		 			//	form.setValue("justificativaReprovacao","solicitação não aprovada no tempo. Por isso foi rejeitada automaticamente pelo sistema.");
+		 			
+		 			
+		 			//funções para validar informações financeiras
+		 			validaLinhasPreenchidas();
+		 			validaLinhasRepetidas();
+		 			validaPercentualRateio();
+		 			validaAtividades();
+		 		}
+ 		
 		
 	}
 	else if (activity == COTAR){	
-		if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
-         	 throw "Você precisa informar o CNPJ/CPF do fornecedor escolhido como melhor proposta.";
-        }
-		if (form.getValue("condicaoPgto") == ""  || form.getValue("condicaoPgto")  == null ){
-        	 throw "Você precisa informar o campo de condição de pagamento.";
-       }
-		if (form.getValue("contatoEmpresa") == ""  || form.getValue("contatoEmpresa")  == null ){
-       	 throw "Você precisa informar o nome e email de contato do fornecedor.";
-		}	
-		
-		if (form.getValue("CotacaovalorMensal") == ""  || form.getValue("CotacaovalorMensal")  == null ){
-	       	 throw "Você precisa informar o valor contratado do serviço";
+			if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
+	         	 throw "Você precisa informar o CNPJ/CPF do fornecedor escolhido como melhor proposta.";
+	        }
+			if (form.getValue("condicaoPgto") == ""  || form.getValue("condicaoPgto")  == null ){
+	        	 throw "Você precisa informar o campo de condição de pagamento.";
+	       }
+			if (form.getValue("contatoEmpresa") == ""  || form.getValue("contatoEmpresa")  == null ){
+	       	 throw "Você precisa informar o nome e email de contato do fornecedor.";
 			}	
-		
-		if (form.getValue("formapgto") == ""  || form.getValue("formapgto")  == null ){
-	       	 throw "Você precisa informar o campo de período de pagamento";
-			}	
-		
-		if (form.getValue("definicaoValor") == ""  || form.getValue("definicaoValor")  == null ){
-	       	 throw "Você precisa informar o campo dde definição do valor";
-			}	
-		
-		if (form.getValue("Numerocontrato") != null && form.getValue("Numerocontrato") != ""){
-			if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorMensal"))){
-				 throw "O contrato não possui saldo suficiente para contratar esse serviço.";
+			
+			if (form.getValue("CotacaovalorMensal") == ""  || form.getValue("CotacaovalorMensal")  == null ){
+		       	 throw "Você precisa informar o valor contratado do serviço";
+				}	
+			
+			if (form.getValue("formapgto") == ""  || form.getValue("formapgto")  == null ){
+		       	 throw "Você precisa informar o campo de período de pagamento";
+				}	
+			
+			if (form.getValue("definicaoValor") == ""  || form.getValue("definicaoValor")  == null ){
+		       	 throw "Você precisa informar o campo dde definição do valor";
+				}	
+			
+			if (form.getValue("Numerocontrato") != null && form.getValue("Numerocontrato") != ""){
+				if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorMensal"))){
+					 throw "O contrato não possui saldo suficiente para contratar esse serviço.";
+				}
 			}
-		}
 		
 		
 	}

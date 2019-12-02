@@ -148,32 +148,23 @@ function enableFields(form){
 	}
 	else if (activity == ENVIAR_APROVACAO_COMPRAS ||  activity == ENVIAR_APROVACAO_HOSPITALIDADE ){
 	
-		form.setValue("aprovacaoServico","");
-		
-		
-		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-	    var mapaForm = new java.util.HashMap();
-	    mapaForm = form.getCardData();
-	    var it = mapaForm.keySet().iterator();
-	     
-	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-	        var key = it.next();
-	        form.setEnabled(key, habilitar);
-	    }
-	    
-		
-		
-	    
+				form.setValue("aprovacaoServico","");
+				
+				
+				var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+			    var mapaForm = new java.util.HashMap();
+			    mapaForm = form.getCardData();
+			    var it = mapaForm.keySet().iterator();
+			     
+			    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+			        var key = it.next();
+			        form.setEnabled(key, habilitar);
+			    }
+
 	}
-	else if (activity == SOLICITACAO_CONTRATO_HOSPITALIDADE ||  activity == SOLICITACAO_CONTRATO_COMPRAS 
-			||  activity == VERIFICAR_ASSINATRA_HOSPITALIDADE
-			||  activity == VERIFICAR_ASSINATRA_COMPRAS
-			||  activity == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS
-			||  activity == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE
-			){
-		
-			form.setValue("statusContrato","");
-		
+	else if (  activity == VERIFICAR_ASSINATRA_HOSPITALIDADE ||  activity == VERIFICAR_ASSINATRA_COMPRAS
+			||  activity == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS ||  activity == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
+
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -183,6 +174,19 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
+	}
+	
+	else if (activity == SOLICITACAO_CONTRATO_HOSPITALIDADE ||  activity == SOLICITACAO_CONTRATO_COMPRAS ){
+				form.setValue("statusContrato","");
+				var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+			    var mapaForm = new java.util.HashMap();
+			    mapaForm = form.getCardData();
+			    var it = mapaForm.keySet().iterator();
+			     
+			    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+			        var key = it.next();
+			        form.setEnabled(key, habilitar);
+			    }
 	}
 
 
