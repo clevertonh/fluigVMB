@@ -179,6 +179,16 @@ function validateForm(form){
     }
 
     
+    function existeGrupo(usuario){
+   		var constraint = new Array();
+   		constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", usuario, usuario, ConstraintType.MUST));
+   		constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "RH", "RH", ConstraintType.MUST));
+   		var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
+   		return dataset.rowsCount > 0;
+   	}
+    
+    
+    
     function retornaEmailUsuario(userId){
    	 var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", userId, userId, ConstraintType.MUST));
@@ -358,14 +368,7 @@ function validateForm(form){
                        throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma compra.";
 
                    }
-               } 
-               else {                	
-            	   if (atividade == "E010101" ) {
-                	   throw "Você não pode usar uma atividade de folha  para custear uma compra.";
-
-                   }
-              
-                  }
+               }           
            }
      }
 	

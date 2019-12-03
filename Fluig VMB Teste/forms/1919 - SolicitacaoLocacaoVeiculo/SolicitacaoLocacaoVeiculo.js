@@ -549,7 +549,7 @@ function removedZoomItem(removedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
-    var SERVICO = "txtproduto";
+    var TIPO_VEICULO = "txtproduto";
     var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
@@ -628,6 +628,14 @@ function removedZoomItem(removedItem) {
 	        removeItens();
 
     }
+    
+    else if (campoZOOM == TIPO_VEICULO) {
+    	$('#codigoProduto').val("");
+    	 reloadZoomFilterValues("txtproduto", "FLUIG," + "6");
+    	    		
+    } 
+    
+    
     else if (campoZOOM == LOCACAO_ANTERIOR){
     			apagaLocacaoAnterior();
        

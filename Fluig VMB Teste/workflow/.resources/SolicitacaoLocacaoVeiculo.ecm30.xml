@@ -1926,6 +1926,9 @@
       	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
          }&#xd;
+      	 else {&#xd;
+	     	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação excluida do sistema Protheus.&quot;);&#xd;
+	        }&#xd;
       	  &#xd;
     }&#xd;
      else if (ativAtual == FINALIZAR){&#xd;

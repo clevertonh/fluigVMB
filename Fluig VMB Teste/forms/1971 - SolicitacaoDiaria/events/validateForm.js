@@ -50,16 +50,19 @@ function validateForm(form){
 
      
      if(activity == ABERTURA  || activity == CORRIGIR){
+    	 if (activity == APROVACAO){
+    	  	 if (form.getValue("beneficiario") == null || form.getValue("beneficiario") == "" ) {
+                 throw "O nome do beneficiário que irá receber as diárias não foi selecionado.";
 
-    	 if (form.getValue("beneficiario") == null || form.getValue("beneficiario") == "" ) {
-             throw "O nome do beneficiário que irá receber as diárias não foi selecionado.";
+             }
+        	 
+        	 if (form.getValue("cpfbeneficiario") == null || form.getValue("cpfbeneficiario") == "" ) {
+                 throw "O campo CPF não foi preenchido. Por favor, entre em contato com o setor de Sistemas através de chamado.";
 
-         }
-    	 
-    	 if (form.getValue("cpfbeneficiario") == null || form.getValue("cpfbeneficiario") == "" ) {
-             throw "O campo CPF não foi preenchido. Por favor, entre em contato com o setor de Sistemas através de chamado.";
+             }
+    	 }
 
-         }
+  
     	 
       	 
     	 
@@ -88,9 +91,26 @@ function validateForm(form){
     	          }
     	    	  
     	    	  if (form.getValue("dtVencimento") == null || form.getValue("dtVencimento") == "" ) {
-    		             throw "Você precisa indicar a data de vencimento do registro.";
+ 		             throw "Você precisa indicar a data de vencimento do registro.";
 
-    		      }
+    	    	  }
+    	    	  
+    	    	  if (form.getValue("tarifa") == null || form.getValue("tarifa") == "" ) {
+    	   	          throw "Você precisa indicar se existe cobrança de tarifa para essa diária.";
+
+    	    	  }
+    	    	  
+    	    	  if (form.getValue("tarifa") == "sim"){
+    	    		  	if (form.getValue("banco") == null || form.getValue("banco") == "" || form.getValue("agencia") == null || 
+    	    		  			form.getValue("agencia") == ""  || form.getValue("contabanco") == null || form.getValue("contabanco") == "" ){
+    	    		  			throw "Você precisa indicar todos os campos referente aos dados bancários";
+    	    		  	}
+    	    		  	if (form.getValue("natureza") == null || form.getValue("natureza") == "" ){
+    	    		  		throw "Você precisa indicar o campo  natureza.";
+    	    		  	}
+    	    		  
+    	    	  }
+    	    	 		
     	 	}
     
     	  
@@ -100,6 +120,8 @@ function validateForm(form){
 	       
  	}
 
+
+     
      
  	//VALIDA SE AS LINHAS FORAM PREENCHIDAS CORRETAMENTE
      function validaLinhasPreenchidas(){
@@ -138,7 +160,6 @@ function validateForm(form){
                } 
                else {                	
                    if (ccusto == null || ccusto == "") {
-                       //    fieldValue = 0;
                        throw "Existem linhas no rateio de pagamento cujo campo centro de custo não foi informado.";
 
                    }
@@ -269,6 +290,14 @@ function validateForm(form){
      }
      
      
+     function existeGrupo(usuario){
+    		var constraint = new Array();
+    		constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", usuario, usuario, ConstraintType.MUST));
+    		constraint.push(DatasetFactory.createConstraint("colleagueGroupPK.groupId", "RH", "RH", ConstraintType.MUST));
+    		var dataset = DatasetFactory.getDataset("colleagueGroup", null, constraint, null);
+    		return dataset.rowsCount > 0;
+    	}
+     
      
      //VALIDA SE FOI INFORMADO ATIVIDADE ESTRUTURAL OU FOLHA E PROIBE USO
      function validaAtividades(){
@@ -280,19 +309,26 @@ function validateForm(form){
             
          if (ccusto == "99990") {             
                    if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
-                       throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear diarias";
+                       throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear diarias.";
 
                    }
                } 
-               else {                	
-            	   if (atividade == "E010101" || atividade == "E020201") {
-                	   throw "Você não pode usar uma atividade de folha nem estrutural para custear diarias";
+               else { 
+            	   //verifica se usuario logado faz parte do grupo de RH, se nao fizer, entra no IF e analisa se a atividade é de folha e capacitacao e nao permite usar atividade
+            	   if(!existeGrupo(usuarioLogado)){
+                	   if (atividade == "E010101") {
+                    	   throw "Você não pode usar uma atividade de folha nem estrutural para custear diarias.";
+
+                       }
+                	   if (atividade == "A450101"){
+                		   throw "Você não pode usar uma atividade de capacitação para custear diarias.";
+                	   }
+            	   }
+            	   
+            	   if (atividade == "E020201") {
+                	   throw "Você não pode usar uma atividade de folha nem estrutural para custear diarias.";
 
                    }
-            	   if (atividade == "A443201"){
-            		   throw "Você não pode usar uma atividade de capacitação para custear diarias.";
-            	   }
-              
                   }
            }
      }
@@ -301,17 +337,12 @@ function validateForm(form){
  	 	 var constraints   = new Array();
 		 constraints.push(DatasetFactory.createConstraint("EMAIL", emailLogado, emailLogado, ConstraintType.MUST));
 		 var dataset = DatasetFactory.getDataset("ds_get_afastado", null, constraints, null);
-		 
-		 log.info("usuario afastado: " + emailLogado);
-		 log.dir(dataset);
-		 
+	
 		 if (dataset.values.length >0 ) {
-			 log.info("Usuario afastado");
 			 return true;
 	        	
 	        }  
 	        else {
-	        	//log.info("Usuario não afastado");
 	        	return false;
 	        }	 
  }

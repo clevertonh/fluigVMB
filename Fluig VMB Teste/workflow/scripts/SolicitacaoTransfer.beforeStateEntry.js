@@ -55,7 +55,7 @@ function beforeStateEntry(sequenceId){
     	 }
     	 
     	 else if (aprovacao =="reprovado"){
-    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada.");
+    		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada.");
     	 }
     	
                        

@@ -61,60 +61,73 @@ function enableFields(form){
 			
 	}
 	else if (activity == APROVACAO){
-			 //set numero da solicitação
-			 form.setValue("solicitacao",getValue('WKNumProces'));
-			 var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-			    var mapaForm = new java.util.HashMap();
-			    mapaForm = form.getCardData();
-			    var it = mapaForm.keySet().iterator();
-			     
-			    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-			        var key = it.next();
-			        form.setEnabled(key, habilitar);
-			    }
-			    
-			 form.setEnabled("aprovacao", true);
-			 form.setEnabled("justificativaReprovacao", true);
-			 form.setEnabled("valor", true);
 			 
-			 //bloqueiaDadosFinanceiro();
+		//set numero da solicitação
+		form.setValue("solicitacao",getValue('WKNumProces'));
 		 
 	}
 	else if (activity == COTACAO){		
-				var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-			    var mapaForm = new java.util.HashMap();
-			    mapaForm = form.getCardData();
-			    var it = mapaForm.keySet().iterator();
-			     
-			    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-			        var key = it.next();
-			        form.setEnabled(key, habilitar);
-			    }
-				 
+		
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
+		 
+	    
+	    
+			form.setEnabled("cnpjcpf", true);
+		    form.setEnabled("razaosocial", true);		    
+		    form.setEnabled("nomefantasia", true);	
+		    form.setEnabled("codigoFornecedor", true);	
+		    form.setEnabled("tipoPessoa", true);	
+		    form.setEnabled("meioPagamento", true);	
+		    form.setEnabled("condicaoPgto", true);	
+		    form.setEnabled("banco", true);
+		    form.setEnabled("agencia", true);
+		    form.setEnabled("contaFornecedor", true);
+		    form.setEnabled("tipoConta", true);
+		    form.setEnabled("valorAdiantado", true);	
+		    form.setEnabled("negociacao", true);
+		    form.setEnabled("condicaoPgto", true);
+		    form.setEnabled("melhorProposta", true);		    
+		    form.setEnabled("justificativaP", true);
+		    form.setEnabled("tipoPJ", true);
+		    form.setEnabled("contatoEmpresa", true);
+		    form.setEnabled("CotacaovalorMensal", true);
+		    form.setEnabled("dtCotacao", true);
+		    form.setEnabled("origem", true);	    
+		    form.setEnabled("Numerocontrato", true);	  
+		    form.setEnabled("revisao", true);
+		    form.setEnabled("filial", true);
+		    form.setEnabled("dtInicioC", true);
+		    form.setEnabled("dtFimC", true);
+		    form.setEnabled("vlcontrato", true);
+		    form.setEnabled("saldoAtual", true);
+		    form.setEnabled("codigoFluig", true);
+		    
+		    form.setEnabled("formapgto", true);
+		    form.setEnabled("definicaoValor", true);
+		    
+		    form.setEnabled("competencia", true);
+		    form.setEnabled("Anocompetencia", true);
+		    
+		    form.setEnabled("comprador", true);
+		    form.setEnabled("emailComprador", true);
+		    
+		   
+			 
+		    form.setValue("comprador",nomeSolicitante);
+			form.setValue("emailComprador",emailSolicitante);
+			 
+			
+		
 				
-			    form.setEnabled("cnpjcpf", true);
-			    form.setEnabled("razaosocial", true);		    
-			    form.setEnabled("nomefantasia", true);	
-			    form.setEnabled("codigoFornecedor", true);	
-			    form.setEnabled("tipoPessoa", true);	
-			    form.setEnabled("meioPagamento", true);	
-			    form.setEnabled("condicaoPgto", true);	
-			    form.setEnabled("banco", true);
-			    form.setEnabled("agencia", true);
-			    form.setEnabled("contaFornecedor", true);
-			    form.setEnabled("tipoConta", true);
-			    form.setEnabled("valorAdiantado", true);	
-			    form.setEnabled("negociacao", true);
-			    form.setEnabled("condicaoPgto", true);
-			    form.setEnabled("melhorProposta", true);		    
-			    form.setEnabled("justificativaP", true);
-			    form.setEnabled("tipoPJ", true);
-			    form.setEnabled("contatoEmpresa", true);
-			    form.setEnabled("CotacaovalorMensal", true);
-			    form.setEnabled("dtCotacao", true);
-			    
-			    form.setValue("comprador",nomeSolicitante);
-				form.setValue("emailComprador",emailSolicitante);
+			   
 		 
 		 
 	    

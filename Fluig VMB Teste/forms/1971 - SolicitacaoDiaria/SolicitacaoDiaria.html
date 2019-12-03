@@ -363,10 +363,11 @@
                                                                            <th class="tableColumn">Data atividade</th>
                                                                            <th class="tableColumn">Tempo Estimado</th>
                                                                            <th class="tableColumn">Tempo refeição</th>
+                                                                           <th class="tableColumn">Custo diario</th>
                                                                            <th class="tableColumn">Atividade</th>
                                                                            <th class="tableColumn">Finalidade</th>
                                                                            <th class="tableColumn">Local</th>
-                                                                           <th class="tableColumn">Custo diario</th>
+                                                                           
                                                                          
                                                                         </tr>
                                                                      </thead>
@@ -396,6 +397,9 @@
                                                                             </div>
                                                                        	    
                                                                            </td>
+                                                                            <td>
+                                                                           		<input class="form-control money" type="number" id="custo" name="custo" style="width:100px;">
+                                                                           </td>
                                                                            <td>                                                    
                                                                               <textArea class="form-control" name="acao" id="acao" maxlength="250" style="width:300px;" placeholder="Descreva os detalhes da atividade"></textArea>
                                                                            </td>
@@ -405,9 +409,7 @@
                                                                            <td>
                                                                            		<textArea class="form-control" name="localAcao" id="localAcao" maxlength="250" style="width:300px;" placeholder="Local de execução da atividade"></textArea>
                                                                            </td>
-                                                                           <td>
-                                                                           		<input class="form-control money" type="number" id="custo" name="custo">
-                                                                           </td>
+                                                                          
                                                                           
                                                                         </tr>
                                                                      </tbody>
@@ -542,11 +544,12 @@
 							                                       	<label>Conta</label>
 							                                       	<input  type="text" name="contabanco" id="contabanco" class="form-control">
 						                                       </div>
-						                                       <div class="form-group col-md-4" id="div_natureza"> 
+						                                       <div class="form-group col-md-3" id="div_natureza"> 
 						                                       					<label>Natureza</label>                                                                                																				
                                                                                  <input
+                                                                                    name="natureza" 
+                                                                                    class="form-control"
                                                                                     type="zoom" 
-                                                                                    name="natureza"
                                                                                     id="natureza" 
                                                                                     data-zoom="{
                                                                                     'displayKey':'CODIGO',
@@ -554,12 +557,8 @@
                                                                                     'maximumSelectionLength':'1',
                                                                                     'placeholder':'Selecione uma natureza',
                                                                                     'fields':[
-                                                                                    {'field':'CODIGO', 'label':'CODIGO'},
-                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true',
-                                                                                    {'field':'BANCO', 'label':'BANCO'},
-                                                                                    {'field':'AGENCIA', 'label':'AGENCIA'},
-                                                                                    {'field':'CONTA', 'label':'CONTA'}}]
-                                                                                    }" />
+                                                                                    {'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+                                                                                    {'field':'DESCRICAO', 'label':'DESCRICAO'}]}" />
                                                            	   </div>
                               	 	</div>
                               	 </div>

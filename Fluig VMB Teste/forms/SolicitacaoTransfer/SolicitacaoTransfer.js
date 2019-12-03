@@ -66,6 +66,14 @@ $(document).ready(function() {
 				dtCotacao.setDate(new Date().toLocaleString());
     }
     
+    else if (ATIVIDADE == FINALIZAR){
+	  	var dtVencimento = FLUIGC.calendar('#dtVencimento', {
+            pickDate: true,
+            pickTime: false,
+            useCurrent: true,
+            minDate: new Date().toLocaleString()
+        });
+}
 
 });
 
@@ -174,6 +182,7 @@ function setSelectedZoomItem(selectedItem) {
   var EVENTO = "dataset_solicitacaoevento";
   var LOCACAO_ANTERIOR ="dataset_solicitacaolocacao"; 
   var FORNECEDOR ="cnpjcpf";
+  var CONTRATO = "Numerocontrato";
   
 
   //Recebe o nome do campo zoom
@@ -186,7 +195,7 @@ function setSelectedZoomItem(selectedItem) {
 
   //compara para verificar se o zoom é o campo centro de custo
   if (linhaPagamento[0] == CCUSTO) {
-  	console.log("---ENTROU AQUI 1 ----");
+  	
       //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
       window[PROJETO + "___" + linhaPagamento[1]].clear();
       window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -198,17 +207,12 @@ function setSelectedZoomItem(selectedItem) {
       $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
 	        if (selectedItem["CODIGO"] != '99990') {
-	        	console.log("---ENTROU AQUI 2 ----");
-	            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
+	        	
 	            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
 	            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 	
 	        } 
-	        else {
-	        	console.log("---ENTROU AQUI 3 ----");
-	            //desabilita zoom que não devem ser preenchidos
-	        	console.log("---desabilita zoom que não devem ser preenchidos---");
-	            console.log(selectedItem["CODIGO"]);
+	        else {	        	
 	            window[PROJETO + "___" + linhaPagamento[1]].disable(false);
 	            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 	
@@ -276,41 +280,49 @@ function setSelectedZoomItem(selectedItem) {
 	    	$("#NcarregaFinan").prop("disabled", false);
 	    }
   }
-  else if (campoZOOM == FORNECEDOR){
-  	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
-		$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
-		$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
+	  else if (campoZOOM == FORNECEDOR){
+	  	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
+			$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
+			$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
+			
+			if (selectedItem["TIPO"] == "JURIDICA"){ 
 		
-		
-		console.log(selectedItem["TIPO"]);  
-		console.log(selectedItem["TIPO_PJ"]);  
-		
-		
-		if (selectedItem["TIPO"] == "JURIDICA"){ 
+	  		document.getElementById("juridica").click();  
+	  	}
+			else if (selectedItem["TIPO"] == "FISICA"){
+				document.getElementById("fisica").click();  
+			}
+			else if (selectedItem["TIPO"] == "FUNCIONARIO"){
+				document.getElementById("fisica").click();  
+			}
+			
+			
+			$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
+			$("#banco").val(selectedItem["BANCO"]);   
+			$("#agencia").val(selectedItem["AGENCIA"]);   
+			$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
+			$("#tipoConta").val(selectedItem["TIPO_CONTA"]);  
+			$("#tipoPJ").val(selectedItem["TIPO_PJ"]);   
+			
+			reloadZoomFilterValues(CONTRATO, "CGC," + selectedItem["CNPJ"]);
+			
+			window[CONTRATO].disable(false);
 	
-  		document.getElementById("juridica").click();  
-  	}
-		else if (selectedItem["TIPO"] == "FISICA"){
-			document.getElementById("fisica").click();  
-		}
-		else if (selectedItem["TIPO"] == "FUNCIONARIO"){
-			document.getElementById("fisica").click();  
-		}
-		
-		//$("#juridica").prop("disabled", true);
-		//$("#fisica").prop("disabled", true);
-		
-		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
-		$("#banco").val(selectedItem["BANCO"]);   
-		$("#agencia").val(selectedItem["AGENCIA"]);   
-		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
-		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());  
-		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());   
-
-
-
-
-}
+	  }
+	  else if (campoZOOM == CONTRATO){
+	  	$("#revisao").val(selectedItem["REVISAO"]);
+	  	$("#dtInicioC").val(selectedItem["DT_INICIO"]);
+	  	$("#dtFimC").val(selectedItem["DT_FIM"]);
+	  	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
+	  	$("#saldoAtual").val(selectedItem["SALDO"]);
+	  	$("#filial").val(selectedItem["FILIAL"]);
+	  	$("#codigoFluig").val(selectedItem["ID_FLUIG"]);
+	  	
+	  	
+	  	//PEGA ID DO FLUIG E BUSCAR FORMULARIO
+	  	//retornaSolicitacaoContratacaoServico(selectedItem["ID_FLUIG"]);
+	    	
+	  }
   
   
 }
@@ -337,12 +349,13 @@ function removedZoomItem(removedItem) {
     var ALOCACAO = "alocacao";
     var RATEIO = "rateioconfigurado";
     var ITEMRATEIO ="rateio";
-    var SERVICO = "txtproduto";
+    var TIPO_VEICULO = "txtproduto";
     var PRODUTO ="codigoProduto";
     var CONTA = "contacontabil";
     var EVENTO ="dataset_solicitacaoevento";
     var LOCACAO_ANTERIOR ="dataset_solicitacaolocacao"
     var FORNECEDOR ="cnpjcpf";
+    var CONTRATO = "Numerocontrato";
     
     
 
@@ -353,7 +366,7 @@ function removedZoomItem(removedItem) {
     var linhaPagamento = campoZOOM.split('___');
  
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---REMOVEU AQUI 1----");
+    	
         //limpa todos os campos do pagamento          
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[PROJETO + "___" + linhaPagamento[1]].clear();
@@ -425,9 +438,16 @@ function removedZoomItem(removedItem) {
 
     }
     
+    else if (campoZOOM == TIPO_VEICULO) {
+    	$('#codigoProduto').val(""); 
+    	reloadZoomFilterValues("txtproduto", "FLUIG," + "12");
+    	 
+    	    		
+} 
+    
+    
     else if (campoZOOM == FORNECEDOR){
-    	$("#fisica").attr('checked', false);
-    	$("#juridica").attr('checked', false);
+    	$("[name='tipoPessoa']").attr('checked', false);
     	$("#razaosocial").val("");  
 		$("#nomefantasia").val("");  		
 		$("#codigoFornecedor").val("");   	
@@ -437,13 +457,42 @@ function removedZoomItem(removedItem) {
 		$("#contaFornecedor").val("");   
 		$("#tipoConta").val("");  
 		$("#tipoPJ").val("");   
+		$("#contatoEmpresa").val("");   
+		window['condicaoPgto'].clear();
+		$("#negociacao").val(""); 
+		$("#valorAdiantado").val(0); 
+		$("#CotacaovalorMensal").val(0); 
+		$("[name='formapgto']").attr('checked', false);
+		$("[name='definicaoValor']").attr('checked', false);
+		$("[name='origem']").attr('checked', false);
+		$("[name='melhorProposta']").attr('checked', false);
+		$("#justificativaP").val(""); 
+		$("#competencia").val(""); 
+		$("#Anocompetencia").val(""); 
 		
 		
-		//$("#juridica").prop("disabled", false);
-		//$("#fisica").prop("disabled", false);
+		window[CONTRATO].clear();
+		$("#revisao").val("");
+    	$("#dtInicioC").val("");
+    	$("#dtFimC").val("");
+    	$("#vlcontrato").val("");
+    	$("#saldoAtual").val("");
+    	$("#filial").val("");
+    	$("#codigoFluig").val("");  	
+    	window[CONTRATO].disable(true);
 
 		
     }
+    else if (campoZOOM == CONTRATO){
+    	$("#revisao").val("");
+    	$("#dtInicioC").val("");
+    	$("#dtFimC").val("");
+    	$("#vlcontrato").val("");
+    	$("#saldoAtual").val("");
+    	$("#filial").val("");
+    	$("#codigoFluig").val("");
+      	
+     }
 
 
 }
