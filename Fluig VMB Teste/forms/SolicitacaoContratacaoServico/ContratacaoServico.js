@@ -348,7 +348,7 @@ function doFormTotal() {
          }
      });
     
-    $("#CotacaovalorMensal").val(mensal);
+    $("#CotacaovalorMensal").val(total);
      
     $("#CotacaovalorAnual").val(total);
     
