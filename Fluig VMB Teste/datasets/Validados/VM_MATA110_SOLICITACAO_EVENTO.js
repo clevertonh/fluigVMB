@@ -8,6 +8,7 @@ function createDataset(fields, constraints, sortFields) {
 	var itens = new Array();
 	var documentId;
 	var emailcomprador;
+	var acao = 3;
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -52,6 +53,7 @@ function createDataset(fields, constraints, sortFields) {
         					            timeoutService: '360', // segundos
         					            params : {
         					            	PROCESSO : '' + 7 + '' ,
+        					            	ACAO: '' + acao + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

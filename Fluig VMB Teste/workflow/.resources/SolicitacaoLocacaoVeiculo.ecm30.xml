@@ -1074,6 +1074,18 @@
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>SolicitacaoLocacaoVeiculo</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>36</version>
+        <sequence>53</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;&quot;</condition>
+      <destinationSequenceId>59</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoLocacaoVeiculo</processId>
         <expressionOrder>1</expressionOrder>
         <version>36</version>
         <sequence>57</sequence>

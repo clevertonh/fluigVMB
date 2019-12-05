@@ -142,6 +142,9 @@ function enableFields(form){
 	    
 	    
 	    form.setEnabled("valido", true);
+	    form.setEnabled("justificativaRH", true);
+	    
+	    
 	
 	    
 	    

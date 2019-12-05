@@ -9,6 +9,7 @@ function createDataset(fields, constraints, sortFields) {
 	var emailcomprador;
 	var tipoViagem;
 	var documentId;
+	var acao = 3;
 	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
@@ -107,6 +108,7 @@ function createDataset(fields, constraints, sortFields) {
         					            timeoutService: '420', // segundos
         					            params : {
         					            	PROCESSO : '' + 1 + '' ,
+        					            	ACAO: '' + acao + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

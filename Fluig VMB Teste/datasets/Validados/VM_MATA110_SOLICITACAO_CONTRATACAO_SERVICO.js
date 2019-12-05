@@ -13,6 +13,10 @@ function createDataset(fields, constraints, sortFields) {
 	var acao = 3;
 	
 	
+	 //dataset.addRow(new Array("SUCESSO"));	
+	 //return dataset;
+	
+	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitação NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {     		
@@ -38,18 +42,35 @@ function createDataset(fields, constraints, sortFields) {
         					 
         					 
         					 try {
+        						  var c3 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
+          						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoContratacaoServicoProdutos", null, new Array(c3), null);
+          						  
+        					 if (datasetProdutos.rowsCount > 0){
+        						  for (var a=0; a<datasetProdutos.rowsCount;a++){
+            							 aItemServico.push(addItemCompra(
+            									 datasetProdutos.getValue(a,"COD_PRODUTO"),
+            									 datasetProdutos.getValue(a,"SOLICITACAO"),
+            									 datasetProdutos.getValue(a,"QUANTIDADE"),								
+            									 datasetProdutos.getValue(a,"VALOR_EMPENHADO")  
+            									 ));       						        							
+             						 }
+        					 }
+        					 else {
+        						 	if (solicitacao.getValue(0,"codigoProduto") != null && solicitacao.getValue(0,"codigoProduto") != ""){
+        						 		aItemServico.push(addItemCompra(
+            						 			solicitacao.getValue(0,"codigoProduto"),
+            						 			codSolicitacao,
+            						 			1,
+            						 			solicitacao.getValue(0,"valor")
+            						 			)); 
+                					 
+        						 	}        						 	
+        					 }
         						 
-       						  var c3 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
-       						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoContratacaoServicoProdutos", null, new Array(c3), null);
+       				
        						  
-       						  for (var a=0; a<datasetProdutos.rowsCount;a++){
-       							 aItemServico.push(addItemCompra(
-       									 datasetProdutos.getValue(a,"COD_PRODUTO"),
-       									 datasetProdutos.getValue(a,"SOLICITACAO"),
-       									 datasetProdutos.getValue(a,"QUANTIDADE"),								
-       									 datasetProdutos.getValue(a,"VALOR_EMPENHADO")  
-       									 ));       						        							
-        						 }
+       						  
+       						  
        						 
        						 
        					 }
@@ -87,7 +108,8 @@ function createDataset(fields, constraints, sortFields) {
         					             mediaType: 'application/json'
         					          }
         					        }
-        					              						        
+        					            
+        					
         					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
         					        var obj = JSON.parse(vo.getResult());
         					         					        

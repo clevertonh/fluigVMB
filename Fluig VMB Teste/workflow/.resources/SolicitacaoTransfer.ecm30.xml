@@ -702,7 +702,7 @@
       <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -1070,6 +1070,18 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp;( hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;MEI&quot; || hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;ME&quot;  ) </condition>
       <destinationSequenceId>30</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>14</version>
+        <sequence>26</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;&quot;</condition>
+      <destinationSequenceId>28</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>

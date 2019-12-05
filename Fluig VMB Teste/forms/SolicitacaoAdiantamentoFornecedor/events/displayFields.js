@@ -28,7 +28,7 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("_prazoaprovacao", false); 
 	 form.setVisibleById("_prazoaprovacaoDIR", false);
 	 
-	 form.setVisibleById("div_contrato", false);
+	 //form.setVisibleById("div_contrato", false);
 	 
 	 
 		
