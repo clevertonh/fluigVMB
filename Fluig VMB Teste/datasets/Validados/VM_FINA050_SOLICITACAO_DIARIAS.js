@@ -92,9 +92,7 @@ function createDataset(fields, constraints, sortFields) {
 					          }
 					        }
 						        
-					        log.info("integração diarias");
-					        log.dir(data);
-					        
+						        
 					        var vo = clientService.invoke(JSON.stringify(data));
 					        var obj = JSON.parse(vo.getResult());
 				         

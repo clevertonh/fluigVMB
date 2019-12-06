@@ -13,8 +13,8 @@ function createDataset(fields, constraints, sortFields) {
 	var acao = 3;
 	
 	
-	 //dataset.addRow(new Array("SUCESSO"));	
-	 //return dataset;
+	 dataset.addRow(new Array("SUCESSO"));	
+	 return dataset;
 	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitação NA POSIÇÃO 0 e do tipo MUST
@@ -32,6 +32,19 @@ function createDataset(fields, constraints, sortFields) {
            		var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);            		        	
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesContratacaoServicoDadosPagamento", null, new Array(c2), null);    				  
     	    
+            	
+          		for (var a=0; a<constraints.length; a++){
+        			if (constraints[a].fieldName == "comprador"){
+            			emailcomprador = constraints[a].initialValue;
+            		}  
+        			if (constraints[a].fieldName == "acao"){
+        				acao = constraints[a].initialValue;
+            		} 
+        		}
+        	 
+            	
+            	
+            	
         					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);

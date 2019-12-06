@@ -92,10 +92,7 @@ function createDataset(fields, constraints, sortFields) {
         					          }
         					        }
  
-        					        log.info("RATEIO CONFIGURADO");
-        					        log.dir(aRateio);
-        					        
-        					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
+        						        var vo = clientService.invoke(JSON.stringify(data));        		        					        
         		        					        var obj = JSON.parse(vo.getResult());
         		        					         					        
         		        					        if(vo.getResult()== null || vo.getResult().isEmpty()){

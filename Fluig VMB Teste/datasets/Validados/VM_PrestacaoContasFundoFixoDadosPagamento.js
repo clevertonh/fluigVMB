@@ -16,13 +16,19 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("SOLICITACAO");
    
     
-    //dataset interno
-    var constraintsActive = new Array();
-    constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
-    var datasetPrincipal = DatasetFactory.getDataset("VM_PrestacaoContasFundoFixo", null, constraintsActive, null);
+
     
     if((constraints!==null && constraints.length) && constraints[0].fieldName != 'sqlLimit'){ //se tiver constraint filtra
-        if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
+        if(constraints[0].constraintType==ConstraintType.MUST  && constraints[0].fieldName == "documentid") { // implementação somente para o MUST
+        	
+            //dataset interno
+            var constraintsActive = new Array();
+            constraintsActive.push(DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST));
+            constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
+            var datasetPrincipal = DatasetFactory.getDataset("VM_PrestacaoContasFundoFixo", null, constraintsActive, null);
+        	
+        	
+        	
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");
                 var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
@@ -37,10 +43,7 @@ function createDataset(fields, constraints, sortFields) {
                 	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
                  }
             	
-           	
-            	
-            	log.info("-----RETORNO CONTRAINT 20:45------");
-            	log.dir(constraints);
+
             	if(constraints[0].initialValue==datasetPrincipal.getValue(a,constraints[0].fieldName)){ 
             		//log.info("-----RETORNO CONTRAINT 21:08------");
             		

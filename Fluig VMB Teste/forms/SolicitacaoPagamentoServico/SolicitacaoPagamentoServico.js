@@ -588,6 +588,66 @@ function retornaSolicitacaoContratacaoServico(codigoFluig){
 }
 
 
+function clickFinanceiroSolicitacao(){
+	    if (document.getElementById("carregaFinanSolicitacao").checked == true){
+	    	var codigoFluig = $("#codigoFluig").val();
+			
+	    	
+	    	if (codigoFluig != "" && codigoFluig != null){
+
+				var constraints = new Array();
+			    constraints.push(DatasetFactory.createConstraint("solicitacao", codigoFluig, codigoFluig, ConstraintType.MUST));
+			    var dataset = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraints, null);
+
+
+			    //VERIFICA SE FOI VINCULADO A UMA SOLICITAÇÃO DE EVENTO
+			    if (dataset.values[0]["dataset_solicitacaoevento"] != null && dataset.values[0]["dataset_solicitacaoevento"] != ''){
+			    	window["dataset_solicitacaoevento"].setValue(dataset.values[0]["dataset_solicitacaoevento"]);
+			    	
+			    	//VERIFICA SE O CAMPO DE DADOS FINANCEIRO DO EVENTO ESTA MARCADO COMO SIM
+			    	if (dataset.values[0]["FinanEvento"]  == "sim"){	
+			    		document.getElementById("carregaFinan").click();  
+				    	//CHAMA FUNCAO DE EVENTO QUE PREENCHE OS ITENS FINANCEIRO
+				    	buscaDadosFinanceiroEvento(dataset.values[0]["dataset_solicitacaoevento"]);
+
+			    	}
+			    	else {
+			    		$("#carregaFinan").prop("disabled", false);
+			    		$("#NcarregaFinan").prop("disabled", false);
+			    	}
+			    
+			    	
+			    }
+			    else {
+					 if (dataset.values[0]["rateioconfigurado"] != null && dataset.values[0]["rateioconfigurado"] != '') {
+					    	//set codigo do rateio no campo zoom. Isso preencherá automaticamente as informações financeiras
+					    	window["rateioconfigurado"].setValue(dataset.values[0]["rateioconfigurado"]);
+					  }
+					 
+					 
+					constraints = new Array();
+				    constraints.push(DatasetFactory.createConstraint("metadata#version", dataset.values[0]["metadata#version"], dataset.values[0]["metadata#version"], ConstraintType.MUST));
+				    constraints.push(DatasetFactory.createConstraint("metadata#id", dataset.values[0]["metadata#id"], dataset.values[0]["metadata#id"], ConstraintType.MUST));
+				    constraints.push(DatasetFactory.createConstraint("tablename", "tableItens", "tableItens", ConstraintType.MUST));
+				    dataset = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraints, null);
+				    
+				    if (dataset != null && dataset.values.length > 0) {
+				        adicionaItem(dataset.values);
+				    }
+			    }
+			    
+	    	}
+
+
+	    }
+	    
+	    else if (document.getElementById("NcarregaFinanSolicitacao").checked == true) {
+					window['rateioconfigurado'].clear();
+					window['rateioconfigurado'].disable(false);		
+					apagaRateio();
+	    }
+			
+}
 
 function adicionaItem(itens) {	
     for (var i in itens) {
