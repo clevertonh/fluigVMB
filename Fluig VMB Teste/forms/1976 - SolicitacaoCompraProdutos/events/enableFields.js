@@ -44,6 +44,7 @@ function enableFields(form){
 		 form.setEnabled("rateioconfigurado", false);		 
 		 form.setEnabled("dataset_solicitacaoevento", false);
 		 form.setEnabled("FinanEvento", false);
+		 form.setEnabled("solicitacaocompraanterior", false);
 		 bloqueiaDadosFinanceiro();
 		 bloqueiaDadosProduto();
 	}
