@@ -299,13 +299,13 @@ function setSelectedZoomItem(selectedItem) {
     }
     
     else if (campoZOOM == CONTRATO){
-    	$("#revisao").val(selectedItem["REVISAO"]);
-    	$("#dtInicioC").val(selectedItem["DT_INICIO"]);
-    	$("#dtFimC").val(selectedItem["DT_FIM"]);
-    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
-    	$("#saldoAtual").val(selectedItem["SALDO"]);
-    	$("#filial").val(selectedItem["FILIAL"]);
-    }
+	    	$("#revisao").val(selectedItem["REVISAO"]);
+	    	$("#dtInicioC").val(selectedItem["DT_INICIO"]);
+	    	$("#dtFimC").val(selectedItem["DT_FIM"]);
+	    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
+	    	$("#saldoAtual").val(selectedItem["SALDO"]);
+	    	$("#filial").val(selectedItem["FILIAL"]);
+	    }
     
 }
 
@@ -394,12 +394,12 @@ function fnCustomDeleteRateio(oElement) {
 }
 
 function adicionaLinha() {
-    var indice = wdkAddChild('tableItens');
-    window["txtprojeto___" + indice].disable(true);
-    window["txtatividade___" + indice].disable(true);
-    window["txtcategoria___" + indice].disable(true);
-    window["txtfontefinanciamento___" + indice].disable(true);
-    window["txtareaestrategica___" + indice].disable(true);
+	    var indice = wdkAddChild('tableItens');
+	    window["txtprojeto___" + indice].disable(true);
+	    window["txtatividade___" + indice].disable(true);
+	    window["txtcategoria___" + indice].disable(true);
+	    window["txtfontefinanciamento___" + indice].disable(true);
+	    window["txtareaestrategica___" + indice].disable(true);
 }
 
 function removedZoomItem(removedItem) {
@@ -457,11 +457,10 @@ function removedZoomItem(removedItem) {
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
 
     } else if (linhaPagamento[0] == ATIVIDADE) {
-//      var loc = document.getElementById(LOCALIZACAO + "___" + linhaPagamento[1]).value = "";
-
         $('#'+LOCALIZACAO+ "___" + linhaPagamento[1]).val("");
         $('#'+ALOCACAO + "___" + linhaPagamento[1]).val("");
         $('#'+ITEMRATEIO + "___" + linhaPagamento[1]).val("");
+   
 
     }
 
@@ -469,7 +468,7 @@ function removedZoomItem(removedItem) {
 
     else if (campoZOOM == RATEIO) {
         //removeItensRateio();
-    	console.log("---REMOVEU AQUI 6----");
+    //	console.log("---REMOVEU AQUI 6----");
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -482,11 +481,14 @@ function removedZoomItem(removedItem) {
 
 
     else if (linhaPagamento[0] == FONTE) {
-  	   $('#' + CONTA + "___" + linhaPagamento[1]).val("");
+    			$('#' + CONTA + "___" + linhaPagamento[1]).val("");  	       		  	   
+  	   
      }
     
+
+    
     else if (linhaPagamento[0] == PRODUTO) {   	
-     	$('#codigoProduto' + "___" + linhaPagamento[1]).val("");    
+    		$('#codigoProduto' + "___" + linhaPagamento[1]).val("");    
     	
     }
     
@@ -698,11 +700,11 @@ function addAnos(data, anos) {
 //carrega itens do rateio para informações de pagamento
 function buscaItensRateio(rateio) {
 
-	var constraints = new Array();
-  constraints.push(DatasetFactory.createConstraint("RATEIO", rateio, rateio, ConstraintType.MUST));	
-	var dataset = DatasetFactory.getDataset("ds_get_ItensRateio", null, constraints, null);
-	
-	adicionaItensRateio(dataset.values) ;
+		var constraints = new Array();
+	  constraints.push(DatasetFactory.createConstraint("RATEIO", rateio, rateio, ConstraintType.MUST));	
+		var dataset = DatasetFactory.getDataset("ds_get_ItensRateio", null, constraints, null);
+		
+		adicionaItensRateio(dataset.values) ;
 
 }
 

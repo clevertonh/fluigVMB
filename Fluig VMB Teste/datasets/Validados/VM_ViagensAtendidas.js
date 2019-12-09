@@ -99,7 +99,7 @@ function createDataset(fields, constraints, sortFields) {
 		         var data_aprovacao =  getDtAprovacao(empresa,solicitacaoId);		 	         
 			      
 		         //BUSCAR APROVADOR		         	    	 
-		         var Idaprovador =  getIdAprovador(empresa, solicitacaoId)
+		         //var Idaprovador =  getIdAprovador(empresa, solicitacaoId)
 		            
 		       //BUSCAR NOME DO APROVADOR    	 
 		        // var aprovador =  getNomeAprovador(empresa,Idaprovador);

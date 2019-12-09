@@ -83,12 +83,7 @@ function getConstraints(constraints, field){
 	for(var i=0;i<constraints.length;i++){
 		if(constraints[i].fieldName == field ){
 			
-			log.info("--------------DATASET CATEGORIA-------------");
-			log.info("CAMPO: "+field);
-			log.info("CONSTRAINTS: "+constraints[i]);
-			log.info("INFORMACAO DIGITADA: "+constraints[i].initialValue);
-							
-			
+					
 			
 			return constraints[i].initialValue;
 		}

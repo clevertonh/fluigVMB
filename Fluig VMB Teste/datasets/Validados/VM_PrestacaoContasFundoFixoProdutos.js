@@ -24,13 +24,17 @@ function createDataset(fields, constraints, sortFields) {
    // constraints.push(DatasetFactory.createConstraint("documentid", "1874", "1874", ConstraintType.MUST));     
 	 
     
-    //dataset interno
-    var constraintsActive = new Array();
-    constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
-    var datasetPrincipal = DatasetFactory.getDataset("VM_PrestacaoContasFundoFixo", null, constraintsActive, null);
+  
     
     if(constraints!==null && constraints.length){ //se tiver constraint filtra
         if(constraints[0].constraintType==ConstraintType.MUST) { // implementação somente para o MUST
+        	 var constraintsActive = new Array();
+  		    constraintsActive.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST));
+  		    constraintsActive.push(DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST));
+  		    var datasetPrincipal = DatasetFactory.getDataset("VM_PrestacaoContasFundoFixo", null, constraintsActive, null);
+  			
+  		    
+  		    
             for(var a=0;a < datasetPrincipal.rowsCount;a++){
             	var documentId = datasetPrincipal.getValue(a, "metadata#id");
                 var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	

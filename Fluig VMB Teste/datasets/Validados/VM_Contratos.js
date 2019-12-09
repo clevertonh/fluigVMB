@@ -50,7 +50,7 @@ function createDataset(fields, constraints, sortFields) {
 	            serviceCode : 'REST FLUIG',
 	            endpoint : webservice,
 	            method : 'get',   
-	            timeoutService: '240'        	  
+	            timeoutService: '360'        	  
 	        }
    
    var vo = clientService.invoke(JSON.stringify(data));
@@ -62,7 +62,7 @@ function createDataset(fields, constraints, sortFields) {
 	    	            serviceCode : 'REST FLUIG 2',
 	    	            endpoint :  webservice,
 	    	            method : 'get',    
-	    	            timeoutService: '240'       	  
+	    	            timeoutService: '360'       	  
 	    	        }   	
 	            vo = clientService.invoke(JSON.stringify(data));
 	            

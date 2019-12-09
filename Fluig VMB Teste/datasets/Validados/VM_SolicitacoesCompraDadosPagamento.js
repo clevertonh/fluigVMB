@@ -77,57 +77,7 @@ function createDataset(fields, constraints, sortFields) {
             	
             }
         }
-    } 
-    /*
-    else { // se não tiver constraint adiciona todas as linhas
-    	for(var a=0;a< datasetPrincipal.rowsCount;a++){
-    		
-        	var documentId = datasetPrincipal.getValue(a, "metadata#id");
-            var documentVersion = datasetPrincipal.getValue(a, "metadata#version");            	
-        	var empresa = datasetPrincipal.getValue(a, "companyid");            	
-        	var cardindexdocumentid = datasetPrincipal.getValue(a, "metadata#card_index_id");
-        	
-        	 var historicoFormulario = retornaSolicitacao(cardindexdocumentid,documentId,empresa);
-         	
-        	 var solicitacao;
-                
-        	 if (historicoFormulario.rowsCount > 0){
-            	 solicitacao = historicoFormulario.getValue(0,"workflowProcessPK.processInstanceId");
-             }
-       		
-        	//Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
-            var c1 = DatasetFactory.createConstraint("tablename", "tableItens" , "tableItens", ConstraintType.MUST);
-            var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);
-            var c3 = DatasetFactory.createConstraint("metadata#version", documentVersion, documentVersion, ConstraintType.MUST);
-            var constraintsFilhos = new Array(c1, c2, c3);
-
-            //Busca o dataset
-            var datasetFilhos = DatasetFactory.getDataset("VM_SolicitacoesCompras", null, constraintsFilhos, null);
-            for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-           	 	
-             	//Adiciona os valores nas colunas respectivamente.
-                dataset.addRow(new Array(
-                        documentId,
-                        datasetFilhos.getValue(j, "txtcentrocusto"),
-                        datasetFilhos.getValue(j, "txtprojeto"),
-                        datasetFilhos.getValue(j, "txtcategoria"),
-                        datasetFilhos.getValue(j, "txtfontefinanciamento"),
-                        datasetFilhos.getValue(j, "txtatividade"),
-                        datasetFilhos.getValue(j, "txtareaestrategica"),
-                        datasetFilhos.getValue(j, "alocacao"),
-                        datasetFilhos.getValue(j, "localizacao"),
-                        datasetFilhos.getValue(j, "contacontabil"),
-                        datasetFilhos.getValue(j, "percentual"),
-                        solicitacao
-                ));
-            }
-        	
-    		//itensPagamento(documentId,documentVersion);    
-    		//dataset.addRow(new Array(documentId));
-        }
-    }
-
- */
+    }   
     
     return dataset;
 }

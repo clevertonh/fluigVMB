@@ -37,7 +37,7 @@ function createDataset(fields, constraints, sortFields) {
 	    	    //log.dir(itensSolicitacao);
 
 				 try {
-					//chama função que monta array de objetos dos itens do rateio					 
+ 					 //chama função que monta array de objetos dos itens do rateio					 
 					 aRateio = preencheRateio(itensSolicitacao);
 				 }
 				 catch (erro){
@@ -71,7 +71,7 @@ function createDataset(fields, constraints, sortFields) {
 					        	serviceCode : 'REST FLUIG',
 					            endpoint : '/F_FUNDOFX',
 					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-					            timeoutService: '100', // segundos
+					            timeoutService: '360', // segundos
 					            params : {
 					            	DATAPAGTO : '' + solicitacao.getValue(0,"dtNota") + '',
 					            	TIPOFFX : '' + tipoFFX +'',
