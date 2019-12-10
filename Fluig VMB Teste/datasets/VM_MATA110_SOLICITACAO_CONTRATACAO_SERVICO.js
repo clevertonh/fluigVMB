@@ -11,6 +11,7 @@ function createDataset(fields, constraints, sortFields) {
 	var produto;
 	var emailcomprador ="";
 	var acao = 3;
+	var filial ='02';
 	
 	
 	// dataset.addRow(new Array("SUCESSO"));	
@@ -41,6 +42,10 @@ function createDataset(fields, constraints, sortFields) {
         				acao = constraints[a].initialValue;
             		} 
         		}
+          		
+          		if (solicitacao.getValue(0,"filialSC") != ""){
+          			 filial = solicitacao.getValue(0,"filialSC");
+          		}
         	 
             	
             	
@@ -105,6 +110,7 @@ function createDataset(fields, constraints, sortFields) {
         					            params : {
         					            	PROCESSO : '' + 11 + '' ,
         					            	ACAO: '' + acao + '',
+        					            	FILIALSC: '' + filial + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

@@ -95,6 +95,7 @@ function enableFields(form){
 		    form.setEnabled("tipoPJ", true);
 		    form.setEnabled("origem", true);
 		    form.setEnabled("contato", true);
+		    form.setEnabled("filialSC", true);
 		    
 		    form.setEnabled("CotacaovalorMensal", true);
 		    form.setEnabled("CotacaovalorAnual", true);

@@ -67,17 +67,24 @@ function validateForm(form){
 				validaAtividades();
 				
 			}
+			else {
+				 var indexes = form.getChildrenIndexes("tableItens");  
+				 
+				 if (indexes.length > 0){
+					 throw "Você marcou que os dados de centro de custo serão informados apenas no pagamento. Remova os dados financeiros.";
+				 }
+			}
 		 
-		
+			if (form.getValue("carregaCusto") == "pagamento"){
+					if (form.getValue("definicaoValor") == "fixo"){
+						throw "O campo de informar centro de custo apenas no pagamento só pode ser usado em conjunto com pagamentos por demanda.";
+					}
+				 
+			}
+			
 		validaCamposPreenchidos();
 		
-		
-		
-		if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("valorAnual"))){
-			 throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
-		}
-		
-		
+			
 	}
    
 	else if (activity == APROVACAO_GESTOR){
@@ -105,13 +112,24 @@ function validateForm(form){
 			validaAtividades();
 			
 		}
+		else {
+			 var indexes = form.getChildrenIndexes("tableItens");  
+			 
+			 if (indexes.length > 0){
+				 throw "Você marcou que os dados de centro de custo serão informados apenas no pagamento. Remova os dados financeiros.";
+			 }
+		}
 	
+		//convert data de inicio do serviço
+		var dataInicio = convertStringToData(form.getValue("dtInicio"));
+		var dataAtual = new Date();
+		
+		if (dataAtual < dataInicio){
+			throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
+		}
+		
 		validaCamposPreenchidos();
 		
-		
-		if (parseFloat(form.getValue("saldoAtual")) <=  parseFloat(form.getValue("valorAnual"))){
-			 throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
-		}
 	
 	}
 	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){
@@ -132,18 +150,32 @@ function validateForm(form){
 				throw "É preciso informar o motivo por não estar escolhendo o fornecedor de menor valor.";
 			}
 		}
-		
-		
-		
+				
 		if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorAnual"))){
 			throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
 		}
+		
+		if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){
+			//convert data fim do serviço
+			var dataFinal = convertStringToData(form.getValue("dtFim"));
+			var dtVigencia = convertStringToData(form.getValue("dtFimC"));
+			
+			if (dtVigencia < dataFinal){
+				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
+			}
+		}
+	
+		
 		
 		
 	}
 	else if (activity ==  VALIDAR_RH){
 			if (form.getValue("valido") == "" || form.getValue("valido") == null ){
 				throw "Você precisa indicar se esse fornecedor esta apto para prestar serviço segundo a legislação trabalhista.";
+			}
+			
+			if (form.getValue("justificativaRH") == "" || form.getValue("justificativaRH") == null ){
+				throw "Você precisa informar o campo de Observação!";
 			}
 	}
 
