@@ -54,7 +54,7 @@ function createDataset(fields, constraints, sortFields) {
 	            serviceCode : 'REST FLUIG',
 	            endpoint : webservice,
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
-	            timeoutService: '100' // segundos	            	  
+	            timeoutService: '360' // segundos	            	  
 	        }
     
     var vo = clientService.invoke(JSON.stringify(data));
@@ -66,7 +66,7 @@ function createDataset(fields, constraints, sortFields) {
 	    	            serviceCode : 'REST FLUIG 2',
 	    	            endpoint : webservice,
 	    	            method : 'get',// 'delete', 'patch', 'put', 'get'     
-	    	            timeoutService: '100' // segundos	            	  
+	    	            timeoutService: '360' // segundos	            	  
 	    	        }   	
 	            vo = clientService.invoke(JSON.stringify(data));
 	            
@@ -95,10 +95,10 @@ function createDataset(fields, constraints, sortFields) {
 				var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsApr, null);    	    		
 			
 				if (datasetAprovador.rowsCount > 0){
-					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName"),objdata[i].CDEPART]);
+					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName"),objdata[i].CDEPART,null,null]);
 				}
 				else {
-					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, null,null,objdata[i].CDEPART]);
+					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, null,null,objdata[i].CDEPART,null,null]);
 				}
 			}
 	}

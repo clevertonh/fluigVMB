@@ -592,6 +592,9 @@ function clickFinanceiroSolicitacao(){
 	    if (document.getElementById("carregaFinanSolicitacao").checked == true){
 	    	var codigoFluig = $("#codigoFluig").val();
 			
+	    	window['rateioconfigurado'].clear();
+			window['rateioconfigurado'].disable(false);
+	    	apagaRateio();
 	    	
 	    	if (codigoFluig != "" && codigoFluig != null){
 

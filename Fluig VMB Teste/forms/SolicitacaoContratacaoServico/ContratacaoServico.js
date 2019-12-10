@@ -379,7 +379,7 @@ function fnCustomDeleteProduto(oElement) {
 
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR	){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR || ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){								
 		fnWdkRemoveChild(oElement);	
 
 	}

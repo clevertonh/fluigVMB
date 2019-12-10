@@ -91,12 +91,17 @@ function validateForm(form){
 		            throw "O valor de referencia precisa ser preenchido";
 		        }
 				
+				if (parseFloat(form.getValue("vl_base")) < 0){
+					throw "Valor menor que zero, por favor, verifique.";
+				}
+				
 			}
 			
-			
+	
 			
 			
 		}
+		
 		else {
 			if (form.getValue("produto") == null || form.getValue("produto") == "") {
 	            throw "Se o produto já existe, o mesmo deve ser informado para o usuário.";
