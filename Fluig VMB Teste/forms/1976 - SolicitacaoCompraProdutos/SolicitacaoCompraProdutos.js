@@ -1,5 +1,6 @@
 var infoUser;
 var ABERTURA = 0;
+var INICIAR = 4;
 var APROVACAO =5;
 var CORRIGIR = 15;
 var GERAR_SC = 42;
@@ -84,7 +85,7 @@ var visibilidade = true;
 
 
 function removeItens() {
-	if (ATIVIDADE == ABERTURA ||  ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIAR || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
@@ -97,7 +98,7 @@ function removeItens() {
 
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	|| ATIVIDADE == APROVACAO){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	|| ATIVIDADE == INICIAR || ATIVIDADE == APROVACAO){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -112,7 +113,7 @@ function fnCustomDeleteRateio(oElement) {
 }
 
 function fnCustomDeleteProduto(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIAR || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
 		fnWdkRemoveChild(oElement);
 		
 		//reinicia variavel q controla quantidade de linhas permitidas de itens de produtos

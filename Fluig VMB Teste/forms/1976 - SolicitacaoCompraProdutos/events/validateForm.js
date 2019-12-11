@@ -284,7 +284,7 @@ function validateForm(form){
                var atividade = form.getValue("txtatividade___" + indexes[i]);
             
          if (ccusto == "99990") {             
-                   if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
+                   if (atividade == "P952101" || atividade == "P953101" ) {
                        throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma compra.";
 
                    }
@@ -295,7 +295,7 @@ function validateForm(form){
 
                    }
             	   if (atividade == "A450101"){
-            		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
+            		   throw "Você não pode usar uma atividade de capacitação.";
             	   }
               
                   }

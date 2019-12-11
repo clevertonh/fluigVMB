@@ -14,6 +14,17 @@ function validateForm(form){
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser"); 
 	
+	
+	 //variaveis usadas para validação de linhas repetidas no rateio
+	var aCentroCusto = new Array();
+    var aProjeto	  = new Array();    
+    var aAtividade	  = new Array();
+    var aCategoria	  = new Array();
+    var aFonte	  = new Array();
+    var aArea	  = new Array();
+    
+    
+    
 	//recupera usuario logado
     var usuarioLogado = getValue('WKUser');
     var usuariosubstituto = getValue('WKReplacement');
