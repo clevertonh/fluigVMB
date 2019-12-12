@@ -335,11 +335,15 @@ function doFormTotal() {
     var total = 0;  
     var mensal =0;
     
+    
+
+    
      $("input[id^='vrTotUnit___']").each(function() {
         if ($(this).val()) {
             total += parseFloat($(this).val()); 
         }
     });
+     
      
      
      $("input[id^='vrUnitario___']").each(function() {
@@ -348,7 +352,7 @@ function doFormTotal() {
          }
      });
     
-    $("#CotacaovalorMensal").val(total);
+    $("#CotacaovalorMensal").val(mensal);
      
     $("#CotacaovalorAnual").val(total);
     
