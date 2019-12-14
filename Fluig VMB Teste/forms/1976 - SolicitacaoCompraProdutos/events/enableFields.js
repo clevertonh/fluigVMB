@@ -110,7 +110,7 @@ function enableFields(form){
 		var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 		 
 		  
-		 log.info(dataset.getValue(0, "EMAIL_G"));
+		
 		 return dataset;
 	}
 

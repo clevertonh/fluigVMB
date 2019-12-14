@@ -3,7 +3,9 @@ function validateForm(form){
 	var ACORDO = 4;
 	var FEEDBACK1 = 5;
 	var FEEDBACK2 = 9;
-	var AVALIACAO = 11;
+	var AVALIACAO = 15;
+	var RESULTADO = 11;
+	var MATRICIAL = 20;
 	
 	
 	var activity = getValue('WKNumState');
@@ -37,6 +39,11 @@ function validateForm(form){
       	if (form.getValue("dataAcordo") =="" ) {
       		throw "Data do acordo não foi preenchida pelo sistema, tente novamente mais tarde.";
       	}
+      	
+      	if (email != form.getValue("emailGestorImediato") ){
+      	//	throw "O funcionário selecionado não faz parte de um departamento no qual você seja o responsável. Em caso de dúvidas procure o setor de Recursos Humanos!";
+      	}
+      	
     	
    		var dataAcordo = convertStringToData(form.getValue("dataAcordo"));
    		var dataAtual = new Date();
@@ -79,7 +86,7 @@ function validateForm(form){
 	                   var acao = form.getValue("acao___" + indexes[i]);
 	                   var porque = form.getValue("porque___" + indexes[i]);
 	                   var como = form.getValue("como___" + indexes[i]);
-	                   var competencia = form.getValue("tx_competencia___" + indexes[i]);                
+	                   var competencia = form.getValue("txcompetencia___" + indexes[i]);                
 	         
 	               	} 
 	       		
@@ -98,19 +105,19 @@ function validateForm(form){
 	     
        	   	
        	
-		       	if (form.getValue("campo_1") =="" || form.getValue("campo_1") == null) {
+		       	if (form.getValue("campo1") =="" || form.getValue("campo1") == null) {
 		       		throw "O campo aprendizado e desenvolvimento pessoal não foi preenchido";
 		       	}
-		       	if (form.getValue("campo_2") =="" || form.getValue("campo_2") == null) {
+		       	if (form.getValue("campo2") =="" || form.getValue("campo2") == null) {
 		       		throw "O campo Apoio do líder imediato não foi preenchido.";
 		       	}
-		       	if (form.getValue("campo_3") =="" || form.getValue("campo_3") == null) {
+		       	if (form.getValue("campo3") =="" || form.getValue("campo3") == null) {
 		       		throw "O campo Equilíbrio de vida não foi preenchido.";
 		       	}
-		       	if (form.getValue("campo_4") =="" || form.getValue("campo_4") == null) {
+		       	if (form.getValue("campo4") =="" || form.getValue("campo4") == null) {
 		       		throw "O campo qual o próximo passo de carreira que aspiro alcançar?";
 		       	}
-		       	if (form.getValue("campo_5") =="" || form.getValue("campo_5") == null) {
+		       	if (form.getValue("campo5") =="" || form.getValue("campo5") == null) {
 		       		throw "O campo o que eu posso fazer para alcança-lo e quem mais precisa se envolver?";
 		       	}
     	}
@@ -126,7 +133,7 @@ function validateForm(form){
         for (var i = 0; i < indexes.length; i++) {        
         	var progresso = form.getValue("progresso___" + indexes[i]);
         	var comentarioF = form.getValue("comentarioF___" + indexes[i]);
-            var comoFoiFeito = form.getValue("campo_10___" + indexes[i]);
+            var comoFoiFeito = form.getValue("campo10___" + indexes[i]);
             var comentarioG = form.getValue("comentarioG___" + indexes[i]);
       
             if (progresso =="" || progresso == null) {
@@ -169,16 +176,16 @@ function validateForm(form){
 		}
 		
 
-    	if (form.getValue("campo_6") =="" || form.getValue("campo_6")== null) {
+    	if (form.getValue("campo6") =="" || form.getValue("campo6")== null) {
     		throw "O comentário da linha de aprendizado e desenvolvimento para o primeiro feedback não foi preenchido";
     	}
-    	if (form.getValue("campo_7") =="" || form.getValue("campo_7")== null) {
+    	if (form.getValue("campo7") =="" || form.getValue("campo7")== null) {
     		throw "O comentário da linha de apoio do líder imediato para o primeiro feedback não foi preenchido";
     	}
-    	if (form.getValue("campo_8") =="" || form.getValue("campo_8")== null) {
+    	if (form.getValue("campo8") =="" || form.getValue("campo8")== null) {
     		throw "O comentário da linha de equilibrio e vida para o primeiro feedback não foi preenchido";
     	}
-    	if (form.getValue("campo_9")=="" || form.getValue("campo_9")== null) {
+    	if (form.getValue("campo9")=="" || form.getValue("campo9")== null) {
     		throw "O comentário da linha de qual próximo passo de carreira/o que posso fazer para o primeiro feedback não foi preenchido";
     	}
     	
@@ -186,13 +193,13 @@ function validateForm(form){
 
     	
     }
-    else if (activity == FEEDBACK2){
+    else if (activity == FEEDBACK2 && nextAtv == AVALIACAO){
     	var qtdeMetasValidas =0;
     	var indexes = form.getChildrenIndexes("tableMetas");
     	 for (var i = 0; i < indexes.length; i++) {
-             var comentarioF = form.getValue("campo_15___" + indexes[i]);
-             var comoFoiFeito = form.getValue("campo_16___" + indexes[i]);
-             var comentarioG = form.getValue("campo_17___" + indexes[i]);
+             var comentarioF = form.getValue("campo15___" + indexes[i]);
+             var comoFoiFeito = form.getValue("campo16___" + indexes[i]);
+             var comentarioG = form.getValue("campo17___" + indexes[i]);
              var progresso = form.getValue("progresso2___" + indexes[i]);
              
          	if (progresso =="" || progresso == null) {
@@ -235,24 +242,84 @@ function validateForm(form){
  			 	throw "Você precisa incluir de 3 a 5 metas.";	
  		}
 
-    	if (form.getValue("campo_11") =="" || form.getValue("campo_11") == null) {
+    	if (form.getValue("campo11") =="" || form.getValue("campo11") == null) {
     		throw "O comentário da linha de aprendizado e desenvolvimento para o segundo feedback não foi preenchido";
     	}
-    	if (form.getValue("campo_12") =="" || form.getValue("campo_12") == null) {
+    	if (form.getValue("campo12") =="" || form.getValue("campo12") == null) {
     		throw "O comentário da linha de apoio do líder imediato para o primeiro segundo não foi preenchido";
     	}
-    	if (form.getValue("campo_13") =="" || form.getValue("campo_13") == null) {
+    	if (form.getValue("campo13") =="" || form.getValue("campo13") == null) {
     		throw "O comentário da linha de equilibrio e vida para o primeiro segundo não foi preenchido";
     	}
-    	if (form.getValue("campo_14") =="" || form.getValue("campo_14") == null) {
+    	if (form.getValue("campo14") =="" || form.getValue("campo14") == null) {
     		throw "O comentário da linha de qual próximo passo de carreira/o que posso fazer para o primeiro segundo não foi preenchido";
     	}
     
     	
     }
     
+    else if (activity == AVALIACAO && nextAtv == RESULTADO){
+    	var qtdeMetasValidas =0;
+    	var indexes = form.getChildrenIndexes("tableMetas");
+    	 for (var i = 0; i < indexes.length; i++) {
+             var comentarioF = form.getValue("campo18___" + indexes[i]);
+             var comoFoiFeito = form.getValue("campo19___" + indexes[i]);
+             var comentarioG = form.getValue("campo20___" + indexes[i]);
+             var progresso = form.getValue("progresso3___" + indexes[i]);
+             
+         	if (progresso =="" || progresso == null) {
+         		throw "É necessário indicar o progresso do funcionário para o segundo feedback";
+         	}
+         	else if (progresso !="branco" ){
+         		  if (comentarioF =="" || comentarioF == null) {
+               		throw "É necessário inserir o comentário do funcionário para o segundo feedback";
+               	}
+               	if (comoFoiFeito =="" || comoFoiFeito == null) {
+               		throw "É necessário informar o campo campo isso foi feito para o segundo feedback";
+               	}
+               	if (comentarioG =="" || comentarioG == null) {
+               		throw "É necessário que você insirá o seu comentário como líder do funcionário para o segundo feedback";
+               	}
+         	}
+   
+         
+         
+         	
+     		
+    		if (progresso != 'branco'){
+    			qtdeMetasValidas = qtdeMetasValidas + 1;
+    		}
+    		
+         } 
+    	 
+    	 
+         
+         if (qtdeMetasValidas == 0){
+ 			throw "Você precisa incluir de 3 a 5 metas.";	
+ 		}
+ 			    
+ 		
+ 		if (qtdeMetasValidas <3 ){
+ 			 throw "Você precisa incluir de 3 a 5 metas.";	
+ 		}
+    	
+ 		if (qtdeMetasValidas > 5){
+ 			 	throw "Você precisa incluir de 3 a 5 metas.";	
+ 		}
+
+    	if (form.getValue("campo24") =="" || form.getValue("campo24") == null) {
+    		throw "O comentário da linha de aprendizado e desenvolvimento para o segundo feedback não foi preenchido";
+    	}
+    	if (form.getValue("campo23") =="" || form.getValue("campo23") == null) {
+    		throw "O comentário da linha de apoio do líder imediato para o primeiro segundo não foi preenchido";
+    	}
+    	if (form.getValue("campo22") =="" || form.getValue("campo22") == null) {
+    		throw "O comentário da linha de equilibrio e vida para o primeiro segundo não foi preenchido";
+    	}
+    	if (form.getValue("campo21") =="" || form.getValue("campo21") == null) {
+    		throw "O comentário da linha de qual próximo passo de carreira/o que posso fazer para o primeiro segundo não foi preenchido";
+    	}
     
-    else if (activity == AVALIACAO){
     	
     }
     

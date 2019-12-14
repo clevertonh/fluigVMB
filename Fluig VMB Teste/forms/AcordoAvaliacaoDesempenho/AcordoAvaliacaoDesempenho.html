@@ -73,7 +73,9 @@
                                                             'fields':[
                                                             {'field':'NOME','label':'NOME','standard':'true'},
                                                             {'field':'CPF','label':'CPF'},
-                                                            {'field':'EMAIL_F','label':'EMAIL_F'}						  					
+                                                            {'field':'FUNCAO','label':'FUNCAO','visible':'false'},                                                            
+                                                            {'field':'EMAIL_G','label':'EMAIL_G','visible':'false'},
+                                                            {'field':'DT_ADMISSAO','label':'DT_ADMISSAO','visible':'false'}						  					
                                                             ]
                                                             }">
                                                       </div>
@@ -84,7 +86,7 @@
                                                           <div class="form-group col-md-2">
                                                          <label for="dataAdmissao">Data de Admissão</label>
                                                          <div class="input-group date">
-                                                            <input type="text" class="form-control" id="dataAdmissao" name="dataAdmissao">
+                                                            <input type="text" class="form-control" id="dataAdmissao" name="dataAdmissao" readonly>
                                                             <span class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -100,6 +102,26 @@
                                                          </div>
                                                       </div>
                                                    </div>
+                                                   <div class="row" id="div_gestorImediato">
+                                                   		<div class="form-group col-md-4">
+                                                   			<input type="text" id="emailGestorImediato" name="emailGestorImediato" class="form-control" readonly>
+                                                   		</div>                                                   		                                                   		
+                                                   </div>
+                                                   <div class="row">
+	                                                   	<div class="form-group col-md-4">
+	                                                   		<label>Gestor Matricial</label>
+	                                                   		<input type="text" id="gestorMatricial" name="gestorMatricial" class="form-control" readonly>
+	                                                   	</div>	                                                   
+	                                                   <div class="form-group col-md-4">
+	                                                   		<label>Email Gestor Matricial</label>
+	                                                   		<input type="text" id="emailMatricial" name="emailMatricial" class="form-control" readonly>
+	                                                   	</div>
+	                                                   <div class="form-group col-md-1" id="div_matricial">	                                                   		
+	                                                   		<input type="text" id="matriculaMatricial" name="matriculaMatricial" class="form-control" readonly>
+	                                                   	</div>	
+                                                   </div>
+                                                   
+                                                   
                                                    <div class="panel panel-default" id="panelItensAgenda">
                                                    	<div class="panel panel-info" id="div_nivel1">
 	                                                   	<div class="panel-heading ">
@@ -119,15 +141,19 @@
                                                                            
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario1">Comentários do funcionário</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario2">Como isto foi feito?</th>
-                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario3">Comentários do Gerente</th>
-                                                                         
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario3">Comentários do Gerente</th>                                                                         
                                                                            <th class="tableColumn"  id="div_progresso">Progresso</th>
                                                                              
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario4">Comentários do funcionário</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario5">Como isto foi feito?</th>
-                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario6">Comentários do Gerente</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario6">Comentários do Gerente</th>                                                                           
+                                                                           <th class="tableColumn"  id="div_progresso2">Progresso</th>
                                                                            
-                                                                             <th class="tableColumn"  id="div_progresso2">Progresso</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario7">Comentários do funcionário</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario8">Como isto foi feito?</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="div_comentario9">Comentários do Gerente</th>                                                                           
+                                                                           <th class="tableColumn"  id="div_progresso3">Progresso</th>
+                                                                           
                                                                         </tr>
                                                                      </thead>
                                                                      <tbody id="tbodyItensMetas">
@@ -145,9 +171,9 @@
                                                                            		<div class="form-group" style="width:500px;"> 
                                                                            		<input type="hidden" name="competencia"
                                                                                     id="competencia" /> 
-							                                                         <input name="tx_competencia"
+							                                                         <input name="txcompetencia"
 							                                                            class="form-control" type="zoom"
-							                                                            id="tx_competencia"
+							                                                            id="txcompetencia"
 							                                                            data-zoom="{'displayKey':'DESC_COMPETENCIA',
 							                                                            'datasetId':'VM_Competencias',
 							                                                            'maximumSelectionLength':'1',
@@ -163,7 +189,7 @@
                                                                               <textArea class="form-control" rows="6" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="campo_10" id="campo_10" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo10" id="campo10" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
                                                                               <textArea class="form-control" rows="6" name="comentarioG" id="comentarioG" maxlength="250" style="width:500px;" ></textArea>
@@ -180,13 +206,13 @@
                                                                            </td>
                                                                            
                                                                            <td id="div_15">
-                                                                              <textArea class="form-control" rows="6" name="campo_15" id="campo_15" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo15" id="campo15" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td id="div_16">
-                                                                              <textArea class="form-control" rows="6" name="campo_16" id="campo_16" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo16" id="campo16" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td id="div_17">
-                                                                              <textArea class="form-control" rows="6" name="campo_17" id="campo_17" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo17" id="campo17" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
                                                                               <td id="div_18">                                                                             	
                                                                            	 	<label for="verde2">Verde</label> 
@@ -197,7 +223,32 @@
 						                                                        <input type="radio" id="vermelho2" name="progresso2" value="1" class="form-control" onclick="clickProgresso()">
 						                                                        <label for="branco2">Não se aplica</label> 
 						                                                        <input type="radio" id="branco2" name="progresso2" value="0" class="form-control" onclick="clickProgresso()">
-                                                                           </td>                                                                                                                             
+                                                                           </td>          
+                                                                           
+                                                                           
+                                                                           
+                                                                           <td id="div_19">
+                                                                              <textArea class="form-control" rows="6" name="campo18" id="campo18" maxlength="250" style="width:500px;" ></textArea>
+                                                                           </td>
+                                                                           <td id="div_20">
+                                                                              <textArea class="form-control" rows="6" name="campo19" id="campo19" maxlength="250" style="width:500px;" ></textArea>
+                                                                           </td>
+                                                                           <td id="div_21">
+                                                                              <textArea class="form-control" rows="6" name="campo20" id="campo20" maxlength="250" style="width:500px;" ></textArea>
+                                                                           </td>
+                                                                              <td id="div_22">                                                                             	
+                                                                           	 	<label for="verde3">Verde</label> 
+	                                                                            <input type="radio" id="verde2" name="progresso3" value="3" class="form-control" onclick="clickProgresso()">
+                                                                       	  		<label for="amarelo3">Amarelo</label> 
+    				                                                         	<input type="radio" id="amarelo2" name="progresso3" value="2" class="form-control" onclick="clickProgresso()">   
+    	                                                                       	<label for="vermelho3">Vermelho</label> 
+						                                                        <input type="radio" id="vermelho2" name="progresso3" value="1" class="form-control" onclick="clickProgresso()">
+						                                                        <label for="branco3">Não se aplica</label> 
+						                                                        <input type="radio" id="branco2" name="progresso3" value="0" class="form-control" onclick="clickProgresso()">
+                                                                           </td> 
+                                                                           
+                                                                           
+                                                                                                                                                                                              
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>
@@ -236,70 +287,90 @@
 							                                                    <th class="tableColumn">Ao início do ano, planeje: O que eu preciso para executar bem o meu trabalho?</th>
 							                                                    <th class="tableColumn" id="div_analise">Avalie: Estava disponível e foi alcançado?</th>
 							                                                    <th class="tableColumn" id="div_analise2">Avalie: Estava disponível e foi alcançado?</th>
+							                                                    <th class="tableColumn" id="div_analise3">Avalie: Estava disponível e foi alcançado?</th>
 							                                                </tr>
 							                                            </thead>
 							                                            <tbody id="rowTbFeedback">
 							                                            	<tr>
 							                                            		<td>
 							                                            			<label>Aprendizado e desenvolvimento pessoal</label><br>
-		                                                            				<textarea rows="5" cols="3" id="campo_1" name="campo_1" class="form-control"></textarea>
+		                                                            				<textarea rows="5" cols="3" id="campo1" name="campo1" class="form-control"></textarea>
 							                                            		</td>
 							                                            		<td id="div_campo6">
 							                                            			<br>
-							                                            			<textarea rows="5" id="campo_6" name="campo_6" class="form-control" ></textarea>	
+							                                            			<textarea rows="5" id="campo6" name="campo6" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo11">
 							                                            			<br>
-							                                            			<textarea rows="5" id="campo_11" name="campo_11" class="form-control" ></textarea>	
+							                                            			<textarea rows="5" id="campo11" name="campo11" class="form-control" ></textarea>	
+							                                            		</td>
+							                                            		<td id="div_campo25">
+							                                            			<br>
+							                                            			<textarea rows="5" id="campo24" name="campo24" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            	</tr>
 							                                            	<tr>
 							                                            		<td>
 							                                            			<label>Apoio do líder imediato</label><br>
-                                                           							 <textarea rows="5"  id="campo_2" name="campo_2" class="form-control" placeholder="Qual auxílio, recursos, orientação e assistência o seu líder precisa disponibilizar para possibilitar que você faça um bom trabalho este ano?"></textarea>
+                                                           							 <textarea rows="5"  id="campo2" name="campo2" class="form-control" placeholder="Qual auxílio, recursos, orientação e assistência o seu líder precisa disponibilizar para possibilitar que você faça um bom trabalho este ano?"></textarea>
 							                                            		</td>
 							                                            		<td id="div_campo7">
 							                                            		 	<br><br>
-                                                           							 <textarea rows="5" id="campo_7" name="campo_7" class="form-control" ></textarea>	
+                                                           							 <textarea rows="5" id="campo7" name="campo7" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo12">
 							                                            		 	<br><br>
-                                                           							 <textarea rows="5" id="campo_12" name="campo_12" class="form-control" ></textarea>	
+                                                           							 <textarea rows="5" id="campo12" name="campo12" class="form-control" ></textarea>	
+							                                            		</td>
+							                                            		
+							                                            		<td id="div_campo24">
+							                                            		 	<br><br>
+                                                           							 <textarea rows="5" id="campo23" name="campo23" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            	</tr>
 							                                            	<tr>
 							                                            		<td>
 							                                            			<label>Equilíbrio de vida</label><br>
-                                                            						<textarea rows="5" id="campo_3" name="campo_3" class="form-control" placeholder="que abordagem você usará este ano para assegurar o equilíbrio entre trabalho e vida pessoal e como saberá se isso foi alcançado?"></textarea>	
+                                                            						<textarea rows="5" id="campo3" name="campo3" class="form-control" placeholder="que abordagem você usará este ano para assegurar o equilíbrio entre trabalho e vida pessoal e como saberá se isso foi alcançado?"></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo8">
 							                                            			<br><br>
-                                                           							 <textarea rows="5" id="campo_8" name="campo_8" class="form-control" ></textarea>	
+                                                           							 <textarea rows="5" id="campo8" name="campo8" class="form-control" ></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo13">
 							                                            			<br><br>
-                                                            						<textarea rows="5" id="campo_13" name="campo_13" class="form-control" ></textarea>	
+                                                            						<textarea rows="5" id="campo13" name="campo13" class="form-control" ></textarea>	
 							                                            		</td>
+							                                            		
+							                                            		<td id="div_campo22">
+							                                            			<br><br>
+                                                            						<textarea rows="5" id="campo22" name="campo22" class="form-control" ></textarea>	
+							                                            		</td>
+							                                            		
 							                                            	</tr>
 							                                            	<tr>
 							                                            		<td>
 							                                            			<div class="form-group col-md-6">
 							                                            				<label>Qual o próximo passo de carreira que aspiro alcançar?</label>
-                                                                 					 	<textarea rows="5" id="campo_4" name="campo_4" class="form-control"></textarea>
+                                                                 					 	<textarea rows="5" id="campo4" name="campo4" class="form-control"></textarea>
 							                                            			</div>
 							                                            			<div class="form-group col-md-6">
 								                                            			<label>O que eu posso fazer para alcança-lo e quem mais precisa se envolver?</label>
-	                                                                  					<textarea rows="5" id="campo_5" name="campo_5" class="form-control"></textarea>
+	                                                                  					<textarea rows="5" id="campo5" name="campo5" class="form-control"></textarea>
 							                                            			</div>
 							                                            			 	
 							                                            		</td>
 							                                            		<td id="div_campo9">
 							                                            			<br>
-                                                            						<textarea rows="5" id="campo_9" name="campo_9" class="form-control"></textarea>	
+                                                            						<textarea rows="5" id="campo9" name="campo9" class="form-control"></textarea>	
 							                                            		</td>
 							                                            		<td id="div_campo14">
 							                                            			<br>
-                                                            						<textarea rows="5" id="campo_14" name="campo_14" class="form-control"></textarea>	
+                                                            						<textarea rows="5" id="campo14" name="campo14" class="form-control"></textarea>	
+							                                            		</td>
+							                                            		<td id="div_campo23">
+							                                            			<br>
+                                                            						<textarea rows="5" id="campo21" name="campo21" class="form-control"></textarea>	
 							                                            		</td>
 							                                            	</tr>							                                          						                                            	
 							                                            </tbody>

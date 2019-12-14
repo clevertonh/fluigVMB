@@ -28,32 +28,37 @@ function enableFields(form){
 	 var emailSolicitante = dataset.getValue(0, "mail");
 	 
 	
-	if (activity == ABERTURA || activity  == SOLICITAR || activity == CORRIGIR){
-		 form.setEnabled("aprovacao", false);	
-		 form.setValue("aprovacao","");
-		 form.setValue("dtInicio","");
-		 form.setValue("dtFim","");
-		 
-		
-		 
-		 form.setValue("solicitante",nomeSolicitante);
-		 form.setValue("emailSolicitante",emailSolicitante);
-		 
-		 
-		 var aprovador = usuarioAprovador(emailSolicitante);
-		 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
-			 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
-			 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
-			 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
-			 	 
-		 }
-		 else {
-			 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
-		 }
-		 
-	
+		if (activity == ABERTURA || activity  == SOLICITAR ){
+			 form.setEnabled("aprovacao", false);	
+			 form.setValue("aprovacao","");
 			 
-	}
+			 form.setValue("solicitante",nomeSolicitante);
+			 form.setValue("emailSolicitante",emailSolicitante);
+			 
+			 
+			 var aprovador = usuarioAprovador(emailSolicitante);
+			 if (aprovador!= null && aprovador != "" && aprovador.values.length > 0){
+				 form.setValue("gestor",aprovador.getValue(0, "NOME_GERENTE"));
+				 form.setValue("emailLider",aprovador.getValue(0, "EMAIL_G"));
+				 form.setValue("matriculaApr",aprovador.getValue(0, "ID_GERENTE"));
+				 	 
+			 }
+			 else {
+				 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
+			 }
+			 
+		
+				 
+		}
+		
+		
+		else if (activity == CORRIGIR){
+			 form.setEnabled("aprovacao", false);	
+			 form.setValue("aprovacao","");
+
+			 
+		}
+		
 	else if (activity == APROVACAO_GESTOR){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));

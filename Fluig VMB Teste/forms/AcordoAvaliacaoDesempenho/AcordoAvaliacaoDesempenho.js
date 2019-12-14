@@ -2,7 +2,9 @@ var INICIAL = 0;
 var ACORDO = 4;
 var FEEDBACK1 = 5;
 var FEEDBACK2 = 9;
-var AVALIACAO = 11;
+var AVALIACAO = 15;
+var RESULTADO = 11;
+var MATRICIAL = 20;
 
 var dtAcordo;
 
@@ -49,7 +51,7 @@ var visibilidade = true;
 
 //preenche data da solicitação no momento que abre a solicitação
 $(document).ready(function() {	
-	if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
+	if (ATIVIDADE == INICIAL ){
 		dtAcordo = FLUIGC.calendar('#dataAcordo', {
 		    pickDate: true,
 		    pickTime: false,
@@ -61,6 +63,63 @@ $(document).ready(function() {
 		dtAcordo.setDate(new Date().toLocaleString());
 		
 	}
+	else if (ATIVIDADE == ACORDO){
+			 $('td:nth-child(6)').hide();
+	    	 $('td:nth-child(7)').hide();
+	    	 $('td:nth-child(8)').hide();
+	    	 $('td:nth-child(9)').hide();
+			 $('td:nth-child(10)').hide();
+			 $('td:nth-child(11)').hide();
+			 $('td:nth-child(12)').hide();
+			 $('td:nth-child(13)').hide();
+			 $('td:nth-child(14)').hide();
+	    	 $('td:nth-child(15)').hide();
+	     	 $('td:nth-child(16)').hide();
+	      	 $('td:nth-child(17)').hide();
+	   	 
+			 $('#div_comentario4').hide();
+			 $('#div_comentario5').hide();
+			 $('#div_comentario6').hide();
+			 $('#div_progresso2').hide();
+	}
+	else if (ATIVIDADE == FEEDBACK1 ){
+			 $('td:nth-child(10)').hide();
+			 $('td:nth-child(11)').hide();
+	    	 $('td:nth-child(12)').hide();
+	    	 $('td:nth-child(13)').hide();
+	    	 $('td:nth-child(14)').hide();
+	    	 $('td:nth-child(15)').hide();
+	     	 $('td:nth-child(16)').hide();
+	      	 $('td:nth-child(17)').hide();
+	    	 
+	    	 $('#div_comentario4').hide();
+			 $('#div_comentario5').hide();
+			 $('#div_comentario6').hide();
+			 $('#div_progresso2').hide();
+			 
+			 $('#div_comentario7').hide();
+			 $('#div_comentario8').hide();
+			 $('#div_comentario9').hide();
+			 $('#div_progresso3').hide();
+			 
+			 
+	}
+	
+	else if (ATIVIDADE == FEEDBACK2 ){
+		 $('td:nth-child(14)').hide();
+    	 $('td:nth-child(15)').hide();
+     	 $('td:nth-child(16)').hide();
+      	 $('td:nth-child(17)').hide();
+   	 
+ 		 
+		 $('#div_comentario7').hide();
+		 $('#div_comentario8').hide();
+		 $('#div_comentario9').hide();
+		 $('#div_progresso3').hide();
+		 
+		 
+}
+
 
 	
 });
@@ -87,13 +146,17 @@ function fnCustomDeleteMeta(oElement) {
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
-    var BENEFICIARIO ="beneficiario";
+    var BENEFICIARIO ="Funcionario";
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
 
      if (campoZOOM == BENEFICIARIO){
-    		$("#cpfbeneficiario").val(selectedItem["CPF"]);
+    		$("#dataAdmissao").val(selectedItem["DT_ADMISSAO"]);
+    		$("#emailGestorImediato").val(selectedItem["EMAIL_G"]);
+    		$("#funcao").val(selectedItem["FUNCAO"]);
+    		
+    		
      } 
     
     
@@ -108,17 +171,49 @@ function adicionaMeta() {
     	 $('td:nth-child(7)').hide();
     	 $('td:nth-child(8)').hide();
     	 $('td:nth-child(9)').hide();
+    	 
     	 $('td:nth-child(10)').hide();
     	 $('td:nth-child(11)').hide();
     	 $('td:nth-child(12)').hide();
     	 $('td:nth-child(13)').hide();
     	 
+    	 
+     	 $('td:nth-child(14)').hide();
+    	 $('td:nth-child(15)').hide();
+     	 $('td:nth-child(16)').hide();
+      	 $('td:nth-child(17)').hide();
+    	 
+    	 
+    	 
+    	 
+    	 
     }
     
-    if (ATIVIDADE == FEEDBACK1 || ATIVIDADE == FEEDBACK2 ){
-    	var indice = wdkAddChild('tableMetas');
-    	//BLOQUEAR CAMPOS DE FEEDBACK 1
+    else if (ATIVIDADE == FEEDBACK1  ){
+    		var indice = wdkAddChild('tableMetas');
+    		//OCULTA COLUNAS DO FEEDBACK 2
+    		 $('td:nth-child(10)').hide();
+    		 $('td:nth-child(11)').hide();
+        	 $('td:nth-child(12)').hide();
+        	 $('td:nth-child(13)').hide();
+        	 
+        	 $('#div_comentario4').hide();
+    		 $('#div_comentario5').hide();
+    		 $('#div_comentario6').hide();
+    		 $('#div_progresso2').hide();
+    		 
+        	 
     }
+    
+    else if ( ATIVIDADE == FEEDBACK2 ){
+		var indice = wdkAddChild('tableMetas');
+		 //BLOQUEAR CAMPOS DE FEEDBACK 1		
+		$( "#comentarioF___"+indice ).prop( "disabled", true );
+		$( "#campo10___"+indice ).prop( "disabled", true );
+		$( "#comentarioG___"+indice ).prop( "disabled", true );
+				
+}
+    
    
     
 }
@@ -136,16 +231,16 @@ function clickProgresso(){
 	
 }
 
-
-
 function removedZoomItem(removedItem) {   
-    var BENEFICIARIO ="beneficiario";
+    var BENEFICIARIO ="Funcionario";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
    if (campoZOOM == BENEFICIARIO){
-		$("#cpfbeneficiario").val("");
+		$("#dataAdmissao").val("");
+		$("#emailGestorImediato").val("");
+		$("#funcao").val("");
 	} 
 
 }

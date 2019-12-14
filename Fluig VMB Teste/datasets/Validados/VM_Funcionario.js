@@ -12,6 +12,8 @@ function defineStructure() {
 	addColumn("DEPARTAMENTO");
 	addColumn("FILIAL");
 	addColumn("MATRICULA");
+	addColumn("DT_ADMISSAO");
+	addColumn("FUNCAO");
 	
 	setKey(["EMAIL_F"]);
 	addIndex(["EMAIL_F"]);
@@ -36,6 +38,8 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("DEPARTAMENTO");
     dataset.addColumn("FILIAL");
     dataset.addColumn("MATRICULA");
+    dataset.addColumn("DT_ADMISSAO");
+    dataset.addColumn("FUNCAO");
            
     var dados;
     var webservice = '/FUNCIONARIO';
@@ -95,10 +99,21 @@ function createDataset(fields, constraints, sortFields) {
 				var datasetAprovador = DatasetFactory.getDataset("colleague", null, constraintsApr, null);    	    		
 			
 				if (datasetAprovador.rowsCount > 0){
-					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),datasetAprovador.getValue(0,"colleagueName"),objdata[i].CDEPART,null,null]);
+					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, 
+					                objdata[i].CEMAILG,objdata[i].CEMAILFUN, datasetAprovador.getValue(0,"colleaguePK.colleagueId"),
+					                datasetAprovador.getValue(0,"colleagueName"),objdata[i].CDEPART,
+					                null,null,
+					                objdata[i].CADMISSAO,
+					                objdata[i].CFUNCAO
+					                ]);
 				}
 				else {
-					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, objdata[i].CDATANASC, objdata[i].CEMAILG,objdata[i].CEMAILFUN, null,null,objdata[i].CDEPART,null,null]);
+					dataset.addRow([objdata[i].CNOME, objdata[i].CMAE, objdata[i].CRG, objdata[i].CCPF, objdata[i].CPASSAP, 
+					                objdata[i].CDATANASC, objdata[i].CEMAILG,
+					                objdata[i].CEMAILFUN, null,null,objdata[i].CDEPART,null,null,
+					                objdata[i].CADMISSAO,
+					                objdata[i].CFUNCAO
+					                ]);
 				}
 			}
 	}

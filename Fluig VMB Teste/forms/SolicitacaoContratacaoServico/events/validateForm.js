@@ -125,14 +125,14 @@ function validateForm(form){
 		var dataAtual = new Date();
 		
 		if (dataAtual < dataInicio){
-			throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
+			//throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
 		}
 		
 		validaCamposPreenchidos();
 		
 	
 	}
-	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){
+	else if ((activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE) && (nextAtv == 281 || nextAtv == 278)){
 		//valida se aprovador é diferente do solicitante
 		if (form.getValue("cnpjcpf") == null  || form.getValue("cnpjcpf")  == "" ){
           	 throw "Você precisa selecionar o fornecedor vencedor da cotação.";
@@ -146,7 +146,7 @@ function validateForm(form){
 		
 		
 		if (form.getValue("melhorProposta") == "nao" ){
-			if (form.getValue("justificativaP") !="" && form.getValue("justificativaP") != null){
+			if (form.getValue("justificativaP") =="" || form.getValue("justificativaP") == null){
 				throw "É preciso informar o motivo por não estar escolhendo o fornecedor de menor valor.";
 			}
 		}
@@ -161,7 +161,7 @@ function validateForm(form){
 			var dtVigencia = convertStringToData(form.getValue("dtFimC"));
 			
 			if (dtVigencia < dataFinal){
-				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
+				//throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
 			}
 		}
 	
