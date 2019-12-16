@@ -13,6 +13,9 @@ var linhas = 0;
 var codigoEvento;
 
 $(document).ready(function() {	
+	
+
+	
     if (ATIVIDADE == ABERTURA) {   
     	var dtSolicitacao = FLUIGC.calendar('#dtSolicitacao', {
             pickDate: true,
@@ -280,6 +283,23 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
+ function processando() {
+    WCMSpaceAPI.PageService.UPDATEPREFERENCES(
+        {
+            async: true,
+            success: function (data) {
+                // código omitido
+            },
+            fail: function (xhr, message, errorData) {
+                // código omitido
+            }
+        },
+        this.instanceId,
+        preferences
+    );
+}
+
+
 function adicionaLinha() {
     var indice = wdkAddChild('tableItens');
     window["txtprojeto___" + indice].disable(true);
@@ -542,6 +562,8 @@ function buscaDadosFinanceiroEvento(evento){
 
 
 function retornaSolicitacaoContratacaoServico(codigoFluig){
+	
+	
 	   var constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("solicitacao", codigoFluig, codigoFluig, ConstraintType.MUST));
 	    var dataset = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraints, null);
@@ -584,8 +606,10 @@ function retornaSolicitacaoContratacaoServico(codigoFluig){
 	    		    }
 	    		}
 	    }
-	      
+	
+	
 }
+
 
 
 function clickFinanceiroSolicitacao(){

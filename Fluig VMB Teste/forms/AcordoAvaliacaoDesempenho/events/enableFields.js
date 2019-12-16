@@ -9,11 +9,24 @@ function enableFields(form){
 	
 	
 	var activity = getValue('WKNumState');
+	var solicitante = getValue("WKUser");  
 
-	
+
+	if (activity ==  INICIAL || activity ==  ACORDO){
+		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
+		 var nomeGestor = dataset.getValue(0, "colleagueName");
+		 var emailGestor = dataset.getValue(0, "mail");
+		 
+		 form.setValue("gestor",nomeGestor);
+		 form.setValue("emailGestor",emailGestor);
+		 
+		 
+		 
+		 
+	}
 	
 	    
-  if (activity ==  FEEDBACK1){
+	else if (activity ==  FEEDBACK1){
 		
 		 form.setEnabled("Funcionario", false);	
 		 form.setEnabled("dataAdmissao", false);	
@@ -279,4 +292,11 @@ function enableFields(form){
   	//VERDE VALORIZADO
 	//VERMELHO RUIM
 	
+	function UsuarioLogado(solicitante){
+		 var constraints   = new Array();
+		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
+		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+		 
+		 return dataset;
+	}
 }

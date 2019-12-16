@@ -62,6 +62,8 @@ $(document).ready(function() {
 
 		dtAcordo.setDate(new Date().toLocaleString());
 		
+	    
+		
 	}
 	else if (ATIVIDADE == ACORDO){
 			 $('td:nth-child(6)').hide();
@@ -120,29 +122,31 @@ $(document).ready(function() {
 		 
 }
 
-
+	//reloadZoomFilterValues("Funcionario", "EMAIL_G," + $("#emailGestor").val());
 	
 });
 
 
-function fnCustomDeleteMeta(oElement) {	  
+function fnCustomDeleteMeta(oElement) {	 
+	
 	// $("#acao___1").val() =="" verificar se o campo esta vazio, se sim deixar deletar	
 	if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO ){
 			//verificar se o campo meta esta vazio
 			//se sim, permitir excluir
+		
 			
+		
 			FLUIGC.toast({
                 title: 'Atenção',
                 message: 'Você não pode remover essa informação.',
                 type: 'warning',
                 timeout: 3000
             });
-		}
+	}
 		else {
 			fnWdkRemoveChild(oElement);	
 		}		
 }
-
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
@@ -206,11 +210,11 @@ function adicionaMeta() {
     }
     
     else if ( ATIVIDADE == FEEDBACK2 ){
-		var indice = wdkAddChild('tableMetas');
-		 //BLOQUEAR CAMPOS DE FEEDBACK 1		
-		$( "#comentarioF___"+indice ).prop( "disabled", true );
-		$( "#campo10___"+indice ).prop( "disabled", true );
-		$( "#comentarioG___"+indice ).prop( "disabled", true );
+			var indice = wdkAddChild('tableMetas');
+			 //BLOQUEAR CAMPOS DE FEEDBACK 1		
+			$( "#comentarioF___"+indice ).prop( "disabled", true );
+			$( "#campo10___"+indice ).prop( "disabled", true );
+			$( "#comentarioG___"+indice ).prop( "disabled", true );
 				
 }
     

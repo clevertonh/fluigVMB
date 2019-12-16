@@ -142,21 +142,14 @@ function enableFields(form){
 			 var constraints   = new Array();
 			 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", solicitante, solicitante, ConstraintType.MUST));
 			 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
-			 log.info("---RECUPERA DADOS DO USUARIO LOGADO---");
+			
 			 return dataset;
 		}
 
 		function usuarioAprovador(emailLogado){
-			log.info("---GERENTE FUNCIONARIO----"); 
-			//log.info(emailSolicitante);
-			
 			var email = DatasetFactory.createConstraint("EMAIL_F",emailLogado,emailLogado, ConstraintType.MUST);		
 			var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
 			 
-			//var email = DatasetFactory.createConstraint("EMAIL_F",emailSolicitante,emailSolicitante, ConstraintType.MUST);		
-			//var dataset = DatasetFactory.getDataset("ds_get_Gerente", null, new Array(email), null);
-			 
-			 log.info(dataset.getValue(0, "EMAIL_G"));
 			 return dataset;
 		}
 

@@ -9,13 +9,26 @@ function displayFields(form,customHTML){
 	
 	var activity = getValue('WKNumState');
 	
+	 var usuarioLogado = getValue('WKUser');
+	    var usuariosubstituto = getValue('WKReplacement');
+	    
+	    if (usuariosubstituto != null){
+	    	usuarioLogado = usuariosubstituto;
+	    }
+		
+	    //retorna email usuario logado
+	var email = retornaEmailUsuario(usuarioLogado);
+	
 	
   	customHTML.append("<script>");
     customHTML.append("			var ATIVIDADE = " + activity + ";");
+    //customHTML.append("			var EMAIL_USUARIO = " + email + ";");
     customHTML.append("</script>");
     
     form.setVisibleById("matriculaMatricial", false);	
     form.setVisibleById("div_gestorImediato", false);
+    form.setVisibleById("div_gestor", false);
+    
     
     
 	
@@ -150,5 +163,17 @@ function displayFields(form,customHTML){
         form.setVisibleById("wizard_3", false);
     }
 
-	
+    function retornaEmailUsuario(userId){
+     	 var constraints   = new Array();
+  		 constraints.push(DatasetFactory.createConstraint("colleaguePK.colleagueId", userId, userId, ConstraintType.MUST));
+  		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
+  			
+  	        if (dataset != null && dataset.values.length > 0) {
+  	        	return dataset.getValue(0, "mail");
+  	        }  
+  	        else {
+  	        	return null;
+  	        }	    
+     }
+    
 }
