@@ -40,6 +40,9 @@ function createDataset(fields, constraints, sortFields) {
             		}  
         			if (constraints[a].fieldName == "acao"){
         				acao = constraints[a].initialValue;
+            		}
+        			if (constraints[a].fieldName == "produto"){
+        				produto = constraints[a].initialValue;
             		} 
         		}
           		
@@ -73,7 +76,7 @@ function createDataset(fields, constraints, sortFields) {
             									 ));       						        							
              						 }
         					 }
-        					 else {
+        					 else if (solicitacao.getValue(0,"codigoProduto") != "") {
         						 	if (solicitacao.getValue(0,"codigoProduto") != null && solicitacao.getValue(0,"codigoProduto") != ""){
         						 		aItemServico.push(addItemCompra(
             						 			solicitacao.getValue(0,"codigoProduto"),
@@ -84,12 +87,15 @@ function createDataset(fields, constraints, sortFields) {
                 					 
         						 	}        						 	
         					 }
-        						 
-       				
-       						  
-       						  
-       						  
-       						 
+        					 else {
+        						 aItemServico.push(addItemCompra(
+     						 			produto,
+     						 			codSolicitacao,
+     						 			1,
+     						 			0
+     						 			)); 
+        					 }
+        							 
        						 
        					 }
        					 

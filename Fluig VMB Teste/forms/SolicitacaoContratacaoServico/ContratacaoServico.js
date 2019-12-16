@@ -383,7 +383,7 @@ function fnCustomDeleteProduto(oElement) {
 
 
 function fnCustomDeleteRateio(oElement) {	  
-	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == APROVACAO_GESTOR || ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){								
+	if (ATIVIDADE == ABERTURA || ATIVIDADE == SOLICITAR || ATIVIDADE == CORRIGIR  || ATIVIDADE == APROVACAO_GESTOR || ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){								
 		fnWdkRemoveChild(oElement);	
 
 	}
@@ -471,15 +471,7 @@ function removedZoomItem(removedItem) {
 
 
     else if (campoZOOM == RATEIO) {
-        //removeItensRateio();
-    //	console.log("---REMOVEU AQUI 6----");
-	    var linhas = $("#tbodyItens tr");
-	    for (var i = 1; i < linhas.length; i++) {
-	        var td = $(linhas[i]).children()[0];
-	        var span = $(td).children()[0];
-	        fnWdkRemoveChild(span);	
-	        
-	    }
+    		removeItens();
     }
 
 
@@ -762,14 +754,14 @@ function adicionaItensRateio(itens) {
 
 function removeItens() {
 	
-	if (ATIVIDADE == ABERTURA ){
+
 	    var linhas = $("#tbodyItens tr");
 	    for (var i = 1; i < linhas.length; i++) {
 	        var td = $(linhas[i]).children()[0];
 	        var span = $(td).children()[0];
 	        fnWdkRemoveChild(span);
 	    }
-	}
+
 
 }
 
