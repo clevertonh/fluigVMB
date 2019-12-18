@@ -66,7 +66,7 @@ function validateForm(form){
    		
     	
     	if (nextAtv == FEEDBACK1){       	
-	       		var indexes = form.getChildrenIndexes("tableMetas");
+	       		var indexes = form.getChildrenIndexes("tableMetas1");
 	       		
 	       		if (indexes.length == 0){
 	       			throw "Você precisa incluir de 3 a 5 metas.";	
@@ -128,14 +128,17 @@ function validateForm(form){
     }
     else if (activity == FEEDBACK1 && nextAtv == FEEDBACK2){
     	var qtdeMetasValidas =0;
-    	var indexes = form.getChildrenIndexes("tableMetas");
+    	var indexes = form.getChildrenIndexes("tableMetas1");
     	
-        for (var i = 0; i < indexes.length; i++) {        
+        for (var i = 0; i < indexes.length; i++) {       
+        	
+         	
         	var progresso = form.getValue("progresso___" + indexes[i]);
         	var comentarioF = form.getValue("comentarioF___" + indexes[i]);
             var comoFoiFeito = form.getValue("campo10___" + indexes[i]);
             var comentarioG = form.getValue("comentarioG___" + indexes[i]);
       
+               
             if (progresso =="" || progresso == null) {
         		throw "É necessário indicar o progresso do funcionário para o primeiro feedback";
         	}
@@ -195,7 +198,7 @@ function validateForm(form){
     }
     else if (activity == FEEDBACK2 && nextAtv == AVALIACAO){
     	var qtdeMetasValidas =0;
-    	var indexes = form.getChildrenIndexes("tableMetas");
+    	var indexes = form.getChildrenIndexes("tableMetas1");
     	 for (var i = 0; i < indexes.length; i++) {
              var comentarioF = form.getValue("campo15___" + indexes[i]);
              var comoFoiFeito = form.getValue("campo16___" + indexes[i]);
@@ -260,7 +263,7 @@ function validateForm(form){
     
     else if (activity == AVALIACAO && nextAtv == RESULTADO){
     	var qtdeMetasValidas =0;
-    	var indexes = form.getChildrenIndexes("tableMetas");
+    	var indexes = form.getChildrenIndexes("tableMetas1");
     	 for (var i = 0; i < indexes.length; i++) {
              var comentarioF = form.getValue("campo18___" + indexes[i]);
              var comoFoiFeito = form.getValue("campo19___" + indexes[i]);

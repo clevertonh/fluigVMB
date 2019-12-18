@@ -37,7 +37,7 @@ function enableFields(form){
 		 form.setEnabled("campo5", false);	
 		
 
-		 var indexes = form.getChildrenIndexes("tableMetas");	    	    	    	   
+		 var indexes = form.getChildrenIndexes("tableMetas1");	    	    	    	   
 		    for (var i = 0; i < indexes.length; i++) {
 		        form.setEnabled("acao___"+ indexes[i], false);	
 		       	form.setEnabled("porque___"+ indexes[i], false);
@@ -70,7 +70,7 @@ function enableFields(form){
 	
 			 
 
-			 var indexes = form.getChildrenIndexes("tableMetas");	    	    	    	   
+			 var indexes = form.getChildrenIndexes("tableMetas1");	    	    	    	   
 			    for (var i = 0; i < indexes.length; i++) {
 			        form.setEnabled("acao___"+ indexes[i], false);	
 			       	form.setEnabled("porque___"+ indexes[i], false);
@@ -119,7 +119,7 @@ function enableFields(form){
 
 		 
 
-		 var indexes = form.getChildrenIndexes("tableMetas");	    	    	    	   
+		 var indexes = form.getChildrenIndexes("tableMetas1");	    	    	    	   
 		    for (var i = 0; i < indexes.length; i++) {
 		        form.setEnabled("acao___"+ indexes[i], false);	
 		       	form.setEnabled("porque___"+ indexes[i], false);
@@ -158,15 +158,16 @@ function enableFields(form){
 		    }
 	    
 	}
-    else if (activity ==  RESULTADO){
+    else if (activity ==  RESULTADO){  
     	
-  
-    	
-    	 var dataset = usuarioMatricial(form.getValue("emailMatricial"));		 			 			 			 
-		 var matriculaMatricial = dataset.getValue(0, "colleaguePK.colleagueId");
-		 form.setValue("matriculaMatricial",matriculaMatricial);
-    	
-    	
+    	 var dataset = usuarioMatricial(form.getValue("emailMatricial"));
+    	 if (dataset!= null && dataset.length > 0){
+    		 var matriculaMatricial = dataset.getValue(0, "colleaguePK.colleagueId");
+    		 form.setValue("matriculaMatricial",matriculaMatricial);
+        	
+        		 
+    	 }
+		 
     	
 		    //calcula resultado final da avaliação
 		    calculaResultadoFinalAvaliacao();
@@ -229,7 +230,7 @@ function enableFields(form){
 
 	    
   function calculaResultadoFinalAvaliacao(){
-	  var indexes = form.getChildrenIndexes("tableMetas");	  
+	  var indexes = form.getChildrenIndexes("tableMetas1");	  
 	  var progresso1 = 0;
  	  var qtdeProgresso1 = 0;
  	  var progresso2 = 0;

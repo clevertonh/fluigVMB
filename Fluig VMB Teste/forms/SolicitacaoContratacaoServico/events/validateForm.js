@@ -167,6 +167,34 @@ function validateForm(form){
 	
 		
 		
+		if (form.getValue("definicaoValor") =="fixo"){
+		      //VALIDA SE FOI INFORMADO PELO MENOS 1 SERVIÇO E SE TODOS OS CAMPOS FORAM PREENCHIDOS
+	
+		     	   var indexes = form.getChildrenIndexes("tableServico");            
+		     	   
+		  
+		     		  if (indexes.length == 0 ){
+		     			 throw "É obrigatório informar pelo menos um item de serviço!";
+		     		  }
+		     		  else {
+		     	         for (var i = 0; i < indexes.length; i++) {
+		                     var produto = form.getValue("txtproduto___" + indexes[i]);
+		              
+		                     if (produto == "" || produto === null){
+		                     	throw "O serviço contratado não foi informado";
+		                     }
+		                     
+		                 } 
+		     		  }
+		     		 
+		     
+		     	  
+		     	   
+		   
+		      
+		  
+		}
+		
 		
 	}
 	else if (activity ==  VALIDAR_RH){

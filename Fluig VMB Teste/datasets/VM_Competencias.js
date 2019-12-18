@@ -4,8 +4,12 @@ function defineStructure() {
 	addColumn("DESC_GRUPO");
 	addColumn("COD_COMPETENCIA");
 	addColumn("DESC_COMPETENCIA");
-	addColumn("CODIGO_IDENTIFICACAO");
-	setKey(["GRUPO","COD_COMPETENCIA"]);
+	addColumn("CODIGO");
+	
+	
+	setKey(["CODIGO"]);
+
+	
 	//addIndex(["COD_COMPETENCIA"]);
 	
 }
@@ -18,7 +22,9 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("DESC_GRUPO");
     dataset.addColumn("COD_COMPETENCIA");
     dataset.addColumn("DESC_COMPETENCIA");
-    dataset.addColumn("CODIGO_IDENTIFICACAO");
+    dataset.addColumn("CODIGO");
+    
+    
     var dados;
     
    var webservice = '/VM_COMPETENCIA';
@@ -31,7 +37,7 @@ function createDataset(fields, constraints, sortFields) {
 	            serviceCode : 'REST FLUIG',
 	            endpoint : webservice,
 	            method : 'get',   
-	            timeoutService: '100'        	  
+	            timeoutService: '360'        	  
 	        }
    
    var vo = clientService.invoke(JSON.stringify(data));
@@ -43,7 +49,7 @@ function createDataset(fields, constraints, sortFields) {
 	    	            serviceCode : 'REST FLUIG 2',
 	    	            endpoint :  webservice,
 	    	            method : 'get',    
-	    	            timeoutService: '100'       	  
+	    	            timeoutService: '360'       	  
 	    	        }   	
 	            vo = clientService.invoke(JSON.stringify(data));
 	            
@@ -68,7 +74,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CGRUPO, objdata[i].CDESCG,objdata[i].CCOMP,objdata[i].CDESCCOMP, objdata[i].CGRUPO+objdata[i].CCOMP]);
+			dataset.addRow([objdata[i].CGRUPO, objdata[i].CDESCG,objdata[i].CCOMP,objdata[i].CDESCCOMP, objdata[i].CCODIGO]);
 		}
 	}
 		

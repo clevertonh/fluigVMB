@@ -141,13 +141,14 @@
                                                          <div class="form-group row">
                                                             <div class="col-md-12">
                                                                <div class="form-field table-responsive">
-                                                                  <table tablename="tableMetas" id="tableMetas" border="0" class="table table-striped table-bordered" noaddbutton="true" customFnDelete="fnCustomDeleteMeta(this)">
+                                                                  <table tablename="tableMetas1" id="tableMetas1" border="0" class="table table-striped table-bordered" noaddbutton="true" customFnDelete="fnCustomDeleteMeta(this)">
                                                                      <thead>
                                                                         <tr class="tableHeadRow">
                                                                            <th class="tableColumn" style="width:500px;">O que você fará este ano?</th>
                                                                            <th class="tableColumn" style="width:500px;">Por que a Visão Mundial Brasil precisa que isto seja feito?</th>
                                                                            <th class="tableColumn" style="width:500px;">Como seria um resultado bem-sucedido? </th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_competencia">Competência</th>
+                                                                           <th class="tableColumn" style="width:500px;" id="codCompet">Codigo Competência</th>
                                                                            
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario1">Comentários do funcionário</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario2">Como isto foi feito?</th>
@@ -189,11 +190,14 @@
 							                                                            'maximumSelectionLength':'1',
 							                                                            'placeholder':'Selecione a competência',
 							                                                            'fields':[
-							                                                            {'field':'COD_COMPETENCIA','label':'COD_COMPETENCIA'},
+							                                                            {'field':'CODIGO','label':'CODIGO', 'visible':'false'},
 							                                                            {'field':'DESC_COMPETENCIA','label':'DESC_COMPETENCIA','standard':'true'}						  					
 							                                                            ]
 							                                                            }">
 						                                                     	 </div>
+                                                                           </td>
+                                                                           <td>
+                                                                           		<input  class="form-control" type="text" id="codCompetencia" name="codCompetencia" style="width:100px;" readonly>
                                                                            </td>
                                                                            <td>
                                                                               <textArea class="form-control" rows="6" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>
@@ -206,13 +210,13 @@
                                                                            </td>
                                                                             <td class="semaforo" id="div_14">                                                                             	
                                                                            	 	<label for="verde">Verde</label> 
-	                                                                            <input type="radio" id="verde" name="progresso" value="3" class="form-control" onclick="clickProgresso()">
+	                                                                            <input type="radio" id="verde" name="progresso" value="3" class="form-control">
                                                                        	  		<label for="amarelo">Amarelo</label> 
-    				                                                         	<input type="radio" id="amarelo" name="progresso" value="2" class="form-control" onclick="clickProgresso()">   
+    				                                                         	<input type="radio" id="amarelo" name="progresso" value="2" class="form-control" >   
     	                                                                       	<label for="vermelho">Vermelho</label> 
-						                                                        <input type="radio" id="vermelho" name="progresso" value="1" class="form-control" onclick="clickProgresso()">
+						                                                        <input type="radio" id="vermelho" name="progresso" value="1" class="form-control" >
 						                                                        <label for="branco">Não se aplica</label> 
-						                                                        <input type="radio" id="branco" name="progresso" value="0" class="form-control" onclick="clickProgresso()">
+						                                                        <input type="radio" id="branco" name="progresso" value="0" class="form-control" >
                                                                            </td>
                                                                            
                                                                            <td id="div_15">
@@ -226,17 +230,14 @@
                                                                            </td>
                                                                               <td id="div_18">                                                                             	
                                                                            	 	<label for="verde2">Verde</label> 
-	                                                                            <input type="radio" id="verde2" name="progresso2" value="3" class="form-control" onclick="clickProgresso()">
+	                                                                            <input type="radio" id="verde2" name="progresso2" value="3" class="form-control" >
                                                                        	  		<label for="amarelo2">Amarelo</label> 
-    				                                                         	<input type="radio" id="amarelo2" name="progresso2" value="2" class="form-control" onclick="clickProgresso()">   
+    				                                                         	<input type="radio" id="amarelo2" name="progresso2" value="2" class="form-control" >   
     	                                                                       	<label for="vermelho2">Vermelho</label> 
-						                                                        <input type="radio" id="vermelho2" name="progresso2" value="1" class="form-control" onclick="clickProgresso()">
+						                                                        <input type="radio" id="vermelho2" name="progresso2" value="1" class="form-control" >
 						                                                        <label for="branco2">Não se aplica</label> 
-						                                                        <input type="radio" id="branco2" name="progresso2" value="0" class="form-control" onclick="clickProgresso()">
+						                                                        <input type="radio" id="branco2" name="progresso2" value="0" class="form-control" >
                                                                            </td>          
-                                                                           
-                                                                           
-                                                                           
                                                                            <td id="div_19">
                                                                               <textArea class="form-control" rows="6" name="campo18" id="campo18" maxlength="250" style="width:500px;" ></textArea>
                                                                            </td>
@@ -248,17 +249,14 @@
                                                                            </td>
                                                                               <td id="div_22">                                                                             	
                                                                            	 	<label for="verde3">Verde</label> 
-	                                                                            <input type="radio" id="verde2" name="progresso3" value="3" class="form-control" onclick="clickProgresso()">
+	                                                                            <input type="radio" id="verde3" name="progresso3" value="3" class="form-control" >
                                                                        	  		<label for="amarelo3">Amarelo</label> 
-    				                                                         	<input type="radio" id="amarelo2" name="progresso3" value="2" class="form-control" onclick="clickProgresso()">   
+    				                                                         	<input type="radio" id="amarelo3" name="progresso3" value="2" class="form-control" >   
     	                                                                       	<label for="vermelho3">Vermelho</label> 
-						                                                        <input type="radio" id="vermelho2" name="progresso3" value="1" class="form-control" onclick="clickProgresso()">
+						                                                        <input type="radio" id="vermelho3" name="progresso3" value="1" class="form-control" >
 						                                                        <label for="branco3">Não se aplica</label> 
-						                                                        <input type="radio" id="branco2" name="progresso3" value="0" class="form-control" onclick="clickProgresso()">
+						                                                        <input type="radio" id="branco3" name="progresso3" value="0" class="form-control" >
                                                                            </td> 
-                                                                           
-                                                                           
-                                                                                                                                                                                              
                                                                         </tr>
                                                                      </tbody>
                                                                   </table>

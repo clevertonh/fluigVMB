@@ -66,7 +66,7 @@ $(document).ready(function() {
 		
 	}
 	else if (ATIVIDADE == ACORDO){
-			 $('td:nth-child(6)').hide();
+		
 	    	 $('td:nth-child(7)').hide();
 	    	 $('td:nth-child(8)').hide();
 	    	 $('td:nth-child(9)').hide();
@@ -78,6 +78,7 @@ $(document).ready(function() {
 	    	 $('td:nth-child(15)').hide();
 	     	 $('td:nth-child(16)').hide();
 	      	 $('td:nth-child(17)').hide();
+	     	 $('td:nth-child(18)').hide();
 	   	 
 			 $('#div_comentario4').hide();
 			 $('#div_comentario5').hide();
@@ -85,7 +86,7 @@ $(document).ready(function() {
 			 $('#div_progresso2').hide();
 	}
 	else if (ATIVIDADE == FEEDBACK1 ){
-			 $('td:nth-child(10)').hide();
+			// $('td:nth-child(10)').hide();
 			 $('td:nth-child(11)').hide();
 	    	 $('td:nth-child(12)').hide();
 	    	 $('td:nth-child(13)').hide();
@@ -93,6 +94,7 @@ $(document).ready(function() {
 	    	 $('td:nth-child(15)').hide();
 	     	 $('td:nth-child(16)').hide();
 	      	 $('td:nth-child(17)').hide();
+	     	 $('td:nth-child(18)').hide();
 	    	 
 	    	 $('#div_comentario4').hide();
 			 $('#div_comentario5').hide();
@@ -108,10 +110,11 @@ $(document).ready(function() {
 	}
 	
 	else if (ATIVIDADE == FEEDBACK2 ){
-		 $('td:nth-child(14)').hide();
+		// $('td:nth-child(14)').hide();
     	 $('td:nth-child(15)').hide();
      	 $('td:nth-child(16)').hide();
       	 $('td:nth-child(17)').hide();
+     	 $('td:nth-child(18)').hide();
    	 
  		 
 		 $('#div_comentario7').hide();
@@ -151,9 +154,14 @@ function fnCustomDeleteMeta(oElement) {
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
     var BENEFICIARIO ="Funcionario";
+    var COMPETENCIA ="txcompetencia";
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
+    
+    //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
+    //separa string
+    var linhaPagamento = campoZOOM.split('___');
 
      if (campoZOOM == BENEFICIARIO){
     		$("#dataAdmissao").val(selectedItem["DT_ADMISSAO"]);
@@ -162,6 +170,9 @@ function setSelectedZoomItem(selectedItem) {
     		
     		
      } 
+     else if (linhaPagamento[0] == COMPETENCIA){
+    			$('#codCompetencia' + "___" + linhaPagamento[1]).val(selectedItem["CODIGO"]);
+     }
     
     
 }
@@ -169,9 +180,10 @@ function setSelectedZoomItem(selectedItem) {
 function adicionaMeta() {
   
     if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
-    	  var indice = wdkAddChild('tableMetas');
-    	 //$('td:nth-child(5)').hide();
-    	 $('td:nth-child(6)').hide();
+    	 var indice = wdkAddChild('tableMetas1');
+    	 
+//    	 $('td:nth-child(5)').hide();
+//    	 $('td:nth-child(6)').hide();
     	 $('td:nth-child(7)').hide();
     	 $('td:nth-child(8)').hide();
     	 $('td:nth-child(9)').hide();
@@ -185,16 +197,15 @@ function adicionaMeta() {
      	 $('td:nth-child(14)').hide();
     	 $('td:nth-child(15)').hide();
      	 $('td:nth-child(16)').hide();
-      	 $('td:nth-child(17)').hide();
-    	 
-    	 
+      	 $('td:nth-child(17)').hide();    	 
+      	 $('td:nth-child(18)').hide();
     	 
     	 
     	 
     }
     
     else if (ATIVIDADE == FEEDBACK1  ){
-    		var indice = wdkAddChild('tableMetas');
+    		var indice = wdkAddChild('tableMetas1');
     		//OCULTA COLUNAS DO FEEDBACK 2
     		 $('td:nth-child(10)').hide();
     		 $('td:nth-child(11)').hide();
@@ -210,7 +221,7 @@ function adicionaMeta() {
     }
     
     else if ( ATIVIDADE == FEEDBACK2 ){
-			var indice = wdkAddChild('tableMetas');
+			var indice = wdkAddChild('tableMetas1');
 			 //BLOQUEAR CAMPOS DE FEEDBACK 1		
 			$( "#comentarioF___"+indice ).prop( "disabled", true );
 			$( "#campo10___"+indice ).prop( "disabled", true );
@@ -222,30 +233,28 @@ function adicionaMeta() {
     
 }
 
-function clickProgresso(){
-	if (document.getElementById("verde").checked == true){
-		$('#div_14').css('background-color', '#008000');	
-	}
-	else if (document.getElementById("amarelo").checked == true){
-		$('#div_14').css('background-color', '#FFFF00');	
-	}
-	else if (document.getElementById("vermelho").checked == true){
-		$('#div_14').css('background-color', '#FF0000');	
-	}
-	
-}
+
 
 function removedZoomItem(removedItem) {   
     var BENEFICIARIO ="Funcionario";
+    var COMPETENCIA ="txcompetencia";
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
+    
+    //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
+    //separa string
+    var linhaPagamento = campoZOOM.split('___');
 
    if (campoZOOM == BENEFICIARIO){
 		$("#dataAdmissao").val("");
 		$("#emailGestorImediato").val("");
 		$("#funcao").val("");
 	} 
+   
+   else if (linhaPagamento[0] == COMPETENCIA){
+	   		$('#codCompetencia' + "___" + linhaPagamento[1]).val("");
+   }
 
 }
 
