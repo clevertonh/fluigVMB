@@ -27,7 +27,7 @@
                 <div class='panel panel-primary'>
                     <div class="panel-heading">
                         <div class="container text-center">
-                            <h4>Contratação de serviço</h4>
+                            <h4>Solicitação de contratação de serviço</h4>
                             <!--                         <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * sÃ£o de preenchimento obrigatÃ³rio.</div>
 -->
                         </div>
@@ -137,9 +137,9 @@ class="fluigicon fluigicon-calendar"></span>
                                                                                 <label>Carregar informações financeiras do evento</label>
                                                                                 <br>
                                                                                 <label for="carregaFinan">Sim</label>
-                                                                                <input type="radio" id="carregaFinan" name="FinanEvento" value="sim" onclick="clickFinanceiroEvento()">
+                                                                                <input type="radio" id="carregaFinan" name="FinanEvento" value="sim" onclick="clickFinanceiroEvento()" readOnly>
                                                                                 <label for="NcarregaFinan">Não</label>
-                                                                                <input type="radio" id="NcarregaFinan" name="FinanEvento" value="nao" onclick="clickFinanceiroEvento()">
+                                                                                <input type="radio" id="NcarregaFinan" name="FinanEvento" value="nao" onclick="clickFinanceiroEvento()" readOnly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
@@ -440,7 +440,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                                             <input type="radio" id="demanda" name="definicaoValor" value="demanda">
                                                                         </div>
                                                                         <div class="form-group col-md-2">
-                                                                            <label>Valor mensal ou limite mensal</label>
+                                                                            <label>Valor mensal ou limite mensal</label>                                                           
                                                                             <input type="number" id="valorMensal" name="valorMensal" class="form-control">
                                                                         </div>
                                                                         <div class="form-group col-md-2">

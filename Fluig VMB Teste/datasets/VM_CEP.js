@@ -7,8 +7,9 @@ function defineStructure() {
 
 	
 	setKey(["CEP"]);
-	addIndex(["CEP"]);
+	//addIndex(["CEP"]);
 }
+
 
 function createDataset(fields, constraints, sortFields) {
 	
@@ -22,7 +23,6 @@ function createDataset(fields, constraints, sortFields) {
     var objdata;
     var dados;
     var CEP ="50010340";
-    // https://viacep.com.br/ws/01001000/json/
     
     try {
     	 var clientService = fluigAPI.getAuthorizeClientService();
@@ -30,7 +30,7 @@ function createDataset(fields, constraints, sortFields) {
     	 var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'CEP',
-	            endpoint : '/'+CEP+'/json',
+	            endpoint : CEP + '/json',
 	            method : 'get',// 'delete', 'patch', 'put', 'get'     
 	            timeoutService: '100' // segundos	            	  
 	        }
@@ -43,22 +43,7 @@ function createDataset(fields, constraints, sortFields) {
     }
     
     else{
-        //log.info(vo.getResult());    
-    	/*
-    	 * { 
-			   "uf":"PE",
-			   "complemento":"",
-			   "logradouro":"Rua do Fogo",
-			   "bairro":"Santo Antônio",
-			   "localidade":"Recife",
-			   "ibge":"2611606",
-			   "unidade":"",
-			   "gia":"",
-			   "cep":"50010-340"
-			}
-2019-10-12 13:53:45,048 INFO  [com.datasul.technology.webdesk.customization.ScriptingLog] (default task-5) "{\"uf\":\"PE\",\"complemento\":\"\",\"logradouro\":\"Rua do Fogo\",\"bairro\":\"Santo Antônio\",\"localidade\":\"Recife\",\"ibge\":\"2611606\",\"unidade\":\"\",\"gia\":\"\",\"cep\":\"50010-340\"}"			
-    	 */
-    	dados = vo.getResult();
+     	dados = vo.getResult();
     }
     
     } catch(err) {
@@ -66,20 +51,11 @@ function createDataset(fields, constraints, sortFields) {
     }
     
     
-    log.info("consulta CEP");
-    log.dir(dados)
-    
-//    "{\"uf\":\"PE\",\"complemento\":\"\",\"logradouro\":\"Rua do Fogo\",\"bairro\":\"Santo Antônio\",\"localidade\":\"Recife\",\"ibge\":\"2611606\",\"unidade\":\"\",\"gia\":\"\",\"cep\":\"50010-340\"}"
-    
      if(dados != null){
-    	objdata = JSON.parse(dados);    	
-		for(var i in objdata){
-			dataset.addRow([objdata[i].cep, objdata[i].logradouro, objdata[i].bairro, objdata[i].localidade, objdata[i].uf]);		
+    	objdata = JSON.parse(dados);      	
+ 		
+		dataset.addRow([objdata.cep, objdata.logradouro, objdata.bairro, objdata.localidade, objdata.uf]);		
 				
-		}
-		
-		
-		
 	}
     	
     return dataset;
@@ -104,6 +80,20 @@ function getConstraints(constraints, field){
 }
 
 
+/*
+ * 
+ * {
+  "uf" : "PE",
+  "complemento" : "",
+  "logradouro" : "Rua do Fogo",
+  "bairro" : "Santo Antônio",
+  "localidade" : "Recife",
+  "ibge" : "2611606",
+  "unidade" : "",
+  "gia" : "",
+  "cep" : "50010-340"
+}
+ */
 
 
 

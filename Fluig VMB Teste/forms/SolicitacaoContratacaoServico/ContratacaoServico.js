@@ -251,6 +251,7 @@ function setSelectedZoomItem(selectedItem) {
     	if (selectedItem["FINANEVENTO"] == "sim"){
     		codigoEvento = selectedItem["SOLICITACAO"];    		
     		document.getElementById("carregaFinan").click();  
+    		
 
     	}
     	else {
