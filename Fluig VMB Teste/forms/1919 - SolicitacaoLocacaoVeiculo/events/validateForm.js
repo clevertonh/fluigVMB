@@ -141,33 +141,36 @@ function validateForm(form){
 		
 	}
 	else if (activity == COTAR){	
-			if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
-	         	 throw "Você precisa informar o CNPJ/CPF do fornecedor escolhido como melhor proposta.";
-	        }
-			if (form.getValue("condicaoPgto") == ""  || form.getValue("condicaoPgto")  == null ){
-	        	 throw "Você precisa informar o campo de condição de pagamento.";
-	       }
-			if (form.getValue("contatoEmpresa") == ""  || form.getValue("contatoEmpresa")  == null ){
-	       	 throw "Você precisa informar o nome e email de contato do fornecedor.";
-			}	
-			
-			if (form.getValue("CotacaovalorMensal") == ""  || form.getValue("CotacaovalorMensal")  == null ){
-		       	 throw "Você precisa informar o valor contratado do serviço";
+			if (nextAtv == 53){
+				if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
+		         	 throw "Você precisa informar o CNPJ/CPF do fornecedor escolhido como melhor proposta.";
+		        }
+				if (form.getValue("condicaoPgto") == ""  || form.getValue("condicaoPgto")  == null ){
+		        	 throw "Você precisa informar o campo de condição de pagamento.";
+		       }
+				if (form.getValue("contatoEmpresa") == ""  || form.getValue("contatoEmpresa")  == null ){
+		       	 throw "Você precisa informar o nome e email de contato do fornecedor.";
 				}	
-			
-			if (form.getValue("formapgto") == ""  || form.getValue("formapgto")  == null ){
-		       	 throw "Você precisa informar o campo de período de pagamento";
-				}	
-			
-			if (form.getValue("definicaoValor") == ""  || form.getValue("definicaoValor")  == null ){
-		       	 throw "Você precisa informar o campo dde definição do valor";
-				}	
-			
-			if (form.getValue("Numerocontrato") != null && form.getValue("Numerocontrato") != ""){
-				if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorMensal"))){
-					 throw "O contrato não possui saldo suficiente para contratar esse serviço.";
+				
+				if (form.getValue("CotacaovalorMensal") == ""  || form.getValue("CotacaovalorMensal")  == null ){
+			       	 throw "Você precisa informar o valor contratado do serviço";
+					}	
+				
+				if (form.getValue("formapgto") == ""  || form.getValue("formapgto")  == null ){
+			       	 throw "Você precisa informar o campo de período de pagamento";
+					}	
+				
+				if (form.getValue("definicaoValor") == ""  || form.getValue("definicaoValor")  == null ){
+			       	 throw "Você precisa informar o campo dde definição do valor";
+					}	
+				
+				if (form.getValue("Numerocontrato") != null && form.getValue("Numerocontrato") != ""){
+					if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorMensal"))){
+						 throw "O contrato não possui saldo suficiente para contratar esse serviço.";
+					}
 				}
 			}
+
 		
 		
 	}
