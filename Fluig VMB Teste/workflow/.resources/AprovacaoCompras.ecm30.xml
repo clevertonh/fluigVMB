@@ -4,12 +4,12 @@
       <companyId>1</companyId>
       <processId>AprovacaoCompras</processId>
     </processDefinitionPK>
-    <processDescription>Aprovação de Compras</processDescription>
+    <processDescription>AprovacaoCompras</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Compras</categoryId>
+    <categoryId></categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -27,11 +27,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Aprovação de Compras</processId>
-      <version>37</version>
+      <processId>AprovacaoCompras</processId>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>2399</formId>
+    <formId>0</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -51,11 +51,11 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>56</sequence>
+        <sequence>4</sequence>
       </processStatePK>
-      <stateName>Solicitar aprovação</stateName>
-      <stateDescription>Solicitar aprovação</stateDescription>
-      <instruction>Solicitar aprovação para compra ou serviço conforme alçada de valor prevista em norma interna.</instruction>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -75,8 +75,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>120</positionX>
-      <positionY>30</positionY>
+      <positionX>150</positionX>
+      <positionY>82</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -103,14 +103,13 @@
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
-      <stateName>Aprovar</stateName>
-      <stateDescription>Aprovar</stateDescription>
+      <stateName>Act1</stateName>
+      <stateDescription>Act1</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -125,8 +124,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>200</positionX>
-      <positionY>253</positionY>
+      <positionX>260</positionX>
+      <positionY>208</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -152,17 +151,15 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>11</sequence>
+        <sequence>14</sequence>
       </processStatePK>
-      <stateName>Aprovar-Diretoria de Suporte</stateName>
-      <stateDescription>Aprovar-Diretoria de Suporte</stateDescription>
+      <stateName>Atividade</stateName>
+      <stateDescription>Atividade</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -177,8 +174,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>470</positionX>
-      <positionY>620</positionY>
+      <positionX>440</positionX>
+      <positionY>377</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -204,278 +201,18 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>13</sequence>
+        <sequence>12</sequence>
       </processStatePK>
-      <stateName>Aprovar-Diretoria de Ministério</stateName>
-      <stateDescription>Aprovar-Diretoria de Ministério</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>630</positionX>
-      <positionY>620</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>15</sequence>
-      </processStatePK>
-      <stateName>Aprovar-Diretoria de MKT</stateName>
-      <stateDescription>Aprovar-Diretoria de MKT</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>770</positionX>
-      <positionY>620</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>18</sequence>
-      </processStatePK>
-      <stateName>Aprovar-Diretoria de Advocacy</stateName>
-      <stateDescription>Aprovar-Diretoria de Advocacy</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>930</positionX>
-      <positionY>620</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>27</sequence>
-      </processStatePK>
-      <stateName>Aprovar-Diretoria Nacional</stateName>
-      <stateDescription>Aprovar-Diretoria Nacional</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>970</positionX>
-      <positionY>862</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>35</sequence>
-      </processStatePK>
-      <stateName>Aprovar</stateName>
-      <stateDescription>Aprovar</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Usuário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;001649&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>340</positionX>
-      <positionY>450</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>25</sequence>
-      </processStatePK>
-      <stateName>aprovado?</stateName>
-      <stateDescription>aprovado?</stateDescription>
+      <stateName>Exclusivo</stateName>
+      <stateDescription>Exclusivo</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>720</positionX>
-      <positionY>853</positionY>
+      <positionX>460</positionX>
+      <positionY>190</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -489,18 +226,18 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>33</sequence>
+        <sequence>17</sequence>
       </processStatePK>
-      <stateName>aprovado?</stateName>
-      <stateDescription>aprovado?</stateDescription>
+      <stateName>Exclusivo</stateName>
+      <stateDescription>Exclusivo</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>360</positionX>
-      <positionY>230</positionY>
+      <positionX>280</positionX>
+      <positionY>50</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -514,18 +251,18 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>37</sequence>
+        <sequence>22</sequence>
       </processStatePK>
-      <stateName>aprovado?</stateName>
-      <stateDescription>aprovado?</stateDescription>
+      <stateName>Exclusivo</stateName>
+      <stateDescription>Exclusivo</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>490</positionX>
-      <positionY>430</positionY>
+      <positionX>610</positionX>
+      <positionY>354</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -539,110 +276,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>61</sequence>
+        <sequence>9</sequence>
       </processStatePK>
-      <stateName>Verifica orçada</stateName>
-      <stateDescription>Verifica orçada</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>110</positionX>
-      <positionY>100</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>74</sequence>
-      </processStatePK>
-      <stateName>Join</stateName>
-      <stateDescription>Join</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>false</automatic>
-      <positionX>720</positionX>
-      <positionY>750</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>4</stateType>
-      <bpmnType>127</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>86</sequence>
-      </processStatePK>
-      <stateName>aprovado?</stateName>
-      <stateDescription>aprovado?</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>1120</positionX>
-      <positionY>853</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>101</sequence>
-      </processStatePK>
-      <stateName>Evento Paralelo</stateName>
-      <stateDescription>Evento Paralelo</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>false</automatic>
-      <positionX>710</positionX>
-      <positionY>430</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>3</stateType>
-      <bpmnType>126</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>58</sequence>
-      </processStatePK>
-      <stateName>Aprovado</stateName>
-      <stateDescription>Aprovado</stateDescription>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -663,8 +300,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1270</positionX>
-      <positionY>260</positionY>
+      <positionX>590</positionX>
+      <positionY>180</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -686,7 +323,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>90</sequence>
+        <sequence>26</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -710,8 +347,55 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1215</positionX>
-      <positionY>950</positionY>
+      <positionX>720</positionX>
+      <positionY>420</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>AprovacaoCompras</processId>
+        <version>1</version>
+        <sequence>28</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>720</positionX>
+      <positionY>350</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -733,7 +417,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>94</sequence>
+        <sequence>29</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -757,8 +441,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>560</positionX>
-      <positionY>886</positionY>
+      <positionX>440</positionX>
+      <positionY>70</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -780,7 +464,7 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <sequence>97</sequence>
+        <sequence>32</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
       <stateDescription>Fim</stateDescription>
@@ -804,55 +488,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>534</positionX>
-      <positionY>556</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>65</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>100</sequence>
-      </processStatePK>
-      <stateName>Fim</stateName>
-      <stateDescription>Fim</stateDescription>
-      <instruction>Atividade final do processo</instruction>
-      <deadlineTime>0</deadlineTime>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
-      <engineAllocationConfiguration></engineAllocationConfiguration>
-      <selectColleague>0</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>0</allowanceAuthorityTime>
-      <frequenceAuthorityTime>1</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>290</positionX>
-      <positionY>340</positionY>
+      <positionX>580</positionX>
+      <positionY>250</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -876,35 +513,11 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>37</version>
-        <sequence>25</sequence>
+        <version>1</version>
+        <sequence>12</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel4&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel6&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel5&quot;) ==&quot;reprovado&quot; || hAPI.getCardValue(&quot;aprNivel3&quot;) ==&quot;reprovado&quot;</condition>
-      <destinationSequenceId>94</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>37</version>
-        <sequence>25</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 50000</condition>
-      <destinationSequenceId>58</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>3</expressionOrder>
-        <version>37</version>
-        <sequence>25</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt; 50000</condition>
-      <destinationSequenceId>27</destinationSequenceId>
+      <condition>teste</condition>
+      <destinationSequenceId>14</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -912,82 +525,10 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>37</version>
-        <sequence>33</sequence>
+        <version>1</version>
+        <sequence>17</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel1&quot;) ==&quot;reprovado&quot;</condition>
-      <destinationSequenceId>100</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>37</version>
-        <sequence>33</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;=3500</condition>
-      <destinationSequenceId>58</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>3</expressionOrder>
-        <version>37</version>
-        <sequence>33</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt;3500</condition>
-      <destinationSequenceId>35</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>37</version>
-        <sequence>37</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;reprovado&quot;</condition>
-      <destinationSequenceId>97</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>37</version>
-        <sequence>37</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 35000</condition>
-      <destinationSequenceId>58</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>3</expressionOrder>
-        <version>37</version>
-        <sequence>37</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt;35000</condition>
-      <destinationSequenceId>101</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>37</version>
-        <sequence>61</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &lt;= 35000</condition>
+      <condition>teste</condition>
       <destinationSequenceId>5</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -995,36 +536,12 @@
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>37</version>
-        <sequence>61</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;limiteanual&quot;) &gt; 35000</condition>
-      <destinationSequenceId>35</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
         <expressionOrder>1</expressionOrder>
-        <version>37</version>
-        <sequence>86</sequence>
+        <version>1</version>
+        <sequence>22</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;reprovado&quot;</condition>
-      <destinationSequenceId>90</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>37</version>
-        <sequence>86</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel7&quot;) ==&quot;aprovado&quot;</condition>
-      <destinationSequenceId>58</destinationSequenceId>
+      <condition>teste</condition>
+      <destinationSequenceId>0</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -1034,29 +551,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>28</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>25</initialStateSequence>
-      <finalStateSequence>27</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&gt;50.000</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>34</linkSequence>
+        <linkSequence>13</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>5</initialStateSequence>
-      <finalStateSequence>33</finalStateSequence>
+      <finalStateSequence>12</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1068,29 +568,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>36</linkSequence>
+        <linkSequence>15</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>35</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&gt;3.500</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>38</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>35</initialStateSequence>
-      <finalStateSequence>37</finalStateSequence>
+      <initialStateSequence>12</initialStateSequence>
+      <finalStateSequence>14</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1102,63 +585,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>52</linkSequence>
+        <linkSequence>16</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>58</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&lt;3.500</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>53</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>37</initialStateSequence>
-      <finalStateSequence>58</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&lt;35.000</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>54</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>25</initialStateSequence>
-      <finalStateSequence>58</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&lt;50.000</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>62</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>56</initialStateSequence>
-      <finalStateSequence>61</finalStateSequence>
+      <initialStateSequence>12</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1170,14 +602,48 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>63</linkSequence>
+        <linkSequence>18</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>61</initialStateSequence>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>AprovacaoCompras</processId>
+        <version>1</version>
+        <linkSequence>20</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>AprovacaoCompras</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
       <finalStateSequence>5</finalStateSequence>
       <returnLabel></returnLabel>
-      <name>&lt;3.500</name>
+      <name></name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -1187,29 +653,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>64</linkSequence>
+        <linkSequence>23</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>61</initialStateSequence>
-      <finalStateSequence>35</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&gt;35.000</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>70</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>101</initialStateSequence>
-      <finalStateSequence>11</finalStateSequence>
+      <initialStateSequence>14</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1221,12 +670,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>71</linkSequence>
+        <linkSequence>25</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>101</initialStateSequence>
-      <finalStateSequence>13</finalStateSequence>
+      <initialStateSequence>22</initialStateSequence>
+      <finalStateSequence>28</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1238,12 +687,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>72</linkSequence>
+        <linkSequence>27</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>101</initialStateSequence>
-      <finalStateSequence>15</finalStateSequence>
+      <initialStateSequence>22</initialStateSequence>
+      <finalStateSequence>26</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1255,216 +704,12 @@
         <companyId>1</companyId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
-        <linkSequence>73</linkSequence>
+        <linkSequence>31</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>101</initialStateSequence>
-      <finalStateSequence>18</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>76</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>13</initialStateSequence>
-      <finalStateSequence>74</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>77</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>15</initialStateSequence>
-      <finalStateSequence>74</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>78</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>18</initialStateSequence>
-      <finalStateSequence>74</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>80</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>37</initialStateSequence>
-      <finalStateSequence>101</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>&gt;35.000</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>82</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>74</initialStateSequence>
-      <finalStateSequence>25</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>87</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>27</initialStateSequence>
-      <finalStateSequence>86</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>89</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>86</initialStateSequence>
-      <finalStateSequence>90</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>91</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>86</initialStateSequence>
-      <finalStateSequence>58</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>93</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>25</initialStateSequence>
-      <finalStateSequence>94</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>96</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>37</initialStateSequence>
-      <finalStateSequence>97</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>99</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>33</initialStateSequence>
-      <finalStateSequence>100</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <linkSequence>102</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>11</initialStateSequence>
-      <finalStateSequence>74</finalStateSequence>
+      <initialStateSequence>12</initialStateSequence>
+      <finalStateSequence>32</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1477,141 +722,52 @@
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
-        <eventId>afterStateEntry</eventId>
+        <eventId>ENG_LITERALS</eventId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function afterStateEntry(sequenceId){&#xd;
-	var SOLICITAR = 56;&#xd;
-	var GERENTE_ADM =5;&#xd;
-	var DIRETOR_FIN = 35;&#xd;
-	var DIRETOR_RH = 11;&#xd;
-	var DIRETOR_MINISTERIO = 13;&#xd;
-	var DIRETOR_MKT = 15;&#xd;
-	var DIRETOR_ADVOCACY = 18;&#xd;
-	var DIRETOR_NACIONAL = 27;&#xd;
-	&#xd;
-	&#xd;
-	    var codSolicitacao = getValue(&quot;WKNumProces&quot;);&#xd;
-&#xd;
-		//RECUPERA NUMERO DA ATIVIDADE&#xd;
-		var ativAtual 		 = getValue(&quot;WKNumState&quot;);	&#xd;
-			&#xd;
-	    //VERIFICA QUAL A PROXIMA ATIVIDADE&#xd;
-	    var nextAtv = getValue(&quot;WKNextState&quot;);&#xd;
-	    //RECUPERA NUMERO DO DOCUMENTO&#xd;
-	    var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
-	    var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
-	    var empresa = getValue(&quot;WKCompany&quot;);&#xd;
-	    //RECUPERA USUARIO LOGADO&#xd;
-	    var usuario = getValue(&apos;WKUser&apos;);&#xd;
-	       &#xd;
-	    var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
-	    var limiteAnual 	 = hAPI.getCardValue(&quot;limiteanual&quot;);&#xd;
-	    &#xd;
-	    &#xd;
-	 //gerente de adm&#xd;
-	if (ativAtual == GERENTE_ADM){				&#xd;
-		var aprovacao 	 = hAPI.getCardValue(&quot;aprNivel1&quot;);&#xd;
-		&#xd;
-		//aprovado&#xd;
-		if (aprovacao == &quot;aprovado&quot;){&#xd;
-			//hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
-		}&#xd;
-		else {&#xd;
-			//reprovado.&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);&#xd;
-			hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo: &quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			&#xd;
-		}&#xd;
-		&#xd;
-	}&#xd;
-	//diretor financeiro&#xd;
-	else if (ativAtual == DIRETOR_FIN){&#xd;
-		var aprovacao 	 = hAPI.getCardValue(&quot;aprNivel2&quot;);&#xd;
-		&#xd;
-		//aprovado&#xd;
-		if (aprovacao == &quot;aprovado&quot;){&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
-		}&#xd;
-		else {&#xd;
-			//reprovado.&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
-			hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo: &quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			&#xd;
-		}&#xd;
-	}&#xd;
-	else if (ativAtual == DIRETOR_RH || ativAtual == DIRETOR_MINISTERIO  || ativAtual == DIRETOR_MKT  || ativAtual == DIRETOR_ADVOCACY){&#xd;
-		var aprovacaoRH 	 = hAPI.getCardValue(&quot;aprNivel4&quot;);&#xd;
-		var aprovacaoMINISTERIO 	 = hAPI.getCardValue(&quot;aprNivel6&quot;);&#xd;
-		var aprovacaoMKT 	 = hAPI.getCardValue(&quot;aprNivel3&quot;);&#xd;
-		var aprovacaoADVOCACY 	 = hAPI.getCardValue(&quot;aprNivel5&quot;);&#xd;
-		&#xd;
-		if (aprovacaoRH == &quot;reprovado&quot; || aprovacaoMINISTERIO == &quot;reprovado&quot; || aprovacaoMKT == &quot;reprovado&quot; || aprovacaoADVOCACY == &quot;reprovado&quot; ){&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
-			&#xd;
-			&#xd;
-			if (ativAtual == DIRETOR_RH){&#xd;
-				hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo:&quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			}&#xd;
-			else if (ativAtual == DIRETOR_MINISTERIO){&#xd;
-				hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo:&quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			}&#xd;
-			else if (ativAtual == DIRETOR_MKT){&#xd;
-				hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo:&quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			}&#xd;
-			else if (ativAtual == DIRETOR_ADVOCACY){&#xd;
-				hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo:&quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			}&#xd;
-			&#xd;
-			&#xd;
-			&#xd;
-		}&#xd;
-		else {&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
-			&#xd;
-		}&#xd;
-	&#xd;
-	}	&#xd;
-	//diretoria nacional&#xd;
-	else if (ativAtual == DIRETOR_NACIONAL){&#xd;
-		var aprovacao 	 = hAPI.getCardValue(&quot;aprNivel7&quot;);&#xd;
-		&#xd;
-		//aprovado&#xd;
-		if (aprovacao == &quot;aprovado&quot;){&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;aprovado&quot;);  &#xd;
-		}&#xd;
-		else {&#xd;
-			//reprovado.&#xd;
-			hAPI.setCardValue(&quot;aprovacaoServico&quot;,&quot;reprovado&quot;);  &#xd;
-			hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada. Motivo:&quot; + hAPI.getCardValue(&quot;justificativaReprovacao&quot;));	&#xd;
-			&#xd;
-		}&#xd;
-	}&#xd;
-&#xd;
-}</eventDescription>
+      <eventDescription>#Mon Dec 30 16:09:07 GFT 2019&#xd;
+process.category=&#xd;
+process.description=AprovacaoCompras&#xd;
+process.instructions=&#xd;
+</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
-        <eventId>beforeStateEntry</eventId>
+        <eventId>ESP_LITERALS</eventId>
         <processId>AprovacaoCompras</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
-	&#xd;
-}</eventDescription>
+      <eventDescription>#Mon Dec 30 16:09:07 GFT 2019&#xd;
+process.category=&#xd;
+process.description=AprovacaoCompras&#xd;
+process.instructions=&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>POR_LITERALS</eventId>
+        <processId>AprovacaoCompras</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>#Mon Dec 30 16:09:07 GFT 2019&#xd;
+process.category=&#xd;
+process.description=AprovacaoCompras&#xd;
+process.instructions=&#xd;
+</eventDescription>
     </WorkflowProcessEvent>
   </list>
   <list/>
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>991</height>
-      <width>1361</width>
+      <height>471</height>
+      <width>831</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
-      <stateName>Alçada de aprovação de compras e serviços</stateName>
+      <stateName>Aprovação de compras e serviços</stateName>
       <type>1</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
@@ -1622,12 +778,12 @@
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>C0C0C0</color>
-      <height>198</height>
-      <width>1331</width>
+      <color>9F9F9F</color>
+      <height>157</height>
+      <width>801</width>
       <positionX>40</positionX>
-      <positionY>208</positionY>
-      <stateName>Gerência de Administração</stateName>
+      <positionY>10</positionY>
+      <stateName>Gerente</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
@@ -1638,12 +794,12 @@
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>82b0b7</color>
-      <height>198</height>
-      <width>1331</width>
+      <color>C0C0C0</color>
+      <height>157</height>
+      <width>801</width>
       <positionX>40</positionX>
-      <positionY>406</positionY>
-      <stateName>Diretoria Financeira</stateName>
+      <positionY>167</positionY>
+      <stateName>Diretor de área</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
@@ -1654,12 +810,12 @@
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>adc9ac</color>
-      <height>198</height>
-      <width>1331</width>
+      <color>82b0b7</color>
+      <height>157</height>
+      <width>801</width>
       <positionX>40</positionX>
-      <positionY>604</positionY>
-      <stateName>Comitê</stateName>
+      <positionY>324</positionY>
+      <stateName>Diretor Nacional</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
@@ -1669,98 +825,10 @@
         <sequence>4</sequence>
       </swimLanePK>
     </SwimLane>
-    <SwimLane>
-      <color>d0daae</color>
-      <height>199</height>
-      <width>1331</width>
-      <positionX>40</positionX>
-      <positionY>802</positionY>
-      <stateName>Diretoria Nacional</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>5</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
-      <color>d6e0d0</color>
-      <height>198</height>
-      <width>1331</width>
-      <positionX>40</positionX>
-      <positionY>10</positionY>
-      <stateName>Compradores</stateName>
-      <type>2</type>
-      <parentSequence>1</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>1</version>
-        <sequence>6</sequence>
-      </swimLanePK>
-    </SwimLane>
   </list>
   <list/>
   <list/>
-  <list>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>37</version>
-        <linkSequence>53</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>520</positionX>
-      <positionY>277</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>37</version>
-        <linkSequence>54</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>1287</positionX>
-      <positionY>660</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>37</version>
-        <linkSequence>63</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>253</positionX>
-      <positionY>150</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>37</version>
-        <linkSequence>64</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>139</positionX>
-      <positionY>478</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>AprovacaoCompras</processId>
-        <version>37</version>
-        <linkSequence>91</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>1287</positionX>
-      <positionY>904</positionY>
-    </ProcessLinkBend>
-  </list>
+  <list/>
   <list/>
   <list/>
   <list/>

@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>subprocessoTeste1</processId>
-      <version>2</version>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2526</formId>
@@ -165,7 +165,30 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>subprocessoTeste1</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){&#xd;
+	 log.info(&quot;###afterProcessCreate&quot;);&#xd;
+	 &#xd;
+	 &#xd;
+	 //Captura o número do processo &quot;Pai&quot;&#xd;
+	    var parentProcess = hAPI.getParentInstance(processId);&#xd;
+&#xd;
+	    log.info(&quot;PREENCHENDO DADOS DE SUBPROCESSO&quot;);&#xd;
+	    log.info(parentProcess);&#xd;
+	    &#xd;
+	    hAPI.setCardValue(&quot;campo1&quot;,&quot;aprovado&quot;);&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
@@ -248,7 +271,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>subprocessoTeste1</processId>
-        <version>2</version>
+        <version>4</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
