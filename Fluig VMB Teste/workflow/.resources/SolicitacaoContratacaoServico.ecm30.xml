@@ -521,7 +521,7 @@
       <stateName>Verificar aprovação</stateName>
       <stateDescription>Verificar aprovação</stateDescription>
       <instruction></instruction>
-      <deadlineTime>3600</deadlineTime>
+      <deadlineTime>180</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -854,8 +854,8 @@
         <version>1</version>
         <sequence>105</sequence>
       </processStatePK>
-      <stateName>Comitê de compras</stateName>
-      <stateDescription>Comitê de compras</stateDescription>
+      <stateName>Solicitação Aprovação de Serviço</stateName>
+      <stateDescription>Solicitação Aprovação de Serviço</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -876,7 +876,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1250</positionX>
-      <positionY>930</positionY>
+      <positionY>920</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -904,8 +904,8 @@
         <version>1</version>
         <sequence>340</sequence>
       </processStatePK>
-      <stateName>Alçada de aprovação</stateName>
-      <stateDescription>Alçada de aprovação</stateDescription>
+      <stateName>Aprovação de solicitação</stateName>
+      <stateDescription>Aprovação de solicitação</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -2319,6 +2319,17 @@
       </processLinkBendPK>
       <positionX>1712</positionX>
       <positionY>1189</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>91</version>
+        <linkSequence>351</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>545</positionX>
+      <positionY>184</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
