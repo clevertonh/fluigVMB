@@ -2,19 +2,19 @@ function enableFields(form){
 	var ABERTURA = 0;
 	var APROVACAO =5;
 	var CORRIGIR = 15;
+	var APROVACAO_DIR = 50;
+	var APROVACAO_DN = 51;
 	var GERAR_SC = 42;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
 	
-	
+	 var dataset = UsuarioLogado(solicitante);		 			 			 			 
+	 var nomeSolicitante = dataset.getValue(0, "colleagueName");
+	 var emailSolicitante = dataset.getValue(0, "mail");
+	 
 	if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
-		 
-		 var dataset = UsuarioLogado(solicitante);		 			 			 			 
-		 var nomeSolicitante = dataset.getValue(0, "colleagueName");
-		 var emailSolicitante = dataset.getValue(0, "mail");
-		 
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
@@ -41,13 +41,40 @@ function enableFields(form){
 	else if (activity == APROVACAO){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
-		 form.setEnabled("rateioconfigurado", false);		 
-		 form.setEnabled("dataset_solicitacaoevento", false);
-		 form.setEnabled("FinanEvento", false);
-		 form.setEnabled("solicitacaocompraanterior", false);
-		 bloqueiaDadosFinanceiro();
-		 bloqueiaDadosProduto();
+		 
+		 form.setValue("gestor",nomeSolicitante);
+		 form.setValue("emailLider",emailSolicitante);
+		 
+		 
 	}
+	
+	else if (activity == APROVACAO_DIR){
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		 
+	}
+	
+	else if (activity == APROVACAO_DN){
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		 
+	}
+	
+	
 	else if (activity == GERAR_SC){		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();

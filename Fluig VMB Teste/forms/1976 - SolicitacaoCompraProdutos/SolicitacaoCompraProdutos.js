@@ -83,6 +83,26 @@ function prevTab(elem) {
 
 var visibilidade = true;
 
+function init() {
+    $("input[id^='idquantidade___']:last").blur(doFormTotal);
+}
+
+function doFormTotal() {
+    var total = 0;  
+    
+     $("input[id^='vrTotUnit___']").each(function() {
+        if ($(this).val()) {
+            total += parseFloat($(this).val()); 
+        }
+    });
+     
+    
+    $("#vl_total").val(total);
+    
+ 
+   
+  
+}
 
 function removeItens() {
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIAR || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){
@@ -100,6 +120,7 @@ function removeItens() {
 function fnCustomDeleteRateio(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == CORRIGIR	|| ATIVIDADE == INICIAR || ATIVIDADE == APROVACAO){								
 		fnWdkRemoveChild(oElement);	
+		
 
 	}
 	else {
@@ -115,10 +136,10 @@ function fnCustomDeleteRateio(oElement) {
 function fnCustomDeleteProduto(oElement) {	  
 	if (ATIVIDADE == ABERTURA || ATIVIDADE == INICIAR || ATIVIDADE == APROVACAO || ATIVIDADE == CORRIGIR){								
 		fnWdkRemoveChild(oElement);
-		
+		doFormTotal();
 		//reinicia variavel q controla quantidade de linhas permitidas de itens de produtos
 		linhas = 0;
-
+		
 	}
 	else {
 		FLUIGC.toast({
@@ -291,10 +312,9 @@ function adicionaLinhaProduto() {
 
 			qtde.addEventListener("blur", function( event ) {			
 				  var vl_ultimaCompra = $('#vrUltima' + "___" + row).val();
-				  var qtde = $('#idquantidade' + "___" + row).val()			  
+				  var qtde = $('#idquantidade' + "___" + row).val()	;		  
 				  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
-				  
-				  
+				  				  
 				}, true);
 
 		}

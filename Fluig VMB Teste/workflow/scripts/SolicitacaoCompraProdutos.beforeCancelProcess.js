@@ -24,7 +24,12 @@ function beforeCancelProcess(colleagueId,processId){
     //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  
     var opcao = 5;
 
-     if (ativAtual == CORRIGIR && ativAtual == ASSUMIR){
+    
+    log.info("CANCELAMENTO DE SOLICITACAO DE COMPRA");
+    log.info(ativAtual);
+    
+    
+    if (ativAtual == CORRIGIR && ativAtual == ASSUMIR){
     	 var constraint = new Array();                                 
      	constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
  		constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
