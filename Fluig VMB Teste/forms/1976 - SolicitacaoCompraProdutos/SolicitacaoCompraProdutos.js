@@ -306,7 +306,7 @@ function adicionaLinhaProduto() {
 				
 			});
 			
-			reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
+			//reloadZoomFilterValues("txtproduto" + "___" + row, "FLUIG," + "2");	
 		
 			var qtde = document.getElementById("idquantidade" + "___" + row);
 

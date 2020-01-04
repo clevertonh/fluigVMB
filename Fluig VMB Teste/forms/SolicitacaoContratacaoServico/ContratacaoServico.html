@@ -332,7 +332,7 @@ class="fluigicon fluigicon-calendar"></span>
                                                                     <div class="row">
                                                                         <div class="form-group col-md-6">
                                                                             <label>Objetivos</label>
-                                                                            <textarea class="form-control" rows="5" id="objetivos" name="objetivos" placeholder="Quais os objetivos dessa contratação de serviço"></textarea>
+                                                                            <textarea class="form-control" rows="5" id="objetivos" name="objetivos" placeholder="Quais os objetivos dessa contratação de serviço. Essa informação será registrada no contrato com o fornecedor"></textarea>
                                                                         </div>
                                                                         <div class="form-group col-md-6">
                                                                             <label>Justificativa</label>
@@ -462,7 +462,16 @@ class="fluigicon fluigicon-calendar"></span>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="2b">
-                                            <div class="row">
+                                        
+                                        <div class="panel-body">
+                                        	<div class="panel panel-info">
+                                        		 <div class="panel-heading ">
+									                        <h5 class="panel-title">
+									                           <b>Diretoria de Área</b>
+									                        </h5>
+									                     </div>
+									                     <div class="panel-body">
+									                     	<div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="gestor" class="required">Nome aprovador</label>
                                                     <input type="text" class="form-control" id="gestor" name="gestor" readonly>
@@ -493,6 +502,87 @@ class="fluigicon fluigicon-calendar"></span>
                                                 </div>
 
                                             </div>
+									                     </div>
+                                        	</div>
+                                        
+                                        </div>
+                                            
+                                      
+                                      <div class="panel-body" id="div_nivel2">
+									                  <div class="panel panel-info" >
+									                     <div class="panel-heading ">
+									                        <h5 class="panel-title">
+									                           <b>Diretoria de Área</b>
+									                        </h5>
+									                     </div>
+									                     <div class="panel-body">
+									                        <div class="row">
+									                           <div class="form-group col-md-4">
+									                              <label for="nomeNivel2" class="required">Nome</label>
+									                              <input type="text" class="form-control" id="nomeNivel2" name="nomeNivel2" readonly >
+									                           </div>
+									                           <div class="form-group col-md-4">
+									                              <label for="emailNivel2">Email</label>
+									                              <input type="email" class="form-control" id="emailNivel2" name="emailNivel2" readonly>
+									                           </div>
+									                           <div class="form-group col-md-4" id="divMatricualAprDIR">
+				                                                    <label for="matriculaAprDirArea">ID Aprovador</label>
+				                                                    <input type="text" class="form-control" id="matriculaAprDirArea" name="matriculaAprDirArea" readonly>
+				                                                </div>
+									                        </div>
+									                        <div class="row">
+									                           <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+									                           <div class="form-group col-md-2">
+									                              <Label for="aprNivel2S">Aprovado</Label> 
+									                              <input type="radio" id="aprNivel2S" name="aprNivel2" value="aprovado"
+									                                 />
+									                           </div>
+									                           <div class="form-group col-md-4">
+									                              <Label for="aprNivel2N">Reprovado</Label> 
+									                              <input type="radio" id="aprNivel2N" name="aprNivel2" value="reprovado"  />
+									                           </div>
+									                        </div>
+									                     </div>
+									                  </div>
+									               </div>
+                                        	   <div class="panel-body">
+								                  <div class="panel panel-info" id="div_nivel3">
+								                     <div class="panel-heading ">
+								                        <h5 class="panel-title">
+								                           <b>Diretoria Nacional</b>
+								                        </h5>
+								                     </div>
+								                     <div class="panel-body">
+								                        <div class="row">
+								                           <div class="form-group col-md-4">
+								                              <label for="nomeNivel3" class="required">Nome</label>
+								                              <input type="text" class="form-control" id="nomeNivel3" name="nomeNivel3" readonly >
+								                           </div>
+								                           <div class="form-group col-md-4">
+								                              <label for="emailNivel3">Email</label>
+								                              <input type="email" class="form-control" id="emailNivel3" name="emailNivel3" readonly>
+								                           </div>
+								                        </div>
+								                        <div class="row">
+								                           <h3>Para aprovar ou reprovar, marque a opção desejada:</h3>
+								                           <div class="form-group col-md-2">
+								                              <Label for="aprNivel3S">Aprovado</Label> 
+								                              <input type="radio" id="aprNivel3S" name="aprNivel3" value="aprovado"
+								                                 />
+								                           </div>
+								                           <div class="form-group col-md-4">
+								                              <Label for="aprNivel3N">Reprovado</Label> 
+								                              <input type="radio" id="aprNivel3N" name="aprNivel3" value="reprovado"  />
+								                           </div>
+								                        </div>
+								                     </div>
+								                  </div>
+								               </div>
+                                      
+                                      
+                                      
+                                      
+                                      
                                         </div>
                                         <div class="tab-pane" id="3b">
                                          <div class="panel-body" id="div_comprador">

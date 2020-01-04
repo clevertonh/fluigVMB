@@ -1179,7 +1179,7 @@ function adicionaLinhaServico() {
 		pickTime: false
 	});
 	
-	reloadZoomFilterValues("txtservico" + "___" + row, "FLUIG," + "1");
+	//reloadZoomFilterValues("txtservico" + "___" + row, "FLUIG," + "1");
 
 }
 
@@ -1346,8 +1346,6 @@ function convertDataToString(dataToString) {
     //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
     var mes = dataToString.getMonth() + 1;
 
-    console.log("MES: " + mes);
-
     if (dataToString.getDate().toString().length == 1) {
         dia = dataToString.getDate();
         dia = "0" + dia.toString();
@@ -1357,7 +1355,6 @@ function convertDataToString(dataToString) {
 
     }
 
-    console.log("TAMANHO MES: " + mes.toString().length);
     //converte mes
     if (mes.toString().length == 1) {
         mes = "0" + mes.toString();

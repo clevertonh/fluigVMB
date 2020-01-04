@@ -14,6 +14,8 @@ function defineStructure() {
 	addColumn("MATRICULA");
 	addColumn("DT_ADMISSAO");
 	addColumn("FUNCAO");
+	addColumn("GESTOR_MATRICIAL");
+	addColumn("EMAIL_MATRICIAL");
 	
 	setKey(["EMAIL_F"]);
 	addIndex(["EMAIL_F"]);
@@ -40,6 +42,8 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("MATRICULA");
     dataset.addColumn("DT_ADMISSAO");
     dataset.addColumn("FUNCAO");
+    dataset.addColumn("GESTOR_MATRICIAL");
+    dataset.addColumn("EMAIL_MATRICIAL");
            
     var dados;
     var webservice = '/FUNCIONARIO';
@@ -104,7 +108,9 @@ function createDataset(fields, constraints, sortFields) {
 					                datasetAprovador.getValue(0,"colleagueName"),objdata[i].CDEPART,
 					                null,null,
 					                objdata[i].CADMISSAO,
-					                objdata[i].CFUNCAO
+					                objdata[i].CFUNCAO,
+					                objdata[i].CMATRICIAL,
+					                objdata[i].CEMAILMATR
 					                ]);
 				}
 				else {
@@ -112,7 +118,9 @@ function createDataset(fields, constraints, sortFields) {
 					                objdata[i].CDATANASC, objdata[i].CEMAILG,
 					                objdata[i].CEMAILFUN, null,null,objdata[i].CDEPART,null,null,
 					                objdata[i].CADMISSAO,
-					                objdata[i].CFUNCAO
+					                objdata[i].CFUNCAO,
+					                objdata[i].CMATRICIAL,
+					                objdata[i].CEMAILMATR
 					                ]);
 				}
 			}

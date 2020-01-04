@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Acordo e Avaliação de Desempenho</processId>
-      <version>5</version>
+      <version>6</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2095</formId>
@@ -436,7 +436,7 @@
         <companyId>1</companyId>
         <processId>AcordoAvaliacaoDesempenho</processId>
         <expressionOrder>1</expressionOrder>
-        <version>5</version>
+        <version>6</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;matriculaMatricial&quot;) ==&quot;&quot;</condition>
@@ -448,7 +448,7 @@
         <companyId>1</companyId>
         <processId>AcordoAvaliacaoDesempenho</processId>
         <expressionOrder>2</expressionOrder>
-        <version>5</version>
+        <version>6</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;comentarioFinalM&quot;) !=&quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;comentarioFinalM&quot;) != null</condition>
@@ -460,7 +460,7 @@
         <companyId>1</companyId>
         <processId>AcordoAvaliacaoDesempenho</processId>
         <expressionOrder>3</expressionOrder>
-        <version>5</version>
+        <version>6</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;matriculaMatricial&quot;) !=&quot;&quot; &amp;&amp; ( hAPI.getCardValue(&quot;comentarioFinalM&quot;) ==&quot;&quot; || hAPI.getCardValue(&quot;comentarioFinalM&quot;) ==null)</condition>
@@ -627,7 +627,7 @@
       <width>1131</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
-      <stateName>Acordo de Desempenho</stateName>
+      <stateName>Acordo e Avaliação de Desempenho</stateName>
       <type>1</type>
       <parentSequence>0</parentSequence>
       <swimLanePK>
@@ -659,7 +659,7 @@
       <width>1101</width>
       <positionX>40</positionX>
       <positionY>275</positionY>
-      <stateName>SwimLane</stateName>
+      <stateName>Gestor Matricial</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>

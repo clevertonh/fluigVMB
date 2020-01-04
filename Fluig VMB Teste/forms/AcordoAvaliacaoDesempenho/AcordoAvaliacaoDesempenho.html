@@ -6,6 +6,8 @@
       <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
       <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
       <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+      <script type="text/javascript" src="pdfmake.min.js" charset="utf-8"></script>
+      <script type="text/javascript" src="vfs_fonts.js" charset="utf-8"></script>
       <link type="text/css" rel="stylesheet" href="AcordoAvaliacaoDesempenho.css"/>
    </head>
    <body>
@@ -59,7 +61,18 @@
                                                 </ul>
                                              </div>
                                              <div class="tab-content">
-                                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                                <div class="tab-pane active" role="tabpanel" id="step1">  
+                                                	<div class="row">
+                                                		<div class="form-group col-md-2">
+                                                         <label for="dataSolicitacao">Data de elaboração</label>
+                                                         <div class="input-group date">
+                                                            <input type="text" class="form-control" id="dataAcordo" name="dataAcordo" >
+                                                            <span class="input-group-addon"> <span
+                                                               class="fluigicon fluigicon-calendar"></span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                	</div>                                              	
                                                 	<div class="row" id="div_gestor">
                                                 		<div class="form-group col-md-5">
 				                                          <label for="gestor" class="required">Gestor</label>
@@ -74,9 +87,11 @@
                                                       <div class="form-group col-md-4">
                                                          <label for="Funcionario">Nome do Avaliado</label> 
                                                          <input name="Funcionario"
-                                                            class="form-control" type="zoom"
+                                                            class="form-control" 
+                                                            type="zoom"
                                                             id="Funcionario"
-                                                            data-zoom="{'displayKey':'NOME',
+                                                            data-zoom="{
+                                                            'displayKey':'NOME',
                                                             'datasetId':'ds_get_subordinados',
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione o funcionário',
@@ -85,6 +100,7 @@
                                                             {'field':'CPF','label':'CPF'},
                                                             {'field':'FUNCAO','label':'FUNCAO','visible':'false'},                                                            
                                                             {'field':'EMAIL_G','label':'EMAIL_G','visible':'false'},
+                                                            {'field':'EMAIL_F','label':'EMAIL_F','visible':'false'},                                                            
                                                             {'field':'DT_ADMISSAO','label':'DT_ADMISSAO','visible':'false'}						  					
                                                             ]
                                                             }">
@@ -102,21 +118,9 @@
                                                             </span>
                                                          </div>
                                                       </div>
-                                                      <div class="form-group col-md-2">
-                                                         <label for="dataSolicitacao">Data de elaboração</label>
-                                                         <div class="input-group date">
-                                                            <input type="text" class="form-control" id="dataAcordo" name="dataAcordo" readonly>
-                                                            <span class="input-group-addon"> <span
-                                                               class="fluigicon fluigicon-calendar"></span>
-                                                            </span>
-                                                         </div>
-                                                      </div>
+                                                      
                                                    </div>
-                                                   <div class="row" id="div_gestorImediato">
-                                                   		<div class="form-group col-md-4">
-                                                   			<input type="text" id="emailGestorImediato" name="emailGestorImediato" class="form-control" readonly>
-                                                   		</div>                                                   		                                                   		
-                                                   </div>
+                                                 
                                                    <div class="row">
 	                                                   	<div class="form-group col-md-4">
 	                                                   		<label>Gestor Matricial</label>
@@ -148,7 +152,7 @@
                                                                            <th class="tableColumn" style="width:500px;">Por que a Visão Mundial Brasil precisa que isto seja feito?</th>
                                                                            <th class="tableColumn" style="width:500px;">Como seria um resultado bem-sucedido? </th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_competencia">Competência</th>
-                                                                           <th class="tableColumn" style="width:500px;" id="codCompet">Codigo Competência</th>
+                                                                           <th class="tableColumn" style="width:530px;" id="codCompet">Codigo Competência</th>
                                                                            
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario1">Comentários do funcionário</th>
                                                                            <th class="tableColumn" style="width:500px;" id="div_comentario2">Como isto foi feito?</th>
@@ -197,7 +201,7 @@
 						                                                     	 </div>
                                                                            </td>
                                                                            <td>
-                                                                           		<input  class="form-control" type="text" id="codCompetencia" name="codCompetencia" style="width:100px;" readonly>
+                                                                           		<input  class="form-control" type="text" id="codCompetencia" name="codCompetencia" style="width:130px;" readonly>
                                                                            </td>
                                                                            <td>
                                                                               <textArea class="form-control" rows="6" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>

@@ -370,7 +370,8 @@
 	                                                                                                    <input type="hidden" name="produto" id="produto" />
 	                                                                                                    <input type="zoom" name="txtproduto" data-zoom="{
 					                                                                                    'displayKey':'DESCRICAO',
-					                                                                                    'datasetId':'ds_get_Produtos',
+					                                                                                    'filterValues':'FLUIG,2',
+					                                                                                    'datasetId':'VM_Produtos',
 					                                                                                    'maximumSelectionLength':'1',
 					                                                                                    'placeholder':'Selecione um produto',
 					                                                                                    'fields':[
@@ -379,6 +380,7 @@
 					                                                                                    {'field':'PRAZO_FORNECEDOR', 'label':'PRAZO_FORNECEDOR','visible':'false'},
 																										{'field':'UNIDADE_MEDIDA', 'label':'UNIDADE_MEDIDA'},                                                                                    
 					                                                                                    {'field':'ULTIMA_COMPRA', 'label':'ULTIMA_COMPRA','visible':'false'},
+					                                                                                    {'field':'FLUIG', 'label':'FLUIG','visible':'false'},
 					                                                                                    {'field':'ULTIMO_VALOR', 'label':'ULTIMO_VALOR','visible':'false'}]
 					                                                                                    }" />
 	                                                                                                </div>
@@ -448,7 +450,9 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="2b">
-                                        		<div class="panel-body" id="div_nivel1">
+                
+                                        		
+                                        		  <div class="panel-body" id="div_nivel1">
                                         			<div class="panel panel-info">
                                         				<div class="panel-heading ">
 									                        <h5 class="panel-title">
@@ -488,6 +492,8 @@
 			                                         	</div>
                                         			</div>
                                         		</div>
+                                        		
+                                        		
                                         		<div class="panel-body" id="div_nivel2">
 									                  <div class="panel panel-info" >
 									                     <div class="panel-heading ">

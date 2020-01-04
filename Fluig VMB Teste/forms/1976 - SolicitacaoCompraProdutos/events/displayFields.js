@@ -1,12 +1,18 @@
 function displayFields(form,customHTML){
 	var activity = getValue('WKNumState');
-	log.info("----ATIVIDADE displayFields: " + activity);
+
 	
   	customHTML.append("<script>");
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
     var ABERTURA = 0;
+    var INICIO = 4;
+    var APROVACAO =5;    
+	var CORRIGIR = 15;
+	var APROVACAO_DIR = 50;
+	var APROVACAO_DN = 51;
+	var GERAR_SC = 42;
     
   //campos sempre ocultos
 	 form.setVisibleById("matriculasolicitante", false);
@@ -25,4 +31,10 @@ function displayFields(form,customHTML){
      */
 	 
     
+	 
+	 if (activity == ABERTURA || activity == INICIO ){
+		 form.setVisibleById("div_nivel2", false);
+		 form.setVisibleById("div_nivel3", false);
+	 }
+	 
 }

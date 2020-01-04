@@ -27,7 +27,7 @@ function enableFields(form){
 	
 	    
 	else if (activity ==  FEEDBACK1){
-		
+		 form.setEnabled("dataAcordo", false);	
 		 form.setEnabled("Funcionario", false);	
 		 form.setEnabled("dataAdmissao", false);	
 		 form.setEnabled("campo1", false);	
@@ -55,6 +55,7 @@ function enableFields(form){
 		  
 	}
 	else if (activity ==  FEEDBACK2){		
+			 form.setEnabled("dataAcordo", false);	
 			 form.setEnabled("Funcionario", false);	
 			 form.setEnabled("dataAdmissao", false);	
 			 form.setEnabled("campo1", false);	
@@ -99,6 +100,7 @@ function enableFields(form){
 		    
 	}
 	else if (activity ==  AVALIACAO){
+		 form.setEnabled("dataAcordo", false);	
 		 form.setEnabled("Funcionario", false);	
 		 form.setEnabled("dataAdmissao", false);	
 		 form.setEnabled("campo1", false);	
@@ -160,19 +162,11 @@ function enableFields(form){
 	}
     else if (activity ==  RESULTADO){  
     	
-    	 var dataset = usuarioMatricial(form.getValue("emailMatricial"));
-    	 if (dataset!= null && dataset.length > 0){
-    		 var matriculaMatricial = dataset.getValue(0, "colleaguePK.colleagueId");
-    		 form.setValue("matriculaMatricial",matriculaMatricial);
         	
-        		 
-    	 }
-		 
-    	
 		    //calcula resultado final da avaliação
 		    calculaResultadoFinalAvaliacao();
     	
-		  
+		 
      	 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
@@ -185,7 +179,7 @@ function enableFields(form){
 		    }
 		    
 		   
-		  
+		
 		    
 		    form.setEnabled("comentarioFinalF", true);	
 		    form.setEnabled("comentarioFinalG", true);
@@ -215,17 +209,6 @@ function enableFields(form){
 
   
   
-	function usuarioMatricial(emailMatricial){
-		 var constraints   = new Array();
-		 constraints.push(DatasetFactory.createConstraint("mail", emailMatricial, emailMatricial, ConstraintType.MUST));
-		 var dataset = DatasetFactory.getDataset("colleague", null, constraints, null);
-		 
-		  
-		
-		 return dataset;
-	}
-	
-	
 
 
 	    
@@ -246,6 +229,9 @@ function enableFields(form){
  	 
  	 
  	  for (var i = 0; i < indexes.length; i++) {
+ 		  
+ 	
+ 		  
  		  if (parseFloat(form.getValue("progresso___" + indexes[i])) != 0){
  			  progresso1 = progresso1 + parseFloat(form.getValue("progresso___" + indexes[i]));
  			  qtdeProgresso1 = qtdeProgresso1 + 1;
@@ -269,19 +255,18 @@ function enableFields(form){
  	  totalProgresso = progresso1 + progresso2 + progresso3; 	  
  	  sumario = totalProgresso/qtdetotal;
  	  	  
- 	  
-  	  
- 	  if (sumario.toFixed(2) <= 1){
+ 	  	  
+ 	  if (sumario.toFixed(2) < 1.5){
  		
  		  form.setValue("pontuacao","Precisa melhorar");
  		  form.setValue("definicao","O desempenho geral não atendeu às expectativas da função este ano. O desempenho pode estar melhorando, mas ainda não atingiu o pleno potencial de desempenho (em termos de o que/resultados e/ou como/comportamento). Este nível de desempenho pode ser demonstrado por um novo funcionário inexperiente ainda tentando atingir os requisitos da função (tipicamente, em seus primeiros 6-12 meses), ou porque o desempenho necessita melhorar em algum ou em todos os aspectos da função.");
  	  }
- 	  else if (sumario.toFixed(2) >= 2  && sumario.toFixed(2) < 3){
+ 	  else if (sumario.toFixed(2) >= 1.5  && sumario.toFixed(2) < 2.5){
  		
  		  form.setValue("pontuacao","Desempenho valorizado");
  		  form.setValue("definicao","Desempenho bom, bem-sucedido e eficaz, como se espera normalmente desta função/grau - atingiu todos os requisitos/objetivos do cargo, e, algumas vezes, teve resultados acima dos esperados para a função (em termos de o que/resultados e/ou como/comportamento).  As atitudes e comportamentos refletiram interesse em melhorar e atingir resultados de nível mais elevado para si e para a organização.");
  	  }
- 	  else if (sumario.toFixed(2) >= 3){
+ 	  else if (sumario.toFixed(2) >= 2.5){
  		
  		  form.setValue("pontuacao","Desempenho excepcional");
  		  form.setValue("definicao","Atingiu resultados extraordinários que tiveram um impacto positivo significativo sobre a equipe ou organização, excedendo bastante o que se considera típico para esta função/nível. Promoveu o uso de novas mentalidades e comportamentos para nortear decisões, colocando-se como exemplo. Outras pessoas foram influenciadas positivamente pelos resultados profissionais e pessoais alcançados.");

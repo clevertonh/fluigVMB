@@ -6,7 +6,7 @@ var AVALIACAO = 15;
 var RESULTADO = 11;
 var MATRICIAL = 20;
 
-var dtAcordo;
+
 
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
@@ -46,11 +46,11 @@ function prevTab(elem) {
 }
 
 var visibilidade = true;
-
+var dtAcordo;
 
 
 //preenche data da solicitação no momento que abre a solicitação
-$(document).ready(function() {	
+$(document).ready(function() {		
 	if (ATIVIDADE == INICIAL ){
 		dtAcordo = FLUIGC.calendar('#dataAcordo', {
 		    pickDate: true,
@@ -60,9 +60,10 @@ $(document).ready(function() {
 		    maxDate: new Date().toLocaleString()
 		});
 
-		dtAcordo.setDate(new Date().toLocaleString());
+		//dtAcordo.setDate(new Date().toLocaleString());
 		
-	    
+		
+		
 		
 	}
 	else if (ATIVIDADE == ACORDO){
@@ -127,28 +128,44 @@ $(document).ready(function() {
 
 	//reloadZoomFilterValues("Funcionario", "EMAIL_G," + $("#emailGestor").val());
 	
+
 });
+
+$("#dataAcordo").blur(function(){
+
+	reloadZoomFilterValues("Funcionario", "EMAIL_G," + $("#emailGestor").val());
+
+	});
+
+
 
 
 function fnCustomDeleteMeta(oElement) {	 
 	
-	// $("#acao___1").val() =="" verificar se o campo esta vazio, se sim deixar deletar	
-	if (ATIVIDADE != INICIAL && ATIVIDADE != ACORDO ){
-			//verificar se o campo meta esta vazio
-			//se sim, permitir excluir
-		
-			
-		
-			FLUIGC.toast({
-                title: 'Atenção',
-                message: 'Você não pode remover essa informação.',
-                type: 'warning',
-                timeout: 3000
-            });
+	if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO ){
+		fnWdkRemoveChild(oElement);	
 	}
-		else {
+	else {
+		
+     	if ($("input[id^='codCompetencia___']:last").val() =="") {
 			fnWdkRemoveChild(oElement);	
-		}		
+		}
+		else {
+			FLUIGC.toast({
+	            title: 'Atenção',
+	            message: 'Você não pode remover essa informação.',
+	            type: 'warning',
+	            timeout: 3000
+	        });
+		}
+		
+		
+		
+		
+
+	}
+	
+		
 }
 
 //preenche campos ZOOM
@@ -156,17 +173,18 @@ function setSelectedZoomItem(selectedItem) {
     var BENEFICIARIO ="Funcionario";
     var COMPETENCIA ="txcompetencia";
 
+     
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
-    
     //como o campo é retornado: centrocusto___1 onde 1 dependerá da linha	
     //separa string
     var linhaPagamento = campoZOOM.split('___');
 
      if (campoZOOM == BENEFICIARIO){
-    		$("#dataAdmissao").val(selectedItem["DT_ADMISSAO"]);
-    		$("#emailGestorImediato").val(selectedItem["EMAIL_G"]);
+    		$("#dataAdmissao").val(selectedItem["DT_ADMISSAO"]);    		
     		$("#funcao").val(selectedItem["FUNCAO"]);
+    		
+    		buscaGestorMatricial(selectedItem["EMAIL_F"]);
     		
     		
      } 
@@ -176,6 +194,43 @@ function setSelectedZoomItem(selectedItem) {
     
     
 }
+
+
+function buscaGestorMatricial(emailFuncionario){
+	    var constraints = new Array();
+	    constraints.push(DatasetFactory.createConstraint("EMAIL_F", emailFuncionario, emailFuncionario, ConstraintType.MUST));
+	    var dataset = DatasetFactory.getDataset("VM_Funcionario", null, constraints, null);
+
+	    if (dataset != null && dataset.values.length > 0) {
+	    	
+			 var nomeMatricial = dataset.values[0]["GESTOR_MATRICIAL"];
+	    	 $("#gestorMatricial").val(nomeMatricial);
+	    	 
+	    	 var emailMatricial = dataset.values[0]["EMAIL_MATRICIAL"];
+	    	 $("#emailMatricial").val(emailMatricial);
+
+	    	 var constraints2  = new Array(); 
+	    	 constraints2.push(DatasetFactory.createConstraint("mail", emailMatricial, emailMatricial, ConstraintType.MUST));
+			 var dataset2 = DatasetFactory.getDataset("colleague", null, constraints2, null);
+			 
+		   	 if (dataset2 != null && dataset2.values.length > 0){
+		   	    $('#matriculaMatricial').val(dataset2.values[0]["colleaguePK.colleagueId"]);
+		   	 }
+			 
+
+	    }
+	    
+	    
+	   
+}
+
+
+
+function setZoomData(instance, value) {
+    window[instance].setValue(value);
+}
+
+
 
 function adicionaMeta() {
   

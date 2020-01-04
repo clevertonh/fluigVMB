@@ -19,7 +19,7 @@
           <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
         </anchors>
         <children visible="true">
-          <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="266" style="/0/@styles.60" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="SwimLane" rotation="270.0"/>
+          <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="266" style="/0/@styles.60" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="Gestor Matricial" rotation="270.0"/>
         </children>
       </children>
       <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -35,7 +35,7 @@
         </children>
       </children>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="531" style="/0/@styles.29" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="Acordo de Desempenho" rotation="270.0"/>
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="531" style="/0/@styles.29" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="Acordo e Avalia&#xe7;&#xe3;o de Desempenho" rotation="270.0"/>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -70,7 +70,7 @@
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="105" height="69" x="10" y="13" font="/0/@fonts.1" verticalAlignment="ALIGNMENT_MIDDLE" value="Criar acordo&#xA;de&#xA;desempenho&#xA;"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="105" height="56" x="10" y="13" font="/0/@fonts.1" verticalAlignment="ALIGNMENT_MIDDLE" value="Criar acordo&#xA;de&#xA;desempenho&#xA;"/>
       </children>
       <children visible="true">
         <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0">
@@ -2282,8 +2282,8 @@
     <fonts name="Arial" size="8"/>
     <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess id="AcordoAvaliacaoDesempenho" name="Acordo e Avalia&#xe7;&#xe3;o de Desempenho" serverId="Fluig teste" version="5" author="" extendedFields="&lt;list/>" cardIndex="2095" formSource="server" managerMechanism="Grupo" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup>&#xA;  &lt;groupId>RH&lt;/groupId>&#xA;  &lt;mechanismName>Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup>" category="Recursos Humanos" volume="Default" expedient="Default" instruction="" keyWord=""/>
-  <bpmn2:BpmnPool id="pool1" name="Acordo de Desempenho" cores="FFFFFF"/>
+  <bpmn2:BpmnProcess id="AcordoAvaliacaoDesempenho" name="Acordo e Avalia&#xe7;&#xe3;o de Desempenho" serverId="Fluig teste" version="6" author="" extendedFields="&lt;list/>" cardIndex="2095" formSource="server" managerMechanism="Grupo" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup>&#xA;  &lt;groupId>RH&lt;/groupId>&#xA;  &lt;mechanismName>Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup>" category="Recursos Humanos" volume="Default" expedient="Default" instruction="" keyWord=""/>
+  <bpmn2:BpmnPool id="pool1" name="Acordo e Avalia&#xe7;&#xe3;o de Desempenho" cores="FFFFFF"/>
   <bpmn2:BpmnSwimLane id="swimlane2" name="Gestor" cores="9F9F9F"/>
   <bpmn2:BpmnStartEvent id="startevent4" name="Acordo" incoming="flow8" outgoing="flow6" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
   <bpmn2:BpmnTask id="task5" name="Feedback 1" incoming="flow6" outgoing="flow10" type="80" managerMechanism="Executor Atividade" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>&#xA;  &lt;idNode>startevent4&lt;/idNode>&#xA;  &lt;returns>1&lt;/returns>&#xA;  &lt;mechanismName>Executor Atividade&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>" loopType="0" authNotify="true" instrucoes="Realize o 1&#xba; feedback de seu colaborador" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
@@ -2297,7 +2297,7 @@
   <bpmn2:BpmnTask id="task15" name="Avalia&#xe7;&#xe3;o" incoming="flow16" outgoing="flow17" type="80" managerMechanism="Executor Atividade" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>&#xA;  &lt;idNode>startevent4&lt;/idNode>&#xA;  &lt;returns>1&lt;/returns>&#xA;  &lt;mechanismName>Executor Atividade&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:SequenceFlow id="flow16" name="" sourceRef="task9" targetRef="task15" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow17" name="" sourceRef="task15" targetRef="task11" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
-  <bpmn2:BpmnSwimLane id="swimlane18" name="SwimLane" cores="82b0b7"/>
+  <bpmn2:BpmnSwimLane id="swimlane18" name="Gestor Matricial" cores="82b0b7"/>
   <bpmn2:BpmnTask id="task20" name="Realizar coment&#xe1;rio" incoming="flow23" outgoing="flow24" type="80" managerMechanism="Campo Formul&#xe1;rio" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerFormField>&#xA;  &lt;formField>matriculaMatricial&lt;/formField>&#xA;  &lt;mechanismName>Campo Formul&#xe1;rio&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerFormField>" loopType="0" authNotify="true" instrucoes="Utilize essa tarefa para comentar a avalia&#xe7;&#xe3;o final do colaborador" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:BpmnGateway id="exclusivegateway21" name="Gestor matricial?" incoming="flow22" outgoing="flow23 flow25" type="120" condition="&lt;list>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>1&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;matriculaMatricial&amp;quot;) ==&amp;quot;&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>endevent13&lt;/targetTask>&#xA;    &lt;conditionType>0&lt;/conditionType>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>2&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;comentarioFinalM&amp;quot;) !=&amp;quot;&amp;quot; &amp;amp;&amp;amp; hAPI.getCardValue(&amp;quot;comentarioFinalM&amp;quot;) != null&lt;/expression>&#xA;    &lt;targetTask>endevent13&lt;/targetTask>&#xA;    &lt;conditionType>0&lt;/conditionType>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>3&lt;/order>&#xA;    &lt;expression>hAPI.getCardValue(&amp;quot;matriculaMatricial&amp;quot;) !=&amp;quot;&amp;quot; &amp;amp;&amp;amp; ( hAPI.getCardValue(&amp;quot;comentarioFinalM&amp;quot;) ==&amp;quot;&amp;quot; || hAPI.getCardValue(&amp;quot;comentarioFinalM&amp;quot;) ==null)&lt;/expression>&#xA;    &lt;targetTask>task20&lt;/targetTask>&#xA;    &lt;conditionType>0&lt;/conditionType>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;&lt;/list>"/>
   <bpmn2:SequenceFlow id="flow22" name="" sourceRef="task11" targetRef="exclusivegateway21" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>

@@ -1,9 +1,9 @@
 function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	  
-	//var getFuncionario =  getConstraints(constraints, 'EMAIL_G');
+	var getFuncionario =  getConstraints(constraints, 'EMAIL_G');
 	
-	var getFuncionario = "danubia_carvalho@wvi.org";
+	//var getFuncionario = "danubia_carvalho@wvi.org";
 	var funcionario = DatasetFactory.createConstraint("EMAIL_G",getFuncionario,getFuncionario, ConstraintType.MUST);
 	var dataset = DatasetFactory.getDataset("VM_Funcionario",null,new Array(funcionario),null);
 	

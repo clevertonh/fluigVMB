@@ -18,23 +18,24 @@ function displayFields(form,customHTML){
 		
 	    //retorna email usuario logado
 	var email = retornaEmailUsuario(usuarioLogado);
-	
+  
 	
   	customHTML.append("<script>");
     customHTML.append("			var ATIVIDADE = " + activity + ";");
-    //customHTML.append("			var EMAIL_USUARIO = " + email + ";");
     customHTML.append("</script>");
     
-    form.setVisibleById("matriculaMatricial", false);	
-    form.setVisibleById("div_gestorImediato", false);
+    
+  	
+    
+   form.setVisibleById("matriculaMatricial", false);	
     form.setVisibleById("div_gestor", false);
 //    form.setVisibleById("codCompet", false);
     
     
     
 	
-    if (activity == INICIAL || activity == ACORDO){		    
-    		
+    if (activity == INICIAL || activity == ACORDO){		
+    	
     		form.setVisibleById("div_comentario1", false);	
     		form.setVisibleById("div_comentario2", false);	
     		form.setVisibleById("div_comentario3", false);	
