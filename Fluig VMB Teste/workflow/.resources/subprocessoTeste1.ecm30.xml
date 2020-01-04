@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>subprocessoTeste1</processId>
-      <version>4</version>
+      <version>6</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2526</formId>
@@ -101,6 +101,56 @@
         <companyId>1</companyId>
         <processId>subprocessoTeste1</processId>
         <version>1</version>
+        <sequence>10</sequence>
+      </processStatePK>
+      <stateName>Atividade</stateName>
+      <stateDescription>Atividade</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>210</positionX>
+      <positionY>201</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>subprocessoTeste1</processId>
+        <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -125,7 +175,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>180</positionX>
+      <positionX>400</positionX>
       <positionY>211</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -151,11 +201,28 @@
         <companyId>1</companyId>
         <processId>subprocessoTeste1</processId>
         <version>1</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>11</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>subprocessoTeste1</processId>
+        <version>1</version>
+        <linkSequence>12</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
       <finalStateSequence>9</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -177,13 +244,17 @@
 	 log.info(&quot;###afterProcessCreate&quot;);&#xd;
 	 &#xd;
 	 &#xd;
-	 //Captura o número do processo &quot;Pai&quot;&#xd;
+	 	//Captura o número do processo &quot;Pai&quot;&#xd;
 	    var parentProcess = hAPI.getParentInstance(processId);&#xd;
 &#xd;
 	    log.info(&quot;PREENCHENDO DADOS DE SUBPROCESSO&quot;);&#xd;
 	    log.info(parentProcess);&#xd;
 	    &#xd;
-	    hAPI.setCardValue(&quot;campo1&quot;,&quot;aprovado&quot;);&#xd;
+	    //processo pai diferente de zero -&gt; processo gerado por outro processo&#xd;
+	    if (parentProcess != 0){&#xd;
+	    	hAPI.setCardValue(&quot;campo1&quot;,&quot;aprovado&quot;);	&#xd;
+	    }&#xd;
+	    &#xd;
 	&#xd;
 	&#xd;
 }</eventDescription>
@@ -240,45 +311,9 @@
       </swimLanePK>
     </SwimLane>
   </list>
-  <list>
-    <ProcessComponGraf>
-      <componType>1</componType>
-      <positionX>210</positionX>
-      <positionY>20</positionY>
-      <processComponGrafPK>
-        <companyId>1</companyId>
-        <processId>subprocessoTeste1</processId>
-        <version>1</version>
-        <componGrafSequence>7</componGrafSequence>
-      </processComponGrafPK>
-      <stateName>Start</stateName>
-    </ProcessComponGraf>
-  </list>
-  <list>
-    <ProcessLinkAssoc>
-      <processLinkAssocPK>
-        <companyId>1</companyId>
-        <processId>subprocessoTeste1</processId>
-        <version>1</version>
-        <linkSequence>8</linkSequence>
-      </processLinkAssocPK>
-      <initialStateSequence>7</initialStateSequence>
-      <finalStateSequence>4</finalStateSequence>
-    </ProcessLinkAssoc>
-  </list>
-  <list>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>subprocessoTeste1</processId>
-        <version>4</version>
-        <linkSequence>8</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>167</positionX>
-      <positionY>48</positionY>
-    </ProcessLinkBend>
-  </list>
+  <list/>
+  <list/>
+  <list/>
   <list/>
   <list/>
   <list/>

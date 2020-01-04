@@ -31,7 +31,7 @@ function createDataset(fields, constraints, sortFields) {
         		
             		 try {
 						//chama função que monta array de objetos dos itens do rateio
-        			 aProdutos = montaListaProduto(solicitacao);
+            			 aProdutos = montaListaProduto(solicitacao);
 					 }
 					 catch (erro){
 						 dataset.addRow(["ERRO AO BUSCAR PRODUTO"]);
