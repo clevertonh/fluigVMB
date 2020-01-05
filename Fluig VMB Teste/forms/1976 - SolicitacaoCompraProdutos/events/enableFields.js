@@ -4,7 +4,7 @@ function enableFields(form){
 	var CORRIGIR = 15;
 	var APROVACAO_DIR = 50;
 	var APROVACAO_DN = 51;
-	var GERAR_SC = 42;
+	var ASSUMIR = 42;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
@@ -27,8 +27,22 @@ function enableFields(form){
 			 	 
 		 }
 		 else {
-			 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
+			 throw "Seu cadastro está sem gerente, por favor, procure o setor de Recursos Humanos e solicite a atualização";
 		 }
+		 
+		 
+		 var diretor = usuarioAprovadorDIR(emailSolicitante);
+		 if (diretor!= null && diretor != "" && diretor.values.length > 0){
+			 form.setValue("nomeNivel2",diretor.getValue(0, "EMAIL_APROVADOR"));
+			 form.setValue("emailNivel2",diretor.getValue(0, "MATRICULA_APROVADOR"));
+			 form.setValue("matriculaAprDirArea",diretor.getValue(0, "DIRETOR"));
+			 	 
+		 }
+		 else {
+			 throw "Seu cadastro está sem diretor, por favor, procure o setor de Recursos Humanos e solicite a atualização";
+		 }
+		 
+		 
 		 
 		 //reseta campo de corrigir marcado pelo aprovador
 		 if (activity == CORRIGIR){
@@ -45,6 +59,7 @@ function enableFields(form){
 		 form.setValue("gestor",nomeSolicitante);
 		 form.setValue("emailLider",emailSolicitante);
 		 
+		
 		 
 	}
 	
@@ -75,7 +90,7 @@ function enableFields(form){
 	}
 	
 	
-	else if (activity == GERAR_SC){		
+	else if (activity == ASSUMIR){		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -141,7 +156,13 @@ function enableFields(form){
 		 return dataset;
 	}
 
-
+	function usuarioAprovadorDIR(emailLogado){
+		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailLogado,emailLogado, ConstraintType.MUST);		
+		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
+		 
+		  
+		return dataset;
+	}
 
 }
 

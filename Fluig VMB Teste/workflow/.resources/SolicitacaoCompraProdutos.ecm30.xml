@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compra de Produtos</processId>
-      <version>17</version>
+      <version>19</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1976</formId>
@@ -627,7 +627,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -639,7 +639,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -651,7 +651,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>3</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -663,10 +663,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;reprovado&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;reprovado&quot;</condition>
       <destinationSequenceId>57</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -675,10 +675,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;aprovado&quot; &amp;&amp;  hAPI.getCardValue(&quot;vl_total&quot;) &lt;= 100000</condition>
+      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp;  hAPI.getCardValue(&quot;vl_total&quot;) &lt;= 100000</condition>
       <destinationSequenceId>42</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -687,10 +687,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>3</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacaoDIR&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &gt; 100000</condition>
+      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &gt; 100000</condition>
       <destinationSequenceId>51</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -699,10 +699,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>58</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacaoDN&quot;) == &quot;reprovado&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprNivel3&quot;) == &quot;reprovado&quot;</condition>
       <destinationSequenceId>63</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -711,10 +711,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>19</version>
         <sequence>58</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacaoDN&quot;) == &quot;aprovado&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprNivel3&quot;) == &quot;aprovado&quot;</condition>
       <destinationSequenceId>42</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1049,13 +1049,8 @@ function setChildTable(numProcessoPai){&#xd;
     //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  &#xd;
     var opcao = 5;&#xd;
 &#xd;
-    &#xd;
-    log.info(&quot;CANCELAMENTO DE SOLICITACAO DE COMPRA&quot;);&#xd;
-    log.info(ativAtual);&#xd;
-    &#xd;
-    &#xd;
     if (ativAtual == CORRIGIR &amp;&amp; ativAtual == ASSUMIR){&#xd;
-    	 var constraint = new Array();                                 &#xd;
+    	var constraint = new Array();                                 &#xd;
      	constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
  		constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
  			 &#xd;
@@ -1081,7 +1076,10 @@ function setChildTable(numProcessoPai){&#xd;
       <eventDescription>function beforeStateEntry(sequenceId){&#xd;
        //VARIAVEIS DEFAULT&#xd;
        var ABERTURA = 0;&#xd;
-       var APROVACAO = 5;&#xd;
+       var APROVACAO =5;&#xd;
+       var CORRIGIR = 15;&#xd;
+       var APROVACAO_DIR = 50;&#xd;
+       var APROVACAO_DN = 51;&#xd;
        var ASSUMIR = 42;&#xd;
        &#xd;
        //GATEWAY&#xd;
@@ -1102,29 +1100,68 @@ function setChildTable(numProcessoPai){&#xd;
        &#xd;
        var aprovacao  = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
        &#xd;
+       &#xd;
+       &#xd;
        //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  &#xd;
-       var opcao = 3;&#xd;
-&#xd;
+       var opcao;&#xd;
+      &#xd;
+       &#xd;
        if (ativAtual == APROVACAO ){&#xd;
-    	   		if (aprovacao == &quot;aprovado&quot;){&#xd;
-                    var constraint = new Array();                                 &#xd;
-                    constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
-		  			 constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
-		  			 &#xd;
-                     var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
-                      &#xd;
-                     	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                           throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                        }&#xd;
-                     	  else {&#xd;
-       					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus para o processo de cotação&quot;);&#xd;
-       				  }&#xd;
-                        &#xd;
-    	   		}&#xd;
-&#xd;
-           &#xd;
-              &#xd;
+    	   var aprovacao  = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+	 &#xd;
+    	   if (aprovacao == &quot;aprovado&quot;){&#xd;
+	   			opcao = 3;&#xd;
+                var constraint = new Array();                                 &#xd;
+                constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
+	  			constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+	  			 &#xd;
+                var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
+                 &#xd;
+                	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                      throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+                   }&#xd;
+                	  else {&#xd;
+  					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus para o processo de cotação&quot;);&#xd;
+  				  }&#xd;
+                   &#xd;
+	   		}     &#xd;
        }&#xd;
+       &#xd;
+       &#xd;
+       else if (ativAtual == APROVACAO_DIR ){&#xd;
+	    	   	var aprovacaoDIR  = hAPI.getCardValue(&quot;aprNivel2&quot;);&#xd;
+		 &#xd;
+	     		if (aprovacaoDIR == &quot;reprovado&quot;){&#xd;
+		   			opcao = 5;&#xd;
+		   			var constraint = new Array();                                 &#xd;
+		   	     	constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
+		   	 		constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+		   	 			 &#xd;
+		   	 		var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
+		   	       &#xd;
+		   	      	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		   	            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		   	         }&#xd;
+		   		}&#xd;
+    	       &#xd;
+       }&#xd;
+        else if (ativAtual == APROVACAO_DN){&#xd;
+    	   		var aprovacaoDN  = hAPI.getCardValue(&quot;aprNivel3&quot;);&#xd;
+           &#xd;
+    	   		if (aprovacaoDN == &quot;reprovado&quot;){&#xd;
+    	   			opcao = 5;&#xd;
+    	   			var constraint = new Array();                                 &#xd;
+    	   	     	constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
+    	   	 		constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+    	   	 			 &#xd;
+    	   	 		var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
+    	   	       &#xd;
+    	   	      	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+    	   	            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+    	   	         }&#xd;
+    	   		}&#xd;
+       }&#xd;
+&#xd;
        &#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
@@ -1235,7 +1272,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
-        <version>17</version>
+        <version>19</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1246,7 +1283,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
-        <version>17</version>
+        <version>19</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1257,7 +1294,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
-        <version>17</version>
+        <version>19</version>
         <linkSequence>65</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

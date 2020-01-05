@@ -12,7 +12,7 @@ function displayFields(form,customHTML){
 	var CORRIGIR = 15;
 	var APROVACAO_DIR = 50;
 	var APROVACAO_DN = 51;
-	var GERAR_SC = 42;
+	var ASSUMIR = 42;
     
   //campos sempre ocultos
 	 form.setVisibleById("matriculasolicitante", false);
@@ -36,5 +36,12 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("div_nivel2", false);
 		 form.setVisibleById("div_nivel3", false);
 	 }
+	 else if (activity == APROVACAO){
+		 		form.setVisibleById("div_nivel2", false);
+		 		form.setVisibleById("div_nivel3", false);
+	 }
+	 else if (activity == APROVACAO_DIR){
+		 		form.setVisibleById("div_nivel3", false);
+	 } 
 	 
 }

@@ -2,7 +2,9 @@ function validateForm(form){
 	var ABERTURA = 4;
 	var APROVACAO =5;
 	var CORRIGIR = 15;
-	var GERAR_SC = 42;
+	var APROVACAO_DIR = 50;
+	var APROVACAO_DN = 51;
+	var ASSUMIR = 42;
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
