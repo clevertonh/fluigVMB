@@ -62,9 +62,6 @@ $(document).ready(function() {
 
 		//dtAcordo.setDate(new Date().toLocaleString());
 		
-		
-		
-		
 	}
 	else if (ATIVIDADE == ACORDO){
 		
@@ -85,6 +82,7 @@ $(document).ready(function() {
 			 $('#div_comentario5').hide();
 			 $('#div_comentario6').hide();
 			 $('#div_progresso2').hide();
+	
 	}
 	else if (ATIVIDADE == FEEDBACK1 ){
 			// $('td:nth-child(10)').hide();
@@ -109,31 +107,32 @@ $(document).ready(function() {
 			 
 			 
 	}
-	
 	else if (ATIVIDADE == FEEDBACK2 ){
 		// $('td:nth-child(14)').hide();
     	 $('td:nth-child(15)').hide();
      	 $('td:nth-child(16)').hide();
       	 $('td:nth-child(17)').hide();
      	 $('td:nth-child(18)').hide();
-   	 
- 		 
+   	 	 
 		 $('#div_comentario7').hide();
 		 $('#div_comentario8').hide();
 		 $('#div_comentario9').hide();
 		 $('#div_progresso3').hide();
-		 
-		 
-}
-
-	//reloadZoomFilterValues("Funcionario", "EMAIL_G," + $("#emailGestor").val());
-	
+		 	 
+	}
+	else if (ATIVIDADE == AVALIACAO){
+			FLUIGC.toast({
+	            title: 'Atenção',
+	            message: 'Você não pode inserir metas na fase de avaliação.',
+	            type: 'warning',
+	            timeout: 3000
+	        });
+	}
 
 });
 
-$("#dataAcordo").blur(function(){
-
-	reloadZoomFilterValues("Funcionario", "EMAIL_G," + $("#emailGestor").val());
+	$("#dataAcordo").blur(function(){
+		reloadZoomFilterValues("Funcionario", "EMAIL_G," + $("#emailGestor").val());
 
 	});
 
@@ -158,11 +157,6 @@ function fnCustomDeleteMeta(oElement) {
 	            timeout: 3000
 	        });
 		}
-		
-		
-		
-		
-
 	}
 	
 		
@@ -195,7 +189,6 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
-
 function buscaGestorMatricial(emailFuncionario){
 	    var constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("EMAIL_F", emailFuncionario, emailFuncionario, ConstraintType.MUST));
@@ -224,21 +217,11 @@ function buscaGestorMatricial(emailFuncionario){
 	   
 }
 
-
-
-function setZoomData(instance, value) {
-    window[instance].setValue(value);
-}
-
-
-
 function adicionaMeta() {
   
     if (ATIVIDADE == INICIAL || ATIVIDADE == ACORDO){
     	 var indice = wdkAddChild('tableMetas1');
     	 
-//    	 $('td:nth-child(5)').hide();
-//    	 $('td:nth-child(6)').hide();
     	 $('td:nth-child(7)').hide();
     	 $('td:nth-child(8)').hide();
     	 $('td:nth-child(9)').hide();
@@ -248,8 +231,7 @@ function adicionaMeta() {
     	 $('td:nth-child(12)').hide();
     	 $('td:nth-child(13)').hide();
     	 
-    	 
-     	 $('td:nth-child(14)').hide();
+    	 $('td:nth-child(14)').hide();
     	 $('td:nth-child(15)').hide();
      	 $('td:nth-child(16)').hide();
       	 $('td:nth-child(17)').hide();    	 
@@ -261,8 +243,8 @@ function adicionaMeta() {
     
     else if (ATIVIDADE == FEEDBACK1  ){
     		var indice = wdkAddChild('tableMetas1');
-    		//OCULTA COLUNAS DO FEEDBACK 2
-    		 $('td:nth-child(10)').hide();
+    		 //OCULTA COLUNAS DO FEEDBACK 2
+    		 //$('td:nth-child(10)').hide();
     		 $('td:nth-child(11)').hide();
         	 $('td:nth-child(12)').hide();
         	 $('td:nth-child(13)').hide();
@@ -278,17 +260,17 @@ function adicionaMeta() {
     else if ( ATIVIDADE == FEEDBACK2 ){
 			var indice = wdkAddChild('tableMetas1');
 			 //BLOQUEAR CAMPOS DE FEEDBACK 1		
-			$( "#comentarioF___"+indice ).prop( "disabled", true );
-			$( "#campo10___"+indice ).prop( "disabled", true );
-			$( "#comentarioG___"+indice ).prop( "disabled", true );
+	//		$("#branco___"+indice ).val("0");
+    //		$("[name='progresso"+indice+"']").prop( "disabled", true );
+			$("#comentarioF___"+indice ).prop( "disabled", true );
+			$("#campo10___"+indice ).prop( "disabled", true );
+			$("#comentarioG___"+indice ).prop( "disabled", true );
 				
 }
     
    
     
 }
-
-
 
 function removedZoomItem(removedItem) {   
     var BENEFICIARIO ="Funcionario";
