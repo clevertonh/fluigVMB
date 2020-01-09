@@ -116,7 +116,7 @@ function createDataset(fields, constraints, sortFields) {
         					            params : {
         					            	PROCESSO : '' + 11 + '' ,
         					            	ACAO: '' + acao + '',
-        					            	FILIALSC: '' + filial + '',
+        					            	FILIAL: '' + filial + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

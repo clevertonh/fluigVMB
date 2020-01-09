@@ -9,6 +9,7 @@ function createDataset(fields, constraints, sortFields) {
 	var documentId;
 	var emailcomprador;
 	var acao = 3;
+	var filial ='02';
 	
 
 	
@@ -43,6 +44,10 @@ function createDataset(fields, constraints, sortFields) {
         		}
         	 
           		
+        		if (solicitacao.getValue(0,"filialSC") != ""){
+         			 filial = solicitacao.getValue(0,"filialSC");
+         		}
+       	 
           		
       	    
         					 try {
@@ -67,6 +72,7 @@ function createDataset(fields, constraints, sortFields) {
         					            timeoutService: '360', // segundos
         					            params : {
         					            	PROCESSO : '' + 7 + '' ,
+        					            	FILIAL: '' + filial + '',
         					            	ACAO: '' + acao + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',

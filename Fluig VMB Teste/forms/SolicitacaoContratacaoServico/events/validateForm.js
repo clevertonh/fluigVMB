@@ -18,6 +18,9 @@ function validateForm(form){
 	var VALIDAR_RH = 161;
 	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
 	var VERIFICAR_ASSINATRA_COMPRAS = 274;
+	var APROVACAO_DIR = 292;
+	var APROVACAO_DN = 301;
+	
 	
 	//recupera atividade do processo
     var activity = getValue('WKNumState');
@@ -166,6 +169,10 @@ function validateForm(form){
 		}
 	
 		
+		  if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
+			   throw "A cotação anual não pode ser menor que a cotação mensal.";
+		   }
+		
 		
 		if (form.getValue("definicaoValor") =="fixo"){
 		      //VALIDA SE FOI INFORMADO PELO MENOS 1 SERVIÇO E SE TODOS OS CAMPOS FORAM PREENCHIDOS
@@ -186,13 +193,7 @@ function validateForm(form){
 		                     
 		                 } 
 		     		  }
-		     		 
-		     
-		     	  
-		     	   
-		   
-		      
-		  
+
 		}
 		
 		

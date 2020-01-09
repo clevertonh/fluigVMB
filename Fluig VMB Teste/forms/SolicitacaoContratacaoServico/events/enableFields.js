@@ -32,6 +32,8 @@ function enableFields(form){
 	
 		if (activity == ABERTURA || activity  == SOLICITAR ){
 			 form.setEnabled("aprovacao", false);	
+			 form.setEnabled("aprNivel2", false);
+			 form.setEnabled("aprNivel3", false);
 			 form.setValue("aprovacao","");
 			 
 			 form.setValue("solicitante",nomeSolicitante);
@@ -82,42 +84,21 @@ function enableFields(form){
 	}
 		
 	else if (activity == APROVACAO_DIR){
+		 	form.setEnabled("aprovacao", false);	
+		 	form.setEnabled("aprNivel3", false);
 		
-
-		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-		    var mapaForm = new java.util.HashMap();
-		    mapaForm = form.getCardData();
-		    var it = mapaForm.keySet().iterator();
-		     
-		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-		        var key = it.next();
-		        form.setEnabled(key, habilitar);
-		    }
-		    
-		    form.setEnabled("aprNivel2", true);
 		    		    
 		 
 	}
 	
 	else if (activity == APROVACAO_DN){
-		
-		
-		 form.setValue("nomeNivel3",nomeSolicitante);
-		 form.setValue("emailNivel3",emailSolicitante);
+			form.setEnabled("aprovacao", false);	
+			 form.setEnabled("aprNivel2", false);
+			 form.setValue("nomeNivel3",nomeSolicitante);
+			 form.setValue("emailNivel3",emailSolicitante);
 		 
 		 
-		 
-			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
-		    var mapaForm = new java.util.HashMap();
-		    mapaForm = form.getCardData();
-		    var it = mapaForm.keySet().iterator();
-		     
-		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
-		        var key = it.next();
-		        form.setEnabled(key, habilitar);
-		    }
-		    
-		    form.setEnabled("aprNivel3", true);
+	
 		 
 	}
 
@@ -137,6 +118,9 @@ function enableFields(form){
 		        form.setEnabled(key, habilitar);
 		    }
 		    
+		    
+		    form.setEnabled("formapgto", true);
+		    form.setEnabled("definicaoValor", true);
 		    form.setEnabled("cnpjcpf", true);
 		    form.setEnabled("razaosocial", true);		    
 		    form.setEnabled("nomefantasia", true);	

@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contratação de Serviço</processId>
-      <version>91</version>
+      <version>92</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2347</formId>
@@ -262,7 +262,7 @@
       </processStatePK>
       <stateName>Verificar aprovação</stateName>
       <stateDescription>Verificar aprovação</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para que o sistema verifique se a contratação do serviço foi aprovada ou reprovada</instruction>
       <deadlineTime>60</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -366,7 +366,7 @@
       </processStatePK>
       <stateName>Solicitar aprovação</stateName>
       <stateDescription>Solicitar aprovação</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para que o sistema verifique se a contratação do serviço necessita de aprovação</instruction>
       <deadlineTime>60</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -418,7 +418,7 @@
       </processStatePK>
       <stateName>Finalizar processo</stateName>
       <stateDescription>Finalizar processo</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para encerrar o processo. A partir desse momento, o fornecedor está autorizado a realizar o serviço.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -470,7 +470,7 @@
       </processStatePK>
       <stateName>Verificar assinatura</stateName>
       <stateDescription>Verificar assinatura</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para que o sistema verifique se o contrato foi assinado por todos os envolvidos</instruction>
       <deadlineTime>60</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -527,6 +527,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matriculaAprDirArea&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -577,7 +579,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;DIRETOR_NACIONAL&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -1369,7 +1372,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) ==&quot;reprovado&quot;</condition>
@@ -1381,7 +1384,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) ==&quot;corrigir&quot;</condition>
@@ -1393,7 +1396,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) ==&quot;aprovado&quot;</condition>
@@ -1405,7 +1408,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>137</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) !=&quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;Numerocontrato&quot;) != null</condition>
@@ -1417,7 +1420,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>137</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;Numerocontrato&quot;) == null</condition>
@@ -1429,7 +1432,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>153</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoServico&quot;) ==&quot;aprovado&quot;</condition>
@@ -1441,7 +1444,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>153</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoServico&quot;) !=&quot;aprovado&quot;</condition>
@@ -1453,7 +1456,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>168</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;valido&quot;) ==&quot;sim&quot; </condition>
@@ -1465,7 +1468,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>168</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;valido&quot;) ==&quot;nao&quot;</condition>
@@ -1477,7 +1480,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>181</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) ==&quot;assinado&quot; </condition>
@@ -1489,7 +1492,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>181</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) !=&quot;assinado&quot; </condition>
@@ -1501,7 +1504,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>281</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) != &quot;&quot;</condition>
@@ -1513,7 +1516,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>281</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;FISICA&quot;</condition>
@@ -1525,7 +1528,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>281</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; ( hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;MEI&quot; || hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;ME&quot;  ) </condition>
@@ -1537,7 +1540,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>4</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>281</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;&quot;</condition>
@@ -1549,7 +1552,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>295</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) ==&quot;reprovado&quot;</condition>
@@ -1561,7 +1564,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>295</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;)  ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;valorAnual&quot;) &gt; 100000</condition>
@@ -1573,7 +1576,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>3</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>295</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;)  ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;valorAnual&quot;) &lt;= 100000</condition>
@@ -1585,7 +1588,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>304</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel3&quot;) ==&quot;reprovado&quot;</condition>
@@ -1597,7 +1600,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>304</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel3&quot;) ==&quot;aprovado&quot;</condition>
@@ -1609,7 +1612,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>1</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>311</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &gt; 5000</condition>
@@ -1621,7 +1624,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <expressionOrder>2</expressionOrder>
-        <version>91</version>
+        <version>92</version>
         <sequence>311</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;CotacaovalorAnual&quot;) &lt;= 5000</condition>
@@ -2311,6 +2314,23 @@
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
+      <initialStateSequence>215</initialStateSequence>
+      <finalStateSequence>183</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
+        <linkSequence>319</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
       <initialStateSequence>183</initialStateSequence>
       <finalStateSequence>185</finalStateSequence>
       <returnLabel></returnLabel>
@@ -2323,7 +2343,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>319</linkSequence>
+        <linkSequence>320</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2339,11 +2359,27 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>320</linkSequence>
+        <linkSequence>321</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>290</initialStateSequence>
+      <finalStateSequence>185</finalStateSequence>
+      <returnLabel></returnLabel>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
+        <linkSequence>322</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>183</initialStateSequence>
       <finalStateSequence>185</finalStateSequence>
       <returnLabel></returnLabel>
       <automaticLink>false</automaticLink>
@@ -2453,27 +2489,28 @@
 		 }&#xd;
 	 }&#xd;
 	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){&#xd;
-			&#xd;
-		 	var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);		 	&#xd;
-		 	var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
-		 	&#xd;
-		 	//para esse caso o contrato será registrado com esses dados&#xd;
-		 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus&#xd;
-		 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição&#xd;
-				if (definicaoValor ==&quot;fixo&quot; &amp;&amp; contrato ==&quot;&quot;){  					 					&#xd;
-		              var constraint = new Array();                                 &#xd;
-	                  constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-	                  &#xd;
-	                 &#xd;
-	                   var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO&quot;, null, constraint, null);                                                                    &#xd;
-	                      &#xd;
-	                   if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-	                         throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-	                      }&#xd;
-	                   else {&#xd;
-	                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Fornecedor selecionado e processo enviado para aprovação&quot;);&#xd;
-	                   }&#xd;
-				}&#xd;
+			 	if (nextAtv == 123){&#xd;
+		 		var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);		 	&#xd;
+			 	var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
+			 	//para esse caso o contrato será registrado com esses dados&#xd;
+			 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus&#xd;
+			 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição&#xd;
+					if (definicaoValor ==&quot;fixo&quot; &amp;&amp; contrato ==&quot;&quot;){  					 					&#xd;
+			              var constraint = new Array();                                 &#xd;
+		                  constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+		                  &#xd;
+		                 &#xd;
+		                   var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO&quot;, null, constraint, null);                                                                    &#xd;
+		                      &#xd;
+		                   if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		                         throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		                      }&#xd;
+		                   else {&#xd;
+		                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Fornecedor selecionado e processo enviado para aprovação&quot;);&#xd;
+		                   }&#xd;
+					}&#xd;
+		 	}&#xd;
+&#xd;
 	&#xd;
 	 }&#xd;
 }</eventDescription>
@@ -2625,7 +2662,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
-        <version>91</version>
+        <version>92</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2636,7 +2673,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
-        <version>91</version>
+        <version>92</version>
         <linkSequence>314</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2647,7 +2684,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
-        <version>91</version>
+        <version>92</version>
         <linkSequence>314</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>

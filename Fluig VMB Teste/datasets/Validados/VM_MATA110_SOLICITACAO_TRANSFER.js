@@ -12,6 +12,7 @@ function createDataset(fields, constraints, sortFields) {
 	var emailcomprador ="";
 	//default == 3
 	var acao = 3;
+	var filial ='02';
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitação NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -35,6 +36,10 @@ function createDataset(fields, constraints, sortFields) {
             		} 
         		}
             	
+        		if (solicitacao.getValue(0,"filialSC") != ""){
+         			 filial = solicitacao.getValue(0,"filialSC");
+         		}
+            	
         					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -57,6 +62,7 @@ function createDataset(fields, constraints, sortFields) {
         					            params : {
         					            	PROCESSO : '' + 12 + '' ,
         					            	ACAO: '' + acao + '',
+        					            	FILIALSC: '' + filial + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

@@ -36,6 +36,10 @@ function displayFields(form,customHTML){
 		 form.setVisibleById("3b", false);
 		 form.setVisibleById("4b", false);
 		 form.setVisibleById("div_statusContrato", false); 
+		 form.setVisibleById("div_filial", false);
+		 
+		 
+		 
 	 }
 	 else if (activity == APROVACAO){		 
 		 form.setVisibleById("3b", false);

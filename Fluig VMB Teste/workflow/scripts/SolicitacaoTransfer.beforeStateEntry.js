@@ -30,37 +30,29 @@ function beforeStateEntry(sequenceId){
 	
     var cgc = hAPI.getCardValue("cnpjcpf");
     var razaoSocial = hAPI.getCardValue("razaosocial");     
+    var opcao;
     
     if (ativAtual == APROVACAO ){
-    	
-      	 var aprovacao = hAPI.getCardValue("aprovacao");
-  	   
-    	 if (aprovacao =="aprovado"){
-    		 
-    		    var constraint = new Array();                                 
-                constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-                
-                 var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
-                    
-                 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-                       throw resultDataset.getValue(0,"RETORNO");
-                    }
-                 else {
-              	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema de Cotação do Protheus.");
-                 }
-                 
-                 
-                 
-    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação aprovada.");
-    	 }
-    	 
-    	 else if (aprovacao =="reprovado"){
-    		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada.");
-    	 }
-    	
-                       
-          
-           
+    	var aprovacao = hAPI.getCardValue("aprovacao");
+
+    			//GERA SOLICITAÇÃO DE COMPRA PARA GARANTIR QUE DADOS FINANCEIROS ESTAO CORRETOS
+		    	 if (aprovacao =="aprovado"){
+
+			       		 var constraint = new Array();                                 
+			             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+			             
+			              var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
+			                 
+			              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+			                    throw resultDataset.getValue(0,"RETORNO");
+			                 }
+
+			              hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação aprovada.");		    		 		 		   
+		       	 }
+		       	 else if (aprovacao =="reprovado"){
+		    		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada.");
+		    	 }
+    	          
     }
     else if (ativAtual == COTACAO){	 		
 	 		/*
@@ -86,6 +78,54 @@ function beforeStateEntry(sequenceId){
 		 if (valido == "negado"){
 			 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
 		 }
+	 }
+    
+	 else if (ativAtual == FINALIZAR){
+		 
+		 //DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE
+		 opcao = 5;
+		 var constraintDelete = new Array();                                 
+		 constraintDelete.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+		 constraintDelete.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
+         var resultDatasetDelete = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraintDelete, null);                                                                    
+             
+          if (resultDatasetDelete.getValue(0,"RETORNO") != "SUCESSO"){
+                throw resultDatasetDelete.getValue(0,"RETORNO");
+            }
+		 
+		 
+		 
+				var contrato  = hAPI.getCardValue("Numerocontrato");
+	    		if (contrato ==""){
+	    			 opcao = 3;
+		       		 var constraint = new Array();                                 
+		             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+		             constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
+		              var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
+		                 
+		              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		                    throw resultDataset.getValue(0,"RETORNO");
+		                 }
+		              else {
+		           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema de Cotação do Protheus.");
+		              }
+		              
+		              hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação aprovada.");
+	      		}
+	      		//GERAR INTEGRACAO COM MEDIÇÃO DE CONTRATO
+	      		else {
+		       			var constraint = new Array();                                 
+			             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+			             
+			              var resultDataset = DatasetFactory.getDataset("VM_CNTA120_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
+			                 
+			              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+			                    throw resultDataset.getValue(0,"RETORNO");
+			                 }
+			              else {
+			           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com a rotina de medição de contratos.");
+			              }
+	      		}
 	 }
     
     

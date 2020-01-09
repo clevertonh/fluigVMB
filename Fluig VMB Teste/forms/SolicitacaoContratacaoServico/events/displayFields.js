@@ -18,7 +18,8 @@ function displayFields(form,customHTML){
 	var VALIDAR_RH = 161;
 	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
 	var VERIFICAR_ASSINATRA_COMPRAS = 274;
-	
+	var APROVACAO_DIR = 292;
+	var APROVACAO_DN = 301;
 	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
@@ -66,6 +67,17 @@ function displayFields(form,customHTML){
 		 
 		 
 	 }
+	 else if (activity == APROVACAO_DIR){
+		 form.setVisibleById("3b", false);
+		 form.setVisibleById("4b", false);
+		 form.setVisibleById("div_statusContrato", false); 
+	 }
+	 else if (activity == APROVACAO_DN){
+		 form.setVisibleById("3b", false);
+		 form.setVisibleById("4b", false);
+		 form.setVisibleById("div_statusContrato", false); 
+	 }
+	 
 	 else if (activity == VALIDAR_RH){
 		 form.setVisibleById("div_status", false); 
 		 form.setVisibleById("div_statusContrato", false); 

@@ -262,7 +262,7 @@
       </processStatePK>
       <stateName>Solicitar aprovação</stateName>
       <stateDescription>Solicitar aprovação</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para que o sistema verifique se a contratação do serviço necessita de aprovação</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -364,9 +364,9 @@
         <version>1</version>
         <sequence>37</sequence>
       </processStatePK>
-      <stateName>Solicitar contrato</stateName>
-      <stateDescription>Solicitar contrato</stateDescription>
-      <instruction></instruction>
+      <stateName>Verificar aprovação</stateName>
+      <stateDescription>Verificar aprovação</stateDescription>
+      <instruction>Envie a tarefa para que o sistema verifique se a contratação do serviço foi aprovada ou reprovada</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -418,7 +418,7 @@
       </processStatePK>
       <stateName>Verificar assinatura</stateName>
       <stateDescription>Verificar assinatura</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para que o sistema verifique se o contrato foi assinado por todos os envolvidos</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -470,7 +470,7 @@
       </processStatePK>
       <stateName>Finalizar processo</stateName>
       <stateDescription>Finalizar processo</stateDescription>
-      <instruction></instruction>
+      <instruction>Envie a tarefa para encerrar o processo. A partir desse momento, o fornecedor está autorizado a realizar o serviço.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -682,8 +682,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>880</positionX>
-      <positionY>420</positionY>
+      <positionX>870</positionX>
+      <positionY>510</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -896,6 +896,31 @@
       <automatic>true</automatic>
       <positionX>1680</positionX>
       <positionY>400</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <version>1</version>
+        <sequence>67</sequence>
+      </processStatePK>
+      <stateName>maior que 5 mil?</stateName>
+      <stateDescription>maior que 5 mil?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>880</positionX>
+      <positionY>340</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -1178,6 +1203,30 @@
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) !=&quot;assinado&quot; </condition>
       <destinationSequenceId>60</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>14</version>
+        <sequence>67</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;CotacaovalorMensal&quot;) &gt; 5000</condition>
+      <destinationSequenceId>36</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>14</version>
+        <sequence>67</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;CotacaovalorMensal&quot;) &lt;= 5000</condition>
+      <destinationSequenceId>37</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -1510,23 +1559,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <version>1</version>
-        <linkSequence>54</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>28</initialStateSequence>
-      <finalStateSequence>36</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoTransfer</processId>
-        <version>1</version>
         <linkSequence>57</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1612,7 +1644,58 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <version>1</version>
-        <linkSequence>67</linkSequence>
+        <linkSequence>68</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>28</initialStateSequence>
+      <finalStateSequence>67</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <version>1</version>
+        <linkSequence>69</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>67</initialStateSequence>
+      <finalStateSequence>37</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>não</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <version>1</version>
+        <linkSequence>70</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>67</initialStateSequence>
+      <finalStateSequence>36</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>sim</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <version>1</version>
+        <linkSequence>71</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -1628,7 +1711,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <version>1</version>
-        <linkSequence>68</linkSequence>
+        <linkSequence>72</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -1742,37 +1825,29 @@
 	&#xd;
     var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
     var razaoSocial = hAPI.getCardValue(&quot;razaosocial&quot;);     &#xd;
+    var opcao;&#xd;
     &#xd;
     if (ativAtual == APROVACAO ){&#xd;
-    	&#xd;
-      	 var aprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
-  	   &#xd;
-    	 if (aprovacao ==&quot;aprovado&quot;){&#xd;
-    		 &#xd;
-    		    var constraint = new Array();                                 &#xd;
-                constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-                &#xd;
-                 var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
-                    &#xd;
-                 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                       throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                    }&#xd;
-                 else {&#xd;
-              	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
-                 }&#xd;
-                 &#xd;
-                 &#xd;
-                 &#xd;
-    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);&#xd;
-    	 }&#xd;
-    	 &#xd;
-    	 else if (aprovacao ==&quot;reprovado&quot;){&#xd;
-    		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada.&quot;);&#xd;
-    	 }&#xd;
-    	&#xd;
-                       &#xd;
-          &#xd;
-           &#xd;
+    	var aprovacao = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+&#xd;
+    			//GERA SOLICITAÇÃO DE COMPRA PARA GARANTIR QUE DADOS FINANCEIROS ESTAO CORRETOS&#xd;
+		    	 if (aprovacao ==&quot;aprovado&quot;){&#xd;
+&#xd;
+			       		 var constraint = new Array();                                 &#xd;
+			             constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+			             &#xd;
+			              var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
+			                 &#xd;
+			              if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+			                    throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+			                 }&#xd;
+&#xd;
+			              hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);		    		 		 		   &#xd;
+		       	 }&#xd;
+		       	 else if (aprovacao ==&quot;reprovado&quot;){&#xd;
+		    		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada.&quot;);&#xd;
+		    	 }&#xd;
+    	          &#xd;
     }&#xd;
     else if (ativAtual == COTACAO){	 		&#xd;
 	 		/*&#xd;
@@ -1798,6 +1873,54 @@
 		 if (valido == &quot;negado&quot;){&#xd;
 			 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial + &quot; não pode ser contratado pois não atende aos requisitos da legislação trabalhista.&quot;);&#xd;
 		 }&#xd;
+	 }&#xd;
+    &#xd;
+	 else if (ativAtual == FINALIZAR){&#xd;
+		 &#xd;
+		 //DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE&#xd;
+		 opcao = 5;&#xd;
+		 var constraintDelete = new Array();                                 &#xd;
+		 constraintDelete.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+		 constraintDelete.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+         var resultDatasetDelete = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraintDelete, null);                                                                    &#xd;
+             &#xd;
+          if (resultDatasetDelete.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+                throw resultDatasetDelete.getValue(0,&quot;RETORNO&quot;);&#xd;
+            }&#xd;
+		 &#xd;
+		 &#xd;
+		 &#xd;
+				var contrato  = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
+	    		if (contrato ==&quot;&quot;){&#xd;
+	    			 opcao = 3;&#xd;
+		       		 var constraint = new Array();                                 &#xd;
+		             constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+		             constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+		              var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
+		                 &#xd;
+		              if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		                    throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		                 }&#xd;
+		              else {&#xd;
+		           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
+		              }&#xd;
+		              &#xd;
+		              hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);&#xd;
+	      		}&#xd;
+	      		//GERAR INTEGRACAO COM MEDIÇÃO DE CONTRATO&#xd;
+	      		else {&#xd;
+		       			var constraint = new Array();                                 &#xd;
+			             constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+			             &#xd;
+			              var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA120_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
+			                 &#xd;
+			              if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+			                    throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+			                 }&#xd;
+			              else {&#xd;
+			           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com a rotina de medição de contratos.&quot;);&#xd;
+			              }&#xd;
+	      		}&#xd;
 	 }&#xd;
     &#xd;
     &#xd;

@@ -735,7 +735,20 @@ class="fluigicon fluigicon-calendar"></span>
                                                                 <label>Cotacao anual ou limite anual </label>
                                                                 <input type="number" id="CotacaovalorAnual" name="CotacaovalorAnual" class="form-control">
                                                             </div>
-                                                            
+                                                            <div class="form-group col-md-3">
+                                                        		<label>Filial do contrato</label>
+                                                        		  <input type="zoom" name="filialSC" id="filialSC" data-zoom="{
+																			'displayKey':'CODIGO',
+																			'datasetId':'VM_Filial',
+																			'maximumSelectionLength':'1',
+																			'placeholder':'Selecione a filial',
+																			'fields':[
+																			{'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+																			{'field':'DESCRICAO', 'label':'DESCRICAO'}
+																			]}" />
+																			
+																			
+                                                        	</div>
                                                             
                                                             
                                                              <div class="form-group col-md-1" id="div_tipoAprovacao">                                                                
@@ -763,22 +776,12 @@ class="fluigicon fluigicon-calendar"></span>
                                                         		<textarea class="form-control" rows="5" id="justificativaP" name="justificativaP" placeholder="Informe a justificativa por não estar indicando o fornecedor de menor valor como melhor proposta."></textarea>
                                                         	</div>
                                                         </div>    
-                                                        <div class="row">
-                                                        	<div class="form-group col-md-1">
-                                                        		<label>Filial</label>
-                                                        		<input type="text" name="filialSC" id="filialSC" class="form-control">
-                                                        	</div>
-                                                        </div>                                           
-                                                        
-                                                        
-                                                        
-                                                        
                                                     </div>
                                                 </div>
                                                  <div class="panel panel-success">
                                                  	<div class="panel-heading ">
                                                         <h5 class="panel-title">
-														<b>Se o fornecedor já tiver um contrato ativo com a Visão Mundial, selecione o mesmo abaixo</b>
+														<b>Se o fornecedor já tiver um contrato ativo com a Visão Mundial, e você desejar abater essa prestação de serviço desse contrato, selecione o mesmo abaixo</b>
 														</h5>
                                                     </div>
                                                     <div class="panel-body">

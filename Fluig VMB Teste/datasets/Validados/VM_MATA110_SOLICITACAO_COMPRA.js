@@ -11,6 +11,7 @@ function createDataset(fields, constraints, sortFields) {
 	var emailcomprador;
 	//default == 3
 	var acao = 3;
+	var filial ='02';
 	
 	
 	
@@ -39,6 +40,10 @@ function createDataset(fields, constraints, sortFields) {
         			if (constraints[a].fieldName == "acao"){
         				acao = constraints[a].initialValue;
             		} 
+        		}
+        		
+        		if (solicitacao.getValue(0,"filialSC") != ""){
+       			 	filial = solicitacao.getValue(0,"filialSC");
         		}
         	 
         		
@@ -86,13 +91,14 @@ function createDataset(fields, constraints, sortFields) {
         					            params : {
         					            	PROCESSO : '' + 2 + '' ,
         					            	ACAO: '' + acao + '',
+        					            	FILIAL: '' + filial + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 
         					                DATASOLICITACAO :'' + solicitacao.getValue(0,"datasolicitacao") +'',	        					                
         					                ITENS: aItemServico ,
         					        		RATEIODIGITADO: aRateio ,
-        					        		DOCUMENTID:''+ documentId +'',
+        					        		DOCUMENTID:''+ documentId +'',        					        	
         					        		COMPRADOR: '' + emailcomprador +'',
         					        		OBSERVACAO:'' + solicitacao.getValue(0,"finalidade") + '',
         					        		EVENTO: '' + solicitacao.getValue(0,"dataset_solicitacaoevento") + ''

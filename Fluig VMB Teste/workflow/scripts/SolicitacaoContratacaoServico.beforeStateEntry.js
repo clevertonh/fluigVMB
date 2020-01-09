@@ -75,27 +75,28 @@ function beforeStateEntry(sequenceId){
 		 }
 	 }
 	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
-			
-		 	var definicaoValor = hAPI.getCardValue("definicaoValor");		 	
-		 	var contrato = hAPI.getCardValue("Numerocontrato");
-		 	
-		 	//para esse caso o contrato será registrado com esses dados
-		 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus
-		 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição
-				if (definicaoValor =="fixo" && contrato ==""){  					 					
-		              var constraint = new Array();                                 
-	                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-	                  
-	                 
-	                   var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    
-	                      
-	                   if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-	                         throw resultDataset.getValue(0,"RETORNO");
-	                      }
-	                   else {
-	                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor selecionado e processo enviado para aprovação");
-	                   }
-				}
+			 	if (nextAtv == 123){
+		 		var definicaoValor = hAPI.getCardValue("definicaoValor");		 	
+			 	var contrato = hAPI.getCardValue("Numerocontrato");
+			 	//para esse caso o contrato será registrado com esses dados
+			 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus
+			 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição
+					if (definicaoValor =="fixo" && contrato ==""){  					 					
+			              var constraint = new Array();                                 
+		                  constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+		                  
+		                 
+		                   var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);                                                                    
+		                      
+		                   if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		                         throw resultDataset.getValue(0,"RETORNO");
+		                      }
+		                   else {
+		                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Fornecedor selecionado e processo enviado para aprovação");
+		                   }
+					}
+		 	}
+
 	
 	 }
 }
