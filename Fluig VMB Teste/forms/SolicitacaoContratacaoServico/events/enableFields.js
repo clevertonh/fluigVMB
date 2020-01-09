@@ -7,6 +7,8 @@ function enableFields(form){
 	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
 	var ENVIAR_APROVACAO_COMPRAS = 209;
 	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var APROVACAO_DIR = 292;
+	var APROVACAO_DN = 301;
 	var APROVACAO_SERVICO_COMPRAS = 105;
 	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
 	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
@@ -47,6 +49,16 @@ function enableFields(form){
 				 throw "Seu cadastro está sem aprovador, por favor, procure o setor de Recursos Humanos e solicite a atualização";
 			 }
 			 
+			 var diretor = usuarioAprovadorDIR(emailSolicitante);
+			 if (diretor!= null && diretor != "" && diretor.values.length > 0){
+				 form.setValue("nomeNivel2",diretor.getValue(0, "DIRETOR"));
+				 form.setValue("emailNivel2",diretor.getValue(0, "EMAIL_APROVADOR"));
+				 form.setValue("matriculaAprDirArea",diretor.getValue(0, "MATRICULA_APROVADOR"));
+				 	 
+			 }
+			 else {
+				 throw "Seu cadastro está sem diretor, por favor, procure o setor de Recursos Humanos e solicite a atualização";
+			 }
 		
 				 
 		}
@@ -55,6 +67,7 @@ function enableFields(form){
 		else if (activity == CORRIGIR){
 			 form.setEnabled("aprovacao", false);	
 			 form.setValue("aprovacao","");
+			 form.setValue("aprNivel2","");		
 
 			 
 		}
@@ -62,9 +75,54 @@ function enableFields(form){
 	else if (activity == APROVACAO_GESTOR){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
+		 form.setEnabled("aprNivel2", false);
+		 form.setEnabled("aprNivel3", false);
 	
 		 
 	}
+		
+	else if (activity == APROVACAO_DIR){
+		
+
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("aprNivel2", true);
+		    		    
+		 
+	}
+	
+	else if (activity == APROVACAO_DN){
+		
+		
+		 form.setValue("nomeNivel3",nomeSolicitante);
+		 form.setValue("emailNivel3",emailSolicitante);
+		 
+		 
+		 
+			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+		    var mapaForm = new java.util.HashMap();
+		    mapaForm = form.getCardData();
+		    var it = mapaForm.keySet().iterator();
+		     
+		    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+		        var key = it.next();
+		        form.setEnabled(key, habilitar);
+		    }
+		    
+		    form.setEnabled("aprNivel3", true);
+		 
+	}
+
+		
+		
 	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){					
 		 form.setValue("comprador",nomeSolicitante);
 		 form.setValue("emailComprador",emailSolicitante);
@@ -238,6 +296,13 @@ function enableFields(form){
 		 return dataset;
 	}
 
+	function usuarioAprovadorDIR(emailLogado){
+		var email = DatasetFactory.createConstraint("EMAIL_USUARIO",emailLogado,emailLogado, ConstraintType.MUST);		
+		var dataset = DatasetFactory.getDataset("ds_get_AprovadorViagem", null, new Array(email), null);
+		 
+		  
+		return dataset;
+	}
 
 
 }
