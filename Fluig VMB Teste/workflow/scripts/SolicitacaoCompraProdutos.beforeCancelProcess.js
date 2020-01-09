@@ -3,8 +3,10 @@ function beforeCancelProcess(colleagueId,processId){
     var ABERTURA = 0;
     var INICIO = 4;
     var APROVACAO = 5;
-    var ASSUMIR = 42;
     var CORRIGIR = 15;
+    var APROVACAO_DIR = 50;
+    var APROVACAO_DN = 51;
+    var ASSUMIR = 42;
     
     
     //RECUPERA NUMERO DA ATIVIDADE
@@ -24,7 +26,7 @@ function beforeCancelProcess(colleagueId,processId){
     //Opção desejada: 3-Inclusão; 4-Alteração ; 5-Exclusão ; 7-Aprovação (Somente versão Protheus 10)  
     var opcao = 5;
 
-    if (ativAtual == CORRIGIR && ativAtual == ASSUMIR){
+    if (ativAtual == APROVACAO_DN || ativAtual == ASSUMIR  ){
     	var constraint = new Array();                                 
      	constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
  		constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));

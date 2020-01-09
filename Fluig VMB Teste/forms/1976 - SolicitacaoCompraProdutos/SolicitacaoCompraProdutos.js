@@ -316,7 +316,7 @@ function adicionaLinhaProduto() {
 				  $('#vrTotUnit___'+ row).val( vl_ultimaCompra * qtde  );			  
 				  				  
 				}, true);
-
+		
 		}
 		else {
 	         FLUIGC.toast({
@@ -324,6 +324,16 @@ function adicionaLinhaProduto() {
 	  	        message: 'É recomendado a inclusão de um único item por solicitação, pois em caso de falta de saldo orçamentário a solicitação inteira será recusada.' ,
 	  	        type: 'info'
 	  	    }); 
+		}
+		
+		
+		if ($("#vl_total").val() > 100000){
+		       FLUIGC.toast({
+                   title: 'Atenção',
+                   message: 'Sua solicitação superou o valor projeto de 100 mil reais. Conforme política nacional, sua solicitação de compra além das aprovações padrões, deverá ser aprovada pela Diretora Nacional.',
+                   type: 'warning',
+                   timeout: 4000
+               });
 		}
 		
 }

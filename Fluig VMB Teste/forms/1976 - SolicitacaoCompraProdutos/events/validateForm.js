@@ -39,7 +39,7 @@ function validateForm(form){
 	}
 	
 	
-	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR || activity == GERAR_SC){
+	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR ){
 	
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();

@@ -22,26 +22,10 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("_matricula", false);
 	 form.setVisibleById("prazoaprovacao", false); 
 	 
-	 /*
-	 form.setVisibleById("div_codProduto", false);	 
-	 var indexes = form.getChildrenIndexes("tableCompras");
-     for (var i = 0; i < indexes.length; i++) {
-         form.setVisibleById("codigoProduto___" + indexes[i], false);
-     }
-     */
 	 
-    
+  
+
 	 
-	 if (activity == ABERTURA || activity == INICIO ){
-		 form.setVisibleById("div_nivel2", false);
-		 form.setVisibleById("div_nivel3", false);
-	 }
-	 else if (activity == APROVACAO){
-		 		form.setVisibleById("div_nivel2", false);
-		 		form.setVisibleById("div_nivel3", false);
-	 }
-	 else if (activity == APROVACAO_DIR){
-		 		form.setVisibleById("div_nivel3", false);
-	 } 
+	 
 	 
 }

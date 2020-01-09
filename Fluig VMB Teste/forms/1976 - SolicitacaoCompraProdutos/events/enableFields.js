@@ -15,6 +15,8 @@ function enableFields(form){
 	 
 	if (activity == ABERTURA || activity == CORRIGIR){
 		 form.setEnabled("aprovacao", false);	
+		 form.setEnabled("aprNivel2", false);
+		 form.setEnabled("aprNivel3", false);
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
 		 
@@ -33,9 +35,9 @@ function enableFields(form){
 		 
 		 var diretor = usuarioAprovadorDIR(emailSolicitante);
 		 if (diretor!= null && diretor != "" && diretor.values.length > 0){
-			 form.setValue("nomeNivel2",diretor.getValue(0, "EMAIL_APROVADOR"));
-			 form.setValue("emailNivel2",diretor.getValue(0, "MATRICULA_APROVADOR"));
-			 form.setValue("matriculaAprDirArea",diretor.getValue(0, "DIRETOR"));
+			 form.setValue("nomeNivel2",diretor.getValue(0, "DIRETOR"));
+			 form.setValue("emailNivel2",diretor.getValue(0, "EMAIL_APROVADOR"));
+			 form.setValue("matriculaAprDirArea",diretor.getValue(0, "MATRICULA_APROVADOR"));
 			 	 
 		 }
 		 else {
@@ -46,7 +48,8 @@ function enableFields(form){
 		 
 		 //reseta campo de corrigir marcado pelo aprovador
 		 if (activity == CORRIGIR){
-			 form.setValue("aprovacao","");			 
+			 form.setValue("aprovacao","");
+			 form.setValue("aprNivel2","");		
 		 }
 
 	
@@ -55,16 +58,18 @@ function enableFields(form){
 	else if (activity == APROVACAO){
 		 //set numero da solicitação
 		 form.setValue("solicitacao",getValue('WKNumProces'));
+		 form.setEnabled("aprNivel2", false);
+		 form.setEnabled("aprNivel3", false);
 		 
-		 form.setValue("gestor",nomeSolicitante);
-		 form.setValue("emailLider",emailSolicitante);
 		 
 		
 		 
 	}
 	
 	else if (activity == APROVACAO_DIR){
-			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+			
+
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
 		    var it = mapaForm.keySet().iterator();
@@ -73,10 +78,20 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
+		    
+		    form.setEnabled("aprNivel2", true);
+		    		    
 		 
 	}
 	
 	else if (activity == APROVACAO_DN){
+		
+		
+		 form.setValue("nomeNivel3",nomeSolicitante);
+		 form.setValue("emailNivel3",emailSolicitante);
+		 
+		 
+		 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();
@@ -86,6 +101,8 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
+		    
+		    form.setEnabled("aprNivel3", true);
 		 
 	}
 	

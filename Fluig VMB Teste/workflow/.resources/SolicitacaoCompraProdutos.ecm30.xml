@@ -208,8 +208,8 @@
         <version>1</version>
         <sequence>42</sequence>
       </processStatePK>
-      <stateName>Assumir compra</stateName>
-      <stateDescription>Assumir compra</stateDescription>
+      <stateName>Comprar</stateName>
+      <stateDescription>Comprar</stateDescription>
       <instruction>Assuma a responsabilidade de realizar a compra do produto e integre com o sistema Protheus para realizar o procedimento de cotação</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -232,7 +232,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>1000</positionX>
-      <positionY>790</positionY>
+      <positionY>800</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1098,7 +1098,7 @@ function setChildTable(numProcessoPai){&#xd;
        //RECUPERA USUARIO LOGADO&#xd;
        var usuario = getValue(&apos;WKUser&apos;);&#xd;
        &#xd;
-       var aprovacao  = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
+   &#xd;
        &#xd;
        &#xd;
        &#xd;
@@ -1106,49 +1106,31 @@ function setChildTable(numProcessoPai){&#xd;
        var opcao;&#xd;
       &#xd;
        &#xd;
-       if (ativAtual == APROVACAO ){&#xd;
-    	   var aprovacao  = hAPI.getCardValue(&quot;aprovacao&quot;);&#xd;
-	 &#xd;
-    	   if (aprovacao == &quot;aprovado&quot;){&#xd;
-	   			opcao = 3;&#xd;
-                var constraint = new Array();                                 &#xd;
-                constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
-	  			constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
-	  			 &#xd;
-                var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
-                 &#xd;
-                	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                      throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-                   }&#xd;
-                	  else {&#xd;
-  					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus para o processo de cotação&quot;);&#xd;
-  				  }&#xd;
-                   &#xd;
-	   		}     &#xd;
-       }&#xd;
-       &#xd;
-       &#xd;
-       else if (ativAtual == APROVACAO_DIR ){&#xd;
-	    	   	var aprovacaoDIR  = hAPI.getCardValue(&quot;aprNivel2&quot;);&#xd;
+      if (ativAtual == APROVACAO_DIR ){&#xd;
+	    	   	var aprovacao  = hAPI.getCardValue(&quot;aprNivel2&quot;);&#xd;
 		 &#xd;
-	     		if (aprovacaoDIR == &quot;reprovado&quot;){&#xd;
-		   			opcao = 5;&#xd;
-		   			var constraint = new Array();                                 &#xd;
-		   	     	constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
-		   	 		constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
-		   	 			 &#xd;
-		   	 		var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
-		   	       &#xd;
-		   	      	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-		   	            throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-		   	         }&#xd;
-		   		}&#xd;
+	    	    if (aprovacao == &quot;aprovado&quot;){&#xd;
+		   			opcao = 3;&#xd;
+	                var constraint = new Array();                                 &#xd;
+	                constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
+		  			constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+		  			 &#xd;
+	                var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_COMPRA&quot;, null, constraint, null);                                                                    &#xd;
+	                 &#xd;
+	                	 if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	                      throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	                   }&#xd;
+	                	  else {&#xd;
+	  					  hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus para o processo de cotação&quot;);&#xd;
+	  				  }&#xd;
+	                   &#xd;
+		   		}    &#xd;
     	       &#xd;
        }&#xd;
         else if (ativAtual == APROVACAO_DN){&#xd;
-    	   		var aprovacaoDN  = hAPI.getCardValue(&quot;aprNivel3&quot;);&#xd;
+    	   		var aprovacao  = hAPI.getCardValue(&quot;aprNivel3&quot;);&#xd;
            &#xd;
-    	   		if (aprovacaoDN == &quot;reprovado&quot;){&#xd;
+    	   		if (aprovacao == &quot;reprovado&quot;){&#xd;
     	   			opcao = 5;&#xd;
     	   			var constraint = new Array();                                 &#xd;
     	   	     	constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));                    &#xd;
