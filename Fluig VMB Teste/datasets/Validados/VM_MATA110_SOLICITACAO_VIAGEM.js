@@ -10,7 +10,7 @@ function createDataset(fields, constraints, sortFields) {
 	var tipoViagem;
 	var documentId;
 	var acao = 3;
-	
+	var filial ='02';
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -32,6 +32,11 @@ function createDataset(fields, constraints, sortFields) {
             			//break;
             		}        			
         		}
+        		
+        		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
+         			 filial = solicitacao.getValue(0,"filialSC");
+         		}
+       	 
         	     		
         		var c2 = DatasetFactory.createConstraint("metadata#id", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);    
         		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesViagemDadosPagamento", null, new Array(c2), null);    				  
@@ -109,6 +114,7 @@ function createDataset(fields, constraints, sortFields) {
         					            params : {
         					            	PROCESSO : '' + 1 + '' ,
         					            	ACAO: '' + acao + '',
+        					            	FILIAL: '' + filial + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

@@ -159,13 +159,15 @@ function validateForm(form){
 		}
 		
 		if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){
+			/*
 			//convert data fim do serviço
 			var dataFinal = convertStringToData(form.getValue("dtFim"));
 			var dtVigencia = convertStringToData(form.getValue("dtFimC"));
 			
 			if (dtVigencia < dataFinal){
-				//throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
+				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
 			}
+			*/
 		}
 	
 		

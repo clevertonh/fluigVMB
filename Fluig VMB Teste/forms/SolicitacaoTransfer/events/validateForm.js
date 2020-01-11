@@ -132,6 +132,66 @@ function validateForm(form){
          }     
          
     }
+    else if (activity == COTACAO){
+    		if (nextAtv == 26){ //verificar tipo de PJ
+    			  if (form.getValue("cnpjcpf") == null  || form.getValue("cnpjcpf")  == "" ){
+ 		          	 throw "Você precisa selecionar o fornecedor vencedor da cotação.";
+ 		        } 
+ 			
+ 				if (form.getValue("condicaoPgto") == null  || form.getValue("condicaoPgto")  == "" ){
+ 		        	 throw "É preciso informar o campo Forma de pagamento.";
+ 		       } 
+ 				
+ 				if (form.getValue("negociacao") == null  || form.getValue("negociacao")  == "" ){
+		         	 throw "O campo de negociação deve ser preenchida.";
+		        } 
+ 				
+ 			   
+ 			   if (form.getValue("CotacaovalorMensal") == null || form.getValue("CotacaovalorMensal") == "" || parseFloat(form.getValue("CotacaovalorMensal")) == 0) {
+			            throw "Você precisa informar qual o valor mensal do serviço.";
+			        }
+ 			   
+    	    	 if (form.getValue("formapgto") == null || form.getValue("formapgto") == "") {
+    		            throw "Você precisa informar o campo período de pagamento.";
+    		        }
+    			   if (form.getValue("definicaoValor") == null || form.getValue("definicaoValor") == "") {
+    		            throw "Você precisa informar o campo de definição de valor.";
+    		        }
+    			   if (form.getValue("competencia") == null || form.getValue("competencia") == "") {
+   		            throw "Você precisa informar o campo Mês de competencia.";
+   		        }
+    			   
+    			   if (form.getValue("Anocompetencia") == null || form.getValue("Anocompetencia") == "") {
+      		            throw "Você precisa informar o campo Ano de competencia.";
+      		        }
+    			   
+    			 
+    				
+    				if (form.getValue("melhorProposta") == "nao" ){
+    					if (form.getValue("justificativaP") =="" || form.getValue("justificativaP") == null){
+    						throw "É preciso informar o motivo por não estar escolhendo o fornecedor de menor valor.";
+    					}
+    				}
+    						
+    				if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorAnual"))){
+    					throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
+    				}
+    				
+    				if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){
+    					/*
+    					//convert data fim do serviço
+    					var dataFinal = convertStringToData(form.getValue("dtFim"));
+    					var dtVigencia = convertStringToData(form.getValue("dtFimC"));
+    					
+    					if (dtVigencia < dataFinal){
+    						//throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
+    					}
+    					*/
+    				}
+
+    		}
+
+    }
     
     
     
@@ -198,17 +258,17 @@ function validateForm(form){
            
         if (ccusto == "99990") {             
                   if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
-                      throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma viagem.";
+                      throw "Você não pode usar uma atividade do tipo CAM ou de GN.";
 
                   }
               } 
               else {                	
            	   		if (atividade == "E010101" || atividade == "E020201") {
-           	   			throw "Você não pode usar uma atividade de folha ou estutural para custear uma viagem.";
+           	   			throw "Você não pode usar uma atividade de folha ou estutural.";
 
            	   		}
 	           	   	 if (atividade == "A450101"){
-	          		   throw "Você não pode usar uma atividade de capacitação para custear uma viagem.";
+	          		   throw "Você não pode usar uma atividade de capacitação.";
 	          	   }
              
                  }

@@ -35,18 +35,7 @@ function beforeStateEntry(sequenceId){
     var razaoSocial = hAPI.getCardValue("razaosocial");     
     
      
-     if (ativAtual == APROVACAO_GESTOR){
-    	 var aprovacao = hAPI.getCardValue("aprovacao");
-    	   
-    	 if (aprovacao =="aprovado"){
-    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação aprovada.");
-    	 }
-    	 else if (aprovacao =="reprovado"){
-    		 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação reprovada.");
-    	 }
-     }
-    
-     else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
+   if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ 
 		 	if (nextAtv == TIPO_PJ_C || nextAtv == TIPO_PJ_H){
 		 		
 		 		/*
@@ -68,11 +57,16 @@ function beforeStateEntry(sequenceId){
 	    }	
 	 
 	 else if (ativAtual == VALIDAR_RH){
+		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial +  hAPI.getCardValue("justificativaRH"));
+		 /*
 		 var valido = hAPI.getCardValue("valido");
 		    
+		 
+		 
 		 if (valido == "negado"){
 			 hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial + " não pode ser contratado pois não atende aos requisitos da legislação trabalhista.");
 		 }
+		 */
 	 }
 	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
 			 	if (nextAtv == 123){

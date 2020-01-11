@@ -114,11 +114,12 @@ function enableFields(form){
 		    form.setEnabled("tipoPJ", true);
 		    form.setEnabled("contatoEmpresa", true);
 		    form.setEnabled("CotacaovalorMensal", true);
+		    form.setEnabled("cotacaovalorTotal", true);
 		    form.setEnabled("dtCotacao", true);
 		    form.setEnabled("origem", true);	    
 		    form.setEnabled("Numerocontrato", true);	  
 		    form.setEnabled("revisao", true);
-		    form.setEnabled("filial", true);
+		    form.setEnabled("filialSC", true);
 		    form.setEnabled("dtInicioC", true);
 		    form.setEnabled("dtFimC", true);
 		    form.setEnabled("vlcontrato", true);

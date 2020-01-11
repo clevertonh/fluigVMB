@@ -14,6 +14,7 @@ function createDataset(fields, constraints, sortFields) {
 	var acao = 3;
 	var filial ='02';
 	
+	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitação NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {     		
@@ -30,16 +31,26 @@ function createDataset(fields, constraints, sortFields) {
             	var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesTransferDadosPagamento", null, new Array(c2), null);    				  
     	    
             	for (var a=0; a<constraints.length; a++){
+            		if (constraints[a].fieldName == "comprador"){
+            			emailcomprador = constraints[a].initialValue;
+            		} 
         			 
         			if (constraints[a].fieldName == "acao"){
         				acao = constraints[a].initialValue;
             		} 
+        			if (constraints[a].fieldName == "valorUnitario"){
+            			valor = constraints[a].initialValue;
+            		} 
+        			
+        		}            	
+            	
+            	if (valor == 0 || valor == null){
+            		valor = solicitacao.getValue(0,"valor")
+            	}
+            	
+        		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
+       			 filial = solicitacao.getValue(0,"filialSC");
         		}
-            	
-        		if (solicitacao.getValue(0,"filialSC") != ""){
-         			 filial = solicitacao.getValue(0,"filialSC");
-         		}
-            	
         					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -49,7 +60,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         				  				 
         					 //criação do item da solicitação de compra
-        					 aItemServico.push(addItemCompra(solicitacao.getValue(0,"codigoProduto"),codSolicitacao,solicitacao.getValue(0,"quantidade"),solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"valor"))); 
+        					 aItemServico.push(addItemCompra(solicitacao.getValue(0,"codigoProduto"),codSolicitacao,solicitacao.getValue(0,"quantidade"),solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor)); 
         					 
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
@@ -62,7 +73,7 @@ function createDataset(fields, constraints, sortFields) {
         					            params : {
         					            	PROCESSO : '' + 12 + '' ,
         					            	ACAO: '' + acao + '',
-        					            	FILIALSC: '' + filial + '',
+        					            	FILIAL: '' + filial + '',
         					            	SOLICITACAO : '' + codSolicitacao + '' ,
         					            	SOLICITANTE : '' + solicitacao.getValue(0,"solicitante") +'',
         					            	EMAILSOLICITANTE : '' + solicitacao.getValue(0,"emailsolicitante") +'', 

@@ -45,7 +45,7 @@ function createDataset(fields, constraints, sortFields) {
         					 aItemServico.push(addItemCompra(
         							 solicitacao.getValue(0,"codigoProduto"),
         							 codSolicitacao,
-        							 1,     							
+        							 solicitacao.getValue(0,"quantidade"),     							
         							 solicitacao.getValue(0,"CotacaovalorMensal")
         							 )); 
         					 

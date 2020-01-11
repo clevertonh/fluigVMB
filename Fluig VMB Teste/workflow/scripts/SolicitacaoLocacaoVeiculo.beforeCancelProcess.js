@@ -41,9 +41,7 @@ function beforeCancelProcess(colleagueId,processId){
      	     
     	 var constraint = new Array();                                 
      	 constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
-         constraint.push(DatasetFactory.createConstraint("valor", valor, valor, ConstraintType.MUST));
-         constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));	
-     	 constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
+      	 constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
  			 
  		var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_LOCACAO_VEICULO", null, constraint, null);                                                                    
        

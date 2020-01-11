@@ -562,11 +562,16 @@
                                                                 <input type="number" id="valorAdiantado" name="valorAdiantado" class="form-control">
                                                             </div>
                                                              <div class="form-group col-md-2">
-                                                                <label>Valor do servico</label>
+                                                                <label>Valor unitário</label>
                                                                 <input type="number" id="CotacaovalorMensal" name="CotacaovalorMensal" class="form-control">
                                                             </div>
-                                                             
-                                                               <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-2">
+                                                                <label>Valor Total</label>
+                                                                <input type="number" id="cotacaovalorTotal" name="cotacaovalorTotal" class="form-control">
+                                                            </div> 
+                                                        </div> 
+                                                        <div class="row">
+                                                         	<div class="form-group col-md-3">
                                                                             <label>Período de pagamento</label>
                                                                             <br>
                                                                             <label for="mensal">Mensal</label>
@@ -582,9 +587,7 @@
                                                                             <label for="demanda">Valor por demanda</label>
                                                                             <input type="radio" id="demanda" name="definicaoValor" value="demanda">
                                                                         </div>
-                                                            
-                                                            
-                                                        </div>    
+                                                        </div>   
                                                         <div class="row">
                                                         	    <div class="form-group col-md-2">
                                                           		<label>Mês competência</label>
@@ -607,7 +610,7 @@
 			                                                      </div>
 		                                                      </div>
 		                                                      <div class="form-group col-md-3" >
-			                                                        		<label>Filial do contrato</label>
+			                                                        		<label>Filial</label>
 			                                                        		  <input type="zoom" name="filialSC" id="filialSC" data-zoom="{
 																						'displayKey':'CODIGO',
 																						'datasetId':'VM_Filial',
@@ -656,7 +659,7 @@
                                             <div class="panel panel-success">
                                                  	<div class="panel-heading ">
                                                         <h5 class="panel-title">
-														<b>Se o fornecedor já tiver um contrato ativo com a Visão Mundial que represente a proposta de valor, selecione o mesmo abaixo</b>
+														<b>Se o fornecedor já tiver um contrato ativo com a Visão Mundial, e você desejar abater essa prestação de serviço desse contrato, selecione o mesmo abaixo</b>
 														</h5>
                                                     </div>
                                                     <div class="panel-body">
@@ -796,7 +799,13 @@
 			                                                                <label for="validoN">Não</label>
 			                                                                <input type="radio" id="validoN" name="valido" value="nao">
 			                                                            </div>
-			                                                        </div>                                                             
+			                                                        </div>  
+			                                                           <div class="row">
+			                                                        	<div class="form-group col-md-12">
+			                                                        		<label>Observação</label>
+                                                                            <textarea class="form-control" rows="5" id="justificativaRH" name="justificativaRH" placeholder="Justificativa "></textarea>
+			                                                        	</div>
+			                                                        </div>                                                            
 			                                                    </div>
 			                                                </div>
 	                                            		</div>

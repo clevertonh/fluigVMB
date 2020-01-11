@@ -37,9 +37,19 @@ function createDataset(fields, constraints, sortFields) {
         			if (constraints[a].fieldName == "acao"){
         				acao = constraints[a].initialValue;
             		} 
+        			if (constraints[a].fieldName == "valorUnitario"){
+            			valor = constraints[a].initialValue;
+            		} 
+                
         		}
         		
-        		if (solicitacao.getValue(0,"filialSC") != ""){
+            	if (valor == 0 || valor == null){
+            		valor = solicitacao.getValue(0,"valor")
+            	}
+            	
+            	
+        		
+         		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
         			 filial = solicitacao.getValue(0,"filialSC");
         		}
             	
@@ -53,7 +63,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }
         				  				 
         					 //criação do item da solicitação de compra
-        					 aItemServico.push(addItemCompra(solicitacao.getValue(0,"codigoProduto"),codSolicitacao,1,solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"valor"))); 
+        					 aItemServico.push(addItemCompra(solicitacao.getValue(0,"codigoProduto"),codSolicitacao,solicitacao.getValue(0,"quantidade"),solicitacao.getValue(0,"dtSolicitacao"),solicitacao.getValue(0,"documentid"),valor)); 
         					 
         					 
         					 // criação do item taxa de serviço

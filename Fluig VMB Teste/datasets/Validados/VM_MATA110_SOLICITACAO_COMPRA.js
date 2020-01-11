@@ -42,10 +42,12 @@ function createDataset(fields, constraints, sortFields) {
             		} 
         		}
         		
-        		if (solicitacao.getValue(0,"filialSC") != ""){
-       			 	filial = solicitacao.getValue(0,"filialSC");
-        		}
-        	 
+        		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
+         			 filial = solicitacao.getValue(0,"filialSC");
+         		}
+	       		else {
+	       				filial == "02";
+	       		}
         		
       					 try {
         						//chama função que monta array de objetos dos itens do rateio

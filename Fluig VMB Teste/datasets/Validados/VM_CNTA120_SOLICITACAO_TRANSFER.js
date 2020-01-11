@@ -15,6 +15,8 @@ function createDataset(fields, constraints, sortFields) {
 	var vencimento;
 	//default == 3
 	var acao = 3;
+	var filial ='02';
+	var filialCTR;
 	
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
@@ -31,6 +33,20 @@ function createDataset(fields, constraints, sortFields) {
         		var c2 = DatasetFactory.createConstraint("metadata#id", documentId, documentId, ConstraintType.MUST);            		
         		var itensSolicitacao = DatasetFactory.getDataset("VM_SolicitacoesTransferDadosPagamento", null, new Array(c2), null);    				  
 
+        		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
+          			 filial = solicitacao.getValue(0,"filialSC");
+          		}
+        	
+        		
+        		if (solicitacao.getValue(0,"filial") != "" && solicitacao.getValue(0,"filial") !=null){
+         			 filialCTR = solicitacao.getValue(0,"filial");
+         		}
+        		else {
+        				filialCTR == "";
+        		}
+           			
+        		
+        		
       					 try {
         						//chama função que monta array de objetos dos itens do rateio
         						 aRateio = preencheRateio(itensSolicitacao);
@@ -56,6 +72,8 @@ function createDataset(fields, constraints, sortFields) {
         		            			
         		            		}        			
         		        		}
+        					 
+        					 
         					        							
         					 try{
         					        var clientService = fluigAPI.getAuthorizeClientService();
@@ -73,7 +91,8 @@ function createDataset(fields, constraints, sortFields) {
         					                DATASOLICITACAO :'' + solicitacao.getValue(0,"dtSolicitacao") +'',        					                
         					                CONTRATO : '' + solicitacao.getValue(0,"Numerocontrato") +'',
         					                REVISAO : '' + solicitacao.getValue(0,"revisao") +'',
-        					                FILCTR : '' + solicitacao.getValue(0,"filial") +'',
+        					            	FILIAL: '' + filial + '',
+        					                FILCTR : '' + filialCTR+'',
         					                VENCIMENTO : '' + vencimento +'',
         					                COMPETENCIA : '' + solicitacao.getValue(0,"competencia") + "/"+ solicitacao.getValue(0,"Anocompetencia") + '',         					                
         					                ITENS: aItemServico ,

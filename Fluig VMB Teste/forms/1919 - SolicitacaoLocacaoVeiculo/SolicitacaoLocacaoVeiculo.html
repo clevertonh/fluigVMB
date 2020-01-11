@@ -172,10 +172,10 @@
                                                                    </div>
                                                                    <div class="row">
 						                                    			<div class="form-group col-md-3">
-						                                                    <label>Valor máximo para contratação</label>
+						                                                    <label>Valor máximo para contratação total</label>
 						                                                 	<input type="number" id="valor" name="valor" class="form-control">
 						                                                </div>
-						                                                <div class="form-group col-md-4" id="div_produto">
+						                                                <div class="form-group col-md-3" id="div_produto">
 						                                                         <label>Tipo de veículo</label>                                                        
 						                                                         <input type="zoom" name="txtproduto" id="txtproduto" data-zoom="{
 							                                                                               'displayKey':'DESCRICAO',
@@ -188,10 +188,14 @@
 						                                                                                    ]
 						                                                                                    }" />
 						                                               </div>
-						     											<div class="form-group col-md-3">
+						     											<div class="form-group col-md-2">
 																			<label>Código produto</label>
-						     												<input class="form-control" name="codigoProduto" id="codigoProduto" type="text"  style="width: 150px;" readOnly />
-						     											</div>                                           
+						     												<input class="form-control" name="codigoProduto" id="codigoProduto" type="text"  readOnly />
+						     											</div> 
+						     											 <div class="form-group col-md-2">
+	                                                                    	<label>Quantidade de veículos</label>
+	                                                                    	<input type="number" class="form-control" name="quantidade" id="quantidade">
+	                                                                    </div>                                          
 						                                    		</div>
                                                                  	<div class="row">
                                                                  	 <div class="form-group col-md-4">
@@ -203,7 +207,7 @@
                                                                     	<input type="text" class="form-control" name="modelo" id="modelo">
                                                                     </div>
                                                                     <div class="form-group col-md-2">
-                                                                    	<label>Capacidade</label>
+                                                                    	<label>Capacidade por veículo</label>
                                                                     	<input type="number" class="form-control" name="capacidade" id="capacidade" max="7" min="1">
                                                                     </div>
                                                                  	</div>
@@ -675,15 +679,18 @@
 															</div>
 														</div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-2">
                                                                 <label>Valor adiantado</label>
                                                                 <input type="number" id="valorAdiantado" name="valorAdiantado" class="form-control">
                                                             </div>
                                                              <div class="form-group col-md-2">
-                                                                <label>Valor do servico</label>
+                                                                <label>Valor unitário</label>
                                                                 <input type="number" id="CotacaovalorMensal" name="CotacaovalorMensal" class="form-control">
                                                             </div>
-                                                             
+                                                             <div class="form-group col-md-2">
+                                                                <label>Valor Total</label>
+                                                                <input type="number" id="cotacaovalorTotal" name="cotacaovalorTotal" class="form-control">
+                                                            </div> 
                                                                <div class="form-group col-md-3">
                                                                             <label>Período de pagamento</label>
                                                                             <br>
@@ -692,17 +699,17 @@
                                                                             <label for="unico">Pagamento único</label>
                                                                             <input type="radio" id="unico" name="formapgto" value="unico">
                                                                         </div>
-                                                                        <div class="form-group col-md-4">
-                                                                            <label>Definição do valor</label>
+                                                                <div class="form-group col-md-3">
+                                                                           <label>Definição do valor</label>
                                                                             <br>
                                                                             <label for="fixo">Valor fixo</label>
                                                                             <input type="radio" id="fixo" name="definicaoValor" value="fixo" >
                                                                             <label for="demanda">Valor por demanda</label>
                                                                             <input type="radio" id="demanda" name="definicaoValor" value="demanda">
-                                                                        </div>
-                                                            
-                                                            
+                                                                    </div>
                                                         </div>    
+                                                        <div class="row">
+                                                        </div>
                                                         <div class="row">
                                                         	    <div class="form-group col-md-2">
                                                           		<label>Mês competência</label>
@@ -724,6 +731,20 @@
 			                                                           </span>
 			                                                      </div>
 		                                                      </div>
+		                                                      <div class="form-group col-md-3" >
+			                                                        		<label>Filial</label>
+			                                                        		  <input type="zoom" name="filialSC" id="filialSC" data-zoom="{
+																						'displayKey':'CODIGO',
+																						'datasetId':'VM_Filial',
+																						'maximumSelectionLength':'1',
+																						'placeholder':'Selecione a filial',
+																						'fields':[
+																						{'field':'CODIGO', 'label':'CODIGO', 'standard':'true'},
+																						{'field':'DESCRICAO', 'label':'DESCRICAO'}
+																						]}" />
+																						
+																						
+			                                                        	</div> 
                                                         </div>   
                                                         <div class="row">
                                                         	<div class="form-group col-md-1" id="div_tipoAprovacao">                                                                

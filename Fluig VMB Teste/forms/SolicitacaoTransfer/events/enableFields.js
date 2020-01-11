@@ -99,6 +99,7 @@ function enableFields(form){
 		    form.setEnabled("tipoPJ", true);
 		    form.setEnabled("contatoEmpresa", true);
 		    form.setEnabled("CotacaovalorMensal", true);
+		    form.setEnabled("cotacaovalorTotal", true);
 		    form.setEnabled("dtCotacao", true);
 		    form.setEnabled("origem", true);	    
 		    form.setEnabled("Numerocontrato", true);	  
@@ -113,6 +114,7 @@ function enableFields(form){
 		    form.setEnabled("formapgto", true);
 		    form.setEnabled("definicaoValor", true);
 		    
+		    form.setEnabled("filialSC", true);
 		    form.setEnabled("competencia", true);
 		    form.setEnabled("Anocompetencia", true);
 		    
@@ -192,6 +194,17 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
+	}
+	else if (activity == FINALIZAR){
+		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
+	    var mapaForm = new java.util.HashMap();
+	    mapaForm = form.getCardData();
+	    var it = mapaForm.keySet().iterator();
+	     
+	    while (it.hasNext()) { // Laço de repetição para habilitar/desabilitar os campos
+	        var key = it.next();
+	        form.setEnabled(key, habilitar);
+	    }
 	}
 
 

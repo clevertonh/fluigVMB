@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Transfer</processId>
-      <version>14</version>
+      <version>20</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2169</formId>
@@ -677,7 +677,7 @@
       <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
       <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
       <transferAttachments>true</transferAttachments>
-      <subProcessId>AprovacaoServico</subProcessId>
+      <subProcessId>SolicitacaoAprovacaoServico</subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
@@ -749,10 +749,10 @@
       <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
       <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <cancelSubProcess>false</cancelSubProcess>
+      <cancelSubProcess>true</cancelSubProcess>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
-      <sendToNextTaskInSubProcess>false</sendToNextTaskInSubProcess>
+      <sendToNextTaskInSubProcess>true</sendToNextTaskInSubProcess>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -919,8 +919,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>880</positionX>
-      <positionY>340</positionY>
+      <positionX>890</positionX>
+      <positionY>280</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -1030,7 +1030,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>10</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot;</condition>
@@ -1042,7 +1042,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>10</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -1054,7 +1054,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>3</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>10</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -1066,7 +1066,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) != &quot;&quot;</condition>
@@ -1078,7 +1078,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;FISICA&quot;</condition>
@@ -1090,10 +1090,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>3</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp;( hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;MEI&quot; || hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;ME&quot;  ) </condition>
+      <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; ( hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;MEI&quot; || hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;ME&quot;  ) </condition>
       <destinationSequenceId>30</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1102,7 +1102,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>4</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;numeroContrato&quot;) == &quot;&quot;  &amp;&amp; hAPI.getCardValue(&quot;tipoPessoa&quot;) ==&quot;JURIDICA&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPJ&quot;) ==&quot;&quot;</condition>
@@ -1114,7 +1114,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>32</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;valido&quot;) ==&quot;sim&quot; </condition>
@@ -1126,7 +1126,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>32</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;valido&quot;) !=&quot;sim&quot; </condition>
@@ -1138,7 +1138,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>39</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoServico&quot;) ==&quot;aprovado&quot;</condition>
@@ -1150,7 +1150,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>39</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacaoServico&quot;) !=&quot;aprovado&quot;</condition>
@@ -1162,7 +1162,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>41</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) !=&quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;Numerocontrato&quot;) != null</condition>
@@ -1174,7 +1174,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>41</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;Numerocontrato&quot;) == &quot;&quot;</condition>
@@ -1186,7 +1186,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>46</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) ==&quot;assinado&quot; </condition>
@@ -1198,7 +1198,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>46</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) !=&quot;assinado&quot; </condition>
@@ -1210,10 +1210,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>67</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;CotacaovalorMensal&quot;) &gt; 5000</condition>
+      <condition>hAPI.getCardValue(&quot;CotacaovalorTotal&quot;) &gt; 5000</condition>
       <destinationSequenceId>36</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -1222,11 +1222,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>20</version>
         <sequence>67</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;CotacaovalorMensal&quot;) &lt;= 5000</condition>
-      <destinationSequenceId>37</destinationSequenceId>
+      <condition>hAPI.getCardValue(&quot;CotacaovalorTotal&quot;) &lt;= 5000</condition>
+      <destinationSequenceId>41</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -1661,23 +1661,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <version>1</version>
-        <linkSequence>69</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>67</initialStateSequence>
-      <finalStateSequence>37</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>não</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoTransfer</processId>
-        <version>1</version>
         <linkSequence>70</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -1689,6 +1672,9 @@
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
+      <movementTitle></movementTitle>
+      <movementDescription></movementDescription>
+      <movementAccessLinkDescription></movementAccessLinkDescription>
     </ProcessLink>
     <ProcessLink>
       <processLinkPK>
@@ -1696,6 +1682,23 @@
         <processId>SolicitacaoTransfer</processId>
         <version>1</version>
         <linkSequence>71</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>67</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <version>1</version>
+        <linkSequence>72</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -1711,7 +1714,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
         <version>1</version>
-        <linkSequence>72</linkSequence>
+        <linkSequence>73</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -1806,9 +1809,7 @@
 	var SOLICITACAO_CONTRATO = 43;&#xd;
 	var VERIFICAR_ASSINATURA = 44;&#xd;
 	var FINALIZAR = 48;&#xd;
-	&#xd;
-&#xd;
-	&#xd;
+		&#xd;
 	&#xd;
 	//RECUPERA NUMERO DA ATIVIDADE&#xd;
 	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
@@ -1820,7 +1821,7 @@
 	var idDocumento = getValue(&quot;WKCardId&quot;);&#xd;
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
-	 //RECUPERA USUARIO LOGADO&#xd;
+	//RECUPERA USUARIO LOGADO&#xd;
     var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	&#xd;
     var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
@@ -1832,28 +1833,18 @@
 &#xd;
     			//GERA SOLICITAÇÃO DE COMPRA PARA GARANTIR QUE DADOS FINANCEIROS ESTAO CORRETOS&#xd;
 		    	 if (aprovacao ==&quot;aprovado&quot;){&#xd;
-&#xd;
+	    			 opcao = 3;&#xd;
 			       		 var constraint = new Array();                                 &#xd;
 			             constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-			             &#xd;
+			             constraint.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));			             &#xd;
 			              var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
 			                 &#xd;
 			              if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 			                    throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-			                 }&#xd;
-&#xd;
-			              hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);		    		 		 		   &#xd;
+			                 }   	    		 		 		   &#xd;
 		       	 }&#xd;
-		       	 else if (aprovacao ==&quot;reprovado&quot;){&#xd;
-		    		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação reprovada.&quot;);&#xd;
-		    	 }&#xd;
-    	          &#xd;
     }&#xd;
     else if (ativAtual == COTACAO){	 		&#xd;
-	 		/*&#xd;
-			 * verifica se foi adicionado anexo. &#xd;
-			 * Pois quando tem anexo é obrigatório marcar algo como comprado&#xd;
-			 * */&#xd;
 			 var anexos   = hAPI.listAttachments();&#xd;
 		     var temAnexo = false;&#xd;
 			&#xd;
@@ -1868,28 +1859,10 @@
 	 &#xd;
     }&#xd;
 	 else if (ativAtual == VALIDAR_RH){&#xd;
-		 var valido = hAPI.getCardValue(&quot;valido&quot;);&#xd;
-		    &#xd;
-		 if (valido == &quot;negado&quot;){&#xd;
-			 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial + &quot; não pode ser contratado pois não atende aos requisitos da legislação trabalhista.&quot;);&#xd;
-		 }&#xd;
+		 		hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial +  hAPI.getCardValue(&quot;justificativaRH&quot;));&#xd;
 	 }&#xd;
     &#xd;
-	 else if (ativAtual == FINALIZAR){&#xd;
-		 &#xd;
-		 //DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE&#xd;
-		 opcao = 5;&#xd;
-		 var constraintDelete = new Array();                                 &#xd;
-		 constraintDelete.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-		 constraintDelete.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
-         var resultDatasetDelete = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraintDelete, null);                                                                    &#xd;
-             &#xd;
-          if (resultDatasetDelete.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-                throw resultDatasetDelete.getValue(0,&quot;RETORNO&quot;);&#xd;
-            }&#xd;
-		 &#xd;
-		 &#xd;
-		 &#xd;
+	 else if (ativAtual == FINALIZAR){		 &#xd;
 				var contrato  = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
 	    		if (contrato ==&quot;&quot;){&#xd;
 	    			 opcao = 3;&#xd;
@@ -1904,12 +1877,23 @@
 		              else {&#xd;
 		           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema de Cotação do Protheus.&quot;);&#xd;
 		              }&#xd;
-		              &#xd;
-		              hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação aprovada.&quot;);&#xd;
+&#xd;
 	      		}&#xd;
 	      		//GERAR INTEGRACAO COM MEDIÇÃO DE CONTRATO&#xd;
 	      		else {&#xd;
-		       			var constraint = new Array();                                 &#xd;
+	      			 //DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE&#xd;
+	      			 opcao = 5;&#xd;
+	      			 var constraintDelete = new Array();                                 &#xd;
+	      			 constraintDelete.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
+	      			 constraintDelete.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+	      	         var resultDatasetDelete = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_TRANSFER&quot;, null, constraintDelete, null);                                                                    &#xd;
+	      	             &#xd;
+	      	          if (resultDatasetDelete.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	      	                throw resultDatasetDelete.getValue(0,&quot;RETORNO&quot;);&#xd;
+	      	            }&#xd;
+	      			&#xd;
+	      			&#xd;
+		       			 var constraint = new Array();                                 &#xd;
 			             constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
 			             &#xd;
 			              var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA120_SOLICITACAO_TRANSFER&quot;, null, constraint, null);                                                                    &#xd;
@@ -1921,11 +1905,7 @@
 			           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com a rotina de medição de contratos.&quot;);&#xd;
 			              }&#xd;
 	      		}&#xd;
-	 }&#xd;
-    &#xd;
-    &#xd;
-    &#xd;
-    &#xd;
+	 }      &#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -2019,7 +1999,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>14</version>
+        <version>20</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2030,7 +2010,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>14</version>
+        <version>20</version>
         <linkSequence>34</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2041,7 +2021,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>14</version>
+        <version>20</version>
         <linkSequence>34</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2052,7 +2032,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>14</version>
+        <version>20</version>
         <linkSequence>59</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2063,12 +2043,23 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoTransfer</processId>
-        <version>14</version>
+        <version>20</version>
         <linkSequence>59</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
       <positionX>1840</positionX>
       <positionY>544</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoTransfer</processId>
+        <version>20</version>
+        <linkSequence>71</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1312</positionX>
+      <positionY>328</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
@@ -2081,49 +2072,9 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoAprovacao</processField>
-      <subProcessField>tipoAprovacao</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>43</stateSequence>
-      <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>tipoAprovacao</processField>
-      <subProcessField>tipoAprovacao</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>CotacaovalorMensal</processField>
-      <subProcessField>CotacaovalorMensal</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoConta</processField>
-      <subProcessField>tipoConta</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtSaida</processField>
-      <subProcessField>dtInicio</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>nomefantasia</processField>
+      <subProcessField>nomefantasia</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2139,70 +2090,10 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>43</stateSequence>
-      <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>contaFornecedor</processField>
-      <subProcessField>contaFornecedor</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>43</stateSequence>
-      <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>CotacaovalorMensal</processField>
-      <subProcessField>CotacaovalorMensal</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoPessoa</processField>
-      <subProcessField>tipoPessoa</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>melhorProposta</processField>
-      <subProcessField>melhorProposta</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtCotacao</processField>
-      <subProcessField>dataSolicitacao</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>razaosocial</processField>
-      <subProcessField>razaosocial</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>CotacaovalorMensal</processField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>cotacaovalorTotal</processField>
       <subProcessField>CotacaovalorAnual</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
@@ -2219,41 +2110,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>cnpjcpf</processField>
-      <subProcessField>cnpjcpf</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>43</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>CotacaovalorMensal</processField>
-      <subProcessField>CotacaovalorAnual</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>43</stateSequence>
-      <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>razaosocial</processField>
-      <subProcessField>razaosocial</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>justificativaP</processField>
-      <subProcessField>justificativaP</subProcessField>
+      <processField>contatoEmpresa</processField>
+      <subProcessField>contato</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2281,19 +2142,9 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
       <processField>contaFornecedor</processField>
-      <subProcessField>codigoFornecedor</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>43</stateSequence>
-      <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>dtRetorno</processField>
-      <subProcessField>dtFim</subProcessField>
+      <subProcessField>contaFornecedor</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2311,9 +2162,9 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>tipoPJ</processField>
-      <subProcessField>tipoPJ</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>CotacaovalorMensal</processField>
+      <subProcessField>CotacaovalorMensal</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2321,9 +2172,9 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>agencia</processField>
-      <subProcessField>agencia</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoAprovacao</processField>
+      <subProcessField>tipoAprovacao</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2334,26 +2185,6 @@
       <subProcessCode>SolicitacaoContrato</subProcessCode>
       <processField>cnpjcpf</processField>
       <subProcessField>cnpjcpf</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>dtRetorno</processField>
-      <subProcessField>dtFim</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>meioPagamento</processField>
-      <subProcessField>meioPagamento</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2379,6 +2210,16 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>agencia</processField>
+      <subProcessField>agencia</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>43</stateSequence>
       <version>1</version>
       <subProcessCode>SolicitacaoContrato</subProcessCode>
@@ -2389,11 +2230,11 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
+      <stateSequence>43</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>codigoFornecedor</processField>
-      <subProcessField>codigoFornecedor</subProcessField>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>cotacaovalorTotal</processField>
+      <subProcessField>CotacaovalorAnual</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2411,9 +2252,19 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>valorAdiantado</processField>
-      <subProcessField>valor</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtRetorno</processField>
+      <subProcessField>dtFim</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>cnpjcpf</processField>
+      <subProcessField>cnpjcpf</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2431,29 +2282,9 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>aprovacaoServico</processField>
-      <subProcessField>aprovacaoServico</subProcessField>
-      <mapFlow>0</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
       <processField>banco</processField>
       <subProcessField>banco</subProcessField>
-      <mapFlow>2</mapFlow>
-    </SubProcessFieldRelationship>
-    <SubProcessFieldRelationship>
-      <tenantId>1</tenantId>
-      <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>36</stateSequence>
-      <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>negociacao</processField>
-      <subProcessField>negociacao</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2471,9 +2302,9 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>condicaoPgto</processField>
-      <subProcessField>condicaoPgto</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>justificativaP</processField>
+      <subProcessField>justificativaP</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2489,21 +2320,31 @@
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoTransfer</processCode>
-      <stateSequence>43</stateSequence>
+      <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>SolicitacaoContrato</subProcessCode>
-      <processField>statusContrato</processField>
-      <subProcessField>statusContrato</subProcessField>
-      <mapFlow>0</mapFlow>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>codigoFornecedor</processField>
+      <subProcessField>codigoFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
-      <processField>nomefantasia</processField>
-      <subProcessField>nomefantasia</subProcessField>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>dtSaida</processField>
+      <subProcessField>dtInicio</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>valorAdiantado</processField>
+      <subProcessField>valor</subProcessField>
       <mapFlow>2</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
@@ -2521,10 +2362,240 @@
       <processCode>SolicitacaoTransfer</processCode>
       <stateSequence>36</stateSequence>
       <version>1</version>
-      <subProcessCode>AprovacaoServico</subProcessCode>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>meioPagamento</processField>
+      <subProcessField>meioPagamento</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
       <processField>finalidade</processField>
       <subProcessField>finalidade</subProcessField>
       <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>tipoAprovacao</processField>
+      <subProcessField>tipoAprovacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>origem</processField>
+      <subProcessField>origem</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>emailComprador</processField>
+      <subProcessField>emailSolicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>condicaoPgto</processField>
+      <subProcessField>condicaoPgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>negociacao</processField>
+      <subProcessField>negociacao</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>contaFornecedor</processField>
+      <subProcessField>contaFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>CotacaovalorMensal</processField>
+      <subProcessField>CotacaovalorMensal</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>definicaoValor</processField>
+      <subProcessField>definicaoValor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>razaosocial</processField>
+      <subProcessField>razaosocial</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoConta</processField>
+      <subProcessField>tipoConta</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>dtRetorno</processField>
+      <subProcessField>dtFim</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>contaFornecedor</processField>
+      <subProcessField>codigoFornecedor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoPJ</processField>
+      <subProcessField>tipoPJ</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>formapgto</processField>
+      <subProcessField>formapgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>definicaoValor</processField>
+      <subProcessField>definicaoValor</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>razaosocial</processField>
+      <subProcessField>razaosocial</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>tipoPessoa</processField>
+      <subProcessField>tipoPessoa</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>melhorProposta</processField>
+      <subProcessField>melhorProposta</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>solicitante</processField>
+      <subProcessField>solicitante</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>formapgto</processField>
+      <subProcessField>formapgto</subProcessField>
+      <mapFlow>2</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>36</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoAprovacaoServico</subProcessCode>
+      <processField>aprovacaoServico</processField>
+      <subProcessField>aprovacaoServico</subProcessField>
+      <mapFlow>0</mapFlow>
+    </SubProcessFieldRelationship>
+    <SubProcessFieldRelationship>
+      <tenantId>1</tenantId>
+      <processCode>SolicitacaoTransfer</processCode>
+      <stateSequence>43</stateSequence>
+      <version>1</version>
+      <subProcessCode>SolicitacaoContrato</subProcessCode>
+      <processField>statusContrato</processField>
+      <subProcessField>statusContrato</subProcessField>
+      <mapFlow>0</mapFlow>
     </SubProcessFieldRelationship>
     <SubProcessFieldRelationship>
       <tenantId>1</tenantId>
