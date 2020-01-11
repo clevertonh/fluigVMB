@@ -32,7 +32,6 @@ function displayFields(form,customHTML){
 	
 	
 	 if (activity == ABERTURA || activity == CORRIGIR){		 
-		 form.setVisibleById("div_produto", false); 
 		 form.setVisibleById("3b", false);
 		 form.setVisibleById("4b", false);
 		 form.setVisibleById("div_statusContrato", false); 

@@ -45,11 +45,12 @@ $(document).ready(function() {
             minDate: new Date().toLocaleString()
         });
 
-    	
-   	 $("#valor").blur(function(){
-   		 $("#div_produto").show();
-		 reloadZoomFilterValues("txtproduto", "FLUIG," + "12");
-     });
+    		 $("#CotacaovalorMensal").blur(function(){
+       		 var total = $("#quantidade").val()* $("#CotacaovalorMensal").val();
+       		 $("#cotacaovalorTotal").val(total);
+    		 
+         }); 
+        	
     }
 
     else if (ATIVIDADE == APROVACAO){

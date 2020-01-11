@@ -72,7 +72,23 @@ function createDataset(fields, constraints, sortFields) {
         									 datasetProdutos.getValue(a,"DT_NECESSIDADE"),
         									 datasetProdutos.getValue(a,"VALOR_EMPENHADO")  
         									 ));       						        							
-         						 }
+        							 	  
+        							      //CRIA LINHA PARA GARANTIA DE COMPUTADORES        							 		
+        							 	  var codigoProduto = datasetProdutos.getValue(a,"COD_PRODUTO");        							 
+		           						  if (codigoProduto.substring(5, 0) == "EQCPU"){
+		           							  aItemServico.push(addItemCompra(
+		           									  "SVCPU002",
+		           									  datasetProdutos.getValue(a,"SOLICITACAO"),
+		           									  1,
+		           									  datasetProdutos.getValue(a,"DT_NECESSIDADE"),
+		           									  0
+		           									  ));  
+		           						  }
+        						  
+        						  }
+        						  
+        						 
+        						      
         						 
         						 
         					 }
