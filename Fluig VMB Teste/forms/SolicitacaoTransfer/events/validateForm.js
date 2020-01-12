@@ -113,6 +113,9 @@ function validateForm(form){
           		 throw "Você precisa secionar o tipo de veículo";
            	}
         	
+        	if (form.getValue("dataset_solicitacaoevento") == "" || form.getValue("dataset_solicitacaoevento") == null ){
+         		 throw "Você precisa vincular a solicitação a um evento.";
+          	}
     	}
     	
     	
