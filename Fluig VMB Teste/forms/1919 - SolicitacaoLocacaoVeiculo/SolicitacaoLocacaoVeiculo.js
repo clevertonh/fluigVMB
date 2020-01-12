@@ -54,11 +54,7 @@ $(document).ready(function() {
         });
     
     	
-   	 $("#CotacaovalorMensal").blur(function(){
-   		 var total = $("#quantidade").val()* $("#CotacaovalorMensal").val();
-   		 $("#cotacaovalorTotal").val(total);
-		 
-     }); 
+
     	
     	
     }
@@ -70,6 +66,12 @@ $(document).ready(function() {
 				});
 				
 				dtCotacao.setDate(new Date().toLocaleString());
+				
+			   	 $("#CotacaovalorMensal").blur(function(){
+			   		 var total = $("#quantidade").val()* $("#CotacaovalorMensal").val();
+			   		 $("#cotacaovalorTotal").val(total);
+					 
+			     }); 
       
     }
     else if (ATIVIDADE == FINALIZAR){
