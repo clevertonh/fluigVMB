@@ -622,6 +622,56 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
+        <sequence>319</sequence>
+      </processStatePK>
+      <stateName>Cadastrar contrato</stateName>
+      <stateDescription>Cadastrar contrato</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>2190</positionX>
+      <positionY>1020</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
         <sequence>183</sequence>
       </processStatePK>
       <stateName>Refazer cotação</stateName>
@@ -1253,7 +1303,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>2250</positionX>
+      <positionX>2350</positionX>
       <positionY>1150</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -2276,7 +2326,41 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>319</linkSequence>
+        <linkSequence>320</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>215</initialStateSequence>
+      <finalStateSequence>319</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
+        <linkSequence>321</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>319</initialStateSequence>
+      <finalStateSequence>123</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
+        <linkSequence>322</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2292,7 +2376,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>320</linkSequence>
+        <linkSequence>323</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2308,7 +2392,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>321</linkSequence>
+        <linkSequence>324</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2324,7 +2408,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>322</linkSequence>
+        <linkSequence>325</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2349,9 +2433,21 @@
 	  log.info(&quot;###afterProcessCreate&quot;);&#xd;
 	  log.info(getValue(&quot;WKNumProces&quot;));&#xd;
 	  &#xd;
+	  //Captura o número do processo &quot;Pai&quot;&#xd;
+	  var parentProcess = hAPI.getParentInstance(processId);&#xd;
+	    &#xd;
+	    &#xd;
+	    &#xd;
 	&#xd;
 }&#xd;
 &#xd;
+function getFormulario(){&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function setFormulario(){&#xd;
+	&#xd;
+}&#xd;
 </eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -2383,6 +2479,8 @@
 	var VERIFICAR_ASSINATRA_COMPRAS = 274;&#xd;
 	var TIPO_PJ_C = 281;&#xd;
 	var TIPO_PJ_H = 278;&#xd;
+	var CADASTRAR_CONTRATO = 319;&#xd;
+	var CONTRATO_ASSINADO = 181;&#xd;
 	&#xd;
 	&#xd;
 	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
@@ -2396,9 +2494,15 @@
 	&#xd;
     var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
     var razaoSocial = hAPI.getCardValue(&quot;razaosocial&quot;);     &#xd;
+    var aprovacaoGerencia = hAPI.getCardValue(&quot;aprovacao&quot;);  &#xd;
     &#xd;
-     &#xd;
-   if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ &#xd;
+   if (ativAtual == APROVACAO_GESTOR){&#xd;
+	   if (aprovacaoGerencia == &quot;aprovado&quot;){&#xd;
+		   setSolicitacaoCompra(idDocumento,3,0);   &#xd;
+	   }&#xd;
+	   &#xd;
+   }  &#xd;
+   else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ &#xd;
 		 	if (nextAtv == TIPO_PJ_C || nextAtv == TIPO_PJ_H){&#xd;
 		 		&#xd;
 		 		/*&#xd;
@@ -2421,41 +2525,50 @@
 	 &#xd;
 	 else if (ativAtual == VALIDAR_RH){&#xd;
 		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial +  hAPI.getCardValue(&quot;justificativaRH&quot;));&#xd;
-		 /*&#xd;
-		 var valido = hAPI.getCardValue(&quot;valido&quot;);&#xd;
-		    &#xd;
-		 &#xd;
-		 &#xd;
-		 if (valido == &quot;negado&quot;){&#xd;
-			 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial + &quot; não pode ser contratado pois não atende aos requisitos da legislação trabalhista.&quot;);&#xd;
-		 }&#xd;
-		 */&#xd;
+&#xd;
 	 }&#xd;
-	 else if (ativAtual == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ativAtual == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){&#xd;
-			 	if (nextAtv == 123){&#xd;
+	 else if (ativAtual == CONTRATO_ASSINADO){		&#xd;
 		 		var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);		 	&#xd;
 			 	var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
+			 	var statusContrato = hAPI.getCardValue(&quot;statusContrato&quot;);&#xd;
+			 	&#xd;
+			 	&#xd;
 			 	//para esse caso o contrato será registrado com esses dados&#xd;
 			 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus&#xd;
 			 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição&#xd;
-					if (definicaoValor ==&quot;fixo&quot; &amp;&amp; contrato ==&quot;&quot;){  					 					&#xd;
-			              var constraint = new Array();                                 &#xd;
-		                  constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));&#xd;
-		                  &#xd;
-		                 &#xd;
-		                   var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO&quot;, null, constraint, null);                                                                    &#xd;
-		                      &#xd;
-		                   if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-		                         throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-		                      }&#xd;
-		                   else {&#xd;
-		                	   hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Fornecedor selecionado e processo enviado para aprovação&quot;);&#xd;
-		                   }&#xd;
+					if (definicaoValor ==&quot;fixo&quot; &amp;&amp; contrato ==&quot;&quot; &amp;&amp; statusContrato == &quot;assinado&quot;){&#xd;
+						  &#xd;
+						  //deletar contrato cadastro&#xd;
+						  setSolicitacaoCompra(idDocumento,3,0);   &#xd;
+						 &#xd;
+						  //INCLUIR SOLICITACAO DE COMPRA&#xd;
+						  setSolicitacaoCompra(idDocumento,3,0);   &#xd;
+			              &#xd;
 					}&#xd;
-		 	}&#xd;
+		 &#xd;
 &#xd;
 	&#xd;
 	 }&#xd;
+	 else if (ativAtual == CADASTRAR_CONTRATO){&#xd;
+		 	 //VERIFICA SE CONTRATO FOI CADASTRADO NO PROTHEUS&#xd;
+&#xd;
+	 }&#xd;
+   &#xd;
+   function setSolicitacaoCompra(id,opcao,valor){&#xd;
+		 var constraints = new Array();                                 &#xd;
+		 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));&#xd;
+		 constraints.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+		 constraints.push(DatasetFactory.createConstraint(&quot;valor&quot;,valor, valor, ConstraintType.MUST));		 &#xd;
+       var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO&quot;, null, constraints, null);                                                                    &#xd;
+          &#xd;
+       if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+         }&#xd;
+&#xd;
+}&#xd;
+   &#xd;
+   &#xd;
+   &#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>

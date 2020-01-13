@@ -6,6 +6,7 @@ function beforeStateEntry(sequenceId){
        var APROVACAO_DIR = 50;
        var APROVACAO_DN = 51;
        var ASSUMIR = 42;
+       var CADASTRAR_CONTRATO = 44;
        
        //GATEWAY
        var GATEWAYAPROVADO = 14;

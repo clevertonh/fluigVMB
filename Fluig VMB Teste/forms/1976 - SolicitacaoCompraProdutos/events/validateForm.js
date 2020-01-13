@@ -39,7 +39,7 @@ function validateForm(form){
 	}
 	
 	
-	if (activity == ABERTURA ||  activity == APROVACAO || activity == CORRIGIR ){
+	if (activity == ABERTURA ||  activity == CORRIGIR ){
 	
 		//funções para validar informações financeiras
 		validaLinhasPreenchidas();
@@ -50,16 +50,28 @@ function validateForm(form){
 		//valida campos do produto
 		validaProdutos();
 		
+
+
+		if (nextAtv == APROVACAO){
+			if(form.getValue("matriculaApr") == "" || form.getValue("matriculaApr") == null){
+				throw "Não possível idenficar o seu gerente imediato. Por favor, entre em contato com o setor de Recursos Humanos.";
+			}
+			
+			
+			if(form.getValue("matriculaAprDirArea") == "" || form.getValue("matriculaAprDirArea") == null){
+				throw "Não possível idenficar o diretor de sua área. Por favor, abra um chamado para o setor de TI.";
+			}
+		}
+
 		
-		
-		
-		if (activity == APROVACAO){
+	}
+	else if (activity == APROVACAO ){
 			if (nextAtv == 9 ){
 		 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
 	            if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
 	                throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
 	            }
-
+	
 	            if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
 	                throw "Você precisa informar o motivo para reprovação da solicitação.";
 	            }
@@ -67,11 +79,8 @@ function validateForm(form){
 				//valida se aprovador é diferente do solicitante
 				if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
 		          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-		            } 
+		            }	
 			}
-   
-		}
-		
 	}
    
 	

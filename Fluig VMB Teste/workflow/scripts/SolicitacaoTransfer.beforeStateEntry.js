@@ -35,15 +35,8 @@ function beforeStateEntry(sequenceId){
 
     			//GERA SOLICITAÇÃO DE COMPRA PARA GARANTIR QUE DADOS FINANCEIROS ESTAO CORRETOS
 		    	 if (aprovacao =="aprovado"){
-	    			 opcao = 3;
-			       		 var constraint = new Array();                                 
-			             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-			             constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));			             
-			              var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
-			                 
-			              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-			                    throw resultDataset.getValue(0,"RETORNO");
-			                 }   	    		 		 		   
+		    		 //cria solicitação de compra
+		    		 setSolicitacaoCompra(idDocumento,3,0); 	    		 		 		   
 		       	 }
     }
     else if (ativAtual == COTACAO){	 		
@@ -64,39 +57,13 @@ function beforeStateEntry(sequenceId){
 		 		hAPI.setTaskComments(usuario, codSolicitacao, 0, "O fornecedor " + cgc +"-"+razaoSocial +  hAPI.getCardValue("justificativaRH"));
 	 }
     
-	 else if (ativAtual == FINALIZAR){
-		 	 //DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE 
-		 	 opcao = 5;
-			 var constraintDelete = new Array();                                 
-			 constraintDelete.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-			 constraintDelete.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
-	         var resultDatasetDelete = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraintDelete, null);                                                                    
-	             
-	          if (resultDatasetDelete.getValue(0,"RETORNO") != "SUCESSO"){
-	                throw resultDatasetDelete.getValue(0,"RETORNO");
-	            }
-	          
-	          
-				var contrato  = hAPI.getCardValue("Numerocontrato");
-	    		if (contrato ==""){
-	    			 opcao = 3;
-	    			 var valorUnitario = hAPI.getCardValue("CotacaovalorMensal");	    			 
-		       		 var constraint = new Array();                                 
-		             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-		             constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
-			         constraint.push(DatasetFactory.createConstraint("valor", valorUnitario, valorUnitario, ConstraintType.MUST));		             
-		              var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
-		                 
-		              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-		                    throw resultDataset.getValue(0,"RETORNO");
-		                 }
-		              else {
-		           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema de Cotação do Protheus.");
-		              }
-
-	      		}
-	      		//GERAR INTEGRACAO COM MEDIÇÃO DE CONTRATO
-	      		else {	      		
+	 else if (ativAtual == FINALIZAR){		 
+			 var contrato  = hAPI.getCardValue("Numerocontrato");
+	    		if (contrato !="" && contrato!= null){
+		      			//deleta solicitação de compra
+	    				setSolicitacaoCompra(idDocumento,5,0);
+	   	
+	    				 //gera medição de contrato
 	           			 var constraint = new Array();                                 
 			             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
 			             
@@ -108,6 +75,24 @@ function beforeStateEntry(sequenceId){
 			              else {
 			           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com a rotina de medição de contratos.");
 			              }
+	    			 
+	    			 
 	      		}
-	 }      
+
+	 }
+    
+    
+    function setSolicitacaoCompra(id,opcao,valor){
+			 var constraints = new Array();                                 
+			 constraints.push(DatasetFactory.createConstraint("documentid", id, id, ConstraintType.MUST));
+			 constraints.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
+			 constraints.push(DatasetFactory.createConstraint("valor",valor, valor, ConstraintType.MUST));		 
+	         var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_TRANSFER", null, constraints, null);                                                                    
+	            
+	         if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+	               throw resultDataset.getValue(0,"RETORNO");
+	           }
+
+    }
+    
 }

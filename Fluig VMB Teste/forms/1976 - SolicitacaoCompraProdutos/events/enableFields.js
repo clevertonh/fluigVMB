@@ -67,8 +67,8 @@ function enableFields(form){
 	}
 	
 	else if (activity == APROVACAO_DIR){
-			
-
+		
+	
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();

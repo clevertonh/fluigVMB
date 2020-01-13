@@ -3,6 +3,7 @@ function validateForm(form){
 	var SOLICITAR = 4;
 	var ELABORAR =10;
 	var ASSINAR = 18;
+	var CADASTRAR_CONTRATO = 44;
 	
 	var activity = getValue('WKNumState');
 	

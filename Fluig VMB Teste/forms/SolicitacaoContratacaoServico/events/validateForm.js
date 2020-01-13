@@ -85,6 +85,16 @@ function validateForm(form){
 				 
 			}
 			
+			
+			if(form.getValue("matriculaApr") == "" || form.getValue("matriculaApr") == null){
+				throw "Não possível idenficar o seu gerente imediato. Por favor, entre em contato com o setor de Recursos Humanos.";
+			}
+			
+			
+			if(form.getValue("matriculaAprDirArea") == "" || form.getValue("matriculaAprDirArea") == null){
+				throw "Não possível idenficar o diretor de sua área. Por favor, abra um chamado para o setor de TI.";
+			}
+			
 		validaCamposPreenchidos();
 		
 			
