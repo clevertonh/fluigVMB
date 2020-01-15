@@ -9,7 +9,7 @@ function createDataset(fields, constraints, sortFields) {
 	var documentId;
 	var emailcomprador;
 	var acao = 3;
-	var filial ='02';
+	var filial;
 	
 
 	
@@ -44,9 +44,12 @@ function createDataset(fields, constraints, sortFields) {
         		}
         	 
           		
-         		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
+        		if (solicitacao.getValue(0,"filialSC") != "" && solicitacao.getValue(0,"filialSC") !=null){
         			 filial = solicitacao.getValue(0,"filialSC");
         		}
+	       		else {
+	       				filial == "02";
+	       		}
        	 
           		
       	    

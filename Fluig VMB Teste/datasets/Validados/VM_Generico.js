@@ -38,6 +38,7 @@ function createDataset(fields, constraints, sortFields) {
                 	  {IDENTIFICADOR:  'TIPO_SANGUINEO',DESCRICAO:  'AB-'},
                 	  {IDENTIFICADOR:  'TIPO_SANGUINEO',DESCRICAO:  'O-'},
                 	  
+                	  {IDENTIFICADOR:  'PNE',DESCRICAO:  'NAO E PORTADOR DE NECESSIDADE ESPECIAL'},
                 	  {IDENTIFICADOR:  'PNE',DESCRICAO:  'FISICA'},
                 	  {IDENTIFICADOR:  'PNE',DESCRICAO:  'AUDITIVA'},
                 	  {IDENTIFICADOR:  'PNE',DESCRICAO:  'VISUAL'},
@@ -45,7 +46,7 @@ function createDataset(fields, constraints, sortFields) {
                 	  {IDENTIFICADOR:  'PNE',DESCRICAO:  'INTELECTUAL'},
                 	  {IDENTIFICADOR:  'PNE',DESCRICAO:  'REABILITADO'},
                 	  
-                	  {IDENTIFICADOR:  'PARENTESCO',DESCRICAO:  'CONJUGE'},
+                	  {IDENTIFICADOR:  'PARENTESCO',DESCRICAO:  'CONJUGE/COMPANHEIRO (A)'},
                 	  {IDENTIFICADOR:  'PARENTESCO',DESCRICAO:  'FILHO'},
                 	  {IDENTIFICADOR:  'PARENTESCO',DESCRICAO:  'FILHA'},
                 	  {IDENTIFICADOR:  'PARENTESCO',DESCRICAO:  'MAE'},

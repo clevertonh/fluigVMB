@@ -21,6 +21,7 @@ $(document).ready(function() {
 			
 		 dtSolicitacao.setDate(new Date().toLocaleString()); 
 			
+		 /*
 		   	 $("#cep").blur(function(){
 				 reloadZoomFilterValues("estadoCivil", "IDENTIFICADOR," + "ESTADO_CIVIL");
 				 reloadZoomFilterValues("tipoSanguineo", "IDENTIFICADOR," + "TIPO_SANGUINEO");
@@ -33,6 +34,7 @@ $(document).ready(function() {
 				 	 
 		     });
 			
+		   	 */
 
 	 }
 			

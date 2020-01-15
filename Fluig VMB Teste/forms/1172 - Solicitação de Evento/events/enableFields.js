@@ -10,7 +10,7 @@ function enableFields(form){
 	
 	var solicitante = getValue("WKUser");  
 	 
-	 if (activityEnable == INICIO ){
+	 if (activityEnable == INICIO || activityEnable == CORRIGIR){
 		 form.setValue("matriculasolicitante",solicitante); 	
 		 
 		 var constraints   = new Array();
