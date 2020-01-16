@@ -6,7 +6,7 @@ function validateForm(form){
 	var CADASTRAR_CONTRATO = 44;
 	
 	var activity = getValue('WKNumState');
-	
+	var nextAtv  = getValue("WKNextState");	
 	
 	if (activity == ABERTURA || activity == SOLICITAR){
 		if (form.getValue("finalidade") == null || form.getValue("finalidade") == "") {
@@ -45,9 +45,13 @@ function validateForm(form){
 	   }
 	}
 	else if (activity == ASSINAR){
-		if (form.getValue("statusContrato") == null || form.getValue("statusContrato") == "" ){
-			 throw "Você precisa indicar se o contrato foi assinado ou recusado pelo fornecedor.";
-		}
+			if (nextAtv == 37){
+				if (form.getValue("statusContrato") == null || form.getValue("statusContrato") == "" ){
+					 throw "Você precisa indicar se o contrato foi assinado ou recusado pelo fornecedor.";
+				}		
+			}
+		
+		
 	}
 	
 }
