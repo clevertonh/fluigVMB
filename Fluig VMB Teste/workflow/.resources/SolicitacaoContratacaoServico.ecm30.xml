@@ -32,7 +32,7 @@
       <version>93</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>2347</formId>
+    <formId>0</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -597,56 +597,6 @@
       <automatic>false</automatic>
       <positionX>720</positionX>
       <positionY>840</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContratacaoServico</processId>
-        <version>1</version>
-        <sequence>319</sequence>
-      </processStatePK>
-      <stateName>Cadastrar contrato</stateName>
-      <stateDescription>Cadastrar contrato</stateDescription>
-      <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>2190</positionX>
-      <positionY>1020</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -2326,41 +2276,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>320</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>215</initialStateSequence>
-      <finalStateSequence>319</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContratacaoServico</processId>
-        <version>1</version>
-        <linkSequence>321</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>319</initialStateSequence>
-      <finalStateSequence>123</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContratacaoServico</processId>
-        <version>1</version>
-        <linkSequence>322</linkSequence>
+        <linkSequence>319</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2376,7 +2292,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>323</linkSequence>
+        <linkSequence>320</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2392,7 +2308,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>324</linkSequence>
+        <linkSequence>321</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2408,7 +2324,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>325</linkSequence>
+        <linkSequence>322</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2461,6 +2377,8 @@ function setFormulario(){&#xd;
 	var ABERTURA = 0;&#xd;
 	var SOLICITAR = 4;	&#xd;
 	var APROVACAO_GESTOR =5;&#xd;
+	var APROVACAO_DIRETOR_AREA = 292;&#xd;
+	var APROVACAO_DIRETOR_NACIONAL = 301;&#xd;
 	var CORRIGIR = 142;&#xd;
 	var REALIZAR_COTACAO_COMPRAS = 12;&#xd;
 	var REALIZAR_COTACAO_HOSPITALIDADE = 22;&#xd;
@@ -2473,14 +2391,12 @@ function setFormulario(){&#xd;
 	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 66;&#xd;
 	var SOLICITACAO_CONTRATO_COMPRAS = 63;&#xd;
 	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;&#xd;
-	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;&#xd;
+	var FINALIZAR = 215;&#xd;
 	var VALIDAR_RH = 161;&#xd;
-	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;&#xd;
-	var VERIFICAR_ASSINATRA_COMPRAS = 274;&#xd;
+	var VERIFICAR_ASSINATURA = 270;&#xd;
 	var TIPO_PJ_C = 281;&#xd;
 	var TIPO_PJ_H = 278;&#xd;
-	var CADASTRAR_CONTRATO = 319;&#xd;
-	var CONTRATO_ASSINADO = 181;&#xd;
+	var CONTRATO_ASSINADO = 181; //verifica se contrato foi assinado&#xd;
 	&#xd;
 	&#xd;
 	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
@@ -2495,6 +2411,10 @@ function setFormulario(){&#xd;
     var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
     var razaoSocial = hAPI.getCardValue(&quot;razaosocial&quot;);     &#xd;
     var aprovacaoGerencia = hAPI.getCardValue(&quot;aprovacao&quot;);  &#xd;
+    var aprovacaoDiretoriaArea = hAPI.getCardValue(&quot;aprNivel2&quot;);&#xd;
+    var aprovacaoDN = hAPI.getCardValue(&quot;aprNivel3&quot;);&#xd;
+    &#xd;
+    &#xd;
     &#xd;
    if (ativAtual == APROVACAO_GESTOR){&#xd;
 	   if (aprovacaoGerencia == &quot;aprovado&quot;){&#xd;
@@ -2502,6 +2422,22 @@ function setFormulario(){&#xd;
 	   }&#xd;
 	   &#xd;
    }  &#xd;
+   &#xd;
+   else if (ativAtual == APROVACAO_DIRETOR_AREA){&#xd;
+		   if (aprovacaoGerencia == &quot;reprovado&quot;){&#xd;
+			   setSolicitacaoCompra(idDocumento,5,0);   &#xd;
+		   }&#xd;
+	   &#xd;
+   }&#xd;
+   &#xd;
+   &#xd;
+   else if (ativAtual == APROVACAO_DIRETOR_NACIONAL){&#xd;
+		   if (aprovacaoDN == &quot;reprovado&quot;){&#xd;
+			   setSolicitacaoCompra(idDocumento,5,0);   &#xd;
+		   }&#xd;
+	   &#xd;
+   }&#xd;
+   &#xd;
    else if (ativAtual == REALIZAR_COTACAO_COMPRAS  || ativAtual == REALIZAR_COTACAO_HOSPITALIDADE){ &#xd;
 		 	if (nextAtv == TIPO_PJ_C || nextAtv == TIPO_PJ_H){&#xd;
 		 		&#xd;
@@ -2527,43 +2463,33 @@ function setFormulario(){&#xd;
 		 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;O fornecedor &quot; + cgc +&quot;-&quot;+razaoSocial +  hAPI.getCardValue(&quot;justificativaRH&quot;));&#xd;
 &#xd;
 	 }&#xd;
-	 else if (ativAtual == CONTRATO_ASSINADO){		&#xd;
-		 		var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);		 	&#xd;
-			 	var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
-			 	var statusContrato = hAPI.getCardValue(&quot;statusContrato&quot;);&#xd;
-			 	&#xd;
-			 	&#xd;
-			 	//para esse caso o contrato será registrado com esses dados&#xd;
-			 	//primeiro se integra com a solicitação de compra e depois cria o contrato no Protheus&#xd;
-			 	//se tiver contrato vinculado, a solicitação deverá ser paga pela medição&#xd;
-					if (definicaoValor ==&quot;fixo&quot; &amp;&amp; contrato ==&quot;&quot; &amp;&amp; statusContrato == &quot;assinado&quot;){&#xd;
-						  &#xd;
-						  //deletar contrato cadastro&#xd;
-						  setSolicitacaoCompra(idDocumento,3,0);   &#xd;
-						 &#xd;
-						  //INCLUIR SOLICITACAO DE COMPRA&#xd;
-						  setSolicitacaoCompra(idDocumento,3,0);   &#xd;
-			              &#xd;
-					}&#xd;
-		 &#xd;
-&#xd;
-	&#xd;
-	 }&#xd;
-	 else if (ativAtual == CADASTRAR_CONTRATO){&#xd;
-		 	 //VERIFICA SE CONTRATO FOI CADASTRADO NO PROTHEUS&#xd;
-&#xd;
+	 else if (ativAtual == FINALIZAR){&#xd;
+	 		var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);		 	&#xd;
+			var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
+			var statusContrato = hAPI.getCardValue(&quot;statusContrato&quot;);&#xd;
+			&#xd;
+			//O CONTRATO FOI ASSINADO&#xd;
+			if (statusContrato ==&quot;assinado&quot;){&#xd;
+				//CONTRATO É POR DEMANDA&#xd;
+				if (definicaoValor ==&quot;demanda&quot;){&#xd;
+					//DELETA SOLICITAÇÃO DE COMPRA POIS SERVIÇO DEVERÁ SER PAGO POR MEDIÇÃO DE CONTRATO E AINDA NÃO EXISTE O CONTRATO&#xd;
+					 setSolicitacaoCompra(idDocumento,5,0);   &#xd;
+				&#xd;
+				}&#xd;
+			}	&#xd;
+			&#xd;
 	 }&#xd;
    &#xd;
    function setSolicitacaoCompra(id,opcao,valor){&#xd;
-		 var constraints = new Array();                                 &#xd;
-		 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));&#xd;
-		 constraints.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
-		 constraints.push(DatasetFactory.createConstraint(&quot;valor&quot;,valor, valor, ConstraintType.MUST));		 &#xd;
-       var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO&quot;, null, constraints, null);                                                                    &#xd;
-          &#xd;
-       if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-         }&#xd;
+			 var constraints = new Array();                                 &#xd;
+			 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));&#xd;
+			 constraints.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
+			 constraints.push(DatasetFactory.createConstraint(&quot;valor&quot;,valor, valor, ConstraintType.MUST));		 &#xd;
+		       var resultDataset = DatasetFactory.getDataset(&quot;VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO&quot;, null, constraints, null);                                                                    &#xd;
+		          &#xd;
+		       if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+		         }&#xd;
 &#xd;
 }&#xd;
    &#xd;

@@ -12,6 +12,9 @@ function displayFields(form,customHTML){
     customHTML.append("var ATIVIDADE = " + activity + ";");
     customHTML.append("</script>");
 	
+    
+    //codCondPgto
+    
     if (activity != ASSINAR){
     	 form.setVisibleById("div_status", false);
     }

@@ -142,6 +142,9 @@
                                  ]
                                  }" />
                            </div>
+                           <div class="form-group col-md-2">
+                              <input type="text" id="codCondPgto" name="codCondPgto" class="form-control" readonly>
+                           </div>
                         </div>
                         <div class="row">
                            <div class="form-group col-md-2">
@@ -193,6 +196,19 @@
 	                              <input type="radio" id="fixo" name="definicaoValor" value="fixo" >
 	                              <label for="demanda">Valor por demanda</label> 
 	                              <input type="radio" id="demanda" name="definicaoValor" value="demanda" >
+	                           </div>
+	                           <div class="form-group col-md-4">
+	                              <label>Tipo de Contrato</label>
+	                              <input type="zoom" name="tipoContrato" id="tipoContrato" data-zoom="{
+	                                 'displayKey':'CODIGO',
+	                                 'datasetId':'VM_CondicaoPagamento',
+	                                 'maximumSelectionLength':'1',
+	                                 'placeholder':'Selecione o tipo de contrato',
+	                                 'fields':[
+	                                 {'field':'CODIGO', 'label':'CODIGO'},
+	                                 {'field':'DESCRICAO', 'label':'DESCRICAO', 'standard':'true' }
+	                                 ]
+	                                 }" />
 	                           </div>
 	                        </div>
 							<div class="row">

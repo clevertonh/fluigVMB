@@ -186,6 +186,7 @@ function setSelectedZoomItem(selectedItem) {
   var LOCACAO_ANTERIOR ="dataset_solicitacaolocacao"; 
   var FORNECEDOR ="cnpjcpf";
   var CONTRATO = "Numerocontrato";
+  var CONDICAO_PGTO ="condicaoPgto";
   
 
   //Recebe o nome do campo zoom
@@ -326,6 +327,9 @@ function setSelectedZoomItem(selectedItem) {
 	  	//retornaSolicitacaoContratacaoServico(selectedItem["ID_FLUIG"]);
 	    	
 	  }
+	  else if (campoZOOM == CONDICAO_PGTO){
+		  		$("#codCondPgto").val(selectedItem["CODIGO"]);
+	  }
   
   
 }
@@ -359,7 +363,7 @@ function removedZoomItem(removedItem) {
     var LOCACAO_ANTERIOR ="dataset_solicitacaolocacao"
     var FORNECEDOR ="cnpjcpf";
     var CONTRATO = "Numerocontrato";
-    
+    var CONDICAO_PGTO ="condicaoPgto";    
     
 
     //Recebe o nome do campo zoom
@@ -496,7 +500,9 @@ function removedZoomItem(removedItem) {
     	$("#codigoFluig").val("");
       	
      }
-
+	  else if (campoZOOM == CONDICAO_PGTO){
+	  		$("#codCondPgto").val("");
+	  }
 
 }
 

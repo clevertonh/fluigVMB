@@ -179,7 +179,7 @@ function setSelectedZoomItem(selectedItem) {
     var SERVICO ="txtproduto";
     var FORNECEDOR ="cnpjcpf";
     var CONTRATO = "Numerocontrato";
-   
+    var CONDICAO_PGTO ="condicaoPgto";    
 
     //Recebe o nome do campo zoom
     var campoZOOM = selectedItem.inputId;
@@ -307,6 +307,9 @@ function setSelectedZoomItem(selectedItem) {
 	    	$("#saldoAtual").val(selectedItem["SALDO"]);
 	    	$("#filial").val(selectedItem["FILIAL"]);
 	    }
+    else if (campoZOOM == CONDICAO_PGTO){
+  		$("#codCondPgto").val(selectedItem["CODIGO"]);
+  }
     
 }
 
@@ -423,6 +426,7 @@ function removedZoomItem(removedItem) {
     var EVENTO ="dataset_solicitacaoevento";
     var FORNECEDOR ="cnpjcpf";
     var CONTRATO = "Numerocontrato";
+    var CONDICAO_PGTO ="condicaoPgto";    
     
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
@@ -547,6 +551,9 @@ function removedZoomItem(removedItem) {
     	$("#saldoAtual").val("");
     	$("#filial").val("");
     }
+    else if (campoZOOM == CONDICAO_PGTO){
+  		$("#codCondPgto").val("");
+  }
 }
 
 function setZoomData(instance, value) {
