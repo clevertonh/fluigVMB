@@ -11,6 +11,7 @@ function validateForm(form){
 	
 
 	var activity = getValue('WKNumState');
+	var nextAtv  = getValue("WKNextState");
 
 	
 	var aCentroCusto = new Array();
@@ -77,47 +78,44 @@ function validateForm(form){
      
      
      else if(activity == CALCULAR_DIARIAS  ){
-    	  	if (form.getValue("recebediarias") == null || form.getValue("recebediarias") == "" ) {
-	             throw "Você precisa indicar se o beneficiário tem direito de receber diarias ou não.";
+    	 	if (nextAtv == 33) {
+    	 		if (form.getValue("recebediarias") == null || form.getValue("recebediarias") == "" ) {
+   	             throw "Você precisa indicar se o beneficiário tem direito de receber diarias ou não.";
 
-	         }
-    	  
-    	 	if (form.getValue("recebediarias") =="sim"){
-    	 		 var valorTotal = parseFloat(form.getValue("vl_diarias"));
-    	    	 
-    	    	  if (isNaN(valorTotal)) {
-    	              throw "O campo valor total das diárias não foi calculado automaticamente. Por favor, entre em contato com o setor de Sistemas através de chamado.";
+   	         }
+       	  
+       	 	if (form.getValue("recebediarias") =="sim"){
+       	 		 var valorTotal = parseFloat(form.getValue("vl_diarias"));
+       	    	 
+       	    	  if (isNaN(valorTotal)) {
+       	              throw "O campo valor total das diárias não foi calculado automaticamente. Por favor, entre em contato com o setor de Sistemas através de chamado.";
 
-    	          }
-    	    	  
-    	    	  if (form.getValue("dtVencimento") == null || form.getValue("dtVencimento") == "" ) {
- 		             throw "Você precisa indicar a data de vencimento do registro.";
+       	          }
+       	    	  
+       	    	  if (form.getValue("dtVencimento") == null || form.getValue("dtVencimento") == "" ) {
+    		             throw "Você precisa indicar a data de vencimento do registro.";
 
-    	    	  }
-    	    	  
-    	    	  if (form.getValue("tarifa") == null || form.getValue("tarifa") == "" ) {
-    	   	          throw "Você precisa indicar se existe cobrança de tarifa para essa diária.";
+       	    	  }
+       	    	  
+       	    	  if (form.getValue("tarifa") == null || form.getValue("tarifa") == "" ) {
+       	   	          throw "Você precisa indicar se existe cobrança de tarifa para essa diária.";
 
-    	    	  }
-    	    	  
-    	    	  if (form.getValue("tarifa") == "sim"){
-    	    		  	if (form.getValue("banco") == null || form.getValue("banco") == "" || form.getValue("agencia") == null || 
-    	    		  			form.getValue("agencia") == ""  || form.getValue("contabanco") == null || form.getValue("contabanco") == "" ){
-    	    		  			throw "Você precisa indicar todos os campos referente aos dados bancários";
-    	    		  	}
-    	    		  	if (form.getValue("natureza") == null || form.getValue("natureza") == "" ){
-    	    		  		throw "Você precisa indicar o campo  natureza.";
-    	    		  	}
-    	    		  
-    	    	  }
-    	    	 		
-    	 	}
-    
-    	  
-    	
-    	  
-    	
-	       
+       	    	  }
+       	    	  
+       	    	  if (form.getValue("tarifa") == "sim"){
+       	    		  	if (form.getValue("banco") == null || form.getValue("banco") == "" || form.getValue("agencia") == null || 
+       	    		  			form.getValue("agencia") == ""  || form.getValue("contabanco") == null || form.getValue("contabanco") == "" ){
+       	    		  			throw "Você precisa indicar todos os campos referente aos dados bancários";
+       	    		  	}
+       	    		  	if (form.getValue("natureza") == null || form.getValue("natureza") == "" ){
+       	    		  		throw "Você precisa indicar o campo  natureza.";
+       	    		  	}
+       	    		  
+       	    	  }
+       	    	 		
+       	 	}
+    	}
+          
  	}
 
 

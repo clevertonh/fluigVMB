@@ -158,7 +158,7 @@ function enableFields(form){
 		    form.setEnabled("vrUnitario", true);
 		    form.setEnabled("idquantidade", true);
 		    form.setEnabled("vrTotUnit", true);
-		    
+		    form.setEnabled("codCondPgto", true);
 		
 		    
 		    if (form.getValue("definicaoValor") == "fixo") {

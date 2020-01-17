@@ -31,7 +31,7 @@ function displayFields(form,customHTML){
 	 form.setVisibleById("prazoaprovacaoDIR", false);
 	 form.setVisibleById("div_tipoAprovacao", false); 
 	 form.setVisibleById("_matriculasolicitante", false);
-	 
+	 form.setVisibleById("codCondPgto", false)
 	
 	 
 		

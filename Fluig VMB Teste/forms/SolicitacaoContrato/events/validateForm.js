@@ -43,9 +43,29 @@ function validateForm(form){
 	   if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
 		   throw "O valor total ou limite total não pode ser menor que o valor mensal.";
 	   }
+	   
+		if (form.getValue("condicaoPgto") == null || form.getValue("condicaoPgto") == "" ) {
+			 throw "Você precisa informar a condição de pagamento.";
+	    }
+	   
+	   
+	   if (form.getValue("codCondPgto") == null || form.getValue("codCondPgto") == "" ) {
+	           throw "Houve um problema com o código de pagamento, por favor, selecione novamente a condição de pagamento.";
+	    }
+		
+
+
+	   
+	   
+	   
 	}
 	else if (activity == ASSINAR){
-			if (nextAtv == 37){
+			if (nextAtv == 37){		
+				if (form.getValue("tipoContrato") == null || form.getValue("tipoContrato") == "" ) {
+			           throw "Você precisa escolher um tipo de contrato.";
+			    }
+				
+				
 				if (form.getValue("statusContrato") == null || form.getValue("statusContrato") == "" ){
 					 throw "Você precisa indicar se o contrato foi assinado ou recusado pelo fornecedor.";
 				}		

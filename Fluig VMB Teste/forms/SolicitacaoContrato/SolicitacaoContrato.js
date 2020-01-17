@@ -91,7 +91,6 @@ $(document).ready(function() {
 
 //preenche campos ZOOM
 function setSelectedZoomItem(selectedItem) {
-  var SERVICO ="txtproduto";
   var FORNECEDOR ="cnpjcpf";
   var CONDICAO_PGTO ="condicaoPgto";    
 
@@ -131,7 +130,6 @@ function setSelectedZoomItem(selectedItem) {
 }
 
 function removedZoomItem(removedItem) {
-	var SERVICO ="txtproduto";
 	var FORNECEDOR ="cnpjcpf";
      var CONDICAO_PGTO ="condicaoPgto";    
 

@@ -17,6 +17,8 @@ function enableFields(form){
 	 
 	
 	 
+	 
+	 
 	 if (activity == ABERTURA || activity  == SOLICITAR){
 		 form.setValue("solicitante",nomeSolicitante);
 		 form.setValue("emailSolicitante",emailSolicitante);
@@ -53,6 +55,7 @@ function enableFields(form){
 		    }
 		    
 		    form.setEnabled("statusContrato", true);
+		    form.setEnabled("tipoContrato", true);
 	 }
 	 
 		

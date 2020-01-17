@@ -31,7 +31,7 @@
       <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>1971</formId>
+    <formId>0</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -1372,7 +1372,8 @@ function convertStringToData(StringToData) {
     var temTarifa		 	 = hAPI.getCardValue(&quot;tarifa&quot;);&#xd;
    &#xd;
 	&#xd;
-	if (ativAtual == CALCULAR_DIARIAS  &amp;&amp; recebeDiarias == &quot;sim&quot;){&#xd;
+	if (ativAtual == CALCULAR_DIARIAS){&#xd;
+		if (recebeDiarias == &quot;sim&quot;){&#xd;
 		  	var dtVencimento	 = hAPI.getCardValue(&quot;dtVencimento&quot;);&#xd;
 		    var valorTotal		 = hAPI.getCardValue(&quot;vl_diarias&quot;);&#xd;
 		    &#xd;
@@ -1387,26 +1388,31 @@ function convertStringToData(StringToData) {
 		    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 		    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		    } &#xd;
+		}&#xd;
+&#xd;
 	&#xd;
 	}&#xd;
-	else if (ativAtual == GERAR_TARIFA  &amp;&amp; temTarifa == &quot;sim&quot;){&#xd;
-		&#xd;
-		var vl_tarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
-		var dtTarifa		 = hAPI.getCardValue(&quot;dtTarifa&quot;);&#xd;
+	else if (ativAtual == GERAR_TARIFA){&#xd;
+		if ( temTarifa == &quot;sim&quot;){&#xd;
+				var vl_tarifa		 = hAPI.getCardValue(&quot;vl_tarifa&quot;);&#xd;
+				var dtTarifa		 = hAPI.getCardValue(&quot;dtTarifa&quot;);&#xd;
+					&#xd;
+				var constraint = new Array();		  			&#xd;
+				constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
+				constraint.push(DatasetFactory.createConstraint(&quot;vl_tarifa&quot;, vl_tarifa, vl_tarifa, ConstraintType.MUST));  &#xd;
+				constraint.push(DatasetFactory.createConstraint(&quot;dtTarifa&quot;, dtTarifa, dtTarifa, ConstraintType.MUST));&#xd;
 			&#xd;
-		var constraint = new Array();		  			&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;documentid&quot;, idDocumento, idDocumento, ConstraintType.MUST));			&#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;vl_tarifa&quot;, vl_tarifa, vl_tarifa, ConstraintType.MUST));  &#xd;
-		constraint.push(DatasetFactory.createConstraint(&quot;dtTarifa&quot;, dtTarifa, dtTarifa, ConstraintType.MUST));&#xd;
-	&#xd;
-		var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA100_SOLICITACAO_DIARIAS&quot;, null, constraint, null);&#xd;
-		     &#xd;
-	    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-	    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
-	    } &#xd;
-	    else {&#xd;
-	    	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
-	    }&#xd;
+				var resultDateset = DatasetFactory.getDataset(&quot;VM_FINA100_SOLICITACAO_DIARIAS&quot;, null, constraint, null);&#xd;
+				     &#xd;
+			    if (resultDateset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+			    	throw resultDateset.getValue(0,&quot;RETORNO&quot;);&#xd;
+			    } &#xd;
+			    else {&#xd;
+			    	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Solicitação integrada com o sistema Protheus&quot;);&#xd;
+			    }&#xd;
+		}&#xd;
+		&#xd;
+&#xd;
 	    &#xd;
 	}&#xd;
 	&#xd;

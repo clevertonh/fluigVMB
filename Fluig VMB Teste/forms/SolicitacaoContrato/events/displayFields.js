@@ -13,7 +13,9 @@ function displayFields(form,customHTML){
     customHTML.append("</script>");
 	
     
-    //codCondPgto
+    form.setVisibleById("codCondPgto", false)
+    form.setVisibleById("_codCondPgto", false)
+    
     
     if (activity != ASSINAR){
     	 form.setVisibleById("div_status", false);
