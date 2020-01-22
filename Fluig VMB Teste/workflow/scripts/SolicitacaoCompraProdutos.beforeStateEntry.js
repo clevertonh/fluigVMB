@@ -37,18 +37,7 @@ function beforeStateEntry(sequenceId){
 		 
 	    	    if (aprovacao == "aprovado"){
 		   			opcao = 3;
-	                var constraint = new Array();                                 
-	                constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
-		  			constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
-		  			 
-	                var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
-	                 
-	                	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-	                      throw resultDataset.getValue(0,"RETORNO");
-	                   }
-	                	  else {
-	  					  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus para o processo de cotação");
-	  				  }
+		   			setSolicitacaoCompra(idDocumento,opcao);
 	                   
 		   		}    
     	       
@@ -58,17 +47,23 @@ function beforeStateEntry(sequenceId){
            
     	   		if (aprovacao == "reprovado"){
     	   			opcao = 5;
-    	   			var constraint = new Array();                                 
-    	   	     	constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));                    
-    	   	 		constraint.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));
-    	   	 			 
-    	   	 		var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraint, null);                                                                    
-    	   	       
-    	   	      	 if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-    	   	            throw resultDataset.getValue(0,"RETORNO");
-    	   	         }
+    	   			setSolicitacaoCompra(idDocumento,opcao);
+
     	   		}
        }
 
        
+      
+      function setSolicitacaoCompra(id,opcao){
+			 var constraints = new Array();                                 
+			 constraints.push(DatasetFactory.createConstraint("documentid", id, id, ConstraintType.MUST));
+			 constraints.push(DatasetFactory.createConstraint("acao", opcao, opcao, ConstraintType.MUST));	 
+		       var resultDataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_COMPRA", null, constraints, null);                                                                    
+		          
+		       if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+		             throw resultDataset.getValue(0,"RETORNO");
+		         }
+
+}
+      
 }

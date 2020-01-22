@@ -83,6 +83,34 @@ function validateForm(form){
 			}
 	}
    
+	else if (activity == APROVACAO_DIR ){
+		if (nextAtv == 52 ){
+	 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+            if (form.getValue("aprNivel2") == false || form.getValue("aprNivel2") == "") {
+                throw "Você precisa indicar se a solicitação será aprovada ou reprovada";
+            }
+            
+			//valida se aprovador é diferente do solicitante
+			if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprNivel2")  == "aprovado" ){
+	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+	            }	
+		}
+	}
+	
+	else if (activity == APROVACAO_DN ){
+		if (nextAtv == 58 ){
+	 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+            if (form.getValue("aprNivel3") == false || form.getValue("aprNivel3") == "") {
+                throw "Você precisa indicar se a solicitação será aprovada ou reprovada";
+            }
+            
+			//valida se aprovador é diferente do solicitante
+			if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprNivel3")  == "aprovado" ){
+	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+	            }	
+		}
+	}
+	
 	
 	
     function consultaAfastamento(emailLogado){   	    	

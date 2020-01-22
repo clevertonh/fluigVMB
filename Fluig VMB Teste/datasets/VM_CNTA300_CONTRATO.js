@@ -32,9 +32,7 @@ function createDataset(fields, constraints, sortFields) {
         		else if (solicitacao.getValue(0,"definicaoValor") =="fixo"){
         			tipoPlanilha = "025";
         		}
-        		
-        		
-        		
+ 
         		
         		documentId = solicitacao.getValue(0,"documentid");
         		//solicitacao exemplo 7777

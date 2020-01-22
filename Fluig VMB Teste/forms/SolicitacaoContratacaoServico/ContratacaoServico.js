@@ -1,6 +1,8 @@
 var ABERTURA = 0;
 var SOLICITAR = 4;	
 var APROVACAO_GESTOR =5;
+var APROVACAO_DIR = 292;
+var APROVACAO_DN = 301;
 var CORRIGIR = 142;
 var REALIZAR_COTACAO_COMPRAS = 12;
 var REALIZAR_COTACAO_HOSPITALIDADE = 22;
@@ -13,13 +15,15 @@ var VERIFICAR_APROVACAO_COMPRAS = 145;
 var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
 var SOLICITACAO_CONTRATO_COMPRAS = 151;
 var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
-var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
+var FINALIZAR = 215;
 var VALIDAR_RH = 161;
 var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
 var VERIFICAR_ASSINATRA_COMPRAS = 274;
 
 var linhas = 0;
 var codigoEvento;
+var dtInicio;
+var dtFim ;
 
 
 //Initialize tooltips
@@ -74,90 +78,66 @@ $(document).ready(function() {
 	
 	if (ATIVIDADE == ABERTURA){
 		dtSolicitacao.setDate(new Date().toLocaleString());
-	
-		var dataAtual = new Date();
-		var dias = 3;
-		// Incrementa a quantidade de dias na data atual:
-		dataAtual.setDate(dataAtual.getDate() + dias);
-	    //minDate: dataAtual
 		
-		var dtInicio = FLUIGC.calendar('#dtInicio', {
+	}
+	else if (ATIVIDADE == APROVACAO_GESTOR || ATIVIDADE == APROVACAO_DIR || ATIVIDADE == APROVACAO_DN || ATIVIDADE == CORRIGIR || ATIVIDADE == ABERTURA) {
+		dtInicio = FLUIGC.calendar('#dtInicio', {
 		    pickDate: true,
 		    pickTime: false,
 		    minDate: new Date().toLocaleString()
 		    
 		});
 				
-		var dtFim = FLUIGC.calendar('#dtFim', {
+		dtFim = FLUIGC.calendar('#dtFim', {
 		    pickDate: true,
 		    pickTime: false,
 		    minDate: new Date().toLocaleString()
 		});
 		
-	
-		   $("#dtFim").blur(function(){  
-			   var dataInicio =  $("#dtInicio").val(); // 03/11/2019
-               var arr = dataInicio.split("/").reverse();
-               var dia = new Date(arr[0], arr[1] - 1, arr[2]);
-                 
-               var AnoFiscal;
-                
-               //MONTA AF FISCAL
-               if (dia.getMonth() > 8){
-            	   AnoFiscal = dia.getFullYear() + 1;
-               }
-               else {
-            	   AnoFiscal = dia.getFullYear();
-               }
-               
-               //DATA LIMITE
-               var dtLimite = new Date (AnoFiscal,8,'30')
-              // console.log(dtLimite);
-               
-               var data = this.value;
-               var arrF = data.split("/").reverse();
-               var diaFinal = new Date(arrF[0], arrF[1] - 1, arrF[2]);
+
+	   $("#dtFim").blur(function(){  
+		   var dataInicio =  $("#dtInicio").val(); // 03/11/2019
+           var arr = dataInicio.split("/").reverse();
+           var dia = new Date(arr[0], arr[1] - 1, arr[2]);
              
-              // console.log(diaFinal);
-               
-               if (diaFinal > dtLimite){
-            	    FLUIGC.toast({
-                        title: 'Informação',
-                        message: 'O serviço contratado só podem ter sua vigência programada até o final do AF '+ AnoFiscal,
-                        type: 'danger',
-                        timeout: 6000
-                    });
-               }
-	          });
-		
-	}
-	else if (ATIVIDADE == CORRIGIR){
-		var dtInicio = FLUIGC.calendar('#dtInicio', {
-		    pickDate: true,
-		    pickTime: false,
-		    minDate: new Date().toLocaleString()
-		});
-		
-		var dtFim = FLUIGC.calendar('#dtFim', {
-		    pickDate: true,
-		    pickTime: false,
-		    minDate: new Date().toLocaleString()
-		});
-	}
+           var AnoFiscal;
+            
+           //MONTA AF FISCAL
+           if (dia.getMonth() > 8){
+        	   AnoFiscal = dia.getFullYear() + 1;
+           }
+           else {
+        	   AnoFiscal = dia.getFullYear();
+           }
+           
+           //DATA LIMITE
+           var dtLimite = new Date (AnoFiscal,8,'30')
+           
+           var data = this.value;
+           var arrF = data.split("/").reverse();
+           var diaFinal = new Date(arrF[0], arrF[1] - 1, arrF[2]);
+
+           
+           if (diaFinal > dtLimite){
+        	    FLUIGC.toast({
+                    title: 'Informação',
+                    message: 'O serviço contratado só podem ter sua vigência programada até o final do AF '+ AnoFiscal,
+                    type: 'danger',
+                    timeout: 6000
+                });
+           }
+          });
+	}	
 	else if (ATIVIDADE == REALIZAR_COTACAO_COMPRAS || ATIVIDADE == REALIZAR_COTACAO_HOSPITALIDADE){
-		var dtCotacao = FLUIGC.calendar('#dtCotacao', {
-		    pickDate: true,
-		    pickTime: false
-		});
-		
-		dtCotacao.setDate(new Date().toLocaleString());
+			var dtCotacao = FLUIGC.calendar('#dtCotacao', {
+			    pickDate: true,
+			    pickTime: false
+			});
+			
+			dtCotacao.setDate(new Date().toLocaleString());
 	}
-	else if (ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS || ATIVIDADE == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){		
-	   	 $("#valor").blur(function(){
-	   		 $("#div_produto").show();
-			 reloadZoomFilterValues("txtproduto", "FLUIG," + "11");
-	     }); 
-	}
+
+	
 
 	
 });
@@ -315,24 +295,31 @@ function setSelectedZoomItem(selectedItem) {
 
 
 function adicionaLinhaProduto() {
-	linhas = 0;	
 	
-	if (linhas == 0){
-		var row = wdkAddChild('tableServico');
+	if (ATIVIDADE == FINALIZAR){
 		
-		var qtde = document.getElementById("idquantidade" + "___" + row);
-
-		qtde.addEventListener("blur", function( event ) 	{			
-			  var vl_unitario = $('#vrUnitario' + "___" + row).val();
-			  var qtde = $('#idquantidade' + "___" + row).val()			  
-			  $('#vrTotUnit___'+ row).val( vl_unitario * qtde  );			  
-			  
-			  
-			}, true);
-	
 	}
-	
-    $("input[id^='idquantidade___']:last").blur(doFormTotal);
+	else {
+		linhas = 0;	
+		
+		if (linhas == 0){
+			var row = wdkAddChild('tableServico');
+			
+			var qtde = document.getElementById("idquantidade" + "___" + row);
+
+			qtde.addEventListener("blur", function( event ) 	{			
+				  var vl_unitario = $('#vrUnitario' + "___" + row).val();
+				  var qtde = $('#idquantidade' + "___" + row).val()			  
+				  $('#vrTotUnit___'+ row).val( vl_unitario * qtde  );			  
+				  
+				  
+				}, true);
+		
+		}
+		
+	    $("input[id^='idquantidade___']:last").blur(doFormTotal);
+	}
+
 }
 
 function doFormTotal() {

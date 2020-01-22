@@ -3,21 +3,14 @@ function validateForm(form){
 	var SOLICITAR = 4;	
 	var APROVACAO_GESTOR =5;
 	var CORRIGIR = 142;
-	var REALIZAR_COTACAO_COMPRAS = 12;
-	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
-	var ENVIAR_APROVACAO_COMPRAS = 209;
-	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
-	var APROVACAO_SERVICO_COMPRAS = 105;
-	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
-	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
-	var VERIFICAR_APROVACAO_COMPRAS = 145;
-	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
-	var SOLICITACAO_CONTRATO_COMPRAS = 151;
-	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
+	var REALIZAR_COTACAO = 22;
+	var SOLICITAR_APROVACAO = 206;
+	var APROVACAO_SERVICO = 94;
+	var SOLICITACAO_CONTRATO = 66;
+	var VERIFICAR_APROVACAO = 151;
+	var FINALIZAR = 215;
 	var VALIDAR_RH = 161;
-	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
-	var VERIFICAR_ASSINATRA_COMPRAS = 274;
+	var VERIFICAR_ASSINATRA = 270;
 	var APROVACAO_DIR = 292;
 	var APROVACAO_DN = 301;
 	
@@ -145,7 +138,21 @@ function validateForm(form){
 		
 	
 	}
-	else if ((activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE) && (nextAtv == 281 || nextAtv == 278)){
+	else if (activity == APROVACAO_GESTOR){
+			//valida se o aprovador marcou o campo de aprovacao ou reprovação
+	        if (form.getValue("aprNivel2") == false || form.getValue("aprNivel2") == "") {
+	            throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
+	        }
+	}
+	
+	else if (activity == APROVACAO_DN){
+		//valida se o aprovador marcou o campo de aprovacao ou reprovação
+        if (form.getValue("aprNivel3") == false || form.getValue("aprNivel3") == "") {
+            throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
+        }
+}
+	
+	else if ( activity == REALIZAR_COTACAO && nextAtv == 281 ){
 		//valida se aprovador é diferente do solicitante
 		if (form.getValue("cnpjcpf") == null  || form.getValue("cnpjcpf")  == "" ){
           	 throw "Você precisa selecionar o fornecedor vencedor da cotação.";

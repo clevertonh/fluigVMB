@@ -56,6 +56,8 @@ function createDataset(fields, constraints, sortFields) {
 							 
 						 }
 					 }
+					 
+
 					 //log.info("entrando aqui 2");
 					 // log.dir(constraints);
 				
@@ -89,6 +91,9 @@ function createDataset(fields, constraints, sortFields) {
 					          }
 					        }
 				         
+					        log.info("ERRO REEMBOLSO");
+					        log.dir(data);
+					        
  					        var vo = clientService.invoke(JSON.stringify(data));		        					        
 					        var obj = JSON.parse(vo.getResult());
  					        

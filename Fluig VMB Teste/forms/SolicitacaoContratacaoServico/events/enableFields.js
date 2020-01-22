@@ -3,23 +3,16 @@ function enableFields(form){
 	var SOLICITAR = 4;	
 	var APROVACAO_GESTOR =5;
 	var CORRIGIR = 142;
-	var REALIZAR_COTACAO_COMPRAS = 12;
-	var REALIZAR_COTACAO_HOSPITALIDADE = 22;
-	var ENVIAR_APROVACAO_COMPRAS = 209;
-	var ENVIAR_APROVACAO_HOSPITALIDADE = 206;
+	var REALIZAR_COTACAO = 22;
+	var SOLICITAR_APROVACAO = 206;
+	var APROVACAO_SERVICO = 94;
+	var SOLICITACAO_CONTRATO = 66;
+	var VERIFICAR_APROVACAO = 151;
+	var FINALIZAR = 215;
+	var VALIDAR_RH = 161;
+	var VERIFICAR_ASSINATRA = 270;
 	var APROVACAO_DIR = 292;
 	var APROVACAO_DN = 301;
-	var APROVACAO_SERVICO_COMPRAS = 105;
-	var APROVACAO_SERVICO_HOSPITALIDADE = 94;
-	var VERIFICAR_APROVACAO_HOSPITALIDADE = 151;
-	var VERIFICAR_APROVACAO_COMPRAS = 145;
-	var SOLICITACAO_CONTRATO_HOSPITALIDADE = 243;
-	var SOLICITACAO_CONTRATO_COMPRAS = 151;
-	var INTEGRAR_PROTHEUS_COMPRAS_COMPRAS = 212;
-	var INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE = 215;
-	var VALIDAR_RH = 161;
-	var VERIFICAR_ASSINATRA_HOSPITALIDADE = 270;
-	var VERIFICAR_ASSINATRA_COMPRAS = 274;
 	
 	
 	var activity = getValue('WKNumState');
@@ -79,6 +72,8 @@ function enableFields(form){
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 form.setEnabled("aprNivel2", false);
 		 form.setEnabled("aprNivel3", false);
+		 
+		 
 	
 		 
 	}
@@ -104,7 +99,7 @@ function enableFields(form){
 
 		
 		
-	else if (activity == REALIZAR_COTACAO_COMPRAS || activity == REALIZAR_COTACAO_HOSPITALIDADE){					
+	else if (activity == REALIZAR_COTACAO){					
 		 form.setValue("comprador",nomeSolicitante);
 		 form.setValue("emailComprador",emailSolicitante);
 		 
@@ -197,7 +192,7 @@ function enableFields(form){
 	    
 	    
 	}
-	else if (activity == ENVIAR_APROVACAO_COMPRAS ||  activity == ENVIAR_APROVACAO_HOSPITALIDADE ){
+	else if (activity == SOLICITAR_APROVACAO ){
 	
 				form.setValue("aprovacaoServico","");
 				
@@ -213,8 +208,7 @@ function enableFields(form){
 			    }
 
 	}
-	else if (  activity == VERIFICAR_ASSINATRA_HOSPITALIDADE ||  activity == VERIFICAR_ASSINATRA_COMPRAS
-			||  activity == INTEGRAR_PROTHEUS_COMPRAS_COMPRAS ||  activity == INTEGRAR_PROTHEUS_COMPRAS_HOSPITALIDADE){
+	else if (  activity == VERIFICAR_ASSINATRA	||  activity == FINALIZAR){
 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
@@ -227,7 +221,7 @@ function enableFields(form){
 		    }
 	}
 	
-	else if (activity == SOLICITACAO_CONTRATO_HOSPITALIDADE ||  activity == SOLICITACAO_CONTRATO_COMPRAS ){
+	else if (activity == SOLICITACAO_CONTRATO ){
 				form.setValue("statusContrato","");
 				var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 			    var mapaForm = new java.util.HashMap();
