@@ -91,6 +91,8 @@ function createDataset(fields, constraints, sortFields) {
 					 
         		}
         		else if (nomeProcesso == "SolicitacaoLocacaoVeiculo"){
+        			
+        				//dataset.addRow(["ENTROU AQUI"]);
 	        			var constraint2  = new Array(); 
 	        			constraint2.push(DatasetFactory.createConstraint("documentid", documentIdPai , documentIdPai, ConstraintType.MUST));
 	        			constraint2.push(DatasetFactory.createConstraint("metadata#active", true , true, ConstraintType.MUST));      			
@@ -227,7 +229,6 @@ function createDataset(fields, constraints, sortFields) {
 				        	dataset.addRow(new Array(obj.MSG));
 				        }
 				        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	   
-
 				            dataset.addRow(new Array("SUCESSO",JSON.parse(vo.getResult()).NUMERO));					           
 				        	// dataset.addRow(new Array("SUCESSO"));
 				        }

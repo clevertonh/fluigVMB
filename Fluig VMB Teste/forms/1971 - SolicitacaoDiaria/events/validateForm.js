@@ -104,8 +104,8 @@ function validateForm(form){
        	    	  
        	    	  if (form.getValue("tarifa") == "sim"){
        	    		  	if (form.getValue("banco") == null || form.getValue("banco") == "" || form.getValue("agencia") == null || 
-       	    		  			form.getValue("agencia") == ""  || form.getValue("contabanco") == null || form.getValue("contabanco") == "" ){
-       	    		  			throw "Você precisa indicar todos os campos referente aos dados bancários";
+       	    		  		form.getValue("agencia") == ""  || form.getValue("contabanco") == null || form.getValue("contabanco") == "" ){
+       	    		  		throw "Você precisa indicar todos os campos referente aos dados bancários";
        	    		  	}
        	    		  	if (form.getValue("natureza") == null || form.getValue("natureza") == "" ){
        	    		  		throw "Você precisa indicar o campo  natureza.";

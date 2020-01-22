@@ -68,9 +68,9 @@ $(document).ready(function() {
 				dtCotacao.setDate(new Date().toLocaleString());
 				
 			   	 $("#CotacaovalorMensal").blur(function(){
-			   		 var total = $("#quantidade").val()* $("#CotacaovalorMensal").val();
+			   		 var total = $("#quantidade").val() * $("#CotacaovalorMensal").val();
 			   		 $("#cotacaovalorTotal").val(total);
-					 
+					 console.log($("#CotacaovalorMensal").val());
 			     }); 
       
     }
@@ -251,12 +251,9 @@ function setSelectedZoomItem(selectedItem) {
     //separa string
     var linhaPagamento = campoZOOM.split('___');
 
-    console.log(campoZOOM);
-    console.log(selectedItem["CODIGO"]);
-
+  
     //compara para verificar se o zoom é o campo centro de custo
     if (linhaPagamento[0] == CCUSTO) {
-    	console.log("---ENTROU AQUI 1 ----");
         //LIMPA COLUNAS DE INFORMAÇÃO DE PAGAMENTO
         window[PROJETO + "___" + linhaPagamento[1]].clear();
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
@@ -268,17 +265,12 @@ function setSelectedZoomItem(selectedItem) {
         $('#' + CONTA + "___" + linhaPagamento[1]).val("");
 
 	        if (selectedItem["CODIGO"] != '99990') {
-	        	console.log("---ENTROU AQUI 2 ----");
-	            console.log("---CENTRO DE CUSTO---"+selectedItem["CODIGO"]);
 	            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(false);
 	            reloadZoomFilterValues(ATIVIDADE + "___" + linhaPagamento[1], "CENTRO_CUSTO," + selectedItem["CODIGO"]);
 	
 	        } 
 	        else {
-	        	console.log("---ENTROU AQUI 3 ----");
 	            //desabilita zoom que não devem ser preenchidos
-	        	console.log("---desabilita zoom que não devem ser preenchidos---");
-	            console.log(selectedItem["CODIGO"]);
 	            window[PROJETO + "___" + linhaPagamento[1]].disable(false);
 	            window[ATIVIDADE + "___" + linhaPagamento[1]].disable(true);
 	

@@ -206,6 +206,58 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <version>1</version>
+        <sequence>44</sequence>
+      </processStatePK>
+      <stateName>Anexar contrato</stateName>
+      <stateDescription>Anexar contrato</stateDescription>
+      <instruction>Anexe o contrato assinado no Protheus e finalize a tarefa</instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;18&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>820</positionX>
+      <positionY>280</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContrato</processId>
+        <version>1</version>
         <sequence>37</sequence>
       </processStatePK>
       <stateName>Assinado?</stateName>
@@ -255,8 +307,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>770</positionX>
-      <positionY>260</positionY>
+      <positionX>1020</positionX>
+      <positionY>301</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -302,8 +354,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>760</positionX>
-      <positionY>360</positionY>
+      <positionX>730</positionX>
+      <positionY>380</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -331,7 +383,7 @@
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
-      <destinationSequenceId>24</destinationSequenceId>
+      <destinationSequenceId>44</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -421,11 +473,28 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <version>1</version>
-        <linkSequence>43</linkSequence>
+        <linkSequence>45</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>37</initialStateSequence>
+      <finalStateSequence>44</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContrato</processId>
+        <version>1</version>
+        <linkSequence>46</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>44</initialStateSequence>
       <finalStateSequence>24</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -477,13 +546,12 @@
 			 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));&#xd;
 			 constraints.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
 		     var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA300_SOLICITACAO_CONTRATO&quot;, null, constraints, null);                                                                    &#xd;
-		    &#xd;
-		     &#xd;
+		    		     &#xd;
 		         if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 		             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		         }&#xd;
 		         else {&#xd;
-		        	 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Número: &quot; + resultDataset.getValue(0,&quot;NUMERO&quot;));&#xd;
+		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Número: &quot; + resultDataset.getValue(0,&quot;NUMERO&quot;));&#xd;
 		         }&#xd;
     &#xd;
     }&#xd;
@@ -498,7 +566,7 @@
     <SwimLane>
       <color>FFFFFF</color>
       <height>431</height>
-      <width>991</width>
+      <width>1221</width>
       <positionX>10</positionX>
       <positionY>10</positionY>
       <stateName>Solicitação de Contrato</stateName>
@@ -514,7 +582,7 @@
     <SwimLane>
       <color>9F9F9F</color>
       <height>215</height>
-      <width>961</width>
+      <width>1191</width>
       <positionX>40</positionX>
       <positionY>10</positionY>
       <stateName>Solicitante</stateName>
@@ -530,7 +598,7 @@
     <SwimLane>
       <color>82b0b7</color>
       <height>216</height>
-      <width>961</width>
+      <width>1191</width>
       <positionX>40</positionX>
       <positionY>225</positionY>
       <stateName>Juridico</stateName>

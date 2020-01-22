@@ -59,15 +59,7 @@ function beforeStateEntry(sequenceId){
     	 
     }
     else if (ativAtual == APROVACAO  ){ 	
-    	   	 if (aprovacao =="aprovado"){
-		   	     var valor = hAPI.getCardValue("valor");
-		
-		   	     //CRIA SOLICITAÇÃO DE COMPRA
-		   	     setSolicitacaoCompra(idDocumento,3,valor);
-		   	    		   		
-		   	 }
-		   	 
-		   	 else if (aprovacao =="reprovado"){
+    	    if (aprovacao =="reprovado"){
 		   		 		hAPI.setTaskComments(usuario, codSolicitacao, 0, hAPI.getCardValue("justificativaReprovacao"));
 		   	 }
       }	
@@ -95,7 +87,7 @@ function beforeStateEntry(sequenceId){
 			var contrato  = hAPI.getCardValue("Numerocontrato");
     		if (contrato !="" && contrato!= null){
     			//DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE 
-  				setSolicitacaoCompra(idDocumento,5,0);  
+  				//setSolicitacaoCompra(idDocumento,5,0);  
 
        			 var constraint = new Array();                                 
 	             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
@@ -106,7 +98,7 @@ function beforeStateEntry(sequenceId){
 	                    throw resultDataset.getValue(0,"RETORNO");
 	                 }
 	              else {
-	           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com a rotina de medição de contratos.");
+	            	  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Medição de contrato cadastrada. Número: " + resultDataset.getValue(0,"NUMERO"));
 	              }
 
 

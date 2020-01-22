@@ -30,14 +30,14 @@ function beforeStateEntry(sequenceId){
     var razaoSocial = hAPI.getCardValue("razaosocial");     
     var opcao;
     
+    
     if (ativAtual == APROVACAO ){
     	var aprovacao = hAPI.getCardValue("aprovacao");
 
-    			//GERA SOLICITAÇÃO DE COMPRA PARA GARANTIR QUE DADOS FINANCEIROS ESTAO CORRETOS
-		    	 if (aprovacao =="aprovado"){
-		    		 //cria solicitação de compra
-		    		 setSolicitacaoCompra(idDocumento,3,0); 	    		 		 		   
-		       	 }
+    	if (aprovacao =="reprovado"){
+		 		hAPI.setTaskComments(usuario, codSolicitacao, 0, hAPI.getCardValue("justificativaReprovacao"));
+    	}
+    	
     }
     else if (ativAtual == COTACAO){	 		
 			 var anexos   = hAPI.listAttachments();
@@ -58,27 +58,25 @@ function beforeStateEntry(sequenceId){
 	 }
     
 	 else if (ativAtual == FINALIZAR){		 
-			 var contrato  = hAPI.getCardValue("Numerocontrato");
+			 	var contrato  = hAPI.getCardValue("Numerocontrato");
 	    		if (contrato !="" && contrato!= null){
 		      			//deleta solicitação de compra
-	    				setSolicitacaoCompra(idDocumento,5,0);
+	    				//setSolicitacaoCompra(idDocumento,5,0);
 	   	
-	    				 //gera medição de contrato
-	           			 var constraint = new Array();                                 
-			             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-			             
+	    				  //gera medição de contrato
+	           			  var constraint = new Array();                                 
+			              constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));			             
 			              var resultDataset = DatasetFactory.getDataset("VM_CNTA120_SOLICITACAO_TRANSFER", null, constraint, null);                                                                    
 			                 
 			              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
 			                    throw resultDataset.getValue(0,"RETORNO");
 			                 }
 			              else {
-			           	   hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com a rotina de medição de contratos.");
+			           	   		hAPI.setTaskComments(usuario, codSolicitacao, 0, "Medição de contrato cadastrada. Número: " + resultDataset.getValue(0,"NUMERO"));
 			              }
 	    			 
-	    			 
+	    			 // dataset.addRow(new Array("SUCESSO",JSON.parse(vo.getResult()).NUMERO));		
 	      		}
-
 	 }
     
     

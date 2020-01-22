@@ -52,7 +52,7 @@ function createDataset(fields, constraints, sortFields) {
 			 
 				 }
 				 
-
+				 
 
 					 try {
 						 var clientService = fluigAPI.getAuthorizeClientService();
@@ -70,7 +70,7 @@ function createDataset(fields, constraints, sortFields) {
 					                BANCO				: '' + solicitacao.getValue(0,"banco") +'',					                
 					                AGENCIA				: '' + solicitacao.getValue(0,"agencia") +'',
 					                CONTA				: '' + solicitacao.getValue(0,"contabanco") +'',
-					                NATUREZA				: '' + solicitacao.getValue(0,"natureza") +'',
+					                NATUREZA			: '' + solicitacao.getValue(0,"natureza") +'', 
 					                DATALANCAMENTO  : '' + dtTarifa + '',
 					        		RATEIODIGITADO: aRateio ,
 					        		IDDOCUMENTO: '' + solicitacao.getValue(0,"documentid") + '',
