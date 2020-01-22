@@ -4096,7 +4096,7 @@
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="1" filled="false" transparency="0.0"/>
       <link businessObjects="flow73"/>
       <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
-        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="10" style="/0/@styles.125" font="/0/@fonts.0" value=""/>
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="5" y="-82" style="/0/@styles.125" font="/0/@fonts.0" value="possui contrato"/>
       </connectionDecorators>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.3" foreground="/0/@colors.3" lineWidth="1" filled="true" transparency="0.0" style="/0/@styles.5">
@@ -4198,8 +4198,8 @@
   <bpmn2:SequenceFlow id="flow68" name="" sourceRef="task28" targetRef="exclusivegateway67" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow70" name="sim" sourceRef="exclusivegateway67" targetRef="subprocess36" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>" movementTitle="" movementDescription="" movementAccessLinkDescription=""/>
   <bpmn2:SequenceFlow id="flow71" name="" sourceRef="exclusivegateway67" targetRef="exclusivegateway41" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
-  <bpmn2:BpmnIntermediateEvent id="intermediatelink72" name="Intermedi&#xe1;rio" incoming="flow73" type="36" sequenceAttached="0" signalId="0" linkId="intermediatelinkreceive74"/>
-  <bpmn2:SequenceFlow id="flow73" name="" sourceRef="exclusivegateway26" targetRef="intermediatelink72" atividadeFluxo=""/>
+  <bpmn2:BpmnIntermediateEvent id="intermediatelink72" name="possui contrato" incoming="flow73" type="36" sequenceAttached="0" signalId="0" linkId="intermediatelinkreceive74"/>
+  <bpmn2:SequenceFlow id="flow73" name="possui contrato" sourceRef="exclusivegateway26" targetRef="intermediatelink72" atividadeFluxo=""/>
   <bpmn2:BpmnIntermediateEvent id="intermediatelinkreceive74" name="possui contrato?" outgoing="flow75" type="42" sequenceAttached="0" signalId="0"/>
   <bpmn2:SequenceFlow id="flow75" name="" sourceRef="intermediatelinkreceive74" targetRef="exclusivegateway41" atividadeFluxo=""/>
 </xmi:XMI>

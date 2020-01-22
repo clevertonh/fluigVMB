@@ -1,9 +1,9 @@
 function createDataset(fields, constraints, sortFields) {
 	var constraint = new Array();
 	
-	constraint.push(DatasetFactory.createConstraint("documentid", "12586", "12586", ConstraintType.MUST));     
+	constraint.push(DatasetFactory.createConstraint("documentid", "2939", "2939", ConstraintType.MUST));     
 	 
-	var dataset = DatasetFactory.getDataset("VM_MATA110_SOLICITACAO_CONTRATACAO_SERVICO", null, constraint, null);
+	var dataset = DatasetFactory.getDataset("VM_CNTA300_SOLICITACAO_CONTRATO", null, constraint, null);
     
     return dataset;
 	

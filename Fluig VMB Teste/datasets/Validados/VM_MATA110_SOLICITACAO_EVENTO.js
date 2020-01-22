@@ -2,6 +2,7 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
+	dataset.addColumn("NUMERO");
 	
 	var aItemServico = new Array();
 	var aRateio;
@@ -105,7 +106,9 @@ function createDataset(fields, constraints, sortFields) {
         					        	dataset.addRow(new Array(obj.MSG));
         					        }
         					        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	                    
-        					            dataset.addRow(new Array("SUCESSO"));					           
+        					            //dataset.addRow(new Array("SUCESSO"));		
+        					        	dataset.addRow(new Array("SUCESSO",JSON.parse(vo.getResult()).NUMERO));	
+            					        
         					            
         					        }
         					        

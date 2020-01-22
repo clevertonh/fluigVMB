@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contrato</processId>
-      <version>10</version>
+      <version>12</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2402</formId>
@@ -327,7 +327,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>10</version>
+        <version>12</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
@@ -339,7 +339,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>10</version>
+        <version>12</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
@@ -476,17 +476,19 @@
 			 var constraints = new Array();                                 &#xd;
 			 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));&#xd;
 			 constraints.push(DatasetFactory.createConstraint(&quot;acao&quot;, opcao, opcao, ConstraintType.MUST));&#xd;
-		     var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA300_CONTRATO&quot;, null, constraints, null);                                                                    &#xd;
+		     var resultDataset = DatasetFactory.getDataset(&quot;VM_CNTA300_SOLICITACAO_CONTRATO&quot;, null, constraints, null);                                                                    &#xd;
+		    &#xd;
 		     &#xd;
-		     log.info(&quot;ERRO DOIDO&quot;);&#xd;
-		     log.dir(resultDataset);&#xd;
-		     &#xd;
-		     &#xd;
-		       if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+		         if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
 		             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		         }&#xd;
-&#xd;
+		         else {&#xd;
+		        	 hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Número: &quot; + resultDataset.getValue(0,&quot;NUMERO&quot;));&#xd;
+		         }&#xd;
+    &#xd;
     }&#xd;
+    &#xd;
+    &#xd;
 	&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>

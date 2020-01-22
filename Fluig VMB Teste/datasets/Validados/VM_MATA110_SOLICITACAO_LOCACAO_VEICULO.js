@@ -1,5 +1,5 @@
 function createDataset(fields, constraints, sortFields) {
-	
+	//DATASET SERÁ DESCONTINUADO COM NOVO PROCESSO DE GERAÇÃO AUTOMATICA DE CONTRATOS
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
 	
@@ -44,7 +44,7 @@ function createDataset(fields, constraints, sortFields) {
         		}
         		
             	if (valor == 0 || valor == null){
-            		valor = solicitacao.getValue(0,"valor")
+            		valor = solicitacao.getValue(0,"valor");
             	}
             	
             	
