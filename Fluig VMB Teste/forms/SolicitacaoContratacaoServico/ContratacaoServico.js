@@ -80,10 +80,11 @@ $(document).ready(function() {
 		dtSolicitacao.setDate(new Date().toLocaleString());
 		
 	}
-	else if (ATIVIDADE == APROVACAO_GESTOR || ATIVIDADE == APROVACAO_DIR || ATIVIDADE == APROVACAO_DN || ATIVIDADE == CORRIGIR || ATIVIDADE == ABERTURA) {
+	
+	if (ATIVIDADE == APROVACAO_GESTOR || ATIVIDADE == APROVACAO_DIR || ATIVIDADE == APROVACAO_DN || ATIVIDADE == CORRIGIR || ATIVIDADE == ABERTURA) {
 		dtInicio = FLUIGC.calendar('#dtInicio', {
 		    pickDate: true,
-		    pickTime: false,
+		    pickTime: false, 
 		    minDate: new Date().toLocaleString()
 		    
 		});

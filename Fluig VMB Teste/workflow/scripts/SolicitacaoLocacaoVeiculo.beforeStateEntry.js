@@ -65,11 +65,24 @@ function beforeStateEntry(sequenceId){
       }	
 
     else if (ativAtual == COTAR){	 		
-	     	 var anexos   = hAPI.listAttachments();    
-	     	 
-	      	if (anexos.size() <= 0) {
+	     	 var anexos   = hAPI.listAttachments();   
+	     	var qtdAnexado = anexos.size();
+	      	
+			var processo = getValue("WKNumProces");
+			var campos   = hAPI.getCardData(processo);
+			var contador = campos.keySet().iterator();
+			var qtdeCNH = 0;
+			
+			while (contador.hasNext()) {
+			    var id = contador.next();
+			    if (id.match(/nomeCondutor___/)) { // qualquer campo do Filho
+			    	qtdeCNH = qtdeCNH + 1;
+			    }
+			}
+    	 
+			if (qtdAnexado < qtdeCNH + 1){
 				throw "Você precisa anexar as cotações/propostas de acordo com a política de exigência de cotações.";
-		 	} 
+			}
 		 	
 		 	
 		 	

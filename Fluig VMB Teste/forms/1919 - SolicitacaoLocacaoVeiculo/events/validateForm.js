@@ -102,6 +102,10 @@ function validateForm(form){
 		}
    
 	else if (activity == APROVACAO){
+		var dataRetirada = new Date (convertStringToData(form.getValue("dtRetirada")));
+		var dataDevolucao = new Date (convertStringToData(form.getValue("dtDevolucao")));		
+		var dataAtual = new Date();
+		
 		 		if (nextAtv == 9){ //atividade 9 = verificar aprovação
 		 			//valida se o aprovador marcou o campo de aprovacao ou reprovação
 		 	        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
@@ -117,17 +121,20 @@ function validateForm(form){
 		 	          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		 	        }    
 		 			
-		 			/*
+		 			
 		 			if (form.getValue("aprovacao") == "aprovado"){
 		 				//recebe data de retirada e faz conversão
-		 				dataRetirada = convertStringToData(form.getValue("dtRetirada"));
-		 				//compara se data atual é maior que data de retirada
 		 				if (dataAtual > dataRetirada){
-		 					throw "Essa solicitação não pode mais ser aprovada pois a data de retirada já se passou.";				
+		 					throw "Essa solicitação não pode mais ser aprovada pois a data de retirada já se passou. Corrija a data de retirada do veículo ou devolva para correção do solicitante.";				
 		 				}
+		 				
+		 				if (dataRetirada > dataDevolucao){
+		 					throw "Data de retirada não pode ser maior que a data de devolução.";				
+		 				}
+		 				
 		 			}
 
-		 			*/
+		 			
 		 			//	form.setValue("justificativaReprovacao","solicitação não aprovada no tempo. Por isso foi rejeitada automaticamente pelo sistema.");
 		 			
 		 			
@@ -140,7 +147,17 @@ function validateForm(form){
  		
 		
 	}
-	else if (activity == COTAR){	
+	else if (activity == COTAR){
+		
+    	//convert data de inicio do serviço
+		var dataInicioContrato = new Date (convertStringToData(form.getValue("dtInicioC")));
+		var dataFimContrato = new Date (convertStringToData(form.getValue("dtFimC")));
+		
+		var dataInicioLocacao = new Date (convertStringToData(form.getValue("dtRetirada")));
+		var dataFimLocacao = new Date (convertStringToData(form.getValue("dtDevolucao")));		
+		var dataAtual = new Date();
+		
+		
 			if (nextAtv == 53){
 				if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
 		         	 throw "Você precisa informar o CNPJ/CPF do fornecedor escolhido como melhor proposta.";
@@ -168,7 +185,19 @@ function validateForm(form){
 					if (parseFloat(form.getValue("saldoAtual")) <  parseFloat(form.getValue("CotacaovalorMensal"))){
 						 throw "O contrato não possui saldo suficiente para contratar esse serviço.";
 					}
+					
+							
+					if ( dataAtual > dataFimContrato  ){
+						throw "A contratação desse serviço não pode ser executada na data informada. Pois o contrato não está mais na vigência.";
+					}
+					
+					
 				}
+				
+				if ( dataAtual > dataInicioLocacao  ){
+					throw "A contratação desse serviço não pode ser executada na data informada. Pois a data de hoje já ultrapassou a data de retirada .";
+				}
+			
 			}
 
 		

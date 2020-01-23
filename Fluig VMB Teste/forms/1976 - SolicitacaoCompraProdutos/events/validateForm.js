@@ -80,6 +80,8 @@ function validateForm(form){
 				if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
 		          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
 		            }	
+				
+				
 			}
 	}
    

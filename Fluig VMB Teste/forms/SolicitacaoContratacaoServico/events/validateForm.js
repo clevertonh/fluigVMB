@@ -94,65 +94,111 @@ function validateForm(form){
 	}
    
 	else if (activity == APROVACAO_GESTOR){
-		
- 		//valida se o aprovador marcou o campo de aprovacao ou reprovação
-        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
-        }
+			if (nextAtv == 17){
+				//valida se o aprovador marcou o campo de aprovacao ou reprovação
+		        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
+		            throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+		        }
 
-        if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
-            throw "Você precisa informar o motivo para reprovação da solicitação.";
-        }
-        
-		//valida se aprovador é diferente do solicitante
-		if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
-          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-        }    
+		        if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
+		            throw "Você precisa informar o motivo para reprovação da solicitação.";
+		        }
+		        
+				//valida se aprovador é diferente do solicitante
+				if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
+		          	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+		        }  
+
+				
+				if (form.getValue("carregaCusto") != "pagamento"){
+					//funções para validar informações financeiras
+					validaLinhasPreenchidas();
+					validaLinhasRepetidas();
+					validaPercentualRateio();
+					validaAtividades();
+					
+				}
+				else {
+					 var indexes = form.getChildrenIndexes("tableItens");  
+					 
+					 if (indexes.length > 0){
+						 throw "Você marcou que os dados de centro de custo serão informados apenas no pagamento. Remova os dados financeiros.";
+					 }
+				}
+				
+				
+				//convert data de inicio do serviço
+				var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
+				var dataAtual = new Date();
+						
+				if ( dataAtual > dataInicio  ){
+					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
+				}
+				
+				validaCamposPreenchidos();
+				
+				
+				
+				
+			}
+		
+ 		
 		
 		
-		if (form.getValue("carregaCusto") != "pagamento"){
-			//funções para validar informações financeiras
-			validaLinhasPreenchidas();
-			validaLinhasRepetidas();
-			validaPercentualRateio();
-			validaAtividades();
-			
-		}
-		else {
-			 var indexes = form.getChildrenIndexes("tableItens");  
-			 
-			 if (indexes.length > 0){
-				 throw "Você marcou que os dados de centro de custo serão informados apenas no pagamento. Remova os dados financeiros.";
-			 }
-		}
-	
-		//convert data de inicio do serviço
-		var dataInicio = convertStringToData(form.getValue("dtInicio"));
-		var dataAtual = new Date();
+
+
 		
-		if (dataAtual < dataInicio){
-			//throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
-		}
 		
-		validaCamposPreenchidos();
-		
-	
 	}
-	else if (activity == APROVACAO_GESTOR){
-			//valida se o aprovador marcou o campo de aprovacao ou reprovação
-	        if (form.getValue("aprNivel2") == false || form.getValue("aprNivel2") == "") {
-	            throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
-	        }
+	else if (activity == APROVACAO_DIR){
+		
+			if (nextAtv == 295){
+				//valida se o aprovador marcou o campo de aprovacao ou reprovação
+		        if (form.getValue("aprNivel2") == false || form.getValue("aprNivel2") == "") {
+		            throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
+		        }
+		        
+		        
+		    	//convert data de inicio do serviço
+				var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
+				var dataAtual = new Date();
+						
+				if ( dataAtual > dataInicio  ){
+					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
+				}
+			}
+
 	}
 	
 	else if (activity == APROVACAO_DN){
-		//valida se o aprovador marcou o campo de aprovacao ou reprovação
-        if (form.getValue("aprNivel3") == false || form.getValue("aprNivel3") == "") {
-            throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
-        }
-}
+			if (nextAtv == 304){
+				//valida se o aprovador marcou o campo de aprovacao ou reprovação
+		        if (form.getValue("aprNivel3") == false || form.getValue("aprNivel3") == "") {
+		            throw "Você precisa indicar se a solicitação será aprovada ou reprovada.";
+		        }
+			
+		    	//convert data de inicio do serviço
+				var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
+				var dataAtual = new Date();
+						
+				if ( dataAtual > dataInicio  ){
+					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
+				}
+			}
+		
+
+	
+	
+	}
 	
 	else if ( activity == REALIZAR_COTACAO && nextAtv == 281 ){
+		var dataFimContrato = new Date (convertStringToData(form.getValue("dtFimC")));
+		var dataFimServico = new Date (convertStringToData(form.getValue("dtFim")));
+		var dataInicioServico = new Date (convertStringToData(form.getValue("dtInicio")));
+		var dataAtual = new Date();
+
+		
+		
 		//valida se aprovador é diferente do solicitante
 		if (form.getValue("cnpjcpf") == null  || form.getValue("cnpjcpf")  == "" ){
           	 throw "Você precisa selecionar o fornecedor vencedor da cotação.";
@@ -176,15 +222,23 @@ function validateForm(form){
 		}
 		
 		if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){
-			/*
-			//convert data fim do serviço
-			var dataFinal = convertStringToData(form.getValue("dtFim"));
-			var dtVigencia = convertStringToData(form.getValue("dtFimC"));
 			
-			if (dtVigencia < dataFinal){
-				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
+					
+			if ( dataFimServico > dataFimContrato  ){
+				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato. Altera data final do serviço ou não vincule o contrato a esse processo.";
 			}
-			*/
+			
+			
+			if ( dataAtual > dataFimContrato  ){
+				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois não está mais sobre a vigência do contrato.";
+			}
+			
+			
+				
+		}
+		
+		if ( dataAtual > dataInicioServico  ){
+				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
 		}
 	
 		
@@ -511,14 +565,16 @@ function validateForm(form){
 		   
      }
 	
+   //recebe data do Fluig e convert para data normal
+     function convertStringToData(StringToData) {
+         //variavel para armazenar a data limite para aprovação   
+         var data = StringToData.split('/');
+
+         return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+     }
+     
+     
 }
 
 
 
-//recebe data do Fluig e convert para data normal
-function convertStringToData(StringToData) {
-    //variavel para armazenar a data limite para aprovação   
-    var data = StringToData.split('/');
-
-    return new Date(data[1] + "/" + data[0] + "/" + data[2]);
-}

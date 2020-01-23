@@ -122,20 +122,29 @@ function validateForm(form){
     	
     }
     else if (activity == APROVACAO){
-    	 if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
-             throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
-         }
-
-         if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
-             throw "Você precisa informar o motivo para reprovação da solicitação.";
-         }
-   	        
-         if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
-       	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
-         }     
+	    	 if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
+	             throw "Você precisa indicar se a solicitação será aprovada, reprovada ou devolvida para correção.";
+	         }
+	
+	         if (form.getValue("aprovacao") == "reprovado" && form.getValue("justificativaReprovacao")  == "" ) {
+	             throw "Você precisa informar o motivo para reprovação da solicitação.";
+	         }
+	   	        
+	         if (form.getValue("matriculasolicitante") == usuarioLogado  && form.getValue("aprovacao")  == "aprovado" ){
+	        	 throw "Você não pode aprovar uma solicitação onde você é o solicitante.";
+	         }     
          
     }
     else if (activity == COTACAO){
+    	//convert data de inicio do serviço
+		var dataInicioContrato = new Date (convertStringToData(form.getValue("dtInicioC")));
+		var dataFimContrato = new Date (convertStringToData(form.getValue("dtFimC")));
+		
+		var dtSaida = new Date (convertStringToData(form.getValue("dtSaida")));
+		var dtRetorno = new Date (convertStringToData(form.getValue("dtRetorno")));		
+		var dataAtual = new Date();
+		
+		
     		if (nextAtv == 26){ //verificar tipo de PJ
     			  if (form.getValue("cnpjcpf") == null  || form.getValue("cnpjcpf")  == "" ){
  		          	 throw "Você precisa selecionar o fornecedor vencedor da cotação.";
@@ -181,17 +190,17 @@ function validateForm(form){
     				}
     				
     				if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){
-    					/*
-    					//convert data fim do serviço
-    					var dataFinal = convertStringToData(form.getValue("dtFim"));
-    					var dtVigencia = convertStringToData(form.getValue("dtFimC"));
-    					
-    					if (dtVigencia < dataFinal){
-    						//throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato.";
+    					if ( dataAtual > dataFimContrato  ){
+    						throw "A contratação desse serviço não pode ser executada na data informada. Pois o contrato não está mais na vigência.";
     					}
-    					*/
+    					
+    					
     				}
 
+    				
+    				if ( dataAtual > dtSaida  ){
+    					throw "A contratação desse serviço não pode ser executada na data informada. Pois a data de hoje já ultrapassou a data de saída .";
+    				}
     		}
 
     }
