@@ -141,14 +141,6 @@ function validateForm(form){
 				
 				
 			}
-		
- 		
-		
-		
-
-
-		
-		
 	}
 	else if (activity == APROVACAO_DIR){
 		
@@ -185,10 +177,7 @@ function validateForm(form){
 					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
 				}
 			}
-		
 
-	
-	
 	}
 	
 	else if ( activity == REALIZAR_COTACAO && nextAtv == 281 ){
@@ -267,9 +256,7 @@ function validateForm(form){
 		                 } 
 		     		  }
 
-		}
-		
-		
+		}	
 	}
 	else if (activity ==  VALIDAR_RH){
 			if (form.getValue("valido") == "" || form.getValue("valido") == null ){
@@ -334,7 +321,7 @@ function validateForm(form){
 	        else {
 	        	return null;
 	        }	    
-   }
+    }
 	
     
     
@@ -498,8 +485,8 @@ function validateForm(form){
                var atividade = form.getValue("txtatividade___" + indexes[i]);
             
          if (ccusto == "99990") {             
-                   if (atividade == "P952101" || atividade == "P953101" || atividade == "P650101") {
-                       throw "Você não pode usar uma atividade do tipo CAM ou de GN para custear uma compra.";
+                   if (atividade == "P952101" || atividade == "P953101" ) {
+                       throw "Você não pode usar uma atividade do tipo CAM para custear uma compra.";
 
                    }
                }           
