@@ -39,8 +39,11 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
-		    
-		  //  form.setEnabled("cnpjcpf", true);
+		    form.setEnabled("Numerocontrato", true);
+		    form.setEnabled("revisao", true);
+		    form.setEnabled("filial", true);
+		    form.setEnabled("tipoContrato", true);
+		    form.setEnabled("tipoRevisao", true);
 	 }
 	 
 	 else if (activity == ASSINAR   ){
@@ -53,9 +56,11 @@ function enableFields(form){
 		        var key = it.next();
 		        form.setEnabled(key, habilitar);
 		    }
-		    
+		    form.setEnabled("Numerocontrato", true);
 		    form.setEnabled("statusContrato", true);
 		    form.setEnabled("tipoContrato", true);
+		    form.setEnabled("tipoRevisao", true);
+		   
 	 }
 	 
 		

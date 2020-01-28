@@ -16,6 +16,10 @@ function displayFields(form,customHTML){
     form.setVisibleById("codCondPgto", false)
     form.setVisibleById("_codCondPgto", false)
     
+    if (activity == ABERTURA || activity == SOLICITAR){
+    	form.setVisibleById("tipoContrato", false);
+    	form.setVisibleById("tipoRevisao", false);
+    }
     
     if (activity != ASSINAR){
     	 form.setVisibleById("div_status", false);

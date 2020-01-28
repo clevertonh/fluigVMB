@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contrato</processId>
-      <version>12</version>
+      <version>15</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2402</formId>
@@ -454,7 +454,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>12</version>
+        <version>15</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
@@ -466,7 +466,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>12</version>
+        <version>15</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
@@ -478,10 +478,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>12</version>
+        <version>15</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aditivo&quot;)  ==&quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  ==&quot;&quot;</condition>
       <destinationSequenceId>44</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -490,10 +490,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>12</version>
+        <version>15</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aditivo&quot;)  !=&quot;&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  !=&quot;&quot;</condition>
       <destinationSequenceId>49</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -667,6 +667,8 @@
 	var SOLICITAR = 4;&#xd;
 	var ELABORAR =10;&#xd;
 	var ASSINAR = 18;&#xd;
+	var ANEXAR = 44;&#xd;
+	var ADITIVO = 49;&#xd;
 	&#xd;
 	var ativAtual 		 = getValue(&quot;WKNumState&quot;);		&#xd;
 	var codSolicitacao 	 = getValue(&quot;WKNumProces&quot;);&#xd;
@@ -677,18 +679,29 @@
     var usuario = getValue(&apos;WKUser&apos;);&#xd;
 	var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);	&#xd;
 	var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
-	var statusContrato = hAPI.getCardValue(&quot;statusContrato&quot;);	   &#xd;
-    &#xd;
+	var statusContrato = hAPI.getCardValue(&quot;statusContrato&quot;);&#xd;
+	var tipoContrato = hAPI.getCardValue(&quot;tipoContrato&quot;);	   &#xd;
+	var tipoRevisao = hAPI.getCardValue(&quot;tipoRevisao&quot;);&#xd;
+	&#xd;
     if (ativAtual == ASSINAR){&#xd;
     	if (nextAtv == 37){&#xd;
-    		//O CONTRATO FOI ASSINADO&#xd;
-			if (statusContrato ==&quot;assinado&quot;){				&#xd;
+    		//O CONTRATO FOI ASSINADO E UM NOVO CONTRATO&#xd;
+			if (statusContrato ==&quot;assinado&quot; &amp;&amp; (tipoContrato !=&quot;&quot; || tipoRevisao != &quot;&quot;)){				&#xd;
 				setContrato(idDocumento,3); &#xd;
 				&#xd;
+		&#xd;
 			}&#xd;
     		&#xd;
     	}&#xd;
     }&#xd;
+    else if (ativAtual == ANEXAR){&#xd;
+    		//VERIFICA SE EXISTE ANEXO NO CONTRATO&#xd;
+    		if (tipoContrato != &quot;&quot; || tipoRevisao != &quot;&quot;) {&#xd;
+    			getAnexosProtheus(idDocumento);&#xd;
+    		}&#xd;
+    }&#xd;
+    &#xd;
+    &#xd;
     &#xd;
     &#xd;
     function setContrato(id,opcao){&#xd;
@@ -701,9 +714,24 @@
 		             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		         }&#xd;
 		         else {&#xd;
-		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Número: &quot; + resultDataset.getValue(0,&quot;NUMERO&quot;));&#xd;
+		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Número: &quot; + resultDataset.getValue(0,&quot;NUMERO&quot;));		        	 	&#xd;
+		        	 	//GRAVA NUMERO DO CONTRATO NO FORMULARIO&#xd;
+						hAPI.setCardValue(&quot;Numerocontrato&quot;,resultDataset.getValue(0,&quot;NUMERO&quot;));&#xd;
+						&#xd;
+						//FALTA RETORNAR NUMERO DA REVISAO E FILIAL&#xd;
 		         }&#xd;
     &#xd;
+    }&#xd;
+    &#xd;
+    function getAnexosProtheus(id){&#xd;
+		 var constraints = new Array();                                 &#xd;
+		 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));	&#xd;
+	     var resultDataset = DatasetFactory.getDataset(&quot;VM_FATA340_BASE_CONHECIMENTO_PROTHEUS&quot;, null, constraints, null);                                                                    &#xd;
+	    		     &#xd;
+	         if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
+	             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
+	         }	        &#xd;
+&#xd;
     }&#xd;
     &#xd;
     &#xd;

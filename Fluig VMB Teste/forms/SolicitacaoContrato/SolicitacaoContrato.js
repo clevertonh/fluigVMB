@@ -93,6 +93,9 @@ $(document).ready(function() {
 function setSelectedZoomItem(selectedItem) {
   var FORNECEDOR ="cnpjcpf";
   var CONDICAO_PGTO ="condicaoPgto";    
+  var CONTRATO = "Numerocontrato";
+  var TIPO_CONTRATO ="tipoContrato";
+  var TIPO_REVISAO = "tipoRevisao";
 
 
 	  //Recebe o nome do campo zoom
@@ -113,25 +116,43 @@ function setSelectedZoomItem(selectedItem) {
 	  		else if (selectedItem["TIPO"] == "FUNCIONARIO"){
 	   			document.getElementById("fisica").click();  
 	  		}
-	  		
-	  		$("#juridica").prop("disabled", true);
-	  		$("#fisica").prop("disabled", true);  		
+	  		  	 		
 	  		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
 	  		$("#banco").val(selectedItem["BANCO"]);   
 	  		$("#agencia").val(selectedItem["AGENCIA"]);   
 	  		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
 	  		$("#tipoConta").val(selectedItem["TIPO_CONTA"]);    
+	  		
+	  		reloadZoomFilterValues(CONTRATO, "CGC," + selectedItem["CNPJ"]);
+	  		
+	  		window[CONTRATO].disable(false);
 	
 	  }
 	 else if (campoZOOM == CONDICAO_PGTO){
 			$("#codCondPgto").val(selectedItem["CODIGO"]);
 	 }
+	 
+	else if (campoZOOM == CONTRATO){
+	    	$("#revisao").val(selectedItem["REVISAO"]);
+	    	$("#dtInicioC").val(selectedItem["DT_INICIO"]);
+	    	$("#dtFimC").val(selectedItem["DT_FIM"]);
+	    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
+	    	$("#saldoAtual").val(selectedItem["SALDO"]);
+	    	$("#filial").val(selectedItem["FILIAL"]);
+	 }
+	else if (campoZOOM == TIPO_CONTRATO){			
+			reloadZoomFilterValues(CONTRATO, "CGC," + $("#cnpjcpf").val());
+	}
+	else if (campoZOOM == TIPO_REVISAO){			
+			reloadZoomFilterValues(CONTRATO, "CGC," + $("#cnpjcpf").val());
+	}
 	  
 }
 
 function removedZoomItem(removedItem) {
 	var FORNECEDOR ="cnpjcpf";
      var CONDICAO_PGTO ="condicaoPgto";    
+     var CONTRATO = "Numerocontrato";
 
      
     //Recebe o nome do campo zoom
@@ -148,8 +169,28 @@ function removedZoomItem(removedItem) {
 		$("#agencia").val("");   
 		$("#contaFornecedor").val("");   
 		$("#tipoConta").val("");   
+		
+		window[CONTRATO].clear();
+		$("#revisao").val("");
+    	$("#dtInicioC").val("");
+    	$("#dtFimC").val("");
+    	$("#vlcontrato").val("");
+    	$("#saldoAtual").val("");
+    	$("#filial").val("");	
+    	window[CONTRATO].disable(true);
+    	
+    	
     }
  else if (campoZOOM == CONDICAO_PGTO){
 		$("#codCondPgto").val("");
  }
+ else if (campoZOOM == CONTRATO){
+	 	$("#revisao").val("");
+	 	$("#dtInicioC").val("");
+	 	$("#dtFimC").val("");
+	 	$("#vlcontrato").val("");
+	 	$("#saldoAtual").val("");
+	 	$("#filial").val("");
+ }
+ 
 }

@@ -16,6 +16,7 @@ function createDataset(fields, constraints, sortFields) {
 	var filial ='02';
 	var solicitacaoPai;
 	var tipoPlanilha;
+	var tipoRevisao;
 
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO SOLICITAÇÃO NA POSIÇÃO 0 e do tipo MUST
@@ -33,6 +34,11 @@ function createDataset(fields, constraints, sortFields) {
         		}
         		
         		documentId = solicitacao.getValue(0,"documentid");
+        		
+        		tipoRevisao = solicitacao.getValue(0,"tipoRevisao");
+        		
+        		//codigorevisao
+        		//justificativa
         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
@@ -196,6 +202,7 @@ function createDataset(fields, constraints, sortFields) {
 				            	NEGOCIACAO :		'' + solicitacao.getValue(0,"negociacao") +'',
 				            	DATAFIM : 			'' + solicitacao.getValue(0,"dtFim") +'',
 				            	TIPOCONTRATO: 		'' + solicitacao.getValue(0,"tipoContrato") +'',
+				            	TIPOREVISAO: 		'' + tipoRevisao +'',
 				            	TIPOPLANILHA: 		'' + tipoPlanilha +'',				            	
 				            	CONDICAOPGTO: 		'' + solicitacao.getValue(0,"codCondPgto") +'',						            	
 				            	DATAASSINATURA : 	'' + solicitacao.getValue(0,"dataAssinatura") +'',

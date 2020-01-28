@@ -17,20 +17,22 @@ function beforeStateEntry(sequenceId){
 	var contrato = hAPI.getCardValue("Numerocontrato");
 	var statusContrato = hAPI.getCardValue("statusContrato");
 	var tipoContrato = hAPI.getCardValue("tipoContrato");	   
-    
+	var tipoRevisao = hAPI.getCardValue("tipoRevisao");
+	
     if (ativAtual == ASSINAR){
     	if (nextAtv == 37){
     		//O CONTRATO FOI ASSINADO E UM NOVO CONTRATO
-			if (statusContrato =="assinado" && tipoContrato !=""){				
+			if (statusContrato =="assinado" && (tipoContrato !="" || tipoRevisao != "")){				
 				setContrato(idDocumento,3); 
 				
+		
 			}
     		
     	}
     }
     else if (ativAtual == ANEXAR){
     		//VERIFICA SE EXISTE ANEXO NO CONTRATO
-    		if (tipoContrato != "") {
+    		if (tipoContrato != "" || tipoRevisao != "") {
     			getAnexosProtheus(idDocumento);
     		}
     }
@@ -48,7 +50,11 @@ function beforeStateEntry(sequenceId){
 		             throw resultDataset.getValue(0,"RETORNO");
 		         }
 		         else {
-		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Contrato registrado automaticamente. Número: " + resultDataset.getValue(0,"NUMERO"));
+		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Contrato registrado automaticamente. Número: " + resultDataset.getValue(0,"NUMERO"));		        	 	
+		        	 	//GRAVA NUMERO DO CONTRATO NO FORMULARIO
+						hAPI.setCardValue("Numerocontrato",resultDataset.getValue(0,"NUMERO"));
+						
+						//FALTA RETORNAR NUMERO DA REVISAO E FILIAL
 		         }
     
     }

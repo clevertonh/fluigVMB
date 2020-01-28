@@ -62,7 +62,7 @@ function createDataset(fields, constraints, sortFields) {
     if(dados != null){
     	objdata = JSON.parse(dados);
 		for(var i in objdata){
-			dataset.addRow([objdata[i].CCODIGO,objdata[i].CDESCRICAO]);
+			dataset.addRow([objdata[i].CCODIGO,objdata[i].CCODIGO+'-'+objdata[i].CDESCRICAO]);
 		}
 	}
 		

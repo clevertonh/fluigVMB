@@ -62,7 +62,13 @@ function createDataset(fields, constraints, sortFields) {
                 	  {IDENTIFICADOR:  'TAMANHO_CAMISA',DESCRICAO:  'M'},
                 	  {IDENTIFICADOR:  'TAMANHO_CAMISA',DESCRICAO:  'G'},
                 	  {IDENTIFICADOR:  'TAMANHO_CAMISA',DESCRICAO:  'GG'},
-                	  {IDENTIFICADOR:  'TAMANHO_CAMISA',DESCRICAO:  'XGG'}
+                	  {IDENTIFICADOR:  'TAMANHO_CAMISA',DESCRICAO:  'XGG'},
+                	  
+                	  {IDENTIFICADOR:  'TIPO_REVISAO',DESCRICAO:  '1-ADITIVO DE PRAZO'},
+                	  {IDENTIFICADOR:  'TIPO_REVISAO',DESCRICAO:  '3-ADITIVO DE VALOR'},
+                	  {IDENTIFICADOR:  'TIPO_REVISAO',DESCRICAO:  'C-RENOVACAO DE CONTRATO'},
+                	  {IDENTIFICADOR:  'TIPO_REVISAO',DESCRICAO:  '7-ALTERACAO DE CLAUSULAS'}
+                	 
                 	  
                 ];
 	 
