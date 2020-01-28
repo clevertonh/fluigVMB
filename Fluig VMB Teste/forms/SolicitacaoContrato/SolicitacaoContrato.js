@@ -139,12 +139,16 @@ function setSelectedZoomItem(selectedItem) {
 	    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
 	    	$("#saldoAtual").val(selectedItem["SALDO"]);
 	    	$("#filial").val(selectedItem["FILIAL"]);
+	    	
+	    	
 	 }
 	else if (campoZOOM == TIPO_CONTRATO){			
 			reloadZoomFilterValues(CONTRATO, "CGC," + $("#cnpjcpf").val());
+			window[TIPO_REVISAO].disable(true);
 	}
 	else if (campoZOOM == TIPO_REVISAO){			
 			reloadZoomFilterValues(CONTRATO, "CGC," + $("#cnpjcpf").val());
+			window[CONTRATO].disable(true);
 	}
 	  
 }
@@ -153,44 +157,53 @@ function removedZoomItem(removedItem) {
 	var FORNECEDOR ="cnpjcpf";
      var CONDICAO_PGTO ="condicaoPgto";    
      var CONTRATO = "Numerocontrato";
-
+     var TIPO_CONTRATO ="tipoContrato";
+     var TIPO_REVISAO = "tipoRevisao";
      
     //Recebe o nome do campo zoom
     var campoZOOM = removedItem.inputId;
 
- if (campoZOOM == FORNECEDOR){
-    	$("#fisica").attr('checked', false);
-    	$("#juridica").attr('checked', false);
-    	$("#razaosocial").val("");  
-		$("#nomefantasia").val("");  		
-		$("#codigoFornecedor").val("");   	
-		$("#meioPagamento").val("");
-		$("#banco").val("");   
-		$("#agencia").val("");   
-		$("#contaFornecedor").val("");   
-		$("#tipoConta").val("");   
-		
-		window[CONTRATO].clear();
-		$("#revisao").val("");
-    	$("#dtInicioC").val("");
-    	$("#dtFimC").val("");
-    	$("#vlcontrato").val("");
-    	$("#saldoAtual").val("");
-    	$("#filial").val("");	
-    	window[CONTRATO].disable(true);
+    if (campoZOOM == FORNECEDOR){
+	    	$("#fisica").attr('checked', false);
+	    	$("#juridica").attr('checked', false);
+	    	$("#razaosocial").val("");  
+			$("#nomefantasia").val("");  		
+			$("#codigoFornecedor").val("");   	
+			$("#meioPagamento").val("");
+			$("#banco").val("");   
+			$("#agencia").val("");   
+			$("#contaFornecedor").val("");   
+			$("#tipoConta").val("");   
+			
+			window[CONTRATO].clear();
+			$("#revisao").val("");
+	    	$("#dtInicioC").val("");
+	    	$("#dtFimC").val("");
+	    	$("#vlcontrato").val("");
+	    	$("#saldoAtual").val("");
+	    	$("#filial").val("");	
+	    	window[CONTRATO].disable(true);
     	
     	
     }
- else if (campoZOOM == CONDICAO_PGTO){
-		$("#codCondPgto").val("");
- }
- else if (campoZOOM == CONTRATO){
-	 	$("#revisao").val("");
-	 	$("#dtInicioC").val("");
-	 	$("#dtFimC").val("");
-	 	$("#vlcontrato").val("");
-	 	$("#saldoAtual").val("");
-	 	$("#filial").val("");
- }
+	 else if (campoZOOM == CONDICAO_PGTO){
+			$("#codCondPgto").val("");
+	 }
+	 else if (campoZOOM == CONTRATO){
+		 	$("#revisao").val("");
+		 	$("#dtInicioC").val("");
+		 	$("#dtFimC").val("");
+		 	$("#vlcontrato").val("");
+		 	$("#saldoAtual").val("");
+		 	$("#filial").val("");
+	 }
+	 else if (campoZOOM == TIPO_CONTRATO){
+		 	window[CONTRATO].disable(false);
+		 	window[TIPO_CONTRATO].disable(false);
+	 }
+	 else if (campoZOOM == TIPO_REVISAO){
+		 	window[CONTRATO].disable(false);
+		 	window[TIPO_CONTRATO].disable(false);
+	 }
  
 }

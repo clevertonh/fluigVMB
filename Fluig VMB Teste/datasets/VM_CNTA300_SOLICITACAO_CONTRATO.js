@@ -16,8 +16,7 @@ function createDataset(fields, constraints, sortFields) {
 	var filial ='02';
 	var solicitacaoPai;
 	var tipoPlanilha;
-	var tipoRevisao;
-
+	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO SOLICITAÇÃO NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){
@@ -33,9 +32,8 @@ function createDataset(fields, constraints, sortFields) {
         			tipoPlanilha = "025";
         		}
         		
-        		documentId = solicitacao.getValue(0,"documentid");
+        		documentId = solicitacao.getValue(0,"documentid");        		
         		
-        		tipoRevisao = solicitacao.getValue(0,"tipoRevisao");
         		
         		//codigorevisao
         		//justificativa
@@ -155,7 +153,7 @@ function createDataset(fields, constraints, sortFields) {
         			var c4 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST); 
                 	var itensFinanceiro = DatasetFactory.getDataset("VM_SolicitacoesTransferDadosPagamento", null, new Array(c3,c4), null);    				  
 
-       			 	//criação do item da solicitação de compra
+       			 	 //criação do item da solicitação de compra
 					 aItemServico.push(addItemCompra(
 							 solicitacaoPai.getValue(0,"codigoProduto"),
 							 solicitacaoPai.getValue(0,"solicitacao"),
@@ -202,7 +200,8 @@ function createDataset(fields, constraints, sortFields) {
 				            	NEGOCIACAO :		'' + solicitacao.getValue(0,"negociacao") +'',
 				            	DATAFIM : 			'' + solicitacao.getValue(0,"dtFim") +'',
 				            	TIPOCONTRATO: 		'' + solicitacao.getValue(0,"tipoContrato") +'',
-				            	TIPOREVISAO: 		'' + tipoRevisao +'',
+				            	NUMEROCONTRATO:		'' + solicitacao.getValue(0,"Numerocontrato") +'',				            	
+				            	TIPOREVISAO: 		'' + solicitacao.getValue(0,"tipoRevisao") +'',
 				            	TIPOPLANILHA: 		'' + tipoPlanilha +'',				            	
 				            	CONDICAOPGTO: 		'' + solicitacao.getValue(0,"codCondPgto") +'',						            	
 				            	DATAASSINATURA : 	'' + solicitacao.getValue(0,"dataAssinatura") +'',
@@ -211,7 +210,7 @@ function createDataset(fields, constraints, sortFields) {
 				            	SOLICITANTE : 		'' + solicitacao.getValue(0,"solicitante") +'',
 				            	EMAILSOLICITANTE :  '' + solicitacao.getValue(0,"emailsolicitante") +'',     					                
 				            	ITENS : 				aItemServico ,
-				            	RATEIODIGITADO : 	aRateio ,
+				            	RATEIODIGITADO : 		aRateio ,
 				            	DOCUMENTID :			''+ documentIdPai +''
 				            },
 				          options : {
