@@ -19,13 +19,15 @@ function beforeStateEntry(sequenceId){
 	var tipoContrato = hAPI.getCardValue("tipoContrato");	   
 	var tipoRevisao = hAPI.getCardValue("tipoRevisao");
 	
+	
+	
     if (ativAtual == ASSINAR){
     	if (nextAtv == 37){
     		//O CONTRATO FOI ASSINADO E UM NOVO CONTRATO
 			if (statusContrato =="assinado" && (tipoContrato !="" || tipoRevisao != "")){				
 				setContrato(idDocumento,3); 
 				
-		
+				setEnviaAnexoContrato();
 			}
     		
     	}
@@ -57,6 +59,26 @@ function beforeStateEntry(sequenceId){
 						//FALTA RETORNAR NUMERO DA REVISAO E FILIAL
 		         }
     
+    }
+    //https://tdn.totvs.com/display/public/fluig/Guia+de+propriedades+dos+objetos#GuiadePropriedadesdosObjetos-DocumentDto
+    //https://tdn.totvs.com/display/public/fluig/hAPI
+    //https://tdn.totvs.com/display/public/fluig/Desenvolvimento+de+Eventos#DesenvolvimentodeEventos-DocumentDto
+    //https://tdn.totvs.com/display/public/fluig/docAPI
+    
+    function setEnviaAnexoContrato(){
+		    	 if (ativAtual == ASSINAR) {
+		    	        var attachments = hAPI.listAttachments();
+		    	        for ( var i = 0; i < attachments.size(); i++) {
+			    	            var docDto = attachments.get(i);
+			    	  
+			    	            if (docDto.getDocumentType() == "7") {    	                  
+			    	                docAPI.copyDocumentToUploadArea(docDto.getDocumentId(), docDto.getVersion());
+			    	          
+			    	                attachments.fileName();	
+			    	                attachments.filecontent();
+			    	            }
+		    	        }
+		    	    }
     }
     
     function getAnexosProtheus(id){
