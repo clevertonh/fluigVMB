@@ -61,8 +61,8 @@ function validateForm(form){
 	}
 	else if (activity == ASSINAR){
 			if (nextAtv == 37){		
-				if (form.getValue("tipoContrato") == null || form.getValue("tipoContrato") == "" ) {
-			           throw "Você precisa escolher um tipo de contrato.";
+				if (form.getValue("tipoRevisao") == "" && form.getValue("tipoContrato") == "" ) {
+			           throw "Você precisa escolher um tipo de contrato ou tipo de revisão.";
 			    }
 				
 				

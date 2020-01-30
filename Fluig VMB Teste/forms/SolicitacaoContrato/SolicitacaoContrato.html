@@ -221,40 +221,11 @@
                   <div class="panel panel-success">
                      <div class="panel-heading ">
                         <h5 class="panel-title">
-                           <b>Demais informações do contrato</b>
+                           <b>Período de vigência</b>
                         </h5>
                      </div>
                      <div class="panel-body">
-                     		<div class="row">
-								                     		<div class="form-group col-md-5" id="div_contrato">
-			                                                                <label>Número do Contrato</label><br>
-			                                                                <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
-																			'displayKey':'CONTRATO',
-																			'datasetId':'ds_get_Contratos',
-																			'maximumSelectionLength':'1',
-																			'placeholder':'Selecione o contrato',
-																			'fields':[
-																			{'field':'CONTRATO', 'label':'CONTRATO', 'standard':'true'},
-																			{'field':'REVISAO', 'label':'REVISAO', 'visible' : 'false'},
-																			{'field':'VALOR_TOTAL', 'label':'VALOR_TOTAL', 'visible' : 'false'},
-																			{'field':'SALDO', 'label':'SALDO', 'visible' : 'false'},
-																			{'field':'DT_INICIO', 'label':'DT_INICIO', 'visible' : 'false'},
-																			{'field':'DT_FIM', 'label':'DT_FIM', 'visible' : 'false'},
-																			{'field':'CODIGO_FORNECE', 'label':'CODIGO_FORNECE', 'visible' : 'false'},
-																			{'field':'CGC', 'label':'CGC' , 'visible' : 'false'},
-																			{'field':'FILIAL', 'label':'FILIAL'},
-																			{'field':'FORNECEDOR', 'label':'FORNECEDOR'}
-																			]}" />
-			                                                            </div>
-								                     		<div class="form-group col-md-1">
-								                     			<label>Revisão</label>
-								                     			<input type="text" name="revisao" id="revisao" class="form-control" readonly>
-								                     		</div>
-								                     		<div class="form-group col-md-1">
-								                     			<label>Filial</label>
-								                     			<input type="text" name="filial" id="filial" class="form-control" readonly>
-								                     		</div>
-								                     	</div>
+                
                         <div class="row">
                            <div class="form-group col-md-3">
                               <label for="dtInicio">Data de Início</label>
@@ -275,11 +246,23 @@
                               </div>
                            </div>                        							                          
                         </div>
-                        <div class="row">                       	
+                       
+                     </div>
+                  </div>
+               </div>
+               <div class="panel-body">
+                  <div class="panel panel-success">
+                     <div class="panel-heading ">
+                        <h5 class="panel-title">
+                           <b>Dados para cadastro de contrato ou aditivo de contrato</b>
+                        </h5>
+                     </div>
+                     <div class="panel-body">
+                    	 <div class="row">                       	
                         	<div class="form-group col-md-4">
 	                              <label>Tipo de Contrato</label>
 	                              <input type="zoom" name="tipoContrato" id="tipoContrato" data-zoom="{
-	                                 'displayKey':'CODIGO',
+	                                 'displayKey':'DESCRICAO',
 	                                 'datasetId':'VM_TipoContrato',
 	                                 'maximumSelectionLength':'1',
 	                                 'placeholder':'Selecione o tipo de contrato',
@@ -304,6 +287,38 @@
 	                                 }" />
 	                           </div>
                         </div>
+                     		<div class="row">
+								                     		<div class="form-group col-md-4" id="div_contrato">
+			                                                                <label>Número do Contrato</label><br>
+			                                                                <input type="zoom" name="Numerocontrato" id="Numerocontrato" data-zoom="{
+																			'displayKey':'CONTRATO',
+																			'datasetId':'ds_get_Contratos',
+																			'maximumSelectionLength':'1',
+																			'placeholder':'Selecione o contrato',
+																			'fields':[
+																			{'field':'CONTRATO', 'label':'CONTRATO', 'standard':'true'},
+																			{'field':'REVISAO', 'label':'REVISAO', 'visible' : 'false'},
+																			{'field':'VALOR_TOTAL', 'label':'VALOR_TOTAL', 'visible' : 'false'},
+																			{'field':'SALDO', 'label':'SALDO', 'visible' : 'false'},
+																			{'field':'DT_INICIO', 'label':'DT_INICIO', 'visible' : 'false'},
+																			{'field':'DT_FIM', 'label':'DT_FIM', 'visible' : 'false'},
+																			{'field':'CODIGO_FORNECE', 'label':'CODIGO_FORNECE', 'visible' : 'false'},
+																			{'field':'CGC', 'label':'CGC' , 'visible' : 'false'},
+																			{'field':'FILIAL', 'label':'FILIAL'},
+																			{'field':'FORNECEDOR', 'label':'FORNECEDOR'}
+																			]}" />
+			                                                            </div>
+								                     		<div class="form-group col-md-2">
+								                     			<label>Revisão</label>
+								                     			<input type="text" name="revisao" id="revisao" class="form-control" readonly>
+								                     		</div>
+								                     		<div class="form-group col-md-1">
+								                     			<label>Filial</label>
+								                     			<input type="text" name="filial" id="filial" class="form-control" readonly>
+								                     		</div>
+								                     	</div>
+                        
+                        
                      </div>
                   </div>
                </div>

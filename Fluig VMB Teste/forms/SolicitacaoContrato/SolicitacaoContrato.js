@@ -139,16 +139,20 @@ function setSelectedZoomItem(selectedItem) {
 	    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
 	    	$("#saldoAtual").val(selectedItem["SALDO"]);
 	    	$("#filial").val(selectedItem["FILIAL"]);
+	    	window[TIPO_CONTRATO].disable(true);
+	    	window[TIPO_REVISAO].disable(false);
 	    	
 	    	
 	 }
 	else if (campoZOOM == TIPO_CONTRATO){			
-			reloadZoomFilterValues(CONTRATO, "CGC," + $("#cnpjcpf").val());
 			window[TIPO_REVISAO].disable(true);
+			window[CONTRATO].disable(true);
+			
 	}
 	else if (campoZOOM == TIPO_REVISAO){			
+			window[CONTRATO].disable(false);
+			window[TIPO_CONTRATO].disable(true);
 			reloadZoomFilterValues(CONTRATO, "CGC," + $("#cnpjcpf").val());
-			window[CONTRATO].disable(true);
 	}
 	  
 }
@@ -183,27 +187,34 @@ function removedZoomItem(removedItem) {
 	    	$("#saldoAtual").val("");
 	    	$("#filial").val("");	
 	    	window[CONTRATO].disable(true);
-    	
+	    	window[TIPO_REVISAO].clear();
+	    	window[TIPO_CONTRATO].clear();
+	    	window[TIPO_REVISAO].disable(true);
+		 	window[TIPO_CONTRATO].disable(true);
     	
     }
 	 else if (campoZOOM == CONDICAO_PGTO){
-			$("#codCondPgto").val("");
+				$("#codCondPgto").val("");
 	 }
 	 else if (campoZOOM == CONTRATO){
-		 	$("#revisao").val("");
-		 	$("#dtInicioC").val("");
-		 	$("#dtFimC").val("");
-		 	$("#vlcontrato").val("");
-		 	$("#saldoAtual").val("");
-		 	$("#filial").val("");
+			 	$("#revisao").val("");
+			 	$("#dtInicioC").val("");
+			 	$("#dtFimC").val("");
+			 	$("#vlcontrato").val("");
+			 	$("#saldoAtual").val("");
+			 	$("#filial").val("");
+			 	window[TIPO_REVISAO].clear();
+			 	window[TIPO_REVISAO].disable(true);
+			 	window[TIPO_CONTRATO].disable(false);
+			 	
 	 }
 	 else if (campoZOOM == TIPO_CONTRATO){
-		 	window[CONTRATO].disable(false);
-		 	window[TIPO_CONTRATO].disable(false);
+			 	window[TIPO_REVISAO].disable(false);
+			 	window[CONTRATO].disable(false);
+			 	
 	 }
 	 else if (campoZOOM == TIPO_REVISAO){
-		 	window[CONTRATO].disable(false);
-		 	window[TIPO_CONTRATO].disable(false);
+			 	window[TIPO_CONTRATO].disable(false);
 	 }
  
 }

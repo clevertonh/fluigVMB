@@ -3,6 +3,8 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("RETORNO");
 	dataset.addColumn("NUMERO");
+	dataset.addColumn("REVISAO");
+	
 	
 	var aItemServico = new Array();
 	var aRateio = new Array();;
@@ -11,11 +13,12 @@ function createDataset(fields, constraints, sortFields) {
 	var valor;
 	var produto;
 	var emailcomprador ="";
-	var acaocontrato = "1";
+	var acaocontrato;
 	var acao;
 	var filial ='02';
 	var solicitacaoPai;
 	var tipoPlanilha;
+	
 	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO SOLICITAÇÃO NA POSIÇÃO 0 e do tipo MUST
@@ -32,10 +35,21 @@ function createDataset(fields, constraints, sortFields) {
         			tipoPlanilha = "025";
         		}
         		
-        		documentId = solicitacao.getValue(0,"documentid");        		
+        		documentId = solicitacao.getValue(0,"documentid");    
+        		
+        		if (solicitacao.getValue(0,"tipoContrato") != "" && solicitacao.getValue(0,"tipoContrato") != null){
+        		
+            		//inclusao de contrato
+            		acaocontrato = 1;
+            		
+        		}
+        		else  {
+        			//inclusão de aditivo
+        			acaocontrato = 2;
+        		}
+        	
         		
         		
-        		//codigorevisao
         		//justificativa
         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
@@ -200,8 +214,10 @@ function createDataset(fields, constraints, sortFields) {
 				            	NEGOCIACAO :		'' + solicitacao.getValue(0,"negociacao") +'',
 				            	DATAFIM : 			'' + solicitacao.getValue(0,"dtFim") +'',
 				            	TIPOCONTRATO: 		'' + solicitacao.getValue(0,"tipoContrato") +'',
-				            	NUMEROCONTRATO:		'' + solicitacao.getValue(0,"Numerocontrato") +'',				            	
+				            	NUMEROCONTRATO:		'' + solicitacao.getValue(0,"Numerocontrato") +'',
+				            	REVISAO:			'' + solicitacao.getValue(0,"revisao") +'',	
 				            	TIPOREVISAO: 		'' + solicitacao.getValue(0,"tipoRevisao") +'',
+				            	JUSTIFICATIVA: 		'' + "ALTERAÇÃO DE CONTRATO" +'',
 				            	TIPOPLANILHA: 		'' + tipoPlanilha +'',				            	
 				            	CONDICAOPGTO: 		'' + solicitacao.getValue(0,"codCondPgto") +'',						            	
 				            	DATAASSINATURA : 	'' + solicitacao.getValue(0,"dataAssinatura") +'',
@@ -235,7 +251,11 @@ function createDataset(fields, constraints, sortFields) {
 				        	dataset.addRow(new Array(obj.MSG));
 				        }
 				        else if (JSON.parse(vo.getResult()).CODIGO == "100"){	   
-				            dataset.addRow(new Array("SUCESSO",JSON.parse(vo.getResult()).NUMERO));					           
+				            dataset.addRow(new Array(
+				            		"SUCESSO",
+				            		JSON.parse(vo.getResult()).NUMERO,
+				            		JSON.parse(vo.getResult()).REVISAO
+				            		));					           
 				        	// dataset.addRow(new Array("SUCESSO"));
 				        }
 				        

@@ -208,7 +208,7 @@ function enableFields(form){
 			    }
 
 	}
-	else if (  activity == VERIFICAR_ASSINATRA	||  activity == FINALIZAR){
+	else if (  activity == VERIFICAR_ASSINATRA	|| activity == VERIFICAR_APROVACAO  ||  activity == FINALIZAR){
 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();

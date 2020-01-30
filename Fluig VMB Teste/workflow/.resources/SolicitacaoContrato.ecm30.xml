@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contrato</processId>
-      <version>15</version>
+      <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2402</formId>
@@ -454,7 +454,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
@@ -466,7 +466,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
@@ -478,7 +478,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  ==&quot;&quot;</condition>
@@ -490,7 +490,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>17</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  !=&quot;&quot;</condition>
@@ -677,19 +677,22 @@
 	var idFormulario = getValue(&quot;WKFormId&quot;)&#xd;
 	var empresa = getValue(&quot;WKCompany&quot;);&#xd;
     var usuario = getValue(&apos;WKUser&apos;);&#xd;
+    &#xd;
 	var definicaoValor = hAPI.getCardValue(&quot;definicaoValor&quot;);	&#xd;
 	var contrato = hAPI.getCardValue(&quot;Numerocontrato&quot;);&#xd;
 	var statusContrato = hAPI.getCardValue(&quot;statusContrato&quot;);&#xd;
 	var tipoContrato = hAPI.getCardValue(&quot;tipoContrato&quot;);	   &#xd;
 	var tipoRevisao = hAPI.getCardValue(&quot;tipoRevisao&quot;);&#xd;
+	var filial = hAPI.getCardValue(&quot;filial&quot;);&#xd;
+	&#xd;
 	&#xd;
     if (ativAtual == ASSINAR){&#xd;
     	if (nextAtv == 37){&#xd;
-    		//O CONTRATO FOI ASSINADO E UM NOVO CONTRATO&#xd;
+    		//O CONTRATO FOI ASSINADO E É UM NOVO CONTRATO&#xd;
 			if (statusContrato ==&quot;assinado&quot; &amp;&amp; (tipoContrato !=&quot;&quot; || tipoRevisao != &quot;&quot;)){				&#xd;
 				setContrato(idDocumento,3); &#xd;
 				&#xd;
-		&#xd;
+				//setEnviaAnexoContrato();&#xd;
 			}&#xd;
     		&#xd;
     	}&#xd;
@@ -697,7 +700,7 @@
     else if (ativAtual == ANEXAR){&#xd;
     		//VERIFICA SE EXISTE ANEXO NO CONTRATO&#xd;
     		if (tipoContrato != &quot;&quot; || tipoRevisao != &quot;&quot;) {&#xd;
-    			getAnexosProtheus(idDocumento);&#xd;
+    			//getAnexosProtheus(idDocumento);&#xd;
     		}&#xd;
     }&#xd;
     &#xd;
@@ -714,13 +717,34 @@
 		             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
 		         }&#xd;
 		         else {&#xd;
-		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Número: &quot; + resultDataset.getValue(0,&quot;NUMERO&quot;));		        	 	&#xd;
+		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, &quot;Contrato registrado automaticamente. Filial+Número+Revisão: &quot; + filial+&apos;-&apos;+resultDataset.getValue(0,&quot;NUMERO&quot;));		        	 	&#xd;
 		        	 	//GRAVA NUMERO DO CONTRATO NO FORMULARIO&#xd;
 						hAPI.setCardValue(&quot;Numerocontrato&quot;,resultDataset.getValue(0,&quot;NUMERO&quot;));&#xd;
+						hAPI.setCardValue(&quot;filial&quot;,filial);&#xd;
+						hAPI.setCardValue(&quot;revisao&quot;,resultDataset.getValue(0,&quot;REVISAO&quot;));&#xd;
 						&#xd;
-						//FALTA RETORNAR NUMERO DA REVISAO E FILIAL&#xd;
 		         }&#xd;
     &#xd;
+    }&#xd;
+    //https://tdn.totvs.com/display/public/fluig/Guia+de+propriedades+dos+objetos#GuiadePropriedadesdosObjetos-DocumentDto&#xd;
+    //https://tdn.totvs.com/display/public/fluig/hAPI&#xd;
+    //https://tdn.totvs.com/display/public/fluig/Desenvolvimento+de+Eventos#DesenvolvimentodeEventos-DocumentDto&#xd;
+    //https://tdn.totvs.com/display/public/fluig/docAPI&#xd;
+    &#xd;
+    function setEnviaAnexoContrato(){&#xd;
+		    	 if (ativAtual == ASSINAR) {&#xd;
+		    	        var attachments = hAPI.listAttachments();&#xd;
+		    	        for ( var i = 0; i &lt; attachments.size(); i++) {&#xd;
+			    	            var docDto = attachments.get(i);&#xd;
+			    	  &#xd;
+			    	            if (docDto.getDocumentType() == &quot;7&quot;) {    	                  &#xd;
+			    	                docAPI.copyDocumentToUploadArea(docDto.getDocumentId(), docDto.getVersion());&#xd;
+			    	          &#xd;
+			    	                attachments.fileName();	&#xd;
+			    	                attachments.filecontent();&#xd;
+			    	            }&#xd;
+		    	        }&#xd;
+		    	    }&#xd;
     }&#xd;
     &#xd;
     function getAnexosProtheus(id){&#xd;
