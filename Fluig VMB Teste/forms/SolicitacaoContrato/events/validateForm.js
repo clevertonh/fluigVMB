@@ -29,6 +29,7 @@ function validateForm(form){
             throw "Você precisa informar o campo de definição de valor.";
         }
 	   
+	   
 	   if (form.getValue("definicaoValor") == "fixo"){
 		
 		   if (form.getValue("CotacaovalorMensal") == null || form.getValue("CotacaovalorMensal") == "" || parseFloat(form.getValue("CotacaovalorMensal")) == 0) {
@@ -43,6 +44,7 @@ function validateForm(form){
 	   if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
 		   throw "O valor total ou limite total não pode ser menor que o valor mensal.";
 	   }
+	  
 	   
 		if (form.getValue("condicaoPgto") == null || form.getValue("condicaoPgto") == "" ) {
 			 throw "Você precisa informar a condição de pagamento.";

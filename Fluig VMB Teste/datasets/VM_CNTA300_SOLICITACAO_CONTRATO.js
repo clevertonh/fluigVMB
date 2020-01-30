@@ -18,7 +18,7 @@ function createDataset(fields, constraints, sortFields) {
 	var filial ='02';
 	var solicitacaoPai;
 	var tipoPlanilha;
-	
+	var documentIdPai;
 	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO SOLICITAÇÃO NA POSIÇÃO 0 e do tipo MUST
@@ -59,7 +59,7 @@ function createDataset(fields, constraints, sortFields) {
         		//IDENTIFICAR PROCESSO
         		var retornaProcessoPAI = retornaSolicitacaoPai(codSolicitacaoPai,solicitacao.getValue(0,"companyid"));
         		var nomeProcesso = retornaProcessoPAI.getValue(0,"processId");
-        		var documentIdPai = retornaProcessoPAI.getValue(0,"cardDocumentId");
+        		documentIdPai = retornaProcessoPAI.getValue(0,"cardDocumentId");
         		
         		if (nomeProcesso == "SolicitacaoContratacaoServico"){
         			var constraint2  = new Array(); 
@@ -74,12 +74,17 @@ function createDataset(fields, constraints, sortFields) {
 						  var c4 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST); 
  						  var datasetProdutos = DatasetFactory.getDataset("VM_SolicitacaoContratacaoServicoProdutos", null, new Array(c3,c4), null);
  						  
+ 						  
+ 						  //addItemCompra(produto,codigo,quantidade,dtnecessidade,id_form, nValor)
+ 						  
 						 if (datasetProdutos.rowsCount > 0){
 							  for (var a=0; a<datasetProdutos.rowsCount;a++){
-	   							 aItemServico.push(addItemCompra(
+	   							 aItemServico.push(addItemCompra(	   									   								
 	   									 datasetProdutos.getValue(a,"COD_PRODUTO"),
 	   									 datasetProdutos.getValue(a,"SOLICITACAO"),
-	   									 datasetProdutos.getValue(a,"QUANTIDADE"),								
+	   									 datasetProdutos.getValue(a,"QUANTIDADE"),
+	   									 null,
+	   									 datasetProdutos.getValue(a,"metadata#id"),	
 	   									 datasetProdutos.getValue(a,"VALOR_EMPENHADO")  
 	   									 ));       						        							
 	    						 }
@@ -217,7 +222,7 @@ function createDataset(fields, constraints, sortFields) {
 				            	NUMEROCONTRATO:		'' + solicitacao.getValue(0,"Numerocontrato") +'',
 				            	REVISAO:			'' + solicitacao.getValue(0,"revisao") +'',	
 				            	TIPOREVISAO: 		'' + solicitacao.getValue(0,"tipoRevisao") +'',
-				            	JUSTIFICATIVA: 		'' + "ALTERAÇÃO DE CONTRATO" +'',
+				            	JUSTIFICATIVA: 		'' + "ALTERACAO DE CONTRATO" +'',
 				            	TIPOPLANILHA: 		'' + tipoPlanilha +'',				            	
 				            	CONDICAOPGTO: 		'' + solicitacao.getValue(0,"codCondPgto") +'',						            	
 				            	DATAASSINATURA : 	'' + solicitacao.getValue(0,"dataAssinatura") +'',

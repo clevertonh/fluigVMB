@@ -27,6 +27,11 @@ function validateForm(form){
     var aFonte	  = new Array();
     var aArea	  = new Array();
     
+    var dataAtual = new Date();	
+	var dataAtualString = convertDataToString(dataAtual);	
+	var dataAtualConvertida = new Date (convertStringToData(dataAtualString));
+	
+	
     //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
     var usuariosubstituto = getValue('WKReplacement');
@@ -129,9 +134,8 @@ function validateForm(form){
 				
 				//convert data de inicio do serviço
 				var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
-				var dataAtual = new Date();
 						
-				if ( dataAtual > dataInicio  ){
+				if ( dataAtualConvertida > dataInicio  ){
 					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
 				}
 				
@@ -153,9 +157,8 @@ function validateForm(form){
 		        
 		    	//convert data de inicio do serviço
 				var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
-				var dataAtual = new Date();
 						
-				if ( dataAtual > dataInicio  ){
+				if ( dataAtualConvertida > dataInicio  ){
 					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
 				}
 			}
@@ -171,9 +174,8 @@ function validateForm(form){
 			
 		    	//convert data de inicio do serviço
 				var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
-				var dataAtual = new Date();
 						
-				if ( dataAtual > dataInicio  ){
+				if ( dataAtualConvertida > dataInicio  ){
 					throw "A contratação desse serviço não pode mais ser aprovada para iniciar na data informada. Por favor, altere a data de inicio do serviço.";
 				}
 			}
@@ -184,8 +186,7 @@ function validateForm(form){
 		var dataFimContrato = new Date (convertStringToData(form.getValue("dtFimC")));
 		var dataFimServico = new Date (convertStringToData(form.getValue("dtFim")));
 		var dataInicioServico = new Date (convertStringToData(form.getValue("dtInicio")));
-		var dataAtual = new Date();
-
+		
 		
 		
 		//valida se aprovador é diferente do solicitante
@@ -210,15 +211,13 @@ function validateForm(form){
 			throw "O contrato não possui saldo suficiente para contratar essa prestação de serviço.";
 		}
 		
-		if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){
-			
-					
+		if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){								
 			if ( dataFimServico > dataFimContrato  ){
 				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois a data final informada supera a vigência do contrato. Altera data final do serviço ou não vincule o contrato a esse processo.";
 			}
 			
 			
-			if ( dataAtual > dataFimContrato  ){
+			if ( dataAtualConvertida > dataFimContrato  ){
 				throw "A contratação desse serviço não pode ser vinculada a esse contrato pois não está mais sobre a vigência do contrato.";
 			}
 			
@@ -226,7 +225,7 @@ function validateForm(form){
 				
 		}
 		
-		if ( dataAtual > dataInicioServico  ){
+		if ( dataAtualConvertida > dataInicioServico  ){
 				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
 		}
 	
@@ -285,6 +284,36 @@ function validateForm(form){
 	        }	 
   }
     
+    
+  //recebe data JS e convert para data FLuig
+    function convertDataToString(dataToString) {
+        var dia;
+
+        //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+        var mes = dataToString.getMonth() + 1;
+
+        if (dataToString.getDate().toString().length == 1) {
+            dia = dataToString.getDate();
+            dia = "0" + dia.toString();
+
+        } else {
+            dia = dataToString.getDate();
+
+        }
+
+        //converte mes
+        if (mes.toString().length == 1) {
+            mes = "0" + mes.toString();
+
+        }
+        //else {mes = dataToString.getMonth() + 1;}
+
+
+        //novo formato de data: para salvar em campos data do Fluig
+        return dia + "/" + mes + "/" + dataToString.getFullYear();
+
+
+    }
     
     function retornaCPFAprovador(emailGestor){     
         var constraints = new Array();

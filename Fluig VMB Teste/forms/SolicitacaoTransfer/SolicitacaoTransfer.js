@@ -397,7 +397,7 @@ function removedZoomItem(removedItem) {
 
 
     } else if (linhaPagamento[0] == PROJETO) {
-    	console.log("---REMOVEU AQUI 2----");
+    //	console.log("---REMOVEU AQUI 2----");
         window[ATIVIDADE + "___" + linhaPagamento[1]].clear();
         window[FONTE + "___" + linhaPagamento[1]].clear();
         window[AREAESTRATEGICA + "___" + linhaPagamento[1]].clear();
@@ -618,7 +618,7 @@ function convertDataToString(dataToString) {
     //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
     var mes = dataToString.getMonth() + 1;
 
-    console.log("MES: " + mes);
+    //console.log("MES: " + mes);
 
     if (dataToString.getDate().toString().length == 1) {
         dia = dataToString.getDate();
@@ -629,7 +629,7 @@ function convertDataToString(dataToString) {
 
     }
 
-    console.log("TAMANHO MES: " + mes.toString().length);
+  // console.log("TAMANHO MES: " + mes.toString().length);
     //converte mes
     if (mes.toString().length == 1) {
         mes = "0" + mes.toString();

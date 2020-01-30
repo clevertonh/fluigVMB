@@ -53,7 +53,7 @@ function beforeStateEntry(sequenceId){
 		             throw resultDataset.getValue(0,"RETORNO");
 		         }
 		         else {
-		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Contrato registrado automaticamente. Filial+Número+Revisão: " + filial+'-'+resultDataset.getValue(0,"NUMERO"));		        	 	
+		        	 	hAPI.setTaskComments(usuario, codSolicitacao, 0, "Contrato registrado automaticamente. Filial+Número+Revisão: " + filial+'-'+resultDataset.getValue(0,"NUMERO")+'-'+resultDataset.getValue(0,"REVISAO"));		        	 	
 		        	 	//GRAVA NUMERO DO CONTRATO NO FORMULARIO
 						hAPI.setCardValue("Numerocontrato",resultDataset.getValue(0,"NUMERO"));
 						hAPI.setCardValue("filial",filial);
