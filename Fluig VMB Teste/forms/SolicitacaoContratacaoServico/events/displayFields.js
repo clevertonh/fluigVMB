@@ -10,7 +10,7 @@ function displayFields(form,customHTML){
 	var VERIFICAR_APROVACAO = 151;
 	var FINALIZAR = 215;
 	var VALIDAR_RH = 161;
-	var VERIFICAR_ASSINATRA = 270;
+	var VERIFICAR_ASSINATURA = 270;
 	var APROVACAO_DIR = 292;
 	var APROVACAO_DN = 301;
 

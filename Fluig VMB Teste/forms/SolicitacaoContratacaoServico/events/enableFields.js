@@ -10,7 +10,7 @@ function enableFields(form){
 	var VERIFICAR_APROVACAO = 151;
 	var FINALIZAR = 215;
 	var VALIDAR_RH = 161;
-	var VERIFICAR_ASSINATRA = 270;
+	var VERIFICAR_ASSINATURA = 270;
 	var APROVACAO_DIR = 292;
 	var APROVACAO_DN = 301;
 	
@@ -208,7 +208,7 @@ function enableFields(form){
 			    }
 
 	}
-	else if (  activity == VERIFICAR_ASSINATRA	|| activity == VERIFICAR_APROVACAO  ||  activity == FINALIZAR){
+	else if (  activity == VERIFICAR_ASSINATURA	|| activity == VERIFICAR_APROVACAO  ||  activity == FINALIZAR){
 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();

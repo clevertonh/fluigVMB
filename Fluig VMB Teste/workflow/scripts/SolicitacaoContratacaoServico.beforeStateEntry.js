@@ -12,7 +12,7 @@ function beforeStateEntry(sequenceId){
 	var VERIFICAR_APROVACAO = 151;
 	var FINALIZAR = 215;
 	var VALIDAR_RH = 161;
-	var VERIFICAR_ASSINATRA = 270;	
+	var VERIFICAR_ASSINATURA = 270;	
 	
 	var TIPO_PJ = 281;
 	var CONTRATO_ASSINADO = 181; //verifica se contrato foi assinado
