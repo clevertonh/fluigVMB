@@ -298,7 +298,7 @@ function validateForm(form){
            for (var i = 0; i < indexes.length; i++) {
                var produto = form.getValue("txtproduto___" + indexes[i]);
                var valor = form.getValue("vrTotUnit___" + indexes[i]);
-               var dataViagem = form.getValue("dtNecessidade___" + indexes[i]);      
+               var dataNecessidade = form.getValue("dtNecessidade___" + indexes[i]);      
                var quantidade = form.getValue("idquantidade___" + indexes[i]);      
         
                if (produto == "" || produto === null){
@@ -307,7 +307,7 @@ function validateForm(form){
                else if (valor == "" || valor === null || valor == 0){
                	throw "O valor de referencia para o produto não existe, por favor, entre em contato com assessoria_administrativa@wvi.org informando o código do produto e solicite a atualização desse registro.";
                }
-               else if (dataViagem == "" || dataViagem === null){
+               else if (dataNecessidade == "" || dataNecessidade === null){
                	throw "A data de necessidade  não foi informada!";
                }
                else if (quantidade == "" || quantidade === null || quantidade == 0){
