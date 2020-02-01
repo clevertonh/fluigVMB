@@ -95,6 +95,13 @@ function validateForm(form){
 			
 		validaCamposPreenchidos();
 		
+		
+		//convert data de inicio do serviço
+		var dataInicio = new Date (convertStringToData(form.getValue("dtInicio")));
+				
+		if ( dataAtualConvertida > dataInicio  ){
+			throw "A contratação desse serviço não pode mais ser iniciada na data indicada. Por favor, altere a data de inicio para uma data no futuro.";
+		}
 			
 	}
    
@@ -228,7 +235,7 @@ function validateForm(form){
 		if ( dataAtualConvertida > dataInicioServico  ){
 				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
 		}
-	
+			
 		
 		  if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
 			   throw "A cotação anual não pode ser menor que a cotação mensal.";
@@ -255,7 +262,20 @@ function validateForm(form){
 		                 } 
 		     		  }
 
-		}	
+		     
+		
+		
+		
+		}
+		
+		if (form.getValue("definicaoValor") =="fixo"){
+			  //CONTRATAÇÃO DO TIPO FIXO NÃO PODE TER VINCULO COM CONTRATO ANUAL
+    		 if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){		
+    			 throw "Contratações de serviços definido com valores fixos não podem ter vinculo com contrato anual.";
+    		 }
+		}
+		
+		
 	}
 	else if (activity ==  VALIDAR_RH){
 			if (form.getValue("valido") == "" || form.getValue("valido") == null ){

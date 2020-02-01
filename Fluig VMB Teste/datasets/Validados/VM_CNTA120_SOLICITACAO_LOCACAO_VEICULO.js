@@ -16,20 +16,25 @@ function createDataset(fields, constraints, sortFields) {
 	var vencimento;
 	//default == 3
 	var acao = 3;
+	var quantidade;
 	
     if(constraints !== null && constraints.length){
     	if(constraints[0].constraintType==ConstraintType.MUST && constraints[0].fieldName == "documentid") {
     		
-    			if (constraints[0].initialValue == "12835"){
-    				dataset.addRow(new Array("SUCESSO"));	
-    				return dataset;
-    			}
-    		  		
+    		
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacoesLocacaoVeiculo", null, new Array(c0,c1), null);
         	       		
         		documentId = solicitacao.getValue(0,"documentid");
+        		
+        		
+        		if (solicitacao.getValue(0,"quantidade") == null || solicitacao.getValue(0,"quantidade") == ""){
+        			quantidade = 1;
+        		}
+        		else {
+        			quantidade = solicitacao.getValue(0,"quantidade");
+        		}
                         	
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),documentId,solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
@@ -51,7 +56,7 @@ function createDataset(fields, constraints, sortFields) {
         					 aItemServico.push(addItemCompra(
         							 solicitacao.getValue(0,"codigoProduto"),
         							 codSolicitacao,
-        							 solicitacao.getValue(0,"quantidade"),     							
+        							 quantidade,     							
         							 solicitacao.getValue(0,"CotacaovalorMensal")
         							 )); 
         					 
@@ -93,7 +98,7 @@ function createDataset(fields, constraints, sortFields) {
         					          }
         					        }
  
-        			
+        					    
         					        var vo = clientService.invoke(JSON.stringify(data));        		        					        
         		        					        var obj = JSON.parse(vo.getResult());
         		        					         					        

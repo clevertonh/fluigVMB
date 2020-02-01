@@ -198,6 +198,14 @@ function validateForm(form){
 							throw "A contratação desse serviço não pode ser executada na data informada. Pois a data de hoje já ultrapassou a data de retirada .";
 						}
 					
+						if (form.getValue("definicaoValor") =="fixo"){
+							  //CONTRATAÇÃO DO TIPO FIXO NÃO PODE TER VINCULO COM CONTRATO ANUAL
+				    		 if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){		
+				    			 throw "Contratações de serviços definido com valores fixos não podem ter vinculo com contrato anual.";
+				    		 }
+						}
+						
+						
 					}
 
 				

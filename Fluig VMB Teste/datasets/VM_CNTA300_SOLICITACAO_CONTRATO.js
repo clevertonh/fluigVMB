@@ -229,7 +229,8 @@ function createDataset(fields, constraints, sortFields) {
 				            	FORNECEDOR : 		'' + solicitacao.getValue(0,"codigoFornecedor") +'',				            					            	
 				            	VALORTOTAL : 		'' + solicitacao.getValue(0,"CotacaovalorAnual") +'',
 				            	SOLICITANTE : 		'' + solicitacao.getValue(0,"solicitante") +'',
-				            	EMAILSOLICITANTE :  '' + solicitacao.getValue(0,"emailsolicitante") +'',     					                
+				            	EMAILSOLICITANTE :  '' + solicitacao.getValue(0,"emailsolicitante") +'',  
+				            	EMAILRESPONSAVEL :  '' + solicitacaoPai.getValue(0,"emailsolicitante") +'',
 				            	ITENS : 				aItemServico ,
 				            	RATEIODIGITADO : 		aRateio ,
 				            	DOCUMENTID :			''+ documentIdPai +''
