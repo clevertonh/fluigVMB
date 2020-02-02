@@ -60,6 +60,7 @@ function beforeStateEntry(sequenceId){
 	 else if (ativAtual == FINALIZAR){		 
 			 	var contrato  = hAPI.getCardValue("Numerocontrato");
 	    		if (contrato !="" && contrato!= null){
+	    			if (nextAtv == 50){
 		      			//deleta solicitação de compra
 	    				//setSolicitacaoCompra(idDocumento,5,0);
 	   	
@@ -75,7 +76,9 @@ function beforeStateEntry(sequenceId){
 			           	   		hAPI.setTaskComments(usuario, codSolicitacao, 0, "Medição de contrato cadastrada. Número: " + resultDataset.getValue(0,"NUMERO"));
 			              }
 	    			 
-	    			 // dataset.addRow(new Array("SUCESSO",JSON.parse(vo.getResult()).NUMERO));		
+	    			 // dataset.addRow(new Array("SUCESSO",JSON.parse(vo.getResult()).NUMERO));	
+	    			}
+	
 	      		}
 	 }
     

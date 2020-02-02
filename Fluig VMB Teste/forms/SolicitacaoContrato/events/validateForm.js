@@ -7,7 +7,8 @@ function validateForm(form){
 	
 	var activity = getValue('WKNumState');
 	var nextAtv  = getValue("WKNextState");	
-	
+	/*
+	 * MOMENTANEAMENTO ATE AS SOLICITAÇOES DE CONTRATACOES ANTIGAS SE ENCERRAREM
 	if (activity == ABERTURA || activity == SOLICITAR){
 		if (form.getValue("finalidade") == null || form.getValue("finalidade") == "") {
             throw "Você precisa informar o objeto do contrato.";
@@ -75,5 +76,5 @@ function validateForm(form){
 		
 		
 	}
-	
+	*/
 }

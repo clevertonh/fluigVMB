@@ -83,6 +83,11 @@ function enableFields(form){
 	}
 	else if (activity == COTAR){
 		
+		form.setValue("statusContrato","");
+		form.setValue("valido","");
+		form.setValue("aprovacaoServico","");
+		
+		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();
@@ -94,8 +99,9 @@ function enableFields(form){
 	    }
 		 
 		
-	   
+	    	//form.setEnabled("dtRetirada", true);
 			form.setEnabled("cnpjcpf", true);
+			
 		    form.setEnabled("razaosocial", true);		    
 		    form.setEnabled("nomefantasia", true);	
 		    form.setEnabled("codigoFornecedor", true);	
@@ -168,6 +174,8 @@ function enableFields(form){
 
 	else if (activity == SOLICITAR_CONTRATO ){
 		form.setValue("statusContrato","");
+	    form.setEnabled("tipoPessoa", true);
+	    
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();

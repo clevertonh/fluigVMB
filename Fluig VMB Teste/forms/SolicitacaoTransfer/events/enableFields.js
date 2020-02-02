@@ -68,6 +68,10 @@ function enableFields(form){
 	}
 	else if (activity == COTACAO){		
 		
+		form.setValue("statusContrato","");
+		form.setValue("valido","");
+		form.setValue("aprovacaoServico","");
+		
 		var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 	    var mapaForm = new java.util.HashMap();
 	    mapaForm = form.getCardData();

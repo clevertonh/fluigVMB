@@ -66,8 +66,7 @@ $(document).ready(function() {
 				});
 				
 				dtCotacao.setDate(new Date().toLocaleString());
-				
-			   	 $("#CotacaovalorMensal").blur(function(){
+				$("#CotacaovalorMensal").blur(function(){
 			   		 var total = $("#quantidade").val() * $("#CotacaovalorMensal").val();
 			   		 $("#cotacaovalorTotal").val(total);
 					 console.log($("#CotacaovalorMensal").val());

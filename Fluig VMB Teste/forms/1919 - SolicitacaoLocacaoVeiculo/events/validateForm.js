@@ -31,7 +31,8 @@ function validateForm(form){
     var aCategoria	  = new Array();
     var aFonte	  = new Array();
     var aArea	  = new Array();
-    var dataRetirada;
+	var dataRetirada = new Date (convertStringToData(form.getValue("dtRetirada")));
+	var dataDevolucao = new Date (convertStringToData(form.getValue("dtDevolucao")));		
     var dataAtual = new Date();
     
     //retorna email usuario logado
@@ -77,14 +78,17 @@ function validateForm(form){
 				        	 throw "Você precisa informar o tipo de veículo para gerar a solicitaçao de compra.";
 				       }
 					  
-						if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
+					  if (form.getValue("valor") == ""  || form.getValue("valor")  == "0" ){
 				         	 throw "Você precisa informar o valor maximo para contratação.";
-				        }
+				      }
+												
+					  if (dataRetirada > dataDevolucao){
+		 					throw "Data de retirada não pode ser maior que a data de devolução.";				
+		 			  }
 						
-						
-				  	   var indexes = form.getChildrenIndexes("tableCondutor");            
+				  	  var indexes = form.getChildrenIndexes("tableCondutor");            
 			    	   
-			           for (var i = 0; i < indexes.length; i++) {
+			          for (var i = 0; i < indexes.length; i++) {
 			        	   var condutor = form.getValue("nomeCondutor___" + indexes[i]);
 			               
 				            if (condutor == null || condutor == "") {
@@ -101,11 +105,7 @@ function validateForm(form){
 				 }
 				}
 		   
-			else if (activity == APROVACAO){
-				var dataRetirada = new Date (convertStringToData(form.getValue("dtRetirada")));
-				var dataDevolucao = new Date (convertStringToData(form.getValue("dtDevolucao")));		
-				var dataAtual = new Date();
-				
+			else if (activity == APROVACAO){				
 				 		if (nextAtv == 9){ //atividade 9 = verificar aprovação
 				 			//valida se o aprovador marcou o campo de aprovacao ou reprovação
 				 	        if (form.getValue("aprovacao") == false || form.getValue("aprovacao") == "") {
@@ -151,12 +151,7 @@ function validateForm(form){
 				
 		    	//convert data de inicio do serviço
 				var dataInicioContrato = new Date (convertStringToData(form.getValue("dtInicioC")));
-				var dataFimContrato = new Date (convertStringToData(form.getValue("dtFimC")));
-				
-				var dataInicioLocacao = new Date (convertStringToData(form.getValue("dtRetirada")));
-				var dataFimLocacao = new Date (convertStringToData(form.getValue("dtDevolucao")));		
-				var dataAtual = new Date();
-				
+				var dataFimContrato = new Date (convertStringToData(form.getValue("dtFimC")));			
 				
 					if (nextAtv == 53){
 						if (form.getValue("cnpjcpf") == ""  || form.getValue("cnpjcpf")  == null ){
@@ -193,11 +188,18 @@ function validateForm(form){
 							
 							
 						}
-						
-						if ( dataAtual > dataInicioLocacao  ){
+						if (dataRetirada > dataDevolucao){
+			 				throw "Data de retirada não pode ser maior que a data de devolução.";				
+			 			}
+						  
+						if ( dataAtual > dataRetirada  ){
 							throw "A contratação desse serviço não pode ser executada na data informada. Pois a data de hoje já ultrapassou a data de retirada .";
 						}
 					
+						if ( dataAtual > dataDevolucao  ){
+							throw "A contratação desse serviço não pode ser executada na data informada. Pois a data de hoje já ultrapassou a data de devolução .";
+						}
+						
 						if (form.getValue("definicaoValor") =="fixo"){
 							  //CONTRATAÇÃO DO TIPO FIXO NÃO PODE TER VINCULO COM CONTRATO ANUAL
 				    		 if (form.getValue("Numerocontrato") != "" && form.getValue("Numerocontrato") != null){		
@@ -205,6 +207,11 @@ function validateForm(form){
 				    		 }
 						}
 						
+						 var fieldValue = parseInt(form.getValue("competencia"));                   
+		                  if (isNaN(fieldValue)) {
+		                      throw "O mês de competencia deve ser informado em formato de numero.";
+
+		                  }
 						
 					}
 

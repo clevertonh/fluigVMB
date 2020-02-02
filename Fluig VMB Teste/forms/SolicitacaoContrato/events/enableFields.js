@@ -5,19 +5,12 @@ function enableFields(form){
 	var ASSINAR = 18;
 	var CADASTRAR_CONTRATO = 44;
 	
-	
-	
-	
 	var activity = getValue('WKNumState');
 	var solicitante = getValue("WKUser");  
 	
 	 var dataset = UsuarioLogado(solicitante);		 			 			 			 
 	 var nomeSolicitante = dataset.getValue(0, "colleagueName");
 	 var emailSolicitante = dataset.getValue(0, "mail");
-	 
-	
-	 
-	 
 	 
 	 if (activity == ABERTURA || activity  == SOLICITAR){
 		 form.setValue("solicitante",nomeSolicitante);
@@ -44,6 +37,7 @@ function enableFields(form){
 		    form.setEnabled("filial", true);
 		    form.setEnabled("tipoContrato", true);
 		    form.setEnabled("tipoRevisao", true);
+		    
 	 }
 	 
 	 else if (activity == ASSINAR   ){

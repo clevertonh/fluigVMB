@@ -99,20 +99,23 @@ function beforeStateEntry(sequenceId){
 		   	     
 			var contrato  = hAPI.getCardValue("Numerocontrato");
     		if (contrato !="" && contrato!= null){
-    			//DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE 
-  				//setSolicitacaoCompra(idDocumento,5,0);  
+    			if (nextAtv == 85){
+    				//DELETA SOLICITACAO DE COMPRA GERADA ANTECIPADAMENTE 
+      				//setSolicitacaoCompra(idDocumento,5,0);  
 
-       			 var constraint = new Array();                                 
-	             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
-	             
-	              var resultDataset = DatasetFactory.getDataset("VM_CNTA120_SOLICITACAO_LOCACAO_VEICULO", null, constraint, null);                                                                    
-	                 
-	              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-	                    throw resultDataset.getValue(0,"RETORNO");
-	                 }
-	              else {
-	            	  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Medição de contrato cadastrada. Número: " + resultDataset.getValue(0,"NUMERO"));
-	              }
+           			 var constraint = new Array();                                 
+    	             constraint.push(DatasetFactory.createConstraint("documentid", idDocumento, idDocumento, ConstraintType.MUST));
+    	             
+    	              var resultDataset = DatasetFactory.getDataset("VM_CNTA120_SOLICITACAO_LOCACAO_VEICULO", null, constraint, null);                                                                    
+    	                 
+    	              if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
+    	                    throw resultDataset.getValue(0,"RETORNO");
+    	                 }
+    	              else {
+    	            	  hAPI.setTaskComments(usuario, codSolicitacao, 0, "Medição de contrato cadastrada. Número: " + resultDataset.getValue(0,"NUMERO"));
+    	              }	
+    			}
+    	
 
 
       		}

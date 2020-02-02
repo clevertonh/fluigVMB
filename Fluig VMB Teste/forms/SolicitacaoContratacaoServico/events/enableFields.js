@@ -103,6 +103,10 @@ function enableFields(form){
 		 form.setValue("comprador",nomeSolicitante);
 		 form.setValue("emailComprador",emailSolicitante);
 		 
+			form.setValue("statusContrato","");
+			form.setValue("valido","");
+			form.setValue("aprovacaoServico","");
+		 
 			var habilitar = false; // Informe True para Habilitar ou False para Desabilitar os campos
 		    var mapaForm = new java.util.HashMap();
 		    mapaForm = form.getCardData();

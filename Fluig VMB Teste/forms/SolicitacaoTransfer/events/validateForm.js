@@ -209,6 +209,12 @@ function validateForm(form){
     		    			 throw "Contratações de serviços definido com valores fixos não podem ter vinculo com contrato anual.";
     		    		 }
     				}
+    				
+    				 var fieldValue = parseInt(form.getValue("competencia"));                   
+	                  if (isNaN(fieldValue)) {
+	                      throw "O mês de competencia deve ser informado em formato de numero.";
+
+	                  }
     		}
 
     }
