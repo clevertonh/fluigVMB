@@ -9,6 +9,7 @@ function createDataset(fields, constraints, sortFields) {
 	
 	return dataset;
 }
+
 function getConstraints(constraints, field){
 	if(constraints == null)
 		return null;

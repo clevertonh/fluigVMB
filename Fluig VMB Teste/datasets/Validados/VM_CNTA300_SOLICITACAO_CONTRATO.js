@@ -19,6 +19,7 @@ function createDataset(fields, constraints, sortFields) {
 	var solicitacaoPai;
 	var tipoPlanilha;
 	var documentIdPai;
+	var condPagamento ="001";
 	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO SOLICITAÇÃO NA POSIÇÃO 0 e do tipo MUST
@@ -27,7 +28,7 @@ function createDataset(fields, constraints, sortFields) {
     			var c0 = DatasetFactory.createConstraint("documentid", constraints[0].initialValue, constraints[0].initialValue, ConstraintType.MUST);	
     			var c1 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);        		
         		var solicitacao = DatasetFactory.getDataset("VM_SolicitacaoContrato", null, new Array(c0,c1), null);
-      		
+        		        	
         		if (solicitacao.getValue(0,"definicaoValor") =="demanda"){
         			tipoPlanilha = "005";	
         		}
@@ -37,8 +38,7 @@ function createDataset(fields, constraints, sortFields) {
         		
         		documentId = solicitacao.getValue(0,"documentid");    
         		
-        		if (solicitacao.getValue(0,"tipoContrato") != "" && solicitacao.getValue(0,"tipoContrato") != null){
-        		
+        		if (solicitacao.getValue(0,"tipoContrato") != "" && solicitacao.getValue(0,"tipoContrato") != null){        		
             		//inclusao de contrato
             		acaocontrato = 1;
             		
@@ -47,7 +47,12 @@ function createDataset(fields, constraints, sortFields) {
         			//inclusão de aditivo
         			acaocontrato = 2;
         		}
-        	
+        		
+        		if (solicitacao.getValue(0,"condicaoPgto") != "" && solicitacao.getValue(0,"condicaoPgto") != null){
+        			condPagamento = solicitacao.getValue(0,"condicaoPgto");        		
+            		condPagamento.split("-");        		
+            		condPagamento = condPagamento[0];	
+        		}
         		
         		
         		//justificativa
@@ -224,7 +229,7 @@ function createDataset(fields, constraints, sortFields) {
 				            	TIPOREVISAO: 		'' + solicitacao.getValue(0,"tipoRevisao") +'',
 				            	JUSTIFICATIVA: 		'' + "ALTERACAO DE CONTRATO" +'',
 				            	TIPOPLANILHA: 		'' + tipoPlanilha +'',				            	
-				            	CONDICAOPGTO: 		'' + solicitacao.getValue(0,"codCondPgto") +'',						            	
+				            	CONDICAOPGTO: 		'' + condPagamento +'',						            	
 				            	DATAASSINATURA : 	'' + solicitacao.getValue(0,"dataAssinatura") +'',
 				            	FORNECEDOR : 		'' + solicitacao.getValue(0,"codigoFornecedor") +'',				            					            	
 				            	VALORTOTAL : 		'' + solicitacao.getValue(0,"CotacaovalorAnual") +'',

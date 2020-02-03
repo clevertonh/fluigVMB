@@ -544,11 +544,7 @@ function buscaSolicitacaoAnterior(solicitacao){
 		    }
 	        
 	    }
-	    
-	    
-	    
-	    
-	    
+	        
 }
 
 
