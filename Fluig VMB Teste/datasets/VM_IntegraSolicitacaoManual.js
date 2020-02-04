@@ -10,7 +10,7 @@ function createDataset(fields, constraints, sortFields) {
 //	constraint.push(DatasetFactory.createConstraint("produto", produto, produto, ConstraintType.MUST));
 	
 	
-    var dataset = DatasetFactory.getDataset("VM_CNTA120_SOLICITACAO_LOCACAO_VEICULO", null, constraint, null);
+    var dataset = DatasetFactory.getDataset("VM_CNTA300_SOLICITACAO_CONTRATO", null, constraint, null);
     
     return dataset;
 	

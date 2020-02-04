@@ -53,13 +53,17 @@ function createDataset(fields, constraints, sortFields) {
             		condPagamento = condPagamento[0];	
         		}
         		
+        		log.info("CONTRATO");
+        		log.dir(solicitacao);
         		
         		//justificativa
         		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		var codSolicitacaoPai = retornaProcessoSolicitacao.getValue(0,"sourceProcess");
-            	        	            	
+            	        	 
+        		
+         		
         		//IDENTIFICAR PROCESSO
         		var retornaProcessoPAI = retornaSolicitacaoPai(codSolicitacaoPai,solicitacao.getValue(0,"companyid"));
         		var nomeProcesso = retornaProcessoPAI.getValue(0,"processId");
@@ -71,6 +75,18 @@ function createDataset(fields, constraints, sortFields) {
         			constraint2.push(DatasetFactory.createConstraint("metadata#active", true , true, ConstraintType.MUST));      			
         			solicitacaoPai = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraint2, null)        		           
 
+        			log.info("SOLICITACAO PAI 1");
+        			log.dir(solicitacaoPai);
+        		
+    
+        			
+        			
+        			if (solicitacaoPai.getValue(0,"filialSC") != null && solicitacaoPai.getValue(0,"filialSC") != ""){
+        				filial = solicitacaoPai.getValue(0,"filialSC");
+        			}
+        			else {
+        				filial ="02";
+        			}
         			
         			
 					 try {
@@ -215,7 +231,7 @@ function createDataset(fields, constraints, sortFields) {
 				            params : {
 				            	PROCESSO : 			'' + 13 + '' ,
 				            	SOLICITACAO : 		'' + codSolicitacaoPai + '' ,
-				            	FILIAL : 			'' + solicitacaoPai.getValue(0,"filialSC") + '',
+				            	FILIAL : 			'' + "02" + '',
 				            	ACAO :				'' + acao + '',
 				            	ACAOCONTRATO : 		'' + acaocontrato + '',
 				            	DATAINICIO : 		'' + solicitacao.getValue(0,"dtInicio") +'',
@@ -246,6 +262,9 @@ function createDataset(fields, constraints, sortFields) {
 				        }
 				             
 			
+				        log.info("RETORNO ERRADO");
+				        log.dir(data);
+				        
 				        var vo = clientService.invoke(JSON.stringify(data));        		        					        
 				        var obj = JSON.parse(vo.getResult());
 				        

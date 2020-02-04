@@ -22,12 +22,15 @@ function beforeStateEntry(sequenceId){
 	var filial = hAPI.getCardValue("filial");
 	var cgc = hAPI.getCardValue("cnpjcpf");
 	
+
+	
+
 	
     if (ativAtual == ASSINAR){
     	if (nextAtv == 37){
     		//O CONTRATO FOI ASSINADO E É UM NOVO CONTRATO
 			if (statusContrato =="assinado" && (tipoContrato !="" || tipoRevisao != "")){				
-				setContrato(idDocumento,3); 				
+		//		setContrato(idDocumento,3); 				
 			}
     		
     	}
@@ -84,6 +87,34 @@ function beforeStateEntry(sequenceId){
 	     }
 	  return false;
     }
+    
+    
+	function convertDataToString(dataToString) {
+	    var dia;
+
+	    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO
+	    var mes = dataToString.getMonth() + 1;
+	    if (dataToString.getDate().toString().length == 1) {
+	        dia = dataToString.getDate();
+	        dia = "0" + dia.toString();
+
+	    } else {
+	        dia = dataToString.getDate();
+
+	    }
+
+	 
+	    //converte mes
+	    if (mes.toString().length == 1) {
+	        mes = "0" + mes.toString();
+
+	    }
+
+	    //novo formato de data: para salvar em campos data do Fluig
+	    return dia + "/" + mes + "/" + dataToString.getFullYear();
+
+
+	}
     
     
 	

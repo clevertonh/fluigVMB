@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contrato</processId>
-      <version>28</version>
+      <version>30</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2402</formId>
@@ -456,7 +456,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>28</version>
+        <version>30</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
@@ -468,7 +468,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>28</version>
+        <version>30</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
@@ -480,7 +480,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>28</version>
+        <version>30</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  ==&quot;&quot;</condition>
@@ -492,7 +492,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>28</version>
+        <version>30</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  !=&quot;&quot;</condition>
@@ -688,6 +688,9 @@
 	var filial = hAPI.getCardValue(&quot;filial&quot;);&#xd;
 	var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
 	&#xd;
+&#xd;
+	&#xd;
+&#xd;
 	&#xd;
     if (ativAtual == ASSINAR){&#xd;
     	if (nextAtv == 37){&#xd;
@@ -750,6 +753,34 @@
 	     }&#xd;
 	  return false;&#xd;
     }&#xd;
+    &#xd;
+    &#xd;
+	function convertDataToString(dataToString) {&#xd;
+	    var dia;&#xd;
+&#xd;
+	    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO&#xd;
+	    var mes = dataToString.getMonth() + 1;&#xd;
+	    if (dataToString.getDate().toString().length == 1) {&#xd;
+	        dia = dataToString.getDate();&#xd;
+	        dia = &quot;0&quot; + dia.toString();&#xd;
+&#xd;
+	    } else {&#xd;
+	        dia = dataToString.getDate();&#xd;
+&#xd;
+	    }&#xd;
+&#xd;
+	 &#xd;
+	    //converte mes&#xd;
+	    if (mes.toString().length == 1) {&#xd;
+	        mes = &quot;0&quot; + mes.toString();&#xd;
+&#xd;
+	    }&#xd;
+&#xd;
+	    //novo formato de data: para salvar em campos data do Fluig&#xd;
+	    return dia + &quot;/&quot; + mes + &quot;/&quot; + dataToString.getFullYear();&#xd;
+&#xd;
+&#xd;
+	}&#xd;
     &#xd;
     &#xd;
 	&#xd;
