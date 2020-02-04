@@ -49,8 +49,7 @@ function createDataset(fields, constraints, sortFields) {
         		}
         		
         		if (solicitacao.getValue(0,"condicaoPgto") != "" && solicitacao.getValue(0,"condicaoPgto") != null){
-        			condPagamento = solicitacao.getValue(0,"condicaoPgto");        		
-            		condPagamento.split("-");        		
+        			condPagamento = solicitacao.getValue(0,"condicaoPgto").split('-');        		            		      	
             		condPagamento = condPagamento[0];	
         		}
         		
@@ -235,7 +234,7 @@ function createDataset(fields, constraints, sortFields) {
 				            	VALORTOTAL : 		'' + solicitacao.getValue(0,"CotacaovalorAnual") +'',
 				            	SOLICITANTE : 		'' + solicitacao.getValue(0,"solicitante") +'',
 				            	EMAILSOLICITANTE :  '' + solicitacao.getValue(0,"emailsolicitante") +'',  
-				            	EMAILRESPONSAVEL :  '' + solicitacaoPai.getValue(0,"emailsolicitante") +'',
+				            	RESPONSAVEL :  		'' + solicitacaoPai.getValue(0,"emailsolicitante") +'',
 				            	ITENS : 				aItemServico ,
 				            	RATEIODIGITADO : 		aRateio ,
 				            	DOCUMENTID :			''+ documentIdPai +''

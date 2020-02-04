@@ -20,24 +20,26 @@ function beforeStateEntry(sequenceId){
 	var tipoContrato = hAPI.getCardValue("tipoContrato");	   
 	var tipoRevisao = hAPI.getCardValue("tipoRevisao");
 	var filial = hAPI.getCardValue("filial");
+	var cgc = hAPI.getCardValue("cnpjcpf");
 	
 	
     if (ativAtual == ASSINAR){
     	if (nextAtv == 37){
     		//O CONTRATO FOI ASSINADO E É UM NOVO CONTRATO
 			if (statusContrato =="assinado" && (tipoContrato !="" || tipoRevisao != "")){				
-				setContrato(idDocumento,3); 
-				
-				//setEnviaAnexoContrato();
+				setContrato(idDocumento,3); 				
 			}
     		
     	}
     }
-    else if (ativAtual == ANEXAR){
+    else if (ativAtual == ANEXAR && tipoContrato != ""){
     		//VERIFICA SE EXISTE ANEXO NO CONTRATO
-    		if (tipoContrato != "" || tipoRevisao != "") {
-    			//getAnexosProtheus(idDocumento);
+    		var lAnexo = getContratoAtivo(cgc,contrato);
+    		
+    		if (lAnexo == false){
+    			throw "É necessário que o contrato esteja vigente. Aguarde 30 minutos e tente novamente mais tarde.";
     		}
+    		    		
     }
     
     
@@ -67,31 +69,20 @@ function beforeStateEntry(sequenceId){
     //https://tdn.totvs.com/display/public/fluig/Desenvolvimento+de+Eventos#DesenvolvimentodeEventos-DocumentDto
     //https://tdn.totvs.com/display/public/fluig/docAPI
     
-    function setEnviaAnexoContrato(){
-		    	 if (ativAtual == ASSINAR) {
-		    	        var attachments = hAPI.listAttachments();
-		    	        for ( var i = 0; i < attachments.size(); i++) {
-			    	            var docDto = attachments.get(i);
-			    	  
-			    	            if (docDto.getDocumentType() == "7") {    	                  
-			    	                docAPI.copyDocumentToUploadArea(docDto.getDocumentId(), docDto.getVersion());
-			    	          
-			    	                attachments.fileName();	
-			    	                attachments.filecontent();
-			    	            }
-		    	        }
-		    	    }
-    }
     
-    function getAnexosProtheus(id){
-		 var constraints = new Array();                                 
-		 constraints.push(DatasetFactory.createConstraint("documentid", id, id, ConstraintType.MUST));	
-	     var resultDataset = DatasetFactory.getDataset("VM_FATA340_BASE_CONHECIMENTO_PROTHEUS", null, constraints, null);                                                                    
-	    		     
-	         if (resultDataset.getValue(0,"RETORNO") != "SUCESSO"){
-	             throw resultDataset.getValue(0,"RETORNO");
-	         }	        
-
+    
+    function getContratoAtivo(cgc,contrato){
+    	var constraints = new Array();                                 
+		constraints.push(DatasetFactory.createConstraint("CGC", cgc, cgc, ConstraintType.MUST)); 
+    	var listaContratos = DatasetFactory.getDataset("ds_get_Contratos", null, constraints, null);                                                                    
+	    		
+	     for (var i =0; i < listaContratos.rowsCount ; i++  ){	    
+	    	 if (listaContratos.getValue(i,"CONTRATO") == contrato){
+	    		 return true;
+	    	 }
+	    	 
+	     }
+	  return false;
     }
     
     

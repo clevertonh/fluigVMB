@@ -19,6 +19,8 @@ function enableFields(form){
 		 //data do dia
          var dataAtual = new Date();         
          var dataSolicitacao = convertDataToString(dataAtual);
+     //    log.info("data atual");
+     //    log.info(dataSolicitacao);
          form.setValue("dataSolicitacao",dataSolicitacao);
 		 
 	}

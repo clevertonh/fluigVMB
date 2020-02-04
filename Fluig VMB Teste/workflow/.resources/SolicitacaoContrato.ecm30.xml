@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contrato</processId>
-      <version>19</version>
+      <version>28</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2402</formId>
@@ -156,8 +156,8 @@
         <version>1</version>
         <sequence>18</sequence>
       </processStatePK>
-      <stateName>Aguardar assinatura</stateName>
-      <stateDescription>Aguardar assinatura</stateDescription>
+      <stateName>Confirmar assinatura</stateName>
+      <stateDescription>Confirmar assinatura</stateDescription>
       <instruction></instruction>
       <deadlineTime>172800</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -456,7 +456,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>28</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
@@ -468,7 +468,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>28</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
@@ -480,7 +480,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>28</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  ==&quot;&quot;</condition>
@@ -492,7 +492,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>28</version>
         <sequence>47</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  !=&quot;&quot;</condition>
@@ -686,24 +686,26 @@
 	var tipoContrato = hAPI.getCardValue(&quot;tipoContrato&quot;);	   &#xd;
 	var tipoRevisao = hAPI.getCardValue(&quot;tipoRevisao&quot;);&#xd;
 	var filial = hAPI.getCardValue(&quot;filial&quot;);&#xd;
+	var cgc = hAPI.getCardValue(&quot;cnpjcpf&quot;);&#xd;
 	&#xd;
 	&#xd;
     if (ativAtual == ASSINAR){&#xd;
     	if (nextAtv == 37){&#xd;
     		//O CONTRATO FOI ASSINADO E É UM NOVO CONTRATO&#xd;
 			if (statusContrato ==&quot;assinado&quot; &amp;&amp; (tipoContrato !=&quot;&quot; || tipoRevisao != &quot;&quot;)){				&#xd;
-				setContrato(idDocumento,3); &#xd;
-				&#xd;
-				//setEnviaAnexoContrato();&#xd;
+				setContrato(idDocumento,3); 				&#xd;
 			}&#xd;
     		&#xd;
     	}&#xd;
     }&#xd;
-    else if (ativAtual == ANEXAR){&#xd;
+    else if (ativAtual == ANEXAR &amp;&amp; tipoContrato != &quot;&quot;){&#xd;
     		//VERIFICA SE EXISTE ANEXO NO CONTRATO&#xd;
-    		if (tipoContrato != &quot;&quot; || tipoRevisao != &quot;&quot;) {&#xd;
-    			//getAnexosProtheus(idDocumento);&#xd;
+    		var lAnexo = getContratoAtivo(cgc,contrato);&#xd;
+    		&#xd;
+    		if (lAnexo == false){&#xd;
+    			throw &quot;É necessário que o contrato esteja vigente. Aguarde 30 minutos e tente novamente mais tarde.&quot;;&#xd;
     		}&#xd;
+    		    		&#xd;
     }&#xd;
     &#xd;
     &#xd;
@@ -733,31 +735,20 @@
     //https://tdn.totvs.com/display/public/fluig/Desenvolvimento+de+Eventos#DesenvolvimentodeEventos-DocumentDto&#xd;
     //https://tdn.totvs.com/display/public/fluig/docAPI&#xd;
     &#xd;
-    function setEnviaAnexoContrato(){&#xd;
-		    	 if (ativAtual == ASSINAR) {&#xd;
-		    	        var attachments = hAPI.listAttachments();&#xd;
-		    	        for ( var i = 0; i &lt; attachments.size(); i++) {&#xd;
-			    	            var docDto = attachments.get(i);&#xd;
-			    	  &#xd;
-			    	            if (docDto.getDocumentType() == &quot;7&quot;) {    	                  &#xd;
-			    	                docAPI.copyDocumentToUploadArea(docDto.getDocumentId(), docDto.getVersion());&#xd;
-			    	          &#xd;
-			    	                attachments.fileName();	&#xd;
-			    	                attachments.filecontent();&#xd;
-			    	            }&#xd;
-		    	        }&#xd;
-		    	    }&#xd;
-    }&#xd;
     &#xd;
-    function getAnexosProtheus(id){&#xd;
-		 var constraints = new Array();                                 &#xd;
-		 constraints.push(DatasetFactory.createConstraint(&quot;documentid&quot;, id, id, ConstraintType.MUST));	&#xd;
-	     var resultDataset = DatasetFactory.getDataset(&quot;VM_FATA340_BASE_CONHECIMENTO_PROTHEUS&quot;, null, constraints, null);                                                                    &#xd;
-	    		     &#xd;
-	         if (resultDataset.getValue(0,&quot;RETORNO&quot;) != &quot;SUCESSO&quot;){&#xd;
-	             throw resultDataset.getValue(0,&quot;RETORNO&quot;);&#xd;
-	         }	        &#xd;
-&#xd;
+    &#xd;
+    function getContratoAtivo(cgc,contrato){&#xd;
+    	var constraints = new Array();                                 &#xd;
+		constraints.push(DatasetFactory.createConstraint(&quot;CGC&quot;, cgc, cgc, ConstraintType.MUST)); &#xd;
+    	var listaContratos = DatasetFactory.getDataset(&quot;ds_get_Contratos&quot;, null, constraints, null);                                                                    &#xd;
+	    		&#xd;
+	     for (var i =0; i &lt; listaContratos.rowsCount ; i++  ){	    &#xd;
+	    	 if (listaContratos.getValue(i,&quot;CONTRATO&quot;) == contrato){&#xd;
+	    		 return true;&#xd;
+	    	 }&#xd;
+	    	 &#xd;
+	     }&#xd;
+	  return false;&#xd;
     }&#xd;
     &#xd;
     &#xd;

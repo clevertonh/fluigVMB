@@ -400,4 +400,12 @@ function validateForm(form){
     	        	return false;
     	        }	 
        }
+        
+        //recebe data do Fluig e convert para data normal
+        function convertStringToData(StringToData) {
+            //variavel para armazenar a data limite para aprovação   
+            var data = StringToData.split('/');
+
+            return new Date(data[1] + "/" + data[0] + "/" + data[2]);
+        }
 }

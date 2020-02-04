@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Acordo e Avaliação de Desempenho</processId>
-      <version>6</version>
+      <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2095</formId>
@@ -436,7 +436,7 @@
         <companyId>1</companyId>
         <processId>AcordoAvaliacaoDesempenho</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>7</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;matriculaMatricial&quot;) ==&quot;&quot;</condition>
@@ -448,7 +448,7 @@
         <companyId>1</companyId>
         <processId>AcordoAvaliacaoDesempenho</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>7</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;comentarioFinalM&quot;) !=&quot;&quot; &amp;&amp; hAPI.getCardValue(&quot;comentarioFinalM&quot;) != null</condition>
@@ -460,7 +460,7 @@
         <companyId>1</companyId>
         <processId>AcordoAvaliacaoDesempenho</processId>
         <expressionOrder>3</expressionOrder>
-        <version>6</version>
+        <version>7</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;matriculaMatricial&quot;) !=&quot;&quot; &amp;&amp; ( hAPI.getCardValue(&quot;comentarioFinalM&quot;) ==&quot;&quot; || hAPI.getCardValue(&quot;comentarioFinalM&quot;) ==null)</condition>
@@ -607,18 +607,7 @@
     </ProcessLink>
   </list>
   <list/>
-  <list>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>startconditional16</eventId>
-        <processId>AcordoAvaliacaoDesempenho</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function startconditional16() {
-}</eventDescription>
-    </WorkflowProcessEvent>
-  </list>
+  <list/>
   <list/>
   <list>
     <SwimLane>
