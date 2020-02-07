@@ -38,23 +38,23 @@ function createDataset(fields, constraints, sortFields) {
         		
         		documentId = solicitacao.getValue(0,"documentid");    
         		
+ //       		log.info("SOLICITACAO DE CONTRATO");
+//        		log.dir(solicitacao);
+        		
         		if (solicitacao.getValue(0,"tipoContrato") != "" && solicitacao.getValue(0,"tipoContrato") != null){        		
             		//inclusao de contrato
-            		acaocontrato = 1;
+            		acaocontrato = "1";
             		
         		}
         		else  {
         			//inclusão de aditivo
-        			acaocontrato = 2;
+        			acaocontrato = "2";
         		}
         		
         		if (solicitacao.getValue(0,"condicaoPgto") != "" && solicitacao.getValue(0,"condicaoPgto") != null){
         			condPagamento = solicitacao.getValue(0,"condicaoPgto").split('-');        		            		      	
             		condPagamento = condPagamento[0];	
         		}
-        		
-        		log.info("CONTRATO");
-        		log.dir(solicitacao);
         		
         		//justificativa
         		
@@ -74,12 +74,7 @@ function createDataset(fields, constraints, sortFields) {
         			constraint2.push(DatasetFactory.createConstraint("documentid", documentIdPai , documentIdPai, ConstraintType.MUST));
         			constraint2.push(DatasetFactory.createConstraint("metadata#active", true , true, ConstraintType.MUST));      			
         			solicitacaoPai = DatasetFactory.getDataset("VM_SolicitacaoContratacoesServico", null, constraint2, null)        		           
-
-        			log.info("SOLICITACAO PAI 1");
-        			log.dir(solicitacaoPai);
-        		
-    
-        			
+     			
         			
         			if (solicitacaoPai.getValue(0,"filialSC") != null && solicitacaoPai.getValue(0,"filialSC") != ""){
         				filial = solicitacaoPai.getValue(0,"filialSC");
@@ -231,7 +226,7 @@ function createDataset(fields, constraints, sortFields) {
 				            params : {
 				            	PROCESSO : 			'' + 13 + '' ,
 				            	SOLICITACAO : 		'' + codSolicitacaoPai + '' ,
-				            	FILIAL : 			'' + "02" + '',
+				            	FILIAL : 			'' + filial + '',
 				            	ACAO :				'' + acao + '',
 				            	ACAOCONTRATO : 		'' + acaocontrato + '',
 				            	DATAINICIO : 		'' + solicitacao.getValue(0,"dtInicio") +'',
@@ -261,9 +256,6 @@ function createDataset(fields, constraints, sortFields) {
 				          }
 				        }
 				             
-			
-				        log.info("RETORNO ERRADO");
-				        log.dir(data);
 				        
 				        var vo = clientService.invoke(JSON.stringify(data));        		        					        
 				        var obj = JSON.parse(vo.getResult());
