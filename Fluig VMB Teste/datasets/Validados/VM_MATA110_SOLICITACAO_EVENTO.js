@@ -63,7 +63,7 @@ function createDataset(fields, constraints, sortFields) {
         					 }      				  			
         		
         					 //chama função que monta array de objeto para enviar o item de hospedagem   
-        					 aItemServico.push(addItemCompra("DVHOS001",codSolicitacao,1,solicitacao.getValue(0,"dtInicioEvento"),documentId));        
+        					 aItemServico.push(addItemCompra("DVHOS001",codSolicitacao,1,solicitacao.getValue(0,"dtInicioEvento"),documentId,0));        
     						 
         					 
         					 try{
@@ -128,13 +128,14 @@ function createDataset(fields, constraints, sortFields) {
 
 
 //FUNÇÃO QUE MONTA OBJETO E ADD ITEM NA SOLICITAÇÃO DE COMPRA
-function addItemCompra(produto,codigo,quantidade,dtnecessidade,id_form){
+function addItemCompra(produto,codigo,quantidade,dtnecessidade,id_form, nValor){
 	   var itemServico = { 
 				produto: ''+produto +'', 
 				codSolicitacao: '' + codigo +'',
 				quantidade: ''+ quantidade +'',
 				dtNecessidade: '' + dtnecessidade +'',											
-				idDocumento: '' + id_form +''
+				idDocumento: '' + id_form +'',
+				valor: '' + nValor + ''		
 					};	
 		
 		return itemServico;
