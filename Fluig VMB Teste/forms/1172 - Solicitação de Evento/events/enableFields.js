@@ -39,7 +39,11 @@ function enableFields(form){
 		 
 	 
 		 form.setEnabled('aprovacao', false);
-		 form.setEnabled('justificativaReprovacao', false);		 
+		 form.setEnabled('justificativaReprovacao', false);	
+		 
+		 if (activityEnable == INICIO){
+			 form.setValue("FinanEvento","sim");
+		 }
 	 
 	 }
 	 else if (activityEnable == APROVACAO){

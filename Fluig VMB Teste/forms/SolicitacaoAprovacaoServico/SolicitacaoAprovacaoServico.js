@@ -178,11 +178,8 @@ function setSelectedZoomItem(selectedItem) {
 	    	$("#razaosocial").val(selectedItem["RAZAO_SOCIAL"]);    		
 	    	$("#nomefantasia").val(selectedItem["FANTASIA"]);  		
 	    	$("#codigoFornecedor").val(selectedItem["CODIGO"]);   
-  		
-  		
-  		
-  		
-	  		if (selectedItem["TIPO"].trim() == "JURIDICA"){ 	    	
+
+	    	if (selectedItem["TIPO"].trim() == "JURIDICA"){ 	    	
 	      		document.getElementById("juridica").click();  
 	      	}
 	  		else if (selectedItem["TIPO"].trim() == "FISICA"){
@@ -198,9 +195,7 @@ function setSelectedZoomItem(selectedItem) {
 	  		$("#contaFornecedor").val(selectedItem["CONTA_F"]);   
 	  		$("#tipoConta").val(selectedItem["TIPO_CONTA"].trim());   
 	  		$("#tipoPJ").val(selectedItem["TIPO_PJ"].trim());  
-  
-  
-  
+   
   }
   
 }

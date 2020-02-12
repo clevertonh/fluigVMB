@@ -100,7 +100,7 @@ function validateForm(form){
 	   	                throw "O campo como não foi preenchido para uma das metas cadastradas";	
 	   	            }
 	   	            if (competencia == null || competencia == "") {
-	   	                throw "O campo competencia não foi preenchido para uma das metas cadastradas";	
+	   	                //throw "O campo competencia não foi preenchido para uma das metas cadastradas";	
 	   	            }	
 	     
        	   	

@@ -311,6 +311,10 @@ function setSelectedZoomItem(selectedItem) {
 			reloadZoomFilterValues(CONTRATO, "CGC," + selectedItem["CNPJ"]);
 			
 			window[CONTRATO].disable(false);
+			
+			 //PARA DESABILITAR O CAMPO
+			 // document.forms['SolicitacaoTransfer'].tipoPessoa.setAttribute('readonly',true);
+
 	
 	  }
 	  else if (campoZOOM == CONTRATO){

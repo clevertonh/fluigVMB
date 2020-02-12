@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Contrato</processId>
-      <version>30</version>
+      <version>31</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>2402</formId>
@@ -231,60 +231,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1010</positionX>
-      <positionY>350</positionY>
-      <forecastedEffortType>0</forecastedEffortType>
-      <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>false</notifyManagerFollowUp>
-      <notifyManagerDelay>false</notifyManagerDelay>
-      <allowanceManagerTime>0</allowanceManagerTime>
-      <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
-      <stateType>0</stateType>
-      <bpmnType>80</bpmnType>
-      <signalId>0</signalId>
-      <counterSign>false</counterSign>
-      <openInstances>0</openInstances>
-      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
-      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
-      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-      <executionType>0</executionType>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <version>1</version>
-        <sequence>49</sequence>
-      </processStatePK>
-      <stateName>Cadastrar aditivo</stateName>
-      <stateDescription>Cadastrar aditivo</stateDescription>
-      <instruction>Use essa tarefa para aprovar a revisão do aditivo do contrato</instruction>
-      <deadlineTime>0</deadlineTime>
-      <deadlineFieldName></deadlineFieldName>
-      <joint>false</joint>
-      <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Executor Atividade</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;10&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <selectColleague>1</selectColleague>
-      <initialState>false</initialState>
-      <notifyAuthorityDelay>true</notifyAuthorityDelay>
-      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
-      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
-      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
-      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
-      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
-      <automatic>false</automatic>
-      <positionX>1010</positionX>
-      <positionY>240</positionY>
+      <positionX>890</positionX>
+      <positionY>280</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -335,31 +283,6 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <version>1</version>
-        <sequence>47</sequence>
-      </processStatePK>
-      <stateName>aditivo?</stateName>
-      <stateDescription>aditivo?</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>820</positionX>
-      <positionY>270</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <version>1</version>
         <sequence>24</sequence>
       </processStatePK>
       <stateName>Assinado</stateName>
@@ -384,8 +307,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>1220</positionX>
-      <positionY>370</positionY>
+      <positionX>1100</positionX>
+      <positionY>300</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -456,34 +379,10 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>1</expressionOrder>
-        <version>30</version>
+        <version>31</version>
         <sequence>37</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;assinado&quot;</condition>
-      <destinationSequenceId>47</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>30</version>
-        <sequence>37</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
-      <destinationSequenceId>42</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>30</version>
-        <sequence>47</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  ==&quot;&quot;</condition>
       <destinationSequenceId>44</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -492,11 +391,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <expressionOrder>2</expressionOrder>
-        <version>30</version>
-        <sequence>47</sequence>
+        <version>31</version>
+        <sequence>37</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;tipoRevisao&quot;)  !=&quot;&quot;</condition>
-      <destinationSequenceId>49</destinationSequenceId>
+      <condition>hAPI.getCardValue(&quot;statusContrato&quot;) == &quot;recusado&quot;</condition>
+      <destinationSequenceId>42</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -591,62 +490,11 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContrato</processId>
         <version>1</version>
-        <linkSequence>48</linkSequence>
+        <linkSequence>47</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>37</initialStateSequence>
-      <finalStateSequence>47</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <version>1</version>
-        <linkSequence>50</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>47</initialStateSequence>
-      <finalStateSequence>49</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>sim</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <version>1</version>
-        <linkSequence>51</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>47</initialStateSequence>
-      <finalStateSequence>44</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>não</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>SolicitacaoContrato</processId>
-        <version>1</version>
-        <linkSequence>52</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>49</initialStateSequence>
       <finalStateSequence>44</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -657,6 +505,60 @@
   </list>
   <list/>
   <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>SolicitacaoContrato</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	var ABERTURA = 0;&#xd;
+	var SOLICITAR = 4;&#xd;
+	var ELABORAR =10;&#xd;
+	var ASSINAR = 18;&#xd;
+	var ANEXAR = 44;&#xd;
+	var ADITIVO = 49;&#xd;
+	&#xd;
+	//RECUPERA NUMERO DA ATIVIDADE&#xd;
+	var ativAtual 		 = getValue(&quot;WKNumState&quot;);	&#xd;
+	&#xd;
+	if (ativAtual == ABERTURA || ativAtual == SOLICITAR){&#xd;
+		var dataAtual = new Date();         &#xd;
+	    var dataSolicitacao = convertDataToString(dataAtual);&#xd;
+	         &#xd;
+		hAPI.setCardValue(&quot;dataSolicitacao&quot;, dataSolicitacao);&#xd;
+	}&#xd;
+&#xd;
+	function convertDataToString(dataToString) {&#xd;
+	    var dia;&#xd;
+&#xd;
+	    //MES INICIA DO ZERO POR ISSO SOMA 1 PARA ACHAR O MES CORRETO&#xd;
+	    var mes = dataToString.getMonth() + 1;&#xd;
+	    if (dataToString.getDate().toString().length == 1) {&#xd;
+	        dia = dataToString.getDate();&#xd;
+	        dia = &quot;0&quot; + dia.toString();&#xd;
+&#xd;
+	    } else {&#xd;
+	        dia = dataToString.getDate();&#xd;
+&#xd;
+	    }&#xd;
+&#xd;
+	    //converte mes&#xd;
+	    if (mes.toString().length == 1) {&#xd;
+	        mes = &quot;0&quot; + mes.toString();&#xd;
+&#xd;
+	    }&#xd;
+&#xd;
+	    //novo formato de data: para salvar em campos data do Fluig&#xd;
+	    return dia + &quot;/&quot; + mes + &quot;/&quot; + dataToString.getFullYear();&#xd;
+&#xd;
+&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
@@ -696,7 +598,7 @@
     	if (nextAtv == 37){&#xd;
     		//O CONTRATO FOI ASSINADO E É UM NOVO CONTRATO&#xd;
 			if (statusContrato ==&quot;assinado&quot; &amp;&amp; (tipoContrato !=&quot;&quot; || tipoRevisao != &quot;&quot;)){				&#xd;
-				setContrato(idDocumento,3); 				&#xd;
+		//		setContrato(idDocumento,3); 				&#xd;
 			}&#xd;
     		&#xd;
     	}&#xd;

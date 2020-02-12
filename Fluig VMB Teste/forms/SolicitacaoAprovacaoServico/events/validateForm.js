@@ -1,5 +1,4 @@
 function validateForm(form){
-	var ABERTURA = 0;
 	var SOLICITAR = 56;
 	var GERENTE_ADM =5;
 	var DIRETOR_FIN = 35;

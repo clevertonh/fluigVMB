@@ -69,7 +69,9 @@ function validateForm(form){
 		if (form.getValue("resultadoE") == "" || form.getValue("resultadoE") == null){
        	 throw "O resultado esperado pelo evento precisa ser informado";
          }
-		
+		if (form.getValue("FinanEvento") == "" || form.getValue("FinanEvento") == null){
+	       	 throw "Você precisa informar solicitações de compra, serviços e viagens usarão os mesmos dados financeiros do evento.";
+	    }
 		
 		
 		//funções para validar informações financeiras

@@ -37,10 +37,7 @@ function createDataset(fields, constraints, sortFields) {
         		}
         		
         		documentId = solicitacao.getValue(0,"documentid");    
-        		
- //       		log.info("SOLICITACAO DE CONTRATO");
-//        		log.dir(solicitacao);
-        		
+         		
         		if (solicitacao.getValue(0,"tipoContrato") != "" && solicitacao.getValue(0,"tipoContrato") != null){        		
             		//inclusao de contrato
             		acaocontrato = "1";
@@ -55,15 +52,18 @@ function createDataset(fields, constraints, sortFields) {
         			condPagamento = solicitacao.getValue(0,"condicaoPgto").split('-');        		            		      	
             		condPagamento = condPagamento[0];	
         		}
-        		
-        		//justificativa
-        		
+ 
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		var codSolicitacaoPai = retornaProcessoSolicitacao.getValue(0,"sourceProcess");
-            	        	 
-        		
-         		
+            	 
+        		if (codSolicitacaoPai == 0){
+        			//SOLICITAÇÃO DE CONTRATO AVULSA NÃO POSSUI INTEGRAÇÃO AUTOMATICA.
+          			//APENAS SOLICITAÇÕES DE EVENTOS DEVEM TER CONTRATOS AVULSOS
+          			dataset.addRow(new Array("SUCESSO"),"","");
+          			return dataset;
+        		}
+        	         		
         		//IDENTIFICAR PROCESSO
         		var retornaProcessoPAI = retornaSolicitacaoPai(codSolicitacaoPai,solicitacao.getValue(0,"companyid"));
         		var nomeProcesso = retornaProcessoPAI.getValue(0,"processId");
@@ -214,8 +214,8 @@ function createDataset(fields, constraints, sortFields) {
             		}
         		}
           		
-          		
-        		try{
+          	
+          			try{
 				        var clientService = fluigAPI.getAuthorizeClientService();
 				        var data = {
 				            companyId : 1 + '',
@@ -244,7 +244,7 @@ function createDataset(fields, constraints, sortFields) {
 				            	FORNECEDOR : 		'' + solicitacao.getValue(0,"codigoFornecedor") +'',				            					            	
 				            	VALORTOTAL : 		'' + solicitacao.getValue(0,"CotacaovalorAnual") +'',
 				            	SOLICITANTE : 		'' + solicitacao.getValue(0,"solicitante") +'',
-				            	COMPRADOR :  '' + solicitacao.getValue(0,"emailsolicitante") +'',  
+				            	COMPRADOR :  		'' + solicitacao.getValue(0,"emailsolicitante") +'',  
 				            	RESPONSAVEL :  		'' + solicitacaoPai.getValue(0,"emailsolicitante") +'',
 				            	ITENS : 				aItemServico ,
 				            	RATEIODIGITADO : 		aRateio ,
@@ -285,10 +285,9 @@ function createDataset(fields, constraints, sortFields) {
 
 						dataset.addRow([err.message]);
 				    }
-
-        		
-        		
-        		
+          		
+          	
+	
     		}
     		
     		
