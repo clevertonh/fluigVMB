@@ -1726,7 +1726,7 @@
   <bpmn2:BpmnSwimLane id="swimlane3" name="Assignee" cores="C0C0C0"/>
   <bpmn2:BpmnStartEvent id="startevent4" name="In&#xed;cio" outgoing="flow11" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
   <bpmn2:BpmnEndEvent id="endevent9" name="Fim" incoming="flow12" type="60" signalId="0"/>
-  <bpmn2:BpmnTask id="task10" name="Atividade" incoming="flow11" outgoing="flow12" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
+  <bpmn2:BpmnTask id="task10" name="Atividade" incoming="flow11" outgoing="flow12" type="80" managerMechanism="Executor Atividade" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>&#xA;  &lt;idNode>startevent4&lt;/idNode>&#xA;  &lt;returns>1&lt;/returns>&#xA;  &lt;mechanismName>Executor Atividade&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerExecutorMechanism>" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:SequenceFlow id="flow11" name="" sourceRef="startevent4" targetRef="task10"/>
   <bpmn2:SequenceFlow id="flow12" name="" sourceRef="task10" targetRef="endevent9" atividadeFluxo=""/>
 </xmi:XMI>

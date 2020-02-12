@@ -60,10 +60,7 @@ function enableFields(form){
 		 form.setValue("solicitacao",getValue('WKNumProces'));
 		 form.setEnabled("aprNivel2", false);
 		 form.setEnabled("aprNivel3", false);
-		 
-		 
-		
-		 
+			 
 	}
 	
 	else if (activity == APROVACAO_DIR){

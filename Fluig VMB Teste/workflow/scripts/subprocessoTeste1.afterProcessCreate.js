@@ -1,5 +1,6 @@
 function afterProcessCreate(processId){
-	 log.info("###afterProcessCreate");
+	/* 
+	log.info("###afterProcessCreate");
 	 
 	 
 	 	//Captura o número do processo "Pai"
@@ -12,6 +13,8 @@ function afterProcessCreate(processId){
 	    if (parentProcess != 0){
 	    	hAPI.setCardValue("campo1","aprovado");	
 	    }
+	    
+	    */
 	    
 	
 	

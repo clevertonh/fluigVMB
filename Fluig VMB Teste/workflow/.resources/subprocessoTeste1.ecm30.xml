@@ -110,6 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -241,7 +243,8 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function afterProcessCreate(processId){&#xd;
-	 log.info(&quot;###afterProcessCreate&quot;);&#xd;
+	/* &#xd;
+	log.info(&quot;###afterProcessCreate&quot;);&#xd;
 	 &#xd;
 	 &#xd;
 	 	//Captura o número do processo &quot;Pai&quot;&#xd;
@@ -254,6 +257,8 @@
 	    if (parentProcess != 0){&#xd;
 	    	hAPI.setCardValue(&quot;campo1&quot;,&quot;aprovado&quot;);	&#xd;
 	    }&#xd;
+	    &#xd;
+	    */&#xd;
 	    &#xd;
 	&#xd;
 	&#xd;

@@ -595,8 +595,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>720</positionX>
-      <positionY>840</positionY>
+      <positionX>690</positionX>
+      <positionY>850</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1071,7 +1071,7 @@
       <formFolder>0</formFolder>
       <automatic>true</automatic>
       <positionX>590</positionX>
-      <positionY>580</positionY>
+      <positionY>588</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -1095,8 +1095,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>730</positionX>
-      <positionY>950</positionY>
+      <positionX>880</positionX>
+      <positionY>830</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -1300,8 +1300,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>910</positionX>
-      <positionY>1010</positionY>
+      <positionX>1000</positionX>
+      <positionY>870</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -1352,8 +1352,20 @@
         <version>99</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) ==&quot;aprovado&quot;</condition>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;emailLider&quot;) != hAPI.getCardValue(&quot;emailNivel2&quot;)</condition>
       <destinationSequenceId>292</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>99</version>
+        <sequence>17</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;emailLider&quot;) == hAPI.getCardValue(&quot;emailNivel2&quot;)</condition>
+      <destinationSequenceId>295</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -1520,8 +1532,8 @@
         <version>99</version>
         <sequence>295</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;)  ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;valorAnual&quot;) &gt; 100000</condition>
-      <destinationSequenceId>301</destinationSequenceId>
+      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;)  ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;valorAnual&quot;) &lt;= 100000</condition>
+      <destinationSequenceId>22</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -1532,8 +1544,20 @@
         <version>99</version>
         <sequence>295</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;)  ==&quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;valorAnual&quot;) &lt;= 100000</condition>
-      <destinationSequenceId>22</destinationSequenceId>
+      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &gt;  100000 &amp;&amp; hAPI.getCardValue(&quot;emailNivel3&quot;) != hAPI.getCardValue(&quot;emailNivel2&quot;) </condition>
+      <destinationSequenceId>301</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>99</version>
+        <sequence>295</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &gt;  100000 &amp;&amp; hAPI.getCardValue(&quot;emailNivel3&quot;) == hAPI.getCardValue(&quot;emailNivel2&quot;)</condition>
+      <destinationSequenceId>304</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -2233,6 +2257,40 @@
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>295</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
+        <linkSequence>334</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>295</initialStateSequence>
+      <finalStateSequence>304</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SolicitacaoContratacaoServico</processId>
+        <version>1</version>
+        <linkSequence>335</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
       <initialStateSequence>183</initialStateSequence>
       <finalStateSequence>185</finalStateSequence>
       <returnLabel></returnLabel>
@@ -2245,7 +2303,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>334</linkSequence>
+        <linkSequence>336</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
@@ -2261,7 +2319,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoContratacaoServico</processId>
         <version>1</version>
-        <linkSequence>335</linkSequence>
+        <linkSequence>337</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
