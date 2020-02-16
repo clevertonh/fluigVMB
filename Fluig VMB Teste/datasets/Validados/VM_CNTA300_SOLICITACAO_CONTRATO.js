@@ -20,6 +20,7 @@ function createDataset(fields, constraints, sortFields) {
 	var tipoPlanilha;
 	var documentIdPai;
 	var condPagamento ="001";
+	var nProcesso;
 	
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO SOLICITAÇÃO NA POSIÇÃO 0 e do tipo MUST
@@ -70,6 +71,7 @@ function createDataset(fields, constraints, sortFields) {
         		documentIdPai = retornaProcessoPAI.getValue(0,"cardDocumentId");
         		
         		if (nomeProcesso == "SolicitacaoContratacaoServico"){
+        			nProcesso = 11;
         			var constraint2  = new Array(); 
         			constraint2.push(DatasetFactory.createConstraint("documentid", documentIdPai , documentIdPai, ConstraintType.MUST));
         			constraint2.push(DatasetFactory.createConstraint("metadata#active", true , true, ConstraintType.MUST));      			
@@ -129,7 +131,7 @@ function createDataset(fields, constraints, sortFields) {
 					 
         		}
         		else if (nomeProcesso == "SolicitacaoLocacaoVeiculo"){
-        			
+        				nProcesso = 6;
         				//dataset.addRow(["ENTROU AQUI"]);
 	        			var constraint2  = new Array(); 
 	        			constraint2.push(DatasetFactory.createConstraint("documentid", documentIdPai , documentIdPai, ConstraintType.MUST));
@@ -177,6 +179,7 @@ function createDataset(fields, constraints, sortFields) {
 								 
         		}
         		else if (nomeProcesso == "SolicitacaoTransfer"){
+        			nProcesso = 12;
         			var constraint2  = new Array(); 
         			constraint2.push(DatasetFactory.createConstraint("documentid", documentIdPai , documentIdPai, ConstraintType.MUST));
         			constraint2.push(DatasetFactory.createConstraint("metadata#active", true , true, ConstraintType.MUST));      			
@@ -224,7 +227,7 @@ function createDataset(fields, constraints, sortFields) {
 				            method : 'POST',// 'delete', 'patch', 'put', 'get'     
 				            timeoutService: '420', // segundos
 				            params : {
-				            	PROCESSO : 			'' + 13 + '' ,
+				            	PROCESSO : 			'' + nProcesso + '' ,
 				            	SOLICITACAO : 		'' + codSolicitacaoPai + '' ,
 				            	FILIAL : 			'' + filial + '',
 				            	ACAO :				'' + acao + '',
