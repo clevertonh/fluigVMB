@@ -48,12 +48,15 @@ function createDataset(fields, constraints, sortFields) {
         			//inclusão de aditivo
         			acaocontrato = "2";
         		}
-        		
+       		
         		if (solicitacao.getValue(0,"condicaoPgto") != "" && solicitacao.getValue(0,"condicaoPgto") != null){
         			condPagamento = solicitacao.getValue(0,"condicaoPgto").split('-');        		            		      	
             		condPagamento = condPagamento[0];	
         		}
  
+        	//	log.info("erro condição de pagamento");
+        	//	log.dir(condPagamento);
+        		
         		var retornaProcessoSolicitacao = retornaSolicitacao(solicitacao.getValue(0,"metadata#card_index_id"),solicitacao.getValue(0,"documentid"),solicitacao.getValue(0,"companyid"));
         		var codSolicitacao = retornaProcessoSolicitacao.getValue(0,"workflowProcessPK.processInstanceId");
         		var codSolicitacaoPai = retornaProcessoSolicitacao.getValue(0,"sourceProcess");

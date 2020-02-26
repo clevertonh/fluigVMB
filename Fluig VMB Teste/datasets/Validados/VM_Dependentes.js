@@ -25,7 +25,7 @@ function createDataset(fields, constraints, sortFields) {
     dataset.addColumn("FUNCIONARIO");
     dataset.addColumn("CPF_F");
     dataset.addColumn("CODIGO");
-     dataset.addColumn("NOME_DEP");
+    dataset.addColumn("NOME_DEP");
     dataset.addColumn("DTNASC");
     dataset.addColumn("GENERO");
    
@@ -70,7 +70,7 @@ function createDataset(fields, constraints, sortFields) {
 	        }
     
     else{
-        log.info(vo.getResult());        
+       // log.info(vo.getResult());        
         dados = vo.getResult();
     }
     

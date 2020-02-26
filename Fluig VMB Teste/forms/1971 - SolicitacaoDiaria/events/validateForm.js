@@ -29,7 +29,7 @@ function validateForm(form){
     validaCamposAgenda();
     validaAtividades();	
 	 
-  //recupera usuario logado
+    //recupera usuario logado
     var usuarioLogado = getValue('WKUser');
     var usuariosubstituto = getValue('WKReplacement');
     
@@ -61,12 +61,7 @@ function validateForm(form){
                  throw "O campo CPF não foi preenchido. Por favor, entre em contato com o setor de Sistemas através de chamado.";
 
              }
-    	 }
-
-  
-    	 
-      	 
-    	 
+    	 } 
      }
      else  if (activity == APROVACAO){
 		  if (form.getValue("aprovacao") == null || form.getValue("aprovacao") == "" ) {
@@ -74,9 +69,6 @@ function validateForm(form){
 
 	         }
 	  }
-     
-     
-     
      else if(activity == CALCULAR_DIARIAS  ){
     	 	if (nextAtv == 33) {
     	 		if (form.getValue("recebediarias") == null || form.getValue("recebediarias") == "" ) {

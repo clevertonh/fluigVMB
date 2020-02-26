@@ -3,9 +3,17 @@ function createDataset(fields, constraints, sortFields) {
 	  
 	var getFuncionario =  getConstraints(constraints, 'EMAIL_G');
 	
-	//var getFuncionario = "danubia_carvalho@wvi.org";
+	//var getFuncionario = "wasley_santos@wvi.org";
 	var funcionario = DatasetFactory.createConstraint("EMAIL_G",getFuncionario,getFuncionario, ConstraintType.MUST);
-	var dataset = DatasetFactory.getDataset("VM_Funcionario",null,new Array(funcionario),null);
+	dataset = DatasetFactory.getDataset("VM_Funcionario",null,new Array(funcionario),null);
+	
+	if (dataset.rowsCount > 0){
+		return dataset;
+	}
+	else {
+		 dataset = DatasetFactory.getDataset("VM_GestorFuncionariosAcordoDesempenho",null,new Array(funcionario),null);
+		
+	}
 	
 	return dataset;
 }

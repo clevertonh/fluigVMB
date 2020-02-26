@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compra de Produtos</processId>
-      <version>19</version>
+      <version>21</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1976</formId>
@@ -627,7 +627,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;emailLider&quot;) == hAPI.getCardValue(&quot;emailNivel2&quot;)</condition>
@@ -639,7 +639,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;reprovado&quot;</condition>
@@ -651,7 +651,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;corrigir&quot;</condition>
@@ -663,7 +663,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>4</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovacao&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;emailLider&quot;) != hAPI.getCardValue(&quot;emailNivel2&quot;)</condition>
@@ -675,7 +675,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;reprovado&quot;</condition>
@@ -687,7 +687,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &lt;= 100000 </condition>
@@ -699,7 +699,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>3</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &gt;  100000 &amp;&amp; hAPI.getCardValue(&quot;emailNivel3&quot;) == hAPI.getCardValue(&quot;emailNivel2&quot;) </condition>
@@ -711,7 +711,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>4</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>52</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel2&quot;) == &quot;aprovado&quot; &amp;&amp; hAPI.getCardValue(&quot;vl_total&quot;) &gt;  100000 &amp;&amp; hAPI.getCardValue(&quot;emailNivel3&quot;) != hAPI.getCardValue(&quot;emailNivel2&quot;) </condition>
@@ -723,7 +723,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>1</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>58</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel3&quot;) == &quot;reprovado&quot;</condition>
@@ -735,7 +735,7 @@
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
         <expressionOrder>2</expressionOrder>
-        <version>19</version>
+        <version>21</version>
         <sequence>58</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprNivel3&quot;) == &quot;aprovado&quot;</condition>
@@ -1310,7 +1310,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
-        <version>19</version>
+        <version>21</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1321,7 +1321,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
-        <version>19</version>
+        <version>21</version>
         <linkSequence>6</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1332,7 +1332,7 @@ function setChildTable(numProcessoPai){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SolicitacaoCompraProdutos</processId>
-        <version>19</version>
+        <version>21</version>
         <linkSequence>65</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

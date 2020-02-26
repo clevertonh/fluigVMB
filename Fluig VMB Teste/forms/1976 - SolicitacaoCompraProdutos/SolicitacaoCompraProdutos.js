@@ -762,6 +762,30 @@ function adicionaItensRateio(itens) {
     
 }
 
+function getAprovadorGerenteDiretorArea(){
+	var gerente = $("#emailLider").val(); 
+	var diretorArea = $("#emailNivel2").val();
+	
+	if ( gerente == diretorArea) {
+		if (document.getElementById("aprovacao").checked == true){
+		    document.getElementById("aprNivel2S").click();		   
+		}
+	}
+	
+	
+}
+
+function getAprovadorDiretorAreaDiretorDN(){
+	var diretorArea = $("#emailNivel2").val();
+	var diretorDN = $("#emailNivel3").val();
+	
+	if ( diretorArea == diretorDN) {
+		if (document.getElementById("aprNivel2S").checked == true){
+		    document.getElementById("aprNivel3S").click();		   
+		}
+	}
+	
+}
 
 
 

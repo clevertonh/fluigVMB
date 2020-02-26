@@ -71,7 +71,7 @@ function createDataset(fields, constraints, sortFields) {
 					        	serviceCode : 'REST FLUIG',
 					            endpoint : '/F_FINA050',
 					            method : 'POST',// 'delete', 'patch', 'put', 'get'     
-					            timeoutService: '360', // segundos
+					            timeoutService: '420', // segundos
 					            params : {
 					            	PROCESSO : '' + 3 + '' ,
 					            	SOLICITACAO : '' + codSolicitacao + '' ,

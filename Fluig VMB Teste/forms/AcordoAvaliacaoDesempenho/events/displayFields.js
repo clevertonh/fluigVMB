@@ -28,7 +28,7 @@ function displayFields(form,customHTML){
   	
     
    form.setVisibleById("matriculaMatricial", false);	
-    form.setVisibleById("div_gestor", false);
+ //   form.setVisibleById("div_gestor", false);
 //    form.setVisibleById("codCompet", false);
     
     
