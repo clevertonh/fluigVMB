@@ -232,10 +232,17 @@ function validateForm(form){
 				
 		}
 		
-		if ( dataAtualConvertida > dataInicioServico  ){
+		if (form.getValue("CotacaovalorAnual") > 5000){
+			if ( dataAtualConvertida > dataInicioServico  ){
 				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
+			}	
 		}
-			
+		
+		if (form.getValue("Numerocontrato") == "" || form.getValue("Numerocontrato") == null){	
+			if ( dataAtualConvertida > dataInicioServico  ){
+				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
+			}	
+		}	
 		
 		  if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
 			   throw "A cotação anual não pode ser menor que a cotação mensal.";
