@@ -23,8 +23,8 @@ var VERIFICAR_ASSINATURA_COMPRAS = 274;
 var linhas = 0;
 var codigoEvento;
 var dtInicio;
-var dtFim ;
-
+var dtFim;
+var definicaoValorAnterior;
 
 //Initialize tooltips
 $('.nav-tabs > li a[title]').tooltip();
@@ -263,9 +263,6 @@ function setSelectedZoomItem(selectedItem) {
     			document.getElementById("fisica").click();  
     		}
     		
-    		//$("#juridica").prop("disabled", true);
-    		//$("#fisica").prop("disabled", true);
-    		
     		$("#meioPagamento").val(selectedItem["FORM_PGTO"]);
     		$("#banco").val(selectedItem["BANCO"]);   
     		$("#agencia").val(selectedItem["AGENCIA"]);   
@@ -287,10 +284,21 @@ function setSelectedZoomItem(selectedItem) {
 	    	$("#vlcontrato").val(selectedItem["VALOR_TOTAL"]);
 	    	$("#saldoAtual").val(selectedItem["SALDO"]);
 	    	$("#filial").val(selectedItem["FILIAL"]);
-	    }
+	    	
+	    	
+	    	if (document.getElementById("fixo").checked == true){
+	    		definicaoValorAnterior = "fixo";
+	    		$('#fixo').attr("checked", false);
+	    		document.getElementById("demanda").click(); 
+	    	}
+	    	
+	    	
+	    	
+	}
+    
     else if (campoZOOM == CONDICAO_PGTO){
-  		$("#codCondPgto").val(selectedItem["CODIGO"]);
-  }
+  			$("#codCondPgto").val(selectedItem["CODIGO"]);
+    }
     
 }
 
@@ -538,7 +546,16 @@ function removedZoomItem(removedItem) {
     	$("#vlcontrato").val("");
     	$("#saldoAtual").val("");
     	$("#filial").val("");
+    	
+    	if (definicaoValorAnterior == "fixo"){
+    		$('#demanda').attr("checked", false);
+    		document.getElementById("fixo").click(); 
+    	}
+    	
+		
+    	
     }
+    
     else if (campoZOOM == CONDICAO_PGTO){
   		$("#codCondPgto").val("");
   }

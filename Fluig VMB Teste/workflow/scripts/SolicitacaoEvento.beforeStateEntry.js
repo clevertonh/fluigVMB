@@ -35,12 +35,7 @@ function beforeStateEntry(sequenceId){
                         }  
                     else {
                    	 hAPI.setTaskComments(usuario, codSolicitacao, 0, "Solicitação integrada com o sistema Protheus");
-                    }
-					  
-                     
-                     
-                    
-                         
+                    }          
               }
               
        }

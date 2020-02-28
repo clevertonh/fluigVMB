@@ -12,7 +12,9 @@ function createDataset(fields, constraints, sortFields) {
 	var acao = 3;
 	var filial;
 	
-
+	dataset.addRow(["SUCESSO"]);
+	
+	return dataset;
 	
 	//INTEGRAÇÃO PARA SER REALIZADA PRECISA RECEBER UMA CONSTRAINT COM O CAMPO solicitacao NA POSIÇÃO 0 e do tipo MUST
     if(constraints !== null && constraints.length){

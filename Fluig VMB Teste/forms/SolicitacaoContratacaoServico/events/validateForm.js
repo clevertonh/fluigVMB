@@ -234,19 +234,22 @@ function validateForm(form){
 		
 		if (form.getValue("CotacaovalorAnual") > 5000){
 			if ( dataAtualConvertida > dataInicioServico  ){
-				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
+				throw "A cotação não pode ser finalizada pois a data para inicio do serviço já foi ultrapassada e devido ao valor será necessário aprovação para autorizar o serviço. Por favor, devolva a solicitação para que o usuário e altere a data de inicio do serviço.";
 			}	
 		}
+		else {
+				if (form.getValue("Numerocontrato") == "" || form.getValue("Numerocontrato") == null){	
+					if ( dataAtualConvertida > dataInicioServico  ){
+						throw "A cotação não pode mais ser finalizada pois a data para inicio do serviço já foi ultrapassada e será necessário elaborar um contrato. Por favor, devolva a solicitação para que o usuário e altere a data de inicio do serviço.";
+					}	
+				}
+		}
 		
-		if (form.getValue("Numerocontrato") == "" || form.getValue("Numerocontrato") == null){	
-			if ( dataAtualConvertida > dataInicioServico  ){
-				throw "A contratação desse serviço não pode mais ser realizada na data informada. Por favor, altere a data de inicio do serviço.";
-			}	
-		}	
+			
 		
-		  if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
+		if ( parseFloat(form.getValue("CotacaovalorAnual"))  < parseFloat(form.getValue("CotacaovalorMensal")) ){
 			   throw "A cotação anual não pode ser menor que a cotação mensal.";
-		   }
+		}
 		
 		
 		if (form.getValue("definicaoValor") =="fixo"){
