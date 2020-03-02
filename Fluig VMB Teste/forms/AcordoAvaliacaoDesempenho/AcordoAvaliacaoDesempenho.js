@@ -189,6 +189,14 @@ function setSelectedZoomItem(selectedItem) {
     
 }
 
+function mostracampos(){
+	 	document.getElementById("div_gestor").style.display = "block";
+	 	document.getElementById("div_nivel1").style.display = "block";
+	 	document.getElementById("div_avaliado").style.display = "block";
+	 	document.getElementById("div_matricial").style.display = "block";
+	 	
+}
+
 function buscaGestorMatricial(emailFuncionario){
 	    var constraints = new Array();
 	    constraints.push(DatasetFactory.createConstraint("EMAIL_F", emailFuncionario, emailFuncionario, ConstraintType.MUST));
@@ -237,7 +245,7 @@ function adicionaMeta() {
       	 $('td:nth-child(17)').hide();    	 
       	 $('td:nth-child(18)').hide();
     	 
-    	 
+		
     	 
     }
     

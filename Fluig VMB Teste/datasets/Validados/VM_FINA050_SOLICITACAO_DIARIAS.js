@@ -90,6 +90,9 @@ function createDataset(fields, constraints, sortFields) {
 					          options : {
 					             encoding : 'UTF-8',
 					             mediaType: 'application/json'
+					          },
+					          headers: {
+					              tenantid:'01,02'
 					          }
 					        }
 						        

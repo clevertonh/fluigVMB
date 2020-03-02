@@ -66,7 +66,7 @@
                                                 		<div class="form-group col-md-2">
                                                          <label for="dataSolicitacao">Data de elaboração</label>
                                                          <div class="input-group date">
-                                                            <input type="text" class="form-control" id="dataAcordo" name="dataAcordo" >
+                                                            <input type="text" class="form-control" id="dataAcordo" name="dataAcordo" onclick="mostracampos()">
                                                             <span class="input-group-addon"> <span
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
@@ -83,7 +83,7 @@
 				                                          <input type="email" class="form-control" id="emailGestor" name="emailGestor" readonly>
 				                                       </div>
                                                 	</div>
-                                                   <div class="row">
+                                                   <div class="row" id="div_avaliado">
                                                       <div class="form-group col-md-4">
                                                          <label for="Funcionario">Nome do Avaliado</label> 
                                                          <input name="Funcionario"
@@ -92,7 +92,7 @@
                                                             id="Funcionario"
                                                             data-zoom="{
                                                             'displayKey':'NOME',
-                                                            'datasetId':'ds_get_subordinados',
+                                                            'datasetId':'ds_get_subordinados',                                                        
                                                             'maximumSelectionLength':'1',
                                                             'placeholder':'Selecione o funcionário',
                                                             'fields':[
@@ -121,7 +121,7 @@
                                                       
                                                    </div>
                                                  
-                                                   <div class="row">
+                                                   <div class="row" id="div_matricial">
 	                                                   	<div class="form-group col-md-4">
 	                                                   		<label>Gestor Matricial</label>
 	                                                   		<input type="text" id="gestorMatricial" name="gestorMatricial" class="form-control" readonly>
@@ -198,7 +198,7 @@
 							                                                            {'field':'CODIGO','label':'CODIGO', 'visible':'false'},
 							                                                            {'field':'DESC_COMPETENCIA','label':'DESC_COMPETENCIA','standard':'true'}						  					
 							                                                            ]
-							                                                            }">
+							                                                            }" readonly>
 						                                                     	 </div>
                                                                            </td>
                                                                            <td>
