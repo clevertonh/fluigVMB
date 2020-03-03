@@ -309,6 +309,22 @@ function setZoomData(instance, value) {
 
 
 
+function geraPDF(){		
+		var docDefinition = {
+			content: [
+				'ACORDO E AVALIAÇÃO DE DESEMPENHO',
+				$("#dataAcordo").val(),
+				$("#Funcionario").val(),
+				$("#funcao").val(),
+				
+			]
+		};
+
+		
+		pdfMake.createPdf(docDefinition).download();
+
+}
+
 
 
 

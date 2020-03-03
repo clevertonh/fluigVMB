@@ -37,11 +37,13 @@ function displayFields(form,customHTML){
     if (activity == INICIAL || activity == ACORDO){		
     	
     	
-    	
-    		form.setVisibleById("div_gestor", false);
-    		form.setVisibleById("div_nivel1", false);
-    		form.setVisibleById("div_avaliado", false);
-    		form.setVisibleById("div_matricial", false);
+    		if (activity == INICIAL){
+    	  		form.setVisibleById("div_gestor", false);
+        		form.setVisibleById("div_nivel1", false);
+        		form.setVisibleById("div_avaliado", false);
+        		form.setVisibleById("div_matricial", false);
+    		}
+  
     		
     	
     		form.setVisibleById("div_comentario1", false);	

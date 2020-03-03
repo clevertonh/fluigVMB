@@ -9,6 +9,8 @@
       <script type="text/javascript" src="pdfmake.min.js" charset="utf-8"></script>
       <script type="text/javascript" src="vfs_fonts.js" charset="utf-8"></script>
       <link type="text/css" rel="stylesheet" href="AcordoAvaliacaoDesempenho.css"/>
+      <script type="text/javascript" src="pdfmake.min.js" charset="utf-8"></script>
+      <script type="text/javascript" src="vfs_fonts.js" charset="utf-8"></script>
    </head>
    <body>
       <div class="container">
@@ -71,6 +73,9 @@
                                                                class="fluigicon fluigicon-calendar"></span>
                                                             </span>
                                                          </div>
+                                                      </div>
+                                                      <div class="form-group col-md-3">                                                      		
+                                                      		<i class="fluigicon fluigicon-file-pdf icon-xl" id="impressaoPDF" onclick="geraPDF()"></i>
                                                       </div>
                                                 	</div>                                              	
                                                 	<div class="row" id="div_gestor">
@@ -174,13 +179,13 @@
                                                                      <tbody id="tbodyItensMetas">
                                                                         <tr>
                                                                            <td>                                                    
-                                                                              <textArea class="form-control" rows="6" name="acao" id="acao" maxlength="250" style="width:500px;" placeholder="Registre de 3 a 5 metas. Inclua uma para gestão de pessoal, se você for gerente." ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="acao" id="acao" style="width:500px;" placeholder="Registre de 3 a 5 metas. Inclua uma para gestão de pessoal, se você for gerente." ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="porque" id="porque" maxlength="250" style="width:500px;" placeholder ="Como isto apoia as metas de sua unidade e Our Promise 2030?"></textArea>
+                                                                              <textArea class="form-control" rows="6" name="porque" id="porque" style="width:500px;" placeholder ="Como isto apoia as metas de sua unidade e Our Promise 2030?"></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="como" id="como" maxlength="250" style="width:500px;"  placeholder ="Inclua como será o resultado e como isto será alcançado"></textArea>
+                                                                              <textArea class="form-control" rows="6" name="como" id="como" style="width:500px;"  placeholder ="Inclua como será o resultado e como isto será alcançado"></textArea>
                                                                            </td>
                                                                            <td>                                                                           		
                                                                            		<div class="form-group" style="width:500px;"> 
@@ -205,13 +210,13 @@
                                                                            		<input  class="form-control" type="text" id="codCompetencia" name="codCompetencia" style="width:130px;" readonly>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="comentarioF" id="comentarioF" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="comentarioF" id="comentarioF"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="campo10" id="campo10" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo10" id="campo10"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td>
-                                                                              <textArea class="form-control" rows="6" name="comentarioG" id="comentarioG" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="comentarioG" id="comentarioG"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                             <td class="semaforo" id="div_14">                                                                             	
                                                                            	 	<label for="verde">Verde</label> 
@@ -225,13 +230,13 @@
                                                                            </td>
                                                                            
                                                                            <td id="div_15">
-                                                                              <textArea class="form-control" rows="6" name="campo15" id="campo15" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo15" id="campo15"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td id="div_16">
-                                                                              <textArea class="form-control" rows="6" name="campo16" id="campo16" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo16" id="campo16"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td id="div_17">
-                                                                              <textArea class="form-control" rows="6" name="campo17" id="campo17" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo17" id="campo17"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                               <td id="div_18">                                                                             	
                                                                            	 	<label for="verde2">Verde</label> 
@@ -244,13 +249,13 @@
 						                                                        <input type="radio" id="branco2" name="progresso2" value="0" class="form-control" >
                                                                            </td>          
                                                                            <td id="div_19">
-                                                                              <textArea class="form-control" rows="6" name="campo18" id="campo18" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo18" id="campo18"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td id="div_20">
-                                                                              <textArea class="form-control" rows="6" name="campo19" id="campo19" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo19" id="campo19"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                            <td id="div_21">
-                                                                              <textArea class="form-control" rows="6" name="campo20" id="campo20" maxlength="250" style="width:500px;" ></textArea>
+                                                                              <textArea class="form-control" rows="6" name="campo20" id="campo20"  style="width:500px;" ></textArea>
                                                                            </td>
                                                                               <td id="div_22">                                                                             	
                                                                            	 	<label for="verde3">Verde</label> 
